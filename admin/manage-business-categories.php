@@ -77,6 +77,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                         <a href="edit-business-category.php?id=<?php echo $category['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
                                                         <a href="#" class="delete-business-category" data-id="<?php echo $category['id']; ?>"> <button class="glyphicon glyphicon-trash delete-btn"></button></a>
                                                         <a href="arrange-business-categories.php?id=<?php echo $category['id']; ?>">  <button class="glyphicon glyphicon-random arrange-btn"></button></a>
+                                                        <a href="manage-business-sub-categories.php?id=<?php echo $category['id']; ?>">  <button class="glyphicon glyphicon-tasks sub-category-btn"></button></a>
                                                     </div>
                                                 </div>
                                             </div>
