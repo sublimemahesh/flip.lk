@@ -90,6 +90,7 @@ class BusinessCategory {
 
     public function delete() {
 
+        unlink(Helper::getSitePath() . "upload/business-category/" . $this->image_name);
         $query = 'DELETE FROM `business_category` WHERE id="' . $this->id . '"';
 
         $db = new Database();
