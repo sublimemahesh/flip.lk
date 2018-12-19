@@ -2,9 +2,9 @@
 include_once(dirname(__FILE__) . '/../../../class/include.php');
 
 if ($_POST['option'] == 'delete') {
-    $CATEGORY = new BusinessCategory($_POST['id']);
+    $SUBCATEGORY = new BusinessSubCategory($_POST['id']);
 
-    $result = $CATEGORY->delete();
+    $result = $SUBCATEGORY->delete();
 
     if ($result) {
         $data = array("status" => TRUE);
