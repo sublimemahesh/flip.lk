@@ -9,6 +9,7 @@ include_once(dirname(__FILE__) . '/User.php');
 include_once(dirname(__FILE__) . '/Message.php');
 include_once(dirname(__FILE__) . '/BusinessCategory.php');
 include_once(dirname(__FILE__) . '/BusinessSubCategory.php');
+include_once(dirname(__FILE__) . '/Member.php');
 
 function dd($data) {
     var_dump($data);
