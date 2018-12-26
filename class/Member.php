@@ -17,16 +17,18 @@ class Member {
     public $district;
     public $city;
     public $address;
+    public $category;
+    public $subCategory;
     public $authToken;
     public $lastLogin;
     public $resetCode;
-    private $password;
+    public $password;
     public $status;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`created_at`,`first_name`,`last_name`,`email`,`phone_number`,`profile_picture`,`cover_picture`,`district`,`city`,`address`,`auth_token`,`last_login`,`reset_code`,`status` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`created_at`,`first_name`,`last_name`,`email`,`phone_number`,`profile_picture`,`cover_picture`,`district`,`city`,`address`,`category`,`sub_category`,`auth_token`,`last_login`,`reset_code`,`status` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -43,6 +45,8 @@ class Member {
             $this->district = $result['district'];
             $this->city = $result['city'];
             $this->address = $result['address'];
+            $this->category = $result['category'];
+            $this->subCategory = $result['sub_category'];
             $this->authToken = $result['auth_token'];
             $this->lastLogin = $result['last_login'];
             $this->resetCode = $result['reset_code'];
@@ -54,7 +58,7 @@ class Member {
 
     public function create() {
 
-        $enPass = md5($passwor);
+        $enPass = md5($this->password);
         date_default_timezone_set('Asia/Colombo');
         $createdAt = date('Y-m-d H:i:s');
 
@@ -68,7 +72,7 @@ class Member {
                 . ") VALUES  ("
                 . "'" . $createdAt . "', "
                 . "'" . $this->firstName . "', "
-                . "'" . $this->lastLogin . "', "
+                . "'" . $this->lastName . "', "
                 . "'" . $this->email . "', "
                 . "'" . $this->status . "', "
                 . "'" . $enPass . "'"
@@ -79,7 +83,9 @@ class Member {
         $result = $db->readQuery($query);
         if ($result) {
             $last_id = mysql_insert_id();
-            return $this->__construct($last_id);
+            $details = $this->__construct($last_id);
+            Member::GenarateCode($details['email']);
+            return $details;
         } else {
             return FALSE;
         }
@@ -90,7 +96,7 @@ class Member {
         $query = "SELECT `id` FROM `member` WHERE `email`= '" . $email . "' AND `password`= '" . $password . "'";
         $db = new Database();
         $result = mysql_fetch_array($db->readQuery($query));
-
+        
         if (!$result) {
             return FALSE;
         } else {
@@ -154,11 +160,11 @@ class Member {
             $id = $_SESSION["id"];
         }
 
-        if (isset($_SESSION["authToken"])) {
-            $authToken = $_SESSION["authToken"];
+        if (isset($_SESSION["auth_token"])) {
+            $authToken = $_SESSION["auth_token"];
         }
 
-        $query = "SELECT `id` FROM `member` WHERE `id`= '" . $id . "' AND `authToken`= '" . $authToken . "'";
+        $query = "SELECT `id` FROM `member` WHERE `id`= '" . $id . "' AND `auth_token`= '" . $authToken . "'";
 
         $db = new Database();
 
@@ -201,12 +207,64 @@ class Member {
         $query = "UPDATE  `member` SET "
                 . "`first_name` ='" . $this->name . "', "
                 . "`last_name` ='" . $this->membername . "', "
-                . "`phone_number` ='" . $this->email . "', "
-                . "`profile_picture` ='" . $this->email . "', "
-                . "`cover_picture` ='" . $this->email . "', "
-                . "`district` ='" . $this->email . "', "
-                . "`city` ='" . $this->email . "', "
-                . "`address` ='" . $this->email . "' "
+                . "`phone_number` ='" . $this->phoneNumber . "', "
+                . "`profile_picture` ='" . $this->profilePicture . "', "
+                . "`cover_picture` ='" . $this->coverPicture . "', "
+                . "`district` ='" . $this->district . "', "
+                . "`city` ='" . $this->city . "', "
+                . "`address` ='" . $this->address . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
+    
+    public function updateProfilePicture() {
+
+        $query = "UPDATE  `member` SET "
+                . "`profile_picture` ='" . $this->profilePicture . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
+    
+    public function updateCoverPicture() {
+
+        $query = "UPDATE  `member` SET "
+                . "`cover_picture` ='" . $this->coverPicture . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
+    
+    public function updateBusinessCategory() {
+
+        $query = "UPDATE  `member` SET "
+                . "`category` ='" . $this->category . "', "
+                . "`sub_category` ='" . $this->subCategory . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -246,7 +304,7 @@ class Member {
 
         $authToken = md5(uniqid(rand(), true));
 
-        $query = "UPDATE `member` SET `authToken` ='" . $authToken . "' WHERE `id`='" . $id . "'";
+        $query = "UPDATE `member` SET `auth_token` ='" . $authToken . "' WHERE `id`='" . $id . "'";
 
         $db = new Database();
 
@@ -264,7 +322,7 @@ class Member {
 
         $now = date('Y-m-d H:i:s');
 
-        $query = "UPDATE `member` SET `lastLogin` ='" . $now . "' WHERE `id`='" . $id . "'";
+        $query = "UPDATE `member` SET `last_login` ='" . $now . "' WHERE `id`='" . $id . "'";
 
         $db = new Database();
 
@@ -295,7 +353,7 @@ class Member {
         $rand = rand(10000, 99999);
 
         $query = "UPDATE  `member` SET "
-                . "`resetcode` ='" . $rand . "' "
+                . "`reset_code` ='" . $rand . "' "
                 . "WHERE `email` = '" . $email . "'";
 
         $db = new Database();
@@ -313,7 +371,7 @@ class Member {
 
         if ($email) {
 
-            $query = "SELECT `email`,`resetcode` FROM `member` WHERE `email`= '" . $email . "'";
+            $query = "SELECT `email`,`reset_code` FROM `member` WHERE `email`= '" . $email . "'";
 
             $db = new Database();
 
@@ -328,7 +386,7 @@ class Member {
 
     public function SelectResetCode($code) {
 
-        $query = "SELECT `id` FROM `member` WHERE `resetcode`= '" . $code . "'";
+        $query = "SELECT `id` FROM `member` WHERE `reset_code`= '" . $code . "'";
 
         $db = new Database();
 
@@ -343,18 +401,218 @@ class Member {
     }
 
     public function updatePassword($password, $code) {
+        
+    }
+    public function sendConfirmationEmail() {
 
-        $enPass = md5($password);
+            $MEMBER = new Member($this->id);
 
-        $query = "UPDATE  `member` SET "
-                . "`password` ='" . $enPass . "' "
-                . "WHERE `resetcode` = '" . $code . "'";
+            $member_f_name = $MEMBER->firstName;
+            $member_l_name = $MEMBER->lastName;
+            $member_image_name = $MEMBER->profilePicture;
+            $member_email = $MEMBER->email;
+            $member_id = $MEMBER->id;
+            $site_link = "http://" . $_SERVER['HTTP_HOST'];
+            $website_name = 'www.flip.lk';
+            $comany_name = 'flip.lk';
+            $comConNumber = '+94 77 777 777';
+            $comEmail = 'info@islandwide.website';
+            date_default_timezone_set('Asia/Colombo');
 
-        $db = new Database();
+            $todayis = date("l, F j, Y, g:i a");
 
-        $result = $db->readQuery($query);
+            $subject = 'Confirm Your Email';
+            $from = 'info@islandwide.website'; // give from email address
 
-        if ($result) {
+
+            $headers = "From: " . $from . "\r\n";
+            $headers .= "Reply-To: " . $from . "\r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+            $html = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+                        <html xmlns="http://www.w3.org/1999/xhtml">
+                            <head>
+                                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                                <title>Srilanka Tourism Email Template</title>
+                            </head>
+
+                            <body bgcolor="#8d8e90">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#8d8e90">
+                                    <tr>
+                                        <td>
+                                            <table width="600" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" align="center">
+                                                <tr>
+                                                    <td>
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #c8d6d8;">
+                                                            <tr>
+                                                                <td style="border-collapse:collapse" width="100%" height="12">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="border-collapse:collapse" valign="middle" align="center">
+                                                                    <img alt="Logo" src="' . $site_link . '/flip.lk/member/img/logo/logo.png" style="outline:none;text-decoration:none;border:none" class="CToWUd" height="55px" align="middle">
+                                                                </td>
+                                                            </tr>           
+                                                            <tr>
+                                                                <td style="border-collapse:collapse" width="100%" height="12">
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border-collapse:collapse" width="600" align="center">
+                                                        <table style="border-collapse:collapse;border:1px; border-color:#e8ecee; border-radius:0px 0px 16px 16px; width:100%; max-width:600px" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="center">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="3" style="border-collapse:collapse" width="100%" height="20"></td>
+                                                                </tr> 
+                                                                <tr>
+                                                                    <td style="border-collapse:collapse" width="48"></td>
+                                                                    <td style="border-collapse:collapse" valign="middle">
+                                                                        <table style="border-collapse:collapse;border:1px;border-color:#e8ecee;border-radius:0px 0px 16px 16px;width:100%;max-width:632px" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="center">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td style="border-collapse:collapse;font-size:24px;font-weight:bold;color:#ff4b04;line-height:28px;padding-left:9px;padding-top:15px;padding-bottom:12px">
+                                                                                        Confirm your email.
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td style="border-collapse:collapse;font-size:15px;font-weight:normal;line-height:20px">
+                                                                                        <img style="outline:none;text-decoration:none;border:none;width:513px;padding-left:9px;padding-right:9px;display:block;padding-top:10px" src="https://ci3.googleusercontent.com/proxy/-wOUA68Jt1jPBZ8p-sDeiPQEXMZuOhyFUeZ7-a5PgowNs8DlkvRao8ok5xImz9PAhD4JUTv-UqOuFvS8evnV6el1=s0-d-e1-ft#https://a.edim.co/waterboy/subdivider@2x.png" class="CToWUd">
+                                                                                    </td>
+                                                                                </tr>
+
+                                                                                <tr>
+                                                                                    <td style="border-collapse:collapse">
+                                                                                        <table style="border-collapse:collapse;border:1px;border-color:#e8ecee;border-radius:0px 0px 16px 16px;width:100%;max-width:632px;background:#ffffff" width="100%" border="0">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td style="border-collapse:collapse" width="5"></td>
+                                                                                                    <td style="border-collapse:collapse" width="450">
+
+                                                                                                        <table style="border-collapse:collapse;border:1px;border-color:#e8ecee;border-radius:0px 0px 16px 16px;width:100%;max-width:632px; margin-top:10px;" border="0">
+                                                                                                            <tbody>
+                                                                                                                <tr>
+                                                                                                                    <!--<td style="border-collapse:collapse" width="40" valign="top" align="right">
+                                                                                                                        <img style="outline:none;text-decoration:none;border:none;display:block;border-radius:12px" src="' . $site_link . '/flip.lk/upload/member/' . $member_image_name . '" class="CToWUd" width="60">
+                                                                                                                    </td>-->
+                                                                                                                    <td style="border-collapse:collapse" width="8" valign="top"></td>
+                                                                                                                    <td style="border-collapse:collapse;min-width:100%" width="400" valign="top">
+                                                                                                                        <div style="line-height:20px;color:#888;text-align:left;font-size:13px!important;color:rgba(0,0,0,0.8)">
+
+                                                                                                                            <span style="font-weight:bold;font-size:15px;opacity:0.8"> Please confirm your email using following link. </span>
+                                                                                                                            <h4> Your code is 6666</h4>
+                                                                                                                                <br>
+                                                                                                                            
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </td>
+                                                                                                    <td style="border-collapse:collapse" width="20"></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td style="border-collapse:collapse"></td>
+                                                                                                </tr> 
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+
+                                                                                <tr>
+                                                                                    <td colspan="4" style="border-collapse:collapse" align="center">      
+                                                                                        <table style="border-collapse:collapse;border:1px;border-color:#e8ecee;border-radius:0px 0px 16px 16px;width:100%;max-width:632px;width:300px" width="300" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td style="border-collapse:collapse" align="center">
+
+                                                                                                        <a href="' . $site_link . '/flip.lk/member/confirm-email.php?id='.$member_id.'" style="text-decoration:none;color:#24c7ff;text-align:center;font-size:16px;font-family:Helvetica,Arial,sans-serif;color:#ffffff;text-decoration:none;color:#ffffff;text-decoration:none;padding:10px;border-radius:6px;border:1px solid #24c7ff;display:inline-block;width:266px;background-color:#24c7ff; margin-top: 15px;" target="_blank"> 
+                                                                                                        Confirm email
+                                                                                                        </a>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                    <td style="border-collapse:collapse" width="46"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3" style="border-collapse:collapse" width="100%" height="48"></td>
+                                                                </tr> 
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td width="2%" align="center">&nbsp;</td>
+                                                                <td width="29%" align="center">
+                                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:8px; " >
+                                                                        <strong>Phone No : <br/> ' . $comConNumber . ' </strong>
+                                                                    </font>
+                                                                </td>
+                                                                <td width="2%" align="center">
+                                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:8px; " >
+                                                                        <strong>|</strong>
+                                                                    </font>
+                                                                </td>
+                                                                <td width="30%" align="center">
+                                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:8px; " >
+                                                                        <strong>Website : <br/> ' . $website_name . '  </strong>
+                                                                    </font>
+                                                                </td>
+                                                                <td width="2%" align="center">
+                                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:8px; " >
+                                                                        <strong>|</strong>
+                                                                    </font>
+                                                                </td>
+                                                                <td width="25%" align="center">
+                                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:8px; " >
+                                                                        <strong>E-mail :  <br/> ' . $comEmail . '</strong>
+                                                                    </font>
+                                                                </td> 
+                                                            </tr>
+                                                        </table>
+                                                        <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                                            <tr>
+                                                                <td>&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td width="3%" align="center">&nbsp;</td>
+                                                                <td width="28%" align="center"><font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:9px; " > © ' . date('Y') . ' Copyright ' . $comany_name . '</font> </td>
+                                                                <td width="10%" align="center"></td>
+                                                                <td width="3%" align="center"></td> 
+                                                                <td width="30%" align="right">
+                                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:9px; " > 
+                                                                        <a href="http://www.sublime.lk/">
+                                                                            web solution by: Sublime Holdings</a>
+                                                                    </font>
+                                                                </td>
+                                                                <td width="5%">&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>&nbsp;</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </body>
+                        </html>';
+            
+        if (mail($member_email, $subject, $html, $headers)) {
             return TRUE;
         } else {
             return FALSE;

@@ -2,27 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/post-and-get/reset-password.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/post-and-get/edit-profile.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/index.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/profile.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/post-and-get/login.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/class/User.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/css/style.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/navigation-and-header.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/auth.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/class/Database.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/post-and-get/change-password.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/login.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/class/Message.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/edit-profile.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/change-password.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/css/custom.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/forget-password.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/reset-password.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/admin/post-and-get/log-out.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/class/include.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
