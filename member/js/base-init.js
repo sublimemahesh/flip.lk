@@ -446,7 +446,8 @@ CRUMINA.Bootstrap = function () {
 	 * ---------------------------*/
 	var date_select_field = $('input[name="datetimepicker"]');
 	if (date_select_field.length) {
-		var start = moment().subtract(29, 'days');
+		var start = moment();
+//		var start = moment().subtract(29, 'days');
 
 		date_select_field.daterangepicker({
 			startDate: start,
@@ -454,14 +455,14 @@ CRUMINA.Bootstrap = function () {
 			singleDatePicker: true,
 			showDropdowns: true,
 			locale: {
-				format: 'DD/MM/YYYY'
+				format: 'YYYY-MM-DD'
 			}
 		});
 		date_select_field.on('focus', function () {
 			$(this).closest('.form-group').addClass('is-focused');
 		});
 		date_select_field.on('apply.daterangepicker', function (ev, picker) {
-			$(this).val(picker.startDate.format('DD/MM/YYYY'));
+			$(this).val(picker.startDate.format('YYYY-MM-DD'));
 			$(this).closest('.form-group').addClass('is-focused');
 		});
 		date_select_field.on('hide.daterangepicker', function () {
