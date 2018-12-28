@@ -195,42 +195,33 @@ $CATEGORIES = BusinessCategory::all();
                     <div class="registration-login-form" id="registration-login-form">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
-                                    <svg class="olymp-login-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-login-icon"></use></svg>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
-                                    <svg class="olymp-register-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-register-icon"></use></svg>
-                                </a>
-                            </li>
+                            
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="home" role="tabpanel" data-mh="log-tab">
-                                <div class="title h6">Register to Flip.lk</div>
-                                <div class="alert-position hidden">
-                                    <div class="alert alert-danger" role = "alert">
-                                        <span id="message"></span>
+                                <div class="title h6">Reset Password?</div>
+                                <?php
+                                if (isset($_GET['message'])) {
+                                    $MESSAGE = new Message($_GET['message']);
+                                    ?>
+                                    <div class="alert-position">
+                                        <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
+                                            <span id="message"><?php echo $MESSAGE->description; ?></span>
+                                        </div>
                                     </div>
-                                </div>
+                                    <?php
+                                }
+                                ?>
 
-                                <form class="content" id="register">
+                                <form class="content" id="register" action="post-and-get/member.php" method="post">
                                     <div class="row">
+                                        <p>Please check your email for your code. Your code is 5 characters in length.</p>
                                         <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                             <div class="form-group label-floating is-empty">
-                                                <label class="control-label">First Name</label>
-                                                <input class="form-control" placeholder="" type="text" name="fname">
-                                            </div>
-                                            <div class="form-group label-floating is-empty">
-                                                <label class="control-label">Last Name</label>
-                                                <input class="form-control" placeholder="" type="text" name="lname">
-                                            </div>
-                                            <div class="form-group label-floating is-empty">
-                                                <label class="control-label">Your Email</label>
-                                                <input class="form-control" placeholder="" type="email" name="email">
+                                                <label class="control-label">Password Reset Code</label>
+                                                <input class="form-control" placeholder="" type="text" name="code">
                                             </div>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Your Password</label>
@@ -240,100 +231,8 @@ $CATEGORIES = BusinessCategory::all();
                                                 <label class="control-label">Confirm Password</label>
                                                 <input class="form-control" placeholder="" type="password" name="cpassword">
                                             </div>
-
-                                            <div class="remember">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input name="optionsCheckboxes" type="checkbox">
-                                                        I accept the <a href="#">Terms and Conditions</a> of the website
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <a href="#" id="btnRegister" class="btn btn-purple btn-lg full-width">Complete Registration!</a>
-                                            <input type="hidden" name="save"  value="">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="tab-pane" id="profile" role="tabpanel" data-mh="log-tab">
-                                <div class="title h6">Login to your Account</div>
-                                <form class="content" action="post-and-get/member.php" method="post">
-                                    <div class="row">
-                                        <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                            <div class="form-group label-floating is-empty">
-                                                <label class="control-label">Your Email</label>
-                                                <input class="form-control" placeholder="" type="email" name="email">
-                                            </div>
-                                            <div class="form-group label-floating is-empty">
-                                                <label class="control-label">Your Password</label>
-                                                <input class="form-control" placeholder="" type="password" name="password">
-                                            </div>
-
-                                            <div class="remember">
-
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input name="optionsCheckboxes" type="checkbox">
-                                                        Remember Me
-                                                    </label>
-                                                </div>
-                                                <a href="forgot-password.php" class="forgot">Forgot my Password</a>
-                                            </div>
-
-                                            <input type="submit" class="btn btn-lg btn-primary full-width" name="login"  value="Login">
-
-                                            <div class="or"></div>
-
-                                            <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Login with Facebook</a>
-
-                                            <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Login with Twitter</a>
-
-
-                                            <p>Don’t you have an account? <a href="#">Register Now!</a> it’s really simple and you can start enjoing all the benefits!</p>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div  id="category-save-form" class="registration-login-form hidden">
-                        <!-- Nav tabs -->
-
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="cat" role="tabpanel" data-mh="log-tab">
-                                <div class="title h6">Select Your Business Category</div>
-                                <div class="alert-position hidden">
-                                    <div class="alert alert-danger" role = "alert">
-                                        <span id="message"></span>
-                                    </div>
-                                </div>
-
-                                <form class="content" id="register">
-                                    <div class="row">
-                                        <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="control-label">Your Business Category</label>
-                                                <select class="" id="select-business-category">
-                                                    <option value="">-- Please Select Business Category -- </option>
-                                                    <?php
-                                                    foreach ($CATEGORIES as $category) {
-                                                        ?>
-                                                        <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                            <div id="select-sub-category">
-
-                                            </div>
-
-                                            <a href="#" id="btnSelectCategory" class="btn btn-purple btn-lg full-width">Save Your Business Category</a>
-                                            <input type="hidden" name="save"  value="">
+                                            
+                                            <input type="submit" class="btn btn-lg btn-purple full-width" name="reset-password"  value="Send Email">
                                         </div>
                                     </div>
                                 </form>
@@ -382,7 +281,6 @@ $CATEGORIES = BusinessCategory::all();
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
         <!--custom js-->
-        <script src="js/js/add-member.js" type="text/javascript"></script>
 
     </body>
 </html>

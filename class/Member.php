@@ -17,6 +17,11 @@ class Member {
     public $district;
     public $city;
     public $address;
+    public $dob;
+    public $occupation;
+    public $gender;
+    public $civilStatus;
+    public $aboutMe;
     public $category;
     public $subCategory;
     public $authToken;
@@ -24,11 +29,12 @@ class Member {
     public $resetCode;
     public $password;
     public $status;
+    public $isConfirmed;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`created_at`,`first_name`,`last_name`,`email`,`phone_number`,`profile_picture`,`cover_picture`,`district`,`city`,`address`,`category`,`sub_category`,`auth_token`,`last_login`,`reset_code`,`status` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`created_at`,`first_name`,`last_name`,`email`,`phone_number`,`profile_picture`,`cover_picture`,`district`,`city`,`address`,`dob`,`occupation`,`gender`,`civil_status`,`about_me`,`category`,`sub_category`,`auth_token`,`last_login`,`reset_code`,`status`,`is_confirmed` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -45,12 +51,18 @@ class Member {
             $this->district = $result['district'];
             $this->city = $result['city'];
             $this->address = $result['address'];
+            $this->dob = $result['dob'];
+            $this->occupation = $result['occupation'];
+            $this->gender = $result['gender'];
+            $this->civilStatus = $result['civil_status'];
+            $this->aboutMe = $result['about_me'];
             $this->category = $result['category'];
             $this->subCategory = $result['sub_category'];
             $this->authToken = $result['auth_token'];
             $this->lastLogin = $result['last_login'];
             $this->resetCode = $result['reset_code'];
             $this->status = $result['status'];
+            $this->isConfirmed = $result['is_confirmed'];
 
             return $result;
         }
@@ -129,12 +141,12 @@ class Member {
         }
     }
 
-    public function changePassword($id, $password) {
+    public function changePassword() {
 
-        $enPass = md5($password);
+        $enPass = md5($this->password);
         $query = "UPDATE  `member` SET "
                 . "`password` ='" . $enPass . "' "
-                . "WHERE `id` = '" . $id . "'";
+                . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
 
@@ -205,14 +217,17 @@ class Member {
     public function update() {
 
         $query = "UPDATE  `member` SET "
-                . "`first_name` ='" . $this->name . "', "
-                . "`last_name` ='" . $this->membername . "', "
+                . "`first_name` ='" . $this->firstName . "', "
+                . "`last_name` ='" . $this->lastName . "', "
                 . "`phone_number` ='" . $this->phoneNumber . "', "
-                . "`profile_picture` ='" . $this->profilePicture . "', "
-                . "`cover_picture` ='" . $this->coverPicture . "', "
                 . "`district` ='" . $this->district . "', "
                 . "`city` ='" . $this->city . "', "
-                . "`address` ='" . $this->address . "' "
+                . "`address` ='" . $this->address . "', "
+                . "`dob` ='" . $this->dob . "', "
+                . "`occupation` ='" . $this->occupation . "', "
+                . "`gender` ='" . $this->gender . "', "
+                . "`civil_status` ='" . $this->civilStatus . "', "
+                . "`about_me` ='" . $this->aboutMe . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -265,6 +280,23 @@ class Member {
         $query = "UPDATE  `member` SET "
                 . "`category` ='" . $this->category . "', "
                 . "`sub_category` ='" . $this->subCategory . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
+    
+    public function updateEmailConfirmationStatus() {
+
+        $query = "UPDATE  `member` SET "
+                . "`is_confirmed` ='" . $this->isConfirmed . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -367,7 +399,7 @@ class Member {
         }
     }
 
-    public function SelectForgetUser($email) {
+    public function SelectForgetMember($email) {
 
         if ($email) {
 
@@ -386,7 +418,7 @@ class Member {
 
     public function SelectResetCode($code) {
 
-        $query = "SELECT `id` FROM `member` WHERE `reset_code`= '" . $code . "'";
+        $query = "SELECT `id`, `email` FROM `member` WHERE `reset_code`= '" . $code . "'";
 
         $db = new Database();
 
@@ -396,12 +428,43 @@ class Member {
             return FALSE;
         } else {
 
-            return TRUE;
+            return $result;
         }
     }
-
+    
     public function updatePassword($password, $code) {
+
+        $enPass = md5($password);
+
+        $query = "UPDATE  `member` SET "
+                . "`password` ='" . $enPass . "' "
+                . "WHERE `reset_code` = '" . $code . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+    public function getIdByPassword($password) {
+
+        $enPass = md5($password);
         
+        $query = "SELECT `id` FROM `member` WHERE `password`= '" . $enPass . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return $result;
+        }
     }
     public function sendConfirmationEmail() {
 
@@ -412,6 +475,7 @@ class Member {
             $member_image_name = $MEMBER->profilePicture;
             $member_email = $MEMBER->email;
             $member_id = $MEMBER->id;
+            $code = $MEMBER->resetCode;
             $site_link = "http://" . $_SERVER['HTTP_HOST'];
             $website_name = 'www.flip.lk';
             $comany_name = 'flip.lk';
@@ -503,7 +567,7 @@ class Member {
                                                                                                                         <div style="line-height:20px;color:#888;text-align:left;font-size:13px!important;color:rgba(0,0,0,0.8)">
 
                                                                                                                             <span style="font-weight:bold;font-size:15px;opacity:0.8"> Please confirm your email using following link. </span>
-                                                                                                                            <h4> Your code is 6666</h4>
+                                                                                                                            <h4> Your code is ' . $code . '</h4>
                                                                                                                                 <br>
                                                                                                                             
                                                                                                                         </div>

@@ -349,7 +349,7 @@
 
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
-                    <img alt="author" src="img/author-page.jpg" class="avatar">
+                    <img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar">
                     <span class="icon-status online"></span>
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -359,7 +359,7 @@
 
                             <ul class="account-settings">
                                 <li>
-                                    <a href="#">
+                                    <a href="personal-information.php">
 
                                         <svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
 
@@ -458,7 +458,7 @@
                 </div>
                 <a href="profile.php" class="author-name fn">
                     <div class="author-title">
-                        James Spiegel <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                        <?php echo $MEMBER->firstName.' '.$MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                     </div>
                     <span class="author-subtitle">SPACE COWBOY</span>
                 </a>

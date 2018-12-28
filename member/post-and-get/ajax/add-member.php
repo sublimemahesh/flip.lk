@@ -59,14 +59,12 @@ if (isset($_POST["save"])) {
             exit();
         } else {
             $MEMBER = new Member(NULL);
-
-            $pw = md5($_POST['password']);
             $email = $_POST['email'];
 
             $MEMBER->firstName = filter_input(INPUT_POST, 'fname');
             $MEMBER->lastName = filter_input(INPUT_POST, 'lname');
             $MEMBER->email = $email;
-            $MEMBER->password = $pw;
+            $MEMBER->password = $_POST['password'];
             $result = $MEMBER->create();
             if (!isset($_SESSION)) {
                 session_start();
@@ -97,6 +95,7 @@ if (isset($_POST["save"])) {
         }
     }
 }
+
 if ($_POST["option"] == 'ADDBUSINESSCATEGORY') {
 
     $MEMBER = new Member($_SESSION['id']);
