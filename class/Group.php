@@ -1,11 +1,4 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Group
  *
@@ -25,12 +18,13 @@ class Group {
     public $district;
     public $city;
     public $address;
+    public $description;
     public $status;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`created_at`,`name`,`member`,`category`,`sub_category`,`email`,`phone_number`,`profile_picture`,`cover_picture`,`district`,`city`,`address`,`status` FROM `group` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`created_at`,`name`,`member`,`category`,`sub_category`,`email`,`phone_number`,`profile_picture`,`cover_picture`,`district`,`city`,`address`,`description`,`status` FROM `groups` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -49,6 +43,7 @@ class Group {
             $this->district = $result['district'];
             $this->city = $result['city'];
             $this->address = $result['address'];
+            $this->description = $result['description'];
             $this->status = $result['status'];
 
             return $result;
@@ -59,7 +54,7 @@ class Group {
 
         $createdAt = date('Y-m-d H:i:s');
 
-        $query = "INSERT INTO `group` ("
+        $query = "INSERT INTO `groups` ("
                 . "created_at, "
                 . "name, "
                 . "member, "
@@ -72,6 +67,7 @@ class Group {
                 . "district, "
                 . "city, "
                 . "address, "
+                . "description, "
                 . "status"
                 . ") VALUES  ("
                 . "'" . $createdAt . "', "
@@ -86,6 +82,7 @@ class Group {
                 . "'" . $this->district . "', "
                 . "'" . $this->city . "', "
                 . "'" . $this->address . "', "
+                . "'" . $this->description . "', "
                 . "'" . $this->status . "'"
                 . ")";
 
@@ -103,9 +100,8 @@ class Group {
 
     public function update() {
 
-        $query = "UPDATE  `group` SET "
+        $query = "UPDATE  `groups` SET "
                 . "`name` ='" . $this->name . "', "
-                . "`member` ='" . $this->member . "', "
                 . "`category` ='" . $this->category . "', "
                 . "`sub_category` ='" . $this->subCategory . "', "
                 . "`email` ='" . $this->email . "', "
@@ -114,7 +110,8 @@ class Group {
                 . "`cover_picture` ='" . $this->coverPicture . "', "
                 . "`district` ='" . $this->district . "', "
                 . "`city` ='" . $this->city . "', "
-                . "`address` ='" . $this->address . "' "
+                . "`address` ='" . $this->address . "', "
+                . "`description` ='" . $this->description . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -130,7 +127,35 @@ class Group {
     
     public function all() {
 
-        $query = "SELECT * FROM `group`";
+        $query = "SELECT * FROM `groups`";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+    
+    public function getGroupsByMember($member) {
+
+        $query = "SELECT * FROM `groups` WHERE `id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member AND `status` LIKE 'member')";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+    
+    public function getGroupsOfAdmin($member) {
+
+        $query = "SELECT * FROM `groups` WHERE `id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member AND `status` LIKE 'admin')";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -144,10 +169,10 @@ class Group {
 
     public function delete() {
 
-        unlink(Helper::getSitePath() . "upload/group/profile-picture/" . $this->profilePicture);
-        unlink(Helper::getSitePath() . "upload/group/cover-picture/" . $this->coverPicture);
-        unlink(Helper::getSitePath() . "upload/group/cover-picture/thumb/" . $this->coverPicture);
-        $query = 'DELETE FROM `group` WHERE id="' . $this->id . '"';
+        unlink(Helper::getSitePath() . "upload/groups/profile-picture/" . $this->profilePicture);
+        unlink(Helper::getSitePath() . "upload/groups/cover-picture/" . $this->coverPicture);
+        unlink(Helper::getSitePath() . "upload/groups/cover-picture/thumb/" . $this->coverPicture);
+        $query = 'DELETE FROM `groups` WHERE id="' . $this->id . '"';
 
         $db = new Database();
 

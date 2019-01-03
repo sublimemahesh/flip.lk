@@ -2,16 +2,16 @@
 
 include_once(dirname(__FILE__) . '/../../../class/include.php');
 
-if (isset($_POST['upload-cover'])) {
+if (isset($_POST['upload-group-cover'])) {
+    
+    $dir_dest = '../../../upload/group/cover-picture/';
+    $dir_dest_thumb = '../../../upload/group/cover-picture/thumb/';
 
-    $dir_dest = '../../../upload/member/cover-picture/';
-    $dir_dest_thumb = '../../../upload/member/cover-picture/thumb/';
-
-    $handle = new Upload($_FILES['cover-picture']);
+    $handle = new Upload($_FILES['group-cover-picture']);
     $imgName = null;
 
-    if ($_POST['cover']) {
-        $img = $_POST['cover'];
+    if ($_POST['group_cover']) {
+        $img = $_POST['group_cover'];
         if ($handle->uploaded) {
             $handle->image_resize = true;
             $handle->file_new_name_body = TRUE;
@@ -48,7 +48,7 @@ if (isset($_POST['upload-cover'])) {
         if (!isset($_SESSION)) {
             session_start();
         }
-        $_SESSION['cover'] = $imgName;
+        $_SESSION['group-cover'] = $imgName;
         header('Content-Type: application/json');
         echo json_encode($imgName);
         exit();
@@ -91,7 +91,8 @@ if (isset($_POST['upload-cover'])) {
         if (!isset($_SESSION)) {
             session_start();
         }
-        $_SESSION['cover'] = $imgName;
+        $_SESSION['group-cover'] = $imgName;
+        
         header('Content-Type: application/json');
         echo json_encode($imgName);
         exit();

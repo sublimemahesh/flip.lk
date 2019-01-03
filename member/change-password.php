@@ -110,16 +110,11 @@ $MEMBER = new Member($_SESSION['id']);
         include './sidebar-left.php';
         ?>
         <?php
-        include './sidebar-right.php';
-        ?>
-        <?php
         include './header.php';
         ?>
-
         <div class="header-spacer header-spacer-small"></div>
 
         <!-- Main Header Account -->
-
         <div class="main-header">
             <div class="content-bg-wrap bg-account"></div>
             <div class="container">
@@ -136,13 +131,9 @@ $MEMBER = new Member($_SESSION['id']);
             </div>
             <img class="img-bottom" src="img/account-bottom.png" alt="friends">
         </div>
-
         <!-- ... end Main Header Account -->
 
-
-
         <!-- Your Account Personal Information -->
-
         <div class="container">
             <div class="row">
                 <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
