@@ -189,27 +189,24 @@ $MEMBER = new Member($_SESSION['id']);
                                     <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="form-group label-floating is-select">
                                             <label class="control-label">Your Address</label>
-                                            <input class="form-control" placeholder="<?php echo $MEMBER->address; ?>" name="address" type="text" value="">
+                                            <input class="form-control" placeholder="" name="address" type="text" value="<?php echo $MEMBER->address; ?>">
                                         </div>
                                     </div>
+                                    
                                     <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="form-group label-floating is-select">
+                                        <div class="form-group label-floating district-label">
                                             <label class="control-label">Your District</label>
-                                            <select class="selectpicker form-control" name="district">
-                                                <option value="">-- Please Select --</option>
-                                                <option value="CA">California</option>
-                                                <option value="TE">Texas</option>
-                                            </select>
+                                            <!--<input class="form-control" placeholder="" type="text" name="district" id="district" value="">-->
+                                            <input type="text" id="autocomplete" class="form-control" placeholder="" onFocus="geolocate()" name="autocomplete" required="TRUE">
+                                            <input type="hidden" name="district" id="district"  value="<?php echo $MEMBER->district; ?>"/>
                                         </div>
                                     </div>
                                     <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="form-group label-floating is-select">
+                                        <div class="form-group label-floating city-label">
                                             <label class="control-label">Your City</label>
-                                            <select class="selectpicker form-control" name="city">
-                                                <option value="">-- Please Select --</option>
-                                                <option value="SF">San Francisco</option>
-                                                <option value="NY">New York</option>
-                                            </select>
+                                            <!--<input class="form-control" placeholder="" type="text" name="city" id="city" value="">-->
+                                            <input type="text" id="autocomplete2" class="form-control" placeholder="" onFocus="geolocate()" name="autocomplete" required="TRUE">
+                                            <input type="hidden" name="city" id="city"  value="<?php echo $MEMBER->city; ?>"/>
                                         </div>
                                     </div>
                                     <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
@@ -267,6 +264,7 @@ $MEMBER = new Member($_SESSION['id']);
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                         <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>" />
                                         <input type="submit" name="update" class="btn btn-primary btn-lg full-width" value="Save all Changes" />
+                                        <div id="map" class="hidden"></div>
                                     </div>
 
                                 </div>
@@ -329,5 +327,105 @@ $MEMBER = new Member($_SESSION['id']);
         <script src="js/base-init.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
+        
+        <script>
+                                                var placeSearch, autocomplete, autocomplete2;
+
+                                                function initAutocomplete() {
+                                                    // Create the autocomplete object, restricting the search to geographical
+                                                    // location types.
+                                                    var options = {
+                                                        types: ['(cities)'],
+                                                        componentRestrictions: {country: "lk"}
+                                                    };
+                                                    var input = document.getElementById('autocomplete');
+                                                    var input2 = document.getElementById('autocomplete2');
+
+                                                    autocomplete = new google.maps.places.Autocomplete(input, options);
+                                                    autocomplete2 = new google.maps.places.Autocomplete(input2, options);
+
+                                                    // When the user selects an address from the dropdown, populate the address
+                                                    // fields in the form.
+                                                    autocomplete.addListener('place_changed', fillInAddress);
+                                                    autocomplete2.addListener('place_changed', fillInAddress);
+                                                }
+
+                                                function fillInAddress() {
+                                                    // Get the place details from the autocomplete object.
+                                                    var place = autocomplete.getPlace();
+                                                    var place2 = autocomplete2.getPlace();
+                                                    $('#district').val(place.place_id);
+                                                    $('#city').val(place2.place_id);
+//                $('#longitude').val(place.geometry.location.lng());
+//                $('#latitude').val(place.geometry.location.lat());
+                                                    for (var component in componentForm) {
+                                                        document.getElementById(component).value = '';
+                                                        document.getElementById(component).disabled = false;
+                                                    }
+
+                                                    // Get each component of the address from the place details
+                                                    // and fill the corresponding field on the form.
+                                                }
+
+                                                // Bias the autocomplete object to the user's geographical location,
+                                                // as supplied by the browser's 'navigator.geolocation' object.
+                                                function geolocate() {
+                                                    if (navigator.geolocation) {
+                                                        navigator.geolocation.getCurrentPosition(function (position) {
+                                                            var geolocation = {
+                                                                lat: position.coords.latitude,
+                                                                lng: position.coords.longitude
+                                                            };
+                                                            var circle = new google.maps.Circle({
+                                                                center: geolocation,
+                                                                radius: position.coords.accuracy
+                                                            });
+                                                            autocomplete.setBounds(circle.getBounds());
+                                                            autocomplete2.setBounds(circle.getBounds());
+                                                        });
+                                                    }
+                                                }
+        </script>
+        <script>
+            // Retrieve Details from Place_ID
+            function initMap() {
+                setTimeout(function () {
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: -33.866, lng: 151.196},
+                        zoom: 15
+                    });
+
+                    var infowindow = new google.maps.InfoWindow();
+                    var service = new google.maps.places.PlacesService(map);
+                    var place_id = $('#district').val();
+                    var place_id2 = $('#city').val();
+                    service.getDetails({
+                        placeId: place_id
+                    }, function (place, status) {
+                        if (status === google.maps.places.PlacesServiceStatus.OK) {
+                            $('#autocomplete').val(place.name);
+                            $('.district-label').removeClass('is-empty');
+                        }
+                    });
+                    service.getDetails({
+                        placeId: place_id2
+                    }, function (place2, status) {
+                        if (status === google.maps.places.PlacesServiceStatus.OK) {
+//                        alert(place.name);
+                            $('#autocomplete2').val(place2.name);
+                            $('.city-label').removeClass('is-empty');
+                        }
+                    });
+                }, 1000);
+            }
+
+            $(document).ready(function () {
+                initMap();
+            });
+
+
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2FmnO6PPzu9Udebcq9q_yUuQ_EGItjak&libraries=places&callback=initAutocomplete"
+        async defer></script>
     </body>
 </html>
