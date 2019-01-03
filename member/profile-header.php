@@ -17,7 +17,7 @@
                                         <a href="about.php">About</a>
                                     </li>
                                     <li>
-                                        <a href="#">Friends</a>
+                                        <a href="friends.php">Friends</a>
                                     </li>
                                 </ul>
                             </div>

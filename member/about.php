@@ -39,9 +39,6 @@ $MEMBER = new Member($_SESSION['id']);
         include './sidebar-left.php';
         ?>
         <?php
-        include './sidebar-right.php';
-        ?>
-        <?php
         include './header.php';
         ?>
         

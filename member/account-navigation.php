@@ -29,12 +29,7 @@
                             <li>
                                 <a href="change-password.php">Change Password</a>
                             </li>
-                            <li>
-                                <a href="#">Hobbies and Interests</a>
-                            </li>
-                            <li>
-                                <a href="#">Education and Employement</a>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -55,10 +50,10 @@
                 <h6 class="title">FAVOURITE PAGE</h6>
             </div>
             <div class="ui-block-title">
-                <a href="#" class="h6 title">Create Fav Page</a>
+                <a href="create-group.php" class="h6 title">Create Group</a>
             </div>
             <div class="ui-block-title">
-                <a href="#" class="h6 title">Fav Page Settings</a>
+                <a href="manage-groups.php" class="h6 title">Manage Groups</a>
             </div>
         </div>
         <!-- ... end Your Profile  -->

@@ -9,7 +9,7 @@ class Advertisement {
     public $id;
     public $createdAt;
     public $member;
-    public $group;
+    public $groupId;
     public $title;
     public $description ;
     public $location;
@@ -20,7 +20,7 @@ class Advertisement {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`created_at`,`member`,`group`,`title`,`description `,`location`,`category`,`sub_category`,`status` FROM `advertisement` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`created_at`,`member`,`group_id`,`title`,`description `,`location`,`category`,`sub_category`,`status` FROM `advertisement` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -29,7 +29,7 @@ class Advertisement {
             $this->id = $result['id'];
             $this->createdAt = $result['created_at'];
             $this->member = $result['member'];
-            $this->group = $result['group'];
+            $this->groupId = $result['group_id'];
             $this->title = $result['title'];
             $this->description  = $result['description '];
             $this->location = $result['location'];
@@ -48,7 +48,7 @@ class Advertisement {
         $query = "INSERT INTO `advertisement` ("
                 . "created_at, "
                 . "member, "
-                . "group, "
+                . "group_id, "
                 . "title, "
                 . "description , "
                 . "location, "
@@ -58,7 +58,7 @@ class Advertisement {
                 . ") VALUES  ("
                 . "'" . $createdAt . "', "
                 . "'" . $this->member . "', "
-                . "'" . $this->group . "', "
+                . "'" . $this->groupId . "', "
                 . "'" . $this->title . "', "
                 . "'" . $this->description  . "', "
                 . "'" . $this->location . "', "
@@ -83,7 +83,7 @@ class Advertisement {
 
         $query = "UPDATE  `advertisement` SET "
                 . "`member` ='" . $this->member . "', "
-                . "`group` ='" . $this->group . "', "
+                . "`group_id` ='" . $this->groupId . "', "
                 . "`title` ='" . $this->title . "', "
                 . "`description ` ='" . $this->description  . "', "
                 . "`location` ='" . $this->location . "', "

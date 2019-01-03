@@ -1,9 +1,19 @@
+<?php
+include_once(dirname(__FILE__) . '/../class/include.php');
+include_once(dirname(__FILE__) . '/auth.php');
+
+$MEMBER = new Member($_SESSION['id']);
+$id = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+
+$GROUP = new Group($id);
+?> 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
         <title>Group || Flip.lk</title>
-
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +28,6 @@
         <link rel="stylesheet" type="text/css" href="css/main.min.css">
         <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
-
         <!-- Main Font -->
         <script src="js/webfontloader.min.js"></script>
         <script>
@@ -28,95 +37,154 @@
                 }
             });
         </script>
-
     </head>
     <body>
+
         <?php
         include './sidebar-left.php';
-        ?>
-        <?php
-        include './sidebar-right.php';
         ?>
         <?php
         include './header.php';
         ?>
         <div class="header-spacer"></div>
-
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="ui-block">
-                        <div class="top-header top-header-favorit">
-                            <div class="top-header-thumb">
-                                <img src="img/top-header2.jpg" alt="nature">
-                                <div class="top-header-author">
-                                    <div class="author-thumb">
-                                        <img src="img/author-main2.jpg" alt="author">
-                                    </div>
-                                    <div class="author-content">
-                                        <a href="#" class="h3 author-name">Green Goo Rock</a>
-                                        <div class="country">Rock Band  |  San Francisco, CA</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="profile-section">
-                                <div class="row">
-                                    <div class="col col-xl-8 m-auto col-lg-8 col-md-12">
-                                        <ul class="profile-menu">
-                                            <li>
-                                                <a href="12-FavouritePage.html" class="active">Timeline</a>
-                                            </li>
-                                            <li>
-                                                <a href="13-FavouritePage-About.html">About</a>
-                                            </li>
-                                            <li>
-                                                <a href="07-ProfilePage-Photos.html">Photos</a>
-                                            </li>
-                                            <li>
-                                                <a href="09-ProfilePage-Videos.html">Videos</a>
-                                            </li>
-                                            <li>
-                                                <a href="14-FavouritePage-Statistics.html">Statistics</a>
-                                            </li>
-                                            <li>
-                                                <a href="15-FavouritePage-Events.html">Events</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="control-block-button">
-                                    <a href="#" class="btn btn-control bg-primary">
-                                        <svg class="olymp-star-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-                                    </a>
-
-                                    <a href="#" class="btn btn-control bg-purple">
-                                        <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
+        <?php
+        include './group-header.php';
+        ?>
 
         <div class="container">
             <div class="row">
                 <div class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-sm-12 col-12">
+                    <div class="ui-block">
+
+                        <!-- News Feed Form  -->
+
+                        <div class="news-feed-form">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active inline-items" data-toggle="tab" href="#home-1" role="tab" aria-expanded="true">
+
+                                        <svg class="olymp-status-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-status-icon"></use></svg>
+
+                                        <span>Status</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link inline-items" data-toggle="tab" href="#profile-1" role="tab" aria-expanded="false">
+
+                                        <svg class="olymp-multimedia-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-multimedia-icon"></use></svg>
+
+                                        <span>Multimedia</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link inline-items" data-toggle="tab" href="#blog" role="tab" aria-expanded="false">
+                                        <svg class="olymp-blog-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-blog-icon"></use></svg>
+
+                                        <span>Blog Post</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
+                                    <form>
+                                        <div class="author-thumb">
+                                            <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
+                                        </div>
+                                        <div class="form-group with-icon label-floating is-empty">
+                                            <label class="control-label">Share what you are thinking here...</label>
+                                            <textarea class="form-control" placeholder=""></textarea>
+                                        </div>
+                                        <div class="add-options-message">
+                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
+                                                <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
+                                            </a>
+                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
+                                                <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
+                                            </a>
+
+                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
+                                                <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
+                                            </a>
+
+                                            <button class="btn btn-primary btn-md-2">Post Status</button>
+                                            <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
+
+                                        </div>
+
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="profile-1" role="tabpanel" aria-expanded="true">
+                                    <form>
+                                        <div class="author-thumb">
+                                            <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
+                                        </div>
+                                        <div class="form-group with-icon label-floating is-empty">
+                                            <label class="control-label">Share what you are thinking here...</label>
+                                            <textarea class="form-control" placeholder=""  ></textarea>
+                                        </div>
+                                        <div class="add-options-message">
+                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
+                                                <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
+                                            </a>
+                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
+                                                <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
+                                            </a>
+
+                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
+                                                <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
+                                            </a>
+
+                                            <button class="btn btn-primary btn-md-2">Post Status</button>
+                                            <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
+
+                                        </div>
+
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="blog" role="tabpanel" aria-expanded="true">
+                                    <form>
+                                        <div class="author-thumb">
+                                            <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
+                                        </div>
+                                        <div class="form-group with-icon label-floating is-empty">
+                                            <label class="control-label">Share what you are thinking here...</label>
+                                            <textarea class="form-control" placeholder=""  ></textarea>
+                                        </div>
+                                        <div class="add-options-message">
+                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
+                                                <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
+                                            </a>
+                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
+                                                <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
+                                            </a>
+
+                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
+                                                <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
+                                            </a>
+
+                                            <button class="btn btn-primary btn-md-2">Post Status</button>
+                                            <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
+
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ... end News Feed Form  -->			</div>
                     <div id="newsfeed-items-grid">
                         <div class="ui-block">
 
 
                             <!-- Post -->
-
                             <article class="hentry post">
-
                                 <div class="post__author author vcard inline-items">
                                     <img src="img/avatar5-sm.jpg" alt="author">
 
@@ -578,279 +646,9 @@
 
                 </div>
 
-                <div class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-12 col-12">
-                    <div class="ui-block">
-                        <div class="ui-block-title">
-                            <h6 class="title">Page Intro</h6>
-                            <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-                        </div>
-                        <div class="ui-block-content">
-
-                            <!-- W-Personal-Info -->
-
-                            <ul class="widget w-personal-info item-block">
-                                <li>
-                                    <span class="text">We are Rock Band from Los Angeles, now based in San Francisco, come and listen to us play!</span>
-                                </li>
-                                <li>
-                                    <span class="title">Created:</span>
-                                    <span class="text">September 17th, 2013</span>
-                                </li>
-                                <li>
-                                    <span class="title">Based in:</span>
-                                    <span class="text">San Francisco, California</span>
-                                </li>
-                                <li>
-                                    <span class="title">Contact:</span>
-                                    <a href="#" class="text">greengoo_gigs@youmail.com</a>
-                                </li>
-                                <li>
-                                    <span class="title">Website:</span>
-                                    <a href="#" class="text">www.ggrock.com</a>
-                                </li>
-                                <li>
-                                    <span class="title">Favourites:</span>
-                                    <a href="#" class="text">5630 </a>
-                                </li>
-                            </ul>
-
-                            <!-- ... end W-Personal-Info -->
-                            <!-- W-Socials -->
-
-                            <div class="widget w-socials">
-                                <h6 class="title">Other Social Networks:</h6>
-                                <a href="#" class="social-item bg-facebook">
-                                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                                    Facebook
-                                </a>
-                                <a href="#" class="social-item bg-twitter">
-                                    <i class="fab fa-twitter" aria-hidden="true"></i>
-                                    Twitter
-                                </a>
-                                <a href="#" class="social-item bg-dribbble">
-                                    <i class="fab fa-dribbble" aria-hidden="true"></i>
-                                    Dribbble
-                                </a>
-                            </div>
-
-
-                            <!-- ... end W-Socials -->				</div>
-                    </div>
-
-                    <div class="ui-block">
-                        <div class="ui-block-title">
-                            <h6 class="title">Location</h6>
-                            <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-                        </div>
-
-
-                        <!-- Contacts -->
-
-                        <div class="widget w-contacts">
-                            <!-- Google map -->
-
-                            <div class="section">
-                                <div id="map"></div>
-                                <script>
-                                    var map;
-
-                                    function initMap() {
-
-                                        var myLatLng = {lat: -25.363, lng: 131.044};
-
-                                        map = new google.maps.Map(document.getElementById('map'), {
-                                            center: myLatLng,
-                                            zoom: 14,
-                                            scrollwheel: false//set to true to enable mouse scrolling while inside the map area
-                                        });
-
-                                        var marker = new google.maps.Marker({
-                                            position: myLatLng,
-                                            map: map,
-                                            icon: {
-                                                url: "img/marker-google.png",
-                                                scaledSize: new google.maps.Size(50, 50)
-                                            }
-
-                                        });
-                                    }
-
-
-                                </script>
-                                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBESxStZOWN9aMvTdR3Nov66v6TXxpRZMM&amp;callback=initMap"
-                                async defer></script>
-                            </div>
-
-                            <!-- End Google map -->
-
-                            <ul>
-                                <li>
-                                    <span class="title">Address:</span>
-                                    <span class="text">Fake Street 320, San Francisco California, USA.
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="title">Working Hours:</span>
-                                    <span class="text">Mon-Fri 9:00am to 6:00pm
-                                        Weekends 10:00am to 8:00pm
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- ... end Contacts -->			</div>
-
-                    <div class="ui-block">
-                        <div class="ui-block-title">
-                            <h6 class="title">Faved this Page</h6>
-                            <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-                        </div>
-                        <div class="ui-block-content">
-
-                            <!-- W-Faved-Page -->
-
-                            <ul class="widget w-faved-page">
-                                <li>
-                                    <a href="#">
-                                        <img src="img/faved-page1.jpg" alt="user">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="img/faved-page2.jpg" alt="user">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="img/faved-page3.jpg" alt="user">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="img/faved-page4.jpg" alt="user">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="img/faved-page5.jpg" alt="user">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="img/faved-page6.jpg" alt="user">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="img/faved-page7.jpg" alt="user">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="img/faved-page8.jpg" alt="user">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="img/faved-page9.jpg" alt="user">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="img/faved-page7.jpg" alt="user">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="img/faved-page10.jpg" alt="user">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="img/faved-page11.jpg" alt="user">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="img/faved-page7.jpg" alt="user">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="img/faved-page12.jpg" alt="user">
-                                    </a>
-                                </li>
-                                <li class="all-users">
-                                    <a href="#">+5k</a>
-                                </li>
-                            </ul>
-
-                            <!-- ... end W-Faved-Page -->				</div>
-                    </div>
-
-
-                    <div class="ui-block">
-                        <div class="ui-block-title">
-                            <h6 class="title">Twitter Feed</h6>
-                            <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-                        </div>
-
-
-                        <!-- W-Twitter -->
-
-                        <ul class="widget w-twitter">
-                            <li class="twitter-item">
-                                <div class="author-folder">
-                                    <img src="img/twitter-avatar.png" alt="avatar">
-                                    <div class="author">
-                                        <a href="#" class="author-name">Green Goo Rock</a>
-                                        <a href="#" class="group">@greengoo_rock</a>
-                                        <span class="verified"><i class="fa fa-check" aria-hidden="true"></i></span>
-                                    </div>
-                                </div>
-                                <p>This Friday at 8pm we’ll be playing a song of our new album, come and join us! <a href="#" class="link-post">#NewsoftheGoo</a></p>
-                                <span class="post__date">
-                                    <time class="published" datetime="2017-03-24T18:18">
-                                        4 hours ago
-                                    </time>
-                                </span>
-                            </li>
-                            <li class="twitter-item">
-                                <div class="author-folder">
-                                    <img src="img/twitter-avatar.png" alt="avatar">
-                                    <div class="author">
-                                        <a href="#" class="author-name">Green Goo Rock</a>
-                                        <a href="#" class="group">@greengoo_rock</a>
-                                        <span class="verified"><i class="fa fa-check" aria-hidden="true"></i></span>
-                                    </div>
-                                </div>
-                                <p>Tickets for the Marina Party are now available on <a href="#" class="link-post">www.ggrock.com</a></p>
-                                <span class="post__date">
-                                    <time class="published" datetime="2017-03-24T18:18">
-                                        Yesterday
-                                    </time>
-                                </span>
-                            </li>
-                            <li class="twitter-item">
-                                <div class="author-folder">
-                                    <img src="img/twitter-avatar.png" alt="avatar">
-                                    <div class="author">
-                                        <a href="#" class="author-name">Green Goo Rock</a>
-                                        <a href="#" class="group">@greengoo_rock</a>
-                                        <span class="verified"><i class="fa fa-check" aria-hidden="true"></i></span>
-                                    </div>
-                                </div>
-                                <p>We had a great time playing in Italy. Thanks a lot to the incredible fans! <a href="#" class="link-post">#GGinRome #PisaArena </a></p>
-                                <span class="post__date">
-                                    <time class="published" datetime="2017-03-24T18:18">
-                                        5 days ago
-                                    </time>
-                                </span>
-                            </li>
-                        </ul>
-
-                        <!-- ... end W-Twitter -->			</div>
-                </div>
+                <?php
+                include './group-about-nav.php';
+                ?>
 
                 <div class="col col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="ui-block">
@@ -910,436 +708,19 @@
                                 </li>
                             </ul>
 
-                            <!-- ... end W-Latest-Photo -->				</div>
-                    </div>
-
-                    <div class="ui-block">
-                        <div class="ui-block-title">
-                            <h6 class="title">Green Goo’s Playlist</h6>
-                            <a href="#" class="more">
-                                <span class="c-green">
-                                    <svg class="olymp-remove-playlist-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-remove-playlist-icon"></use></svg>
-                                </span>
-                            </a>
+                            <!-- ... end W-Latest-Photo -->				
                         </div>
-
-                        <!-- W-Playlist -->
-
-                        <ol class="widget w-playlist">
-                            <li class="js-open-popup" data-popup-target=".playlist-popup">
-                                <div class="playlist-thumb">
-                                    <img src="img/playlist6.jpg" alt="thumb-composition">
-                                    <div class="overlay"></div>
-                                    <a href="#" class="play-icon">
-                                        <svg class="olymp-music-play-icon-big">
-                                        <use xlink:href="svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
-                                        </svg>
-                                    </a>
-                                </div>
-
-                                <div class="composition">
-                                    <a href="#" class="composition-name">The Past Starts Slow...</a>
-                                    <a href="#" class="composition-author">System of a Revenge</a>
-                                </div>
-
-                                <div class="composition-time">
-                                    <time class="published" datetime="2017-03-24T18:18">3:22</time>
-                                    <div class="more">
-                                        <svg class="olymp-three-dots-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                        </svg>
-                                        <ul class="more-dropdown">
-                                            <li>
-                                                <a href="#">Add Song to Player</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Add Playlist to Player</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </li>
-
-                            <li class="js-open-popup" data-popup-target=".playlist-popup">
-                                <div class="playlist-thumb">
-                                    <img src="img/playlist7.jpg" alt="thumb-composition">
-                                    <div class="overlay"></div>
-                                    <a href="#" class="play-icon">
-                                        <svg class="olymp-music-play-icon-big">
-                                        <use xlink:href="svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
-                                        </svg>
-                                    </a>
-                                </div>
-
-                                <div class="composition">
-                                    <a href="#" class="composition-name">The Pretender</a>
-                                    <a href="#" class="composition-author">Kung Fighters</a>
-                                </div>
-
-                                <div class="composition-time">
-                                    <time class="published" datetime="2017-03-24T18:18">5:48</time>
-                                    <div class="more">
-                                        <svg class="olymp-three-dots-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                        </svg>
-                                        <ul class="more-dropdown">
-                                            <li>
-                                                <a href="#">Add Song to Player</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Add Playlist to Player</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </li>
-                            <li class="js-open-popup" data-popup-target=".playlist-popup">
-                                <div class="playlist-thumb">
-                                    <img src="img/playlist8.jpg" alt="thumb-composition">
-                                    <div class="overlay"></div>
-                                    <a href="#" class="play-icon">
-                                        <svg class="olymp-music-play-icon-big">
-                                        <use xlink:href="svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
-                                        </svg>
-                                    </a>
-                                </div>
-
-                                <div class="composition">
-                                    <a href="#" class="composition-name">Blood Brothers</a>
-                                    <a href="#" class="composition-author">Iron Maid</a>
-                                </div>
-
-                                <div class="composition-time">
-                                    <time class="published" datetime="2017-03-24T18:18">3:06</time>
-                                    <div class="more">
-                                        <svg class="olymp-three-dots-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                        </svg>
-                                        <ul class="more-dropdown">
-                                            <li>
-                                                <a href="#">Add Song to Player</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Add Playlist to Player</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </li>
-                            <li class="js-open-popup" data-popup-target=".playlist-popup">
-                                <div class="playlist-thumb">
-                                    <img src="img/playlist9.jpg" alt="thumb-composition">
-                                    <div class="overlay"></div>
-                                    <a href="#" class="play-icon">
-                                        <svg class="olymp-music-play-icon-big">
-                                        <use xlink:href="svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
-                                        </svg>
-                                    </a>
-                                </div>
-
-                                <div class="composition">
-                                    <a href="#" class="composition-name">Seven Nation Army</a>
-                                    <a href="#" class="composition-author">The Black Stripes</a>
-                                </div>
-
-                                <div class="composition-time">
-                                    <time class="published" datetime="2017-03-24T18:18">6:17</time>
-                                    <div class="more">
-                                        <svg class="olymp-three-dots-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                        </svg>
-                                        <ul class="more-dropdown">
-                                            <li>
-                                                <a href="#">Add Song to Player</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Add Playlist to Player</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </li>
-                            <li class="js-open-popup" data-popup-target=".playlist-popup">
-                                <div class="playlist-thumb">
-                                    <img src="img/playlist10.jpg" alt="thumb-composition">
-                                    <div class="overlay"></div>
-                                    <a href="#" class="play-icon">
-                                        <svg class="olymp-music-play-icon-big">
-                                        <use xlink:href="svg-icons/sprites/icons-music.svg#olymp-music-play-icon-big"></use>
-                                        </svg>
-                                    </a>
-                                </div>
-
-                                <div class="composition">
-                                    <a href="#" class="composition-name">Killer Queen</a>
-                                    <a href="#" class="composition-author">Archiduke</a>
-                                </div>
-
-                                <div class="composition-time">
-                                    <time class="published" datetime="2017-03-24T18:18">5:40</time>
-                                    <div class="more">
-                                        <svg class="olymp-three-dots-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                        </svg>
-                                        <ul class="more-dropdown">
-                                            <li>
-                                                <a href="#">Add Song to Player</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Add Playlist to Player</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </li>
-                        </ol>
-
-                        <!-- .. end W-Playlist -->
-                    </div>
-
-                    <div class="ui-block">
-                        <div class="ui-block-title">
-                            <h6 class="title">Green Goo's Poll</h6>
-                            <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-                        </div>
-                        <div class="ui-block-content">
-                            <!-- W-Pool -->
-
-                            <ul class="widget w-pool">
-                                <li>
-                                    <p>If you had to choose, which actor do you prefer to be the next Darkman? </p>
-                                </li>
-                                <li>
-                                    <div class="skills-item">
-                                        <div class="skills-item-info">
-                                            <span class="skills-item-title">
-                                                <span class="radio">
-                                                    <label>
-                                                        <input type="radio" name="optionsRadios">
-                                                        Thomas Bale
-                                                    </label>
-                                                </span>
-                                            </span>
-                                            <span class="skills-item-count">
-                                                <span class="count-animate" data-speed="1000" data-refresh-interval="50" data-to="62" data-from="0"></span>
-                                                <span class="units">62%</span>
-                                            </span>
-                                        </div>
-                                        <div class="skills-item-meter">
-                                            <span class="skills-item-meter-active bg-primary" style="width: 62%"></span>
-                                        </div>
-
-                                        <div class="counter-friends">12 friends voted for this</div>
-
-                                        <ul class="friends-harmonic">
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic1.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic2.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic3.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic4.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic5.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic6.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic7.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic8.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic9.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="all-users">+3</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="skills-item">
-                                        <div class="skills-item-info">
-                                            <span class="skills-item-title">
-                                                <span class="radio">
-                                                    <label>
-                                                        <input type="radio" name="optionsRadios">
-                                                        Ben Robertson
-                                                    </label>
-                                                </span>
-                                            </span>
-                                            <span class="skills-item-count">
-                                                <span class="count-animate" data-speed="1000" data-refresh-interval="50" data-to="27" data-from="0"></span>
-                                                <span class="units">27%</span>
-                                            </span>
-                                        </div>
-                                        <div class="skills-item-meter">
-                                            <span class="skills-item-meter-active bg-primary" style="width: 27%"></span>
-                                        </div>
-                                        <div class="counter-friends">7 friends voted for this</div>
-
-                                        <ul class="friends-harmonic">
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic7.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic8.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic9.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic10.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic11.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic12.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic13.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="skills-item">
-                                        <div class="skills-item-info">
-                                            <span class="skills-item-title">
-                                                <span class="radio">
-                                                    <label>
-                                                        <input type="radio" name="optionsRadios">
-                                                        Michael Streiton
-                                                    </label>
-                                                </span>
-                                            </span>
-                                            <span class="skills-item-count">
-                                                <span class="count-animate" data-speed="1000" data-refresh-interval="50" data-to="11" data-from="0"></span>
-                                                <span class="units">11%</span>
-                                            </span>
-                                        </div>
-                                        <div class="skills-item-meter">
-                                            <span class="skills-item-meter-active bg-primary" style="width: 11%"></span>
-                                        </div>
-
-                                        <div class="counter-friends">2 people voted for this</div>
-
-                                        <ul class="friends-harmonic">
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic14.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic15.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <!-- .. end W-Pool -->
-                            <a href="#" class="btn btn-md-2 btn-border-think custom-color c-grey full-width">Vote Now!</a>
-                        </div>
-                    </div>
-
-                    <div class="ui-block">
-                        <div class="ui-block-title">
-                            <h6 class="title">Last Videos</h6>
-                            <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-                        </div>
-                        <div class="ui-block-content">
-                            <!-- W-Latest-Video -->
-
-                            <ul class="widget w-last-video">
-                                <li>
-                                    <a href="https://vimeo.com/ondemand/viewfromabluemoon4k/147865858" class="play-video play-video--small">
-                                        <svg class="olymp-play-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-play-icon"></use>
-                                        </svg>
-                                    </a>
-                                    <img src="img/video8.jpg" alt="video">
-                                    <div class="video-content">
-                                        <div class="title">System of a Revenge - Hypnotize...</div>
-                                        <time class="published" datetime="2017-03-24T18:18">3:25</time>
-                                    </div>
-                                    <div class="overlay"></div>
-                                </li>
-                                <li>
-                                    <a href="https://youtube.com/watch?v=excVFQ2TWig" class="play-video play-video--small">
-                                        <svg class="olymp-play-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-play-icon"></use>
-                                        </svg>
-                                    </a>
-                                    <img src="img/video7.jpg" alt="video">
-                                    <div class="video-content">
-                                        <div class="title">Green Goo - Live at Dan’s Arena</div>
-                                        <time class="published" datetime="2017-03-24T18:18">5:48</time>
-                                    </div>
-                                    <div class="overlay"></div>
-                                </li>
-                            </ul>
-
-                            <!-- .. end W-Latest-Video -->				</div>
                     </div>
 
                 </div>
             </div>
         </div>
 
+        <div id="map"></div>
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>
+
         <!-- Window-popup -->
         <?php
         include './window-pop-up.php';
@@ -1383,5 +764,41 @@
         <script src="js/base-init.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+        <script>
+            // Retrieve Details from Place_ID
+            function initMap() {
+                setTimeout(function () {
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: -33.866, lng: 151.196},
+                        zoom: 15
+                    });
+
+                    var infowindow = new google.maps.InfoWindow();
+                    var service = new google.maps.places.PlacesService(map);
+                    var place_id = $('#autocomplete').val();
+//                    var place_id2 = $('#autocomplete2').val();
+
+                    service.getDetails({
+                        placeId: place_id
+                    }, function (place, status) {
+                        if (status === google.maps.places.PlacesServiceStatus.OK) {
+//                        alert(place.name);
+                            $('#city').append(place.name);
+
+                        }
+                    });
+
+                }, 1000);
+            }
+
+            $(document).ready(function () {
+                initMap();
+            });
+
+
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2FmnO6PPzu9Udebcq9q_yUuQ_EGItjak&libraries=places&callback=initAutocomplete"
+        async defer></script>
     </body>
 </html>
