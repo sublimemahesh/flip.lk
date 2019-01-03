@@ -293,6 +293,15 @@ select.form-control.sub-category-select:not([size]):not([multiple]) {
     padding: 70px 0;
     max-width: 100%;
 }
+.landing-page .header-spacer--standard {
+    margin-bottom: 0px;
+}
+.header-spacer--standard {
+    height: 20px;
+}
+.img-wrap img {
+    max-width: 140px;
+}
 @media(min-width: 1400px) {
     .container {
         max-width: 1323px;
