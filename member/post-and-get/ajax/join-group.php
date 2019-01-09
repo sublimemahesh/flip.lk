@@ -57,3 +57,16 @@ if ($_POST['option'] == 'DECLINEREQUEST') {
     echo json_encode($result);
     exit();
 }
+
+if ($_POST['option'] == 'LEAVEGROUP') {
+    
+    $res = GroupMember::leaveGroup($_POST['member'],$_POST['group']);
+   
+    $result = '';
+    if($res) {
+        $result = GroupAndMemberRequest::leaveGroup($_POST['member'],$_POST['group']);
+    }
+    header('Content-Type: application/json');
+    echo json_encode($result);
+    exit();
+}
