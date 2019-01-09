@@ -60,7 +60,7 @@ $(document).ready(function () {
             }
         });
     });
-    
+
     $('#decline-request').click(function () {
 
         var row_id;
@@ -72,6 +72,27 @@ $(document).ready(function () {
             data: {
                 row: row_id,
                 option: 'DECLINEREQUEST'
+            },
+            dataType: 'json',
+            success: function (mess) {
+                location.reload();
+            }
+        });
+    });
+
+    $('#leave-group').click(function () {
+
+        var member, group;
+        member = $(this).attr('member-id');
+        group = $(this).attr('group-id');
+        
+        $.ajax({
+            url: "post-and-get/ajax/join-group.php",
+            type: "POST",
+            data: {
+                member: member,
+                group: group,
+                option: 'LEAVEGROUP'
             },
             dataType: 'json',
             success: function (mess) {

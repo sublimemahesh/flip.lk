@@ -58,6 +58,17 @@ $GROUP = new Group($id);
                     if (GroupMember::checkMemberAlreadyExistInTheGroup($MEMBER->id, $id)) {
                         ?>
                         <div class="ui-block">
+                            <div class="row">
+                                <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
+                                    <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="leave-group" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group<div class="ripple-container"></div></a>
+                                </div>
+                                <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
+                                    <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add Members<div class="ripple-container"></div></a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="ui-block">
 
                             <!-- News Feed Form  -->
 
@@ -193,7 +204,9 @@ $GROUP = new Group($id);
                             $join = 'true';
                         }
                         ?>
-                        <div class="ui-block <?php if($join == 'false') { echo 'hidden'; } ?>" id="join-block">
+                        <div class="ui-block <?php if ($join == 'false') {
+                            echo 'hidden';
+                        } ?>" id="join-block">
                             <div class="row">
                                 <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
                                     <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="join-group-btn" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Join Group<div class="ripple-container"></div></a>
@@ -203,7 +216,9 @@ $GROUP = new Group($id);
                                 </div>
                             </div>
                         </div>
-                        <div class="ui-block <?php if($join == 'true') { echo 'hidden'; } ?>" id="request-cancel-block">
+                        <div class="ui-block <?php if ($join == 'true') {
+                            echo 'hidden';
+                        } ?>" id="request-cancel-block">
                             <div class="row">
                                 <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
                                     <a href="#" class="btn btn-smoke btn-light-bg btn-md-2 join-group-btn" id="cancel-request-btn" row-id="<?php echo $rowid; ?>">Cancel Request<div class="ripple-container"></div></a>
@@ -213,9 +228,9 @@ $GROUP = new Group($id);
                                 </div>
                             </div>
                         </div>
-                        <?php
-                    }
-                    ?>
+    <?php
+}
+?>
 
                     <div id="newsfeed-items-grid">
                         <div class="ui-block">
@@ -684,9 +699,9 @@ $GROUP = new Group($id);
 
                 </div>
 
-                <?php
-                include './group-about-nav.php';
-                ?>
+<?php
+include './group-about-nav.php';
+?>
 
                 <div class="col col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="ui-block">
@@ -760,9 +775,9 @@ $GROUP = new Group($id);
         </a>
 
         <!-- Window-popup -->
-        <?php
-        include './window-pop-up.php';
-        ?>
+<?php
+include './window-pop-up.php';
+?>
         <!-- ... end Window-popup -->
 
         <!-- JS Scripts -->
