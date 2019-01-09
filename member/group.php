@@ -54,131 +54,169 @@ $GROUP = new Group($id);
         <div class="container">
             <div class="row">
                 <div class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-sm-12 col-12">
-                    <div class="ui-block">
+                    <?php
+                    if (GroupMember::checkMemberAlreadyExistInTheGroup($MEMBER->id, $id)) {
+                        ?>
+                        <div class="ui-block">
 
-                        <!-- News Feed Form  -->
+                            <!-- News Feed Form  -->
 
-                        <div class="news-feed-form">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active inline-items" data-toggle="tab" href="#home-1" role="tab" aria-expanded="true">
+                            <div class="news-feed-form">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active inline-items" data-toggle="tab" href="#home-1" role="tab" aria-expanded="true">
 
-                                        <svg class="olymp-status-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-status-icon"></use></svg>
+                                            <svg class="olymp-status-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-status-icon"></use></svg>
 
-                                        <span>Status</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link inline-items" data-toggle="tab" href="#profile-1" role="tab" aria-expanded="false">
+                                            <span>Status</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link inline-items" data-toggle="tab" href="#profile-1" role="tab" aria-expanded="false">
 
-                                        <svg class="olymp-multimedia-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-multimedia-icon"></use></svg>
+                                            <svg class="olymp-multimedia-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-multimedia-icon"></use></svg>
 
-                                        <span>Multimedia</span>
-                                    </a>
-                                </li>
+                                            <span>Multimedia</span>
+                                        </a>
+                                    </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link inline-items" data-toggle="tab" href="#blog" role="tab" aria-expanded="false">
-                                        <svg class="olymp-blog-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-blog-icon"></use></svg>
+                                    <li class="nav-item">
+                                        <a class="nav-link inline-items" data-toggle="tab" href="#blog" role="tab" aria-expanded="false">
+                                            <svg class="olymp-blog-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-blog-icon"></use></svg>
 
-                                        <span>Blog Post</span>
-                                    </a>
-                                </li>
-                            </ul>
+                                            <span>Blog Post</span>
+                                        </a>
+                                    </li>
+                                </ul>
 
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
-                                    <form>
-                                        <div class="author-thumb">
-                                            <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
-                                        </div>
-                                        <div class="form-group with-icon label-floating is-empty">
-                                            <label class="control-label">Share what you are thinking here...</label>
-                                            <textarea class="form-control" placeholder=""></textarea>
-                                        </div>
-                                        <div class="add-options-message">
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-                                                <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-                                            </a>
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-                                                <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-                                            </a>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
+                                        <form>
+                                            <div class="author-thumb">
+                                                <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
+                                            </div>
+                                            <div class="form-group with-icon label-floating is-empty">
+                                                <label class="control-label">Share what you are thinking here...</label>
+                                                <textarea class="form-control" placeholder=""></textarea>
+                                            </div>
+                                            <div class="add-options-message">
+                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
+                                                    <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
+                                                </a>
+                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
+                                                    <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
+                                                </a>
 
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-                                                <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-                                            </a>
+                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
+                                                    <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
+                                                </a>
 
-                                            <button class="btn btn-primary btn-md-2">Post Status</button>
-                                            <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
+                                                <button class="btn btn-primary btn-md-2">Post Status</button>
+                                                <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
 
-                                        </div>
+                                            </div>
 
-                                    </form>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="profile-1" role="tabpanel" aria-expanded="true">
+                                        <form>
+                                            <div class="author-thumb">
+                                                <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
+                                            </div>
+                                            <div class="form-group with-icon label-floating is-empty">
+                                                <label class="control-label">Share what you are thinking here...</label>
+                                                <textarea class="form-control" placeholder=""  ></textarea>
+                                            </div>
+                                            <div class="add-options-message">
+                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
+                                                    <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
+                                                </a>
+                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
+                                                    <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
+                                                </a>
+
+                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
+                                                    <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
+                                                </a>
+
+                                                <button class="btn btn-primary btn-md-2">Post Status</button>
+                                                <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
+
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="blog" role="tabpanel" aria-expanded="true">
+                                        <form>
+                                            <div class="author-thumb">
+                                                <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
+                                            </div>
+                                            <div class="form-group with-icon label-floating is-empty">
+                                                <label class="control-label">Share what you are thinking here...</label>
+                                                <textarea class="form-control" placeholder=""  ></textarea>
+                                            </div>
+                                            <div class="add-options-message">
+                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
+                                                    <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
+                                                </a>
+                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
+                                                    <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
+                                                </a>
+
+                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
+                                                    <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
+                                                </a>
+
+                                                <button class="btn btn-primary btn-md-2">Post Status</button>
+                                                <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
+
+                                            </div>
+
+                                        </form>
+                                    </div>
                                 </div>
+                            </div>
 
-                                <div class="tab-pane" id="profile-1" role="tabpanel" aria-expanded="true">
-                                    <form>
-                                        <div class="author-thumb">
-                                            <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
-                                        </div>
-                                        <div class="form-group with-icon label-floating is-empty">
-                                            <label class="control-label">Share what you are thinking here...</label>
-                                            <textarea class="form-control" placeholder=""  ></textarea>
-                                        </div>
-                                        <div class="add-options-message">
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-                                                <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-                                            </a>
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-                                                <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-                                            </a>
-
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-                                                <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-                                            </a>
-
-                                            <button class="btn btn-primary btn-md-2">Post Status</button>
-                                            <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
-
-                                        </div>
-
-                                    </form>
+                            <!-- ... end News Feed Form  -->
+                        </div>
+                        <?php
+                    } else {
+                        $request = GroupAndMemberRequest::getIdByGroupAndMember($id, $MEMBER->id);
+                        if ($request) {
+                            $join = 'false';
+                            $rowid = $request['id'];
+                        } else {
+                            $join = 'true';
+                        }
+                        ?>
+                        <div class="ui-block <?php if($join == 'false') { echo 'hidden'; } ?>" id="join-block">
+                            <div class="row">
+                                <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
+                                    <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="join-group-btn" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Join Group<div class="ripple-container"></div></a>
                                 </div>
-
-                                <div class="tab-pane" id="blog" role="tabpanel" aria-expanded="true">
-                                    <form>
-                                        <div class="author-thumb">
-                                            <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
-                                        </div>
-                                        <div class="form-group with-icon label-floating is-empty">
-                                            <label class="control-label">Share what you are thinking here...</label>
-                                            <textarea class="form-control" placeholder=""  ></textarea>
-                                        </div>
-                                        <div class="add-options-message">
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-                                                <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-                                            </a>
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-                                                <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-                                            </a>
-
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-                                                <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-                                            </a>
-
-                                            <button class="btn btn-primary btn-md-2">Post Status</button>
-                                            <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
-
-                                        </div>
-
-                                    </form>
+                                <div class="col col-lg-9 col-md-9 col-sm-8 col-8 join-group-section">
+                                    <h5>Join this group to post and comment.</h5>
                                 </div>
                             </div>
                         </div>
+                        <div class="ui-block <?php if($join == 'true') { echo 'hidden'; } ?>" id="request-cancel-block">
+                            <div class="row">
+                                <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
+                                    <a href="#" class="btn btn-smoke btn-light-bg btn-md-2 join-group-btn" id="cancel-request-btn" row-id="<?php echo $rowid; ?>">Cancel Request<div class="ripple-container"></div></a>
+                                </div>
+                                <div class="col col-lg-9 col-md-9 col-sm-8 col-8 join-group-section">
+                                    <h5>Your request has been sent to the approval.</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
 
-                        <!-- ... end News Feed Form  -->			</div>
                     <div id="newsfeed-items-grid">
                         <div class="ui-block">
 
@@ -764,7 +802,7 @@ $GROUP = new Group($id);
         <script src="js/base-init.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
-
+        <script src="js/js/join-group.js" type="text/javascript"></script>
         <script>
             // Retrieve Details from Place_ID
             function initMap() {

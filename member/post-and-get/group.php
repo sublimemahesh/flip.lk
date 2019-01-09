@@ -29,6 +29,11 @@ if (isset($_POST['create-group'])) {
         unset($_SESSION['group-image']);
         unset($_SESSION['group-cover']);
 
+        $GROUPMEMBERS = new GroupMember(NULL);
+        $GROUPMEMBERS->groupId = $result['id'];
+        $GROUPMEMBERS->member = $result['member'];
+        $GROUPMEMBERS->status = 'admin';
+        $res = $GROUPMEMBERS->create();
 
         header('Location: ' . $url[0] . '?message=10');
         exit();

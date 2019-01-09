@@ -302,6 +302,42 @@ select.form-control.sub-category-select:not([size]):not([multiple]) {
 .img-wrap img {
     max-width: 140px;
 }
+.join-group-btn {
+    margin-top: 15px;
+    margin-left: 22px;
+}
+.join-group-section {
+    margin-top: 27px;
+}
+#request-cancel-block .join-group-btn {
+    padding-right: 25px;
+    padding-left: 25px;
+}
+.request-label-avatar {
+    position: absolute;
+    right: 40px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 100%;
+    overflow: hidden;
+}
+.member-request-profile-pic img {
+    width: 92px;
+}
+.btn-control-square {
+    border-radius: 0;
+    width: 100px;
+    height: 32px;
+    line-height: 32px;
+    padding: 0;
+    fill: #fff;
+    font-size: 15px;
+}
 @media(min-width: 1400px) {
     .container {
         max-width: 1323px;

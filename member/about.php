@@ -2,7 +2,13 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
+$MEM = '';
 $MEMBER = new Member($_SESSION['id']);
+if (isset($_GET['id'])) {
+    $MEM = new Member($_GET['id']);
+} else {
+    $MEM = new Member($_SESSION['id']);
+}
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -192,40 +198,40 @@ $MEMBER = new Member($_SESSION['id']);
                             <ul class="widget w-personal-info">
                                 <li>
                                     <span class="title">About Me:</span>
-                                    <span class="text"><?php echo $MEMBER->aboutMe; ?>
+                                    <span class="text"><?php echo $MEM->aboutMe; ?>
                                     </span>
                                 </li>
                                 <li>
                                     <span class="title">Birthday:</span>
-                                    <span class="text"><?php echo date_format(date_create($MEMBER->dob),"F dS, Y"); ?></span>
+                                    <span class="text"><?php echo date_format(date_create($MEM->dob),"F dS, Y"); ?></span>
                                 </li>
                                 <li>
                                     <span class="title">Lives in:</span>
-                                    <span class="text"><?php echo $MEMBER->address; ?></span>
+                                    <span class="text"><?php echo $MEM->address; ?></span>
                                 </li>
                                 <li>
                                     <span class="title">Occupation:</span>
-                                    <span class="text"><?php echo $MEMBER->occupation; ?></span>
+                                    <span class="text"><?php echo $MEM->occupation; ?></span>
                                 </li>
                                 <li>
                                     <span class="title">Joined:</span>
-                                    <span class="text"><?php echo date_format(date_create(substr($MEMBER->createdAt, 0, 10)),"F dS, Y"); ?></span>
+                                    <span class="text"><?php echo date_format(date_create(substr($MEM->createdAt, 0, 10)),"F dS, Y"); ?></span>
                                 </li>
                                 <li>
                                     <span class="title">Gender:</span>
-                                    <span class="text"><?php echo ucfirst($MEMBER->gender); ?></span>
+                                    <span class="text"><?php echo ucfirst($MEM->gender); ?></span>
                                 </li>
                                 <li>
                                     <span class="title">Status:</span>
-                                    <span class="text"><?php if($MEMBER->civilStatus == 'not_married' ) { echo 'Not Married'; } else { echo 'Married'; }; ?></span>
+                                    <span class="text"><?php if($MEM->civilStatus == 'not_married' ) { echo 'Not Married'; } else { echo 'Married'; }; ?></span>
                                 </li>
                                 <li>
                                     <span class="title">Email:</span>
-                                    <a href="#" class="text"><?php echo $MEMBER->email; ?></a>
+                                    <a href="#" class="text"><?php echo $MEM->email; ?></a>
                                 </li>
                                 <li>
                                     <span class="title">Phone Number:</span>
-                                    <span class="text"><?php echo $MEMBER->phoneNumber; ?></span>
+                                    <span class="text"><?php echo $MEM->phoneNumber; ?></span>
                                 </li>
                             </ul>
 

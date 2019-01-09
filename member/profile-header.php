@@ -4,21 +4,40 @@
             <div class="ui-block">
                 <div class="top-header">
                     <div class="top-header-thumb">
-                        <img src="../upload/member/cover-picture/<?php echo $MEMBER->coverPicture; ?>" alt="nature">
+                        <img src="../upload/member/cover-picture/<?php echo $MEM->coverPicture; ?>" alt="nature">
                     </div>
                     <div class="profile-section">
                         <div class="row">
                             <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
                                 <ul class="profile-menu">
-                                    <li>
-                                        <a href="profile.php" class="active">Timeline</a>
-                                    </li>
-                                    <li>
-                                        <a href="about.php">About</a>
-                                    </li>
-                                    <li>
-                                        <a href="friends.php">Friends</a>
-                                    </li>
+                                    <?php
+                                    if (isset($_GET['id'])) {
+                                        ?>
+                                        <li>
+                                            <a href="profile.php?id=<?php echo $MEM->id; ?>" class="active">Timeline</a>
+                                        </li>
+                                        <li>
+                                            <a href="about.php?id=<?php echo $MEM->id; ?>">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="friends.php?id=<?php echo $MEM->id; ?>">Friends</a>
+                                        </li>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <li>
+                                            <a href="profile.php" class="active">Timeline</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="about.php">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="friends.php">Friends</a>
+                                        </li>
+                                        <?php
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                             <div class="col col-lg-5 ml-auto col-md-5 col-sm-12 col-12">
@@ -74,12 +93,12 @@
                     </div>
                     <div class="top-header-author">
                         <a href="profile.php" class="author-thumb main-profile-pic">
-                            <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="profile picture">
+                            <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="profile picture">
                         </a>
-                        <div class="author-content">
-                            <a href="profile.php" class="h4 author-name"><?php echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?></a>
-                            <div class="country"><?php echo $MEMBER->city . ' ' . $MEMBER->district; ?></div>
-                        </div>
+                                                <div class="author-content">
+                                                    <a href="profile.php" class="h4 author-name"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>
+                                                    <!--<div class="country"><?php echo $MEM->city . ' ' . $MEM->district; ?></div>-->
+                                                </div>
                     </div>
                 </div>
             </div>

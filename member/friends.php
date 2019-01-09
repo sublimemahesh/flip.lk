@@ -2,7 +2,13 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
+$MEM = '';
 $MEMBER = new Member($_SESSION['id']);
+if (isset($_GET['id'])) {
+    $MEM = new Member($_GET['id']);
+} else {
+    $MEM = new Member($_SESSION['id']);
+}
 ?> 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,8 +1,13 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
-
+$MEM = '';
 $MEMBER = new Member($_SESSION['id']);
+if (isset($_GET['id'])) {
+    $MEM = new Member($_GET['id']);
+} else {
+    $MEM = new Member($_SESSION['id']);
+}
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -845,7 +850,7 @@ $MEMBER = new Member($_SESSION['id']);
                             <ul class="widget w-personal-info item-block">
                                 <li>
                                     <span class="title">About Me:</span>
-                                    <span class="text"><?php echo $MEMBER->aboutMe; ?></span>
+                                    <span class="text"><?php echo $MEM->aboutMe; ?></span>
                                 </li>
                             </ul>
 
@@ -1011,7 +1016,7 @@ $MEMBER = new Member($_SESSION['id']);
                         </div>
                     </div>
 
-                    
+
 
                 </div>
 
