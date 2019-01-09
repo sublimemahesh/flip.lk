@@ -56,8 +56,25 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function (mess) {
-                $('#request-cancel-block').addClass('hidden');
-                $('#join-block').removeClass('hidden');
+                location.reload();
+            }
+        });
+    });
+    
+    $('#decline-request').click(function () {
+
+        var row_id;
+        row_id = $(this).attr('row_id');
+
+        $.ajax({
+            url: "post-and-get/ajax/join-group.php",
+            type: "POST",
+            data: {
+                row: row_id,
+                option: 'DECLINEREQUEST'
+            },
+            dataType: 'json',
+            success: function (mess) {
                 location.reload();
             }
         });

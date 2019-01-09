@@ -46,3 +46,14 @@ if ($_POST['option'] == 'APPROVEREQUEST') {
     echo json_encode($result);
     exit();
 }
+
+if ($_POST['option'] == 'DECLINEREQUEST') {
+    
+    $REQUEST = new GroupAndMemberRequest($_POST['row']);
+    
+    $result = $REQUEST->delete();
+    
+    header('Content-Type: application/json');
+    echo json_encode($result);
+    exit();
+}
