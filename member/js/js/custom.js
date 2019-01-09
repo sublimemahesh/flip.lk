@@ -11,4 +11,21 @@ $(document).ready(function () {
     $('.upload-cover-pic').mouseout(function () {
         $('.upload-span2').addClass('hidden');
     });
+
+    $('#groups-you-manage').click(function () {
+        $('.your-groups').addClass('hidden');
+        $('.discover-groups').addClass('hidden');
+        $('.groups-you-manage').removeClass('hidden');
+    });
+    $('#your-groups').click(function () {
+        $('.groups-you-manage').addClass('hidden');
+        $('.discover-groups').addClass('hidden');
+        $('.your-groups').removeClass('hidden');
+    });
+    $('#discover-groups').click(function () {
+        $('.groups-you-manage').addClass('hidden');
+        $('.your-groups').addClass('hidden');
+        $('.discover-groups').removeClass('hidden');
+    });
+
 });

@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Description of Group
  *
  * @author W j K n ¨
  */
 class Group {
+
     public $id;
     public $createdAt;
     public $name;
@@ -124,7 +126,7 @@ class Group {
             return FALSE;
         }
     }
-    
+
     public function all() {
 
         $query = "SELECT * FROM `groups`";
@@ -138,7 +140,7 @@ class Group {
 
         return $array_res;
     }
-    
+
     public function getGroupsByMember($member) {
 
         $query = "SELECT * FROM `groups` WHERE `id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member AND `status` LIKE 'member')";
@@ -152,10 +154,24 @@ class Group {
 
         return $array_res;
     }
-    
+
     public function getGroupsOfAdmin($member) {
 
         $query = "SELECT * FROM `groups` WHERE `id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member AND `status` LIKE 'admin')";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function getOtherGroups($member) {
+        
+        $query = "SELECT * FROM `groups` WHERE `id` not in (SELECT `group_id` FROM `group_members` WHERE `member` = $member)";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -178,4 +194,5 @@ class Group {
 
         return $db->readQuery($query);
     }
+
 }

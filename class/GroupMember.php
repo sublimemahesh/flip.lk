@@ -57,7 +57,7 @@ class GroupMember {
 
     public function all() {
 
-        $query = "SELECT * FROM `group_members` ORDER BY `status` ASC";
+        $query = "SELECT * FROM `group_members` ORDER BY `id` DESC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -67,6 +67,44 @@ class GroupMember {
         }
 
         return $array_res;
+    }
+
+    public function getAllMembersByGroup($group) {
+
+        $query = "SELECT * FROM `group_members` WHERE `group_id` = $group AND `status` LIKE 'member' ORDER BY `id` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function getAllAdminsByGroup($group) {
+
+        $query = "SELECT * FROM `group_members` WHERE `group_id` = $group AND `status` LIKE 'admin' ORDER BY `id` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function countGroupMembers($group) {
+
+        $query = "SELECT count(`id`) AS `count` FROM `group_members` WHERE `group_id` = $group";
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        return $result;
     }
 
     public function update() {
@@ -95,6 +133,24 @@ class GroupMember {
         $db = new Database();
 
         return $db->readQuery($query);
+    }
+
+    public function checkMemberAlreadyExistInTheGroup($member, $group) {
+
+        $query = "SELECT `id` FROM `group_members` WHERE `member`= $member AND `group_id` = $group";
+
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result;
+    }
+
+    public function checkMemberIsAnAdmin($member, $group) {
+
+        $query = "SELECT `id` FROM `group_members` WHERE `member`= $member AND `group_id` = $group AND `status` LIKE 'admin'";
+
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result;
     }
 
 }

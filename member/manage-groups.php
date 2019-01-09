@@ -65,8 +65,9 @@ if (isset($_GET['id'])) {
         <!-- ... end Main Header Groups -->
         <!-- Main Content Groups -->
         <div class="container">
-            
-            <div class="ui-block">
+            <div class="row">
+                <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
+            <div class="ui-block groups-you-manage">
                 <div class="ui-block-title">
                     <h6 class="title">Groups You Manage</h6>
                 </div>
@@ -173,7 +174,7 @@ if (isset($_GET['id'])) {
                     </div>
                 </div>
             </div>
-            <div class="ui-block">
+            <div class="ui-block your-groups hidden">
                 <div class="ui-block-title">
                     <h6 class="title">Your Groups</h6>
                 </div>
@@ -263,6 +264,102 @@ if (isset($_GET['id'])) {
 
                     </div>
                 </div>
+            </div>
+            <div class="ui-block discover-groups hidden">
+                <div class="ui-block-title">
+                    <h6 class="title">Discover Groups</h6>
+                </div>
+                <div class="ui-block-content">
+                    <div class="row">
+                        <?php
+                        if(count(Group::getOtherGroups($MEMBER->id)) > 0) {
+                        foreach (Group::getOtherGroups($MEMBER->id) as $key => $group) {
+                            ?>
+                            <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">
+                                <div class="ui-block" data-mh="friend-groups-item">
+                                    <!-- Friend Item -->
+                                    <div class="friend-item friend-groups">
+                                        <div class="friend-item-content">
+                                            <div class="more">
+                                                <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
+                                                <ul class="more-dropdown">
+                                                    <li>
+                                                        <a href="#">Leave Group</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Edit Notification Settings</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="friend-avatar">
+                                                <div class="author-thumb">
+                                                    <img src="../upload/group/<?php echo $group['profile_picture']; ?>" alt="Olympus">
+                                                </div>
+                                                <div class="author-content">
+                                                    <a href="group.php?id=<?php echo $group['id']; ?>" class="h5 author-name"><?php echo $group['name']; ?></a>
+                                                    <div class="country">6 Friends in the Group</div>
+                                                </div>
+                                            </div>
+
+                                            <ul class="friends-harmonic">
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="img/friend-harmonic5.jpg" alt="friend">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="img/friend-harmonic10.jpg" alt="friend">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="img/friend-harmonic7.jpg" alt="friend">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="img/friend-harmonic8.jpg" alt="friend">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="img/friend-harmonic2.jpg" alt="friend">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="img/avatar30-sm.jpg" alt="author">
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="control-block-button">
+                                                <a href="#" class="  btn btn-control bg-blue" data-toggle="modal" data-target="#create-friend-group-add-friends">
+                                                    <svg class="olymp-happy-faces-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-faces-icon"></use></svg>
+                                                </a>
+                                                <a href="#" class="btn btn-control btn-grey-lighter">
+                                                    <svg class="olymp-settings-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-settings-icon"></use></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ... end Friend Item -->			
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        } else {
+                            echo 'You are not joined any groups.';
+                        }
+                        ?>
+
+                    </div>
+                </div>
+            </div>
+                </div>
+                <?php
+                include './group-navigation.php';
+                ?>
             </div>
         </div>
 
@@ -460,11 +557,9 @@ if (isset($_GET['id'])) {
         <script src="js/jquery.gifplayer.js"></script>
         <script src="js/mediaelement-and-player.js"></script>
         <script src="js/mediaelement-playlist-plugin.min.js"></script>
-
         <script src="js/base-init.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
-
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
-
+        <script src="js/js/custom.js" type="text/javascript"></script>
     </body>
 </html>

@@ -1,3 +1,7 @@
+<?php
+$no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->id);
+?>
+
 <div class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-12 col-12">
     <div class="ui-block">
         <div class="ui-block-title">
@@ -31,6 +35,11 @@
                     <a href="#" class="text"><?php echo $GROUP->phoneNumber; ?></a>
                 </li>
                 <li>
+                    <span class="title">Address:</span>
+                    <span class="text"><?php echo $GROUP->address; ?>.
+                    </span>
+                </li>
+                <li>
                     <span class="title">Favourites:</span>
                     <a href="#" class="text">5630 </a>
                 </li>
@@ -39,70 +48,30 @@
             <!-- ... end W-Personal-Info -->
         </div>
     </div>
-
-    <div class="ui-block">
-        <div class="ui-block-title">
-            <h6 class="title">Location</h6>
-            <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-        </div>
-
-
-        <!-- Contacts -->
-
-        <div class="widget w-contacts">
-            <!-- Google map -->
-
-            <div class="section">
-                <div id="map"></div>
-                <script>
-                    var map;
-
-                    function initMap() {
-
-                        var myLatLng = {lat: -25.363, lng: 131.044};
-
-                        map = new google.maps.Map(document.getElementById('map'), {
-                            center: myLatLng,
-                            zoom: 14,
-                            scrollwheel: false//set to true to enable mouse scrolling while inside the map area
-                        });
-
-                        var marker = new google.maps.Marker({
-                            position: myLatLng,
-                            map: map,
-                            icon: {
-                                url: "img/marker-google.png",
-                                scaledSize: new google.maps.Size(50, 50)
-                            }
-
-                        });
-                    }
-
-
-                </script>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBESxStZOWN9aMvTdR3Nov66v6TXxpRZMM&amp;callback=initMap"
-                async defer></script>
+    <?php
+    if (GroupMember::checkMemberIsAnAdmin($MEMBER->id, $GROUP->id)) {
+        ?>
+        <div class="ui-block">
+            <div class="ui-block-title">
+                <h6 class="title">Admin Activity</h6>
+                <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
             </div>
+            <div class="ui-block-content">
 
-            <!-- End Google map -->
+                <!-- W-Personal-Info -->
 
-            <ul>
-                <li>
-                    <span class="title">Address:</span>
-                    <span class="text"><?php echo $GROUP->address; ?>.
-                    </span>
-                </li>
-                <li>
-                    <span class="title">Working Hours:</span>
-                    <span class="text">Mon-Fri 9:00am to 6:00pm
-                        Weekends 10:00am to 8:00pm
-                    </span>
-                </li>
-            </ul>
+                <ul class="widget w-personal-info item-block">
+                    <li>
+                        <a href="member-requests.php?id=<?php echo $GROUP->id; ?>"<span class="title">Member Requests:</span><span class="request-label-avatar bg-blue"><?php echo $no_of_request['count']; ?></span></a>
+                    </li>
+                </ul>
+
+                <!-- ... end W-Personal-Info -->
+            </div>
         </div>
-
-        <!-- ... end Contacts -->
-    </div>
+        <?php
+    }
+    ?>
 
     <div class="ui-block">
         <div class="ui-block-title">

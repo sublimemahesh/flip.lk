@@ -12,6 +12,8 @@ include_once(dirname(__FILE__) . '/BusinessSubCategory.php');
 include_once(dirname(__FILE__) . '/Member.php');
 include_once(dirname(__FILE__) . '/Group.php');
 include_once(dirname(__FILE__) . '/Advertisement.php');
+include_once(dirname(__FILE__) . '/GroupMember.php');
+include_once(dirname(__FILE__) . '/GroupAndMemberRequest.php');
 
 function dd($data) {
     var_dump($data);
