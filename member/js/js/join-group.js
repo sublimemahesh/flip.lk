@@ -44,7 +44,9 @@ $(document).ready(function () {
         });
     });
 
-    $('#approve-request').click(function () {
+    $('.approve-request').click(function () {
+        alert(111);
+        return false;
         var row = $(this).attr('row_id');
 
         $.ajax({
@@ -56,12 +58,16 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function (mess) {
-                location.reload();
+                $('#request-to-join-' + mess.member).addClass('hidden');
+                $('#accepted-request-' + mess.member).removeClass('hidden');
+
+                var count = $('#member-request-count').text();
+                $('#member-request-count').text(count - 1);
             }
         });
     });
 
-    $('#decline-request').click(function () {
+    $('.decline-request').click(function () {
 
         var row_id;
         row_id = $(this).attr('row_id');
@@ -81,23 +87,65 @@ $(document).ready(function () {
     });
 
     $('#leave-group').click(function () {
+        var member, group;
+        member = $(this).attr('member-id');
+        group = $(this).attr('group-id');
+
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, Leave from group!",
+            closeOnConfirm: false
+        }, function () {
+
+            $.ajax({
+                url: "post-and-get/ajax/join-group.php",
+                type: "POST",
+                data: {
+                    member: member,
+                    group: group,
+                    option: 'LEAVEGROUP'
+                },
+                dataType: 'json',
+                success: function (mess) {
+                    location.reload();
+                }
+            });
+        });
+    });
+    
+    $('.leave-group').click(function () {
 
         var member, group;
         member = $(this).attr('member-id');
         group = $(this).attr('group-id');
-        
-        $.ajax({
-            url: "post-and-get/ajax/join-group.php",
-            type: "POST",
-            data: {
-                member: member,
-                group: group,
-                option: 'LEAVEGROUP'
-            },
-            dataType: 'json',
-            success: function (mess) {
-                location.reload();
-            }
+
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, Leave from group!",
+            closeOnConfirm: false
+        }, function () {
+
+            $.ajax({
+                url: "post-and-get/ajax/join-group.php",
+                type: "POST",
+                data: {
+                    member: member,
+                    group: group,
+                    option: 'LEAVEGROUP'
+                },
+                dataType: 'json',
+                success: function (mess) {
+                    location.reload();
+                }
+            });
         });
     });
 });

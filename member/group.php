@@ -28,6 +28,7 @@ $GROUP = new Group($id);
         <link rel="stylesheet" type="text/css" href="css/main.min.css">
         <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <!-- Main Font -->
         <script src="js/webfontloader.min.js"></script>
         <script>
@@ -818,6 +819,7 @@ include './window-pop-up.php';
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="js/js/join-group.js" type="text/javascript"></script>
+        <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script>
             // Retrieve Details from Place_ID
             function initMap() {

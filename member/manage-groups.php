@@ -25,6 +25,7 @@ if (isset($_GET['id'])) {
         <link rel="stylesheet" type="text/css" href="css/main.min.css">
         <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <!-- Main Font -->
         <script src="js/webfontloader.min.js"></script>
         <script>
@@ -102,10 +103,10 @@ if (isset($_GET['id'])) {
                                                 <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
                                                 <ul class="more-dropdown">
                                                     <li>
-                                                        <a href="edit-group.php?id=<?php echo $group['id']; ?>">Edit Group</a>
+                                                        <a href="group-settings.php?id=<?php echo $group['id']; ?>">Group Settings</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#">Leave Group</a>
+                                                        <a href="#" class="leave-group" group-id="<?php echo $group['id']; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group</a>
                                                     </li>
                                                     <li>
                                                         <a href="#">Edit Notification Settings</a>
@@ -193,7 +194,7 @@ if (isset($_GET['id'])) {
                                                 <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
                                                 <ul class="more-dropdown">
                                                     <li>
-                                                        <a href="#">Leave Group</a>
+                                                        <a href="#" class="leave-group" group-id="<?php echo $group['id']; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group</a>
                                                     </li>
                                                     <li>
                                                         <a href="#">Edit Notification Settings</a>
@@ -282,14 +283,7 @@ if (isset($_GET['id'])) {
                                         <div class="friend-item-content">
                                             <div class="more">
                                                 <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                                <ul class="more-dropdown">
-                                                    <li>
-                                                        <a href="#">Leave Group</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Edit Notification Settings</a>
-                                                    </li>
-                                                </ul>
+                                                
                                             </div>
                                             <div class="friend-avatar">
                                                 <div class="author-thumb">
@@ -561,5 +555,7 @@ if (isset($_GET['id'])) {
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
+        <script src="js/js/join-group.js" type="text/javascript"></script>
+        <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
     </body>
 </html>

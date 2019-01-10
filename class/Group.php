@@ -143,7 +143,7 @@ class Group {
 
     public function getGroupsByMember($member) {
 
-        $query = "SELECT * FROM `groups` WHERE `id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member AND `status` LIKE 'member')";
+        $query = "SELECT * FROM `groups` WHERE `id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member AND `status` LIKE 'member') AND `status` = 1";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -170,8 +170,8 @@ class Group {
     }
 
     public function getOtherGroups($member) {
-        
-        $query = "SELECT * FROM `groups` WHERE `id` not in (SELECT `group_id` FROM `group_members` WHERE `member` = $member)";
+
+        $query = "SELECT * FROM `groups` WHERE `id` not in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `status` = 1";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -184,15 +184,38 @@ class Group {
     }
 
     public function delete() {
+        
+        unlink(Helper::getSitePath() . "upload/group/" . $this->profilePicture);
+        unlink(Helper::getSitePath() . "upload/group/cover-picture/" . $this->coverPicture);
+        unlink(Helper::getSitePath() . "upload/group/cover-picture/thumb/" . $this->coverPicture);
+//        unlink("localhost/flip.lk/upload/group/" . $this->profilePicture);
+//        unlink("localhost/flip.lk/upload/group/cover-picture/" . $this->coverPicture);
+//        unlink("localhost/flip.lk/upload/group/cover-picture/thumb/" . $this->coverPicture);
 
-        unlink(Helper::getSitePath() . "upload/groups/profile-picture/" . $this->profilePicture);
-        unlink(Helper::getSitePath() . "upload/groups/cover-picture/" . $this->coverPicture);
-        unlink(Helper::getSitePath() . "upload/groups/cover-picture/thumb/" . $this->coverPicture);
-        $query = 'DELETE FROM `groups` WHERE id="' . $this->id . '"';
+        if (GroupMember::deleteAllMembersInGroup($this->id)) {
+            $query = 'DELETE FROM `groups` WHERE id="' . $this->id . '"';
+
+            $db = new Database();
+
+            return $db->readQuery($query);
+        }
+    }
+
+    public function updateStatus() {
+
+        $query = "UPDATE  `groups` SET "
+                . "`status` ='" . $this->status . "' "
+                . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
 
-        return $db->readQuery($query);
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
     }
 
 }

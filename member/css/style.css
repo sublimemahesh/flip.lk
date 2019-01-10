@@ -327,7 +327,8 @@ select.form-control.sub-category-select:not([size]):not([multiple]) {
     overflow: hidden;
 }
 .member-request-profile-pic img {
-    width: 92px;
+    /*width: 92px;*/
+    width: 42px;
 }
 .btn-control-square {
     border-radius: 0;
@@ -337,6 +338,12 @@ select.form-control.sub-category-select:not([size]):not([multiple]) {
     padding: 0;
     fill: #fff;
     font-size: 15px;
+}
+.notification-list li.hidden {
+    display: none;
+}
+.manage-group-section {
+    text-align: right;
 }
 @media(min-width: 1400px) {
     .container {

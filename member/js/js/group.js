@@ -1,5 +1,4 @@
 $(document).ready(function () {
-   
     $('#btn-group').click(function () {
         var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 
@@ -77,8 +76,122 @@ $(document).ready(function () {
             });
             return false;
         } else {
-                return true;
+            return true;
         }
     });
-});
 
+    $('#active-group').click(function (e) {
+        e.preventDefault();
+        var status = $(this).attr('status');
+        var id = $(this).attr('group_id');
+        if (status == 1) {
+            swal({
+                title: "Are you sure?",
+                text: "Are you want to inactive this group!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, inactive it!",
+                closeOnConfirm: false
+            }, function () {
+
+                $.ajax({
+                    url: "post-and-get/ajax/group.php",
+                    type: "POST",
+                    data: {
+                        id: id,
+                        status: '0',
+                        option: 'UPDATESTATUS'
+                    },
+                    dataType: "JSON",
+                    success: function (jsonStr) {
+                        if (jsonStr.status) {
+
+                            swal({
+                                title: "Inactivated!",
+                                text: "Your group has been inactivated.",
+                                type: 'success',
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                            location.reload();
+                        }
+                    }
+                });
+            });
+        } else {
+            swal({
+                title: "Are you sure?",
+                text: "Are you want to active this group!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, active it!",
+                closeOnConfirm: false
+            }, function () {
+
+                $.ajax({
+                    url: "post-and-get/ajax/group.php",
+                    type: "POST",
+                    data: {
+                        id: id,
+                        status: '1',
+                        option: 'UPDATESTATUS'
+                    },
+                    dataType: "JSON",
+                    success: function (jsonStr) {
+                        if (jsonStr.status) {
+
+                            swal({
+                                title: "Activated!",
+                                text: "Your group has been activated.",
+                                type: 'success',
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                        }
+                        location.reload();
+                    }
+                });
+            });
+        }
+    });
+    
+    $('#delete-group').click(function (e) {
+        var id = $(this).attr('group_id');
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+
+                $.ajax({
+                    url: "post-and-get/ajax/group.php",
+                    type: "POST",
+                    data: {
+                        id: id,
+                        status: '0',
+                        option: 'DELETEGROUP'
+                    },
+                    dataType: "JSON",
+                    success: function (jsonStr) {
+                        if (jsonStr) {
+
+                            swal({
+                                title: "Deleted!",
+                                text: "Your group has been deleted.",
+                                type: 'success',
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                            window.location.replace('manage-groups.php');
+                        }
+                    }
+                });
+            });
+    });
+});
