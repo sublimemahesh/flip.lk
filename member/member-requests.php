@@ -52,6 +52,89 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($id);
         ?>
         <div class="container">
             <div class="row">
+                <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
+                    <div class="ui-block">
+                        <div class="ui-block-title">
+                            <h6 class="title">Member requests (<span id="member-request-count"><?php echo $no_of_request['count']; ?></span>)</h6>
+                            <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
+                        </div>
+
+
+                        <!-- Notification List Frien Requests -->
+
+                        <ul class="notification-list friend-requests">
+                            <?php
+                        foreach (GroupAndMemberRequest::getMemberRequestsByGroup($id) as $request) {
+                            $MEM = new Member($request['member']);
+                            ?>
+                            
+                            <li id="request-to-join-<?php echo $MEM->id; ?>">
+                                <div class="author-thumb member-request-profile-pic">
+                                    <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
+                                </div>
+                                <div class="notification-event">
+                                    <a href="profile.php?id=<?php echo $MEM->id; ?>" class="h6 notification-friend"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>
+                                    <span class="chat-message-item">Mutual Friend: Sarah Hetfield</span>
+                                </div>
+                                <span class="notification-icon">
+                                    <a href="#" class="accept-request approve-request" id="approve-request" row_id="<?php echo $request['id']; ?>">
+                                        <span class="icon-add">
+                                            <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
+                                        </span>
+                                        Approve Member Request
+                                    </a>
+
+                                    <a href="#" class="accept-request request-del decline-request" id="decline-request" row_id="<?php echo $request['id']; ?>">
+                                        <span class="icon-minus">
+                                            <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
+                                        </span>
+                                    </a>
+
+                                </span>
+
+                                <div class="more">
+                                    <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
+                                    <svg class="olymp-little-delete"><use xlink:href="svg-icons/sprites/icons.svg#olymp-little-delete"></use></svg>
+                                </div>
+                            </li>
+
+                            <li class="accepted hidden" id="accepted-request-<?php echo $MEM->id; ?>">
+                                <div class="author-thumb member-request-profile-pic">
+                                    <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
+                                </div>
+                                <div class="notification-event">
+                                    <a href="profile.php?id=<?php echo $MEM->id; ?>" class="h6 notification-friend"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> just became member of your group.
+                                </div>
+                                <span class="notification-icon">
+                                    <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
+                                </span>
+
+                                <div class="more">
+                                    <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
+                                    <svg class="olymp-little-delete"><use xlink:href="svg-icons/sprites/icons.svg#olymp-little-delete"></use></svg>
+                                </div>
+                            </li>
+                            <?php
+                        }
+                        ?>
+
+                        </ul>
+
+                        <!-- ... end Notification List Frien Requests -->
+                    </div>
+
+                </div>
+                <?php
+                include './group-about-nav.php';
+                ?>
+            </div>
+        </div>
+
+
+
+
+<!--        <div class="container">
+            <div class="row">
                 <div class="col col-xl-9 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
                     <div class="ui-block responsive-flex">
                         <div class="ui-block-title">
@@ -67,7 +150,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($id);
                             <div class="col col-lg-4 col-md-6 col-sm-12 col-12">
                                 <div class="ui-block">
 
-                                    <!-- Friend Item -->
+                                     Friend Item 
 
                                     <div class="friend-item">
                                         <div class="friend-header-thumb">
@@ -96,7 +179,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($id);
                                                 </div>
                                                 <div class="author-content">
                                                     <a href="profile.php?id=<?php echo $MEM->id; ?>" class="h5 author-name"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>
-                                                    <!--<div class="country"><?php // echo $MEM->city . ' ' . $MEM->district; ?></div>-->
+                                                    <div class="country"><?php // echo $MEM->city . ' ' . $MEM->district;  ?></div>
                                                 </div>
                                             </div>
 
@@ -140,13 +223,13 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($id);
                                                     </div>
                                                 </div>
 
-                                                <!-- If we need pagination -->
+                                                 If we need pagination 
                                                 <div class="swiper-pagination"></div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- ... end Friend Item -->					</div>
+                                     ... end Friend Item 					</div>
                             </div>
                             <?php
                         }
@@ -159,7 +242,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($id);
                 include './group-about-nav.php';
                 ?>
             </div>
-        </div>
+        </div>-->
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>

@@ -134,10 +134,18 @@ class GroupMember {
 
         return $db->readQuery($query);
     }
-    
+
+    public function deleteAllMembersInGroup($group) {
+
+        $query = 'DELETE FROM `group_members` WHERE `group_id`="' . $group . '"';
+        
+        $db = new Database();
+        return $db->readQuery($query);
+    }
+
     public function leaveGroup($member, $group) {
 
-        $query = 'DELETE FROM `group_members` WHERE `member`="'. $member .'" AND `group_id` ="'. $group .'"';
+        $query = 'DELETE FROM `group_members` WHERE `member`="' . $member . '" AND `group_id` ="' . $group . '"';
         $db = new Database();
 
         return $db->readQuery($query);

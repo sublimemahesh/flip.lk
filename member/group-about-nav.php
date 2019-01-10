@@ -64,6 +64,9 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->
                     <li>
                         <a href="member-requests.php?id=<?php echo $GROUP->id; ?>"<span class="title">Member Requests:</span><span class="request-label-avatar bg-blue"><?php echo $no_of_request['count']; ?></span></a>
                     </li>
+                    <li>
+                        <a href="group-settings.php?id=<?php echo $GROUP->id; ?>"<span class="title">Group Settings</span></a>
+                    </li>
                 </ul>
 
                 <!-- ... end W-Personal-Info -->
