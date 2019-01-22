@@ -8,7 +8,28 @@
     <div class="header-content-wrapper">
         <form class="search-bar w-search notification-list friend-requests">
             <div class="form-group with-button">
-                <input class="form-control js-user-search" placeholder="Search here people or pages..." type="text">
+                <input class="form-control js-user-search" id="find-member" placeholder="Search here people or pages..." type="text" value="<?php if(isset($MEM)) { echo $MEM->firstName . ' ' . $MEM->lastName;} ?>" autocomplete="off">
+                <div class="" id="name-list-append"></div>
+                <input type="hidden" name="member" value="" id="member-id"  />
+
+                <!--<div class="notification-list">-->
+<!--                <div class="col-md-12 search-items" data-selectable="" data-value="Marie Davidson">
+                    <div class="col-xs-2 author-thumb"><img src="img/avatar54-sm.jpg" alt="avatar">
+                    </div>
+                    <div class="col-xs-9 notification-event">
+                        <span class="h6 notification-friend">Marie Davidson</span>
+                        <span class="chat-message-item">4 Friends in Common</span>
+                    </div>
+                    <span class="col-xs-1 notification-icon">
+                        <svg class="olymp-happy-face-icon">
+                        <use xlink:href="icons/icons.svg#olymp-happy-face-icon"></use>
+                        </svg>
+                    </span>
+                </div>-->
+                <!--</div>-->
+
+
+
                 <button>
                     <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
                 </button>

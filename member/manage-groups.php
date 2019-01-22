@@ -557,5 +557,6 @@ if (isset($_GET['id'])) {
         <script src="js/js/custom.js" type="text/javascript"></script>
         <script src="js/js/join-group.js" type="text/javascript"></script>
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+        <script src="js/js/find-friends.js" type="text/javascript"></script>
     </body>
 </html>

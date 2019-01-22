@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
 
 $GROUP = new Group($id);
 $count_members = GroupMember::countGroupMembers($id);
-if($count_members['count'] == 10) {
+if($count_members['count'] == 0) {
     $count =  '0';
 } elseif ($count_members['count'] < 10) {
     $count =  '0'.$count_members['count'];
@@ -348,5 +348,6 @@ if($count_members['count'] == 10) {
         <script defer src="fonts/fontawesome-all.js"></script>
 
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="js/js/find-friends.js" type="text/javascript"></script>
     </body>
 </html>
