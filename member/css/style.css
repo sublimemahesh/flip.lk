@@ -327,7 +327,10 @@ select.form-control.sub-category-select:not([size]):not([multiple]) {
     overflow: hidden;
 }
 .member-request-profile-pic img {
-    /*width: 92px;*/
+    width: 92px;
+    /*width: 42px;*/
+}
+.friend-requests .author-thumb img {
     width: 42px;
 }
 .btn-control-square {
@@ -343,6 +346,56 @@ select.form-control.sub-category-select:not([size]):not([multiple]) {
     display: none;
 }
 .manage-group-section {
+    text-align: right;
+}
+.search-items {
+    background: #fff;
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+.notification-list .author-thumb {
+    height: 40px;
+    width: 40px;
+    float: left;
+}
+.notification-list .notification-event {
+    padding-left: 45px;
+    width: 80%;
+}
+.friend-requests .notification-icon {
+    margin-top: -31px;
+}
+#name-list-append .author-thumb img {
+    height: 40px;
+    width: 40px;
+}
+.search-items.selected {
+    background: #e6e6e6;
+}
+.search-items:hover {
+    background: #e6e6e6;
+}
+.friend-request .request-label-avatar {
+    position: absolute;
+    right: 27px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 100%;
+    overflow: hidden;
+}
+.friend-request .btn-md-2 {
+    padding: .8rem 3.1rem .8rem 2.1rem;
+    font-size: .688rem;
+}
+.friend-request {
     text-align: right;
 }
 @media(min-width: 1400px) {

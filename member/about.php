@@ -311,6 +311,6 @@ if (isset($_GET['id'])) {
         <script defer src="fonts/fontawesome-all.js"></script>
 
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
-
+<script src="js/js/find-friends.js" type="text/javascript"></script>
     </body>
 </html>

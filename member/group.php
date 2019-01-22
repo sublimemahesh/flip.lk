@@ -820,6 +820,7 @@ include './window-pop-up.php';
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="js/js/join-group.js" type="text/javascript"></script>
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+        <script src="js/js/find-friends.js" type="text/javascript"></script>
         <script>
             // Retrieve Details from Place_ID
             function initMap() {

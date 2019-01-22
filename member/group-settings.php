@@ -420,6 +420,7 @@ $SUBCATEGORIES = BusinessSubCategory::all();
         <script src="js/js/sub-categories.js" type="text/javascript"></script>
         <script src="js/js/group.js" type="text/javascript"></script>
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+        <script src="js/js/find-friends.js" type="text/javascript"></script>
         <script>
                                                 var placeSearch, autocomplete, autocomplete2;
 

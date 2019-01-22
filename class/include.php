@@ -14,6 +14,8 @@ include_once(dirname(__FILE__) . '/Group.php');
 include_once(dirname(__FILE__) . '/Advertisement.php');
 include_once(dirname(__FILE__) . '/GroupMember.php');
 include_once(dirname(__FILE__) . '/GroupAndMemberRequest.php');
+include_once(dirname(__FILE__) . '/Friend.php');
+include_once(dirname(__FILE__) . '/FriendRequest.php');
 
 function dd($data) {
     var_dump($data);

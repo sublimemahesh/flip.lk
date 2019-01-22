@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Description of Member
  *
@@ -108,7 +109,7 @@ class Member {
         $query = "SELECT `id` FROM `member` WHERE `email`= '" . $email . "' AND `password`= '" . $password . "'";
         $db = new Database();
         $result = mysql_fetch_array($db->readQuery($query));
-        
+
         if (!$result) {
             return FALSE;
         } else {
@@ -240,7 +241,7 @@ class Member {
             return FALSE;
         }
     }
-    
+
     public function updateProfilePicture() {
 
         $query = "UPDATE  `member` SET "
@@ -257,7 +258,7 @@ class Member {
             return FALSE;
         }
     }
-    
+
     public function updateCoverPicture() {
 
         $query = "UPDATE  `member` SET "
@@ -274,7 +275,7 @@ class Member {
             return FALSE;
         }
     }
-    
+
     public function updateBusinessCategory() {
 
         $query = "UPDATE  `member` SET "
@@ -292,7 +293,7 @@ class Member {
             return FALSE;
         }
     }
-    
+
     public function updateEmailConfirmationStatus() {
 
         $query = "UPDATE  `member` SET "
@@ -431,7 +432,7 @@ class Member {
             return $result;
         }
     }
-    
+
     public function updatePassword($password, $code) {
 
         $enPass = md5($password);
@@ -450,10 +451,11 @@ class Member {
             return FALSE;
         }
     }
+
     public function getIdByPassword($password) {
 
         $enPass = md5($password);
-        
+
         $query = "SELECT `id` FROM `member` WHERE `password`= '" . $enPass . "'";
 
         $db = new Database();
@@ -466,35 +468,36 @@ class Member {
             return $result;
         }
     }
+
     public function sendConfirmationEmail() {
 
-            $MEMBER = new Member($this->id);
+        $MEMBER = new Member($this->id);
 
-            $member_f_name = $MEMBER->firstName;
-            $member_l_name = $MEMBER->lastName;
-            $member_image_name = $MEMBER->profilePicture;
-            $member_email = $MEMBER->email;
-            $member_id = $MEMBER->id;
-            $code = $MEMBER->resetCode;
-            $site_link = "http://" . $_SERVER['HTTP_HOST'];
-            $website_name = 'www.flip.lk';
-            $comany_name = 'flip.lk';
-            $comConNumber = '+94 77 777 777';
-            $comEmail = 'info@islandwide.website';
-            date_default_timezone_set('Asia/Colombo');
+        $member_f_name = $MEMBER->firstName;
+        $member_l_name = $MEMBER->lastName;
+        $member_image_name = $MEMBER->profilePicture;
+        $member_email = $MEMBER->email;
+        $member_id = $MEMBER->id;
+        $code = $MEMBER->resetCode;
+        $site_link = "http://" . $_SERVER['HTTP_HOST'];
+        $website_name = 'www.flip.lk';
+        $comany_name = 'flip.lk';
+        $comConNumber = '+94 77 777 777';
+        $comEmail = 'info@islandwide.website';
+        date_default_timezone_set('Asia/Colombo');
 
-            $todayis = date("l, F j, Y, g:i a");
+        $todayis = date("l, F j, Y, g:i a");
 
-            $subject = 'Confirm Your Email';
-            $from = 'info@islandwide.website'; // give from email address
+        $subject = 'Confirm Your Email';
+        $from = 'info@islandwide.website'; // give from email address
 
 
-            $headers = "From: " . $from . "\r\n";
-            $headers .= "Reply-To: " . $from . "\r\n";
-            $headers .= "MIME-Version: 1.0\r\n";
-            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        $headers = "From: " . $from . "\r\n";
+        $headers .= "Reply-To: " . $from . "\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-            $html = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        $html = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                         <html xmlns="http://www.w3.org/1999/xhtml">
                             <head>
                                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -593,7 +596,7 @@ class Member {
                                                                                                 <tr>
                                                                                                     <td style="border-collapse:collapse" align="center">
 
-                                                                                                        <a href="' . $site_link . '/flip.lk/member/confirm-email.php?id='.$member_id.'" style="text-decoration:none;color:#24c7ff;text-align:center;font-size:16px;font-family:Helvetica,Arial,sans-serif;color:#ffffff;text-decoration:none;color:#ffffff;text-decoration:none;padding:10px;border-radius:6px;border:1px solid #24c7ff;display:inline-block;width:266px;background-color:#24c7ff; margin-top: 15px;" target="_blank"> 
+                                                                                                        <a href="' . $site_link . '/flip.lk/member/confirm-email.php?id=' . $member_id . '" style="text-decoration:none;color:#24c7ff;text-align:center;font-size:16px;font-family:Helvetica,Arial,sans-serif;color:#ffffff;text-decoration:none;color:#ffffff;text-decoration:none;padding:10px;border-radius:6px;border:1px solid #24c7ff;display:inline-block;width:266px;background-color:#24c7ff; margin-top: 15px;" target="_blank"> 
                                                                                                         Confirm email
                                                                                                         </a>
                                                                                                     </td>
@@ -675,12 +678,37 @@ class Member {
                                 </table>
                             </body>
                         </html>';
-            
+
         if (mail($member_email, $subject, $html, $headers)) {
             return TRUE;
         } else {
             return FALSE;
         }
+    }
+
+    public function getAllMembersWithoutThis($member) {
+        $query = "SELECT * FROM `member` WHERE `id` <> '" . $member . "'";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function getMembersByKeyword($keyword) {
+        $query = "SELECT * FROM `member` WHERE `first_name` LIKE '%" . $keyword . "%' OR `last_name` LIKE '%" . $keyword . "%'";
+
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
     }
 
 }
