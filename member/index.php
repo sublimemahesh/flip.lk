@@ -53,9 +53,7 @@ $MEMBER = new Member($_SESSION['id']);
                 <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
 
                     <div class="ui-block">
-
                         <!-- News Feed Form  -->
-
                         <div class="news-feed-form">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
@@ -67,38 +65,51 @@ $MEMBER = new Member($_SESSION['id']);
                                         <span>Status</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link inline-items" data-toggle="tab" href="#profile-1" role="tab" aria-expanded="false">
-
-                                        <svg class="olymp-multimedia-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-multimedia-icon"></use></svg>
-
-                                        <span>Multimedia</span>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link inline-items" data-toggle="tab" href="#blog" role="tab" aria-expanded="false">
-                                        <svg class="olymp-blog-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-blog-icon"></use></svg>
-
-                                        <span>Blog Post</span>
-                                    </a>
-                                </li>
                             </ul>
 
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
-                                    <form>
+                                    <form action="post-and-get/post.php" method="post" id="post-form">
                                         <div class="author-thumb">
                                             <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
                                         </div>
                                         <div class="form-group with-icon label-floating is-empty">
                                             <label class="control-label">Share what you are thinking here...</label>
-                                            <textarea class="form-control" placeholder=""></textarea>
+                                            <textarea class="form-control" placeholder="" name="description"></textarea>
+                                            <div class="flipScrollableArea hidden" id="image-list" style="/*! height: 112px; */ /*! width: 100%; */">
+                                                <div class="flipScrollableAreaWrap">
+                                                    <div class="flipScrollableAreaBody" style="height: 112px;">
+                                                        <div class="flipScrollableAreaContent">
+                                                            <div class="flipScrollableAreaContent1">
+                                                            </div>
+                                                            <span class="_uploadouterbox">
+                                                                <div class="_m _6a">
+                                                                    <a class="_uploadbox" rel="ignore">
+                                                                        <div class="_upload">
+                                                                            <input multiple="" name="upload-other-images" title="Choose a file to upload" data-testid="add-more-photos" display="inline-block" type="file" class="_uploadinput _outlinenone" id="add-more-photos">
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flipScrollableAreaTrack invisible_elem" style="opacity: 0;">
+                                                    <div class="flipScrollableAreaGripper hidden_elem"></div>
+                                                </div>
+                                            </div>
                                         </div>
+
                                         <div class="add-options-message">
+
                                             <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
                                                 <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
+                                                <div class="_upload">
+                                                    <input  name="post-image" display="inline" role="button" tabindex="0" data-testid="media-tab" type="file" class="_uploadinput _outlinenone" id="upload_first_image">
+                                                    <input type="hidden" id="upload-post-image" name="upload-post-image" >
+                                                </div>
+
                                             </a>
                                             <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
                                                 <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
@@ -107,83 +118,18 @@ $MEMBER = new Member($_SESSION['id']);
                                             <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
                                                 <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
                                             </a>
-
-                                            <button class="btn btn-primary btn-md-2">Post Status</button>
-                                            <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
-
+                                            <input type="hidden" value ="<?php echo $_SESSION['id']; ?>" id="member" name="member" />
+                                            <input type="submit" name="save-post" class="btn btn-primary btn-md-2 share-post" value="Share" />
                                         </div>
-
-                                    </form>
-                                </div>
-
-                                <div class="tab-pane" id="profile-1" role="tabpanel" aria-expanded="true">
-                                    <form>
-                                        <div class="author-thumb">
-                                            <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
-                                        </div>
-                                        <div class="form-group with-icon label-floating is-empty">
-                                            <label class="control-label">Share what you are thinking here...</label>
-                                            <textarea class="form-control" placeholder=""  ></textarea>
-                                        </div>
-                                        <div class="add-options-message">
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-                                                <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-                                            </a>
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-                                                <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-                                            </a>
-
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-                                                <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-                                            </a>
-
-                                            <button class="btn btn-primary btn-md-2">Post Status</button>
-                                            <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
-
-                                        </div>
-
-                                    </form>
-                                </div>
-
-                                <div class="tab-pane" id="blog" role="tabpanel" aria-expanded="true">
-                                    <form>
-                                        <div class="author-thumb">
-                                            <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
-                                        </div>
-                                        <div class="form-group with-icon label-floating is-empty">
-                                            <label class="control-label">Share what you are thinking here...</label>
-                                            <textarea class="form-control" placeholder=""  ></textarea>
-                                        </div>
-                                        <div class="add-options-message">
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-                                                <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-                                            </a>
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-                                                <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-                                            </a>
-
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-                                                <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-                                            </a>
-
-                                            <button class="btn btn-primary btn-md-2">Post Status</button>
-                                            <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
-
-                                        </div>
-
                                     </form>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- ... end News Feed Form  -->			</div>
-
+                        <!-- ... end News Feed Form  -->
+                    </div>
                     <div id="newsfeed-items-grid">
-
                         <div class="ui-block">
-
                             <article class="hentry post video">
-
                                 <div class="post__author author vcard inline-items">
                                     <img src="img/avatar7-sm.jpg" alt="author">
 
@@ -195,7 +141,6 @@ $MEMBER = new Member($_SESSION['id']);
                                             </time>
                                         </div>
                                     </div>
-
                                     <div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
                                         <ul class="more-dropdown">
                                             <li>
@@ -212,11 +157,8 @@ $MEMBER = new Member($_SESSION['id']);
                                             </li>
                                         </ul>
                                     </div>
-
                                 </div>
-
                                 <p>Hey <a href="#">Cindi</a>, you should really check out this new song by Iron Maid. The next time they come to the city we should totally go!</p>
-
                                 <div class="post-video">
                                     <div class="video-thumb">
                                         <img src="img/video-youtube1.jpg" alt="photo">
@@ -287,8 +229,6 @@ $MEMBER = new Member($_SESSION['id']);
                                             <span>16</span>
                                         </a>
                                     </div>
-
-
                                 </div>
 
                                 <div class="control-block-button post-control-button">
@@ -1411,11 +1351,10 @@ $MEMBER = new Member($_SESSION['id']);
         <script src="js/jquery.gifplayer.js"></script>
         <script src="js/mediaelement-and-player.js"></script>
         <script src="js/mediaelement-playlist-plugin.min.js"></script>
-
         <script src="js/base-init.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
-
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="js/js/find-friends.js" type="text/javascript"></script>
+        <script src="js/js/post-images.js" type="text/javascript"></script>
     </body>
 </html>
