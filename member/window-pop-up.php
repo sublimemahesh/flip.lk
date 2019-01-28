@@ -742,3 +742,26 @@
     </audio>
 </div>
 <!-- ... end Playlist Popup -->
+
+<!-- Window-popup Edit Post -->
+<div class="modal fade" id="edit-post" tabindex="-1" role="dialog" aria-labelledby="edit-post" aria-hidden="true">
+    <div class="modal-dialog window-popup update-header-photo" role="document">
+        <div class="modal-content">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="modal-header">
+                <h6 class="title">Edit Post</h6>
+            </div>
+
+            <div class="modal-body">
+                <?php
+                $POST = new Post(1);
+                ?>
+                <div class="" id="edit-post-section"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ... end Window-popup Update Profile Photo -->

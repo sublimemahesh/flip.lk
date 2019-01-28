@@ -39,6 +39,7 @@ if (isset($_GET['id'])) {
         <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <link href="css/images-grid.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
@@ -60,6 +61,7 @@ if (isset($_GET['id'])) {
                 <!-- Main Content -->
 
                 <div class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
+                    <input type="hidden" id="member" value="<?php echo $MEM->id ?>" />
                     <?php
                     if (isset($_GET['id'])) {
                         $isFriend = Friend::checkMemberAlreadyAFriend($MEMBER->id, $id);
@@ -217,7 +219,6 @@ if (isset($_GET['id'])) {
                                 </div>
                                 <?php
                             } elseif ($getrequest) {
-                                
                                 ?>
                                 <div class="ui-block" id="request-cancel-block">
                                     <div class="row">
@@ -261,9 +262,7 @@ if (isset($_GET['id'])) {
                     } else {
                         ?>
                         <div class="ui-block">
-
                             <!-- News Feed Form  -->
-
                             <div class="news-feed-form">
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">
@@ -275,38 +274,51 @@ if (isset($_GET['id'])) {
                                             <span>Status</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link inline-items" data-toggle="tab" href="#profile-1" role="tab" aria-expanded="false">
-
-                                            <svg class="olymp-multimedia-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-multimedia-icon"></use></svg>
-
-                                            <span>Multimedia</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link inline-items" data-toggle="tab" href="#blog" role="tab" aria-expanded="false">
-                                            <svg class="olymp-blog-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-blog-icon"></use></svg>
-
-                                            <span>Blog Post</span>
-                                        </a>
-                                    </li>
                                 </ul>
 
                                 <!-- Tab panes -->
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
-                                        <form>
+                                        <form action="post-and-get/post.php" method="post" id="post-form">
                                             <div class="author-thumb">
                                                 <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
                                             </div>
                                             <div class="form-group with-icon label-floating is-empty">
                                                 <label class="control-label">Share what you are thinking here...</label>
-                                                <textarea class="form-control" placeholder=""></textarea>
+                                                <textarea class="form-control" placeholder="" name="description"></textarea>
+                                                <div class="flipScrollableArea hidden" id="image-list" style="/*! height: 112px; */ /*! width: 100%; */">
+                                                    <div class="flipScrollableAreaWrap">
+                                                        <div class="flipScrollableAreaBody" style="height: 112px;">
+                                                            <div class="flipScrollableAreaContent">
+                                                                <div class="flipScrollableAreaContent1">
+                                                                </div>
+                                                                <span class="_uploadouterbox">
+                                                                    <div class="_m _6a">
+                                                                        <a class="_uploadbox" rel="ignore">
+                                                                            <div class="_upload">
+                                                                                <input multiple="" name="upload-other-images" title="Choose a file to upload" data-testid="add-more-photos" display="inline-block" type="file" class="_uploadinput _outlinenone" id="add-more-photos">
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flipScrollableAreaTrack invisible_elem" style="opacity: 0;">
+                                                        <div class="flipScrollableAreaGripper hidden_elem"></div>
+                                                    </div>
+                                                </div>
                                             </div>
+
                                             <div class="add-options-message">
+
                                                 <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
                                                     <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
+                                                    <div class="_upload">
+                                                        <input  name="post-image" display="inline" role="button" tabindex="0" data-testid="media-tab" type="file" class="_uploadinput _outlinenone" id="upload_first_image">
+                                                        <input type="hidden" id="upload-post-image" name="upload-post-image" >
+                                                    </div>
+
                                                 </a>
                                                 <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
                                                     <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
@@ -315,75 +327,13 @@ if (isset($_GET['id'])) {
                                                 <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
                                                     <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
                                                 </a>
-
-                                                <button class="btn btn-primary btn-md-2">Post Status</button>
-                                                <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
-
+                                                <input type="hidden" value ="<?php echo $_SESSION['id']; ?>" id="member" name="member" />
+                                                <input type="submit" name="save-post" class="btn btn-primary btn-md-2 share-post" value="Share" />
                                             </div>
-
-                                        </form>
-                                    </div>
-
-                                    <div class="tab-pane" id="profile-1" role="tabpanel" aria-expanded="true">
-                                        <form>
-                                            <div class="author-thumb">
-                                                <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
-                                            </div>
-                                            <div class="form-group with-icon label-floating is-empty">
-                                                <label class="control-label">Share what you are thinking here...</label>
-                                                <textarea class="form-control" placeholder=""  ></textarea>
-                                            </div>
-                                            <div class="add-options-message">
-                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-                                                    <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-                                                </a>
-                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-                                                    <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-                                                </a>
-
-                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-                                                    <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-                                                </a>
-
-                                                <button class="btn btn-primary btn-md-2">Post Status</button>
-                                                <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
-
-                                            </div>
-
-                                        </form>
-                                    </div>
-
-                                    <div class="tab-pane" id="blog" role="tabpanel" aria-expanded="true">
-                                        <form>
-                                            <div class="author-thumb">
-                                                <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
-                                            </div>
-                                            <div class="form-group with-icon label-floating is-empty">
-                                                <label class="control-label">Share what you are thinking here...</label>
-                                                <textarea class="form-control" placeholder=""  ></textarea>
-                                            </div>
-                                            <div class="add-options-message">
-                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-                                                    <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-                                                </a>
-                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-                                                    <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-                                                </a>
-
-                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-                                                    <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-                                                </a>
-
-                                                <button class="btn btn-primary btn-md-2">Post Status</button>
-                                                <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
-
-                                            </div>
-
                                         </form>
                                     </div>
                                 </div>
                             </div>
-
                             <!-- ... end News Feed Form  -->
                         </div>
                         <?php
@@ -391,621 +341,167 @@ if (isset($_GET['id'])) {
                     ?>
                     <div id="newsfeed-items-grid">
 
-                        <div class="ui-block">
-                            <!-- Post -->
+                        <?php
+                        include './calculate-time.php';
+                        $posts = Post::getPostsByMember($MEM->id);
+                        if(count($posts) > 0) {
+                        foreach ($posts as $key => $post) {
+                            $photos = PostImage::getPhotosByPostId($post['id']);
+                            
+                            $result = getTime($post['created_at']);
+                            ?>
+                             
+                            <div class="ui-block">
+                                <!-- Post -->
+
+                                <article class="hentry post has-post-thumbnail shared-photo post_<?php echo $post['id']; ?>" id="post-id" post-id="<?php echo $post['id']; ?>">
 
-                            <article class="hentry post">
-
-                                <div class="post__author author vcard inline-items">
-                                    <img src="img/author-page.jpg" alt="author">
-
-                                    <div class="author-date">
-                                        <a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a>
-                                        <div class="post__date">
-                                            <time class="published" datetime="2017-03-24T18:18">
-                                                19 hours ago
-                                            </time>
-                                        </div>
-                                    </div>
-
-                                    <div class="more">
-                                        <svg class="olymp-three-dots-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                        </svg>
-                                        <ul class="more-dropdown">
-                                            <li>
-                                                <a href="#">Edit Post</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Delete Post</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Turn Off Notifications</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Select as Featured</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                    mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                    accusantium doloremque.
-                                </p>
-
-                                <div class="post-additional-info inline-items">
-
-                                    <a href="#" class="post-add-icon inline-items">
-                                        <svg class="olymp-heart-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
-                                        </svg>
-                                        <span>8</span>
-                                    </a>
-
-                                    <ul class="friends-harmonic">
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic7.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic8.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic9.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic10.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic11.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                    </ul>
-
-                                    <div class="names-people-likes">
-                                        <a href="#">Jenny</a>, <a href="#">Robert</a> and
-                                        <br>6 more liked this
-                                    </div>
-
-
-                                    <div class="comments-shared">
-                                        <a href="#" class="post-add-icon inline-items">
-                                            <svg class="olymp-speech-balloon-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-speech-balloon-icon"></use>
-                                            </svg>
-                                            <span>17</span>
-                                        </a>
-
-                                        <a href="#" class="post-add-icon inline-items">
-                                            <svg class="olymp-share-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
-                                            </svg>
-                                            <span>24</span>
-                                        </a>
-                                    </div>
-
-
-                                </div>
-
-                                <div class="control-block-button post-control-button">
-
-                                    <a href="#" class="btn btn-control featured-post">
-                                        <svg class="olymp-trophy-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-trophy-icon"></use>
-                                        </svg>
-                                    </a>
-
-                                    <a href="#" class="btn btn-control">
-                                        <svg class="olymp-like-post-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-like-post-icon"></use>
-                                        </svg>
-                                    </a>
-
-                                    <a href="#" class="btn btn-control">
-                                        <svg class="olymp-comments-post-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use>
-                                        </svg>
-                                    </a>
-
-                                    <a href="#" class="btn btn-control">
-                                        <svg class="olymp-share-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
-                                        </svg>
-                                    </a>
-
-                                </div>
-
-                            </article>
-
-                            <!-- .. end Post -->				</div>
-                        <div class="ui-block">
-
-                            <!-- Post -->
-
-                            <article class="hentry post video">
-
-                                <div class="post__author author vcard inline-items">
-                                    <img src="img/author-page.jpg" alt="author">
-
-                                    <div class="author-date">
-                                        <a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a> shared a
-                                        <a href="#">link</a>
-                                        <div class="post__date">
-                                            <time class="published" datetime="2017-03-24T18:18">
-                                                7 hours ago
-                                            </time>
-                                        </div>
-                                    </div>
-
-                                    <div class="more">
-                                        <svg class="olymp-three-dots-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                        </svg>
-                                        <ul class="more-dropdown">
-                                            <li>
-                                                <a href="#">Edit Post</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Delete Post</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Turn Off Notifications</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Select as Featured</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-
-                                <p>If someone missed it, check out the new song by System of a Revenge! I thinks they are going back to their roots...</p>
-
-                                <div class="post-video">
-                                    <div class="video-thumb">
-                                        <img src="img/video5.jpg" alt="photo">
-                                        <a href="https://youtube.com/watch?v=excVFQ2TWig" class="play-video">
-                                            <svg class="olymp-play-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-play-icon"></use>
-                                            </svg>
-                                        </a>
-                                    </div>
-
-                                    <div class="video-content">
-                                        <a href="#" class="h4 title">System of a Revenge - Nothing Else Matters (LIVE)</a>
-                                        <p>Lorem ipsum dolor sit amet, consectetur ipisicing elit, sed do eiusmod tempo incididunt ut labore..</p>
-                                        <a href="#" class="link-site">YOUTUBE.COM</a>
-                                    </div>
-                                </div>
-
-                                <div class="post-additional-info inline-items">
-
-                                    <a href="#" class="post-add-icon inline-items">
-                                        <svg class="olymp-heart-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
-                                        </svg>
-                                        <span>15</span>
-                                    </a>
-
-                                    <ul class="friends-harmonic">
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic9.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic10.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic7.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic8.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic11.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                    </ul>
-
-                                    <div class="names-people-likes">
-                                        <a href="#">Jenny</a>, <a href="#">Robert</a> and
-                                        <br>13 more liked this
-                                    </div>
-
-                                    <div class="comments-shared">
-                                        <a href="#" class="post-add-icon inline-items">
-                                            <svg class="olymp-speech-balloon-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-speech-balloon-icon"></use>
-                                            </svg>
-                                            <span>1</span>
-                                        </a>
-
-                                        <a href="#" class="post-add-icon inline-items">
-                                            <svg class="olymp-share-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
-                                            </svg>
-                                            <span>16</span>
-                                        </a>
-                                    </div>
-
-
-                                </div>
-
-                                <div class="control-block-button post-control-button">
-
-                                    <a href="#" class="btn btn-control">
-                                        <svg class="olymp-like-post-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-like-post-icon"></use>
-                                        </svg>
-                                    </a>
-
-                                    <a href="#" class="btn btn-control">
-                                        <svg class="olymp-comments-post-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use>
-                                        </svg>
-                                    </a>
-
-                                    <a href="#" class="btn btn-control">
-                                        <svg class="olymp-share-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
-                                        </svg>
-                                    </a>
-
-                                </div>
-
-                            </article>
-
-                            <!-- .. end Post -->				</div>
-                        <div class="ui-block">
-                            <!-- Post -->
-
-                            <article class="hentry post">
-
-                                <div class="post__author author vcard inline-items">
-                                    <img src="img/author-page.jpg" alt="author">
-
-                                    <div class="author-date">
-                                        <a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a>
-                                        <div class="post__date">
-                                            <time class="published" datetime="2017-03-24T18:18">
-                                                2 hours ago
-                                            </time>
-                                        </div>
-                                    </div>
-
-                                    <div class="more">
-                                        <svg class="olymp-three-dots-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                        </svg>
-                                        <ul class="more-dropdown">
-                                            <li>
-                                                <a href="#">Edit Post</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Delete Post</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Turn Off Notifications</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Select as Featured</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempo incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris consequat.
-                                </p>
-
-                                <div class="post-additional-info inline-items">
-
-                                    <a href="#" class="post-add-icon inline-items">
-                                        <svg class="olymp-heart-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
-                                        </svg>
-                                        <span>36</span>
-                                    </a>
-
-                                    <ul class="friends-harmonic">
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic7.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic8.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic9.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic10.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="img/friend-harmonic11.jpg" alt="friend">
-                                            </a>
-                                        </li>
-                                    </ul>
-
-                                    <div class="names-people-likes">
-                                        <a href="#">You</a>, <a href="#">Elaine</a> and
-                                        <br>34 more liked this
-                                    </div>
-
-
-                                    <div class="comments-shared">
-                                        <a href="#" class="post-add-icon inline-items">
-                                            <svg class="olymp-speech-balloon-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-speech-balloon-icon"></use>
-                                            </svg>
-                                            <span>17</span>
-                                        </a>
-
-                                        <a href="#" class="post-add-icon inline-items">
-                                            <svg class="olymp-share-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
-                                            </svg>
-                                            <span>24</span>
-                                        </a>
-                                    </div>
-
-
-                                </div>
-
-                                <div class="control-block-button post-control-button">
-
-                                    <a href="#" class="btn btn-control">
-                                        <svg class="olymp-like-post-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-like-post-icon"></use>
-                                        </svg>
-                                    </a>
-
-                                    <a href="#" class="btn btn-control">
-                                        <svg class="olymp-comments-post-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use>
-                                        </svg>
-                                    </a>
-
-                                    <a href="#" class="btn btn-control">
-                                        <svg class="olymp-share-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
-                                        </svg>
-                                    </a>
-
-                                </div>
-
-                            </article>
-
-                            <!-- .. end Post -->					
-                            <!-- Comments -->
-
-                            <ul class="comments-list">
-                                <li class="comment-item">
                                     <div class="post__author author vcard inline-items">
-                                        <img src="img/avatar10-sm.jpg" alt="author">
+                                        <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
 
                                         <div class="author-date">
-                                            <a class="h6 post__author-name fn" href="#">Elaine Dreyfuss</a>
+                                            <a class="h6 post__author-name fn" href="profile.php"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> 
                                             <div class="post__date">
-                                                <time class="published" datetime="2017-03-24T18:18">
-                                                    5 mins ago
+                                                <time class="published">
+                                                   <?php echo $result; ?>
                                                 </time>
                                             </div>
                                         </div>
 
-                                        <a href="#" class="more">
+                                        <div class="more">
                                             <svg class="olymp-three-dots-icon">
                                             <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
                                             </svg>
-                                        </a>
-
-                                    </div>
-
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium der doloremque laudantium.</p>
-
-                                    <a href="#" class="post-add-icon inline-items">
-                                        <svg class="olymp-heart-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
-                                        </svg>
-                                        <span>8</span>
-                                    </a>
-                                    <a href="#" class="reply">Reply</a>
-                                </li>
-                                <li class="comment-item has-children">
-                                    <div class="post__author author vcard inline-items">
-                                        <img src="img/avatar5-sm.jpg" alt="author">
-
-                                        <div class="author-date">
-                                            <a class="h6 post__author-name fn" href="#">Green Goo Rock</a>
-                                            <div class="post__date">
-                                                <time class="published" datetime="2017-03-24T18:18">
-                                                    1 hour ago
-                                                </time>
-                                            </div>
+                                            <ul class="more-dropdown">
+                                                <li>
+                                                    <a href="#" data-toggle="modal" data-target="#edit-post" class="edit-post" id="<?php echo $post['id']; ?>">Edit Post</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="delete-post" id="<?php echo $post['id']; ?>">Delete Post</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Turn Off Notifications</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Select as Featured</a>
+                                                </li>
+                                            </ul>
                                         </div>
 
-                                        <a href="#" class="more">
-                                            <svg class="olymp-three-dots-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                            </svg>
-                                        </a>
+                                    </div>
+
+                                    <p><?php echo $post['description']; ?></p>
+
+                                    <div class="post-thumb">
+    <!--                                        <img src="img/post-photo6.jpg" alt="photo">-->
+                                        <div id="gallery-<?php echo $post['id']; ?>"></div>
+                                    </div>
+                                    <div class=" content">
 
                                     </div>
 
-                                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugiten, sed quia
-                                        consequuntur magni dolores eos qui ratione voluptatem sequi en lod nesciunt. Neque porro
-                                        quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci velit en lorem ipsum der.
-                                    </p>
 
-                                    <a href="#" class="post-add-icon inline-items">
-                                        <svg class="olymp-heart-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
-                                        </svg>
-                                        <span>5</span>
-                                    </a>
-                                    <a href="#" class="reply">Reply</a>
 
-                                    <ul class="children">
-                                        <li class="comment-item">
-                                            <div class="post__author author vcard inline-items">
-                                                <img src="img/avatar8-sm.jpg" alt="author">
+                                    <div class="post-additional-info inline-items">
 
-                                                <div class="author-date">
-                                                    <a class="h6 post__author-name fn" href="#">Diana Jameson</a>
-                                                    <div class="post__date">
-                                                        <time class="published" datetime="2017-03-24T18:18">
-                                                            39 mins ago
-                                                        </time>
-                                                    </div>
-                                                </div>
+                                        <a href="#" class="post-add-icon inline-items">
+                                            <svg class="olymp-heart-icon">
+                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
+                                            </svg>
+                                            <span>15</span>
+                                        </a>
 
-                                                <a href="#" class="more">
-                                                    <svg class="olymp-three-dots-icon">
-                                                    <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                                    </svg>
+                                        <ul class="friends-harmonic">
+                                            <li>
+                                                <a href="#">
+                                                    <img src="img/friend-harmonic5.jpg" alt="friend">
                                                 </a>
-
-                                            </div>
-
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-
-                                            <a href="#" class="post-add-icon inline-items">
-                                                <svg class="olymp-heart-icon">
-                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
-                                                </svg>
-                                                <span>2</span>
-                                            </a>
-                                            <a href="#" class="reply">Reply</a>
-                                        </li>
-                                        <li class="comment-item">
-                                            <div class="post__author author vcard inline-items">
-                                                <img src="img/avatar2-sm.jpg" alt="author">
-
-                                                <div class="author-date">
-                                                    <a class="h6 post__author-name fn" href="#">Nicholas Grisom</a>
-                                                    <div class="post__date">
-                                                        <time class="published" datetime="2017-03-24T18:18">
-                                                            24 mins ago
-                                                        </time>
-                                                    </div>
-                                                </div>
-
-                                                <a href="#" class="more">
-                                                    <svg class="olymp-three-dots-icon">
-                                                    <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                                    </svg>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="img/friend-harmonic10.jpg" alt="friend">
                                                 </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="img/friend-harmonic7.jpg" alt="friend">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="img/friend-harmonic8.jpg" alt="friend">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="img/friend-harmonic2.jpg" alt="friend">
+                                                </a>
+                                            </li>
+                                        </ul>
 
-                                            </div>
+                                        <div class="names-people-likes">
+                                            <a href="#">Diana</a>, <a href="#">Nicholas</a> and
+                                            <br>13 more liked this
+                                        </div>
 
-                                            <p>Excepteur sint occaecat cupidatat non proident.</p>
-
+                                        <div class="comments-shared">
                                             <a href="#" class="post-add-icon inline-items">
-                                                <svg class="olymp-heart-icon">
-                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
+                                                <svg class="olymp-speech-balloon-icon">
+                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-speech-balloon-icon"></use>
                                                 </svg>
                                                 <span>0</span>
                                             </a>
-                                            <a href="#" class="reply">Reply</a>
 
-                                        </li>
-                                    </ul>
-
-                                </li>
-
-                                <li class="comment-item">
-                                    <div class="post__author author vcard inline-items">
-                                        <img src="img/avatar4-sm.jpg" alt="author">
-
-                                        <div class="author-date">
-                                            <a class="h6 post__author-name fn" href="#">Chris Greyson</a>
-                                            <div class="post__date">
-                                                <time class="published" datetime="2017-03-24T18:18">
-                                                    1 hour ago
-                                                </time>
-                                            </div>
+                                            <a href="#" class="post-add-icon inline-items">
+                                                <svg class="olymp-share-icon">
+                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
+                                                </svg>
+                                                <span>16</span>
+                                            </a>
                                         </div>
 
-                                        <a href="#" class="more">
-                                            <svg class="olymp-three-dots-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
+                                    </div>
+
+                                    <div class="control-block-button post-control-button">
+
+                                        <a href="#" class="btn btn-control">
+                                            <svg class="olymp-like-post-icon">
+                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-like-post-icon"></use>
+                                            </svg>
+                                        </a>
+
+                                        <a href="#" class="btn btn-control">
+                                            <svg class="olymp-comments-post-icon">
+                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use>
+                                            </svg>
+                                        </a>
+
+                                        <a href="#" class="btn btn-control">
+                                            <svg class="olymp-share-icon">
+                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
                                             </svg>
                                         </a>
 
                                     </div>
 
-                                    <p>Dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
 
-                                    <a href="#" class="post-add-icon inline-items">
-                                        <svg class="olymp-heart-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
-                                        </svg>
-                                        <span>7</span>
-                                    </a>
-                                    <a href="#" class="reply">Reply</a>
+                                </article>
 
-                                </li>
-                            </ul>
+                                <!-- .. end Post -->				</div>
+                            <?php
+                        }
+                        } else {
+                            ?>
+                        <div class="ui-block no-post">
+                            <h5>There is no any post.</h5>
+                        </div>
+                        <?php
+                        }
+                        ?>
 
-                            <!-- ... end Comments -->
-                            <a href="#" class="more-comments">View more comments <span>+</span></a>
 
-                            <!-- Comment Form  -->
-
-                            <form class="comment-form inline-items">
-
-                                <div class="post__author author vcard inline-items">
-                                    <img src="img/author-page.jpg" alt="author">
-
-                                    <div class="form-group with-icon-right ">
-                                        <textarea class="form-control" placeholder=""></textarea>
-                                        <div class="add-options-message">
-                                            <a href="#" class="options-message" data-toggle="modal" data-target="#update-header-photo">
-                                                <svg class="olymp-camera-icon">
-                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <button class="btn btn-md-2 btn-primary">Post Comment</button>
-
-                                <button class="btn btn-md-2 btn-border-think c-grey btn-transparent custom-color">Cancel</button>
-
-                            </form>
-
-                            <!-- ... end Comment Form  -->				</div>
-                        <div class="ui-block">
-                            <!-- Post -->
+<!--                        <div class="ui-block">
+                             Post 
 
                             <article class="hentry post has-post-thumbnail shared-photo">
 
@@ -1050,23 +546,7 @@ if (isset($_GET['id'])) {
                                     <img src="img/post-photo6.jpg" alt="photo">
                                 </div>
 
-                                <ul class="children single-children">
-                                    <li class="comment-item">
-                                        <div class="post__author author vcard inline-items">
-                                            <img src="img/avatar8-sm.jpg" alt="author">
-                                            <div class="author-date">
-                                                <a class="h6 post__author-name fn" href="#">Diana Jameson</a>
-                                                <div class="post__date">
-                                                    <time class="published" datetime="2017-03-24T18:18">
-                                                        16 hours ago
-                                                    </time>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <p>Here’s the first photo of our incredible photoshoot from yesterday. If you like it please say so and tel me what you wanna see next!</p>
-                                    </li>
-                                </ul>
 
                                 <div class="post-additional-info inline-items">
 
@@ -1152,7 +632,7 @@ if (isset($_GET['id'])) {
 
                             </article>
 
-                            <!-- .. end Post -->				</div>
+                             .. end Post 				</div>-->
                     </div>
 
                     <a id="load-more-button" href="#" class="btn btn-control btn-more" data-load-link="items-to-load.html" data-container="newsfeed-items-grid">
@@ -1362,6 +842,7 @@ if (isset($_GET['id'])) {
         <?php
         include './window-pop-up.php';
         ?>
+        
         <!-- ... end Window-popup -->
 
 
@@ -1406,5 +887,10 @@ if (isset($_GET['id'])) {
         <script src="js/js/find-friends.js" type="text/javascript"></script>
         <script src="js/js/friend-request.js" type="text/javascript"></script>
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+        <script src="js/js/post-images.js" type="text/javascript"></script>
+        <script src="js/images-grid.js" type="text/javascript"></script>
+        <script src="js/js/post-slider.js" type="text/javascript"></script>
+        <script src="js/js/edit-post.js" type="text/javascript"></script>
+        <script src="js/js/delete-post.js" type="text/javascript"></script>
     </body>
 </html>
