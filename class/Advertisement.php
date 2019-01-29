@@ -122,6 +122,19 @@ class Advertisement {
 
         return $array_res;
     }
+    public function getAdsInAnyGroupsByMember($member) {
+
+        $query = "SELECT * FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_member` WHERE `member` = $member) ORDER BY `created_at` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
 
     public function delete() {
 

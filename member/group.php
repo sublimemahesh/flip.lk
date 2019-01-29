@@ -387,7 +387,7 @@ $GROUP = new Group($id);
                         } else {
                             ?>
                         <div class="ui-block no-post">
-                            <h5>There is no any post.</h5>
+                            <h5>There is no any advertisements.</h5>
                         </div>
                         <?php
                         }
