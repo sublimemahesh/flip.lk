@@ -12,6 +12,7 @@ include_once(dirname(__FILE__) . '/BusinessSubCategory.php');
 include_once(dirname(__FILE__) . '/Member.php');
 include_once(dirname(__FILE__) . '/Group.php');
 include_once(dirname(__FILE__) . '/Advertisement.php');
+include_once(dirname(__FILE__) . '/AdvertisementImage.php');
 include_once(dirname(__FILE__) . '/GroupMember.php');
 include_once(dirname(__FILE__) . '/GroupAndMemberRequest.php');
 include_once(dirname(__FILE__) . '/Friend.php');

@@ -1,0 +1,198 @@
+$(document).ready(function () {
+    $('#create-ad').click(function () {
+
+        if (!$('#group').val() || $('#group').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please select the group first",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        } else if (!$('#title').val() || $('#title').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter title",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        } else if (!$('#address').val() || $('#address').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter address",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        } else if (!$('#city').val() || $('#city').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please select the city",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        } else {
+            var group = $('#group').val();
+            var member = $('#member').val();
+            var title = $('#title').val();
+            var description = tinyMCE.get('description').getContent();
+            var city = $('#city').val();
+            var address = $('#address').val();
+            var category = $('#category').val();
+            var subCategory = $('#sub-category').val();
+            var website = $('#website').val();
+//            var images = $('[name="post-all-images[]"]').serialize();
+            var images = $('.post-all-ad-images').serializeArray();
+            $.ajax({
+                type: 'POST',
+                url: 'post-and-get/ajax/advertisement.php',
+                dataType: "json",
+                data: {
+                    group: group,
+                    member: member,
+                    title: title,
+                    description: description,
+                    city: city,
+                    address: address,
+                    category: category,
+                    subcategory: subCategory,
+                    website: website,
+                    images: images,
+                    option: 'SAVEAD'
+                },
+                success: function (result) {
+                    swal({
+                        title: "Success!",
+                        text: "Your advertisement was posted successfully",
+                        type: 'success',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    $('#form-create-ad')[0].reset();
+                    $('.post-all-ad-images').val("");
+                    $('._uploadedimagesbox').remove();
+
+                    $('._uploadouterbox').css('left', '0px');
+                }
+            });
+        }
+    });
+
+    $('#edit-ad').click(function () {
+
+        if (!$('#title').val() || $('#title').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter title",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        } else if (!$('#address').val() || $('#address').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter address",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        } else if (!$('#city').val() || $('#city').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please select the city",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        } else {
+            var id = $('#id').val();
+            var title = $('#title').val();
+            var description = tinyMCE.get('description').getContent();
+            var city = $('#city').val();
+            var address = $('#address').val();
+            var website = $('#website').val();
+            var images = $('.post-all-ad-images').serializeArray();
+            $.ajax({
+                type: 'POST',
+                url: 'post-and-get/ajax/advertisement.php',
+                dataType: "json",
+                data: {
+                    id: id,
+                    title: title,
+                    description: description,
+                    city: city,
+                    address: address,
+                    website: website,
+                    images: images,
+                    option: 'EDITAD'
+                },
+                success: function (result) {
+                    swal({
+                        title: "Success!",
+                        text: "Your advertisement was updated successfully",
+                        type: 'success',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    $('#form-create-ad')[0].reset();
+                    $('.post-all-ad-images').val("");
+                    $('._uploadedimagesbox').remove();
+
+                    $('._uploadouterbox').css('left', '0px');
+                }
+            });
+
+        }
+    });
+    
+    $('#remove-circle').on('click', '#remove-ad-image', function () {
+        alert(111);
+        var id = $('#id').val();
+
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+        }, function () {
+
+            $.ajax({
+                url: "post-and-get/ajax/ad-images.php",
+                type: "POST",
+                data: {
+                    ad: id,
+                    option: 'DELETEADIMAGES'
+                },
+                async: false,
+                dataType: 'json',
+                success: function (result) {
+                    if (result == 'success') {
+
+                        swal({
+                            title: "Deleted!",
+                            text: "Images has been deleted.",
+                            type: 'success',
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                        $('#gallery').remove();
+                        $('#remove-ad-image').addClass('hidden');
+                    }
+                }
+            });
+        });
+    });
+});
+
