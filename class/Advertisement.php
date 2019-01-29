@@ -6,21 +6,24 @@
  * @author W j K n ¨
  */
 class Advertisement {
+
     public $id;
     public $createdAt;
     public $member;
     public $groupId;
     public $title;
-    public $description ;
-    public $location;
+    public $description;
+    public $city;
+    public $address;
     public $category;
     public $subCategory;
+    public $website;
     public $status;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`created_at`,`member`,`group_id`,`title`,`description `,`location`,`category`,`sub_category`,`status` FROM `advertisement` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`created_at`,`member`,`group_id`,`title`,`description`,`city`,`address`,`category`,`sub_category`,`website`,`status` FROM `advertisement` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -31,10 +34,12 @@ class Advertisement {
             $this->member = $result['member'];
             $this->groupId = $result['group_id'];
             $this->title = $result['title'];
-            $this->description  = $result['description '];
-            $this->location = $result['location'];
+            $this->description = $result['description'];
+            $this->city = $result['city'];
+            $this->address = $result['address'];
             $this->category = $result['category'];
             $this->subCategory = $result['sub_category'];
+            $this->website = $result['website'];
             $this->status = $result['status'];
 
             return $result;
@@ -42,31 +47,35 @@ class Advertisement {
     }
 
     public function create() {
-
+        date_default_timezone_set('Asia/Colombo');
         $createdAt = date('Y-m-d H:i:s');
 
         $query = "INSERT INTO `advertisement` ("
-                . "created_at, "
-                . "member, "
-                . "group_id, "
-                . "title, "
-                . "description , "
-                . "location, "
-                . "category, "
-                . "sub_category, "
-                . "status"
+                . "`created_at`, "
+                . "`member`, "
+                . "`group_id`, "
+                . "`title`, "
+                . "`description` , "
+                . "`city`, "
+                . "`address`, "
+                . "`category`, "
+                . "`sub_category`, "
+                . "`website`, "
+                . "`status`"
                 . ") VALUES  ("
                 . "'" . $createdAt . "', "
                 . "'" . $this->member . "', "
                 . "'" . $this->groupId . "', "
                 . "'" . $this->title . "', "
-                . "'" . $this->description  . "', "
-                . "'" . $this->location . "', "
+                . "'" . $this->description . "', "
+                . "'" . $this->city . "', "
+                . "'" . $this->address . "', "
                 . "'" . $this->category . "', "
                 . "'" . $this->subCategory . "', "
+                . "'" . $this->website . "', "
                 . "'" . $this->status . "'"
                 . ")";
-
+       
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -82,13 +91,11 @@ class Advertisement {
     public function update() {
 
         $query = "UPDATE  `advertisement` SET "
-                . "`member` ='" . $this->member . "', "
-                . "`group_id` ='" . $this->groupId . "', "
                 . "`title` ='" . $this->title . "', "
-                . "`description ` ='" . $this->description  . "', "
-                . "`location` ='" . $this->location . "', "
-                . "`category` ='" . $this->category . "', "
-                . "`sub_category` ='" . $this->subCategory . "' "
+                . "`description` ='" . $this->description . "', "
+                . "`city` ='" . $this->city . "', "
+                . "`address` ='" . $this->address . "', "
+                . "`website` ='" . $this->website . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -101,7 +108,7 @@ class Advertisement {
             return FALSE;
         }
     }
-    
+
     public function all() {
 
         $query = "SELECT * FROM `advertisement`";
@@ -124,4 +131,19 @@ class Advertisement {
 
         return $db->readQuery($query);
     }
+    
+    public function getAdsByGroup($group) {
+
+        $query = "SELECT * FROM `advertisement` WHERE `group_id` = $group ORDER BY `created_at` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
 }
