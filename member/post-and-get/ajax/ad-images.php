@@ -106,7 +106,6 @@ if (isset($_POST['upload-ad-image'])) {
     }
 }
 
-
 if ($_POST['option'] == 'DELETEIMAGE') {
 //    dd($_POST['image_name']);
     unlink(Helper::getSitePath() . "upload/advertisement/" . $_POST['image_name'] . ".jpg");
@@ -118,7 +117,6 @@ if ($_POST['option'] == 'DELETEIMAGE') {
     echo json_encode($result);
     exit();
 }
-
 
 if ($_POST['option'] == 'DELETEADIMAGES') {
 

@@ -34,7 +34,7 @@ $MEMBER = new Member($_SESSION['id']);
         <link rel="stylesheet" type="text/css" href="css/main.min.css">
         <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
-
+        <link href="css/images-grid.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <?php
@@ -136,19 +136,20 @@ $MEMBER = new Member($_SESSION['id']);
                         if (count($ads) > 0) {
                             foreach ($ads as $key => $ad) {
                                 $MEM = new Member($ad['member']);
+                                $GROUP = new Group($ad['group_id']);
                                 $result = getTime($ad['created_at']);
                                 ?>
 
                                 <div class="ui-block">
                                     <!-- Post -->
 
-                                    <article class="hentry post has-post-thumbnail shared-photo ad_<?php echo $ad['id']; ?>" id="post-id" post-id="<?php echo $post['id']; ?>">
+                                    <article class="hentry post has-post-thumbnail shared-photo ad_<?php echo $ad['id']; ?>" id="ad-id" id-id="<?php echo $id['id']; ?>">
 
                                         <div class="post__author author vcard inline-items">
                                             <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
 
                                             <div class="author-date">
-                                                <a class="h6 post__author-name fn" href="profile.php"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> 
+                                                <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $MEM->firstName; ?>"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> <i class="fa fa-caret-right"></i> <a class="h6 post__author-name fn" href="group.php?id=<?php echo $GROUP->id; ?>"><?php echo $GROUP->name; ?></a> 
                                                 <div class="post__date">
                                                     <time class="published">
                                                         <?php echo $result; ?>
@@ -161,12 +162,6 @@ $MEMBER = new Member($_SESSION['id']);
                                                 <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
                                                 </svg>
                                                 <ul class="more-dropdown">
-                                                    <li>
-                                                        <a href="edit-advertisement.php?id=<?php echo $ad['id']; ?>" class="edit-ad" id="<?php echo $ad['id']; ?>">Edit Advertisement</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="delete-ad" id="<?php echo $ad['id']; ?>">Delete Advertisement</a>
-                                                    </li>
                                                     <li>
                                                         <a href="#">Turn Off Notifications</a>
                                                     </li>
@@ -872,5 +867,7 @@ $MEMBER = new Member($_SESSION['id']);
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="js/js/find-friends.js" type="text/javascript"></script>
         <script src="js/js/post-images.js" type="text/javascript"></script>
+        <script src="js/images-grid.js" type="text/javascript"></script>
+        <script src="js/js/index-ad-slider.js" type="text/javascript"></script>
     </body>
 </html>
