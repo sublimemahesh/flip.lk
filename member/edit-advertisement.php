@@ -151,6 +151,44 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                 <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
                     <div class="ui-block">
                         <div class="ui-block-title">
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <h6 class="title">Manage Advertisement</h6>
+                            </div>
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12 manage-group-section">
+                                <a href="#" class="btn btn-blue btn-md-2" id="delete-ad"   ad_id="<?php echo $id; ?>">Delete Advertisement</a>
+                            </div>
+                        </div>
+                        <div class="ui-block-content">
+                            <div class="description-toggle col-md-6">
+                                <div class="description-toggle-content">
+                                    <div class="h6">Status</div>
+                                    <p>
+                                        <?php
+                                        if ($ADVERTISEMENT->status == 1) {
+                                            echo 'Published';
+                                        } else {
+                                            echo 'Unpublished';
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
+
+                                <div class="togglebutton">
+                                    <label>
+                                        <input type="checkbox" id="publish-ad" <?php
+                                        if ($ADVERTISEMENT->status == 1) {
+                                            echo 'checked=""';
+                                        };
+                                        ?>  ad_id="<?php echo $id; ?>" status="<?php echo $ADVERTISEMENT->status; ?>">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="ui-block">
+                        <div class="ui-block-title">
                             <h6 class="title">Edit Advertisement</h6>
                         </div>
                         <div class="ui-block-content">
@@ -228,6 +266,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                             <div class="flipScrollableAreaGripper hidden_elem"></div>
                                         </div>
                                     </div>
+
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                         <input type="hidden" name="id" id="id" value="<?php echo $id; ?>" />
                                         <input type="hidden" name="edit" id="" value="" />
@@ -302,6 +341,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
         <script src="js/js/ad-images.js" type="text/javascript"></script>
         <script src="js/images-grid.js" type="text/javascript"></script>
         <script src="js/js/edit-ad-slider.js" type="text/javascript"></script>
+        <script src="js/js/delete-ad.js" type="text/javascript"></script>
         <script src="plugins/tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script>
         <script>
                                                 tinymce.init({
@@ -401,7 +441,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                             $('.city-label').removeClass('is-empty');
                         }
                     });
-                    
+
                 }, 1000);
             }
 

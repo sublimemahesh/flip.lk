@@ -8,11 +8,12 @@
                     </div>
                     <div class="profile-section">
                         <div class="row">
-                            <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
-                                <ul class="profile-menu">
-                                    <?php
-                                    if (isset($_GET['id'])) {
-                                        ?>
+                            <?php
+                            if (isset($_GET['id'])) {
+                                ?>
+                                <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
+                                    <ul class="profile-menu">
+
                                         <li>
                                             <a href="profile.php?id=<?php echo $MEM->id; ?>" class="active">Timeline</a>
                                         </li>
@@ -20,11 +21,39 @@
                                             <a href="about.php?id=<?php echo $MEM->id; ?>">About</a>
                                         </li>
                                         <li>
-                                            <a href="friends.php?id=<?php echo $MEM->id; ?>">Friends</a>
+                                            <a href="friends.php?id=<?php echo $MEM->id; ?>">Followers</a>
                                         </li>
-                                        <?php
-                                    } else {
-                                        ?>
+                                    </ul>
+                                </div>
+                                <div class="col col-lg-5 ml-auto col-md-5 col-sm-12 col-12">
+                                    <ul class="profile-menu">
+                                        <li>
+                                            <a href="#">Photos</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Videos</a>
+                                        </li>
+                                        <li>
+                                            <div class="more">
+                                                <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
+                                                <ul class="more-dropdown more-with-triangle">
+                                                    <li>
+                                                        <a href="#">Report Profile</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Block Profile</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <?php
+                            } else {
+                                ?>
+                                <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
+                                    <ul class="profile-menu">
+
                                         <li>
                                             <a href="profile.php" class="active">Timeline</a>
                                         </li>
@@ -33,36 +62,37 @@
                                             <a href="about.php">About</a>
                                         </li>
                                         <li>
-                                            <a href="friends.php">Friends</a>
+                                            <a href="friends.php">Followers</a>
                                         </li>
-                                        <?php
-                                    }
-                                    ?>
-                                </ul>
-                            </div>
-                            <div class="col col-lg-5 ml-auto col-md-5 col-sm-12 col-12">
-                                <ul class="profile-menu">
-                                    <li>
-                                        <a href="#">Photos</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Videos</a>
-                                    </li>
-                                    <li>
-                                        <div class="more">
-                                            <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                            <ul class="more-dropdown more-with-triangle">
-                                                <li>
-                                                    <a href="#">Report Profile</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Block Profile</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+
+                                    </ul>
+                                </div>
+                                <div class="col col-lg-5 ml-auto col-md-5 col-sm-12 col-12">
+                                    <ul class="profile-menu">
+                                        <li>
+                                            <a href="advertisement.php">My Advertisement</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Videos</a>
+                                        </li>
+                                        <li>
+                                            <div class="more">
+                                                <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
+                                                <ul class="more-dropdown more-with-triangle">
+                                                    <li>
+                                                        <a href="#">Report Profile</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Block Profile</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <?php
+                            }
+                            ?>
                         </div>
 
                         <div class="control-block-button">
@@ -95,10 +125,10 @@
                         <a href="profile.php" class="author-thumb main-profile-pic">
                             <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="profile picture">
                         </a>
-                                                <div class="author-content">
-                                                    <a href="profile.php" class="h4 author-name"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>
-                                                    <!--<div class="country"><?php echo $MEM->city . ' ' . $MEM->district; ?></div>-->
-                                                </div>
+                        <div class="author-content">
+                            <a href="profile.php" class="h4 author-name"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>
+                            <!--<div class="country"><?php echo $MEM->city . ' ' . $MEM->district; ?></div>-->
+                        </div>
                     </div>
                 </div>
             </div>

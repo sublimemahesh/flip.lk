@@ -68,7 +68,10 @@ $GROUP = new Group($id);
                                 <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
                                     <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add Members<div class="ripple-container"></div></a>
                                 </div>
-                                
+                                <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
+                                    <a href="create-advertisement.php?id=<?php echo $GROUP->id ?>" class="btn btn-blue btn-md-2 join-group-btn" id="">Post Advertisement<div class="ripple-container"></div></a>
+                                </div>
+
                             </div>
                         </div>
                         <div class="ui-block">
@@ -207,9 +210,11 @@ $GROUP = new Group($id);
                             $join = 'true';
                         }
                         ?>
-                        <div class="ui-block <?php if ($join == 'false') {
+                        <div class="ui-block <?php
+                        if ($join == 'false') {
                             echo 'hidden';
-                        } ?>" id="join-block">
+                        }
+                        ?>" id="join-block">
                             <div class="row">
                                 <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
                                     <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="join-group-btn" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Join Group<div class="ripple-container"></div></a>
@@ -219,9 +224,11 @@ $GROUP = new Group($id);
                                 </div>
                             </div>
                         </div>
-                        <div class="ui-block <?php if ($join == 'true') {
+                        <div class="ui-block <?php
+                        if ($join == 'true') {
                             echo 'hidden';
-                        } ?>" id="request-cancel-block">
+                        }
+                        ?>" id="request-cancel-block">
                             <div class="row">
                                 <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
                                     <a href="#" class="btn btn-smoke btn-light-bg btn-md-2 join-group-btn" id="cancel-request-btn" row-id="<?php echo $rowid; ?>">Cancel Request<div class="ripple-container"></div></a>
@@ -231,165 +238,171 @@ $GROUP = new Group($id);
                                 </div>
                             </div>
                         </div>
-    <?php
-}
-?>
+                        <?php
+                    }
+                    ?>
 
                     <div id="newsfeed-items-grid">
 
                         <?php
                         include './calculate-time.php';
                         $ads = Advertisement::getAdsByGroup($GROUP->id);
-                        if(count($ads) > 0) {
-                        foreach ($ads as $key => $ad) {
-                            $MEM = new Member($ad['member']);
-                            $result = getTime($ad['created_at']);
-                            ?>
-                             
-                            <div class="ui-block">
-                                <!-- Post -->
+                        if (count($ads) > 0) {
+                            foreach ($ads as $key => $ad) {
+                                $MEM = new Member($ad['member']);
+                                $result = getTime($ad['created_at']);
+                                ?>
 
-                                <article class="hentry post has-post-thumbnail shared-photo ad_<?php echo $ad['id']; ?>" id="post-id" post-id="<?php echo $post['id']; ?>">
+                                <div class="ui-block">
+                                    <!-- Post -->
 
-                                    <div class="post__author author vcard inline-items">
-                                        <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
+                                    <article class="hentry post has-post-thumbnail shared-photo ad_<?php echo $ad['id']; ?>" id="post-id" post-id="<?php echo $post['id']; ?>">
 
-                                        <div class="author-date">
-                                            <a class="h6 post__author-name fn" href="profile.php"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> 
-                                            <div class="post__date">
-                                                <time class="published">
-                                                   <?php echo $result; ?>
-                                                </time>
+                                        <div class="post__author author vcard inline-items">
+                                            <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
+
+                                            <div class="author-date">
+                                                <a class="h6 post__author-name fn" href="profile.php"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> 
+                                                <div class="post__date">
+                                                    <time class="published">
+                                                        <?php echo $result; ?>
+                                                    </time>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="more">
-                                            <svg class="olymp-three-dots-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                            </svg>
-                                            <ul class="more-dropdown">
-                                                <li>
-                                                    <a href="edit-advertisement.php?id=<?php echo $ad['id']; ?>" class="edit-ad" id="<?php echo $ad['id']; ?>">Edit Advertisement</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="delete-ad" id="<?php echo $ad['id']; ?>">Delete Advertisement</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Turn Off Notifications</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Select as Featured</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                    <h5><b><?php echo $ad['title']; ?></b></h5>
-                                    <?php echo $ad['description']; ?>
-
-                                    <div class="post-thumb">
-                                        <div id="gallery-<?php echo $ad['id']; ?>"></div>
-                                    </div>
-                                    <div class=" content">
-
-                                    </div>
-
-
-
-                                    <div class="post-additional-info inline-items">
-
-                                        <a href="#" class="post-add-icon inline-items">
-                                            <svg class="olymp-heart-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
-                                            </svg>
-                                            <span>15</span>
-                                        </a>
-
-                                        <ul class="friends-harmonic">
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic5.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic10.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic7.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic8.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="img/friend-harmonic2.jpg" alt="friend">
-                                                </a>
-                                            </li>
-                                        </ul>
-
-                                        <div class="names-people-likes">
-                                            <a href="#">Diana</a>, <a href="#">Nicholas</a> and
-                                            <br>13 more liked this
-                                        </div>
-
-                                        <div class="comments-shared">
-                                            <a href="#" class="post-add-icon inline-items">
-                                                <svg class="olymp-speech-balloon-icon">
-                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-speech-balloon-icon"></use>
+                                            <div class="more">
+                                                <svg class="olymp-three-dots-icon">
+                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
                                                 </svg>
-                                                <span>0</span>
+                                                <ul class="more-dropdown">
+                                                    <?php
+                                                    if ($ad['member'] == $MEMBER->id) {
+                                                        ?>
+                                                        <li>
+                                                            <a href="edit-advertisement.php?id=<?php echo $ad['id']; ?>" class="edit-ad" id="<?php echo $ad['id']; ?>">Edit Advertisement</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="delete-ad" id="<?php echo $ad['id']; ?>">Delete Advertisement</a>
+                                                        </li>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    <li>
+                                                        <a href="#">Turn Off Notifications</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Select as Featured</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                        <h5><b><?php echo $ad['title']; ?></b></h5>
+                                        <?php echo $ad['description']; ?>
+
+                                        <div class="post-thumb">
+                                            <div id="gallery-<?php echo $ad['id']; ?>"></div>
+                                        </div>
+                                        <div class=" content">
+
+                                        </div>
+
+
+
+                                        <div class="post-additional-info inline-items">
+
+                                            <a href="#" class="post-add-icon inline-items">
+                                                <svg class="olymp-heart-icon">
+                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
+                                                </svg>
+                                                <span>15</span>
                                             </a>
 
-                                            <a href="#" class="post-add-icon inline-items">
+                                            <ul class="friends-harmonic">
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="img/friend-harmonic5.jpg" alt="friend">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="img/friend-harmonic10.jpg" alt="friend">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="img/friend-harmonic7.jpg" alt="friend">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="img/friend-harmonic8.jpg" alt="friend">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <img src="img/friend-harmonic2.jpg" alt="friend">
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+                                            <div class="names-people-likes">
+                                                <a href="#">Diana</a>, <a href="#">Nicholas</a> and
+                                                <br>13 more liked this
+                                            </div>
+
+                                            <div class="comments-shared">
+                                                <a href="#" class="post-add-icon inline-items">
+                                                    <svg class="olymp-speech-balloon-icon">
+                                                    <use xlink:href="svg-icons/sprites/icons.svg#olymp-speech-balloon-icon"></use>
+                                                    </svg>
+                                                    <span>0</span>
+                                                </a>
+
+                                                <a href="#" class="post-add-icon inline-items">
+                                                    <svg class="olymp-share-icon">
+                                                    <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
+                                                    </svg>
+                                                    <span>16</span>
+                                                </a>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="control-block-button post-control-button">
+
+                                            <a href="#" class="btn btn-control">
+                                                <svg class="olymp-like-post-icon">
+                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-like-post-icon"></use>
+                                                </svg>
+                                            </a>
+
+                                            <a href="#" class="btn btn-control">
+                                                <svg class="olymp-comments-post-icon">
+                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use>
+                                                </svg>
+                                            </a>
+
+                                            <a href="#" class="btn btn-control">
                                                 <svg class="olymp-share-icon">
                                                 <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
                                                 </svg>
-                                                <span>16</span>
                                             </a>
+
                                         </div>
 
-                                    </div>
 
-                                    <div class="control-block-button post-control-button">
+                                    </article>
 
-                                        <a href="#" class="btn btn-control">
-                                            <svg class="olymp-like-post-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-like-post-icon"></use>
-                                            </svg>
-                                        </a>
-
-                                        <a href="#" class="btn btn-control">
-                                            <svg class="olymp-comments-post-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use>
-                                            </svg>
-                                        </a>
-
-                                        <a href="#" class="btn btn-control">
-                                            <svg class="olymp-share-icon">
-                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
-                                            </svg>
-                                        </a>
-
-                                    </div>
-
-
-                                </article>
-
-                                <!-- .. end Post -->				</div>
-                            <?php
-                        }
+                                    <!-- .. end Post -->				</div>
+                                <?php
+                            }
                         } else {
                             ?>
-                        <div class="ui-block no-post">
-                            <h5>There is no any post.</h5>
-                        </div>
-                        <?php
+                            <div class="ui-block no-post">
+                                <h5>There is no any advertisements.</h5>
+                            </div>
+                            <?php
                         }
                         ?>
                     </div>
@@ -397,9 +410,9 @@ $GROUP = new Group($id);
 
                 </div>
 
-<?php
-include './group-about-nav.php';
-?>
+                <?php
+                include './group-about-nav.php';
+                ?>
 
                 <div class="col col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="ui-block">
@@ -473,9 +486,9 @@ include './group-about-nav.php';
         </a>
 
         <!-- Window-popup -->
-<?php
-include './window-pop-up.php';
-?>
+        <?php
+        include './window-pop-up.php';
+        ?>
         <!-- ... end Window-popup -->
 
         <!-- JS Scripts -->
@@ -518,7 +531,7 @@ include './window-pop-up.php';
         <script src="js/js/join-group.js" type="text/javascript"></script>
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="js/js/find-friends.js" type="text/javascript"></script>
-         <script src="js/images-grid.js" type="text/javascript"></script>
+        <script src="js/images-grid.js" type="text/javascript"></script>
         <script src="js/js/ad-slider.js" type="text/javascript"></script>
         <script src="js/js/delete-ad.js" type="text/javascript"></script>
         <script>

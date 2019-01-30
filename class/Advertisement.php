@@ -122,6 +122,20 @@ class Advertisement {
 
         return $array_res;
     }
+    
+    public function getAdsInAnyGroupsByMember($member) {
+
+        $query = "SELECT * FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `status` = 1 ORDER BY `created_at` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
 
     public function delete() {
 
@@ -134,7 +148,7 @@ class Advertisement {
     
     public function getAdsByGroup($group) {
 
-        $query = "SELECT * FROM `advertisement` WHERE `group_id` = $group ORDER BY `created_at` DESC";
+        $query = "SELECT * FROM `advertisement` WHERE `group_id` = $group AND `status` = 1 ORDER BY `created_at` DESC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -144,6 +158,37 @@ class Advertisement {
         }
 
         return $array_res;
+    }
+    
+    public function getAdsByMember($member) {
+
+        $query = "SELECT * FROM `advertisement` WHERE `member` = $member ORDER BY `created_at` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+    
+    public function updateStatus() {
+
+        $query = "UPDATE  `advertisement` SET "
+                . "`status` ='" . $this->status . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
     }
 
 }

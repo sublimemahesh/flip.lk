@@ -85,3 +85,31 @@ if ($_POST['option'] === 'DELETEAD') {
     header('Content-type: application/json');
     echo json_encode($result);
 }
+
+if ($_POST['option'] === 'GETADSBYGROUPSOFMEMBER') {
+    
+    $ad = Advertisement::getAdsInAnyGroupsByMember($_POST['member']);
+
+    header('Content-type: application/json');
+    echo json_encode($ad);
+}
+
+if ($_POST['option'] === 'GETADSBYMEMBER') {
+    
+    $ad = Advertisement::getAdsByMember($_POST['member']);
+
+    header('Content-type: application/json');
+    echo json_encode($ad);
+}
+
+if ($_POST['option'] == 'UPDATESTATUS') {
+    
+    $ADVERTISEMENT = new Advertisement($_POST['id']);
+    $ADVERTISEMENT->status= $_POST['status'];
+    
+    $result = $ADVERTISEMENT->updateStatus();
+
+    header('Content-Type: application/json');
+    echo json_encode($result);
+    exit();
+}

@@ -114,6 +114,7 @@ $(document).ready(function () {
             });
             return false;
         } else {
+            
             var id = $('#id').val();
             var title = $('#title').val();
             var description = tinyMCE.get('description').getContent();
@@ -193,6 +194,83 @@ $(document).ready(function () {
                 }
             });
         });
+    });
+    
+    $('#publish-ad').click(function (e) {
+        e.preventDefault();
+        var status = $(this).attr('status');
+        var id = $(this).attr('ad_id');
+        if (status == 1) {
+            swal({
+                title: "Are you sure?",
+                text: "Are you want to unpublished this group!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, unpublished it!",
+                closeOnConfirm: false
+            }, function () {
+
+                $.ajax({
+                    url: "post-and-get/ajax/advertisement.php",
+                    type: "POST",
+                    data: {
+                        id: id,
+                        status: '0',
+                        option: 'UPDATESTATUS'
+                    },
+                    dataType: "JSON",
+                    success: function (jsonStr) {
+                        if (jsonStr.status) {
+
+                            swal({
+                                title: "Unpublished!",
+                                text: "Your advertisement has been unpublished.",
+                                type: 'success',
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                            location.reload();
+                        }
+                    }
+                });
+            });
+        } else {
+            swal({
+                title: "Are you sure?",
+                text: "Are you want to published this advertisement!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, published it!",
+                closeOnConfirm: false
+            }, function () {
+
+                $.ajax({
+                    url: "post-and-get/ajax/advertisement.php",
+                    type: "POST",
+                    data: {
+                        id: id,
+                        status: '1',
+                        option: 'UPDATESTATUS'
+                    },
+                    dataType: "JSON",
+                    success: function (jsonStr) {
+                        if (jsonStr.status) {
+
+                            swal({
+                                title: "Published!",
+                                text: "Your advertisement has been published.",
+                                type: 'success',
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                            location.reload();
+                        }
+                    }
+                });
+            });
+        }
     });
 });
 
