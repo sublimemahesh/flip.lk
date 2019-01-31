@@ -227,7 +227,7 @@ $MEMBER = new Member($_SESSION['id']);
                                             </div>
 
                                             <div class="comments-shared">
-                                                <a href="#" class="post-add-icon inline-items">
+                                                <a href="#" class="post-add-icon inline-items" >
                                                     <svg class="olymp-speech-balloon-icon">
                                                     <use xlink:href="svg-icons/sprites/icons.svg#olymp-speech-balloon-icon"></use>
                                                     </svg>
@@ -263,13 +263,11 @@ $MEMBER = new Member($_SESSION['id']);
                                                 <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
                                                 </svg>
                                             </a>
-
                                         </div>
-
-
                                     </article>
-
-                                    <!-- .. end Post -->				</div>
+                                    
+                                    <!-- .. end Post -->
+                                </div>
                                 <?php
                             }
                         } else {

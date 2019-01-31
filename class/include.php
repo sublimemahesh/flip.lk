@@ -19,6 +19,8 @@ include_once(dirname(__FILE__) . '/Friend.php');
 include_once(dirname(__FILE__) . '/FriendRequest.php');
 include_once(dirname(__FILE__) . '/Post.php');
 include_once(dirname(__FILE__) . '/PostImage.php');
+include_once(dirname(__FILE__) . '/PostComment.php');
+include_once(dirname(__FILE__) . '/PostCommentReply.php');
 
 function dd($data) {
     var_dump($data);
