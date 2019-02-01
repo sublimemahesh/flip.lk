@@ -573,7 +573,7 @@ if (isset($_GET['id'])) {
                                                             <?php
                                                             foreach ($replies as $reply) {
                                                                 $REPLYMEMBER = New Member($reply['member']);
-                                                                $repliedat = getTime($comment['commented_at']);
+                                                                $repliedat = getTime($reply['replied_at']);
                                                                 ?>
                                                                 <li class="comment-item comment-reply-item" id="li_r_<?php echo $reply['id']; ?>">
                                                                     <div class="post__author author vcard inline-items">

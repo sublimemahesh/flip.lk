@@ -12,14 +12,19 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/profile.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/post-reply.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/ad-reply.js</file>
             <file>file:/C:/xampp/htdocs/flip.lk/class/PostCommentReply.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/ajax/comment.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/css/style.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/index.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/ad-comment.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/ajax/post-reply.php</file>
             <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/post-comment.js</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/comment.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/class/AdvertisementCommentReply.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/profile.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/ajax/ad-reply.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/group.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/ajax/comment.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/ajax/ad-comment.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/class/include.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/class/PostComment.php</file>
         </group>
     </open-files>
 </project-private>
