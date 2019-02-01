@@ -764,4 +764,40 @@
         </div>
     </div>
 </div>
-<!-- ... end Window-popup Update Profile Photo -->
+<!-- ... end Window-popup Edit Post -->
+
+<!-- Window-popup Share Ad -->
+<div class="modal fade" id="share-ad" tabindex="-1" role="dialog" aria-labelledby="share-ad" aria-hidden="true">
+    <div class="modal-dialog window-popup update-header-photo" role="document">
+
+        <div class="modal-content">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="modal-header">
+                <h6 class="title">Share this advertisement</h6>
+            </div>
+
+            <div class="modal-body">
+                <div class="news-feed-form">
+                    <div class="author-thumb">
+                        <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
+                    </div>
+                    <div class="form-group with-icon label-floating is-empty">
+                        <label class="control-label">Share what you are thinking here...</label>
+                        <textarea class="form-control" placeholder="" name="description" id="description"></textarea>
+                    </div>
+                    <article class="hentry post has-post-thumbnail shared-photo">
+                    <div class="post-thumb">
+                        <div id="gallery1"></div>   
+                    </div>
+                    <ul class="children single-children" id="shared-ad-details"></ul>
+                    <button id="share-post" class="btn btn-md-2 btn-primary share-post" ad="" member="<?php echo $MEMBER->id; ?>">Share Ad</button>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ... end  Window-popup Share Ad -->

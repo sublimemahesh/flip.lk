@@ -11,11 +11,12 @@ class Post {
     public $member;
     public $createdAt;
     public $description;
+    public $sharedAd;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`member`,`created_at`,`description` FROM `post` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`member`,`created_at`,`description`, `shared_ad` FROM `post` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -25,6 +26,7 @@ class Post {
             $this->member = $result['member'];
             $this->createdAt = $result['created_at'];
             $this->description = $result['description'];
+            $this->sharedAd = $result['shared_ad'];
 
             return $this;
         }
@@ -43,6 +45,36 @@ class Post {
                 . "'" . $this->member . "',"
                 . "'" . $createdAt . "',"
                 . "'" . $this->description . "'"
+                . ")";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            $last_id = mysql_insert_id();
+
+            return $this->__construct($last_id);
+        } else {
+            return FALSE;
+        }
+    }
+    
+    public function shareAd() {
+        
+        date_default_timezone_set('Asia/Colombo');
+        $createdAt = date('Y-m-d H:i:s');
+
+        $query = "INSERT INTO `post` ("
+                . "`member`,"
+                . "`created_at`,"
+                . "`description`,"
+                . "`shared_ad`) "
+                . "VALUES  ("
+                . "'" . $this->member . "',"
+                . "'" . $createdAt . "',"
+                . "'" . $this->description . "',"
+                . "'" . $this->sharedAd . "'"
                 . ")";
 
         $db = new Database();
@@ -101,6 +133,20 @@ class Post {
     public function getPostsByMember($member) {
 
         $query = "SELECT * FROM `post` WHERE  `member` = $member ORDER BY `created_at` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+    
+    public function getPostsBySharedAD($ad) {
+
+        $query = "SELECT * FROM `post` WHERE  `shared_ad` = $ad ORDER BY `created_at` DESC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
