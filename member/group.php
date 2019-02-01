@@ -260,6 +260,7 @@ $GROUP = new Group($id);
                                 $MEM = new Member($ad['member']);
                                 $result = getTime($ad['created_at']);
                                 $count = AdvertisementComment::getCountOfCommentsByAdvertisementID($ad['id']);
+                                $countsharedtimes = count(Post::getPostsBySharedAD($ad['id']));
                                 ?>
 
                                 <div class="ui-block">
@@ -321,38 +322,16 @@ $GROUP = new Group($id);
                                                     <svg class="olymp-speech-balloon-icon">
                                                     <use xlink:href="svg-icons/sprites/icons.svg#olymp-speech-balloon-icon"></use>
                                                     </svg>
-                                                    <span><?php echo $count['count'] ?></span>
+                                                    <span><?php echo $count['count']; ?></span>
                                                 </a>
 
-                                                <a href="#" class="post-add-icon inline-items">
+                                                <a href="#" class="post-add-icon inline-items share-ad-link" data-toggle="modal" data-target="#share-ad" id="<?php echo $ad['id']; ?>">
                                                     <svg class="olymp-share-icon">
                                                     <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
                                                     </svg>
-                                                    <span>16</span>
+                                                    <span><?php echo $countsharedtimes; ?></span>
                                                 </a>
                                             </div>
-
-                                        </div>
-
-                                        <div class="control-block-button post-control-button">
-
-                                            <a href="#" class="btn btn-control">
-                                                <svg class="olymp-like-post-icon">
-                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-like-post-icon"></use>
-                                                </svg>
-                                            </a>
-
-                                            <a href="#" class="btn btn-control">
-                                                <svg class="olymp-comments-post-icon">
-                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use>
-                                                </svg>
-                                            </a>
-
-                                            <a href="#" class="btn btn-control">
-                                                <svg class="olymp-share-icon">
-                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
-                                                </svg>
-                                            </a>
                                         </div>
                                     </article>
 
@@ -714,6 +693,7 @@ $GROUP = new Group($id);
         <script src="js/js/delete-ad.js" type="text/javascript"></script>
         <script src="js/js/ad-comment.js" type="text/javascript"></script>
         <script src="js/js/ad-reply.js" type="text/javascript"></script>
+        <script src="js/js/shared-ad.js" type="text/javascript"></script>
         <script>
             // Retrieve Details from Place_ID
             function initMap() {

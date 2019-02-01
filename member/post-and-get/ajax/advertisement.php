@@ -113,3 +113,11 @@ if ($_POST['option'] == 'UPDATESTATUS') {
     echo json_encode($result);
     exit();
 }
+
+if ($_POST['option'] === 'GETADBYID') {
+    
+    $ad = new Advertisement($_POST['ad']);
+
+    header('Content-type: application/json');
+    echo json_encode($ad);
+}
