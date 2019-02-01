@@ -1,19 +1,19 @@
 $(document).ready(function () {
     $('.add-comment').click(function () {
-        var post_id = this.id;
-        $('#comment-form-' + post_id).removeClass('hidden');
-        $('#comment-list-' + post_id).removeClass('hidden');
+        var ad_id = this.id;
+        $('#comment-form-' + ad_id).removeClass('hidden');
+        $('#comment-list-' + ad_id).removeClass('hidden');
     });
     $('.post-comment').click(function () {
-        var post = $(this).attr('post');
+        var ad = $(this).attr('ad');
         var member = $(this).attr('member');
-        var comment = $('#comment-' + post).val();
-
+        var comment = $('#comment-' + ad).val();
+alert(ad);
         $.ajax({
-            url: "post-and-get/ajax/comment.php",
+            url: "post-and-get/ajax/ad-comment.php",
             type: "POST",
             data: {
-                post: post,
+                ad: ad,
                 member: member,
                 comment: comment,
                 option: 'ADDCOMMENT'
@@ -21,7 +21,8 @@ $(document).ready(function () {
             dataType: "JSON",
             success: function (result) {
                 if (result) {
-                    $('#comment-' + post).val('');
+                    alert(result);
+                    $('#comment-' + ad).val('');
                     var html = '';
                     html += '<li class="comment-item">';
                     html += '<div class="post__author author vcard inline-items">';
@@ -43,20 +44,21 @@ $(document).ready(function () {
                     html += '<p>' + result.comment + '</p>';
                     html += '<a href="#" class="reply">Reply</a>';
                     html += '</li>';
-                    $('#comment-list-' + post).append(html);
+                    alert(html);
+                    $('#comment-list-' + ad).append(html);
                 }
             }
         });
 
 
-        $('#comment-form-' + post).removeClass('hidden');
-        $('#comment-list-' + post).removeClass('hidden');
+        $('#comment-form-' + ad).removeClass('hidden');
+        $('#comment-list-' + ad).removeClass('hidden');
     });
     $(function () {
         $(".comments-list").each(function (index) {
             if ($(this).children(".comment-item").length > 3) {
-                var post = $(this).attr('post-id');
-                $("#see-more-" + post).removeClass('hidden');
+                var ad = $(this).attr('ad-id');
+                $("#see-more-" + ad).removeClass('hidden');
             }
             $(this).children(".comment-item").slice(-3).show();
         });
@@ -98,7 +100,7 @@ $(document).ready(function () {
         var comment = $('#comment-' + id).val();
 
         $.ajax({
-            url: "post-and-get/ajax/comment.php",
+            url: "post-and-get/ajax/ad-comment.php",
             type: "POST",
             data: {
                 id: id,
@@ -121,7 +123,7 @@ $(document).ready(function () {
 //        $('#comment-form-' + post).removeClass('hidden');
 //        $('#comment-list-' + post).removeClass('hidden');
     });
-    $('.delete-post').click(function () {
+    $('.delete-comment').click(function () {
        var comment = this.id;
        
        swal({
@@ -135,7 +137,7 @@ $(document).ready(function () {
         }, function () {
 
             $.ajax({
-                url: "post-and-get/ajax/comment.php",
+                url: "post-and-get/ajax/ad-comment.php",
                 type: "POST",
                 data: {
                     id: comment,

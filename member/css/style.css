@@ -783,14 +783,14 @@ input[type='submit'].share-post {
     margin-top: -14px;
     cursor: pointer;
 }
-.reply-form, .comment-edit-form {
+.reply-form, .comment-edit-form, .reply-edit-form {
 
     padding: 25px;
     border-top: 1px solid #e6ecf5;
     overflow: hidden;
 
 }
-.reply-form .post__author, .comment-edit-form .post__author {
+.reply-form .post__author, .comment-edit-form .post__author, .reply-edit-form .post__author {
 
     margin-bottom: 0;
     display: -webkit-box;
@@ -801,7 +801,7 @@ input[type='submit'].share-post {
     align-items: center;
 
 }
-.reply-form .post__author img, .comment-edit-form .post__author img {
+.reply-form .post__author img, .comment-edit-form .post__author img, .reply-edit-form .post__author img {
 
     margin-right: 10px;
     min-width: 28px;
@@ -809,20 +809,20 @@ input[type='submit'].share-post {
     height: 28px;
 
 }
-.reply-form .form-group, .comment-edit-form .form-group {
+.reply-form .form-group, .comment-edit-form .form-group, .reply-edit-form .form-group {
 
     margin-bottom: 0;
     width: 100%;
     margin-left: auto;
 
 }
-.reply-form textarea, .comment-edit-form textarea {
+.reply-form textarea, .comment-edit-form textarea, .reply-edit-form textarea {
 
     min-height: 60px;
     height: 60px;
 transition: all .3s ease;
 }
-.reply-form .add-options-message, .comment-edit-form .add-options-message {
+.reply-form .add-options-message, .comment-edit-form .add-options-message, .reply-edit-form .add-options-message {
 
     position: absolute;
     right: 20px;
@@ -831,7 +831,7 @@ transition: all .3s ease;
     padding: 0;
 
 }
-.reply-form button, .comment-edit-form button {
+.reply-form button, .comment-edit-form button, .reply-edit-form button {
 
     float: right;
     margin-bottom: 0;
@@ -846,7 +846,7 @@ transition: all .3s ease;
 .edit-comment {
     cursor: pointer;
 }
-#post-edited-cancel {
+#post-edited-cancel, #reply-edited-cancel {
     margin-right: 10px;
     color: #000;
 }

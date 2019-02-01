@@ -21,6 +21,8 @@ include_once(dirname(__FILE__) . '/Post.php');
 include_once(dirname(__FILE__) . '/PostImage.php');
 include_once(dirname(__FILE__) . '/PostComment.php');
 include_once(dirname(__FILE__) . '/PostCommentReply.php');
+include_once(dirname(__FILE__) . '/AdvertisementComment.php');
+include_once(dirname(__FILE__) . '/AdvertisementCommentReply.php');
 
 function dd($data) {
     var_dump($data);
