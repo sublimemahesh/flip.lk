@@ -369,7 +369,17 @@ if (isset($_GET['id'])) {
                                             <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
 
                                             <div class="author-date">
-                                                <a class="h6 post__author-name fn" href="profile.php"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> 
+                                                <?php
+                                                if ($post['shared_ad'] != 0) {
+                                                    ?>
+                                                    <a class="h6 post__author-name fn" href="profile.php"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> shared a post
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <a class="h6 post__author-name fn" href="profile.php"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> 
+                                                    <?php
+                                                }
+                                                ?>
                                                 <div class="post__date">
                                                     <time class="published">
                                                         <?php echo $result; ?>
@@ -396,19 +406,43 @@ if (isset($_GET['id'])) {
                                                     </li>
                                                 </ul>
                                             </div>
-
                                         </div>
 
                                         <p><?php echo $post['description']; ?></p>
 
                                         <div class="post-thumb">
-        <!--                                        <img src="img/post-photo6.jpg" alt="photo">-->
                                             <div id="gallery-<?php echo $post['id']; ?>"></div>
                                         </div>
                                         <div class=" content">
 
                                         </div>
+                                        <?php
+                                        if ($post['shared_ad'] != 0) {
+                                            $AD = new Advertisement($post['shared_ad']);
+                                            $MEM2 = new Member($AD->member);
+                                            $GROUP = new Group($AD->groupId);
+                                            $result1 = getTime($AD->createdAt);
+                                            ?>
+                                            <ul class="children single-children">
+                                                <li class="comment-item">
+                                                    <div class="post__author author vcard inline-items">
+                                                        <img src="../upload/member/<?php echo $MEM2->profilePicture; ?>" alt="author">
+                                                        <div class="author-date">
+                                                            <a class="h6 post__author-name fn" href="#"><?php echo $MEM2->firstName . ' ' . $MEM2->lastName; ?></a> <i class="fa fa-caret-right"></i> <a class="h6 post__author-name fn" href="group.php?id=<?php echo $GROUP->id; ?>"><?php echo $GROUP->name; ?></a>
+                                                            <div class="post__date">
+                                                                <time class="published" datetime="2017-03-24T18:18">
+                                                                    <?php echo $result1; ?>
+                                                                </time>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
+                                                    <p><?php echo $AD->description; ?></p>
+                                                </li>
+                                            </ul>
+                                            <?php
+                                        }
+                                        ?>
 
 
                                         <div class="post-additional-info inline-items">
@@ -419,32 +453,11 @@ if (isset($_GET['id'])) {
                                                     </svg>
                                                     <span><?php echo $count['count'] ?></span>
                                                 </a>
-
-                                                <a href="#" class="post-add-icon inline-items">
-                                                    <svg class="olymp-share-icon">
-                                                    <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
-                                                    </svg>
-                                                    <span>16</span>
-                                                </a>
                                             </div>
 
                                         </div>
-
-                                        <div class="control-block-button post-control-button">
-
-                                            <a href="#" class="btn btn-control">
-                                                <svg class="olymp-comments-post-icon">
-                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use>
-                                                </svg>
-                                            </a>
-
-                                            <a href="#" class="btn btn-control">
-                                                <svg class="olymp-share-icon">
-                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
-                                                </svg>
-                                            </a>
-                                        </div>
                                     </article>
+                                    
                                     <?php
                                     $comments = PostComment::getCommentsByPostID($post['id']);
                                     if (count($comments) > 0) {
@@ -610,7 +623,7 @@ if (isset($_GET['id'])) {
 
                                                                     </div>
 
-                                                                    
+
                                                                     <p class="reply-p" id="reply-p-<?php echo $reply['id']; ?>"><?php echo $reply['reply']; ?></p>
                                                                     <div class="reply-edit-form inline-items hidden" id="reply-edit-form-<?php echo $reply['id']; ?>">
                                                                         <div class="post__author author vcard inline-items">
@@ -646,6 +659,10 @@ if (isset($_GET['id'])) {
 
                                         </ul>
                                         <?php
+                                    } else {
+                                        ?>
+                                    <ul class="comments-list hidden" id="comment-list-<?php echo $post['id']; ?>" post-id="<?php echo $post['id']; ?>"></ul>
+                                    <?php
                                     }
                                     ?>
 

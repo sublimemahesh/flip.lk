@@ -21,6 +21,8 @@ $(document).ready(function () {
             dataType: "JSON",
             success: function (result) {
                 if (result) {
+                    $('#comment-form-' + post).removeClass('hidden');
+                    $('#comment-list-' + post).removeClass('hidden');
                     $('#comment-' + post).val('');
                     var html = '';
                     html += '<li class="comment-item">';
@@ -49,8 +51,7 @@ $(document).ready(function () {
         });
 
 
-        $('#comment-form-' + post).removeClass('hidden');
-        $('#comment-list-' + post).removeClass('hidden');
+
     });
     $(function () {
         $(".comments-list").each(function (index) {
@@ -77,7 +78,7 @@ $(document).ready(function () {
             $link.toggleClass('visible');
         });
     });
-    
+
     $('.edit-comment').click(function () {
         var comment = this.id;
         var p = $('#comment-p-' + comment).text();
@@ -107,7 +108,7 @@ $(document).ready(function () {
             },
             dataType: "JSON",
             success: function (result) {
-                
+
                 if (result) {
                     $('#comment-p-' + id).removeClass('hidden');
                     $('#comment-p-' + id).text(result.comment);
@@ -122,9 +123,9 @@ $(document).ready(function () {
 //        $('#comment-list-' + post).removeClass('hidden');
     });
     $('.delete-post').click(function () {
-       var comment = this.id;
-       
-       swal({
+        var comment = this.id;
+
+        swal({
             title: "Are you sure?",
             text: "You will not be able to recover!",
             type: "warning",
@@ -156,8 +157,8 @@ $(document).ready(function () {
                 }
             });
         });
-       
+
     });
-    
+
 });
 

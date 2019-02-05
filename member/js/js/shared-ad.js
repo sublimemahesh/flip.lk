@@ -41,7 +41,8 @@ $(document).ready(function () {
                                 } else {
                                     $(function () {
                                         $('#gallery1').imagesGrid({
-                                            images: result
+                                            images: result.thumb,
+                                            full_images: result.full
                                         });
                                     });
                                 }

@@ -8,7 +8,7 @@ $(document).ready(function () {
         var ad = $(this).attr('ad');
         var member = $(this).attr('member');
         var comment = $('#comment-' + ad).val();
-alert(ad);
+
         $.ajax({
             url: "post-and-get/ajax/ad-comment.php",
             type: "POST",
