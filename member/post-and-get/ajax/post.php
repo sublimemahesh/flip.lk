@@ -14,6 +14,7 @@ if ($_POST['option'] === 'GETPOST') {
     header('Content-type: application/json');
     echo json_encode($post);
 }
+
 if ($_POST['option'] === 'GETPOSTBYID') {
 
     $POST = new Post($_POST['post']);
@@ -21,6 +22,7 @@ if ($_POST['option'] === 'GETPOSTBYID') {
     header('Content-type: application/json');
     echo json_encode($POST);
 }
+
 if ($_POST['option'] === 'DELETEPOST') {
 
     $images = PostImage::getPhotosByPostId($_POST['post']);

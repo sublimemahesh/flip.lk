@@ -1,19 +1,20 @@
 
-;(function($) {
+;
+(function ($) {
 
     /**
      * Plugin
      */
 
-    $.fn.imagesGrid = function(options) {
+    $.fn.imagesGrid = function (options) {
 
         var args = arguments;
 
-        return this.each(function() {
+        return this.each(function () {
 
             // If options is plain object - destroy previous instance and create new
             if ($.isPlainObject(options)) {
-                
+
                 if (this._imgGrid instanceof ImagesGrid) {
                     this._imgGrid.destroy();
                     delete this._imgGrid;
@@ -52,13 +53,14 @@
 
     $.fn.imagesGrid.defaults = {
         images: [],
+        full_images: [],
         cells: 5,
         align: false,
         nextOnClick: true,
         showViewAll: 'more',
         viewAllStartIndex: 'auto',
         loading: 'loading...',
-        getViewAllText: function(imagesCount) {
+        getViewAllText: function (imagesCount) {
             return 'View all ' + imagesCount + ' images';
         },
         onGridRendered: $.noop,
@@ -102,7 +104,7 @@
         this.imageLoadCount = 0;
 
         var cells = this.opts.cells;
-        this.opts.cells = (cells < 1)? 1: (cells > 6)? 6: cells;
+        this.opts.cells = (cells < 1) ? 1 : (cells > 6) ? 6 : cells;
 
         this.onWindowResize = this.onWindowResize.bind(this);
         this.onImageClick = this.onImageClick.bind(this);
@@ -110,7 +112,7 @@
         this.init();
     }
 
-    ImagesGrid.prototype.init = function()  {
+    ImagesGrid.prototype.init = function () {
 
         this.setGridClass();
         this.renderGridItems();
@@ -119,13 +121,14 @@
         this.$window.on('resize', this.onWindowResize);
     }
 
-    ImagesGrid.prototype.createModal = function() {
+    ImagesGrid.prototype.createModal = function () {
 
         var opts = this.opts;
 
         this.modal = new ImagesGridModal({
             loading: opts.loading,
             images: opts.images,
+            full_images: opts.full_images,
             nextOnClick: opts.nextOnClick,
             onModalOpen: opts.onModalOpen,
             onModalClose: opts.onModalClose,
@@ -134,20 +137,20 @@
         });
     }
 
-    ImagesGrid.prototype.setGridClass = function() {
+    ImagesGrid.prototype.setGridClass = function () {
 
         var opts = this.opts,
-            imgsLen = opts.images.length,
-            cellsCount = (imgsLen < opts.cells)? imgsLen: opts.cells;
+                imgsLen = opts.images.length,
+                cellsCount = (imgsLen < opts.cells) ? imgsLen : opts.cells;
 
         this.$element.addClass('imgs-grid imgs-grid-' + cellsCount);
     }
 
-    ImagesGrid.prototype.renderGridItems = function() {
+    ImagesGrid.prototype.renderGridItems = function () {
 
         var opts = this.opts,
-            imgs = opts.images,
-            imgsLen = imgs.length;
+                imgs = opts.images,
+                imgsLen = imgs.length;
 
         if (!imgs) {
             return;
@@ -163,22 +166,21 @@
             this.renderGridItem(imgs[i], i);
         }
 
-        if (opts.showViewAll === 'always' || 
-            (opts.showViewAll === 'more' && imgsLen > opts.cells)
-        ) {
+        if (opts.showViewAll === 'always' ||
+                (opts.showViewAll === 'more' && imgsLen > opts.cells)
+                ) {
             this.renderViewAll();
         }
 
         opts.onGridRendered(this.$element);
     }
 
-    ImagesGrid.prototype.renderGridItem = function(image, index) {
-
+    ImagesGrid.prototype.renderGridItem = function (image, index) {
         var src = image,
-            alt = '',
-            title = '',
-            opts = this.opts,
-            _this = this;
+                alt = '',
+                title = '',
+                opts = this.opts,
+                _this = this;
 
         if ($.isPlainObject(image)) {
             src = image.thumbnail || image.src;
@@ -189,25 +191,25 @@
         var item = $('<div>', {
             class: 'imgs-grid-image',
             click: this.onImageClick,
-            data: { index: index }
+            data: {index: index}
         });
 
         item.append(
-            $('<div>', {
-                class: 'image-wrap'
-            }).append(
+                $('<div>', {
+                    class: 'image-wrap'
+                }).append(
                 $('<img>', {
                     src: src,
                     alt: alt,
                     title: title,
                     on: {
-                        load: function(event) {
+                        load: function (event) {
                             _this.onImageLoaded(event, $(this), image);
                         }
                     }
                 })
-            )
-        );
+                )
+                );
 
         this.$gridItems.push(item);
         this.$element.append(item);
@@ -215,14 +217,14 @@
         opts.onGridItemRendered(item, image);
     }
 
-    ImagesGrid.prototype.renderViewAll = function() {
+    ImagesGrid.prototype.renderViewAll = function () {
 
         var opts = this.opts;
 
         this.$element.find('.imgs-grid-image:last .image-wrap').append(
-            $('<div>', {
-                class: 'view-all'
-            }).append(
+                $('<div>', {
+                    class: 'view-all'
+                }).append(
                 $('<span>', {
                     class: 'view-all-cover',
                 }),
@@ -230,24 +232,24 @@
                     class: 'view-all-text',
                     text: opts.getViewAllText(opts.images.length)
                 })
-            )
-        );
+                )
+                );
     }
 
-    ImagesGrid.prototype.onWindowResize = function(event) {
+    ImagesGrid.prototype.onWindowResize = function (event) {
         if (this.opts.align) {
             this.align();
         }
     }
 
-    ImagesGrid.prototype.onImageClick = function(event) {
+    ImagesGrid.prototype.onImageClick = function (event) {
 
         var opts = this.opts,
-            img = $(event.currentTarget),
-            imageIndex;
+                img = $(event.currentTarget),
+                imageIndex;
 
         if (img.find('.view-all').length > 0 &&
-            typeof opts.viewAllStartIndex === 'number' ) {
+                typeof opts.viewAllStartIndex === 'number') {
             imageIndex = opts.viewAllStartIndex;
         } else {
             imageIndex = img.data('index');
@@ -256,7 +258,7 @@
         this.modal.open(imageIndex);
     }
 
-    ImagesGrid.prototype.onImageLoaded = function(event, imageEl, image) {
+    ImagesGrid.prototype.onImageLoaded = function (event, imageEl, image) {
 
         var opts = this.opts;
 
@@ -270,7 +272,7 @@
         }
     }
 
-    ImagesGrid.prototype.onAllImagesLoaded = function() {
+    ImagesGrid.prototype.onAllImagesLoaded = function () {
 
         var opts = this.opts;
 
@@ -281,7 +283,7 @@
         opts.onGridLoaded(this.$element);
     }
 
-    ImagesGrid.prototype.align = function() {
+    ImagesGrid.prototype.align = function () {
 
         var itemsLen = this.$gridItems.length;
 
@@ -302,36 +304,36 @@
         }
     }
 
-    ImagesGrid.prototype.alignItems = function(items) {
+    ImagesGrid.prototype.alignItems = function (items) {
 
-        var itemsHeight = items.map(function(item) {
+        var itemsHeight = items.map(function (item) {
             return item.find('img').height();
         });
 
         var normalizedHeight = Math.min.apply(null, itemsHeight);
 
-        $(items).each(function() {
+        $(items).each(function () {
 
             var item = $(this),
-                imgWrap = item.find('.image-wrap'),
-                img = item.find('img'),
-                imgHeight = img.height();
+                    imgWrap = item.find('.image-wrap'),
+                    img = item.find('img'),
+                    imgHeight = img.height();
 
             imgWrap.height(normalizedHeight);
 
             if (imgHeight > normalizedHeight) {
                 var top = Math.floor((imgHeight - normalizedHeight) / 2);
-                img.css({ top: -top });
+                img.css({top: -top});
             }
         });
     }
 
-    ImagesGrid.prototype.destroy = function() {
+    ImagesGrid.prototype.destroy = function () {
 
-        this.$window.off('resize',this.onWindowResize);
+        this.$window.off('resize', this.onWindowResize);
 
         this.$element.empty()
-            .removeClass('imgs-grid imgs-grid-' + this.$gridItems.length);
+                .removeClass('imgs-grid imgs-grid-' + this.$gridItems.length);
 
         this.modal.destroy();
     }
@@ -367,7 +369,7 @@
         this.$document.on('keyup', this.onKeyUp);
     }
 
-    ImagesGridModal.prototype.open = function(imageIndex) {
+    ImagesGridModal.prototype.open = function (imageIndex) {
 
         if (this.isOpened()) {
             return;
@@ -377,7 +379,7 @@
         this.render();
     }
 
-    ImagesGridModal.prototype.close = function(event) {
+    ImagesGridModal.prototype.close = function (event) {
 
         if (!this.$modal) {
             return;
@@ -389,7 +391,7 @@
             opacity: 0
         }, {
             duration: 100,
-            complete: function() {
+            complete: function () {
                 this.$modal.remove();
                 this.$modal = null;
                 this.$indicator = null;
@@ -399,11 +401,11 @@
         });
     }
 
-    ImagesGridModal.prototype.isOpened = function() {
+    ImagesGridModal.prototype.isOpened = function () {
         return (this.$modal && this.$modal.is(':visible'));
     }
 
-    ImagesGridModal.prototype.render = function() {
+    ImagesGridModal.prototype.render = function () {
 
         var opts = this.opts;
 
@@ -417,88 +419,88 @@
             opacity: 1
         }, {
             duration: 100,
-            complete: function() {
+            complete: function () {
                 opts.onModalOpen(this.$modal, opts.images[this.imageIndex]);
             }.bind(this)
         });
     }
 
-    ImagesGridModal.prototype.renderModal = function() {
+    ImagesGridModal.prototype.renderModal = function () {
         this.$modal = $('<div>', {
             class: 'imgs-grid-modal'
         }).appendTo('body');
     }
 
-    ImagesGridModal.prototype.renderCaption = function() {
+    ImagesGridModal.prototype.renderCaption = function () {
         this.$caption = $('<div>', {
             class: 'modal-caption',
             text: this.getImageCaption(this.imageIndex)
         }).appendTo(this.$modal);
     }
 
-    ImagesGridModal.prototype.renderCloseButton = function() {
+    ImagesGridModal.prototype.renderCloseButton = function () {
         this.$modal.append($('<div>', {
             class: 'modal-close',
             click: this.close
         }));
     }
 
-    ImagesGridModal.prototype.renderInnerContainer = function() {
+    ImagesGridModal.prototype.renderInnerContainer = function () {
 
         var opts = this.opts,
-            image = this.getImage(this.imageIndex);
+                image = this.getImage(this.imageIndex);
 
         this.$modal.append(
-            $('<div>', {
-                class: 'modal-inner'
-            }).append(
+                $('<div>', {
+                    class: 'modal-inner'
+                }).append(
                 $('<div>', {
                     class: 'modal-image'
                 }).append(
-                    $('<img>', {
-                        src: image.src,
-                        alt: image.alt,
-                        title: image.title,
-                        on: {
-                            load: this.onImageLoaded,
-                            click: function(event) {
-                                this.onImageClick(event, $(this), image);
-                            }.bind(this)
-                        }
-                    }),
-                    $('<div>', {
-                        class: 'modal-loader',
-                        html: opts.loading
-                    })
+                $('<img>', {
+                    src: image.src,
+                    alt: image.alt,
+                    title: image.title,
+                    on: {
+                        load: this.onImageLoaded,
+                        click: function (event) {
+                            this.onImageClick(event, $(this), image);
+                        }.bind(this)
+                    }
+                }),
+                $('<div>', {
+                    class: 'modal-loader',
+                    html: opts.loading
+                })
                 ),
                 $('<div>', {
                     class: 'modal-control left',
                     click: this.prev
                 }).append(
-                    $('<div>', {
-                        class: 'arrow left'
-                    })
+                $('<div>', {
+                    class: 'arrow left'
+                })
                 ),
                 $('<div>', {
                     class: 'modal-control right',
                     click: this.next
                 }).append(
-                    $('<div>', {
-                        class: 'arrow right'
-                    })
+                $('<div>', {
+                    class: 'arrow right'
+                })
                 )
-            )
-        );
+                )
+                );
 
         if (opts.images.length <= 1) {
             this.$modal.find('.modal-control').hide();
         }
     }
 
-    ImagesGridModal.prototype.renderIndicatorContainer = function() {
+    ImagesGridModal.prototype.renderIndicatorContainer = function () {
 
         var opts = this.opts,
-            imgsLen = opts.images.length;
+                imgsLen = opts.images.length;
 
         if (imgsLen == 1) {
             return;
@@ -511,9 +513,9 @@
         var list = $('<ul>'), i;
         for (i = 0; i < imgsLen; ++i) {
             list.append($('<li>', {
-                class: this.imageIndex == i? 'selected': '',
+                class: this.imageIndex == i ? 'selected' : '',
                 click: this.onIndicatorClick,
-                data: { index: i }
+                data: {index: i}
             }));
         }
 
@@ -521,7 +523,7 @@
         this.$modal.append(this.$indicator);
     }
 
-    ImagesGridModal.prototype.prev = function() {
+    ImagesGridModal.prototype.prev = function () {
 
         var imgsLen = this.opts.images.length;
 
@@ -534,7 +536,7 @@
         this.updateImage();
     }
 
-    ImagesGridModal.prototype.next = function() {
+    ImagesGridModal.prototype.next = function () {
 
         var imgsLen = this.opts.images.length;
 
@@ -547,11 +549,11 @@
         this.updateImage();
     }
 
-    ImagesGridModal.prototype.updateImage = function() {
+    ImagesGridModal.prototype.updateImage = function () {
 
         var opts = this.opts,
-            image = this.getImage(this.imageIndex),
-            imageEl = this.$modal.find('.modal-image img');
+                image = this.getImage(this.imageIndex),
+                imageEl = this.$modal.find('.modal-image img');
 
         imageEl.attr({
             src: image.src,
@@ -560,7 +562,7 @@
         });
 
         this.$modal.find('.modal-caption').text(
-            this.getImageCaption(this.imageIndex) );
+                this.getImageCaption(this.imageIndex));
 
         if (this.$indicator) {
             var indicatorList = this.$indicator.find('ul');
@@ -573,7 +575,7 @@
         opts.onModalImageUpdate(imageEl, image);
     }
 
-    ImagesGridModal.prototype.onImageClick = function(event, imageEl, image) {
+    ImagesGridModal.prototype.onImageClick = function (event, imageEl, image) {
 
         var opts = this.opts;
 
@@ -584,17 +586,17 @@
         opts.onModalImageClick(event, imageEl, image);
     }
 
-    ImagesGridModal.prototype.onImageLoaded = function() {
+    ImagesGridModal.prototype.onImageLoaded = function () {
         this.hideLoader();
     }
 
-    ImagesGridModal.prototype.onIndicatorClick = function(event) {
+    ImagesGridModal.prototype.onIndicatorClick = function (event) {
         var index = $(event.target).data('index');
         this.imageIndex = index;
         this.updateImage();
     }
 
-    ImagesGridModal.prototype.onKeyUp = function(event) {
+    ImagesGridModal.prototype.onKeyUp = function (event) {
 
         if (!this.$modal) {
             return;
@@ -613,38 +615,38 @@
         }
     }
 
-    ImagesGridModal.prototype.getImage = function(index) {
+    ImagesGridModal.prototype.getImage = function (index) {
 
         var opts = this.opts,
-            image = opts.images[index];
+                image = opts.full_images[index];
 
         if ($.isPlainObject(image)) {
             return image;
         } else {
-            return { src: image, alt: '', title: '' }
+            return {src: image, alt: '', title: ''}
         }
     }
 
-    ImagesGridModal.prototype.getImageCaption = function(imgIndex) {
+    ImagesGridModal.prototype.getImageCaption = function (imgIndex) {
         var img = this.getImage(imgIndex);
         return img.caption || '';
     }
 
-    ImagesGridModal.prototype.showLoader = function() {
+    ImagesGridModal.prototype.showLoader = function () {
         if (this.$modal) {
             this.$modal.find('.modal-image img').hide();
             this.$modal.find('.modal-loader').show();
         }
     }
 
-    ImagesGridModal.prototype.hideLoader = function() {
+    ImagesGridModal.prototype.hideLoader = function () {
         if (this.$modal) {
             this.$modal.find('.modal-image img').show();
             this.$modal.find('.modal-loader').hide();
         }
     }
 
-    ImagesGridModal.prototype.destroy = function() {
+    ImagesGridModal.prototype.destroy = function () {
         this.$document.off('keyup', this.onKeyUp);
         this.close();
     }
