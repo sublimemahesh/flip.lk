@@ -10,7 +10,7 @@
     width: 100%;
 }
 .header .page-title {
-    padding: 20px 10px 20px 70px;
+    padding: 20px 10px 20px 80px;
 }
 .page-title img {
     width: 140px;
@@ -849,6 +849,39 @@ transition: all .3s ease;
 #post-edited-cancel, #reply-edited-cancel {
     margin-right: 10px;
     color: #000;
+}
+.header {
+    height: 55px;
+    padding-right: 80px;
+}
+.control-icon {
+    margin-right: 35px;
+}
+.search-bar {
+    height: 55px;
+}
+.search-bar.w-search {
+    min-height: 55px;
+}
+.search-bar .form-group.with-button input {
+    height: 78%;
+}
+.form-group.with-button button {
+    height: 78%;
+}
+.header-spacer {
+    display: block;
+    height: 80px;
+}
+.index-group-list .group-icon img {
+    width: 30px;
+    margin-right: 10px;
+}
+.index-group-list li .text {
+    margin-bottom: 10px;
+}
+.control-icon a {
+    color: #fff;
 }
 
 @media(min-width: 1400px) {

@@ -37,9 +37,7 @@ $MEMBER = new Member($_SESSION['id']);
         <link href="css/images-grid.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <?php
-        include './sidebar-left.php';
-        ?>
+
         <?php
         include './header.php';
         ?>
@@ -145,7 +143,6 @@ $MEMBER = new Member($_SESSION['id']);
                                 $countsharedtimes = count(Post::getPostsBySharedAD($ad['id']));
                                 $CATEGORY = new BusinessCategory($ad['category']);
                                 $SUBCATEGORY = new BusinessSubCategory($ad['sub_category']);
-                                
                                 ?>
 
                                 <div class="ui-block">
@@ -472,7 +469,31 @@ $MEMBER = new Member($_SESSION['id']);
                 <!-- Left Sidebar -->
 
                 <aside class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-12 col-12">
+                    <div class="ui-block">
+                        <div class="ui-block-title">
+                            <h6 class="title">Welcome, <?php echo $MEMBER->firstName; ?>!</h6>
+                        </div>
+                        <div class="ui-block-content">
+                            <!-- W-Personal-Info -->
+                            <ul class="widget w-personal-info item-block index-group-list">
+                                <li>
+                                    <span class="title">Shortcuts</span>
+                                    <?php
+                                    $groups = Group::getAllGroupsByMember($MEMBER->id);
+                                    if (count($groups) > 0) {
+                                        foreach ($groups as $group) {
+                                            ?>
+                                    <span class="text group-icon"><img src="img/icon/group.png" /><a href="group.php?id=<?php echo $group['id']; ?>" ><?php echo $group['name']; ?></a></span>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
 
+                                </li>
+                            </ul>
+                            <!-- .. end W-Personal-Info -->
+                        </div>
+                    </div>
                 </aside>
 
                 <!-- ... end Left Sidebar -->
