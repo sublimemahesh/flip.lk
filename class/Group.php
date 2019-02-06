@@ -182,6 +182,20 @@ class Group {
 
         return $array_res;
     }
+    
+    public function getAllGroupsByMember($member) {
+
+        $query = "SELECT * FROM `groups` WHERE `id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `status` = 1";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
 
     public function delete() {
         
