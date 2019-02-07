@@ -22,7 +22,6 @@ $(document).ready(function () {
                     $('#reply-' + comment).val('');
                     var html = '';
 
-
                     html += '<li class="comment-item">';
                     html += '<div class="post__author author vcard inline-items">';
                     html += '<img src="../upload/member/' + result.profile + '" alt="author">';

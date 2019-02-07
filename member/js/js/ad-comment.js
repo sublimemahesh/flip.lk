@@ -21,7 +21,6 @@ $(document).ready(function () {
             dataType: "JSON",
             success: function (result) {
                 if (result) {
-                    alert(result);
                     $('#comment-' + ad).val('');
                     var html = '';
                     html += '<li class="comment-item">';
@@ -44,7 +43,6 @@ $(document).ready(function () {
                     html += '<p>' + result.comment + '</p>';
                     html += '<a href="#" class="reply">Reply</a>';
                     html += '</li>';
-                    alert(html);
                     $('#comment-list-' + ad).append(html);
                 }
             }
