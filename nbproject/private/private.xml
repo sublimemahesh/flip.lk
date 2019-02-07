@@ -12,15 +12,18 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/index-ad-slider.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/class/Advertisement.php</file>
             <file>file:/C:/xampp/htdocs/flip.lk/member/profile.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/shared-ad.js</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/ajax/ad-images.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/css/images-grid.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/post-images.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/index-ad-slider.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/ad-reply.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/post-reply.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/index-post-reply.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/ajax/advertisement.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/ajax/post.php</file>
             <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/post-slider.js</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/index.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/class/PostComment.php</file>
             <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/ajax/ad-photos.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/index.php</file>
         </group>
     </open-files>
 </project-private>

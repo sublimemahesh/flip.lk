@@ -436,7 +436,7 @@ if (isset($_GET['id'])) {
                                                             </div>
                                                         </div>
                                                     </div>
-
+                                                    <h5><b><?php echo $AD->title; ?></b></h5>
                                                     <p><?php echo $AD->description; ?></p>
                                                 </li>
                                             </ul>
@@ -457,7 +457,7 @@ if (isset($_GET['id'])) {
 
                                         </div>
                                     </article>
-                                    
+
                                     <?php
                                     $comments = PostComment::getCommentsByPostID($post['id']);
                                     if (count($comments) > 0) {
@@ -661,8 +661,8 @@ if (isset($_GET['id'])) {
                                         <?php
                                     } else {
                                         ?>
-                                    <ul class="comments-list hidden" id="comment-list-<?php echo $post['id']; ?>" post-id="<?php echo $post['id']; ?>"></ul>
-                                    <?php
+                                        <ul class="comments-list hidden" id="comment-list-<?php echo $post['id']; ?>" post-id="<?php echo $post['id']; ?>"></ul>
+                                        <?php
                                     }
                                     ?>
 

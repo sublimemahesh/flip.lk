@@ -846,7 +846,7 @@ transition: all .3s ease;
 .edit-comment {
     cursor: pointer;
 }
-#post-edited-cancel, #reply-edited-cancel {
+#post-edited-cancel, #reply-edited-cancel, #shared-post-edited-cancel {
     margin-right: 10px;
     color: #000;
 }
@@ -882,6 +882,9 @@ transition: all .3s ease;
 }
 .control-icon a {
     color: #fff;
+}
+.delete-comment {
+    cursor: pointer;
 }
 
 @media(min-width: 1400px) {
