@@ -10,7 +10,7 @@ $(document).ready(function () {
             option: 'GETADS'
         },
         success: function (ads) {
-
+            
             $.each(ads, function (key, ad) {
                 $.ajax({
                     url: "post-and-get/ajax/ad-images.php",
@@ -22,10 +22,8 @@ $(document).ready(function () {
                         option: 'GETADPHOTOS'
                     },
                     success: function (result) {
-                        
                         $(function () {
                             $('#gallery-' + ad.id).imagesGrid({
-                                
                                 images: result.thumb,
                                 full_images: result.full
                             });

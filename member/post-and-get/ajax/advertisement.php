@@ -16,6 +16,7 @@ if ($_POST['option'] == 'SAVEAD') {
     $ADVERTISEMENT->status = '1';
    
     $result = $ADVERTISEMENT->create();
+    
     if($result) {
         foreach ($_POST["images"] as $key => $img) {
             $key++;

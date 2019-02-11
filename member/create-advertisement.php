@@ -115,16 +115,12 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
         <!-- ... end Profile Settings Responsive -->
 
         <?php
-        include './sidebar-left.php';
-        ?>
-        <?php
         include './header.php';
         ?>
 
         <div class="header-spacer header-spacer-small"></div>
-
+ <div class="col col-xl-12 col-12">
         <!-- Main Header Account -->
-
         <div class="main-header">
             <div class="content-bg-wrap bg-account"></div>
             <div class="container">
@@ -144,7 +140,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
 
         <!-- ... end Main Header Account -->
         <!-- Your Account Personal Information -->
-        <div class="container">
+        <!--<div class="container">-->
             <div class="row">
                 <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
                     <div class="ui-block">
@@ -247,6 +243,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                 include './account-navigation.php';
                 ?>
             </div>
+        <!--</div>-->
         </div>
         <!-- ... end Your Account Personal Information -->
 

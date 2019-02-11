@@ -25,7 +25,8 @@ $(document).ready(function () {
                     success: function (result) {
                         $(function () {
                             $('#gallery-' + ad.id).imagesGrid({
-                                images: result
+                                images: result.thumb,
+                                full_images: result.full
                             });
 
                         });
@@ -33,8 +34,6 @@ $(document).ready(function () {
                     }
                 });
             });
-
-
         }
     });
 
