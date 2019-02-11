@@ -75,7 +75,6 @@ class Advertisement {
                 . "'" . $this->website . "', "
                 . "'" . $this->status . "'"
                 . ")";
-       
         $db = new Database();
 
         $result = $db->readQuery($query);

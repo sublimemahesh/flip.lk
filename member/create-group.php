@@ -117,14 +117,10 @@ $CATEGORIES = BusinessCategory::all();
         <!-- ... end Profile Settings Responsive -->
 
         <?php
-        include './sidebar-left.php';
-        ?>
-        <?php
         include './header.php';
         ?>
-
+<div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
         <div class="header-spacer header-spacer-small"></div>
-
         <!-- Main Header Account -->
         <div class="main-header">
             <div class="content-bg-wrap bg-account"></div>
@@ -146,7 +142,7 @@ $CATEGORIES = BusinessCategory::all();
 
 
         <!-- Your Account Personal Information -->
-        <div class="container">
+        <!--<div class="container">-->
             <div class="row">
                 <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
                     <div class="ui-block">
@@ -394,15 +390,15 @@ $CATEGORIES = BusinessCategory::all();
                 include './account-navigation.php';
                 ?>
             </div>
-        </div>
+        <!--</div>-->
         <!-- ... end Your Account Personal Information -->
-
         <!-- Window-popup -->
+
         <?php
         include './window-pop-up.php';
         ?>
         <!-- ... end Window-popup -->
-
+</div>
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>

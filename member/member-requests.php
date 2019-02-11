@@ -40,19 +40,16 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($id);
     </head>
     <body>
         <?php
-        include './sidebar-left.php';
-        ?>
-        <?php
         include './header.php';
         ?>
         <div class="header-spacer"></div>
-
+<div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
         <?php
         include './group-header.php';
         ?>
         <div class="container">
             <div class="row">
-                <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
+                <div class="col col-xl-8 order-xl-2 col-lg-8 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
                     <div class="ui-block">
                         <div class="ui-block-title">
                             <h6 class="title">Member requests (<span id="member-request-count"><?php echo $no_of_request['count']; ?></span>)</h6>
@@ -130,119 +127,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($id);
             </div>
         </div>
 
-
-
-
-<!--        <div class="container">
-            <div class="row">
-                <div class="col col-xl-9 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-                    <div class="ui-block responsive-flex">
-                        <div class="ui-block-title">
-                            <div class="h6 title">Member requests (<?php echo $no_of_request['count']; ?>)</div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <?php
-                        foreach (GroupAndMemberRequest::getMemberRequestsByGroup($id) as $request) {
-                            $MEM = new Member($request['member']);
-                            ?>
-                            <div class="col col-lg-4 col-md-6 col-sm-12 col-12">
-                                <div class="ui-block">
-
-                                     Friend Item 
-
-                                    <div class="friend-item">
-                                        <div class="friend-header-thumb">
-                                            <img src="../upload/member/cover-picture/thumb/<?php echo $MEM->coverPicture; ?>" alt="member">
-                                        </div>
-
-                                        <div class="friend-item-content">
-
-                                            <div class="more">
-                                                <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                                <ul class="more-dropdown">
-                                                    <li>
-                                                        <a href="#">Report Profile</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Block Profile</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Turn Off Notifications</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="friend-avatar">
-                                                <div class="author-thumb member-request-profile-pic">
-                                                    <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
-                                                </div>
-                                                <div class="author-content">
-                                                    <a href="profile.php?id=<?php echo $MEM->id; ?>" class="h5 author-name"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>
-                                                    <div class="country"><?php // echo $MEM->city . ' ' . $MEM->district;  ?></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="swiper-container">
-                                                <div class="swiper-wrapper">
-                                                    <div class="swiper-slide">
-                                                        <div class="friend-count" data-swiper-parallax="-500">
-                                                            <a href="#" class="friend-count-item">
-                                                                <div class="h6">52</div>
-                                                                <div class="title">Friends</div>
-                                                            </a>
-                                                            <a href="#" class="friend-count-item">
-                                                                <div class="h6">240</div>
-                                                                <div class="title">Photos</div>
-                                                            </a>
-                                                            <a href="#" class="friend-count-item">
-                                                                <div class="h6">16</div>
-                                                                <div class="title">Videos</div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="control-block-button" data-swiper-parallax="-100">
-                                                            <a href="#" class="btn btn-control-square bg-blue" id="approve-request" row_id="<?php echo $request['id']; ?>">
-                                                                Approve
-                                                            </a>
-                                                            <a href="#" class="btn btn-control-square bg-purple" id="decline-request" row_id="<?php echo $request['id']; ?>">
-                                                                Decline
-                                                            </a>
-
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="swiper-slide">
-                                                        <p class="friend-about" data-swiper-parallax="-500">
-                                                            <?php echo substr($MEM->aboutMe, 0, 50) . '...'; ?>
-                                                        </p>
-
-                                                        <div class="friend-since" data-swiper-parallax="-100">
-                                                            <span>Friends Since:</span>
-                                                            <div class="h6"><?php echo date_format(date_create(substr($MEM->createdAt, 0, 10)), "F Y"); ?></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                 If we need pagination 
-                                                <div class="swiper-pagination"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                     ... end Friend Item 					</div>
-                            </div>
-                            <?php
-                        }
-                        ?>
-
-                    </div>
-
-                </div>
-                <?php
-                include './group-about-nav.php';
-                ?>
-            </div>
-        </div>-->
+</div>
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>

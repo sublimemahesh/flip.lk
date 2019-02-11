@@ -123,14 +123,11 @@ $SUBCATEGORIES = BusinessSubCategory::all();
         <!-- ... end Profile Settings Responsive -->
 
         <?php
-        include './sidebar-left.php';
-        ?>
-        <?php
         include './header.php';
         ?>
 
         <div class="header-spacer header-spacer-small"></div>
-
+<div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
         <!-- Main Header Account -->
         <div class="main-header">
             <div class="content-bg-wrap bg-account"></div>
@@ -417,7 +414,7 @@ $SUBCATEGORIES = BusinessSubCategory::all();
             </div>
         </div>
         <!-- ... end Your Account Personal Information -->
-
+</div>
         <!-- Window-popup -->
         <?php
         include './window-pop-up.php';

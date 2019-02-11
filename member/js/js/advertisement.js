@@ -38,6 +38,7 @@ $(document).ready(function () {
             });
             return false;
         } else {
+            alert(1111);
             var group = $('#group').val();
             var member = $('#member').val();
             var title = $('#title').val();

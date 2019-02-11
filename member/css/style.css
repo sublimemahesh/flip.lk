@@ -6,7 +6,7 @@
     padding-right: 0px;
     padding-left: 0px;
     margin-right: 0;
-    margin-left: 85px;
+    margin-left: 0px;
     width: 100%;
 }
 .header .page-title {
@@ -885,6 +885,9 @@ transition: all .3s ease;
 }
 .delete-comment {
     cursor: pointer;
+}
+.container.index-container, .container.login-container {
+    margin-left: 85px;
 }
 
 @media(min-width: 1400px) {

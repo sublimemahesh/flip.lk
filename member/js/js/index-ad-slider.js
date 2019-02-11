@@ -1,6 +1,5 @@
 $(document).ready(function () {
     var memberid = $('#member').val();
-
     $.ajax({
         url: "post-and-get/ajax/advertisement.php",
         cache: false,

@@ -47,19 +47,16 @@ if($count_members['count'] == 0) {
     </head>
     <body>
         <?php
-        include './sidebar-left.php';
-        ?>
-        <?php
         include './header.php';
         ?>
         <div class="header-spacer"></div>
-
+<div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
         <?php
         include './group-header.php';
         ?>
         <div class="container">
             <div class="row">
-                <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
+                <div class="col col-xl-8 order-xl-2 col-lg-8 order-lg-1 col-md-9 col-sm-12 col-12">
                     <div class="ui-block responsive-flex">
                         <div class="ui-block-title">
                             <div class="h6 title"><?php echo $GROUP->name . ' members (' . $count . ')'; ?></div>
@@ -299,6 +296,7 @@ if($count_members['count'] == 0) {
                 ?>
             </div>
         </div>
+</div>
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>

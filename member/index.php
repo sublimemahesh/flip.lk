@@ -53,7 +53,7 @@ $MEMBER = new Member($_SESSION['id']);
 
 
         <div class="header-spacer"></div>
-        <div class="container">
+        <div class="container index-container">
             <div class="row">
                 <!-- Main Content -->
 
@@ -164,11 +164,11 @@ $MEMBER = new Member($_SESSION['id']);
                                                     <?php
                                                     if ($POST->sharedAd != 0) {
                                                         ?>
-                                                        <a class="h6 post__author-name fn" href="profile.php"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> shared a post
+                                                        <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $MEM->id; ?>"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> shared a post
                                                         <?php
                                                     } else {
                                                         ?>
-                                                        <a class="h6 post__author-name fn" href="profile.php"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> 
+                                                        <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $MEM->id; ?>"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> 
                                                         <?php
                                                     }
                                                     ?>
@@ -220,7 +220,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                         <div class="post__author author vcard inline-items">
                                                             <img src="../upload/member/<?php echo $MEM2->profilePicture; ?>" alt="author">
                                                             <div class="author-date">
-                                                                <a class="h6 post__author-name fn" href="#"><?php echo $MEM2->firstName . ' ' . $MEM2->lastName; ?></a> <i class="fa fa-caret-right"></i> <a class="h6 post__author-name fn" href="group.php?id=<?php echo $GROUP->id; ?>"><?php echo $GROUP->name; ?></a>
+                                                                <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $MEM->id; ?>"><?php echo $MEM2->firstName . ' ' . $MEM2->lastName; ?></a> <i class="fa fa-caret-right"></i> <a class="h6 post__author-name fn" href="group.php?id=<?php echo $GROUP->id; ?>"><?php echo $GROUP->name; ?></a>
                                                                 <div class="post__date">
                                                                     <time class="published" datetime="2017-03-24T18:18">
                                                                         <?php echo $result1; ?>
@@ -510,7 +510,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                 <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
 
                                                 <div class="author-date">
-                                                    <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $MEM->firstName; ?>"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> <i class="fa fa-caret-right"></i> <a class="h6 post__author-name fn" href="group.php?id=<?php echo $GROUP->id; ?>"><?php echo $GROUP->name; ?></a> 
+                                                    <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $MEM->id; ?>"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> <i class="fa fa-caret-right"></i> <a class="h6 post__author-name fn" href="group.php?id=<?php echo $GROUP->id; ?>"><?php echo $GROUP->name; ?></a> 
                                                     <div class="post__date">
                                                         <time class="published">
                                                             <?php echo $result; ?>

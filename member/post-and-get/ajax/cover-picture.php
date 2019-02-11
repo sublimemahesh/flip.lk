@@ -19,8 +19,8 @@ if (isset($_POST['upload-cover'])) {
             $handle->file_new_name_ext = FALSE;
             $handle->image_ratio_crop = 'C';
             $handle->file_new_name_body = $img;
-            $handle->image_x = 1321;
-            $handle->image_y = 441;
+            $handle->image_x = 1154;
+            $handle->image_y = 385;
 
             $handle->Process($dir_dest);
 

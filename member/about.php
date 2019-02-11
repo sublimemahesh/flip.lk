@@ -40,15 +40,12 @@ if (isset($_GET['id'])) {
 
     </head>
     <body>
-        
-        <?php
-        include './sidebar-left.php';
-        ?>
         <?php
         include './header.php';
         ?>
         
         <div class="header-spacer"></div>
+        <div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
         <!-- Top Header-Profile -->
         <?php
         include './profile-header.php';
@@ -261,7 +258,7 @@ if (isset($_GET['id'])) {
                 </div>
             </div>
         </div>
-        
+        </div>
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>

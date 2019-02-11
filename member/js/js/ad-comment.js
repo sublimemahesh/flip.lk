@@ -8,7 +8,9 @@ $(document).ready(function () {
         var ad = $(this).attr('ad');
         var member = $(this).attr('member');
         var comment = $('#comment-' + ad).val();
-
+alert(ad);
+alert(member);
+alert(comment);
         $.ajax({
             url: "post-and-get/ajax/ad-comment.php",
             type: "POST",
@@ -20,6 +22,7 @@ $(document).ready(function () {
             },
             dataType: "JSON",
             success: function (result) {
+                
                 if (result) {
                     $('#comment-' + ad).val('');
                     var html = '';
@@ -159,5 +162,118 @@ $(document).ready(function () {
        
     });
     
-});
+    $('.my-ad-add-comment').click(function () {
+        var ad_id = this.id;
+        $('#my-ad-comment-form-' + ad_id).removeClass('hidden');
+        $('#my-ad-comment-list-' + ad_id).removeClass('hidden');
+    });
+    $('.my-ad-post-comment').click(function () {
+        var ad = $(this).attr('ad');
+        var member = $(this).attr('member');
+        var comment = $('#my-ad-comment-' + ad).val();
+alert(ad);
+alert(member);
+alert(comment);
+        $.ajax({
+            url: "post-and-get/ajax/ad-comment.php",
+            type: "POST",
+            data: {
+                ad: ad,
+                member: member,
+                comment: comment,
+                option: 'ADDCOMMENT'
+            },
+            dataType: "JSON",
+            success: function (result) {
+                
+                if (result) {
+                    $('#my-ad-comment-' + ad).val('');
+                    var html = '';
+                    html += '<li class="comment-item">';
+                    html += '<div class="post__author author vcard inline-items">';
+                    html += '<img src="../upload/member/' + result.profile + '" alt="author">';
+                    html += '<div class="author-date">';
+                    html += '<a class="h6 post__author-name fn" href="#">' + result.member + '</a>';
+                    html += '<div class="post__date">';
+                    html += '<time class="published" datetime="2017-03-24T18:18">';
+                    html += 'just now';
+                    html += '</time>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '<a href="#" class="more">';
+                    html += '<svg class="olymp-three-dots-icon">';
+                    html += '<use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>';
+                    html += '</svg>';
+                    html += '</a>';
+                    html += '</div>';
+                    html += '<p>' + result.comment + '</p>';
+                    html += '<a href="#" class="reply">Reply</a>';
+                    html += '</li>';
+                    $('#my-ad-comment-list-' + ad).append(html);
+                }
+            }
+        });
 
+
+        $('#my-ad-comment-form-' + ad).removeClass('hidden');
+        $('#my-ad-comment-list-' + ad).removeClass('hidden');
+    });
+    $('.group-post-comment').click(function () {
+        var ad = $(this).attr('ad');
+        var member = $(this).attr('member');
+        var comment = $('#group-comment-' + ad).val();
+alert(ad);
+alert(member);
+alert(comment);
+        $.ajax({
+            url: "post-and-get/ajax/ad-comment.php",
+            type: "POST",
+            data: {
+                ad: ad,
+                member: member,
+                comment: comment,
+                option: 'ADDCOMMENT'
+            },
+            dataType: "JSON",
+            success: function (result) {
+                
+                if (result) {
+                    $('#group-comment-' + ad).val('');
+                    var html = '';
+                    html += '<li class="comment-item">';
+                    html += '<div class="post__author author vcard inline-items">';
+                    html += '<img src="../upload/member/' + result.profile + '" alt="author">';
+                    html += '<div class="author-date">';
+                    html += '<a class="h6 post__author-name fn" href="#">' + result.member + '</a>';
+                    html += '<div class="post__date">';
+                    html += '<time class="published" datetime="2017-03-24T18:18">';
+                    html += 'just now';
+                    html += '</time>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '<a href="#" class="more">';
+                    html += '<svg class="olymp-three-dots-icon">';
+                    html += '<use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>';
+                    html += '</svg>';
+                    html += '</a>';
+                    html += '</div>';
+                    html += '<p>' + result.comment + '</p>';
+                    html += '<a href="#" class="reply">Reply</a>';
+                    html += '</li>';
+                    $('#group-comment-list-' + ad).append(html);
+                }
+            }
+        });
+
+
+        $('#group-comment-form-' + ad).removeClass('hidden');
+        $('#group-comment-list-' + ad).removeClass('hidden');
+    });
+    $('.group-add-comment').click(function () {
+        var ad_id = this.id;
+        $('#group-comment-form-' + ad_id).removeClass('hidden');
+        $('#group-comment-list-' + ad_id).removeClass('hidden');
+    });
+
+    
+});
