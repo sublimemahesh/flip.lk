@@ -10,6 +10,7 @@ if (isset($_GET['id'])) {
 } else {
     $MEM = new Member($_SESSION['id']);
 }
+$propic = $MEMBER->profilePicture;
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -870,5 +871,8 @@ if (isset($_GET['id'])) {
         <script src="js/js/delete-post.js" type="text/javascript"></script>
         <script src="js/js/post-comment.js" type="text/javascript"></script>
         <script src="js/js/post-reply.js" type="text/javascript"></script>
+        <script src="js/js/edit-profile-picture.js" type="text/javascript"></script>
+        <script src="js/js/edit-cover-picture.js" type="text/javascript"></script>
+        
     </body>
 </html>
