@@ -149,6 +149,7 @@ $MEMBER = new Member($_SESSION['id']);
                                 if ($ad['type'] == 'post') {
                                     $POST = new Post($ad['id']);
                                     $MEM = new Member($POST->member);
+                                    if($MEM->status == 1) {
                                     $result = getTime($POST->createdAt);
                                     $count = PostComment::getCountOfCommentsByPostID($ad['id']);
                                     ?>
@@ -490,9 +491,11 @@ $MEMBER = new Member($_SESSION['id']);
                                     </div>
 
                                     <?php
+                                    }
                                 } else {
                                     $AD = new Advertisement($ad['id']);
                                     $MEM = new Member($AD->member);
+                                    if($MEM->status == 1) {
                                     $GROUP = new Group($AD->groupId);
                                     $result = getTime($AD->createdAt);
                                     $count = AdvertisementComment::getCountOfCommentsByAdvertisementID($AD->id);
@@ -800,6 +803,7 @@ $MEMBER = new Member($_SESSION['id']);
                                             <!-- .. end Post -->
                                     </div>
                                     <?php
+                                    }
                                 }
                             }
                         } else {

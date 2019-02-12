@@ -87,7 +87,7 @@ class Member {
                 . "'" . $this->firstName . "', "
                 . "'" . $this->lastName . "', "
                 . "'" . $this->email . "', "
-                . "'" . $this->status . "', "
+                . "'" . 1 . "', "
                 . "'" . $enPass . "'"
                 . ")";
 
@@ -687,7 +687,7 @@ class Member {
     }
 
     public function getAllMembersWithoutThis($member) {
-        $query = "SELECT * FROM `member` WHERE `id` <> '" . $member . "'";
+        $query = "SELECT * FROM `member` WHERE `id` <> '" . $member . "' AND `status` = 1";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -700,7 +700,7 @@ class Member {
     }
 
     public function getMembersByKeyword($keyword) {
-        $query = "SELECT * FROM `member` WHERE `first_name` LIKE '%" . $keyword . "%' OR `last_name` LIKE '%" . $keyword . "%'";
+        $query = "SELECT * FROM `member` WHERE (`first_name` LIKE '%" . $keyword . "%' OR `last_name` LIKE '%" . $keyword . "%') AND `status` = 1";
 
         $db = new Database();
         $result = $db->readQuery($query);
@@ -744,5 +744,35 @@ class Member {
             return FALSE;
         }
     }
+    
+    public function updateStatus() {
 
+        $query = "UPDATE  `member` SET "
+                . "`status` ='" . $this->status . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function delete() {
+        
+        unlink(Helper::getSitePath() . "upload/member/" . $this->profilePicture);
+        unlink(Helper::getSitePath() . "upload/group/cover-picture/" . $this->coverPicture);
+
+        if (GroupMember::deleteAllMembersInGroup($this->id)) {
+            $query = 'DELETE FROM `groups` WHERE id="' . $this->id . '"';
+
+            $db = new Database();
+
+            return $db->readQuery($query);
+        }
+    }
 }
