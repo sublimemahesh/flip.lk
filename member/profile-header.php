@@ -4,7 +4,7 @@
             <div class="ui-block">
                 <div class="top-header">
                     <div class="top-header-thumb">
-                        <img src="../upload/member/cover-picture/<?php echo $MEM->coverPicture; ?>" alt="nature">
+                        <img src="../upload/member/cover-picture/<?php echo $MEM->coverPicture; ?>" id="cover_pic" alt="nature">
                     </div>
                     <div class="profile-section">
                         <div class="row">
@@ -123,7 +123,7 @@
                     </div>
                     <div class="top-header-author">
                         <a href="profile.php" class="author-thumb main-profile-pic">
-                            <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="profile picture">
+                            <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" id="profile_pic1" alt="profile picture">
                         </a>
                         <div class="author-content">
                             <a href="profile.php" class="h4 author-name"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>

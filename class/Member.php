@@ -710,5 +710,39 @@ class Member {
         }
         return $array_res;
     }
+    
+    public function ChangeProPic($member, $file) {
+
+        $query = "UPDATE  `member` SET "
+                . "`profile_picture` ='" . $file . "' "
+                . "WHERE `id` = '" . $member . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+    
+    public function ChangeCoverPic($member, $file) {
+
+        $query = "UPDATE  `member` SET "
+                . "`cover_picture` ='" . $file . "' "
+                . "WHERE `id` = '" . $member . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
 
 }

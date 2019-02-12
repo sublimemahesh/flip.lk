@@ -12,19 +12,27 @@
 
             <div class="modal-body">
                 <a href="#" class="upload-photo-item upload-profile-pic">
-                    <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-
-                    <h6>Upload Photo</h6>
-                    <span>Browse your computer.</span>
-                    <input type="file" name="profile-picture" id="profile-picture" class="profile-picture" sort="1" value="">
-                </a>
-
-                <a href="#" class="upload-photo-item" data-toggle="modal" data-target="#choose-from-my-photo">
-
-                    <svg class="olymp-photos-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-photos-icon"></use></svg>
-
-                    <h6>Choose from My Photos</h6>
-                    <span>Choose from your uploaded photos</span>
+                    <svg class="olymp-computer-icon upload-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
+                    <?php
+                    if (empty($MEMBER->profilePicture)) {
+                        ?>
+                        <img src="../upload/member/member.png" class="img img-responsive img-thumbnail pro-pic" id="profile_pic"/>
+                        <?php
+                    } else {
+                        ?>
+                        <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="img img-responsive img-thumbnail pro-pic" id="profile_pic"/>
+                        <?php
+                    }
+                    ?>
+<!--<img src="../upload/member/-172185548_191030955358_1546515218_n.jpg" class="pro-pic" alt=""/>-->
+                    <form id="edit-profile-picture-form">
+                        <h6>Upload Photo</h6>
+                        <span>Browse your computer.</span>
+                        <input type="file" name="profile-picture" id="profile-picture" class="profile-picture" sort="1" value="">
+                        <input type="hidden" name="update-profile" id="update-profile" value="TRUE">
+                        <input type="hidden" name="member" id="member" value="<?php echo $MEMBER->id; ?>">
+                        <input type="hidden" name="sort" id="sort" value="1">
+                    </form>
                 </a>
             </div>
         </div>
@@ -45,19 +53,29 @@
             </div>
 
             <div class="modal-body">
-                <a href="#" class="upload-photo-item">
-                    <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
+                <a href="#" class="upload-photo-item upload-cover-pic">
+                    <!--<svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>-->
 
-                    <h6>Upload Photo</h6>
-                    <span>Browse your computer.</span>
-                </a>
-
-                <a href="#" class="upload-photo-item" data-toggle="modal" data-target="#choose-from-my-photo">
-
-                    <svg class="olymp-photos-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-photos-icon"></use></svg>
-
-                    <h6>Choose from My Photos</h6>
-                    <span>Choose from your uploaded photos</span>
+                    <?php
+                    if (empty($MEMBER->coverPicture)) {
+                        ?>
+                    <img src="../upload/member/cover-picture/cover.png" class="img img-responsive img-thumbnail cover-pic" id="cover_pic"/>
+                        <?php
+                    } else {
+                        ?>
+                        <img src="../upload/member/cover-picture/thumb/<?php echo $MEMBER->coverPicture; ?>" class="img img-responsive img-thumbnail cover-pic" id="cover_pic"/>
+                        <?php
+                    }
+                    ?>
+<!--<img src="../upload/member/-172185548_191030955358_1546515218_n.jpg" class="pro-pic" alt=""/>-->
+                    <form id="edit-cover-picture-form">
+                        <h6>Upload Photo</h6>
+                        <span>Browse your computer.</span>
+                        <input type="file" name="cover-picture" id="cover-picture" class="cover-picture" sort="1" value="">
+                        <input type="hidden" name="update-cover" id="update-cover" value="TRUE">
+                        <input type="hidden" name="member" id="member" value="<?php echo $MEMBER->id; ?>">
+                        <input type="hidden" name="sort" id="sort" value="1">
+                    </form>
                 </a>
             </div>
         </div>
@@ -789,11 +807,11 @@
                         <textarea class="form-control" placeholder="" name="description" id="description"></textarea>
                     </div>
                     <article class="hentry post has-post-thumbnail shared-photo">
-                    <div class="post-thumb">
-                        <div id="gallery1"></div>   
-                    </div>
-                    <ul class="children single-children" id="shared-ad-details"></ul>
-                    <button id="share-post" class="btn btn-md-2 btn-primary share-post" ad="" member="<?php echo $MEMBER->id; ?>">Share Ad</button>
+                        <div class="post-thumb">
+                            <div id="gallery1"></div>   
+                        </div>
+                        <ul class="children single-children" id="shared-ad-details"></ul>
+                        <button id="share-post" class="btn btn-md-2 btn-primary share-post" ad="" member="<?php echo $MEMBER->id; ?>">Share Ad</button>
                     </article>
                 </div>
             </div>
