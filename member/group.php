@@ -256,6 +256,7 @@ $GROUP = new Group($id);
                             if (count($ads) > 0) {
                                 foreach ($ads as $key => $ad) {
                                     $MEM = new Member($ad['member']);
+                                    if($MEM->status == 1) {
                                     $result = getTime($ad['created_at']);
                                     $count = AdvertisementComment::getCountOfCommentsByAdvertisementID($ad['id']);
                                     $countsharedtimes = count(Post::getPostsBySharedAD($ad['id']));
@@ -555,6 +556,7 @@ $GROUP = new Group($id);
                                         <!-- .. end Post -->
                                     </div>
                                     <?php
+                                    }
                                 }
                             } else {
                                 ?>

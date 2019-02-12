@@ -64,156 +64,186 @@ if ($count_requests['count'] == 0) {
 
         <div class="header-spacer"></div>
         <div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
-        <!-- Top Header-Profile -->
-        <?php
-        include './profile-header.php';
-        ?>
-        <!-- ... end Top Header-Profile -->
-        <div class="container">
-            <div class="row">
-                <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="ui-block responsive-flex">
-                        <div class="ui-block-title">
-                            <div class="h6 title col-sm-4">
-                                <?php echo $MEM->firstName . ' ' . $MEM->lastName . ' (' . $count . ')'; ?> 
-                            </div>
-                            <form class="w-search col-sm-4">
-                                <div class="form-group with-button">
-                                    <input class="form-control" type="text" placeholder="Search Friends...">
-                                    <button>
-                                        <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
-                                    </button>
+            <!-- Top Header-Profile -->
+            <?php
+            include './profile-header.php';
+            ?>
+            <!-- ... end Top Header-Profile -->
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="ui-block responsive-flex">
+                            <div class="ui-block-title">
+                                <div class="h6 title col-sm-4">
+                                    <?php echo $MEM->firstName . ' ' . $MEM->lastName . ' (' . $count . ')'; ?> 
                                 </div>
-                            </form>
-                            <div class="col-sm-4 friend-request">
-                                <?php
-                                if ($MEM->id == $MEMBER->id) {
-                                    ?>
-                                    <a href="friend-requests.php" class="btn btn-smoke btn-md-2 btn-light-bg">Friend Request<span class="request-label-avatar bg-blue"><?php echo $countr; ?></span></a>
+                                <form class="w-search col-sm-4">
+                                    <div class="form-group with-button">
+                                        <input class="form-control" type="text" placeholder="Search Friends...">
+                                        <button>
+                                            <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
+                                        </button>
+                                    </div>
+                                </form>
+                                <div class="col-sm-4 friend-request">
                                     <?php
-                                }
-                                ?>
+                                    if ($MEM->id == $MEMBER->id) {
+                                        ?>
+                                        <a href="friend-requests.php" class="btn btn-smoke btn-md-2 btn-light-bg">Friend Request<span class="request-label-avatar bg-blue"><?php echo $countr; ?></span></a>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <!-- Friends -->
+            <!-- Friends -->
 
-        <div class="container">
-            <div class="row">
-                <?php
-                $friends = Friend::getAllFriendsByMember($MEM->id);
-                foreach ($friends as $friend) {
-                    if ($MEM->id == $friend['friend']) {
-                        $FRI = new Member($friend['member']);
-                        $confirmedDate = FriendRequest::getConfirmedDate($friend['friend'], $friend['member']);
-                        $countoffriends = Friend::countFriends($friend['member']);
-                    } else {
-                        $FRI = new Member($friend['friend']);
-                        $confirmedDate = FriendRequest::getConfirmedDate($friend['friend'], $friend['member']);
-                        $countoffriends = Friend::countFriends($friend['friend']);
+            <div class="container">
+                <div class="row">
+                    <?php
+                    $friends = Friend::getAllFriendsByMember($MEM->id);
+                    foreach ($friends as $friend) {
+                        if ($MEM->id == $friend['friend']) {
+                            $FRI = new Member($friend['member']);
+                            $confirmedDate = FriendRequest::getConfirmedDate($friend['friend'], $friend['member']);
+                            $countoffriends = Friend::countFriends($friend['member']);
+                        } else {
+                            $FRI = new Member($friend['friend']);
+                            $confirmedDate = FriendRequest::getConfirmedDate($friend['friend'], $friend['member']);
+                            $countoffriends = Friend::countFriends($friend['friend']);
+                        }
+                        ?>
+                        <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div class="ui-block">
+
+                                <!-- Friend Item -->
+
+                                <div class="friend-item">
+                                    <div class="friend-header-thumb">
+                                        <?php
+                                        if ($FRI->status == 0) {
+                                            ?>
+                                             <img src="../upload/member/cover-picture/thumb/cover.png" alt="friend">
+                                            <?php
+                                        } else {
+                                            ?>
+                                             <img src="../upload/member/cover-picture/thumb/<?php echo $FRI->coverPicture; ?>" alt="friend">
+                                            <?php
+                                        }
+                                        ?>
+                                    </div>
+
+                                    <div class="friend-item-content">
+
+                                        <!--                                    <div class="more">
+                                                                                <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
+                                                                                <ul class="more-dropdown">
+                                                                                    <li>
+                                                                                        <a href="#">Report Profile</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Block Profile</a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#">Turn Off Notifications</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>-->
+                                        <div class="friend-avatar">
+                                            <div class="author-thumb member-request-profile-pic">
+                                                <?php
+                                                if ($FRI->status == 0) {
+                                                    ?>
+                                                    <img src="../upload/member/member.png" alt="author">
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <img src="../upload/member/<?php echo $FRI->profilePicture; ?>" alt="author">
+                                                    <?php
+                                                }
+                                                ?>
+                                            </div>
+                                            <div class="author-content">
+                                                <?php
+                                                if ($FRI->status == 0) {
+                                                    ?>
+                                                    <a class="h5 author-name"><?php echo $FRI->firstName . ' ' . $FRI->lastName; ?></a>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <a href="profile.php?id=<?php echo $FRI->id; ?>" class="h5 author-name"><?php echo $FRI->firstName . ' ' . $FRI->lastName; ?></a>
+                                                    <?php
+                                                }
+                                                ?>
+                                                <div class="country">San Francisco, CA</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="swiper-container" data-slide="fade">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div class="friend-count" data-swiper-parallax="-500">
+                                                        <a href="#" class="friend-count-item">
+                                                            <div class="h6"><?php echo $countoffriends['count']; ?></div>
+                                                            <div class="title">Friends</div>
+                                                        </a>
+                                                        <a href="#" class="friend-count-item">
+                                                            <div class="h6">240</div>
+                                                            <div class="title">Photos</div>
+                                                        </a>
+                                                        <a href="#" class="friend-count-item">
+                                                            <div class="h6">16</div>
+                                                            <div class="title">Videos</div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="control-block-button" data-swiper-parallax="-100">
+                                                        <a href="#" class="btn btn-control bg-blue">
+                                                            <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                        </a>
+
+                                                        <a href="#" class="btn btn-control bg-purple">
+                                                            <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide">
+                                                    <p class="friend-about" data-swiper-parallax="-500">
+                                                        <?php echo substr($FRI->aboutMe, 0, 50) . '...'; ?>
+                                                    </p>
+
+                                                    <div class="friend-since" data-swiper-parallax="-100">
+                                                        <span>Friends Since:</span>
+                                                        <div class="h6"><?php echo date_format(date_create(substr($confirmedDate['confirmed_date'], 0, 10)), "F Y"); ?></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- If we need pagination -->
+                                            <div class="swiper-pagination"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- ... end Friend Item -->			
+                            </div>
+                        </div>
+                        <?php
                     }
                     ?>
-                    <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">
-                        <div class="ui-block">
-
-                            <!-- Friend Item -->
-
-                            <div class="friend-item">
-                                <div class="friend-header-thumb">
-                                    <img src="../upload/member/cover-picture/thumb/<?php echo $FRI->coverPicture; ?>" alt="friend">
-                                </div>
-
-                                <div class="friend-item-content">
-
-                                    <div class="more">
-                                        <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                        <ul class="more-dropdown">
-                                            <li>
-                                                <a href="#">Report Profile</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Block Profile</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Turn Off Notifications</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="friend-avatar">
-                                        <div class="author-thumb member-request-profile-pic">
-                                            <img src="../upload/member/<?php echo $FRI->profilePicture; ?>" alt="author">
-                                        </div>
-                                        <div class="author-content">
-                                            <a href="profile.php?id=<?php echo $FRI->id; ?>" class="h5 author-name"><?php echo $FRI->firstName . ' ' . $FRI->lastName; ?></a>
-                                            <div class="country">San Francisco, CA</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="swiper-container" data-slide="fade">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <div class="friend-count" data-swiper-parallax="-500">
-                                                    <a href="#" class="friend-count-item">
-                                                        <div class="h6"><?php echo $countoffriends['count']; ?></div>
-                                                        <div class="title">Friends</div>
-                                                    </a>
-                                                    <a href="#" class="friend-count-item">
-                                                        <div class="h6">240</div>
-                                                        <div class="title">Photos</div>
-                                                    </a>
-                                                    <a href="#" class="friend-count-item">
-                                                        <div class="h6">16</div>
-                                                        <div class="title">Videos</div>
-                                                    </a>
-                                                </div>
-                                                <div class="control-block-button" data-swiper-parallax="-100">
-                                                    <a href="#" class="btn btn-control bg-blue">
-                                                        <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                    </a>
-
-                                                    <a href="#" class="btn btn-control bg-purple">
-                                                        <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
-                                                    </a>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="swiper-slide">
-                                                <p class="friend-about" data-swiper-parallax="-500">
-                                                    <?php echo substr($FRI->aboutMe, 0, 50) . '...'; ?>
-                                                </p>
-
-                                                <div class="friend-since" data-swiper-parallax="-100">
-                                                    <span>Friends Since:</span>
-                                                    <div class="h6"><?php echo date_format(date_create(substr($confirmedDate['confirmed_date'], 0, 10)), "F Y"); ?></div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- If we need pagination -->
-                                        <div class="swiper-pagination"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- ... end Friend Item -->			
-                        </div>
-                    </div>
-                    <?php
-                }
-                ?>
 
 
 
+                </div>
             </div>
-        </div>
 
-        <!-- ... end Friends -->
+            <!-- ... end Friends -->
         </div>
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">

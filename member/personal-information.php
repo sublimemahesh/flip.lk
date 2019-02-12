@@ -20,6 +20,7 @@ $MEMBER = new Member($_SESSION['id']);
         <link rel="stylesheet" type="text/css" href="css/main.min.css">
         <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <!-- Main Font -->
         <script src="js/webfontloader.min.js"></script>
         <script>
@@ -137,8 +138,44 @@ $MEMBER = new Member($_SESSION['id']);
                 <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
                     <div class="ui-block">
                         <div class="ui-block-title">
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <h6 class="title">Manage Account</h6>
+                            </div>
+<!--                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12 manage-group-section">
+                                <a href="#" class="btn btn-blue btn-md-2" id="delete-group" member_id="<?php echo $MEMBER->id; ?>">Delete Profile</a>
+                            </div>-->
+                        </div>
+                        <div class="ui-block-content">
+                            <div class="description-toggle col-md-6">
+                                <div class="description-toggle-content">
+                                    <div class="h6">Status</div>
+                                    <p>
+                                        <?php
+                                        if ($MEMBER->status == 1) {
+                                            echo 'Active';
+                                        } else {
+                                            echo 'Deactive';
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
+
+                                <div class="togglebutton">
+                                    <label>
+                                        <input type="checkbox" id="active-profile" <?php if ($MEMBER->status == 1) {
+                                            echo 'checked=""';
+                                        }; ?>  member_id="<?php echo $MEMBER->id; ?>" status="<?php echo $MEMBER->status; ?>">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ui-block">
+                        <div class="ui-block-title">
                             <h6 class="title">Personal Information</h6>
                         </div>
+                        
                         <div class="ui-block-content">
                             <!-- Personal Information Form  -->
                             <form action="post-and-get/member.php" method="post">
@@ -324,6 +361,8 @@ $MEMBER = new Member($_SESSION['id']);
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="js/js/find-friends.js" type="text/javascript"></script>
+        <script src="js/js/profile.js" type="text/javascript"></script>
+        <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script>
                                                 var placeSearch, autocomplete, autocomplete2;
 
