@@ -710,7 +710,21 @@ class Member {
         }
         return $array_res;
     }
-    
+
+    public function getMembersForInviteGroups($keyword, $member) {
+//        $query = "SELECT * FROM `member` WHERE (`first_name` LIKE '%" . $keyword . "%' OR `last_name` LIKE '%" . $keyword . "%') AND `status` = 1";
+        $query = "SELECT * FROM `member` WHERE (`id` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) OR `id` IN (SELECT `member` FROM `friends` WHERE `friend` = $member)) AND (`first_name` LIKE '%" . $keyword . "%' OR `last_name` LIKE '%" . $keyword . "%') AND `status` = 1 ";
+//        $query = "SELECT * FROM `member` WHERE id IN (SELECT `id` FROM `member` WHERE (`first_name` LIKE '%" . $keyword . "%' OR `last_name` LIKE '%" . $keyword . "%') AND `id` IN (SELECT `id` FROM `friends` WHERE `member` = $member OR `friend` = $member))";
+
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+
     public function ChangeProPic($member, $file) {
 
         $query = "UPDATE  `member` SET "
@@ -727,7 +741,7 @@ class Member {
             return FALSE;
         }
     }
-    
+
     public function ChangeCoverPic($member, $file) {
 
         $query = "UPDATE  `member` SET "
@@ -744,7 +758,7 @@ class Member {
             return FALSE;
         }
     }
-    
+
     public function updateStatus() {
 
         $query = "UPDATE  `member` SET "
@@ -763,7 +777,7 @@ class Member {
     }
 
     public function delete() {
-        
+
         unlink(Helper::getSitePath() . "upload/member/" . $this->profilePicture);
         unlink(Helper::getSitePath() . "upload/group/cover-picture/" . $this->coverPicture);
 
@@ -775,4 +789,5 @@ class Member {
             return $db->readQuery($query);
         }
     }
+
 }

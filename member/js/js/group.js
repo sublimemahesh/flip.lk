@@ -194,4 +194,45 @@ $(document).ready(function () {
                 });
             });
     });
+    
+    $('.confirm-invitation').click(function () {
+        
+        var row = $(this).attr('row_id');
+alert(row);
+        $.ajax({
+            url: "post-and-get/ajax/group.php",
+            type: "POST",
+            data: {
+                row: row,
+                option: 'CONFIRMINVITATION'
+            },
+            dataType: 'json',
+            success: function (mess) {
+                $('#request-to-join-' + mess.groupId).addClass('hidden');
+                $('#accepted-invititation-' + mess.groupId).removeClass('hidden');
+
+                var count = $('#group-invitation-count').text();
+                $('#group-invitation-count').text(count - 1);
+            }
+        });
+    });
+
+    $('.delete-invitation').click(function () {
+
+        var row_id;
+        row_id = $(this).attr('row_id');
+
+        $.ajax({
+            url: "post-and-get/ajax/group.php",
+            type: "POST",
+            data: {
+                row: row_id,
+                option: 'DELETEINVITATION'
+            },
+            dataType: 'json',
+            success: function (mess) {
+                location.reload();
+            }
+        });
+    });
 });

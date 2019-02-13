@@ -22,3 +22,32 @@ if ($_POST['option'] == 'DELETEGROUP') {
     echo json_encode($result);
     exit();
 }
+if ($_POST['option'] == 'CONFIRMINVITATION') {
+
+    $REQUEST = new GroupAndMemberRequest($_POST['row']);
+    $REQUEST->isApproved = 1;
+    
+    $req = $REQUEST->approveRequest();
+    
+    if($req) {
+        $GROUPMEMBER = new GroupMember(NULL);
+        $GROUPMEMBER->member = $req->member;
+        $GROUPMEMBER->groupId = $req->groupId;
+        $GROUPMEMBER->status = 'member';
+        $result = $GROUPMEMBER->create();
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($result);
+    exit();
+}
+
+if ($_POST['option'] == 'DELETEINVITATION') {
+    $REQUEST = new GroupAndMemberRequest($_POST['row']);
+    
+    $result = $REQUEST->delete();
+    
+    header('Content-Type: application/json');
+    echo json_encode($result);
+    exit();
+}

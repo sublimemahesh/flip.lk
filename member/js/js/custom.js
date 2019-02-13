@@ -20,12 +20,20 @@ $(document).ready(function () {
     $('#your-groups').click(function () {
         $('.groups-you-manage').addClass('hidden');
         $('.discover-groups').addClass('hidden');
+         $('.group-invitations').addClass('hidden');
         $('.your-groups').removeClass('hidden');
     });
     $('#discover-groups').click(function () {
         $('.groups-you-manage').addClass('hidden');
         $('.your-groups').addClass('hidden');
+        $('.group-invitations').addClass('hidden');
         $('.discover-groups').removeClass('hidden');
+    });
+    $('#group-invitations').click(function () {
+        $('.groups-you-manage').addClass('hidden');
+        $('.your-groups').addClass('hidden');
+        $('.discover-groups').addClass('hidden');
+        $('.group-invitations').removeClass('hidden');
     });
 
 });

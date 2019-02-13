@@ -70,3 +70,45 @@ if ($_POST['option'] == 'LEAVEGROUP') {
     echo json_encode($result);
     exit();
 }
+
+if ($_POST['option'] == 'ADDMEMBER') {
+    
+    $REQUEST = new GroupAndMemberRequest(NULL);
+    $REQUEST->groupId = $_POST['group'];
+    $REQUEST->member = $_POST['member'];
+    $REQUEST->requestedBy = $_POST['addedBy'];
+    $REQUEST->isApproved = '0';
+    
+    $result = $REQUEST->create();
+    $MEMBER = new Member($result->member);
+    $name = $MEMBER->firstName . ' ' . $MEMBER->lastName;
+
+    header('Content-Type: application/json');
+    echo json_encode($name);
+    exit();
+}
+
+if ($_POST['option'] == 'CHECKMEMBEREXIST') {
+    
+    $GROUP = GroupMember::checkMemberAlreadyExistInTheGroup($_POST['member'], $_POST['group']);
+    if($GROUP) {
+        $result = true;
+    } else {
+        $result = false;
+    }
+    header('Content-Type: application/json');
+    echo json_encode($result);
+    exit();
+}
+if ($_POST['option'] == 'CHECKINVITED') {
+    
+    $res = GroupAndMemberRequest::checkAlreadyInvitedToTheGroup($_POST['member'], $_POST['group']);
+    if($res) {
+        $result = true;
+    } else {
+        $result = false;
+    }
+    header('Content-Type: application/json');
+    echo json_encode($result);
+    exit();
+}

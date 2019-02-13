@@ -354,7 +354,7 @@ select.form-control.sub-category-select:not([size]):not([multiple]) {
 .friend-requests .notification-icon {
     margin-top: -31px;
 }
-#name-list-append .author-thumb img {
+#name-list-append .author-thumb img, #member-name-list-append .author-thumb img {
     height: 40px;
     width: 40px;
 }
@@ -943,6 +943,56 @@ input[type='submit'].share-post {
 }
 .upload-photo-item {
     cursor: auto;
+}
+input.member-name {
+    padding: 10px;
+    margin: 10px 20px;
+    width: 93%;
+}
+.search-items1 {
+
+    background: #fff;
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 20px;
+    width: 93%;
+
+}
+#member-name-list-append .author-thumb {
+
+    height: 40px;
+    width: 40px;
+    float: left;
+
+}
+#member-name-list-append .notification-event {
+    padding-left: 50px;
+    width: 80%;
+}
+#member-name-list-append .notification-icon {
+    color: #d7d9e5;
+    fill: #d7d9e5;
+    float: right;
+    margin-top: 10px;
+    margin-top: -31px;
+}
+#member-name-list-append .chat-message-item {
+    font-size: 12px;
+}
+#add-member-success-msg h5, .close-modal h5 {
+    padding: 10px 26px;
+}
+.create-group {
+    background-color: transparent;
+    border: 2px dashed #bbc0d5;
+    position: relative;
+    height: 394.15px;
+}
+.upload-group-pro-pic.pro-img {
+    margin: 10px 112px 45px;
 }
 @media(min-width: 1400px) {
     .container {

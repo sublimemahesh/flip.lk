@@ -115,10 +115,33 @@ class GroupAndMemberRequest {
 
         return $result;
     }
+    
+    public function getCountOfGroupInvitationsByMember($member) {
+
+        $query = "SELECT count(`id`) AS `count` FROM `group_and_member_request` WHERE `member` = " . $member . " AND `requested_by` NOT LIKE 'member' AND `is_approved` = 0";
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        return $result;
+    }
 
     public function getMemberRequestsByGroup($group) {
 
         $query = "SELECT * FROM `group_and_member_request` WHERE `group_id` = " . $group . " AND `is_approved` = 0";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+    
+    public function getGroupInvitationsByMember($member) {
+
+        $query = "SELECT * FROM `group_and_member_request` WHERE `member` = " . $member . " AND `requested_by` NOT LIKE 'member' AND `is_approved` = 0";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -158,4 +181,12 @@ class GroupAndMemberRequest {
         return $db->readQuery($query);
     }
 
+    public function checkAlreadyInvitedToTheGroup($member, $group) {
+
+        $query = "SELECT `id` FROM `group_and_member_request` WHERE `member`= $member AND `group_id` = $group AND `is_approved`= 0";
+
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result;
+    }
 }

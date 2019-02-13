@@ -59,7 +59,7 @@
                     <?php
                     if (empty($MEMBER->coverPicture)) {
                         ?>
-                    <img src="../upload/member/cover-picture/cover.png" class="img img-responsive img-thumbnail cover-pic" id="cover_pic"/>
+                        <img src="../upload/member/cover-picture/cover.png" class="img img-responsive img-thumbnail cover-pic" id="cover_pic"/>
                         <?php
                     } else {
                         ?>
@@ -82,6 +82,105 @@
     </div>
 </div>
 <!-- ... end Window-popup Update Cover Photo -->
+
+<!-- Window-popup Add Member -->
+<div class="modal fade" id="add-member" tabindex="-1" role="dialog" aria-labelledby="add-member" aria-hidden="true">
+    <div class="modal-dialog window-popup update-header-photo" role="document">
+        <div class="modal-content">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="modal-header">
+                <h6 class="title">Add Members</h6>
+            </div>
+
+            <div class="modal-body">
+                
+                    <input type="text" name="" id="member-name" class="member-name" member-id="<?php echo $MEMBER->id; ?>" placeholder="Enter name" />
+                    <div class="" id="member-name-list-append"></div>
+                    <input type="hidden" name="member" value="" id="mem-id"  />
+
+            </div>
+            <div class="modal-footer">
+                    <a href="#" class="btn btn-blue btn-md-2 add-members" id="" group-id="<?php echo $GROUP->id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add<div class="ripple-container"></div></a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ... end Window-popup Add Member -->
+
+<!-- Window-popup Add Member -->
+<div class="modal fade" id="add-member-success-msg" tabindex="-1" role="dialog" aria-labelledby="add-member-success-msg" aria-hidden="true">
+    <div class="modal-dialog window-popup update-header-photo" role="document">
+        <div class="modal-content">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="modal-header">
+                <h6 class="title">New Member</h6>
+            </div>
+
+            <div class="modal-body">
+                <h5><span id="new-member-name"></span> has been invited to the group.</h5>
+             </div>
+            <div class="modal-footer">
+                    <a href="#" class="btn btn-blue btn-md-2 done-btn" id="" group-id="<?php echo $GROUP->id; ?>" member-id="<?php echo $MEMBER->id; ?>">Done<div class="ripple-container"></div></a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ... end Window-popup already-a-member -->
+<!-- Window-popup Add Member -->
+<div class="modal fade close-modal" id="already-a-member" tabindex="-1" role="dialog" aria-labelledby="already-a-member" aria-hidden="true">
+    <div class="modal-dialog window-popup update-header-photo" role="document">
+        <div class="modal-content">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="modal-header">
+                <h6 class="title">Already a Member</h6>
+            </div>
+
+            <div class="modal-body">
+                <h5>The person you just tried to add is already a member of this group.</h5>
+             </div>
+            <div class="modal-footer">
+                    <a href="#" class="btn btn-blue btn-md-2 close-btn" id="" >Close<div class="ripple-container"></div></a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ... end Window-popup already-a-member -->
+
+<!-- Window-popup already invited -->
+<div class="modal fade close-modal" id="already-invited" tabindex="-1" role="dialog" aria-labelledby="already-invited" aria-hidden="true">
+    <div class="modal-dialog window-popup update-header-photo" role="document">
+        <div class="modal-content">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="modal-header">
+                <h6 class="title">Person Already Invited</h6>
+            </div>
+
+            <div class="modal-body">
+                <h5>The person you are trying to invite was already invited to this group.</h5>
+             </div>
+            <div class="modal-footer">
+                    <a href="#" class="btn btn-blue btn-md-2 close-btn">Close<div class="ripple-container"></div></a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ... end Window-popup already invited -->
 
 <!-- Window-popup Choose from my Photo -->
 <div class="modal fade" id="choose-from-my-photo" tabindex="-1" role="dialog" aria-labelledby="choose-from-my-photo" aria-hidden="true">

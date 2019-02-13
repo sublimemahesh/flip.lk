@@ -22,6 +22,14 @@ if ($_POST['option'] == 'FINDMEMBER') {
     echo json_encode($MEMBERS);
     exit();
 }
+if ($_POST['option'] == 'FINDFRIENDS') {
+    
+    $MEMBERS = Member::getMembersForInviteGroups($_POST['keyword'], $_POST['member']);
+
+    header('Content-Type: application/json');
+    echo json_encode($MEMBERS);
+    exit();
+}
 if ($_POST['option'] == 'GETMEMBER') {
     
     $MEMBER = new Member($_POST['member']);
