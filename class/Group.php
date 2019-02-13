@@ -231,5 +231,25 @@ class Group {
             return FALSE;
         }
     }
+    
+    public function confirmInvitation() {
+
+        date_default_timezone_set('Asia/Colombo');
+        $date = date('Y-m-d H:i:s');
+        
+        $query = 'UPDATE `friend_request` SET '
+                . '`is_confirmed`= "' . $this->isConfirmed . '", '
+                . '`confirmed_date`= "' . $date . '" '
+                . ' WHERE id="' . $this->id . '"';
+
+        $db = new Database();
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
 
 }

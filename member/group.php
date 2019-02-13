@@ -72,7 +72,7 @@ $GROUP = new Group($id);
                                         <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="leave-group" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group<div class="ripple-container"></div></a>
                                     </div>
                                     <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
-                                        <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add Members<div class="ripple-container"></div></a>
+                                        <a href="#" data-toggle="modal" data-target="#add-member" class="btn btn-blue btn-md-2 join-group-btn add-member" id="" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add Members<div class="ripple-container"></div></a>
                                     </div>
                                     <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
                                         <a href="create-advertisement.php?id=<?php echo $GROUP->id ?>" class="btn btn-blue btn-md-2 join-group-btn" id="">Post Advertisement<div class="ripple-container"></div></a>

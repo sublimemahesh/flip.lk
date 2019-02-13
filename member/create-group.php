@@ -239,7 +239,7 @@ $CATEGORIES = BusinessCategory::all();
                                     </div>
 
                                     <div class="col col-lg-6 col-md-4 col-sm-12 col-12">
-                                        <div class="row upload-group-pro-pic">
+                                        <div class="row upload-group-pro-pic pro-img">
                                             <div class="uploadgroupphotobx" id="uploadgroupphotobx"> 
                                                 <div class="progroupimg">
                                                     <!--<img src="../upload/group/<?php echo $groupimg; ?>" class="group-profile-default-image pro-pic" id="blah" alt=""/>-->

@@ -32,6 +32,9 @@
                             <li>
                                 <a href="manage-groups.php" id="discover-groups">Manage Groups</a>
                             </li>
+                            <li>
+                                <a href="#" id="group-invitations" id="discover-groups">Manage Group Invitations</a>
+                            </li>
 
                         </ul>
                     </div>
