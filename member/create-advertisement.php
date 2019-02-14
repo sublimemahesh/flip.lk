@@ -119,28 +119,28 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
         ?>
 
         <div class="header-spacer header-spacer-small"></div>
- <div class="col col-xl-12 col-12">
-        <!-- Main Header Account -->
-        <div class="main-header">
-            <div class="content-bg-wrap bg-account"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-                        <div class="main-header-content">
-                            <h1>Your Account Dashboard</h1>
-                            <p>Welcome to your account dashboard! Here you’ll find everything you need to change your profile
-                                information, settings, read notifications and requests, view your latest messages, change your pasword and much
-                                more! Also you can create or manage your own favourite page, have fun!</p>
+        <div class="col col-xl-12 col-12">
+            <!-- Main Header Account -->
+            <div class="main-header">
+                <div class="content-bg-wrap bg-account"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
+                            <div class="main-header-content">
+                                <h1>Your Account Dashboard</h1>
+                                <p>Welcome to your account dashboard! Here you’ll find everything you need to change your profile
+                                    information, settings, read notifications and requests, view your latest messages, change your pasword and much
+                                    more! Also you can create or manage your own favourite page, have fun!</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <img class="img-bottom" src="img/account-bottom.png" alt="friends">
             </div>
-            <img class="img-bottom" src="img/account-bottom.png" alt="friends">
-        </div>
 
-        <!-- ... end Main Header Account -->
-        <!-- Your Account Personal Information -->
-        <!--<div class="container">-->
+            <!-- ... end Main Header Account -->
+            <!-- Your Account Personal Information -->
+            <!--<div class="container">-->
             <div class="row">
                 <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
                     <div class="ui-block">
@@ -213,6 +213,15 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                                             </a>
                                                         </div>
                                                     </span>
+                                                    <span class="_uploadloaderbox">
+                                                        <div class="_m _6a">
+                                                            <a class="_uploadbox" rel="ignore">
+                                                                <div class="_upload">
+
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -243,7 +252,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                 include './account-navigation.php';
                 ?>
             </div>
-        <!--</div>-->
+            <!--</div>-->
         </div>
         <!-- ... end Your Account Personal Information -->
 
@@ -297,6 +306,8 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
         <script src="js/js/advertisement.js" type="text/javascript"></script>
         <script src="js/js/ad-images.js" type="text/javascript"></script>
         <script src="plugins/tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script>
+        <script src="js/heartcode-canvasloader.js" type="text/javascript"></script>
+        <script src="js/image-preloader.js" type="text/javascript"></script>
         <script>
                                                 tinymce.init({
                                                     selector: "#description",

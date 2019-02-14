@@ -64,7 +64,6 @@ $(document).ready(function () {
                 dataType: "JSON",
                 success: function (result) {
                     if (result) {
-                        alert(result);
                         $('#comment-' + post).val('');
                         var html = '';
                         html += '<li class="comment-item">';
@@ -103,7 +102,6 @@ $(document).ready(function () {
 
             if ($(this).children(".comment-item").length > 3) {
                 var post = $(this).attr('post-id');
-                alert(post);
                 $("#see-more-" + post).removeClass('hidden');
             }
             $(this).children(".comment-item").slice(-3).show();
@@ -130,7 +128,6 @@ $(document).ready(function () {
         var comment = this.id;
         var type = $(this).attr('type');
         var p = $('#comment-p-' + comment).text();
-        alert(p);
         $('#comment-p-' + comment).addClass('hidden');
 
         if (type == '0') {
@@ -305,7 +302,6 @@ $(document).ready(function () {
 //        $('#comment-list-' + post).removeClass('hidden');
     });
     $('.delete-comment').click(function () {
-        alert(111);
         var comment = this.id;
         var type = $(this).attr('type');
 

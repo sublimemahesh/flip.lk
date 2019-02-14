@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#btn-group').click(function () {
         var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 
@@ -156,49 +157,49 @@ $(document).ready(function () {
             });
         }
     });
-    
+
     $('#delete-group').click(function (e) {
         var id = $(this).attr('group_id');
-            swal({
-                title: "Are you sure?",
-                text: "You will not be able to recover!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, delete it!",
-                closeOnConfirm: false
-            }, function () {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+        }, function () {
 
-                $.ajax({
-                    url: "post-and-get/ajax/group.php",
-                    type: "POST",
-                    data: {
-                        id: id,
-                        status: '0',
-                        option: 'DELETEGROUP'
-                    },
-                    dataType: "JSON",
-                    success: function (jsonStr) {
-                        if (jsonStr) {
+            $.ajax({
+                url: "post-and-get/ajax/group.php",
+                type: "POST",
+                data: {
+                    id: id,
+                    status: '0',
+                    option: 'DELETEGROUP'
+                },
+                dataType: "JSON",
+                success: function (jsonStr) {
+                    if (jsonStr) {
 
-                            swal({
-                                title: "Deleted!",
-                                text: "Your group has been deleted.",
-                                type: 'success',
-                                timer: 2000,
-                                showConfirmButton: false
-                            });
-                            window.location.replace('manage-groups.php');
-                        }
+                        swal({
+                            title: "Deleted!",
+                            text: "Your group has been deleted.",
+                            type: 'success',
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                        window.location.replace('manage-groups.php');
                     }
-                });
+                }
             });
+        });
     });
-    
+
     $('.confirm-invitation').click(function () {
-        
+
         var row = $(this).attr('row_id');
-alert(row);
+        alert(row);
         $.ajax({
             url: "post-and-get/ajax/group.php",
             type: "POST",
@@ -228,6 +229,27 @@ alert(row);
             data: {
                 row: row_id,
                 option: 'DELETEINVITATION'
+            },
+            dataType: 'json',
+            success: function (mess) {
+                location.reload();
+            }
+        });
+    });
+
+    $('.remove-member').click(function () {
+
+        var member, group;
+        member = $(this).attr('member');
+        group = $(this).attr('group');
+
+        $.ajax({
+            url: "post-and-get/ajax/group.php",
+            type: "POST",
+            data: {
+                member: member,
+                group: group,
+                option: 'REMOVEMEMBER'
             },
             dataType: 'json',
             success: function (mess) {

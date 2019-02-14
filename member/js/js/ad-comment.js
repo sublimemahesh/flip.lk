@@ -8,9 +8,7 @@ $(document).ready(function () {
         var ad = $(this).attr('ad');
         var member = $(this).attr('member');
         var comment = $('#comment-' + ad).val();
-alert(ad);
-alert(member);
-alert(comment);
+
         $.ajax({
             url: "post-and-get/ajax/ad-comment.php",
             type: "POST",
@@ -171,9 +169,7 @@ alert(comment);
         var ad = $(this).attr('ad');
         var member = $(this).attr('member');
         var comment = $('#my-ad-comment-' + ad).val();
-alert(ad);
-alert(member);
-alert(comment);
+
         $.ajax({
             url: "post-and-get/ajax/ad-comment.php",
             type: "POST",
@@ -222,9 +218,7 @@ alert(comment);
         var ad = $(this).attr('ad');
         var member = $(this).attr('member');
         var comment = $('#group-comment-' + ad).val();
-alert(ad);
-alert(member);
-alert(comment);
+
         $.ajax({
             url: "post-and-get/ajax/ad-comment.php",
             type: "POST",

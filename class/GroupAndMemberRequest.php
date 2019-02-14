@@ -189,4 +189,13 @@ class GroupAndMemberRequest {
         $result = mysql_fetch_array($db->readQuery($query));
         return $result;
     }
+    
+    public function removeMember($member, $group) {
+
+        $query = 'DELETE FROM `group_and_member_request` WHERE `member`="'. $member .'" AND `group_id` ="'. $group .'"';
+
+        $db = new Database();
+
+        return $db->readQuery($query);
+    }
 }

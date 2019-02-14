@@ -45,7 +45,6 @@ $(document).ready(function () {
     });
 
     $('.approve-request').click(function () {
-        alert(111);
         return false;
         var row = $(this).attr('row_id');
 

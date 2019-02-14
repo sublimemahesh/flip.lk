@@ -255,6 +255,14 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                                             </a>
                                                         </div>
                                                     </span>
+                                                    <span class="_uploadloaderbox">
+                                                        <div class="_m _6a">
+                                                            <a class="_uploadbox" rel="ignore">
+                                                                <div class="_upload">
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -340,6 +348,8 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
         <script src="js/js/edit-ad-slider.js" type="text/javascript"></script>
         <script src="js/js/delete-ad.js" type="text/javascript"></script>
         <script src="plugins/tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script>
+        <script src="js/heartcode-canvasloader.js" type="text/javascript"></script>
+        <script src="js/image-preloader.js" type="text/javascript"></script>
         <script>
                                                 tinymce.init({
                                                     selector: "#description",

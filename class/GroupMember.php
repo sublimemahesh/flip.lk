@@ -138,7 +138,7 @@ class GroupMember {
     public function deleteAllMembersInGroup($group) {
 
         $query = 'DELETE FROM `group_members` WHERE `group_id`="' . $group . '"';
-        
+
         $db = new Database();
         return $db->readQuery($query);
     }
@@ -167,6 +167,29 @@ class GroupMember {
         $db = new Database();
         $result = mysql_fetch_array($db->readQuery($query));
         return $result;
+    }
+
+    public function removeMember($member, $group) {
+
+        $query = 'DELETE FROM `group_members` WHERE `member`="'. $member .'" AND `group_id` ="'. $group .'"';
+
+        $db = new Database();
+
+        return $db->readQuery($query);
+    }
+    
+    public function getGroupAdmin($group) {
+
+        $query = "SELECT `id` FROM `group_members` WHERE `group_id` = $group AND `status` LIKE 'admin'";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row['id']);
+        }
+
+        return $array_res;
     }
 
 }
