@@ -95,31 +95,39 @@
                             ?>
                         </div>
 
-                        <div class="control-block-button">
-                            <a href="35-YourAccount-FriendsRequests.html" class="btn btn-control bg-blue">
-                                <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                            </a>
+                        <?php
+                        if ($MEM->id === $_SESSION['id']) {
+                            ?>
+                            <div class="control-block-button">
+                                <a href="35-YourAccount-FriendsRequests.html" class="btn btn-control bg-blue">
+                                    <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
+                                </a>
 
-                            <a href="#" class="btn btn-control bg-purple">
-                                <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
-                            </a>
+                                <a href="#" class="btn btn-control bg-purple">
+                                    <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
+                                </a>
 
-                            <div class="btn btn-control bg-primary more">
-                                <svg class="olymp-settings-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-settings-icon"></use></svg>
+                                <div class="btn btn-control bg-primary more">
+                                    <svg class="olymp-settings-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-settings-icon"></use></svg>
 
-                                <ul class="more-dropdown more-with-triangle triangle-bottom-right">
-                                    <li>
-                                        <a href="#" data-toggle="modal" data-target="#update-profile-photo">Update Profile Picture</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-toggle="modal" data-target="#update-cover-photo">Update Cover Picture</a>
-                                    </li>
-                                    <li>
-                                        <a href="personal-information.php">Account Settings</a>
-                                    </li>
-                                </ul>
+                                    <ul class="more-dropdown more-with-triangle triangle-bottom-right">
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#update-profile-photo">Update Profile Picture</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#update-cover-photo">Update Cover Picture</a>
+                                        </li>
+                                        <li>
+                                            <a href="personal-information.php">Account Settings</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                            <?php
+                        }
+                        ?>
+
+
                     </div>
                     <div class="top-header-author">
                         <a href="profile.php" class="author-thumb main-profile-pic">

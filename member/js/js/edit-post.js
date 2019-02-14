@@ -35,12 +35,15 @@ $(document).ready(function () {
                                 option: 'GETPOSTPHOTOS'
                             },
                             success: function (result) {
-                                if (result == '') {
+                                if (result.thumb == '') {
+                                    
+                                    $('#remove-circle-' + post.id).empty();
                                     return true;
                                 } else {
                                     $(function () {
                                         $('#gallery1').imagesGrid({
-                                            images: result
+                                            images: result.thumb,
+                                            full_images: result.full
                                         });
                                         var html1 = '';
                                         html1 += '<i class="fa fa-times-circle remove-post-image-' + post.id + '" id="remove-post-image"></i>';
@@ -78,6 +81,14 @@ $(document).ready(function () {
                         html += '</a>';
                         html += '</div>';
                         html += '</span>';
+//                        html += '<span class="_uploadloader_edit">';
+//                        html += '<div class="_m _6a">';
+//                        html += '<a class="_uploadbox" rel="ignore">';
+//                        html += '<div class="_upload">';
+//                        html += '</div>';
+//                        html += '</a>';
+//                        html += '</div>';
+//                        html += '</span>';
                         html += '</div>';
                         html += '</div>';
                         html += '</div>';

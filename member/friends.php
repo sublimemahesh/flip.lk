@@ -128,7 +128,7 @@ if ($count_requests['count'] == 0) {
                                         <?php
                                         if ($FRI->status == 0) {
                                             ?>
-                                             <img src="../upload/member/cover-picture/thumb/cover.png" alt="friend">
+                                             <img src="../upload/member/cover-picture/cover.jpg" alt="friend">
                                             <?php
                                         } else {
                                             ?>

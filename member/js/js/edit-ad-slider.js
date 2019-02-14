@@ -13,7 +13,8 @@ $(document).ready(function () {
         success: function (result) {
             $(function () {
                 $('#gallery').imagesGrid({
-                    images: result
+                    images: result.thumb,
+                    full_images: result.full
                 });
                 var html1 = '';
                 html1 = '<i class="fa fa-times-circle remove-ad-image" id="remove-ad-image"></i>';

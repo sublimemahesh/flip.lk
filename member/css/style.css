@@ -459,14 +459,14 @@ select.form-control.sub-category-select:not([size]):not([multiple]) {
     display: inline-block;
     margin-left: 5px;
     position: relative;
-
+z-index: 999;
 }
 ._uploadouterbox, ._uploadouterbox_edit {
 
     display: inline-block;
     margin-left: 5px;
     vertical-align: top;
-    left: 112px;
+    left: 0px;
     top: 0px;
     position: absolute;
 }
@@ -993,6 +993,33 @@ input.member-name {
 }
 .upload-group-pro-pic.pro-img {
     margin: 10px 112px 45px;
+}
+.remove-member {
+    cursor: pointer;
+}
+._uploadloaderbox, ._uploadloaderbox_edit {
+
+    display: none;
+    margin-left: 5px;
+    margin-right: 12px;
+    vertical-align: top;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+
+}
+._uploadloaderbox ._uploadbox, ._uploadloaderbox_edit ._uploadbox {
+
+    border: 2px solid #dddfe2;
+    border-radius: 2px;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 100px;
+    margin-right: 5px;
+    min-width: 100px;
+    position: relative;
+    width: auto;
+    background: #eee;
 }
 @media(min-width: 1400px) {
     .container {

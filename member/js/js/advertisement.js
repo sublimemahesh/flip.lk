@@ -38,7 +38,6 @@ $(document).ready(function () {
             });
             return false;
         } else {
-            alert(1111);
             var group = $('#group').val();
             var member = $('#member').val();
             var title = $('#title').val();
@@ -157,7 +156,6 @@ $(document).ready(function () {
     });
     
     $('#remove-circle').on('click', '#remove-ad-image', function () {
-        alert(111);
         var id = $('#id').val();
 
         swal({
