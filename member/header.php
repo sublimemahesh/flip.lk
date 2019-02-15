@@ -1,4 +1,7 @@
 <!-- Header-BP -->
+<?php
+$count = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
+?>
 <header class="header" id="site-header">
     <div class="page-title">
         <a href="./">
@@ -8,7 +11,11 @@
     <div class="header-content-wrapper">
         <form class="search-bar w-search notification-list friend-requests">
             <div class="form-group with-button">
-                <input class="form-control js-user-search" id="find-member" placeholder="Search here people or pages..." type="text" value="<?php if(isset($MEM)) { echo $MEM->firstName . ' ' . $MEM->lastName;} ?>" autocomplete="off">
+                <input class="form-control js-user-search" id="find-member" placeholder="Search here people or pages..." type="text" value="<?php
+                if (isset($MEM)) {
+                    echo $MEM->firstName . ' ' . $MEM->lastName;
+                }
+                ?>" autocomplete="off">
                 <div class="" id="name-list-append"></div>
                 <input type="hidden" name="member" value="" id="member-id"  />
                 <button>
@@ -18,7 +25,7 @@
         </form>
 
         <div class="control-block">
-            
+
             <div class="control-icon more has-items">
                 <a href="./"><svg class="olymp-home-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-home-icon"></use></svg></a>
 
@@ -31,8 +38,13 @@
 
             <div class="control-icon more has-items">
                 <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                <div class="label-avatar bg-blue">6</div>
-
+                <?php
+                if ($count['count'] > 0) {
+                    ?>
+                    <div class="label-avatar bg-blue newest-request"><?php echo $count['count']; ?></div>
+                    <?php
+                }
+                ?>
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
                         <h6 class="title">FRIEND REQUESTS</h6>
@@ -41,112 +53,55 @@
                     </div>
 
                     <div class="mCustomScrollbar" data-mcs-theme="dark">
-                        <ul class="notification-list friend-requests">
-                            <li>
-                                <div class="author-thumb">
-                                    <img src="img/avatar55-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    <a href="#" class="h6 notification-friend">Tamara Romanoff</a>
-                                    <span class="chat-message-item">Mutual Friend: Sarah Hetfield</span>
-                                </div>
-                                <span class="notification-icon">
-                                    <a href="#" class="accept-request">
-                                        <span class="icon-add without-text">
-                                            <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                        </span>
-                                    </a>
+                        <ul class="notification-list friend-requests friend-requests-notification">
+                            <?php
+                            if (count(FriendRequest::getFriendRequestsByMember($MEMBER->id)) > 0) {
 
-                                    <a href="#" class="accept-request request-del">
-                                        <span class="icon-minus">
-                                            <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                        </span>
-                                    </a>
+                                foreach (FriendRequest::getFriendRequestsByMember($MEMBER->id) as $key => $request) {
+                                    if ($key < 4) {
+                                        $MEMB = new Member($request['requested_by'])
+                                        ?>
+                                        <li id="request-to-join-<?php echo $MEMB->id; ?>">
+                                            <div class="author-thumb">
+                                                <img src="../upload/member/<?php echo $MEMB->profilePicture; ?>" alt="author">
+                                            </div>
+                                            <div class="notification-event">
+                                                <a href="#" class="h6 notification-friend"><?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?></a>
+                                                <span class="chat-message-item">Mutual Friend: Sarah Hetfield</span>
+                                            </div>
+                                            <span class="notification-icon">
+                                                <a href="#" class="accept-request confirm-request" row_id="<?php echo $request['id']; ?>">
+                                                    <span class="icon-add without-text">
+                                                        <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                    </span>
+                                                </a>
 
-                                </span>
+                                                <a href="#" class="accept-request request-del">
+                                                    <span class="icon-minus">
+                                                        <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                    </span>
+                                                </a>
 
-                                <div class="more">
-                                    <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                </div>
-                            </li>
+                                            </span>
 
-                            <li>
-                                <div class="author-thumb">
-                                    <img src="img/avatar56-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    <a href="#" class="h6 notification-friend">Tony Stevens</a>
-                                    <span class="chat-message-item">4 Friends in Common</span>
-                                </div>
-                                <span class="notification-icon">
-                                    <a href="#" class="accept-request">
-                                        <span class="icon-add without-text">
-                                            <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                        </span>
-                                    </a>
-
-                                    <a href="#" class="accept-request request-del">
-                                        <span class="icon-minus">
-                                            <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                        </span>
-                                    </a>
-
-                                </span>
-
-                                <div class="more">
-                                    <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                </div>
-                            </li>
-
-                            <li class="accepted">
-                                <div class="author-thumb">
-                                    <img src="img/avatar57-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    You and <a href="#" class="h6 notification-friend">Mary Jane Stark</a> just became friends. Write on <a href="#" class="notification-link">her wall</a>.
-                                </div>
-                                <span class="notification-icon">
-                                    <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                </span>
-
-                                <div class="more">
-                                    <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                    <svg class="olymp-little-delete"><use xlink:href="svg-icons/sprites/icons.svg#olymp-little-delete"></use></svg>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="author-thumb">
-                                    <img src="img/avatar58-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    <a href="#" class="h6 notification-friend">Stagg Clothing</a>
-                                    <span class="chat-message-item">9 Friends in Common</span>
-                                </div>
-                                <span class="notification-icon">
-                                    <a href="#" class="accept-request">
-                                        <span class="icon-add without-text">
-                                            <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                        </span>
-                                    </a>
-
-                                    <a href="#" class="accept-request request-del">
-                                        <span class="icon-minus">
-                                            <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                        </span>
-                                    </a>
-
-                                </span>
-
-                                <div class="more">
-                                    <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                </div>
-                            </li>
+                                            <div class="more">
+                                                <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
+                                            </div>
+                                        </li>
+                                        <?php
+                                    }
+                                }
+                            } else {
+                                ?>
+                                <li>There is no any friend requests.</li>
+                                <?php
+                            }
+                            ?>
 
                         </ul>
                     </div>
 
-                    <a href="#" class="view-all bg-blue">Check all your Events</a>
+                    <a href="friend-requests.php" class="view-all bg-blue">See All</a>
                 </div>
             </div>
 
@@ -241,7 +196,7 @@
                 </div>
             </div>
 
-            
+
 
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
@@ -310,7 +265,7 @@
                 </div>
                 <a href="profile.php" class="author-name fn">
                     <div class="author-title">
-                        <?php echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+<?php echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                     </div>
                     <span class="author-subtitle">SPACE COWBOY</span>
                 </a>

@@ -12,6 +12,7 @@ if (isset($_GET['id'])) {
     $MEM = new Member($_SESSION['id']);
 }
 $no_of_request = FriendRequest::getCountOfFriendRequestsByMember($MEMBER->id);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,6 +66,7 @@ $no_of_request = FriendRequest::getCountOfFriendRequestsByMember($MEMBER->id);
                             <?php
                         foreach (FriendRequest::getFriendRequestsByMember($MEMBER->id) as $request) {
                             $MEM = new Member($request['requested_by']);
+                            $view = FriendRequest::updateViewingStatus($request['id']);
                             ?>
                             
                             <li id="request-to-join-<?php echo $MEM->id; ?>">
