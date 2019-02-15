@@ -20,14 +20,21 @@ if (isset($_POST['upload-post-image'])) {
 
         $image_dst_x = $handle->image_dst_x;
         $image_dst_y = $handle->image_dst_y;
-        $newSize = Helper::calImgResize(900, $image_dst_x, $image_dst_y);
 
-        $image_x = (int) $newSize[0];
-        $image_y = (int) $newSize[1];
+        if ($image_dst_y > 900) {
+            $newSize = Helper::calImgResize(900, $image_dst_x, $image_dst_y);
 
-        $handle->image_x = $image_x;
-        $handle->image_y = $image_y;
-        
+            $image_x = (int) $newSize[0];
+            $image_y = (int) $newSize[1];
+
+            $handle->image_x = $image_x;
+            $handle->image_y = $image_y;
+        } else {
+            $handle->image_x = $image_dst_x;
+            $handle->image_y = $image_dst_y;
+        }
+
+
         $handle->Process($dir_dest);
 
         if ($handle->processed) {
@@ -131,13 +138,13 @@ if ($_POST['option'] == 'DELETEIMAGE') {
 
 
 if ($_POST['option'] == 'DELETEPOSTIMAGES') {
-    
-    $images =  PostImage::getPhotosByPostId($_POST['post']);
+
+    $images = PostImage::getPhotosByPostId($_POST['post']);
     foreach ($images as $img) {
         unlink(Helper::getSitePath() . "upload/post/" . $img['image_name']);
         unlink(Helper::getSitePath() . "upload/post/thumb/" . $img['image_name']);
         unlink(Helper::getSitePath() . "upload/post/thumb2/" . $img['image_name']);
-        
+
         $POSTIMAGES = new PostImage($img['id']);
         $POSTIMAGES->delete();
     }

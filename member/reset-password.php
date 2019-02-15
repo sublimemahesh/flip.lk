@@ -41,134 +41,13 @@ $CATEGORIES = BusinessCategory::all();
                 <div class="header--standard-wrap">
                     <a href="#" class="logo">
                         <div class="img-wrap">
-                            <img src="img/logo.png" alt="Olympus">
-                            <img src="img/logo-colored-small.png" alt="Olympus" class="logo-colored">
+                            <img src="img/logo/logo.png" alt="Olympus">
                         </div>
-                        <div class="title-block">
-                            <h6 class="logo-title">olympus</h6>
-                            <div class="sub-title">SOCIAL NETWORK</div>
-                        </div>
+
                     </a>
                     <a href="#" class="open-responsive-menu js-open-responsive-menu">
                         <svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
                     </a>
-                    <div class="nav nav-pills nav1 header-menu">
-                        <div class="mCustomScrollbar">
-                            <ul>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Home</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" tabindex='1'>Profile</a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Newsfeed</a>
-                                        <a class="dropdown-item" href="#">Post Versions</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown dropdown-has-megamenu">
-                                    <a href="#" class="nav-link">Forums</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Terms & Conditions</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Events</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Privacy Policy</a>
-                                </li>
-                                <li class="close-responsive-menu js-close-responsive-menu">
-                                    <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
-                                </li>
-                                <li class="nav-item js-expanded-menu">
-                                    <a href="#" class="nav-link">
-                                        <svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
-                                        <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
-                                    </a>
-                                </li>
-                                <li class="shoping-cart more">
-                                    <a href="#" class="nav-link">
-                                        <svg class="olymp-shopping-bag-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-shopping-bag-icon"></use></svg>
-                                        <span class="count-product">2</span>
-                                    </a>
-                                    <div class="more-dropdown shop-popup-cart">
-                                        <ul>
-                                            <li class="cart-product-item">
-                                                <div class="product-thumb">
-                                                    <img src="img/product1.png" alt="product">
-                                                </div>
-                                                <div class="product-content">
-                                                    <h6 class="title">White Enamel Mug</h6>
-                                                    <ul class="rait-stars">
-                                                        <li>
-                                                            <i class="fa fa-star star-icon c-primary" aria-hidden="true"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-star star-icon c-primary" aria-hidden="true"></i>
-                                                        </li>
-
-                                                        <li>
-                                                            <i class="fa fa-star star-icon c-primary" aria-hidden="true"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-star star-icon c-primary" aria-hidden="true"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i class="far fa-star star-icon" aria-hidden="true"></i>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="counter">x2</div>
-                                                </div>
-                                                <div class="product-price">$20</div>
-                                                <div class="more">
-                                                    <svg class="olymp-little-delete"><use xlink:href="svg-icons/sprites/icons.svg#olymp-little-delete"></use></svg>
-                                                </div>
-                                            </li>
-                                            <li class="cart-product-item">
-                                                <div class="product-thumb">
-                                                    <img src="img/product2.png" alt="product">
-                                                </div>
-                                                <div class="product-content">
-                                                    <h6 class="title">Olympus Orange Shirt</h6>
-                                                    <ul class="rait-stars">
-                                                        <li>
-                                                            <i class="fa fa-star star-icon c-primary" aria-hidden="true"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-star star-icon c-primary" aria-hidden="true"></i>
-                                                        </li>
-
-                                                        <li>
-                                                            <i class="fa fa-star star-icon c-primary" aria-hidden="true"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-star star-icon c-primary" aria-hidden="true"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i class="far fa-star star-icon" aria-hidden="true"></i>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="counter">x1</div>
-                                                </div>
-                                                <div class="product-price">$40</div>
-                                                <div class="more">
-                                                    <svg class="olymp-little-delete"><use xlink:href="svg-icons/sprites/icons.svg#olymp-little-delete"></use></svg>
-                                                </div>
-                                            </li>
-                                        </ul>
-
-                                        <div class="cart-subtotal">Cart Subtotal:<span>$80</span></div>
-
-                                        <div class="cart-btn-wrap">
-                                            <a href="#" class="btn btn-primary btn-sm">Go to Your Cart</a>
-                                            <a href="#" class="btn btn-purple btn-sm">Go to Checkout</a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -176,7 +55,7 @@ $CATEGORIES = BusinessCategory::all();
         <!-- ... end Header Standard Landing  -->
         <div class="header-spacer--standard"></div>
 
-        <div class="container">
+        <div class="container login-container">
             <div class="row display-flex">
                 <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                     <div class="landing-content">
@@ -195,7 +74,7 @@ $CATEGORIES = BusinessCategory::all();
                     <div class="registration-login-form" id="registration-login-form">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
-                            
+
                         </ul>
 
                         <!-- Tab panes -->
@@ -221,17 +100,17 @@ $CATEGORIES = BusinessCategory::all();
                                         <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Password Reset Code</label>
-                                                <input class="form-control" placeholder="" type="text" name="code">
+                                                <input class="form-control" placeholder="" type="text" name="code" autocomplete="off" />
                                             </div>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Your Password</label>
-                                                <input class="form-control" placeholder="" type="password" name="password">
+                                                <input class="form-control" placeholder="" type="password" name="password" autocomplete="off" />
                                             </div>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Confirm Password</label>
-                                                <input class="form-control" placeholder="" type="password" name="cpassword">
+                                                <input class="form-control" placeholder="" type="password" name="cpassword" autocomplete="off" />
                                             </div>
-                                            
+
                                             <input type="submit" class="btn btn-lg btn-purple full-width" name="reset-password"  value="Send Email">
                                         </div>
                                     </div>

@@ -139,8 +139,8 @@ if (isset($_POST['check-email'])) {
             $res = $MEMBER->SelectForgetMember($email);
 
             $email = $res['email'];
-            $resetcode = $res['resetCode'];
-
+            $resetcode = $res['reset_code'];
+            
             date_default_timezone_set('Asia/Colombo');
 
             $todayis = date("l, F j, Y, g:i a");
@@ -167,8 +167,6 @@ if (isset($_POST['check-email'])) {
             $html .= "<tr><td colspan='3' style='font-size: 14px; background-color: #FAFAFA; padding: 25px; color: #333; font-weight: 300; text-align: justify; '>Thank you</td></tr>";
 
             $html .= "</table>";
-
-
 
             if (mail($email, $subject, $html, $headers)) {
                 header('Location: ../reset-password.php?message=12');

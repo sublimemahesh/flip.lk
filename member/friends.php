@@ -11,11 +11,11 @@ if (isset($_GET['id'])) {
 }
 $count_friends = Friend::countFriends($MEM->id);
 if ($count_friends['count'] == 0) {
-    $count = '0';
+    $count1 = '0';
 } elseif ($count_friends['count'] < 10) {
-    $count = '0' . $count_friends['count'];
+    $count1 = '0' . $count_friends['count'];
 } else {
-    $count = $count_friends['count'];
+    $count1 = $count_friends['count'];
 }
 
 
@@ -27,6 +27,7 @@ if ($count_requests['count'] == 0) {
 } else {
     $countr = $count_requests['count'];
 }
+
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,12 +76,13 @@ if ($count_requests['count'] == 0) {
                         <div class="ui-block responsive-flex">
                             <div class="ui-block-title">
                                 <div class="h6 title col-sm-4">
-                                    <?php echo $MEM->firstName . ' ' . $MEM->lastName . ' (' . $count . ')'; ?> 
+                                    <?php 
+                                    echo $MEM->firstName . ' ' . $MEM->lastName . ' (' . $count1 . ')'; ?> 
                                 </div>
                                 <form class="w-search col-sm-4">
                                     <div class="form-group with-button">
                                         <input class="form-control" type="text" placeholder="Search Friends...">
-                                        <button>
+                                        <button class="search-btn">
                                             <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
                                         </button>
                                     </div>
@@ -140,20 +142,6 @@ if ($count_requests['count'] == 0) {
 
                                     <div class="friend-item-content">
 
-                                        <!--                                    <div class="more">
-                                                                                <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                                                                <ul class="more-dropdown">
-                                                                                    <li>
-                                                                                        <a href="#">Report Profile</a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a href="#">Block Profile</a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a href="#">Turn Off Notifications</a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>-->
                                         <div class="friend-avatar">
                                             <div class="author-thumb member-request-profile-pic">
                                                 <?php
@@ -202,10 +190,6 @@ if ($count_requests['count'] == 0) {
                                                         </a>
                                                     </div>
                                                     <div class="control-block-button" data-swiper-parallax="-100">
-                                                        <a href="#" class="btn btn-control bg-blue">
-                                                            <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                        </a>
-
                                                         <a href="#" class="btn btn-control bg-purple">
                                                             <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
                                                         </a>
@@ -289,11 +273,11 @@ if ($count_requests['count'] == 0) {
         <script src="js/jquery.gifplayer.js"></script>
         <script src="js/mediaelement-and-player.js"></script>
         <script src="js/mediaelement-playlist-plugin.min.js"></script>
-
         <script src="js/base-init.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
-
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="js/js/find-friends.js" type="text/javascript"></script>
+        <script src="js/js/edit-profile-picture.js" type="text/javascript"></script>
+        <script src="js/js/edit-cover-picture.js" type="text/javascript"></script>
     </body>
 </html>

@@ -32,7 +32,7 @@ $CATEGORIES = BusinessCategory::all();
         <link rel="stylesheet" type="text/css" href="css/main.min.css">
         <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
-        
+
     </head>
     <body class="landing-page">
         <div class="content-bg-wrap"></div>
@@ -44,7 +44,7 @@ $CATEGORIES = BusinessCategory::all();
                         <div class="img-wrap">
                             <img src="img/logo/logo.png" alt="Olympus">
                         </div>
-                        
+
                     </a>
                     <a href="#" class="open-responsive-menu js-open-responsive-menu">
                         <svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
@@ -75,7 +75,7 @@ $CATEGORIES = BusinessCategory::all();
                     <div class="registration-login-form" id="registration-login-form">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
-                            
+
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">
                                     <svg class="olymp-register-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-register-icon"></use></svg>
@@ -92,7 +92,25 @@ $CATEGORIES = BusinessCategory::all();
                         <div class="tab-content">
                             <div class="tab-pane active" id="profile" role="tabpanel" data-mh="log-tab">
                                 <div class="title h6">Login to your Account</div>
+
                                 <form class="content" action="post-and-get/member.php" method="post">
+                                    <div class="top-bott20 m-l-25 m-r-15">
+                                        <?php
+                                        if (isset($_GET['message'])) {
+
+                                            $MESSAGE = New Message($_GET['message']);
+                                            ?>
+                                            <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
+                                                <?php echo $MESSAGE->description; ?>
+                                            </div>
+                                            <?php
+                                        }
+
+                                        $vali = new Validator();
+
+                                        $vali->show_message();
+                                        ?>
+                                    </div>
                                     <div class="row">
                                         <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                             <div class="form-group label-floating is-empty">
@@ -142,23 +160,23 @@ $CATEGORIES = BusinessCategory::all();
                                         <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">First Name</label>
-                                                <input class="form-control" placeholder="" type="text" name="fname">
+                                                <input class="form-control" placeholder="" type="text" name="fname" autocomplete="off" />
                                             </div>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Last Name</label>
-                                                <input class="form-control" placeholder="" type="text" name="lname">
+                                                <input class="form-control" placeholder="" type="text" name="lname" autocomplete="off" />
                                             </div>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Your Email</label>
-                                                <input class="form-control" placeholder="" type="email" name="email">
+                                                <input class="form-control" placeholder="" type="email" name="email" autocomplete="off" />
                                             </div>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Your Password</label>
-                                                <input class="form-control" placeholder="" type="password" name="password">
+                                                <input class="form-control" placeholder="" type="password" name="password" autocomplete="off" />
                                             </div>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Confirm Password</label>
-                                                <input class="form-control" placeholder="" type="password" name="cpassword">
+                                                <input class="form-control" placeholder="" type="password" name="cpassword" autocomplete="off" />
                                             </div>
 
                                             <div class="remember">
@@ -175,53 +193,8 @@ $CATEGORIES = BusinessCategory::all();
                                     </div>
                                 </form>
                             </div>
-
-                            
                         </div>
                     </div>
-
-<!--                    <div  id="category-save-form" class="registration-login-form hidden">
-                         Nav tabs 
-
-
-                         Tab panes 
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="cat" role="tabpanel" data-mh="log-tab">
-                                <div class="title h6">Select Your Business Category</div>
-                                <div class="alert-position hidden">
-                                    <div class="alert alert-danger" role = "alert">
-                                        <span id="message"></span>
-                                    </div>
-                                </div>
-
-                                <form class="content" id="register">
-                                    <div class="row">
-                                        <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="control-label">Your Business Category</label>
-                                                <select class="" id="select-business-category">
-                                                    <option value="">-- Please Select Business Category -- </option>
-                                                    <?php
-                                                    foreach ($CATEGORIES as $category) {
-                                                        ?>
-                                                        <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                            <div id="select-sub-category">
-
-                                            </div>
-
-                                            <a href="#" id="btnSelectCategory" class="btn btn-purple btn-lg full-width">Save Your Business Category</a>
-                                            <input type="hidden" name="save"  value="">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>-->
                     <!-- ... end Login-Registration Form  -->
                 </div>
             </div>
