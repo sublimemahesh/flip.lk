@@ -16,13 +16,19 @@ if (isset($_POST['upload-ad-image'])) {
 
         $image_dst_x = $handle->image_dst_x;
         $image_dst_y = $handle->image_dst_y;
-        $newSize = Helper::calImgResize(600, $image_dst_x, $image_dst_y);
 
-        $image_x = (int) $newSize[0];
-        $image_y = (int) $newSize[1];
+        if ($image_dst_y > 900) {
+            $newSize = Helper::calImgResize(900, $image_dst_x, $image_dst_y);
 
-        $handle->image_x = $image_x;
-        $handle->image_y = $image_y;
+            $image_x = (int) $newSize[0];
+            $image_y = (int) $newSize[1];
+
+            $handle->image_x = $image_x;
+            $handle->image_y = $image_y;
+        } else {
+            $handle->image_x = $image_dst_x;
+            $handle->image_y = $image_dst_y;
+        }
         $handle->Process($dir_dest);
 
         if ($handle->processed) {
@@ -34,7 +40,7 @@ if (isset($_POST['upload-ad-image'])) {
                 $handle1->file_new_name_ext = 'jpg';
                 $handle1->image_ratio_crop = 'C';
                 $handle1->file_new_name_body = $imgName;
-                $handle1->image_x = 900;
+                $handle1->image_x = 500;
                 $handle1->image_y = 500;
                 $handle1->Process($dir_dest . '/thumb');
                 if ($handle1->processed) {
@@ -148,10 +154,10 @@ if ($_POST['option'] === 'GETADPHOTOS') {
         array_push($arr1, "../upload/advertisement/" . $photo['image_name']);
         array_push($arr2, "../upload/advertisement/thumb/" . $photo['image_name']);
     }
-    
+
     $result['full'] = $arr1;
     $result['thumb'] = $arr2;
-    
+
     header('Content-type: application/json');
     echo json_encode($result);
 }

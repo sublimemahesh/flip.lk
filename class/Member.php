@@ -411,7 +411,7 @@ class Member {
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->email = $result['email'];
-            $this->restCode = $result['resetcode'];
+            $this->restCode = $result['reset_code'];
 
             return $result;
         }

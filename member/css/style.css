@@ -10,7 +10,7 @@
     width: 100%;
 }
 .header .page-title {
-    padding: 20px 10px 20px 80px;
+    padding: 14px 10px 20px 80px;
 }
 .page-title img {
     width: 140px;
@@ -989,7 +989,7 @@ input.member-name {
     background-color: transparent;
     border: 2px dashed #bbc0d5;
     position: relative;
-    height: 394.15px;
+    height: 290px;
 }
 .upload-group-pro-pic.pro-img {
     margin: 10px 112px 45px;
@@ -1031,9 +1031,16 @@ input.member-name {
     overflow: hidden;
 }
 .control-icon .friend-requests-notification a {
-
     color: #484343;
-
+}
+.form-group.with-button button.search-btn {
+    height: 100%;
+}
+.friend-list-img {
+    width: 34px;
+}
+.members-in-group {
+    height: 290px;
 }
 @media(min-width: 1400px) {
     .container {

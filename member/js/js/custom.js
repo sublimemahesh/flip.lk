@@ -20,7 +20,7 @@ $(document).ready(function () {
     $('#your-groups').click(function () {
         $('.groups-you-manage').addClass('hidden');
         $('.discover-groups').addClass('hidden');
-         $('.group-invitations').addClass('hidden');
+        $('.group-invitations').addClass('hidden');
         $('.your-groups').removeClass('hidden');
     });
     $('#discover-groups').click(function () {
