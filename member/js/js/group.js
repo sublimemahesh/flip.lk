@@ -199,7 +199,6 @@ $(document).ready(function () {
     $('.confirm-invitation').click(function () {
 
         var row = $(this).attr('row_id');
-        alert(row);
         $.ajax({
             url: "post-and-get/ajax/group.php",
             type: "POST",

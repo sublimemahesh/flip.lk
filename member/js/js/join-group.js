@@ -45,7 +45,6 @@ $(document).ready(function () {
     });
 
     $('.approve-request').click(function () {
-        return false;
         var row = $(this).attr('row_id');
 
         $.ajax({
@@ -57,8 +56,11 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function (mess) {
+                $('.request-to-join-' + mess.member).addClass('hidden');
                 $('#request-to-join-' + mess.member).addClass('hidden');
+                
                 $('#accepted-request-' + mess.member).removeClass('hidden');
+                $('.accepted-request-' + mess.member).removeClass('hidden');
 
                 var count = $('#member-request-count').text();
                 $('#member-request-count').text(count - 1);

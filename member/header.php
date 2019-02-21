@@ -1,7 +1,5 @@
 <!-- Header-BP -->
-<?php
-$count = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
-?>
+
 <header class="header" id="site-header">
     <div class="page-title">
         <a href="./">
@@ -35,13 +33,15 @@ $count = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
                 <!--<a href="./"><img src="img/icon/group-2.png" /></a>-->
 
             </div>
-
             <div class="control-icon more has-items">
                 <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                 <?php
-                if ($count['count'] > 0) {
+                
+                $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
+                
+                if ($countu['count'] > 0) {
                     ?>
-                    <div class="label-avatar bg-blue newest-request"><?php echo $count['count']; ?></div>
+                    <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
                     <?php
                 }
                 ?>
@@ -265,7 +265,7 @@ $count = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
                 </div>
                 <a href="profile.php" class="author-name fn">
                     <div class="author-title">
-<?php echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                        <?php echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                     </div>
                     <span class="author-subtitle">SPACE COWBOY</span>
                 </a>

@@ -212,9 +212,9 @@ class FriendRequest {
     public function getCountOfUnviewedRequests($requestedTo) {
 
         $query = "SELECT count(`id`) AS `count` FROM `friend_request` WHERE `requested_to` = " . $requestedTo . " AND `is_confirmed` = 0 AND `is_viewed` = 0";
+        
         $db = new Database();
         $result = mysql_fetch_array($db->readQuery($query));
-
         return $result;
     }
 }

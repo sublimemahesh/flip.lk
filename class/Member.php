@@ -31,11 +31,12 @@ class Member {
     public $password;
     public $status;
     public $isConfirmed;
+    public $isSuspend;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`created_at`,`first_name`,`last_name`,`email`,`phone_number`,`profile_picture`,`cover_picture`,`district`,`city`,`address`,`dob`,`occupation`,`gender`,`civil_status`,`about_me`,`category`,`sub_category`,`auth_token`,`last_login`,`reset_code`,`status`,`is_confirmed` FROM `member` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`created_at`,`first_name`,`last_name`,`email`,`phone_number`,`profile_picture`,`cover_picture`,`district`,`city`,`address`,`dob`,`occupation`,`gender`,`civil_status`,`about_me`,`category`,`sub_category`,`auth_token`,`last_login`,`reset_code`,`status`,`is_confirmed`,`is_suspend` FROM `member` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -64,6 +65,7 @@ class Member {
             $this->resetCode = $result['reset_code'];
             $this->status = $result['status'];
             $this->isConfirmed = $result['is_confirmed'];
+            $this->isSuspend = $result['is_suspend'];
 
             return $result;
         }
@@ -102,6 +104,20 @@ class Member {
         } else {
             return FALSE;
         }
+    }
+
+    public function all() {
+
+        $query = "SELECT * FROM `member` ORDER BY `created_at` ASC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
     }
 
     public function login($email, $password) {
@@ -775,6 +791,23 @@ class Member {
             return FALSE;
         }
     }
+    
+    public function suspendMember() {
+
+        $query = "UPDATE  `member` SET "
+                . "`is_suspend` ='" . $this->isSuspend . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
 
     public function delete() {
 
@@ -788,6 +821,21 @@ class Member {
 
             return $db->readQuery($query);
         }
+    }
+
+    public function deleteMember() {
+        
+
+        unlink(Helper::getSitePath() . "upload/member/" . $this->profilePicture);
+        
+        unlink(Helper::getSitePath() . "upload/member/cover-picture/" . $this->coverPicture);
+        
+        unlink(Helper::getSitePath() . "upload/member/cover-picture/thumb/" . $this->coverPicture);
+
+        $query = 'DELETE FROM `member` WHERE id="' . $this->id . '"';
+        $db = new Database();
+
+        return $db->readQuery($query);
     }
 
 }
