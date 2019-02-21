@@ -159,7 +159,7 @@ class Advertisement {
     }
     
     public function getAdsByGroup($group) {
-
+        
         $query = "SELECT * FROM `advertisement` WHERE `group_id` = $group AND `status` = 1 ORDER BY `created_at` DESC";
         $db = new Database();
         $result = $db->readQuery($query);

@@ -39,7 +39,6 @@ $(document).ready(function () {
                 async: false,
                 dataType: 'json',
                 success: function (mess) {
-                    alert(mess.filename);
                     var arr = mess.filename.split('.');
                     var html = '';
 

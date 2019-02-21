@@ -214,18 +214,13 @@ $MEMBER = new Member($_SESSION['id']);
                                             <label class="control-label">Your Occupation</label>
                                             <input class="form-control" placeholder="" name="occupation" type="text" value="<?php echo $MEMBER->occupation; ?>">
                                         </div>
-
-
-
                                     </div>
-
                                     <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="form-group label-floating is-select">
                                             <label class="control-label">Your Address</label>
                                             <input class="form-control" placeholder="" name="address" type="text" value="<?php echo $MEMBER->address; ?>">
                                         </div>
                                     </div>
-                                    
                                     <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="form-group label-floating district-label">
                                             <label class="control-label">Your District</label>

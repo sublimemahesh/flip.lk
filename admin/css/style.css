@@ -8156,3 +8156,17 @@ input[type="checkbox"] {
     margin-top: 1px \9;
     line-height: normal;
 }
+[type="radio"].gender:not(:checked), [type="radio"].gender:checked {
+
+    position: relative;
+    left: 0px;
+    opacity: 1;
+
+}
+[type="radio"].civil_status:not(:checked), [type="radio"].civil_status:checked {
+
+    position: relative;
+    left: 0px;
+    opacity: 1;
+
+}

@@ -69,7 +69,7 @@ $no_of_request = FriendRequest::getCountOfFriendRequestsByMember($MEMBER->id);
                             $view = FriendRequest::updateViewingStatus($request['id']);
                             ?>
                             
-                            <li id="request-to-join-<?php echo $MEM->id; ?>">
+                            <li id="request-to-join-<?php echo $MEM->id; ?>" class="request-to-join-<?php echo $MEM->id; ?>">
                                 <div class="author-thumb">
                                     <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
                                 </div>
@@ -99,7 +99,7 @@ $no_of_request = FriendRequest::getCountOfFriendRequestsByMember($MEMBER->id);
                                 </div>
                             </li>
 
-                            <li class="accepted hidden" id="accepted-request-<?php echo $MEM->id; ?>">
+                            <li class="accepted hidden accepted-request-<?php echo $MEM->id; ?>" id="accepted-request-<?php echo $MEM->id; ?>">
                                 <div class="author-thumb member-request-profile-pic">
                                     <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
                                 </div>
