@@ -121,7 +121,7 @@ class Advertisement {
 
         return $array_res;
     }
-    
+
     public function getAdsInAnyGroupsByMember($member) {
 
         $query = "SELECT * FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `status` = 1 ORDER BY `created_at` DESC";
@@ -135,6 +135,7 @@ class Advertisement {
 
         return $array_res;
     }
+
     public function getAdsAndPostsByMember($member) {
 
         $query = "SELECT `id`, 'ad' AS `type`, `created_at` FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `member` <> $member UNION ALL SELECT `id`, 'post' AS `type`, `created_at` FROM `post` WHERE `member` in (SELECT `member` FROM `friends` WHERE `friend` = $member) OR `member` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) ORDER BY `created_at` DESC";
@@ -157,9 +158,27 @@ class Advertisement {
 
         return $db->readQuery($query);
     }
-    
-    public function getAdsByGroup($group) {
+
+    public function deleteAdvertisement() {
+
+        foreach (AdvertisementImage::getPhotosByAdId($this->id) as $key => $adimg) {
+            unlink(Helper::getSitePath() . "upload/advertisement/" . $adimg['image_name']);
+            unlink(Helper::getSitePath() . "upload/advertisement/thumb/" . $adimg['image_name']);
+            unlink(Helper::getSitePath() . "upload/advertisement/thumb2/" . $adimg['image_name']);
+
+            $AD = new AdvertisementImage($adimg['id']);
+            $AD->delete();
+        }
         
+        $query = 'DELETE FROM `advertisement` WHERE id="' . $this->id . '"';
+
+        $db = new Database();
+
+        return $db->readQuery($query);
+    }
+
+    public function getAdsByGroup($group) {
+
         $query = "SELECT * FROM `advertisement` WHERE `group_id` = $group AND `status` = 1 ORDER BY `created_at` DESC";
         $db = new Database();
         $result = $db->readQuery($query);
@@ -171,7 +190,7 @@ class Advertisement {
 
         return $array_res;
     }
-    
+
     public function getAdsByMember($member) {
 
         $query = "SELECT * FROM `advertisement` WHERE `member` = $member ORDER BY `created_at` DESC";
@@ -185,11 +204,28 @@ class Advertisement {
 
         return $array_res;
     }
-    
+
     public function updateStatus() {
 
         $query = "UPDATE  `advertisement` SET "
                 . "`status` ='" . $this->status . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
+    
+    public function suspendAdvertisement() {
+
+        $query = "UPDATE  `advertisement` SET "
+                . "`is_suspend` ='" . $this->isSuspend . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
