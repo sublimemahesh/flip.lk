@@ -7,7 +7,7 @@
         </a>
     </div>
     <div class="header-content-wrapper">
-        <form class="search-bar w-search notification-list friend-requests">
+<!--        <form class="search-bar w-search notification-list friend-requests">
             <div class="form-group with-button">
                 <input class="form-control js-user-search" id="find-member" placeholder="Search here people or pages..." type="text" value="<?php
                 if (isset($MEM)) {
@@ -20,16 +20,24 @@
                     <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
                 </button>
             </div>
-        </form>
+        </form>-->
 
         <div class="control-block">
 
             <div class="control-icon more has-items">
-                <a href="./"><svg class="olymp-home-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-home-icon"></use></svg></a>
+                <a href="./"><i class="fa fa-home f-a-size header-group-icon" ></i></a>
 
             </div>
             <div class="control-icon more has-items">
-                <a href="manage-groups.php"><i class="fa fa-users fa-2x header-group-icon" ></i></a>
+                <a href="./"><svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="bottom"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg></a>
+
+            </div>
+            <div class="control-icon more has-items">
+                <a href="./"><i class="fa fa-bullhorn f-a-size header-group-icon" ></i></a>
+
+            </div>
+            <div class="control-icon more has-items">
+                <a href="manage-groups.php"><i class="fa fa-users f-a-size header-group-icon" ></i></a>
                 <!--<a href="./"><img src="img/icon/group-2.png" /></a>-->
 
             </div>
