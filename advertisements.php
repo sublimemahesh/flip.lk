@@ -61,14 +61,6 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="css/images-grid.css" rel="stylesheet" type="text/css"/>
         <link href="css/search-box.css" rel="stylesheet" type="text/css"/>
-        <style>
-            .comment-item1 {
-                display: none;
-            }
-            .comment-reply-item {
-                display: none;
-            }
-        </style>
     </head>
     <body>
         <?php
@@ -156,19 +148,19 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
                             <div id="newsfeed-items-grid">
                                 <div class="ad-breadcrumbs">
                                     <?php
-                                    if ($_GET['category'] !== "" && $_GET['location'] !== "") {
+                                    if ($category !== "" && $location !== "") {
                                         ?>
                                         <span class="breadcrumb-item">Home </span><span class="breadcrumb-item"><?php echo $BUSCAT->name; ?> </span> <span class="breadcrumb-item location"></span>
                                         <?php
-                                    } else if ($_GET['category'] !== "" && $_GET['location'] == "") {
+                                    } else if ($category !== "" && $location == "") {
                                         ?>
                                         <span class="breadcrumb-item">Home </span><span class="breadcrumb-item"><?php echo $BUSCAT->name; ?></span>
                                         <?php
-                                    } else if ($_GET['location'] !== "" && $_GET['category'] == "") {
+                                    } else if ($location !== "" && $category == "") {
                                         ?>
                                         <span class="breadcrumb-item">Home </span><span class="breadcrumb-item location"></span>
                                         <?php
-                                    } else if ($_GET['keyword'] !== "" && $_GET['location'] == "" && $_GET['category'] == "") {
+                                    } else if ($keyword !== "" && $location == "" && $category == "") {
                                         ?>
                                         <span class="breadcrumb-item">Home </span><span class="breadcrumb-item">All advertisements in Sri Lanka</span>
                                         <?php
@@ -182,10 +174,7 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
 
                                     if (count($advertisements) > 0) {
                                         foreach ($advertisements as $key => $ad) {
-                                            $GROUP = new Group($ad['group_id']);
                                             $result = getTime($ad['created_at']);
-                                            $count = AdvertisementComment::getCountOfCommentsByAdvertisementID($ad['id']);
-                                            $countsharedtimes = count(Post::getPostsBySharedAD($ad['id']));
                                             $MEMBER = new Member($ad['member']);
                                             $CATEGORY = new BusinessCategory($ad['category']);
                                             $adimages = AdvertisementImage::getPhotosByAdId($ad['id']);
