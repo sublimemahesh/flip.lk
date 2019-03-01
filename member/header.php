@@ -2,7 +2,7 @@
 
 <header class="header" id="site-header">
     <div class="page-title">
-        <a href="./">
+        <a href="../">
             <img src="img/logo/logo.png" alt=""/>
         </a>
     </div>
@@ -25,7 +25,7 @@
         <div class="control-block">
 
             <div class="control-icon more has-items">
-                <a href="./"><i class="fa fa-home f-a-size header-group-icon" ></i></a>
+                <a href="../"><i class="fa fa-home f-a-size header-group-icon" ></i></a>
 
             </div>
             <div class="control-icon more has-items">
@@ -33,7 +33,7 @@
 
             </div>
             <div class="control-icon more has-items">
-                <a href="./"><i class="fa fa-bullhorn f-a-size header-group-icon" ></i></a>
+                <a href="../all-advertisement.php"><i class="fa fa-bullhorn f-a-size header-group-icon" ></i></a>
 
             </div>
             <div class="control-icon more has-items">

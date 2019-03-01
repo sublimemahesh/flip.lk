@@ -1,5 +1,8 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
+if (!isset($_SESSION)) {
+    session_start();
+}
 $MEMBER = '';
 
 if (isset($_SESSION['id'])) {
@@ -194,19 +197,19 @@ if (isset($_SESSION['id'])) {
                                         </div>
                                         <div class="slider-details-section">
                                             <div class="title">
-                                                <h5><?php echo $ad['title']; ?></h5>
+                                                <h5><a href="view-advertisement.php?id=<?php echo $ad['id']; ?>"><?php echo $ad['title']; ?></a></h5>
                                             </div>
                                             <div class="created-date">
-    <?php echo substr($ad['created_at'], 0, 10); ?>
+                                                <?php echo substr($ad['created_at'], 0, 10); ?>
                                             </div>
                                             <div class="description">
-    <?php
-    if (strlen($ad['description']) > 100) {
-        echo substr($ad['description'], 0, 98) . '...';
-    } else {
-        echo $ad['description'];
-    }
-    ?>
+                                                <?php
+                                                if (strlen($ad['description']) > 100) {
+                                                    echo substr($ad['description'], 0, 98) . '...';
+                                                } else {
+                                                    echo $ad['description'];
+                                                }
+                                                ?>
                                             </div>
                                             <hr />
                                             <div class="slider-item-footer row">
@@ -216,13 +219,13 @@ if (isset($_SESSION['id'])) {
                                                     </div>
                                                     <div class="col-xl-9 order-2 col-xs-9 mem-name">
                                                         <h6 class="" title="<?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>">
-    <?php
-    if (strlen($MEM->firstName . ' ' . $MEM->lastName) > 14) {
-        echo substr($MEM->firstName . ' ' . $MEM->lastName, 0, 13) . '...';
-    } else {
-        echo $MEM->firstName . ' ' . $MEM->lastName;
-    }
-    ?>
+                                                            <?php
+                                                            if (strlen($MEM->firstName . ' ' . $MEM->lastName) > 14) {
+                                                                echo substr($MEM->firstName . ' ' . $MEM->lastName, 0, 13) . '...';
+                                                            } else {
+                                                                echo $MEM->firstName . ' ' . $MEM->lastName;
+                                                            }
+                                                            ?>
                                                         </h6>
                                                     </div>
                                                 </div>
@@ -232,9 +235,9 @@ if (isset($_SESSION['id'])) {
                                             </div>
                                         </div>
                                     </div>
-    <?php
-}
-?>
+                                    <?php
+                                }
+                                ?>
                                 <!--                                                               <div class="item">
                                                                                                     <div class="slider-img-section">
                                                                                                         <img src="../upload/advertisement/thumb/-151981300_191051159606_1550131986_n.jpg" alt=""/>
@@ -277,9 +280,9 @@ if (isset($_SESSION['id'])) {
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>
         <!-- Window-popup -->
-<?php
-include './window-pop-up.php';
-?>
+        <?php
+        include './window-pop-up.php';
+        ?>
         <!-- ... end Window-popup -->
 
         <!-- JS Scripts -->

@@ -40,7 +40,7 @@ $CATEGORIES = BusinessCategory::all();
         <div class="header--standard header--standard-landing" id="header--standard">
             <div class="container">
                 <div class="header--standard-wrap">
-                    <a href="#" class="logo">
+                    <a href="../" class="logo">
                         <div class="img-wrap">
                             <img src="img/logo/logo.png" alt="Olympus">
                         </div>

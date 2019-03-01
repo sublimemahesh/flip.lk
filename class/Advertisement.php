@@ -13,8 +13,11 @@ class Advertisement {
     public $groupId;
     public $title;
     public $description;
+    public $price;
     public $city;
     public $address;
+    public $phoneNumber;
+    public $email;
     public $category;
     public $subCategory;
     public $website;
@@ -23,7 +26,7 @@ class Advertisement {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`created_at`,`member`,`group_id`,`title`,`description`,`city`,`address`,`category`,`sub_category`,`website`,`status` FROM `advertisement` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`created_at`,`member`,`group_id`,`title`,`description`,`price`,`city`,`address`,`phone_number`,`email`,`category`,`sub_category`,`website`,`status` FROM `advertisement` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -35,8 +38,11 @@ class Advertisement {
             $this->groupId = $result['group_id'];
             $this->title = $result['title'];
             $this->description = $result['description'];
+            $this->price = $result['price'];
             $this->city = $result['city'];
             $this->address = $result['address'];
+            $this->phoneNumber = $result['phone_number'];
+            $this->email = $result['email'];
             $this->category = $result['category'];
             $this->subCategory = $result['sub_category'];
             $this->website = $result['website'];
@@ -56,8 +62,11 @@ class Advertisement {
                 . "`group_id`, "
                 . "`title`, "
                 . "`description` , "
+                . "`price` , "
                 . "`city`, "
                 . "`address`, "
+                . "`phone_number`, "
+                . "`email`, "
                 . "`category`, "
                 . "`sub_category`, "
                 . "`website`, "
@@ -68,8 +77,11 @@ class Advertisement {
                 . "'" . $this->groupId . "', "
                 . "'" . $this->title . "', "
                 . "'" . $this->description . "', "
+                . "'" . $this->price . "', "
                 . "'" . $this->city . "', "
                 . "'" . $this->address . "', "
+                . "'" . $this->phoneNumber . "', "
+                . "'" . $this->email . "', "
                 . "'" . $this->category . "', "
                 . "'" . $this->subCategory . "', "
                 . "'" . $this->website . "', "
@@ -92,8 +104,11 @@ class Advertisement {
         $query = "UPDATE  `advertisement` SET "
                 . "`title` ='" . $this->title . "', "
                 . "`description` ='" . $this->description . "', "
+                . "`price` ='" . $this->price . "', "
                 . "`city` ='" . $this->city . "', "
                 . "`address` ='" . $this->address . "', "
+                . "`phone_number` ='" . $this->phoneNumber . "', "
+                . "`email` ='" . $this->email . "', "
                 . "`website` ='" . $this->website . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
@@ -125,6 +140,20 @@ class Advertisement {
     public function getAdsInAnyGroupsByMember($member) {
 
         $query = "SELECT * FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `status` = 1 ORDER BY `created_at` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function getAdsByCategory($category) {
+
+        $query = "SELECT * FROM `advertisement` WHERE `category` = $category AND `status` = 1 ORDER BY `created_at` DESC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -240,7 +269,7 @@ class Advertisement {
     }
 
     public function searchAdvertisements($category, $location, $keyword, $pageLimit, $setLimit) {
-        
+
         $w = array();
         $where = '';
 

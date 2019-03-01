@@ -1,5 +1,4 @@
 <!-- Header-BP -->
-
 <header class="header" id="site-header">
     <div class="page-title">
         <a href="./">
@@ -7,39 +6,19 @@
         </a>
     </div>
     <div class="header-content-wrapper">
-        <!--        <form class="search-bar w-search notification-list friend-requests">
-                    <div class="form-group with-button">
-                        <input class="form-control js-user-search" id="find-member" placeholder="Search here people or pages..." type="text" value="<?php
-        if (isset($MEM)) {
-            echo $MEM->firstName . ' ' . $MEM->lastName;
-        }
-        ?>" autocomplete="off">
-                        <div class="" id="name-list-append"></div>
-                        <input type="hidden" name="member" value="" id="member-id"  />
-                        <button>
-                            <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
-                        </button>
-                    </div>
-                </form>-->
-
         <div class="control-block">
 
             <div class="control-icon more has-items">
                 <a href="./"><i class="fa fa-home f-a-size header-group-icon" ></i></a>
-
             </div>
             <div class="control-icon more has-items">
                 <a href="member/"><svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="bottom"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg></a>
-
             </div>
             <div class="control-icon more has-items">
                 <a href="all-advertisement.php"><i class="fa fa-bullhorn f-a-size header-group-icon" ></i></a>
-
             </div>
             <div class="control-icon more has-items">
                 <a href="member/manage-groups.php"><i class="fa fa-users f-a-size header-group-icon" ></i></a>
-                <!--<a href="./"><img src="img/icon/group-2.png" /></a>-->
-
             </div>
             <div class="control-icon more has-items">
                 <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
@@ -60,7 +39,6 @@
                         <a href="#">Find Friends</a>
                         <a href="#">Settings</a>
                     </div>
-
                     <div class="mCustomScrollbar" data-mcs-theme="dark">
                         <ul class="notification-list friend-requests friend-requests-notification">
                             <?php
@@ -224,7 +202,7 @@
 
                                 <ul class="account-settings">
                                     <li>
-                                        <a href="personal-information.php">
+                                        <a href="member/personal-information.php">
 
                                             <svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
 
@@ -232,14 +210,14 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="manage-groups.php">
+                                        <a href="member/manage-groups.php">
                                             <svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
 
                                             <span>My Groups</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="log-out.php">
+                                        <a href="member/log-out.php">
                                             <svg class="olymp-logout-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-logout-icon"></use></svg>
 
                                             <span>Log Out</span>
@@ -285,7 +263,7 @@
                     ?>
 
                 </div>
-                <a href="profile.php" class="author-name fn">
+                <a href="member/profile.php" class="author-name fn">
                     <?php
                     if (isset($_SESSION['id'])) {
                         ?>
