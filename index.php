@@ -199,7 +199,16 @@ if (isset($_SESSION['id'])) {
                                         </div>
                                         <div class="slider-details-section">
                                             <div class="title">
-                                                <h5><a href="view-advertisement.php?id=<?php echo $ad['id']; ?>"><?php echo $ad['title']; ?></a></h5>
+                                                <h5><a href="view-advertisement.php?id=<?php echo $ad['id']; ?>" title="<?php echo $ad['title']; ?>">
+                                                        <?php
+                                                        if (strlen($ad['title']) > 22) {
+                                                            echo substr($ad['title'], 0, 21) . '...';
+                                                        } else {
+                                                            echo $ad['title'];
+                                                        }
+                                                        ?>
+                                                    </a>
+                                                </h5>
                                             </div>
                                             <div class="created-date">
                                                 <?php echo substr($ad['created_at'], 0, 10); ?>

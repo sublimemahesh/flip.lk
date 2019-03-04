@@ -190,7 +190,9 @@
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
                     <?php
+                    
                     if (isset($_SESSION['id'])) {
+                        
                         ?>
                         <img alt="author" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
                         <span class="icon-status online"></span>

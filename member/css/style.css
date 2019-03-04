@@ -137,7 +137,8 @@
 }
 .upload-group-pro-pic{
     text-align: center;
-    margin: 10px 132px 45px;
+    /*margin: 10px 132px 45px;*/
+    margin: 10px 85px 45px;
 }
 .upload-cover-pic, .upload-group-cover-pic {
     text-align: center;
@@ -206,10 +207,12 @@
 }
 .upload-group-span2 {
     height: 167px;
-    width: 387px;
+    width: 342px;
+    /*width: 387px;*/
     position: absolute;
     vertical-align: middle;
-    padding-top: 10%;
+    /*padding-top: 10%;*/
+    padding-top: 13%;
     font-size: 15px;
     background: #0009;
     border-radius: 0;

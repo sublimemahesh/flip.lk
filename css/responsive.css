@@ -132,7 +132,10 @@ and open the template in the editor.
     .author-thumb img {
         margin-top: 9px;   
     }
-    
+    .ad-breadcrumbs {
+        margin-top: 10px;
+    }
+
 
 }
 @media(min-width:577px) and (max-width:990px) {
@@ -219,5 +222,22 @@ and open the template in the editor.
     }
     .category-list .cat-title h4 {
         font-size: 17px;
+    }
+}
+@media(width:1280px) {
+    .category-list.container {
+
+        max-width: 960px;
+        margin: 20px 26px;
+
+    }
+}
+
+@media(min-width:992px) and (max-width:1200px) {
+    .category-list.container {
+
+        max-width: 960px;
+        margin: 20px 26px;
+
     }
 }

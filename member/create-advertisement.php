@@ -178,14 +178,32 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                             <input type="hidden" name="city" id="city"  value=""/>
                                         </div>
                                     </div>
-
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Phone Number</label>
+                                            <input class="form-control" placeholder="" type="text"  name="phonenumber" id="phonenumber" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Email</label>
+                                            <input class="form-control" placeholder="" type="text"  name="email" id="email" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Price (Rs)</label>
+                                            <input class="form-control" placeholder="" name="price" id="price" type="text" value="" >
+                                        </div>
+                                    </div>
+                                    <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Category</label>
                                             <input class="form-control" placeholder="" name="" type="text" value="<?php echo $CATEGORY->name; ?>" disabled="">
                                         </div>
                                     </div>
-                                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Sub Category</label>
                                             <input class="form-control" placeholder="" name="" type="text" value="<?php echo $SUBCATEGORY->name; ?>" disabled="">
