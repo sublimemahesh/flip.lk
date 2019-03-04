@@ -36,6 +36,7 @@ if ($count_members['count'] == 0) {
         <link rel="stylesheet" type="text/css" href="css/main.min.css">
         <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
         <!-- Main Font -->
         <script src="js/webfontloader.min.js"></script>
         <script>
@@ -69,7 +70,6 @@ if ($count_members['count'] == 0) {
                                         </button>
                                     </div>
                                 </form>
-                                <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
                             </div>
                         </div>
 
@@ -308,7 +308,7 @@ if ($count_members['count'] == 0) {
 
                         </div>
 
-                        <nav aria-label="Page navigation">
+<!--                        <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center">
                                 <li class="page-item disabled">
                                     <a class="page-link" href="#" tabindex="-1">Previous</a>
@@ -322,7 +322,7 @@ if ($count_members['count'] == 0) {
                                     <a class="page-link" href="#">Next</a>
                                 </li>
                             </ul>
-                        </nav>
+                        </nav>-->
                     </div>
                     <?php
                     include './group-about-nav.php';

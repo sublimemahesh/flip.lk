@@ -30,6 +30,7 @@ $GROUP = new Group($id);
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="css/images-grid.css" rel="stylesheet" type="text/css"/>
+        <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
         <!-- Main Font -->
         <script src="js/webfontloader.min.js"></script>
         <script>
@@ -54,7 +55,7 @@ $GROUP = new Group($id);
         include './header.php';
         ?>
         <div class="header-spacer"></div>
-        <div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
+        <div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 order-lg-3 col-12">
             <?php
             include './group-header.php';
             ?>
@@ -66,15 +67,15 @@ $GROUP = new Group($id);
                         <?php
                         if (GroupMember::checkMemberAlreadyExistInTheGroup($MEMBER->id, $id)) {
                             ?>
-                            <div class="ui-block">
+                            <div class="ui-block group-settings-btn">
                                 <div class="row">
-                                    <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
+                                    <div class="col col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4">
                                         <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="leave-group" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group<div class="ripple-container"></div></a>
                                     </div>
-                                    <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
+                                    <div class="col col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4">
                                         <a href="#" data-toggle="modal" data-target="#add-member" class="btn btn-blue btn-md-2 join-group-btn add-member" id="" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add Members<div class="ripple-container"></div></a>
                                     </div>
-                                    <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
+                                    <div class="col col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4">
                                         <a href="create-advertisement.php?id=<?php echo $GROUP->id ?>" class="btn btn-blue btn-md-2 join-group-btn" id="">Post Advertisement<div class="ripple-container"></div></a>
                                     </div>
 
@@ -93,22 +94,6 @@ $GROUP = new Group($id);
                                                 <svg class="olymp-status-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-status-icon"></use></svg>
 
                                                 <span>Status</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link inline-items" data-toggle="tab" href="#profile-1" role="tab" aria-expanded="false">
-
-                                                <svg class="olymp-multimedia-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-multimedia-icon"></use></svg>
-
-                                                <span>Multimedia</span>
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a class="nav-link inline-items" data-toggle="tab" href="#blog" role="tab" aria-expanded="false">
-                                                <svg class="olymp-blog-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-blog-icon"></use></svg>
-
-                                                <span>Blog Post</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -136,66 +121,7 @@ $GROUP = new Group($id);
                                                         <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
                                                     </a>
 
-                                                    <button class="btn btn-primary btn-md-2">Post Status</button>
-                                                    <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
-
-                                                </div>
-
-                                            </form>
-                                        </div>
-
-                                        <div class="tab-pane" id="profile-1" role="tabpanel" aria-expanded="true">
-                                            <form>
-                                                <div class="author-thumb">
-                                                    <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
-                                                </div>
-                                                <div class="form-group with-icon label-floating is-empty">
-                                                    <label class="control-label">Share what you are thinking here...</label>
-                                                    <textarea class="form-control" placeholder=""  ></textarea>
-                                                </div>
-                                                <div class="add-options-message">
-                                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-                                                        <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-                                                    </a>
-                                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-                                                        <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-                                                    </a>
-
-                                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-                                                        <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-                                                    </a>
-
-                                                    <button class="btn btn-primary btn-md-2">Post Status</button>
-                                                    <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
-
-                                                </div>
-
-                                            </form>
-                                        </div>
-
-                                        <div class="tab-pane" id="blog" role="tabpanel" aria-expanded="true">
-                                            <form>
-                                                <div class="author-thumb">
-                                                    <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
-                                                </div>
-                                                <div class="form-group with-icon label-floating is-empty">
-                                                    <label class="control-label">Share what you are thinking here...</label>
-                                                    <textarea class="form-control" placeholder=""  ></textarea>
-                                                </div>
-                                                <div class="add-options-message">
-                                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-                                                        <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-                                                    </a>
-                                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-                                                        <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-                                                    </a>
-
-                                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-                                                        <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-                                                    </a>
-
-                                                    <button class="btn btn-primary btn-md-2">Post Status</button>
-                                                    <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
+                                                    <input type="submit" name="save-post" class="btn btn-primary btn-md-2 share-post" value="Share" />
 
                                                 </div>
 
@@ -255,270 +181,147 @@ $GROUP = new Group($id);
                             $ads = Advertisement::getAdsByGroup($GROUP->id);
                             if (count($ads) > 0) {
                                 foreach ($ads as $key => $ad) {
-                                    
+
                                     $MEM = new Member($ad['member']);
-                                    if($MEM->status == 1) {
-                                        
-                                    $result = getTime($ad['created_at']);
-                                    $count = AdvertisementComment::getCountOfCommentsByAdvertisementID($ad['id']);
-                                    $countsharedtimes = count(Post::getPostsBySharedAD($ad['id']));
-                                    ?>
+                                    if ($MEM->status == 1) {
 
-                                    <div class="ui-block">
-                                        <!-- Post -->
+                                        $result = getTime($ad['created_at']);
+                                        $count = AdvertisementComment::getCountOfCommentsByAdvertisementID($ad['id']);
+                                        $countsharedtimes = count(Post::getPostsBySharedAD($ad['id']));
+                                        ?>
 
-                                        <article class="hentry post has-post-thumbnail shared-photo ad_<?php echo $ad['id']; ?>" id="post-id" post-id="<?php echo $post['id']; ?>">
+                                        <div class="ui-block">
+                                            <!-- Post -->
 
-                                            <div class="post__author author vcard inline-items">
-                                                <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
+                                            <article class="hentry post has-post-thumbnail shared-photo ad_<?php echo $ad['id']; ?>" id="post-id" post-id="<?php echo $post['id']; ?>">
 
-                                                <div class="author-date">
-                                                    <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $MEM->id; ?>"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> 
-                                                    <div class="post__date">
-                                                        <time class="published">
-                                                            <?php echo $result; ?>
-                                                        </time>
+                                                <div class="post__author author vcard inline-items">
+                                                    <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
+
+                                                    <div class="author-date">
+                                                        <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $MEM->id; ?>"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> 
+                                                        <div class="post__date">
+                                                            <time class="published">
+                                                                <?php echo $result; ?>
+                                                            </time>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="more">
-                                                    <svg class="olymp-three-dots-icon">
-                                                    <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                                    </svg>
-                                                    <ul class="more-dropdown">
-                                                        <?php
-                                                        if ($ad['member'] == $MEMBER->id) {
+                                                    <div class="more">
+                                                        <svg class="olymp-three-dots-icon">
+                                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
+                                                        </svg>
+                                                        <ul class="more-dropdown">
+                                                            <?php
+                                                            if ($ad['member'] == $MEMBER->id) {
+                                                                ?>
+                                                                <li>
+                                                                    <a href="edit-advertisement.php?id=<?php echo $ad['id']; ?>" class="edit-ad" id="<?php echo $ad['id']; ?>">Edit Advertisement</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="delete-ad" id="<?php echo $ad['id']; ?>">Delete Advertisement</a>
+                                                                </li>
+                                                                <?php
+                                                            }
                                                             ?>
                                                             <li>
-                                                                <a href="edit-advertisement.php?id=<?php echo $ad['id']; ?>" class="edit-ad" id="<?php echo $ad['id']; ?>">Edit Advertisement</a>
+                                                                <a href="#">Turn Off Notifications</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" class="delete-ad" id="<?php echo $ad['id']; ?>">Delete Advertisement</a>
+                                                                <a href="#">Select as Featured</a>
                                                             </li>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                        <li>
-                                                            <a href="#">Turn Off Notifications</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Select as Featured</a>
-                                                        </li>
-                                                    </ul>
+                                                        </ul>
+                                                    </div>
+
                                                 </div>
+                                                <h5><b><?php echo $ad['title']; ?></b></h5>
+                                                <?php echo $ad['description']; ?>
 
-                                            </div>
-                                            <h5><b><?php echo $ad['title']; ?></b></h5>
-                                            <?php echo $ad['description']; ?>
-
-                                            <div class="post-thumb">
-                                                <div id="gallery-<?php echo $ad['id']; ?>"></div>
-                                            </div>
-                                            <div class=" content">
-
-                                            </div>
-                                            <div class="post-additional-info inline-items">
-                                                <div class="comments-shared">
-                                                    <a class="post-add-icon inline-items group-add-comment" id="<?php echo $ad['id']; ?>">
-                                                        <svg class="olymp-speech-balloon-icon">
-                                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-speech-balloon-icon"></use>
-                                                        </svg>
-                                                        <span><?php echo $count['count']; ?></span>
-                                                    </a>
-
-                                                    <a href="#" class="post-add-icon inline-items share-ad-link" data-toggle="modal" data-target="#share-ad" id="<?php echo $ad['id']; ?>">
-                                                        <svg class="olymp-share-icon">
-                                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
-                                                        </svg>
-                                                        <span><?php echo $countsharedtimes; ?></span>
-                                                    </a>
+                                                <div class="post-thumb">
+                                                    <div id="gallery-<?php echo $ad['id']; ?>"></div>
                                                 </div>
-                                            </div>
-                                        </article>
+                                                <div class=" content">
 
-                                        <?php
-                                        $comments = AdvertisementComment::getCommentsByAdvertisementID($ad['id']);
-                                        if (count($comments) > 0) {
-                                            ?>
-                                            <ul class="comments-list hidden" id="group-comment-list-<?php echo $ad['id']; ?>" ad-id="<?php echo $ad['id']; ?>">
-                                                <a href="#" class="see-more hidden" id="see-more-<?php echo $ad['id']; ?>">Show all comments</a>
-                                                <?php
-                                                foreach ($comments as $key => $comment) {
-                                                    $COMMENTMEMBER = New Member($comment['member']);
-                                                    $commentedat = getTime($comment['commented_at']);
-                                                    $replies = AdvertisementCommentReply::getRepliesByCommentID($comment['id']);
-                                                    if (count($replies) < 0) {
-                                                        ?>
-                                                        <li class="comment-item comment-item1" id="li_<?php echo $comment['id']; ?>">
-                                                            <div class="post__author author vcard inline-items">
-                                                                <img src="../upload/member/<?php echo $COMMENTMEMBER->profilePicture; ?>" alt="author">
+                                                </div>
+                                                <div class="post-additional-info inline-items">
+                                                    <div class="comments-shared">
+                                                        <a class="post-add-icon inline-items group-add-comment" id="<?php echo $ad['id']; ?>">
+                                                            <svg class="olymp-speech-balloon-icon">
+                                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-speech-balloon-icon"></use>
+                                                            </svg>
+                                                            <span><?php echo $count['count']; ?></span>
+                                                        </a>
 
-                                                                <div class="author-date">
-                                                                    <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
-                                                                    <div class="post__date">
-                                                                        <time class="published" datetime="2017-03-24T18:18">
-                                                                            <?php echo $commentedat; ?>
-                                                                        </time>
-                                                                    </div>
-                                                                </div>
-                                                                <?php
-                                                                if ($comment['member'] == $MEMBER->id) {
-                                                                    ?>
-                                                                    <div class="more">
-                                                                        <svg class="olymp-three-dots-icon">
-                                                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                                                        </svg>
-                                                                        <ul class="more-dropdown">
-                                                                            <li>
-                                                                                <a class="edit-comment" id="<?php echo $comment['id']; ?>">Edit Comment</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="delete-comment" id="<?php echo $comment['id']; ?>">Delete Comment</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <?php
-                                                                }
-                                                                ?>
+                                                        <a href="#" class="post-add-icon inline-items share-ad-link" data-toggle="modal" data-target="#share-ad" id="<?php echo $ad['id']; ?>">
+                                                            <svg class="olymp-share-icon">
+                                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
+                                                            </svg>
+                                                            <span><?php echo $countsharedtimes; ?></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </article>
 
-                                                            </div>
-
-                                                            <p class="comment-p" id="comment-p-<?php echo $comment['id']; ?>"><?php echo $comment['comment']; ?></p>
-                                                            <div class="comment-edit-form inline-items hidden" id="comment-edit-form-<?php echo $comment['id']; ?>">
+                                            <?php
+                                            $comments = AdvertisementComment::getCommentsByAdvertisementID($ad['id']);
+                                            if (count($comments) > 0) {
+                                                ?>
+                                                <ul class="comments-list hidden" id="group-comment-list-<?php echo $ad['id']; ?>" ad-id="<?php echo $ad['id']; ?>">
+                                                    <a href="#" class="see-more hidden" id="see-more-<?php echo $ad['id']; ?>">Show all comments</a>
+                                                    <?php
+                                                    foreach ($comments as $key => $comment) {
+                                                        $COMMENTMEMBER = New Member($comment['member']);
+                                                        $commentedat = getTime($comment['commented_at']);
+                                                        $replies = AdvertisementCommentReply::getRepliesByCommentID($comment['id']);
+                                                        if (count($replies) < 0) {
+                                                            ?>
+                                                            <li class="comment-item comment-item1" id="li_<?php echo $comment['id']; ?>">
                                                                 <div class="post__author author vcard inline-items">
-                                                                    <div class="form-group with-icon-right is-empty">
-                                                                        <textarea class="form-control" placeholder="" name="reply" id="comment-<?php echo $comment['id']; ?>"></textarea>
-                                                                        <span class="material-input"></span></div>
-                                                                </div>
-                                                                <button id="post-edited-comment" class="btn btn-md-2 btn-primary post-edited-comment" comment="<?php echo $comment['id']; ?>" member="<?php echo $MEMBER->id; ?>">Save</button>
-                                                                <button id="post-edited-cancel" class="btn btn-md-2 btn-default post-edited-cancel" comment="<?php echo $comment['id']; ?>" member="<?php echo $MEMBER->id; ?>">Cancel</button>
-                                                            </div>
+                                                                    <img src="../upload/member/<?php echo $COMMENTMEMBER->profilePicture; ?>" alt="author">
 
-                                                            <a class="reply add-reply" id="<?php echo $comment['id']; ?>">Reply</a>
-
-                                                            <div class="reply-form inline-items hidden" id="reply-form-<?php echo $comment['id']; ?>">
-                                                                <div class="post__author author vcard inline-items">
-                                                                    <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author">
-                                                                    <div class="form-group with-icon-right is-empty">
-                                                                        <textarea class="form-control" placeholder="" name="reply" id="reply-<?php echo $comment['id']; ?>"></textarea>
-                                                                        <span class="material-input"></span></div>
-                                                                </div>
-                                                                <button id="post-reply" class="btn btn-md-2 btn-primary post-reply" comment="<?php echo $comment['id']; ?>" member="<?php echo $MEMBER->id; ?>">Post Reply</button>
-                                                            </div>
-
-
-                                                        </li>
-                                                        <?php
-                                                    } else {
-                                                        ?>
-                                                        <li class="comment-item comment-item1 has-children" id="li_<?php echo $comment['id']; ?>">
-                                                            <div class="post__author author vcard inline-items">
-                                                                <img src="../upload/member/<?php echo $COMMENTMEMBER->profilePicture; ?>" alt="author">
-
-                                                                <div class="author-date">
-                                                                    <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
-                                                                    <div class="post__date">
-                                                                        <time class="published" datetime="2017-03-24T18:18">
-                                                                            <?php echo $commentedat; ?>
-                                                                        </time>
-                                                                    </div>
-                                                                </div>
-
-                                                                <?php
-                                                                if ($comment['member'] == $MEMBER->id) {
-                                                                    ?>
-                                                                    <div class="more">
-                                                                        <svg class="olymp-three-dots-icon">
-                                                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                                                        </svg>
-                                                                        <ul class="more-dropdown">
-                                                                            <li>
-                                                                                <a class="edit-comment" id="<?php echo $comment['id']; ?>">Edit Comment</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="delete-comment" id="<?php echo $comment['id']; ?>">Delete Comment</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <?php
-                                                                }
-                                                                ?>
-
-                                                            </div>
-
-                                                            <p class="comment-p" id="comment-p-<?php echo $comment['id']; ?>"><?php echo $comment['comment']; ?></p>
-                                                            <div class="comment-edit-form inline-items hidden" id="comment-edit-form-<?php echo $comment['id']; ?>">
-                                                                <div class="post__author author vcard inline-items">
-                                                                    <div class="form-group with-icon-right is-empty">
-                                                                        <textarea class="form-control" placeholder="" name="reply" id="comment-<?php echo $comment['id']; ?>"></textarea>
-                                                                        <span class="material-input"></span></div>
-                                                                </div>
-                                                                <button id="post-edited-comment" class="btn btn-md-2 btn-primary post-edited-comment" comment="<?php echo $comment['id']; ?>" member="<?php echo $MEMBER->id; ?>">Save</button>
-                                                                <button id="post-edited-cancel" class="btn btn-md-2 btn-default post-edited-cancel" comment="<?php echo $comment['id']; ?>" member="<?php echo $MEMBER->id; ?>">Cancel</button>
-                                                            </div>
-
-                                                            <a class="reply add-reply" id="<?php echo $comment['id']; ?>">Reply</a>
-
-                                                            <ul class="children comment-reply-list" id="comment-reply-list-<?php echo $comment['id']; ?>" comment-id="<?php echo $comment['id']; ?>">
-                                                                <a href="#" class="see-more-replies hidden" id="see-more-replies-<?php echo $comment['id']; ?>">View all replies</a>
-                                                                <?php
-                                                                foreach ($replies as $reply) {
-                                                                    $REPLYMEMBER = New Member($reply['member']);
-                                                                    $repliedat = getTime($reply['replied_at']);
-                                                                    ?>
-                                                                    <li class="comment-item comment-reply-item" id="li_r_<?php echo $reply['id']; ?>">
-                                                                        <div class="post__author author vcard inline-items">
-                                                                            <img src="../upload/member/<?php echo $REPLYMEMBER->profilePicture; ?>" alt="author">
-
-                                                                            <div class="author-date">
-                                                                                <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $REPLYMEMBER->id; ?>"><?php echo $REPLYMEMBER->firstName . ' ' . $REPLYMEMBER->lastName; ?></a>
-                                                                                <div class="post__date">
-                                                                                    <time class="published" datetime="2017-03-24T18:18">
-                                                                                        <?php echo $repliedat; ?>
-                                                                                    </time>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <?php
-                                                                            if ($reply['member'] == $MEMBER->id) {
-                                                                                ?>
-                                                                                <div class="more">
-                                                                                    <svg class="olymp-three-dots-icon">
-                                                                                    <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                                                                    </svg>
-                                                                                    <ul class="more-dropdown">
-                                                                                        <li>
-                                                                                            <a class="edit-reply" id="<?php echo $reply['id']; ?>">Edit Reply</a>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <a class="delete-reply" id="<?php echo $reply['id']; ?>">Delete Reply</a>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <?php
-                                                                            }
-                                                                            ?>
-
+                                                                    <div class="author-date">
+                                                                        <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
+                                                                        <div class="post__date">
+                                                                            <time class="published" datetime="2017-03-24T18:18">
+                                                                                <?php echo $commentedat; ?>
+                                                                            </time>
                                                                         </div>
-
-
-                                                                        <p class="reply-p" id="reply-p-<?php echo $reply['id']; ?>"><?php echo $reply['reply']; ?></p>
-                                                                        <div class="reply-edit-form inline-items hidden" id="reply-edit-form-<?php echo $reply['id']; ?>">
-                                                                            <div class="post__author author vcard inline-items">
-                                                                                <div class="form-group with-icon-right is-empty">
-                                                                                    <textarea class="form-control" placeholder="" name="reply" id="reply-<?php echo $reply['id']; ?>"></textarea>
-                                                                                    <span class="material-input"></span></div>
-                                                                            </div>
-                                                                            <button id="post-edited-reply" class="btn btn-md-2 btn-primary post-edited-reply" reply="<?php echo $reply['id']; ?>" member="<?php echo $MEMBER->id; ?>">Save</button>
-                                                                            <button id="reply-edited-cancel" class="btn btn-md-2 btn-default reply-edited-cancel" reply="<?php echo $reply['id']; ?>" member="<?php echo $MEMBER->id; ?>">Cancel</button>
-                                                                        </div>
-
-
-                                                                        <a class="reply add-reply" id="<?php echo $comment['id']; ?>">Reply</a>
-                                                                    </li>
+                                                                    </div>
                                                                     <?php
-                                                                }
-                                                                ?>
+                                                                    if ($comment['member'] == $MEMBER->id) {
+                                                                        ?>
+                                                                        <div class="more">
+                                                                            <svg class="olymp-three-dots-icon">
+                                                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
+                                                                            </svg>
+                                                                            <ul class="more-dropdown">
+                                                                                <li>
+                                                                                    <a class="edit-comment" id="<?php echo $comment['id']; ?>">Edit Comment</a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a class="delete-comment" id="<?php echo $comment['id']; ?>">Delete Comment</a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <?php
+                                                                    }
+                                                                    ?>
+
+                                                                </div>
+
+                                                                <p class="comment-p" id="comment-p-<?php echo $comment['id']; ?>"><?php echo $comment['comment']; ?></p>
+                                                                <div class="comment-edit-form inline-items hidden" id="comment-edit-form-<?php echo $comment['id']; ?>">
+                                                                    <div class="post__author author vcard inline-items">
+                                                                        <div class="form-group with-icon-right is-empty">
+                                                                            <textarea class="form-control" placeholder="" name="reply" id="comment-<?php echo $comment['id']; ?>"></textarea>
+                                                                            <span class="material-input"></span></div>
+                                                                    </div>
+                                                                    <button id="post-edited-comment" class="btn btn-md-2 btn-primary post-edited-comment" comment="<?php echo $comment['id']; ?>" member="<?php echo $MEMBER->id; ?>">Save</button>
+                                                                    <button id="post-edited-cancel" class="btn btn-md-2 btn-default post-edited-cancel" comment="<?php echo $comment['id']; ?>" member="<?php echo $MEMBER->id; ?>">Cancel</button>
+                                                                </div>
+
+                                                                <a class="reply add-reply" id="<?php echo $comment['id']; ?>">Reply</a>
+
                                                                 <div class="reply-form inline-items hidden" id="reply-form-<?php echo $comment['id']; ?>">
                                                                     <div class="post__author author vcard inline-items">
                                                                         <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author">
@@ -528,36 +331,159 @@ $GROUP = new Group($id);
                                                                     </div>
                                                                     <button id="post-reply" class="btn btn-md-2 btn-primary post-reply" comment="<?php echo $comment['id']; ?>" member="<?php echo $MEMBER->id; ?>">Post Reply</button>
                                                                 </div>
-                                                            </ul>
-                                                        </li>
-                                                        <?php
+
+
+                                                            </li>
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <li class="comment-item comment-item1 has-children" id="li_<?php echo $comment['id']; ?>">
+                                                                <div class="post__author author vcard inline-items">
+                                                                    <img src="../upload/member/<?php echo $COMMENTMEMBER->profilePicture; ?>" alt="author">
+
+                                                                    <div class="author-date">
+                                                                        <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
+                                                                        <div class="post__date">
+                                                                            <time class="published" datetime="2017-03-24T18:18">
+                                                                                <?php echo $commentedat; ?>
+                                                                            </time>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <?php
+                                                                    if ($comment['member'] == $MEMBER->id) {
+                                                                        ?>
+                                                                        <div class="more">
+                                                                            <svg class="olymp-three-dots-icon">
+                                                                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
+                                                                            </svg>
+                                                                            <ul class="more-dropdown">
+                                                                                <li>
+                                                                                    <a class="edit-comment" id="<?php echo $comment['id']; ?>">Edit Comment</a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a class="delete-comment" id="<?php echo $comment['id']; ?>">Delete Comment</a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <?php
+                                                                    }
+                                                                    ?>
+
+                                                                </div>
+
+                                                                <p class="comment-p" id="comment-p-<?php echo $comment['id']; ?>"><?php echo $comment['comment']; ?></p>
+                                                                <div class="comment-edit-form inline-items hidden" id="comment-edit-form-<?php echo $comment['id']; ?>">
+                                                                    <div class="post__author author vcard inline-items">
+                                                                        <div class="form-group with-icon-right is-empty">
+                                                                            <textarea class="form-control" placeholder="" name="reply" id="comment-<?php echo $comment['id']; ?>"></textarea>
+                                                                            <span class="material-input"></span></div>
+                                                                    </div>
+                                                                    <button id="post-edited-comment" class="btn btn-md-2 btn-primary post-edited-comment" comment="<?php echo $comment['id']; ?>" member="<?php echo $MEMBER->id; ?>">Save</button>
+                                                                    <button id="post-edited-cancel" class="btn btn-md-2 btn-default post-edited-cancel" comment="<?php echo $comment['id']; ?>" member="<?php echo $MEMBER->id; ?>">Cancel</button>
+                                                                </div>
+
+                                                                <a class="reply add-reply" id="<?php echo $comment['id']; ?>">Reply</a>
+
+                                                                <ul class="children comment-reply-list" id="comment-reply-list-<?php echo $comment['id']; ?>" comment-id="<?php echo $comment['id']; ?>">
+                                                                    <a href="#" class="see-more-replies hidden" id="see-more-replies-<?php echo $comment['id']; ?>">View all replies</a>
+                                                                    <?php
+                                                                    foreach ($replies as $reply) {
+                                                                        $REPLYMEMBER = New Member($reply['member']);
+                                                                        $repliedat = getTime($reply['replied_at']);
+                                                                        ?>
+                                                                        <li class="comment-item comment-reply-item" id="li_r_<?php echo $reply['id']; ?>">
+                                                                            <div class="post__author author vcard inline-items">
+                                                                                <img src="../upload/member/<?php echo $REPLYMEMBER->profilePicture; ?>" alt="author">
+
+                                                                                <div class="author-date">
+                                                                                    <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $REPLYMEMBER->id; ?>"><?php echo $REPLYMEMBER->firstName . ' ' . $REPLYMEMBER->lastName; ?></a>
+                                                                                    <div class="post__date">
+                                                                                        <time class="published" datetime="2017-03-24T18:18">
+                                                                                            <?php echo $repliedat; ?>
+                                                                                        </time>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <?php
+                                                                                if ($reply['member'] == $MEMBER->id) {
+                                                                                    ?>
+                                                                                    <div class="more">
+                                                                                        <svg class="olymp-three-dots-icon">
+                                                                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
+                                                                                        </svg>
+                                                                                        <ul class="more-dropdown">
+                                                                                            <li>
+                                                                                                <a class="edit-reply" id="<?php echo $reply['id']; ?>">Edit Reply</a>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <a class="delete-reply" id="<?php echo $reply['id']; ?>">Delete Reply</a>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                    <?php
+                                                                                }
+                                                                                ?>
+
+                                                                            </div>
+
+
+                                                                            <p class="reply-p" id="reply-p-<?php echo $reply['id']; ?>"><?php echo $reply['reply']; ?></p>
+                                                                            <div class="reply-edit-form inline-items hidden" id="reply-edit-form-<?php echo $reply['id']; ?>">
+                                                                                <div class="post__author author vcard inline-items">
+                                                                                    <div class="form-group with-icon-right is-empty">
+                                                                                        <textarea class="form-control" placeholder="" name="reply" id="reply-<?php echo $reply['id']; ?>"></textarea>
+                                                                                        <span class="material-input"></span></div>
+                                                                                </div>
+                                                                                <button id="post-edited-reply" class="btn btn-md-2 btn-primary post-edited-reply" reply="<?php echo $reply['id']; ?>" member="<?php echo $MEMBER->id; ?>">Save</button>
+                                                                                <button id="reply-edited-cancel" class="btn btn-md-2 btn-default reply-edited-cancel" reply="<?php echo $reply['id']; ?>" member="<?php echo $MEMBER->id; ?>">Cancel</button>
+                                                                            </div>
+
+
+                                                                            <a class="reply add-reply" id="<?php echo $comment['id']; ?>">Reply</a>
+                                                                        </li>
+                                                                        <?php
+                                                                    }
+                                                                    ?>
+                                                                    <div class="reply-form inline-items hidden" id="reply-form-<?php echo $comment['id']; ?>">
+                                                                        <div class="post__author author vcard inline-items">
+                                                                            <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author">
+                                                                            <div class="form-group with-icon-right is-empty">
+                                                                                <textarea class="form-control" placeholder="" name="reply" id="reply-<?php echo $comment['id']; ?>"></textarea>
+                                                                                <span class="material-input"></span></div>
+                                                                        </div>
+                                                                        <button id="post-reply" class="btn btn-md-2 btn-primary post-reply" comment="<?php echo $comment['id']; ?>" member="<?php echo $MEMBER->id; ?>">Post Reply</button>
+                                                                    </div>
+                                                                </ul>
+                                                            </li>
+                                                            <?php
+                                                        }
                                                     }
-                                                }
+                                                    ?>
+
+                                                </ul>
+                                                <?php
+                                            } else {
                                                 ?>
-
-                                            </ul>
-                                            <?php
-                                        } else {
+                                                <ul class="comments-list hidden" id="group-comment-list-<?php echo $ad['id']; ?>" post-id="<?php echo $ad['id']; ?>"></ul>
+                                                <?php
+                                            }
                                             ?>
-                                            <ul class="comments-list hidden" id="group-comment-list-<?php echo $ad['id']; ?>" post-id="<?php echo $ad['id']; ?>"></ul>
-                                            <?php
-                                        }
-                                        ?>
 
-                                        <div class="comment-form inline-items hidden" id="group-comment-form-<?php echo $ad['id']; ?>">
-                                            <div class="post__author author vcard inline-items">
-                                                <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author">
-                                                <div class="form-group with-icon-right is-empty">
-                                                    <textarea class="form-control" placeholder="" name="comment" id="group-comment-<?php echo $ad['id']; ?>"></textarea>
+                                            <div class="comment-form inline-items hidden" id="group-comment-form-<?php echo $ad['id']; ?>">
+                                                <div class="post__author author vcard inline-items">
+                                                    <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author">
+                                                    <div class="form-group with-icon-right is-empty">
+                                                        <textarea class="form-control" placeholder="" name="comment" id="group-comment-<?php echo $ad['id']; ?>"></textarea>
 
-                                                    <span class="material-input"></span></div>
+                                                        <span class="material-input"></span></div>
+                                                </div>
+                                                <button id="post-comment" class="btn btn-md-2 btn-primary group-post-comment" ad="<?php echo $ad['id']; ?>" member="<?php echo $MEMBER->id; ?>">Post Comment</button>
                                             </div>
-                                            <button id="post-comment" class="btn btn-md-2 btn-primary group-post-comment" ad="<?php echo $ad['id']; ?>" member="<?php echo $MEMBER->id; ?>">Post Comment</button>
-                                        </div>
 
-                                        <!-- .. end Post -->
-                                    </div>
-                                    <?php
+                                            <!-- .. end Post -->
+                                        </div>
+                                        <?php
                                     }
                                 }
                             } else {
@@ -569,8 +495,6 @@ $GROUP = new Group($id);
                             }
                             ?>
                         </div>
-                        <a id="load-more-button" href="#" class="btn btn-control btn-more" data-load-link="items-to-load.html" data-container="newsfeed-items-grid"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-
                     </div>
 
                     <?php

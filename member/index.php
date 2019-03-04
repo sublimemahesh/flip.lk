@@ -7,7 +7,6 @@ $MEMBER = new Member($_SESSION['id']);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
         <title>Flip.lk</title>
 
         <!-- Required meta tags always come first -->
@@ -36,6 +35,7 @@ $MEMBER = new Member($_SESSION['id']);
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/images-grid.css" rel="stylesheet" type="text/css"/>
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
         <style>
             .comment-item1 {
                 display: none;
@@ -58,8 +58,8 @@ $MEMBER = new Member($_SESSION['id']);
                 <!-- Main Content -->
 
                 <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-                   
-                    <div class="ui-block">
+
+                    <div class="ui-block first-block">
                         <!-- News Feed Form  -->
                         <div class="news-feed-form">
                             <!-- Nav tabs -->
@@ -103,7 +103,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                                 <div class="_m _6a">
                                                                     <a class="_uploadbox" rel="ignore">
                                                                         <div class="_upload">
-                                                                            
+
                                                                         </div>
                                                                     </a>
                                                                 </div>
@@ -824,17 +824,10 @@ $MEMBER = new Member($_SESSION['id']);
                         }
                         ?>
                     </div>
-
-                    <a id="load-more-button" href="#" class="btn btn-control btn-more" data-load-link="items-to-load.html" data-container="newsfeed-items-grid"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-
                 </main>
-
                 <!-- ... end Main Content -->
-
-
                 <!-- Left Sidebar -->
-
-                <aside class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-12 col-12">
+                <aside class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-12 col-12 hidden-sm hidden-xs">
                     <div class="ui-block">
                         <div class="ui-block-title">
                             <h6 class="title">Welcome, <?php echo $MEMBER->firstName; ?>!</h6>
@@ -854,7 +847,6 @@ $MEMBER = new Member($_SESSION['id']);
                                         }
                                     }
                                     ?>
-
                                 </li>
                             </ul>
                             <!-- .. end W-Personal-Info -->

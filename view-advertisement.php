@@ -46,6 +46,8 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
         <link href="css/images-grid.css" rel="stylesheet" type="text/css"/>
         <link href="css/search-box.css" rel="stylesheet" type="text/css"/>
         <link href="plugins/OwlCarousel/dist/assets/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/OwlCarousel/dist/assets/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+        <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
         <style>
             .comment-item1 {
                 display: none;
@@ -335,7 +337,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                         <div class="col-md-12 aaa">
                                                             <div class="ad-item  post ">
                                                                 <div class="ad-item-box row">
-                                                                    <div class = "col-xl-4 col-sm-12 ad-item-image">
+                                                                    <div class = "col-xl-4 col-sm-4 col-xs-4 ad-item-image">
                                                                         <?php
                                                                         if (count($adimages) > 0) {
                                                                             foreach ($adimages as $key => $img) {
@@ -352,7 +354,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                                         }
                                                                         ?>
                                                                     </div>
-                                                                    <div class = "col-xl-8 col-sm-12 more-ad ad-item-details">
+                                                                    <div class = "col-xl-8 col-sm-8 col-xs-8 more-ad ad-item-details">
                                                                         <div class="ad-title"><a href="view-advertisement.php?id=<?php echo $ad['id']; ?>"><?php echo $ad['title']; ?></a></div>
                                                                         <div class="ad-category"><span class="title"><i class="fa fa-tag"></i> </span><?php echo $CATEGORY->name; ?></div>
                                                                         <div class=""><i class="fa fa-clock"></i> 2018-02-13</div>
