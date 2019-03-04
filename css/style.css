@@ -1336,6 +1336,9 @@ header .control-icon > svg {
 #galleria.no-images {
     height: 10px;
 }
+#ad-slider .title a {
+font-size: 22px;
+}
 /*.more-ads-section {
     height: 340px;
 }

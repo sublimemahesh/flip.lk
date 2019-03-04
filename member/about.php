@@ -27,6 +27,7 @@ if (isset($_GET['id'])) {
         <link rel="stylesheet" type="text/css" href="css/main.min.css">
         <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
 
         <!-- Main Font -->
         <script src="js/webfontloader.min.js"></script>
@@ -220,11 +221,13 @@ if (isset($_GET['id'])) {
                                     </li>
                                     <li>
                                         <span class="title">Status:</span>
-                                        <span class="text"><?php if ($MEM->civilStatus == 'not_married') {
-                echo 'Not Married';
-            } else {
-                echo 'Married';
-            }; ?></span>
+                                        <span class="text"><?php
+                                            if ($MEM->civilStatus == 'not_married') {
+                                                echo 'Not Married';
+                                            } else {
+                                                echo 'Married';
+                                            };
+                                            ?></span>
                                     </li>
                                     <li>
                                         <span class="title">Email:</span>
@@ -267,9 +270,9 @@ if (isset($_GET['id'])) {
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>
         <!-- Window-popup -->
-<?php
-include './window-pop-up.php';
-?>
+        <?php
+        include './window-pop-up.php';
+        ?>
         <!-- ... end Window-popup -->
 
 

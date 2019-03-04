@@ -7,7 +7,7 @@
                         <img src="../upload/member/cover-picture/<?php echo $MEM->coverPicture; ?>" id="cover_pic" alt="nature">
                     </div>
                     <div class="profile-section">
-                        <div class="row">
+                        <div class="row hidden-xs">
                             <?php
                             if (isset($_GET['id'])) {
                                 ?>
@@ -33,7 +33,7 @@
                                         <li>
                                             <a href="#">Messages</a>
                                         </li>
-                                        
+
                                     </ul>
                                 </div>
                                 <?php
@@ -63,7 +63,61 @@
                                         <li>
                                             <a href="#">Messages</a>
                                         </li>
-                                        
+
+                                    </ul>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <div class="row hidden-lg hidden-md hidden-sm ">
+                            <?php
+                            if (isset($_GET['id'])) {
+                                ?>
+                                <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
+                                    <ul class="profile-menu">
+
+                                        <li>
+                                            <a href="profile.php?id=<?php echo $MEM->id; ?>" class="active">Timeline</a>
+                                        </li>
+                                        <li>
+                                            <a href="about.php?id=<?php echo $MEM->id; ?>">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="friends.php?id=<?php echo $MEM->id; ?>">Followers</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Photos</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Messages</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <?php
+                            } else {
+                                ?>
+                                <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
+                                    <ul class="profile-menu">
+
+                                        <li>
+                                            <a href="profile.php" class="active">Timeline</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="about.php">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="friends.php">Followers</a>
+                                        </li>
+                                        <li>
+                                            <a href="advertisement.php">My Advertisement</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Messages</a>
+                                        </li>
+
                                     </ul>
                                 </div>
                                 <?php
@@ -75,7 +129,7 @@
                         if ($MEM->id === $_SESSION['id']) {
                             ?>
                             <div class="control-block-button">
-                               <div class="btn btn-control bg-primary more">
+                                <div class="btn btn-control bg-primary more">
                                     <svg class="olymp-settings-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-settings-icon"></use></svg>
 
                                     <ul class="more-dropdown more-with-triangle triangle-bottom-right">

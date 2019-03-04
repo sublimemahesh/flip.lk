@@ -27,7 +27,6 @@ if ($count_requests['count'] == 0) {
 } else {
     $countr = $count_requests['count'];
 }
-
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +45,7 @@ if ($count_requests['count'] == 0) {
         <link rel="stylesheet" type="text/css" href="css/main.min.css">
         <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
-
+        <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
         <!-- Main Font -->
         <script src="js/webfontloader.min.js"></script>
         <script>
@@ -76,8 +75,7 @@ if ($count_requests['count'] == 0) {
                         <div class="ui-block responsive-flex">
                             <div class="ui-block-title">
                                 <div class="h6 title col-sm-4">
-                                    <?php 
-                                    echo $MEM->firstName . ' ' . $MEM->lastName . ' (' . $count1 . ')'; ?> 
+                                    <?php echo $MEM->firstName . ' ' . $MEM->lastName . ' (' . $count1 . ')'; ?> 
                                 </div>
                                 <form class="w-search col-sm-4">
                                     <div class="form-group with-button">
@@ -120,7 +118,7 @@ if ($count_requests['count'] == 0) {
                             $countoffriends = Friend::countFriends($friend['friend']);
                         }
                         ?>
-                        <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">
+                        <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12 col-12">
                             <div class="ui-block">
 
                                 <!-- Friend Item -->
@@ -130,11 +128,11 @@ if ($count_requests['count'] == 0) {
                                         <?php
                                         if ($FRI->status == 0) {
                                             ?>
-                                             <img src="../upload/member/cover-picture/cover.jpg" alt="friend">
+                                            <img src="../upload/member/cover-picture/cover.jpg" alt="friend">
                                             <?php
                                         } else {
                                             ?>
-                                             <img src="../upload/member/cover-picture/thumb/<?php echo $FRI->coverPicture; ?>" alt="friend">
+                                            <img src="../upload/member/cover-picture/thumb/<?php echo $FRI->coverPicture; ?>" alt="friend">
                                             <?php
                                         }
                                         ?>

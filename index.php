@@ -43,6 +43,8 @@ if (isset($_SESSION['id'])) {
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="css/search-box.css" rel="stylesheet" type="text/css"/>
         <link href="plugins/OwlCarousel/dist/assets/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/OwlCarousel/dist/assets/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+        <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
         <style>
             .comment-item1 {
                 display: none;
@@ -134,7 +136,7 @@ if (isset($_SESSION['id'])) {
                                 foreach (BusinessCategory::all() as $category) {
                                     ?>
 
-                                    <div class="col-xl-2 category-item-box">
+                                    <div class="col-xl-2 col-xs-6 category-item-box">
                                         <a href="advertisements.php?category=<?php echo $category['id']; ?>">
                                             <div class="cat-img">
                                                 <img src="upload/business-category/<?php echo $category['image_name']; ?>" alt=""/>
@@ -213,11 +215,11 @@ if (isset($_SESSION['id'])) {
                                             </div>
                                             <hr />
                                             <div class="slider-item-footer row">
-                                                <div class="col-xs-8 col-xl-8 member-details row">
-                                                    <div class="col-xl-3 order-1 col-xs-3 ">
+                                                <div class="col-xl-8 col-xs-8 order-xl-1 order-xs-1 member-details row">
+                                                    <div class="col-xl-3 col-xs-3 order-xl-1 order-xs-1">
                                                         <img src="upload/member/<?php echo $MEM->profilePicture; ?>" class="img-responsive img-circle" alt=""/>
                                                     </div>
-                                                    <div class="col-xl-9 order-2 col-xs-9 mem-name">
+                                                    <div class="col-xl-9 order-xl-2 col-xs-9 order-xs-2 mem-name">
                                                         <h6 class="" title="<?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>">
                                                             <?php
                                                             if (strlen($MEM->firstName . ' ' . $MEM->lastName) > 14) {
@@ -229,7 +231,7 @@ if (isset($_SESSION['id'])) {
                                                         </h6>
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-4 col-xl-4 category">
+                                                <div class="col-xl-4 col-xs-4 order-xl-2 order-xs-2 category">
                                                     <h6><i class="fa fa-list"></i> <?php echo $CAT->name; ?></h6>
                                                 </div>
                                             </div>

@@ -41,7 +41,7 @@ $propic = $MEMBER->profilePicture;
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="css/images-grid.css" rel="stylesheet" type="text/css"/>
-
+        <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
         <style>
             .comment-item1 {
                 display: none;
@@ -121,9 +121,7 @@ $propic = $MEMBER->profilePicture;
                                                         <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
                                                             <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
                                                         </a>
-
-                                                        <button class="btn btn-primary btn-md-2">Post Status</button>
-                                                        <button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
+                                                        <input type="submit" name="save-post" class="btn btn-primary btn-md-2 share-post" value="Share" />
 
                                                     </div>
 
@@ -162,7 +160,6 @@ $propic = $MEMBER->profilePicture;
                                             <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
                                                 <a href="#" class="btn btn-smoke btn-light-bg btn-md-2 join-group-btn" id="delete-request" row-id="<?php echo $getrequest['id']; ?>">Delete Request<div class="ripple-container"></div></a>
                                             </div>
-
                                         </div>
                                     </div>
                                     <?php
@@ -320,26 +317,26 @@ $propic = $MEMBER->profilePicture;
                                                         </time>
                                                     </div>
                                                 </div>
+                                                <?php
+                                                if (!isset($_GET['id'])) {
+                                                    ?>
+                                                    <div class="more">
+                                                        <svg class="olymp-three-dots-icon">
+                                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
+                                                        </svg>
+                                                        <ul class="more-dropdown">
+                                                            <li>
+                                                                <a href="#" data-toggle="modal" data-target="#edit-post" class="edit-post" id="<?php echo $post['id']; ?>">Edit Post</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="delete-post" id="<?php echo $post['id']; ?>">Delete Post</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
 
-                                                <div class="more">
-                                                    <svg class="olymp-three-dots-icon">
-                                                    <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                                                    </svg>
-                                                    <ul class="more-dropdown">
-                                                        <li>
-                                                            <a href="#" data-toggle="modal" data-target="#edit-post" class="edit-post" id="<?php echo $post['id']; ?>">Edit Post</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="delete-post" id="<?php echo $post['id']; ?>">Delete Post</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Turn Off Notifications</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Select as Featured</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
                                             </div>
 
                                             <p><?php echo $post['description']; ?></p>
@@ -624,11 +621,7 @@ $propic = $MEMBER->profilePicture;
                             }
                             ?>
                         </div>
-                        <a id="load-more-button" href="#" class="btn btn-control btn-more" data-load-link="items-to-load.html" data-container="newsfeed-items-grid">
-                            <svg class="olymp-three-dots-icon">
-                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                            </svg>
-                        </a>
+
                     </div>
                     <!-- ... end Main Content -->
                     <!-- Left Sidebar -->

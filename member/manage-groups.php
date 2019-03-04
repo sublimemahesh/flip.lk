@@ -27,6 +27,7 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
         <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
         <!-- Main Font -->
         <script src="js/webfontloader.min.js"></script>
         <script>
@@ -42,7 +43,7 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
         <?php
         include './header.php';
         ?>
-        <div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
+        <div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-xs-12 col-12">
             <div class="header-spacer header-spacer-small"></div>
             <!-- Main Header Groups -->
             <div class="main-header">
@@ -73,7 +74,7 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
                         <div class="ui-block-content">
                             <div class="row">
 
-                                <div class="col col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6">
+                                <div class="col col-xl-4 col-lg-6 col-md-6 col-sm-6 col-sm-12 col-12">
                                     <!-- Friend Item -->
                                     <div class="friend-item friend-groups create-group" data-mh="friend-groups-item">
                                         <a href="create-group.php" class="full-block"></a>
@@ -94,7 +95,7 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
                                     $members = GroupMember::getAllMembersByGroup($group['id']);
                                     $member_count = count($members);
                                     ?>
-                                    <div class="col col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6">
+                                    <div class="col col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12 col-12">
                                         <div class="ui-block members-in-group" data-mh="friend-groups-item">
                                             <!-- Friend Item -->
                                             <div class="friend-item friend-groups">

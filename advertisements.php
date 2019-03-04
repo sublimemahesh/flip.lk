@@ -61,6 +61,7 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="css/images-grid.css" rel="stylesheet" type="text/css"/>
         <link href="css/search-box.css" rel="stylesheet" type="text/css"/>
+        <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <?php
@@ -181,7 +182,7 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
                                             ?>
                                             <div class="ad-item  post ">
                                                 <div class="ad-item-box row">
-                                                    <div class = "col-xl-2 ad-item-image">
+                                                    <div class = "col-xl-2 col-xs-4 ad-item-image">
                                                         <?php
                                                         if (count($adimages) > 0) {
                                                             foreach ($adimages as $key => $img) {
@@ -198,7 +199,7 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
                                                         }
                                                         ?>
                                                     </div>
-                                                    <div class = "col-xl-10 ad-item-details">
+                                                    <div class = "col-xl-10 col-xs-8 ad-item-details">
                                                         <div class="ad-title"><a href="view-advertisement.php?id=<?php echo $ad['id']; ?>"><?php echo $ad['title']; ?></a></div>
                                                         <div class="ad-city"><span class="title">Location <i class="fa fa-angle-double-right"></i> </span>Galle</div>
                                                         <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
@@ -238,7 +239,7 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
                         </div>
                         <!-- ... end Main Content -->
                         <!-- Left Sidebar -->
-                        <div class="col col-xl-4 order-xl-1 col-lg-4 order-lg-1 col-md-12 col-sm-12 col-12">
+                        <div class="col col-xl-4 order-xl-1 col-lg-4 order-lg-1 col-md-12 col-sm-12 col-12 hidden-sm">
                             <div class="ui-block">
                                 <div class="ui-block-title">
                                     <h6 class="title">All Categories</h6>

@@ -1,0 +1,223 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 1, 2019, 10:24:09 AM
+    Author     : W j K n ¨
+*/
+
+@media(max-width:576px) {
+    body, p {
+        font-size: 14px;
+    }
+    .header {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    .responsive-header-logo {
+        width: 100px;
+        margin-top: 8px;
+    }
+    .nav-item:first-child {
+        left: -16px;
+    }
+    .f-a-size {
+        font-size: 18px;
+    }
+    .mobile-app-tabs svg {
+        height: 20px;
+        width: 17px;
+    }
+    .nav-link svg.fa-home {
+        margin-left: -32px;
+    }
+    .nav-link svg.olymp-newsfeed-icon {
+        margin-left: -16px;
+    }
+    header .control-icon > svg {
+        margin-left: -2px;
+    }
+    .avatar {
+        width: 22px;
+    }
+    .mobile-app-tabs {
+        padding: 0 2px;
+    }
+    .nav-item a svg {
+        color: #fff;
+    }
+    .mobile-app-tabs svg {
+        fill: #fff;
+    }
+    .container.index-container, .container.login-container {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .category-list.container {
+        margin: 20px 0px;
+    }
+    .category-list .category-item-box {
+        width: 129px;
+        height: 129px;
+        padding: 8px;
+    }
+    .category-list .cat-img img {
+        width: 78px;
+    }
+    .category-list .cat-title h4 {
+        font-size: 15px;
+    }
+    .s002 form .inner-form .input-field.first-wrap, .s002 form .inner-form .input-field.fouth-wrap, .s002 form .inner-form .input-field.second-wrap {
+        min-width: 218px;
+    }
+    .owl-theme .owl-dots .owl-dot span {
+        display: block;
+    }
+    .title-desc {
+        font: 13px/1.5 "PT Sans",Arial,sans-serif;
+    }
+    .title-bg .title1 {
+        margin: 7px 0;
+        font-size: 22px;
+    }
+    .title1 {
+        font-size: 30px;
+    }
+    #ad-slider .title a {
+        font-size: 20px;
+    }
+    #ad-slider .created-date {
+        font-size: 11px;
+    }
+    #ad-slider .description p {
+        font-size: 13px;
+
+    }
+    .ui-block-title .title {
+        font-size: 18px;
+    }
+    .category-list .category-icon img {
+        width: 40px;
+        margin-right: 15px;
+    }
+    .category-icon a {
+        font-size: 16px;
+    }
+    #newsfeed-items-grid .ui-block:first-child {
+        margin-top: 20px;
+    }
+    #galleria {
+        height: 400px;
+    }
+    .category-details {
+        margin-bottom: 10px;
+    }
+    .price-tag span {
+        font-size: 24px;
+        color: #ff7a00;
+    }
+    .nav-item a svg.olymp-chat---messages-icon {
+        width: 23px;
+        margin-top: 10px;
+    }
+    .nav-item a svg.olymp-happy-face-icon {
+        width: 23px;
+        margin-top: 10px;
+    }
+    .nav-item a svg.fa-users {
+        margin-top: 8px;
+    }
+    .author-thumb img {
+        margin-top: 9px;   
+    }
+    
+
+}
+@media(min-width:577px) and (max-width:990px) {
+    body, p {
+        font-size: 14px;
+    }
+    .responsive-header-logo {
+        width: 150px;
+    }
+    .nav-item a svg {
+        color: #fff;
+    }
+    .mobile-app-tabs svg {
+        fill: #fff;
+    }
+    .nav-item:first-child {
+        left: -20px;
+    }
+    .s002 form .inner-form .input-field.fouth-wrap {
+        margin-bottom: 15px;
+    }
+    .hidden-sm {
+        display: none;
+    }
+    .category-list .category-item-box {
+        width: 166px;
+        height: 166px;
+    }
+    .category-list.container {
+        max-width: 960px;
+        margin: 20px 0px;
+    }
+    .title-desc {
+        font: 14px/1.5 "PT Sans",Arial,sans-serif;
+    }
+    .title1 {
+        font-size: 30px;
+    }
+    #ad-slider .title a {
+        font-size: 18px;
+    }
+    #ad-slider .created-date {
+        font-size: 11px;
+    }
+    #ad-slider .description p {
+        font-size: 13px;
+
+    }
+    .member-details .mem-name {
+        margin-top: 2px;
+    }
+    #ad-slider .category {
+        margin-top: 2px;
+    }
+    #ad-slider h6 {
+        margin-bottom: 0px;
+    }
+    #newsfeed-items-grid .ui-block:first-child {
+        margin-top: 20px;
+    }
+}
+@media(width:360px) {
+    .category-list .category-item-box {
+        width: 129px;
+        height: 129px;
+        padding: 8px;
+    }
+}
+@media(width:375px) {
+    .category-list .category-item-box {
+        width: 136.5px;
+        height: 136.5px;
+        padding: 12px;
+    }
+    .category-list .cat-title h4 {
+        font-size: 17px;
+    }
+}
+@media(width:414px) {
+    .category-list .category-item-box {
+        width: 156px;
+        height: 156px;
+        padding: 17px;
+    }
+    .category-list .cat-title h4 {
+        font-size: 17px;
+    }
+}

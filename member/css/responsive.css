@@ -1,0 +1,215 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 1, 2019, 10:24:09 AM
+    Author     : W j K n ¨
+*/
+
+@media(max-width:576px) {
+    body, p {
+        font-size: 14px;
+    }
+    .header {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    #site-header-responsive .responsive-header-logo {
+        width: 100px;
+        margin-top: 8px;
+    }
+    #site-header-responsive .nav-item:first-child {
+        left: -16px;
+    }
+    .f-a-size {
+        font-size: 18px;
+    }
+    /*    #site-header-responsive .mobile-app-tabs svg {
+            height: 20px;
+            width: 17px;
+        }*/
+    #site-header-responsive .nav-link svg.fa-home {
+        margin-left: -32px;
+    }
+    #site-header-responsive .nav-link svg.olymp-newsfeed-icon {
+        margin-left: -16px;
+        height: 19px;
+    }
+    header .control-icon > svg {
+        margin-left: -2px;
+    }
+    .avatar {
+        width: 22px;
+    }
+    .mobile-app-tabs {
+        padding: 0 2px;
+    }
+    .nav-item a svg {
+        color: #fff;
+    }
+    .mobile-app-tabs svg {
+        fill: #fff;
+    }
+    .hidden-xs {
+        display: none;
+    }
+    .ui-block.first-block {
+        margin-top: 20px;
+    }
+    .container.index-container {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .main-header {
+        margin-top: 10px;
+    }
+    .main-header-content p {
+        padding: 0px 10px;
+    }
+    .upload-group-pro-pic.pro-img {
+        margin: 10px 55px 45px;
+    }
+    .upload-group-cover-pic {
+        margin: 0px 0px 22px;
+    }
+    .upload-group-span2 input[type="file"] {
+        min-height: 167px;
+    }
+    .upload-group-pro-pic.pro-img {
+        margin: 10px 55px 45px;
+    }
+    .upload-group-span2 {
+        width: 283px;
+    }
+    .create-group .content {
+        margin: 37% auto;
+    }
+    .create-group {
+        margin-bottom: 15px;
+    }
+    .top-header.top-header-favorit .profile-menu {
+        flex-direction: row;
+    }
+    .top-header.top-header-favorit .top-header-author {
+        bottom: auto;
+        top: 0;
+        margin-top: 62px;
+    }
+    .ui-block.group-settings-btn .col-xs-4 {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .ui-block.group-settings-btn .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    .join-group-btn {
+        margin-left: 8px;
+        padding: .6rem .6rem;
+        font-size: 11px;
+    }
+    .container.login-container {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 91%;
+    }
+    .open-responsive-menu {
+        display: none;
+    }
+    .landing-content h1 {
+        margin-top: 35px;
+    }
+    .upload-group-pro-pic {
+        text-align: center;
+        margin: 10px 84px 45px;
+    }
+    .upload-group-span2 {
+        width: 336px;
+        padding-top: 15%;
+    }
+    .nav-item a svg.olymp-chat---messages-icon {
+        width: 23px;
+        margin-top: 10px;
+    }
+    .nav-item a svg.olymp-happy-face-icon {
+        width: 23px;
+        margin-top: 10px;
+    }
+    .nav-item a svg.fa-users {
+        margin-top: 8px;
+    }
+    .nav-item .author-thumb img {
+        margin-top: 9px;   
+    }
+    profile-section {
+        padding: 30px 0 0;
+        z-index: 5;
+    }
+    .control-block-button .more:hover .more-dropdown {
+        z-index: 9999;
+        position: relative;
+    }
+    .control-block-button .more-dropdown {
+        position: relative;
+        z-index: 999;
+    }
+    .top-header-author {
+        margin-top: 0px;
+    }
+}
+
+
+@media(min-width:577px) and (max-width:990px) {
+    body, p {
+        font-size: 14px;
+    }
+    #site-header-responsive .responsive-header-logo {
+        width: 150px;
+    }
+    #site-header-responsive .nav-item a svg {
+        color: #fff;
+    }
+    #site-header-responsive .mobile-app-tabs svg {
+        fill: #fff;
+    }
+    #site-header-responsive .nav-item:first-child {
+        left: -20px;
+    }
+    .open-responsive-menu {
+        display: none;
+    }
+    .container.login-container {
+        margin-top: 40px;
+    }
+    #newsfeed-items-grid .ui-block:first-child {
+        margin-top: 20px;
+    }
+    .ui-block.first-block {
+        margin-top: 20px;
+    }
+    .hidden-sm {
+        display: none;
+    }
+
+}
+@media(min-width:992px) and (max-width:1200px) {
+    .hidden-md {
+        display: none;
+    }
+}
+@media(min-width:1200px) {
+    .hidden-lg {
+        display: none;
+    }
+}
+@media(width:360px) {
+
+}
+@media(width:375px) {
+
+}
+@media(width:414px) {
+
+}

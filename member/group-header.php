@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div class="ui-block">
+            <div class="ui-block first-block">
                 <div class="top-header top-header-favorit">
                     <div class="top-header-thumb">
                         <img src="../upload/group/cover-picture/<?php echo $GROUP->coverPicture; ?>" alt="nature">
@@ -36,17 +36,6 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-
-                        <div class="control-block-button">
-                            <a href="#" class="btn btn-control bg-primary">
-                                <svg class="olymp-star-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-                            </a>
-
-                            <a href="#" class="btn btn-control bg-purple">
-                                <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
-                            </a>
-
                         </div>
                     </div>
                 </div>
