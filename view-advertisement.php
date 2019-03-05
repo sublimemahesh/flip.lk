@@ -134,7 +134,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                             if ($ADVERTISEMENT->price == 0) {
                                                 echo 'Price Negotiable';
                                             } else {
-                                                echo 'Rs.' . $ADVERTISEMENT->price . '/=';
+                                                echo 'Rs.' . number_format($ADVERTISEMENT->price) . '/=';
                                             }
                                             ?>
                                         </span>
@@ -320,7 +320,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                         <div class="title-bg">
                                             <h2 class="title1">More Advertisements</h2>
                                         </div>
-                                        <p class="title-desc">Only with us you can get a new model with a discount.</p>
+                                        <p class="title-desc">Find more relevant advertising.</p>
                                     </header>
                                     <div class="row">
                                         <div id="more-ads-slider" class="owl-carousel owl-theme">
@@ -374,8 +374,8 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                                             </a>
                                                                         </div>
                                                                         <div class="ad-category"><span class="title"><i class="fa fa-tag"></i> </span><?php echo $CATEGORY->name; ?></div>
-                                                                        <div class=""><i class="fa fa-clock"></i> 2018-02-13</div>
-                                                                        <div class=""><i class="fa fa-dollar-sign"></i> Rs. <?php echo $result; ?>/=</div>
+                                                                        <div class=""><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                                        <div class=""><i class="fa fa-dollar-sign"></i> <?php if($ad['price'] == 0) { echo 'Price Negotiable'; } else { echo 'Rs. ' . number_format($ad['price']);} ?></div>
                                                                     </div>
                                                                 </div>
                                                             </div>

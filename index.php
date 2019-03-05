@@ -210,8 +210,8 @@ if (isset($_SESSION['id'])) {
                                             </div>
                                             <div class="description">
                                                 <?php
-                                                if (strlen($ad['description']) > 100) {
-                                                    echo substr($ad['description'], 0, 98) . '...';
+                                                if (strlen($ad['description']) > 90) {
+                                                    echo substr($ad['description'], 0, 85) . '...';
                                                 } else {
                                                     echo $ad['description'];
                                                 }

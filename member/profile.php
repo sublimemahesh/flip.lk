@@ -338,9 +338,9 @@ $propic = $MEMBER->profilePicture;
                                                 ?>
 
                                             </div>
-
-                                            <p><?php echo $post['description']; ?></p>
-
+                                            <span class="more">
+                                                <p><?php echo $post['description']; ?></p>
+                                            </span>
                                             <div class="post-thumb">
                                                 <div id="gallery-<?php echo $post['id']; ?>"></div>
                                             </div>
@@ -368,7 +368,9 @@ $propic = $MEMBER->profilePicture;
                                                             </div>
                                                         </div>
                                                         <h5><b><?php echo $AD->title; ?></b></h5>
-                                                        <p><?php echo $AD->description; ?></p>
+                                                        <span class="more">
+                                                            <p><?php echo $AD->description; ?></p>
+                                                        </span>
                                                     </li>
                                                 </ul>
                                                 <?php
@@ -700,5 +702,6 @@ $propic = $MEMBER->profilePicture;
         <script src="js/js/edit-cover-picture.js" type="text/javascript"></script>
         <script src="js/heartcode-canvasloader.js" type="text/javascript"></script>
         <script src="js/image-preloader.js" type="text/javascript"></script>
+        <script src="js/js/read-more-and-less.js" type="text/javascript"></script>
     </body>
 </html>
