@@ -1,13 +1,15 @@
 <?php
+
 include_once(dirname(__FILE__) . '/../../../class/include.php');
 
 if ($_POST['option'] == 'SAVEAD') {
-    
+
     $ADVERTISEMENT = new Advertisement(NULL);
     $ADVERTISEMENT->groupId = $_POST['group'];
     $ADVERTISEMENT->member = $_POST['member'];
     $ADVERTISEMENT->title = mysql_real_escape_string($_POST['title']);
-    $ADVERTISEMENT->description = mysql_real_escape_string($_POST['description']);;
+    $ADVERTISEMENT->description = mysql_real_escape_string($_POST['description']);
+    ;
     $ADVERTISEMENT->city = $_POST['city'];
     $ADVERTISEMENT->address = $_POST['address'];
     $ADVERTISEMENT->category = $_POST['category'];
@@ -17,10 +19,10 @@ if ($_POST['option'] == 'SAVEAD') {
     $ADVERTISEMENT->phoneNumber = $_POST['phonenumber'];
     $ADVERTISEMENT->email = $_POST['email'];
     $ADVERTISEMENT->status = '1';
-   
+
     $result = $ADVERTISEMENT->create();
-    
-    if($result) {
+
+    if ($result) {
         foreach ($_POST["images"] as $key => $img) {
             $key++;
             $ADIMAGES = new AdvertisementImage(NULL);
@@ -37,9 +39,10 @@ if ($_POST['option'] == 'SAVEAD') {
 }
 
 if ($_POST['option'] == 'EDITAD') {
-    
+
     $ADVERTISEMENT = new Advertisement($_POST['id']);
-    $ADVERTISEMENT->title = mysql_real_escape_string($_POST['title']);;
+    $ADVERTISEMENT->title = mysql_real_escape_string($_POST['title']);
+    ;
     $ADVERTISEMENT->description = mysql_real_escape_string($_POST['description']);
     $ADVERTISEMENT->city = $_POST['city'];
     $ADVERTISEMENT->address = $_POST['address'];
@@ -48,16 +51,18 @@ if ($_POST['option'] == 'EDITAD') {
     $ADVERTISEMENT->phoneNumber = $_POST['phonenumber'];
     $ADVERTISEMENT->email = $_POST['email'];
     $ADVERTISEMENT->status = '1';
-   
+
     $result = $ADVERTISEMENT->update();
-    if($result) {
-        foreach ($_POST["images"] as $key => $img) {
-            $key++;
-            $ADIMAGES = new AdvertisementImage(NULL);
-            $ADIMAGES->advertisement = $_POST['id'];
-            $ADIMAGES->imageName = $img["value"];
-            $ADIMAGES->sort = $key;
-            $res = $ADIMAGES->create();
+    if ($result) {
+        if (isset($_POST["images"])) {
+            foreach ($_POST["images"] as $key => $img) {
+                $key++;
+                $ADIMAGES = new AdvertisementImage(NULL);
+                $ADIMAGES->advertisement = $_POST['id'];
+                $ADIMAGES->imageName = $img["value"];
+                $ADIMAGES->sort = $key;
+                $res = $ADIMAGES->create();
+            }
         }
     }
 
@@ -94,7 +99,7 @@ if ($_POST['option'] === 'DELETEAD') {
 }
 
 if ($_POST['option'] === 'GETADSBYGROUPSOFMEMBER') {
-    
+
     $ad = Advertisement::getAdsAndPostsByMember($_POST['member']);
 
     header('Content-type: application/json');
@@ -102,7 +107,7 @@ if ($_POST['option'] === 'GETADSBYGROUPSOFMEMBER') {
 }
 
 if ($_POST['option'] === 'GETADSBYMEMBER') {
-    
+
     $ad = Advertisement::getAdsByMember($_POST['member']);
 
     header('Content-type: application/json');
@@ -110,10 +115,10 @@ if ($_POST['option'] === 'GETADSBYMEMBER') {
 }
 
 if ($_POST['option'] == 'UPDATESTATUS') {
-    
+
     $ADVERTISEMENT = new Advertisement($_POST['id']);
-    $ADVERTISEMENT->status= $_POST['status'];
-    
+    $ADVERTISEMENT->status = $_POST['status'];
+
     $result = $ADVERTISEMENT->updateStatus();
 
     header('Content-Type: application/json');
@@ -122,7 +127,7 @@ if ($_POST['option'] == 'UPDATESTATUS') {
 }
 
 if ($_POST['option'] === 'GETADBYID') {
-    
+
     $ad = new Advertisement($_POST['ad']);
 
     header('Content-type: application/json');

@@ -138,6 +138,7 @@ and open the template in the editor.
 
 
 }
+
 @media(min-width:577px) and (max-width:990px) {
     body, p {
         font-size: 14px;
@@ -197,6 +198,16 @@ and open the template in the editor.
         margin-top: 20px;
     }
 }
+
+@media(min-width:992px) and (max-width:1200px) {
+    .category-list.container {
+
+        max-width: 960px;
+        margin: 20px 26px;
+
+    }
+}
+
 @media(width:360px) {
     .category-list .category-item-box {
         width: 129px;
@@ -204,6 +215,7 @@ and open the template in the editor.
         padding: 8px;
     }
 }
+
 @media(width:375px) {
     .category-list .category-item-box {
         width: 136.5px;
@@ -214,6 +226,7 @@ and open the template in the editor.
         font-size: 17px;
     }
 }
+
 @media(width:414px) {
     .category-list .category-item-box {
         width: 156px;
@@ -224,6 +237,7 @@ and open the template in the editor.
         font-size: 17px;
     }
 }
+
 @media(width:1280px) {
     .category-list.container {
 
@@ -233,11 +247,3 @@ and open the template in the editor.
     }
 }
 
-@media(min-width:992px) and (max-width:1200px) {
-    .category-list.container {
-
-        max-width: 960px;
-        margin: 20px 26px;
-
-    }
-}
