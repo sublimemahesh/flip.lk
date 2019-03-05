@@ -1115,7 +1115,8 @@ header .control-icon > svg {
 #ad-slider .owl-nav {
     float: right;
     font-size: 20px;
-    margin-top: -652px;
+    margin-top: -624px;
+    margin-right: -5px;
 }
 #ad-slider .owl-prev span{
     font-size: 58px;
@@ -1337,8 +1338,35 @@ header .control-icon > svg {
     height: 10px;
 }
 #ad-slider .title a {
-font-size: 22px;
+    font-size: 22px;
 }
+.owl-theme .owl-nav .disabled span {
+    opacity: 0.5;
+    cursor: default;
+}
+.owl-theme .owl-nav .disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+.owl-theme .owl-nav .disabled {
+    opacity: 1;
+}
+#ad-slider .owl-prev, #ad-slider .owl-next {
+    color: #6c6c6c;
+}
+#ad-slider .owl-prev:hover, #ad-slider .owl-next:hover {
+    color: #aeaeae;
+}
+#ad-slider .owl-nav .disabled {
+    color: #ddd0d0;
+}
+#ad-slider .owl-nav .disabled:hover {
+    color: #ddd0d0;
+}
+.owl-theme .owl-dots {
+    margin-top: 20px;
+}
+
 /*.more-ads-section {
     height: 340px;
 }

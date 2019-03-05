@@ -38,12 +38,12 @@ if (isset($_SESSION['id'])) {
         <!-- Main Styles CSS -->
         <link rel="stylesheet" type="text/css" href="css/main.min.css">
         <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/images-grid.css" rel="stylesheet" type="text/css"/>
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="css/search-box.css" rel="stylesheet" type="text/css"/>
         <link href="plugins/OwlCarousel/dist/assets/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
         <link href="plugins/OwlCarousel/dist/assets/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
         <style>
             .comment-item1 {
@@ -165,11 +165,6 @@ if (isset($_SESSION['id'])) {
                                 </div>
                                 <p class="title-desc">Only with us you can get a new model with a discount.</p>
                             </header>
-                            <div class="carousel-controls">
-                                <div id="hot-items-slider-prev" class="carousel-btn carousel-btn-prev">
-                                </div>
-                                <div id="hot-items-slider-next" class="carousel-btn carousel-btn-next carousel-space"></div>
-                            </div>
                             <div id="ad-slider" class="owl-carousel owl-theme">
                                 <?php
                                 foreach (Advertisement::all() as $key => $ad) {
@@ -195,11 +190,11 @@ if (isset($_SESSION['id'])) {
                                                 <?php
                                             }
                                             ?>
-
                                         </div>
                                         <div class="slider-details-section">
                                             <div class="title">
-                                                <h5><a href="view-advertisement.php?id=<?php echo $ad['id']; ?>" title="<?php echo $ad['title']; ?>">
+                                                <h5>
+                                                    <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>" title="<?php echo $ad['title']; ?>">
                                                         <?php
                                                         if (strlen($ad['title']) > 22) {
                                                             echo substr($ad['title'], 0, 21) . '...';
@@ -249,36 +244,6 @@ if (isset($_SESSION['id'])) {
                                     <?php
                                 }
                                 ?>
-                                <!--                                                               <div class="item">
-                                                                                                    <div class="slider-img-section">
-                                                                                                        <img src="../upload/advertisement/thumb/-151981300_191051159606_1550131986_n.jpg" alt=""/>
-                                                                                                    </div>
-                                                                                                    <div class="slider-details-section">
-                                                                                                        <div class="title">
-                                                                                                            <h5>Advertisement TItle</h5>
-                                                                                                        </div>
-                                                                                                        <div class="created-date">
-                                                                                                            2019-02-12
-                                                                                                        </div>
-                                                                                                        <div class="description">
-                                                                                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
-                                                                                                        </div>
-                                                                                                        <hr />
-                                                                                                        <div class="slider-item-footer row">
-                                                                                                            <div class="col-xs-8 col-xl-8 member-details row">
-                                                                                                                <div class="col-xl-3 order-1 col-xs-3 ">
-                                                                                                                    <img src="../upload/member/-105556340_191097584566_1550730247_n.jpg" class="img-responsive img-circle" alt=""/>
-                                                                                                                </div>
-                                                                                                                <div class="col-xl-9 order-2 col-xs-9 mem-name">
-                                                                                                                    <h6 class="">Kavini Nisansala</h6>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div class="col-xs-4 col-xl-4 category">
-                                                                                                                <h6><i class="fa fa-list"></i> Lands</h6>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>-->
                             </div>
                         </div>
                     </div>

@@ -47,6 +47,9 @@ $(document).ready(function () {
             var category = $('#category').val();
             var subCategory = $('#sub-category').val();
             var website = $('#website').val();
+            var price = $('#price').val();
+            var phonenumber = $('#phonenumber').val();
+            var email = $('#email').val();
 //            var images = $('[name="post-all-images[]"]').serialize();
             var images = $('.post-all-ad-images').serializeArray();
             $.ajax({
@@ -63,6 +66,9 @@ $(document).ready(function () {
                     category: category,
                     subcategory: subCategory,
                     website: website,
+                    price: price,
+                    phonenumber: phonenumber,
+                    email: email,
                     images: images,
                     option: 'SAVEAD'
                 },
@@ -114,13 +120,16 @@ $(document).ready(function () {
             });
             return false;
         } else {
-            
+            alert($('#email').val());
             var id = $('#id').val();
             var title = $('#title').val();
             var description = tinyMCE.get('description').getContent();
             var city = $('#city').val();
             var address = $('#address').val();
             var website = $('#website').val();
+            var price = $('#price').val();
+            var phonenumber = $('#phonenumber').val();
+            var email = $('#email').val();
             var images = $('.post-all-ad-images').serializeArray();
             $.ajax({
                 type: 'POST',
@@ -133,6 +142,9 @@ $(document).ready(function () {
                     city: city,
                     address: address,
                     website: website,
+                    price: price,
+                    phonenumber: phonenumber,
+                    email: email,
                     images: images,
                     option: 'EDITAD'
                 },
