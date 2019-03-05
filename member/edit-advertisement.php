@@ -43,107 +43,34 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
     </head>
     <body>
 
-        <!-- Profile Settings Responsive -->
-        <div class="profile-settings-responsive">
-
-            <a href="#" class="js-profile-settings-open profile-settings-open">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
-            </a>
-            <div class="mCustomScrollbar" data-mcs-theme="dark">
-                <div class="ui-block">
-                    <div class="your-profile">
-                        <div class="ui-block-title ui-block-title-small">
-                            <h6 class="title">YOUR PROFILE</h6>
-                        </div>
-
-                        <div id="accordion1" role="tablist" aria-multiselectable="true">
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingOne-1">
-                                    <h6 class="mb-0">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne-1" aria-expanded="true" aria-controls="collapseOne">
-                                            Profile Settings
-                                            <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
-                                        </a>
-                                    </h6>
-                                </div>
-
-                                <div id="collapseOne-1" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-                                    <ul class="your-profile-menu">
-                                        <li>
-                                            <a href="28-YourAccount-PersonalInformation.html">Personal Information</a>
-                                        </li>
-                                        <li>
-                                            <a href="29-YourAccount-AccountSettings.html">Account Settings</a>
-                                        </li>
-                                        <li>
-                                            <a href="30-YourAccount-ChangePassword.html">Change Password</a>
-                                        </li>
-                                        <li>
-                                            <a href="31-YourAccount-HobbiesAndInterests.html">Hobbies and Interests</a>
-                                        </li>
-                                        <li>
-                                            <a href="32-YourAccount-EducationAndEmployement.html">Education and Employement</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="ui-block-title">
-                            <a href="33-YourAccount-Notifications.html" class="h6 title">Notifications</a>
-                            <a href="#" class="items-round-little bg-primary">8</a>
-                        </div>
-                        <div class="ui-block-title">
-                            <a href="34-YourAccount-ChatMessages.html" class="h6 title">Chat / Messages</a>
-                        </div>
-                        <div class="ui-block-title">
-                            <a href="35-YourAccount-FriendsRequests.html" class="h6 title">Friend Requests</a>
-                            <a href="#" class="items-round-little bg-blue">4</a>
-                        </div>
-                        <div class="ui-block-title ui-block-title-small">
-                            <h6 class="title">FAVOURITE PAGE</h6>
-                        </div>
-                        <div class="ui-block-title">
-                            <a href="36-FavPage-SettingsAndCreatePopup.html" class="h6 title">Create Fav Page</a>
-                        </div>
-                        <div class="ui-block-title">
-                            <a href="36-FavPage-SettingsAndCreatePopup.html" class="h6 title">Fav Page Settings</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ... end Profile Settings Responsive -->
 
         <?php
         include './header.php';
         ?>
 
         <div class="header-spacer header-spacer-small"></div>
- <div class="col col-xl-12 col-12">
-        <!-- Main Header Account -->
-        <div class="main-header">
-            <div class="content-bg-wrap bg-account"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-                        <div class="main-header-content">
-                            <h1>Your Account Dashboard</h1>
-                            <p>Welcome to your account dashboard! Here you’ll find everything you need to change your profile
-                                information, settings, read notifications and requests, view your latest messages, change your pasword and much
-                                more! Also you can create or manage your own favourite page, have fun!</p>
+        <div class="col col-xl-12 col-12">
+            <!-- Main Header Account -->
+            <div class="main-header">
+                <div class="content-bg-wrap bg-account"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
+                            <div class="main-header-content">
+                                <h1>Your Account Dashboard</h1>
+                                <p>Welcome to your account dashboard! Here you’ll find everything you need to change your profile
+                                    information, settings, read notifications and requests, view your latest messages, change your pasword and much
+                                    more! Also you can create or manage your own favourite page, have fun!</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <img class="img-bottom" src="img/account-bottom.png" alt="friends">
             </div>
-            <img class="img-bottom" src="img/account-bottom.png" alt="friends">
-        </div>
 
-        <!-- ... end Main Header Account -->
-        <!-- Your Account Personal Information -->
-        <!--<div class="container">-->
+            <!-- ... end Main Header Account -->
+            <!-- Your Account Personal Information -->
+            <!--<div class="container">-->
             <div class="row">
                 <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
                     <div class="ui-block">
@@ -218,14 +145,32 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                             <input type="hidden" name="city" id="city"  value="<?php echo $ADVERTISEMENT->city; ?>"/>
                                         </div>
                                     </div>
-
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Phone Number</label>
+                                            <input class="form-control" placeholder="" type="text"  name="phonenumber" id="phonenumber" value="<?php echo $ADVERTISEMENT->phoneNumber; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Email</label>
+                                            <input class="form-control" placeholder="" type="text"  name="email" id="email" value="<?php echo $ADVERTISEMENT->email; ?>">
+                                        </div>
+                                    </div>
+
+                                    <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Price (Rs)</label>
+                                            <input class="form-control" placeholder="" name="price" id="price" type="text" value="<?php echo $ADVERTISEMENT->price; ?>" >
+                                        </div>
+                                    </div>
+                                    <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Category</label>
                                             <input class="form-control" placeholder="" name="" type="text" value="<?php echo $CATEGORY->name; ?>" disabled="">
                                         </div>
                                     </div>
-                                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Sub Category</label>
                                             <input class="form-control" placeholder="" name="" type="text" value="<?php echo $SUBCATEGORY->name; ?>" disabled="">
@@ -292,7 +237,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                 include './account-navigation.php';
                 ?>
             </div>
-        <!--</div>-->
+            <!--</div>-->
         </div>
         <!-- ... end Your Account Personal Information -->
 

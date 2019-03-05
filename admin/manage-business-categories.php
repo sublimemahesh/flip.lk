@@ -68,7 +68,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         foreach ($categories as $key => $category) {
                                             ?>
                                             <div class="col-md-3"  id="div_<?php echo $category['id']; ?>">
-                                                <div class="photo-img-container">   
+                                                <div class="photo-img-container icon-img">   
                                                     <img src="../upload/business-category/<?php echo $category['image_name']; ?>" class="img-responsive ">
                                                 </div>
                                                 <div class="img-caption">       

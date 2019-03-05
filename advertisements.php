@@ -93,16 +93,16 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
                                     <option value="">Category</option>
 
                                     <?php
-                                    foreach (BusinessCategory::all() as $key => $category) {
+                                    foreach (BusinessCategory::all() as $key => $cat) {
 
-                                        if ($category['id'] == $_GET['category']) {
+                                        if ($cat['id'] == $_GET['category']) {
                                             ?>
 
-                                            <option value="<?php echo $category['id']; ?>" selected><?php echo $category['name']; ?></option>
+                                            <option value="<?php echo $cat['id']; ?>" selected><?php echo $cat['name']; ?></option>
                                             <?php
                                         } else {
                                             ?>
-                                            <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+                                            <option value="<?php echo $cat['id']; ?>"><?php echo $cat['name']; ?></option>
                                             <?php
                                         }
                                     }
@@ -151,19 +151,22 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
                                     <?php
                                     if ($category !== "" && $location !== "") {
                                         ?>
-                                        <span class="breadcrumb-item">Home </span><span class="breadcrumb-item"><?php echo $BUSCAT->name; ?> </span> <span class="breadcrumb-item location"></span>
+                                    <span class="breadcrumb-item"><a href="./" >Home</a> </span>
+                                    <span class="breadcrumb-item">
+                                        <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a></span>
+                                    <span class="breadcrumb-item location"></span>
                                         <?php
                                     } else if ($category !== "" && $location == "") {
                                         ?>
-                                        <span class="breadcrumb-item">Home </span><span class="breadcrumb-item"><?php echo $BUSCAT->name; ?></span>
+                                    <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item"><?php echo $BUSCAT->name; ?></span>
                                         <?php
                                     } else if ($location !== "" && $category == "") {
                                         ?>
-                                        <span class="breadcrumb-item">Home </span><span class="breadcrumb-item location"></span>
+                                        <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item location"></span>
                                         <?php
                                     } else if ($keyword !== "" && $location == "" && $category == "") {
                                         ?>
-                                        <span class="breadcrumb-item">Home </span><span class="breadcrumb-item">All advertisements in Sri Lanka</span>
+                                        <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item">All advertisements in Sri Lanka</span>
                                         <?php
                                     }
                                     ?>

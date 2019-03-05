@@ -75,6 +75,13 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                         <div class="col col-xl-8 order-xl-2 col-lg-8 order-lg-2 col-md-12 col-sm-12 col-12">
 
                             <div id="newsfeed-items-grid">
+                                <div class="ad-breadcrumbs">
+                                    <span class="breadcrumb-item"><a href="./" >Home</a> </span>
+                                    <span class="breadcrumb-item"><a href="all-advertisement.php" >All advertisements in Sri Lanka</a></span>
+                                    <span class="breadcrumb-item"><a href="advertisements.php?category=<?php echo $ADVERTISEMENT->category; ?>"><?php echo $CATEGORY->name; ?></a></span>
+                                    <span class="breadcrumb-item"><a href="advertisements.php?location=<?php echo $ADVERTISEMENT->city; ?>" id="breadcrumbs-city"></a></span>
+                                    <span class="breadcrumb-item"><?php echo $ADVERTISEMENT->title; ?></span>
+                                </div> 
                                 <div class="ui-block post">
                                     <?php
                                     include './calculate-time.php';
@@ -355,7 +362,17 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                                         ?>
                                                                     </div>
                                                                     <div class = "col-xl-8 col-sm-8 col-xs-8 more-ad ad-item-details">
-                                                                        <div class="ad-title"><a href="view-advertisement.php?id=<?php echo $ad['id']; ?>"><?php echo $ad['title']; ?></a></div>
+                                                                        <div class="ad-title">
+                                                                            <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>" title="<?php echo $ad['title']; ?>">
+                                                                                <?php
+                                                                                if (strlen($ad['title']) > 25) {
+                                                                                    echo strlen($ad['title'], 0, 22) . '...';
+                                                                                } else {
+                                                                                    echo $ad['title'];
+                                                                                }
+                                                                                ?>
+                                                                            </a>
+                                                                        </div>
                                                                         <div class="ad-category"><span class="title"><i class="fa fa-tag"></i> </span><?php echo $CATEGORY->name; ?></div>
                                                                         <div class=""><i class="fa fa-clock"></i> 2018-02-13</div>
                                                                         <div class=""><i class="fa fa-dollar-sign"></i> Rs. <?php echo $result; ?>/=</div>
@@ -475,6 +492,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                         if (status === google.maps.places.PlacesServiceStatus.OK) {
 
                             $('#city').text(place.name);
+                            $('#breadcrumbs-city').text(place.name);
                         }
                     });
 

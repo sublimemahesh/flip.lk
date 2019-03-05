@@ -54,7 +54,7 @@ $CATEGORY = new BusinessCategory(NULL);
                                                     if (count($CATEGORY->all()) > 0) {
                                                         foreach ($CATEGORY->all() as $key => $category) {
                                                             ?>
-                                                            <div class="col-md-3" style="list-style: none;">
+                                                            <div class="col-md-3 icon-img" style="list-style: none;">
                                                                 <li class="ui-state-default">
                                                                     <span class="number-class">(<?php echo $key + 1; ?>)</span>
                                                                     <img class="img-responsive" src="../upload/business-category/<?php echo $category["image_name"]; ?>" alt=""/>

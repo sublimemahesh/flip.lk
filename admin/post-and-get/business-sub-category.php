@@ -94,8 +94,7 @@ if (isset($_POST['edit-sub-category'])) {
     $VALID = new Validator();
     $VALID->check($SUBCATEGORY, [
         'business_category' => ['required' => TRUE],
-        'name' => ['required' => TRUE],
-        'image_name' => ['required' => TRUE]
+        'name' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
