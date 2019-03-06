@@ -1115,7 +1115,7 @@ header .control-icon > svg {
 #ad-slider .owl-nav {
     float: right;
     font-size: 20px;
-    margin-top: -624px;
+    margin-top: -614px;
     margin-right: -5px;
 }
 #ad-slider .owl-prev span{
@@ -1338,7 +1338,7 @@ header .control-icon > svg {
     height: 10px;
 }
 #ad-slider .title a {
-    font-size: 22px;
+    font-size: 18px;
 }
 .owl-theme .owl-nav .disabled span {
     opacity: 0.5;
@@ -1363,9 +1363,32 @@ header .control-icon > svg {
 #ad-slider .owl-nav .disabled:hover {
     color: #ddd0d0;
 }
+#more-ads-slider .owl-prev, #more-ads-slider .owl-next {
+    color: #6c6c6c;
+}
+#more-ads-slider .owl-prev:hover, #more-ads-slider .owl-next:hover {
+    color: #aeaeae;
+}
+#more-ads-slider .owl-nav .disabled {
+    color: #ddd0d0;
+}
+#more-ads-slider .owl-nav .disabled:hover {
+    color: #ddd0d0;
+}
 .owl-theme .owl-dots {
     margin-top: 20px;
 }
+#ad-slider .owl-prev {
+    margin-right: -6px;
+}
+#more-ads-slider .owl-prev {
+    margin-right: -6px;
+}
+.slider-item-footer h6 {
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+
 
 /*.more-ads-section {
     height: 340px;

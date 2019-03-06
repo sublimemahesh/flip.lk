@@ -106,8 +106,8 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                     </div>
                                                     <div class = "col-xl-10 col-xs-8 ad-item-details">
                                                         <div class="ad-title"><a href="view-advertisement.php?id=<?php echo $ad['id']; ?>"><?php echo $ad['title']; ?></a></div>
-                                                        <div class="ad-city"><span class="title">Location <i class="fa fa-angle-double-right"></i> </span>Galle</div>
                                                         <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
+                                                        <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php if($ad['price'] == 0) { echo 'Negotiable'; } else { echo 'Rs. ' . number_format($ad['price']);} ?></div>
                                                         <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
                                                     </div>
                                                 </div>

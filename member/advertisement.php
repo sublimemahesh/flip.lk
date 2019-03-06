@@ -120,7 +120,11 @@ if (isset($_GET['id'])) {
 
                                             </div>
                                             <h5><b><?php echo $ad['title']; ?></b></h5>
+                                            <span class="more">
+                                                    <p>
                                             <?php echo $ad['description']; ?>
+                                                    </p>
+                                            </span>
 
                                             <div class="post-thumb">
                                                 <div id="gallery-<?php echo $ad['id']; ?>"></div>
@@ -447,5 +451,6 @@ if (isset($_GET['id'])) {
         <script src="js/js/shared-ad.js" type="text/javascript"></script>
         <script src="js/js/edit-profile-picture.js" type="text/javascript"></script>
         <script src="js/js/edit-cover-picture.js" type="text/javascript"></script>
+        <script src="js/js/read-more-and-less.js" type="text/javascript"></script>
     </body>
 </html>

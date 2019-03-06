@@ -1216,6 +1216,16 @@ header .control-icon > svg {
     z-index: 9;
 }
 
+/*************** Read More Less **********************/
+.morecontent span {
+    display: none;
+}
+.morelink {
+    display: inline;
+    margin-top: -21px;
+    margin-left: 10px;
+}
+
 @media(min-width: 1400px) {
     .container {
         /*max-width: 1323px;*/

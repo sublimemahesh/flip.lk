@@ -209,8 +209,9 @@ $MEMBER = new Member($_SESSION['id']);
                                                     }
                                                     ?>
                                                 </div>
-
-                                                <?php echo $POST->description; ?>
+                                                <span class="more">
+                                                    <p><?php echo $POST->description; ?></p>
+                                                </span>
 
                                                 <div class="post-thumb">
                                                     <div id="gallery-<?php echo $ad['type']; ?>-<?php echo $ad['id']; ?>"></div>
@@ -239,7 +240,9 @@ $MEMBER = new Member($_SESSION['id']);
                                                                 </div>
                                                             </div>
                                                             <h5><?php echo $AD1->title; ?></h5>
-                                                            <?php echo $AD1->description; ?>
+                                                            <span class="more">
+                                                                <p><?php echo $AD1->description; ?></p>
+                                                            </span>
                                                         </li>
                                                     </ul>
                                                     <?php
@@ -552,7 +555,9 @@ $MEMBER = new Member($_SESSION['id']);
                                                     ?>
                                                 </div>
                                                 <h5><b><?php echo $AD->title; ?></b></h5>
-                                                <?php echo $AD->description; ?>
+                                                <span class="more">
+                                                    <p><?php echo $AD->description; ?></p>
+                                                </span>
 
                                                 <div class="post-thumb">
                                                     <div id="gallery-<?php echo $ad['type']; ?>-<?php echo $ad['id']; ?>"></div>
@@ -929,5 +934,6 @@ $MEMBER = new Member($_SESSION['id']);
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="js/heartcode-canvasloader.js" type="text/javascript"></script>
         <script src="js/image-preloader.js" type="text/javascript"></script>
+        <script src="js/js/read-more-and-less.js" type="text/javascript"></script>
     </body>
 </html>
