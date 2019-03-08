@@ -154,6 +154,10 @@ and open the template in the editor.
     .footer-about p{
         text-align: justify;
     }
+    .category-box-layout1 {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
 
 
 }
@@ -235,6 +239,12 @@ and open the template in the editor.
     .footer-about p{
         text-align: justify;
     }
+    
+     .category-box-layout1 {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+  
 }
 
 @media(min-width:992px) and (max-width:1200px) {

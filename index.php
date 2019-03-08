@@ -101,7 +101,7 @@ if (isset($_SESSION['id'])) {
                                 foreach (BusinessCategory::all() as $key => $category) {
                                     if ($key < 12) {
                                         ?>
-                                        <div class="col-lg-3 col-md-6">
+                                        <div class="col-lg-3 col-md-6 col-sm-4 ">
                                             <div class="category-box-layout1">
                                                 <div class="item-icon">
                                                     <img src="upload/business-category/<?php echo $category['image_name']; ?>" alt=""/>
