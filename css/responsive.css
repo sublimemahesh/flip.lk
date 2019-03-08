@@ -135,6 +135,25 @@ and open the template in the editor.
     .ad-breadcrumbs {
         margin-top: 10px;
     }
+    .intro-section h2 {
+        text-align: center;
+    }
+    .intro-section p {
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: justify;
+    }
+    .footer-top-wrap {
+        padding-left: 21px;
+        padding-right: 16px;
+
+    }
+    .listing-dire .owl-dots{
+        margin-bottom: 70px; 
+    }
+    .footer-about p{
+        text-align: justify;
+    }
 
 
 }
@@ -197,6 +216,25 @@ and open the template in the editor.
     #newsfeed-items-grid .ui-block:first-child {
         margin-top: 20px;
     }
+    .intro-section h2 {
+        text-align: center;
+    }
+    .intro-section p {
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: justify;
+    }
+    .footer-top-wrap {
+        padding-left: 21px;
+        padding-right: 16px;
+
+    }
+    .listing-dire .owl-dots{
+        margin-bottom: 70px; 
+    }
+    .footer-about p{
+        text-align: justify;
+    }
 }
 
 @media(min-width:992px) and (max-width:1200px) {
@@ -252,6 +290,9 @@ and open the template in the editor.
     }
     #ad-slider .owl-nav {
         margin-top: -575px;
+    }
+    .listing-dire .owl-dots{
+        margin-bottom: 70px; 
     }
 }
 @media(min-width:1200px) and (max-width:1400px) {
