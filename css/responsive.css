@@ -254,4 +254,20 @@ and open the template in the editor.
         margin-top: -575px;
     }
 }
+@media(min-width:1200px) and (max-width:1400px) {
+    .category-list.container {
+        max-width: 960px;
+        margin: 20px 26px;
+    }
+    .slider-item-footer h6 {
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+    .member-details .mem-name {
+        margin-top: 3px;
+    }
+    #ad-slider .owl-nav {
+        margin-top: -575px;
+    }
+}
 

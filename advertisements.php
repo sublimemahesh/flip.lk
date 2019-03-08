@@ -68,73 +68,11 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
         include './header.php';
         ?>
         <div class="header-spacer"></div>
-        <div class="container index-container">
-            <!--Search Box-->
-            <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-                <div class="s002">
-                    <form action="advertisements.php" method="get">
-                        <div class="inner-form">
-
-                            <div class="input-field fouth-wrap">
-                                <div class="icon-wrap">
-<!--                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-                                    </svg>-->
-                                    <svg height="24" viewBox="0 -52 512 512" width="24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="m0 0h113.292969v113.292969h-113.292969zm0 0"/>
-                                    <path d="m149.296875 0h362.703125v113.292969h-362.703125zm0 0"/>
-                                    <path d="m0 147.007812h113.292969v113.292969h-113.292969zm0 0"/>
-                                    <path d="m149.296875 147.007812h362.703125v113.292969h-362.703125zm0 0"/>
-                                    <path d="m0 294.011719h113.292969v113.296875h-113.292969zm0 0"/>
-                                    <path d="m149.296875 294.011719h362.703125v113.296875h-362.703125zm0 0"/>
-                                    </svg>
-                                </div>
-                                <select data-trigger="" name="category">
-                                    <option value="">Category</option>
-
-                                    <?php
-                                    foreach (BusinessCategory::all() as $key => $cat) {
-
-                                        if ($cat['id'] == $_GET['category']) {
-                                            ?>
-
-                                            <option value="<?php echo $cat['id']; ?>" selected><?php echo $cat['name']; ?></option>
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <option value="<?php echo $cat['id']; ?>"><?php echo $cat['name']; ?></option>
-                                            <?php
-                                        }
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="input-field second-wrap">
-                                <div class="icon-wrap">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
-                                    </svg>
-                                </div>
-                                <input type="text" id="autocomplete" placeholder="Location" onFocus="geolocate()">
-                                <input type="hidden" name="location" id="city"  value=""/>
-                            </div>
-                            <div class="input-field first-wrap">
-                                <div class="icon-wrap">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
-                                    </svg>
-                                </div>
-                                <input id="search" type="text" name="keyword" placeholder="What are you looking for?" />
-                            </div>
-
-                            <div class="input-field fifth-wrap">
-                                <button class="btn-search" type="submit">SEARCH</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- End Search Box-->
+        <?php
+        include './banner.php';
+        ?>
+        <div class="container index-container body-content">
+            
             <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
                 <!-- Top Header-Profile -->
 
@@ -275,6 +213,9 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
         </div>
         <input type="hidden" id="autocomplete2" placeholder="Location" value="<?php echo $_GET['location']; ?>">
         <div id="map"></div>
+        <?php
+        include './footer.php';
+        ?>
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>

@@ -62,26 +62,30 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
         include './header.php';
         ?>
         <div class="header-spacer"></div>
-        <div class="container index-container">
+        <?php
+        include './banner.php';
+        ?>
+        <div class="container index-container body-content">
             <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
                 <!-- Top Header-Profile -->
 
                 <!-- ... end Top Header-Profile -->
                 <div class="container">
                     <div class="row">
-
+                         <div class="col col-xl-8 order-xl-1 col-lg-8 order-lg-1 col-md-12 col-sm-12 col-12">
+                            <div class="ad-breadcrumbs">
+                                <span class="breadcrumb-item"><a href="./" >Home</a> </span>
+                                <span class="breadcrumb-item"><a href="all-advertisement.php" >All advertisements in Sri Lanka</a></span>
+                                <span class="breadcrumb-item"><a href="advertisements.php?category=<?php echo $ADVERTISEMENT->category; ?>"><?php echo $CATEGORY->name; ?></a></span>
+                                <span class="breadcrumb-item"><a href="advertisements.php?location=<?php echo $ADVERTISEMENT->city; ?>" id="breadcrumbs-city"></a></span>
+                                <span class="breadcrumb-item"><?php echo $ADVERTISEMENT->title; ?></span>
+                            </div> 
+                        </div>
                         <!-- Main Content -->
 
-                        <div class="col col-xl-8 order-xl-2 col-lg-8 order-lg-2 col-md-12 col-sm-12 col-12">
+                        <div class="col col-xl-8 order-xl-1 col-lg-8 order-lg-1 col-md-12 col-sm-12 col-12">
 
                             <div id="newsfeed-items-grid">
-                                <div class="ad-breadcrumbs">
-                                    <span class="breadcrumb-item"><a href="./" >Home</a> </span>
-                                    <span class="breadcrumb-item"><a href="all-advertisement.php" >All advertisements in Sri Lanka</a></span>
-                                    <span class="breadcrumb-item"><a href="advertisements.php?category=<?php echo $ADVERTISEMENT->category; ?>"><?php echo $CATEGORY->name; ?></a></span>
-                                    <span class="breadcrumb-item"><a href="advertisements.php?location=<?php echo $ADVERTISEMENT->city; ?>" id="breadcrumbs-city"></a></span>
-                                    <span class="breadcrumb-item"><?php echo $ADVERTISEMENT->title; ?></span>
-                                </div> 
                                 <div class="ui-block post">
                                     <?php
                                     include './calculate-time.php';
@@ -253,157 +257,166 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                         }
                                         ?>
                                     </div>
-                                    <div class="ad-contact-details">
-                                        <div class="col-xl-6 order-xl-1">
-                                            <h5>Contact</h5>
-                                            <ul>
-                                                <li>
-                                                    <img src="img/icon/phone.png"  alt=""/>
-                                                    <span class="contact-details">
-                                                        <?php
-                                                        if (isset($ADVERTISEMENT->phoneNumber)) {
-                                                            echo $ADVERTISEMENT->phoneNumber;
-                                                        } elseif (isset($MEM->phoneNumber)) {
-                                                            echo $MEM->phoneNumber;
-                                                        } else {
-                                                            echo '-';
-                                                        }
-                                                        ?>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <img src="img/icon/email.png" alt=""/>
-                                                    <span class="contact-details">
-                                                        <?php
-                                                        if (isset($ADVERTISEMENT->email)) {
-                                                            echo $ADVERTISEMENT->email;
-                                                        } elseif (isset($MEM->email)) {
-                                                            echo $MEM->email;
-                                                        } else {
-                                                            echo '-';
-                                                        }
-                                                        ?>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <img src="img/icon/location.png" alt=""/>
-                                                    <span class="contact-details">
-                                                        <?php
-                                                        if (isset($ADVERTISEMENT->address)) {
-                                                            echo $ADVERTISEMENT->address;
-                                                        } elseif (isset($MEM->address)) {
-                                                            echo $MEM->address;
-                                                        } else {
-                                                            echo '-';
-                                                        }
-                                                        ?>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <img src="img/icon/search.png" alt=""/>
-                                                    <span class="contact-details">
-                                                        <?php
-                                                        if (isset($ADVERTISEMENT->website)) {
-                                                            echo $ADVERTISEMENT->website;
-                                                        } else {
-                                                            echo '-';
-                                                        }
-                                                        ?>
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ui-block post more-ads-section">
-                                    <header class="content-title">
-                                        <div class="title-bg">
-                                            <h2 class="title1">More Advertisements</h2>
-                                        </div>
-                                        <p class="title-desc">Find more relevant advertising.</p>
-                                    </header>
-                                    <div class="row">
-                                        <div id="more-ads-slider" class="owl-carousel owl-theme">
-                                            <?php
-                                            $advertisements = Advertisement::getAdsByCategory($ADVERTISEMENT->category);
-                                            $out = '';
-                                            if (count($advertisements) > 0) {
-                                                $i = 0;
-                                                foreach ($advertisements as $key => $ad) {
-                                                    $result = getTime($ad['created_at']);
-                                                    $MEMBER = new Member($ad['member']);
-                                                    $CATEGORY = new BusinessCategory($ad['category']);
-                                                    $adimages = AdvertisementImage::getPhotosByAdId($ad['id']);
 
-                                                    if (($i % 2) === 0) {
-                                                        ?>
-                                                        <div class="item">
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                        <div class="col-md-12 aaa">
-                                                            <div class="ad-item  post ">
-                                                                <div class="ad-item-box row">
-                                                                    <div class = "col-xl-4 col-sm-4 col-xs-4 ad-item-image">
-                                                                        <?php
-                                                                        if (count($adimages) > 0) {
-                                                                            foreach ($adimages as $key => $img) {
-                                                                                if ($key == 0) {
-                                                                                    ?>
-                                                                                    <img src="upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt=""/>
-                                                                                    <?php
-                                                                                }
-                                                                            }
-                                                                        } else {
-                                                                            ?>
-                                                                            <img src="upload/advertisement/thumb2/advertising.jpg" alt=""/>
-                                                                            <?php
-                                                                        }
-                                                                        ?>
-                                                                    </div>
-                                                                    <div class = "col-xl-8 col-sm-8 col-xs-8 more-ad ad-item-details">
-                                                                        <div class="ad-title">
-                                                                            <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>" title="<?php echo $ad['title']; ?>">
-                                                                                <?php
-                                                                                if (strlen($ad['title']) > 25) {
-                                                                                    echo strlen($ad['title'], 0, 22) . '...';
-                                                                                } else {
-                                                                                    echo $ad['title'];
-                                                                                }
-                                                                                ?>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="ad-category"><span class="title"><i class="fa fa-tag"></i> </span><?php echo $CATEGORY->name; ?></div>
-                                                                        <div class=""><i class="fa fa-clock"></i> <?php echo $result; ?></div>
-                                                                        <div class=""><i class="fa fa-dollar-sign"></i> <?php if($ad['price'] == 0) { echo 'Price Negotiable'; } else { echo 'Rs. ' . number_format($ad['price']);} ?></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <?php
-                                                        if (($i + 1) % 2 === 0 || ($i + 1) === count($advertisements)) {
-                                                            ?>
-                                                        </div>
-                                                        <?php
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- ... end Main Content -->
+
+                        <!-- Right Sidebar -->
+                        <div class="col col-xl-4 order-xl-2 col-lg-4 order-lg-2 col-md-12 col-sm-12 col-12">
+                            <div class="ui-block">
+                                <div class="ad-contact-details">
+                                    <div class="col-xl-12 order-xl-1">
+                                        <h5>Contact</h5>
+                                        <ul>
+                                            <li>
+                                                <img src="img/icon/phone.png"  alt=""/>
+                                                <span class="contact-details">
+                                                    <?php
+                                                    if (isset($ADVERTISEMENT->phoneNumber)) {
+                                                        echo $ADVERTISEMENT->phoneNumber;
+                                                    } elseif (isset($MEM->phoneNumber)) {
+                                                        echo $MEM->phoneNumber;
+                                                    } else {
+                                                        echo '-';
                                                     }
-                                                    $i++;
-                                                }
-                                            }
-                                            ?>
-                                        </div>
+                                                    ?>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <img src="img/icon/email.png" alt=""/>
+                                                <span class="contact-details">
+                                                    <?php
+                                                    if (isset($ADVERTISEMENT->email)) {
+                                                        echo $ADVERTISEMENT->email;
+                                                    } elseif (isset($MEM->email)) {
+                                                        echo $MEM->email;
+                                                    } else {
+                                                        echo '-';
+                                                    }
+                                                    ?>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <img src="img/icon/location.png" alt=""/>
+                                                <span class="contact-details">
+                                                    <?php
+                                                    if (isset($ADVERTISEMENT->address)) {
+                                                        echo $ADVERTISEMENT->address;
+                                                    } elseif (isset($MEM->address)) {
+                                                        echo $MEM->address;
+                                                    } else {
+                                                        echo '-';
+                                                    }
+                                                    ?>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <img src="img/icon/search.png" alt=""/>
+                                                <span class="contact-details">
+                                                    <?php
+                                                    if (isset($ADVERTISEMENT->website)) {
+                                                        echo $ADVERTISEMENT->website;
+                                                    } else {
+                                                        echo '-';
+                                                    }
+                                                    ?>
+                                                </span>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- ... end Main Content -->
-                        <!-- Left Sidebar -->
-                        <div class="col col-xl-2 order-xl-1 col-lg-2 order-lg-1 col-md-12 col-sm-12 col-12">
-
-                        </div>
                         <!-- ... end Left Sidebar -->
                         <!-- Right Sidebar -->
-                        <div class="col col-xl-2 order-xl-3 col-lg-2 order-lg-3 col-md-12 col-sm-12 col-12">
+                        <div class="col col-xl-12 order-xl-3 col-lg-12 order-lg-3 col-md-12 col-sm-12 col-12">
+                            <div class="ui-block post more-ads-section">
+                                <header class="content-title">
+                                    <div class="title-bg">
+                                        <h2 class="title1">More Advertisements</h2>
+                                    </div>
+                                    <p class="title-desc">Find more relevant advertising.</p>
+                                </header>
+                                <div class="row">
+                                    <div id="more-ads-slider" class="owl-carousel owl-theme">
+                                        <?php
+                                        $advertisements = Advertisement::getAdsByCategory($ADVERTISEMENT->category);
+                                        $out = '';
+                                        if (count($advertisements) > 0) {
+                                            $i = 0;
+                                            foreach ($advertisements as $key => $ad) {
+                                                $result = getTime($ad['created_at']);
+                                                $MEMBER = new Member($ad['member']);
+                                                $CATEGORY = new BusinessCategory($ad['category']);
+                                                $adimages = AdvertisementImage::getPhotosByAdId($ad['id']);
 
+                                                if (($i % 2) === 0) {
+                                                    ?>
+                                                    <div class="item">
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    <div class="col-md-12 aaa">
+                                                        <div class="ad-item  post ">
+                                                            <div class="ad-item-box row">
+                                                                <div class = "col-xl-4 col-sm-4 col-xs-4 ad-item-image">
+                                                                    <?php
+                                                                    if (count($adimages) > 0) {
+                                                                        foreach ($adimages as $key => $img) {
+                                                                            if ($key == 0) {
+                                                                                ?>
+                                                                                <img src="upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt=""/>
+                                                                                <?php
+                                                                            }
+                                                                        }
+                                                                    } else {
+                                                                        ?>
+                                                                        <img src="upload/advertisement/thumb2/advertising.jpg" alt=""/>
+                                                                        <?php
+                                                                    }
+                                                                    ?>
+                                                                </div>
+                                                                <div class = "col-xl-8 col-sm-8 col-xs-8 more-ad ad-item-details">
+                                                                    <div class="ad-title">
+                                                                        <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>" title="<?php echo $ad['title']; ?>">
+                                                                            <?php
+                                                                            if (strlen($ad['title']) > 25) {
+                                                                                echo strlen($ad['title'], 0, 22) . '...';
+                                                                            } else {
+                                                                                echo $ad['title'];
+                                                                            }
+                                                                            ?>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="ad-category"><span class="title"><i class="fa fa-tag"></i> </span><?php echo $CATEGORY->name; ?></div>
+                                                                    <div class=""><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                                    <div class=""><i class="fa fa-dollar-sign"></i> <?php
+                                                                        if ($ad['price'] == 0) {
+                                                                            echo 'Price Negotiable';
+                                                                        } else {
+                                                                            echo 'Rs. ' . number_format($ad['price']);
+                                                                        }
+                                                                        ?></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                    if (($i + 1) % 2 === 0 || ($i + 1) === count($advertisements)) {
+                                                        ?>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                $i++;
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- ... end Left Sidebar -->
                     </div>
