@@ -120,7 +120,7 @@ $(document).ready(function () {
             });
             return false;
         } else {
-            alert($('#email').val());
+            
             var id = $('#id').val();
             var title = $('#title').val();
             var description = tinyMCE.get('description').getContent();

@@ -18,7 +18,8 @@ and open the template in the editor.
     }
     #site-header-responsive .responsive-header-logo {
         width: 100px;
-        margin-top: 8px;
+        margin-top: 0px;
+        margin-left: 10px;
     }
     #site-header-responsive .nav-item:first-child {
         left: -16px;
@@ -156,6 +157,18 @@ and open the template in the editor.
         z-index: 999;
     }
     .top-header-author {
+        margin-top: 0px;
+    }
+    #site-header-responsive .nav-link img {
+        width: 20px;
+    }
+    #site-header-responsive .responsive-header-logo img {
+        width: 100px;
+    }
+    #site-header-responsive .nav-link .author-thumb img {
+        margin-top: 0px;
+    }
+    .control-icon {
         margin-top: 0px;
     }
 }

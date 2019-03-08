@@ -114,60 +114,9 @@ if (isset($_SESSION['id'])) {
                                     }
                                 }
                                 ?>
-
-
-                                <!--                                <div class="col-lg-3 col-md-6">
-                                                                    <div class="category-box-layout1">
-                                                                        <div class="item-icon">
-                                                                            <img src="upload/business-category/car.png" alt=""/>
-                                                                        </div>
-                                                                        <h3 class="item-title"><a href="#">Destination</a></h3>
-                                                                        <div class="listing-number">40 Listings</div>
-                                                                    </div>
-                                                                </div>-->
                             </div>
                         </div>
                     </section>
-
-
-
-
-
-
-                    <!--Category Section-->
-                    <!--                    <div class="ui-block ad-container">
-                                            <div class="hot-items carousel-wrapper">
-                                                <header class="content-title">
-                                                    <div class="title-bg">
-                                                        <h2 class="title1">Categories</h2>
-                                                    </div>
-                                                    <p class="title-desc">Only with us you can get a new model with a discount.</p>
-                                                </header>
-                                                <div class="category-list row container">
-                    <?php
-                    foreach (BusinessCategory::all() as $category) {
-                        ?>
-                                                                        
-                                                                                                            <div class="col-xl-2 col-xs-6 category-item-box">
-                                                                                                                <a href="advertisements.php?category=<?php echo $category['id']; ?>">
-                                                                                                                    <div class="cat-img">
-                                                                                                                        <img src="upload/business-category/<?php echo $category['image_name']; ?>" alt=""/>
-                                                                                                                    </div>
-                                                                                                                    <div class="cat-title">
-                                                                                                                        <h4><?php echo $category['name']; ?></h4>
-                                                                                                                    </div>
-                                                                                                                </a>
-                                                                                                            </div>
-                                                                        
-                        <?php
-                    }
-                    ?>
-                    
-                                                </div>
-                                            </div>
-                                        </div>-->
-                    <!-- End Category Section-->
-
                     <!--Advertisement Section-->
                     <div class="ui-block ui-ad-block ad-container listing-dire">
                         <div class="hot-items carousel-wrapper container index-container ">
@@ -175,6 +124,7 @@ if (isset($_SESSION['id'])) {
                                 <div class="item-sub-title">Discover our latest listing around the world</div>
                                 <h2 class="item-title">New Listings in Our Directory</h2>
                             </div>
+
                             <!--                            <header class="content-title">
                                                             <div class="title-bg">
                                                                 <h2 class="title1">Advertisements</h2>
@@ -182,6 +132,9 @@ if (isset($_SESSION['id'])) {
                                                             <p class="title-desc">Only with us you can get a new model with a discount.</p>
                                                         </header>-->
                             <div id="ad-slider" class="owl-carousel owl-theme ">
+
+                            <div id="ad-slider" class="owl-carousel owl-theme">
+
                                 <?php
                                 foreach (Advertisement::all() as $key => $ad) {
 
@@ -208,7 +161,7 @@ if (isset($_SESSION['id'])) {
                                                         foreach ($images as $key1 => $image) {
                                                             if ($key1 == 0) {
                                                                 ?>
-                                                                <img src="upload/advertisement/thumb3/<?php echo $image['image_name']; ?>"  alt="Listing" class="img-fluid grid-view-img" />
+                                                                <img src="upload/advertisement/<?php echo $image['image_name']; ?>"  alt="Listing" class="img-fluid grid-view-img" />
                                                                 <?php
                                                             }
                                                         }
@@ -218,14 +171,6 @@ if (isset($_SESSION['id'])) {
                                                         <?php
                                                     }
                                                     ?>
-                                                    <!--                                                    <ul class="item-rating">
-                                                                                                            <li><i class="fas fa-star"></i></li>
-                                                                                                            <li><i class="fas fa-star"></i></li>
-                                                                                                            <li><i class="fas fa-star"></i></li>
-                                                                                                            <li><i class="fas fa-star"></i></li>
-                                                                                                            <li><i class="fas fa-star"></i></li>
-                                                                                                            <li><span>8.4<span> / 10</span></span> </li>
-                                                                                                        </ul>-->
                                                     <div class="item-logo" title="<?php echo $CAT->name; ?>"><img src="upload/business-category/<?php echo $CAT->image_name; ?>" alt="Logo"></div>
                                                 </div>
                                                 <div class="item-content">
@@ -283,86 +228,6 @@ if (isset($_SESSION['id'])) {
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-                                    <!--                                    <div class="item">
-                                                                            <div class="slider-img-section">
-                                    <?php
-                                    if (count($images) > 0) {
-                                        foreach ($images as $key1 => $image) {
-                                            if ($key1 == 0) {
-                                                ?>
-                                                                                                                    <img src="upload/advertisement/thumb/<?php echo $image['image_name']; ?>" alt=""/>
-                                                <?php
-                                            }
-                                        }
-                                    } else {
-                                        ?>
-                                                                                            <img src="upload/advertisement/thumb/advertising.jpg" alt=""/>
-                                        <?php
-                                    }
-                                    ?>
-                                                                            </div>
-                                                                            <div class="slider-details-section">
-                                                                                <div class="title">
-                                                                                    <h5>
-                                                                                        <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>" title="<?php echo $ad['title']; ?>">
-                                    <?php
-                                    if (strlen($ad['title']) > 22) {
-                                        echo substr($ad['title'], 0, 21) . '...';
-                                    } else {
-                                        echo $ad['title'];
-                                    }
-                                    ?>
-                                                                                        </a>
-                                                                                    </h5>
-                                                                                </div>
-                                                                                <div class="created-date">
-                                    <?php echo substr($ad['created_at'], 0, 10); ?>
-                                                                                </div>
-                                                                                <div class="description">
-                                    <?php
-                                    if (strlen($ad['description']) > 90) {
-                                        echo substr($ad['description'], 0, 85) . '...';
-                                    } else {
-                                        echo $ad['description'];
-                                    }
-                                    ?>
-                                                                                </div>
-                                                                                <hr />
-                                                                                <div class="slider-item-footer row">
-                                                                                    <div class="col-xl-8 col-xs-8 order-xl-1 order-xs-1 member-details row">
-                                                                                        <div class="col-xl-3 col-xs-3 order-xl-1 order-xs-1">
-                                                                                            <img src="upload/member/<?php echo $MEM->profilePicture; ?>" class="img-responsive img-circle" alt=""/>
-                                                                                        </div>
-                                                                                        <div class="col-xl-9 order-xl-2 col-xs-9 order-xs-2 mem-name">
-                                                                                            <h6 class="" title="<?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>">
-                                    <?php
-                                    if (strlen($MEM->firstName . ' ' . $MEM->lastName) > 14) {
-                                        echo substr($MEM->firstName . ' ' . $MEM->lastName, 0, 13) . '...';
-                                    } else {
-                                        echo $MEM->firstName . ' ' . $MEM->lastName;
-                                    }
-                                    ?>
-                                                                                            </h6>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-xl-4 col-xs-4 order-xl-2 order-xs-2 category">
-                                                                                        <h6><i class="fa fa-list"></i> <?php echo $CAT->name; ?></h6>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>-->
                                     <?php
                                 }
                                 ?>
@@ -431,13 +296,9 @@ if (isset($_SESSION['id'])) {
         <script src="js/images-grid.js" type="text/javascript"></script>
         <script src="js/js/index-ad-slider.js" type="text/javascript"></script>
         <script src="js/js/delete-ad.js" type="text/javascript"></script>
-        <!--<script src="js/js/ad-comment.js" type="text/javascript"></script>-->
-        <!--<script src="js/js/ad-reply.js" type="text/javascript"></script>-->
         <script src="js/js/shared-ad.js" type="text/javascript"></script>
         <script src="js/js/edit-post.js" type="text/javascript"></script>
         <script src="js/js/delete-post.js" type="text/javascript"></script>
-        <!--<script src="js/js/post-comment.js" type="text/javascript"></script>-->
-        <!--<script src="js/js/post-reply.js" type="text/javascript"></script>-->
         <script src="js/js/index-post-comment.js" type="text/javascript"></script>
         <script src="js/js/index-post-reply.js" type="text/javascript"></script>
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>

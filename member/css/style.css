@@ -9,8 +9,11 @@
     margin-left: 0px;
     width: 100%;
 }
+.header {
+    background-color: #11215a;
+}
 .header .page-title {
-    padding: 14px 10px 20px 80px;
+    padding: 5px 10px 5px 80px;
 }
 .page-title img {
     width: 140px;
@@ -835,7 +838,7 @@ input[type='submit'].share-post {
     color: #000;
 }
 .header {
-    height: 55px;
+    height: 61px;
     padding-right: 80px;
 }
 .control-icon {
@@ -1224,6 +1227,15 @@ header .control-icon > svg {
     display: inline;
     margin-top: -21px;
     margin-left: 10px;
+}
+
+#site-header .control-icon img {
+    width: 25px;
+    opacity: 0.8;
+}
+#site-header .control-icon img:hover {
+    width: 25px;
+    opacity: 1;
 }
 
 @media(min-width: 1400px) {

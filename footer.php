@@ -74,7 +74,7 @@
     </section>
     <section class="footer-bottom-wrap">
         <div class="container">
-            <div class="copyright">2018 Copyright © listygo.com</div>
+            <div class="copyright">2019 Copyright © flip.lk. Designed by Synotec Holdings (Pvt) Ltd.</div>
         </div>
     </section>
 </footer>

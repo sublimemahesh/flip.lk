@@ -3,7 +3,7 @@
 <header class="header" id="site-header">
     <div class="page-title">
         <a href="../">
-            <img src="img/logo/logo.png" alt=""/>
+            <img src="img/logo/logo.jpg" alt=""/>
         </a>
     </div>
     <div class="header-content-wrapper">
@@ -25,24 +25,39 @@
         <div class="control-block">
 
             <div class="control-icon more has-items">
-                <a href="../"><i class="fa fa-home f-a-size header-group-icon" ></i></a>
+                <a href="../">
+                    <!--<i class="fa fa-home f-a-size header-group-icon" ></i>-->
+                    <img src="img/icon/header-icon/home.png" alt=""/>
+                </a>
 
             </div>
             <div class="control-icon more has-items">
-                <a href="./"><svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="bottom"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg></a>
+                <a href="./">
+<!--                    <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="bottom"   data-original-title="NEWSFEED">
+                    <use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use>
+                    </svg>-->
+                    <img src="img/icon/header-icon/newsfeed.png" alt=""/>
+                </a>
 
             </div>
             <div class="control-icon more has-items">
-                <a href="../all-advertisement.php"><i class="fa fa-bullhorn f-a-size header-group-icon" ></i></a>
+                <a href="../all-advertisement.php">
+                    <!--<i class="fa fa-bullhorn f-a-size header-group-icon" ></i>-->
+                    <img src="img/icon/header-icon/advertising.png" alt=""/>
+                </a>
 
             </div>
             <div class="control-icon more has-items">
-                <a href="manage-groups.php"><i class="fa fa-users f-a-size header-group-icon" ></i></a>
+                <a href="manage-groups.php">
+                    <!--<i class="fa fa-users f-a-size header-group-icon" ></i>-->
+                    <img src="img/icon/header-icon/group.png" alt=""/>
+                </a>
                 <!--<a href="./"><img src="img/icon/group-2.png" /></a>-->
 
             </div>
             <div class="control-icon more has-items">
-                <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
+                <!--<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>-->
+                <img src="img/icon/header-icon/request.png" alt=""/>
                 <?php
                 
                 $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
@@ -114,7 +129,8 @@
             </div>
 
             <div class="control-icon more has-items">
-                <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
+                <!--<svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>-->
+                <img src="img/icon/header-icon/message.png" alt=""/>
                 <div class="label-avatar bg-purple">2</div>
 
                 <div class="more-dropdown more-with-triangle triangle-top-center">
@@ -291,22 +307,23 @@
             <li class="nav-item">
                 <a class="nav-link" href="../">
                     <div class="responsive-header-logo">
-                        <img src="img/logo/logo.png" alt=""/>
+                        <img src="img/logo/logo.jpg" alt=""/>
                     </div>  
                 </a>
             </li>
-            <li class="nav-item">
+<!--            <li class="nav-item">
                 <a class="nav-link" href="../">
                     <div class="control-icon has-items">
                         <i class="fa fa-home f-a-size header-group-icon" ></i>
                     </div>
                 </a>
-            </li>
+            </li>-->
 
             <li class="nav-item">
                 <a class="nav-link" href="./">
                     <div class="control-icon has-items">
-                        <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="bottom"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
+                        <!--<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="bottom"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>-->
+                        <img src="../img/icon/header-icon/newsfeed.png" alt=""/>
                     </div>
                 </a>
             </li>
@@ -314,24 +331,26 @@
             <li class="nav-item">
                 <a class="nav-link" href="../all-advertisement.php">
                     <div class="control-icon has-items">
-                        <i class="fa fa-bullhorn f-a-size header-group-icon" ></i>
+                        <!--<i class="fa fa-bullhorn f-a-size header-group-icon" ></i>-->
+                        <img src="../img/icon/header-icon/advertising.png" alt=""/>
                     </div>
                 </a>
             </li>
 
-            <li class="nav-item">
+<!--            <li class="nav-item">
                 <a class="nav-link" href="manage-groups.php">
                     <i class="fa fa-users f-a-size header-group-icon" ></i>
                 </a>
-            </li>
+            </li>-->
             
             
             
             
             <li class="nav-item">
                 <a class="nav-link" href="friend-requests.php">
-                    <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                <?php
+                    <!--<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>-->
+                    <img src="../img/icon/header-icon/request.png" alt=""/>
+                        <?php
                 if (isset($_SESSION['id'])) {
                     $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
 
@@ -346,7 +365,8 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
+                    <!--<svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>-->
+                    <img src="../img/icon/header-icon/message.png" alt=""/>
                 </a>
             </li>
             <li class="nav-item">

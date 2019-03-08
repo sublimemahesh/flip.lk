@@ -1,6 +1,8 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
-
+if (!isset($_SESSION)) {
+    session_start();
+}
 $id = '';
 
 if (isset($_SESSION['id'])) {
@@ -17,7 +19,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Profile || Flip.lk</title>
+        <title>All Advertisements || Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
