@@ -45,6 +45,7 @@ if (isset($_SESSION['id'])) {
         <link href="plugins/OwlCarousel/dist/assets/owl.theme.default.css" rel="stylesheet" type="text/css"/>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
+        <link href="css/flaticon.css" rel="stylesheet" type="text/css"/>
         <style>
             .comment-item1 {
                 display: none;
@@ -52,6 +53,7 @@ if (isset($_SESSION['id'])) {
             .comment-reply-item {
                 display: none;
             }
+
         </style>
     </head>
     <body>
@@ -60,111 +62,125 @@ if (isset($_SESSION['id'])) {
         include './header.php';
         ?>
         <div class="header-spacer"></div>
-        <div class="container index-container">
-            <!--Search Box-->
-            <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-                <div class="s002">
-                    <form action="advertisements.php" method="get">
-                        <div class="inner-form">
-
-                            <div class="input-field fouth-wrap">
-                                <div class="icon-wrap">
-<!--                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-                                    </svg>-->
-                                    <svg height="24" viewBox="0 -52 512 512" width="24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="m0 0h113.292969v113.292969h-113.292969zm0 0"/>
-                                    <path d="m149.296875 0h362.703125v113.292969h-362.703125zm0 0"/>
-                                    <path d="m0 147.007812h113.292969v113.292969h-113.292969zm0 0"/>
-                                    <path d="m149.296875 147.007812h362.703125v113.292969h-362.703125zm0 0"/>
-                                    <path d="m0 294.011719h113.292969v113.296875h-113.292969zm0 0"/>
-                                    <path d="m149.296875 294.011719h362.703125v113.296875h-362.703125zm0 0"/>
-                                    </svg>
-                                </div>
-                                <select data-trigger="" name="category">
-                                    <option value="">Category</option>
-
-                                    <?php
-                                    foreach (BusinessCategory::all() as $key => $category) {
-                                        ?>
-                                        <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="input-field second-wrap">
-                                <div class="icon-wrap">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
-                                    </svg>
-                                </div>
-                                <input type="text" id="autocomplete" placeholder="Location" onFocus="geolocate()">
-                                <input type="hidden" name="location" id="city"  value=""/>
-                            </div>
-                            <div class="input-field first-wrap">
-                                <div class="icon-wrap">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
-                                    </svg>
-                                </div>
-                                <input id="search" type="text" name="keyword" placeholder="What are you looking for?" />
-                            </div>
-
-                            <div class="input-field fifth-wrap">
-                                <button class="btn-search" type="submit">SEARCH</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- End Search Box-->
+        <?php
+        include './banner.php';
+        ?>
+        <div class="">
+            
+            
             <div class="row">
                 <!-- Main Content -->
                 <main class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-                    <!--Category Section-->
-                    <div class="ui-block ad-container">
-                        <div class="hot-items carousel-wrapper">
-                            <header class="content-title">
-                                <div class="title-bg">
-                                    <h2 class="title1">Categories</h2>
-                                </div>
-                                <p class="title-desc">Only with us you can get a new model with a discount.</p>
-                            </header>
-                            <div class="category-list row container">
-                                <?php
-                                foreach (BusinessCategory::all() as $category) {
-                                    ?>
 
-                                    <div class="col-xl-2 col-xs-6 category-item-box">
-                                        <a href="advertisements.php?category=<?php echo $category['id']; ?>">
-                                            <div class="cat-img">
-                                                <img src="upload/business-category/<?php echo $category['image_name']; ?>" alt=""/>
-                                            </div>
-                                            <div class="cat-title">
-                                                <h4><?php echo $category['name']; ?></h4>
-                                            </div>
-                                        </a>
+                    <section class="ui-block ui-ad-block intro-section category-wrap-layout1 padding-top-100 padding-bottom-100 ">
+                        <div class="">
+                            <div class="container index-container">
+                                <div class="row">
+                                    <div class="col-xl-6">
+                                        <h2>Flip.lk</h2>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum
+                                        </p>
                                     </div>
-
-                                    <?php
-                                }
-                                ?>
+                                    <div class="col-xl-6">
+                                        <img src="img/shopper.jpg" alt=""/>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
-                    </div>
+                    </section>
+                    <section class="category-wrap-layout1 padding-top-100 padding-bottom-100 overlay-dark-70 parallaxie bg--dark" data-bg-image="img/figure/figure2.jpg" style="background-image: url(&quot;https://radiustheme.com/demo/html/listygo/listygo/img/figure/figure2.jpg&quot;); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center -112.842px;">
+                        <div class="container index-container">
+                            <div class="section-heading heading-light heading-center">
+                                <div class="item-sub-title">Explore some of the best place by categories</div>
+                                <h2 class="item-title">What are you interested in?</h2>
+                            </div>
+                            <div class="row">
+                                <?php
+                                foreach (BusinessCategory::all() as $key => $category) {
+                                    if ($key < 12) {
+                                        ?>
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="category-box-layout1">
+                                                <div class="item-icon">
+                                                    <img src="upload/business-category/<?php echo $category['image_name']; ?>" alt=""/>
+                                                </div>
+                                                <h3 class="item-title"><a href="advertisements.php?category=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></h3>
+                                                <div class="listing-number">40 Listings</div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                ?>
+
+
+                                <!--                                <div class="col-lg-3 col-md-6">
+                                                                    <div class="category-box-layout1">
+                                                                        <div class="item-icon">
+                                                                            <img src="upload/business-category/car.png" alt=""/>
+                                                                        </div>
+                                                                        <h3 class="item-title"><a href="#">Destination</a></h3>
+                                                                        <div class="listing-number">40 Listings</div>
+                                                                    </div>
+                                                                </div>-->
+                            </div>
+                        </div>
+                    </section>
+
+
+
+
+
+
+                    <!--Category Section-->
+                    <!--                    <div class="ui-block ad-container">
+                                            <div class="hot-items carousel-wrapper">
+                                                <header class="content-title">
+                                                    <div class="title-bg">
+                                                        <h2 class="title1">Categories</h2>
+                                                    </div>
+                                                    <p class="title-desc">Only with us you can get a new model with a discount.</p>
+                                                </header>
+                                                <div class="category-list row container">
+                    <?php
+                    foreach (BusinessCategory::all() as $category) {
+                        ?>
+                                                                        
+                                                                                                            <div class="col-xl-2 col-xs-6 category-item-box">
+                                                                                                                <a href="advertisements.php?category=<?php echo $category['id']; ?>">
+                                                                                                                    <div class="cat-img">
+                                                                                                                        <img src="upload/business-category/<?php echo $category['image_name']; ?>" alt=""/>
+                                                                                                                    </div>
+                                                                                                                    <div class="cat-title">
+                                                                                                                        <h4><?php echo $category['name']; ?></h4>
+                                                                                                                    </div>
+                                                                                                                </a>
+                                                                                                            </div>
+                                                                        
+                        <?php
+                    }
+                    ?>
+                    
+                                                </div>
+                                            </div>
+                                        </div>-->
                     <!-- End Category Section-->
 
                     <!--Advertisement Section-->
-                    <div class="ui-block ad-container">
-                        <div class="hot-items carousel-wrapper">
-                            <header class="content-title">
-                                <div class="title-bg">
-                                    <h2 class="title1">Advertisements</h2>
-                                </div>
-                                <p class="title-desc">Only with us you can get a new model with a discount.</p>
-                            </header>
+                    <div class="ui-block ui-ad-block ad-container">
+                        <div class="hot-items carousel-wrapper container index-container">
+                            <div class="section-heading heading-dark heading-center">
+                                <div class="item-sub-title">Discover our latest listing around the world</div>
+                                <h2 class="item-title">New Listings in Our Directory</h2>
+                            </div>
+                            <!--                            <header class="content-title">
+                                                            <div class="title-bg">
+                                                                <h2 class="title1">Advertisements</h2>
+                                                            </div>
+                                                            <p class="title-desc">Only with us you can get a new model with a discount.</p>
+                                                        </header>-->
                             <div id="ad-slider" class="owl-carousel owl-theme">
                                 <?php
                                 foreach (Advertisement::all() as $key => $ad) {
@@ -173,74 +189,180 @@ if (isset($_SESSION['id'])) {
                                     $MEM = new Member($ad['member']);
                                     $CAT = new BusinessCategory($ad['category']);
                                     ?>
-                                    <div class="item">
-                                        <div class="slider-img-section">
-                                            <?php
-                                            if (count($images) > 0) {
-                                                foreach ($images as $key1 => $image) {
-                                                    if ($key1 == 0) {
-                                                        ?>
-                                                        <img src="upload/advertisement/thumb/<?php echo $image['image_name']; ?>" alt=""/>
+                                    <div class="item" style="">
+                                        <div class="listing-box-grid">
+                                            <div class="product-box border-box">
+                                                <div class="item-img bg--gradient-50">
+                                                    <div class="item-status status-open active">
                                                         <?php
-                                                    }
-                                                }
-                                            } else {
-                                                ?>
-                                                <img src="upload/advertisement/thumb/advertising.jpg" alt=""/>
-                                                <?php
-                                            }
-                                            ?>
-                                        </div>
-                                        <div class="slider-details-section">
-                                            <div class="title">
-                                                <h5>
-                                                    <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>" title="<?php echo $ad['title']; ?>">
-                                                        <?php
-                                                        if (strlen($ad['title']) > 22) {
-                                                            echo substr($ad['title'], 0, 21) . '...';
+                                                        if ($ad['price']) {
+                                                            echo 'Rs. ' . number_format($ad['price']);
                                                         } else {
-                                                            echo $ad['title'];
+                                                            echo 'Negotiable';
                                                         }
                                                         ?>
-                                                    </a>
-                                                </h5>
-                                            </div>
-                                            <div class="created-date">
-                                                <?php echo substr($ad['created_at'], 0, 10); ?>
-                                            </div>
-                                            <div class="description">
-                                                <?php
-                                                if (strlen($ad['description']) > 90) {
-                                                    echo substr($ad['description'], 0, 85) . '...';
-                                                } else {
-                                                    echo $ad['description'];
-                                                }
-                                                ?>
-                                            </div>
-                                            <hr />
-                                            <div class="slider-item-footer row">
-                                                <div class="col-xl-8 col-xs-8 order-xl-1 order-xs-1 member-details row">
-                                                    <div class="col-xl-3 col-xs-3 order-xl-1 order-xs-1">
-                                                        <img src="upload/member/<?php echo $MEM->profilePicture; ?>" class="img-responsive img-circle" alt=""/>
                                                     </div>
-                                                    <div class="col-xl-9 order-xl-2 col-xs-9 order-xs-2 mem-name">
-                                                        <h6 class="" title="<?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>">
+                                                    <!--<div class="item-status status-save">Save 15%</div>-->
+                                                    <?php
+                                                    if (count($images) > 0) {
+                                                        foreach ($images as $key1 => $image) {
+                                                            if ($key1 == 0) {
+                                                                ?>
+                                                                <img src="upload/advertisement/thumb3/<?php echo $image['image_name']; ?>"  alt="Listing" class="img-fluid grid-view-img" />
+                                                                <?php
+                                                            }
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        <img src="upload/advertisement/thumb3/advertising.jpg"  alt="Listing" class="img-fluid grid-view-img" />
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    <!--                                                    <ul class="item-rating">
+                                                                                                            <li><i class="fas fa-star"></i></li>
+                                                                                                            <li><i class="fas fa-star"></i></li>
+                                                                                                            <li><i class="fas fa-star"></i></li>
+                                                                                                            <li><i class="fas fa-star"></i></li>
+                                                                                                            <li><i class="fas fa-star"></i></li>
+                                                                                                            <li><span>8.4<span> / 10</span></span> </li>
+                                                                                                        </ul>-->
+                                                    <div class="item-logo" title="<?php echo $CAT->name; ?>"><img src="upload/business-category/<?php echo $CAT->image_name; ?>" alt="Logo"></div>
+                                                </div>
+                                                <div class="item-content">
+                                                    <h3 class="item-title">
+                                                        <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
                                                             <?php
-                                                            if (strlen($MEM->firstName . ' ' . $MEM->lastName) > 14) {
-                                                                echo substr($MEM->firstName . ' ' . $MEM->lastName, 0, 13) . '...';
+                                                            if (strlen($ad['title']) > 22) {
+                                                                echo substr($ad['title'], 0, 21) . '...';
                                                             } else {
-                                                                echo $MEM->firstName . ' ' . $MEM->lastName;
+                                                                echo $ad['title'];
                                                             }
                                                             ?>
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4 col-xs-4 order-xl-2 order-xs-2 category">
-                                                    <h6><i class="fa fa-list"></i> <?php echo $CAT->name; ?></h6>
+                                                        </a>
+                                                    </h3>
+                                                    <span class="item-paragraph">
+                                                        <?php
+                                                        if (strlen($ad['description']) > 50) {
+                                                            echo substr($ad['description'], 0, 45) . '...';
+                                                        } else {
+                                                            echo $ad['description'];
+                                                        }
+                                                        ?>
+                                                    </span>
+                                                    <ul class="contact-info">
+                                                        <li><i class="fas fa-map-marker-alt"></i><?php echo $ad['address']; ?></li>
+                                                        <li><i class="fas fa-phone"></i>
+                                                            <?php
+                                                            if ($ad['phone_number']) {
+                                                                echo $ad['phone_number'];
+                                                            } elseif ($MEM->phoneNumber) {
+                                                                echo $MEM->phoneNumber;
+                                                            } else {
+                                                                echo '-';
+                                                            }
+                                                            ?>
+                                                        </li>
+                                                        <li><i class="fas fa-globe"></i>
+                                                            <?php
+                                                            if ($ad['website']) {
+                                                                echo $ad['website'];
+                                                            } else {
+                                                                echo '-';
+                                                            }
+                                                            ?>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="meta-item">
+                                                        <li class="ctg-name">
+                                                            <a><img src="upload/member/<?php echo $MEM->profilePicture; ?>" class="img-responsive img-circle" alt=""/> <?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <!--                                    <div class="item">
+                                                                            <div class="slider-img-section">
+                                    <?php
+                                    if (count($images) > 0) {
+                                        foreach ($images as $key1 => $image) {
+                                            if ($key1 == 0) {
+                                                ?>
+                                                                                                                    <img src="upload/advertisement/thumb/<?php echo $image['image_name']; ?>" alt=""/>
+                                                <?php
+                                            }
+                                        }
+                                    } else {
+                                        ?>
+                                                                                            <img src="upload/advertisement/thumb/advertising.jpg" alt=""/>
+                                        <?php
+                                    }
+                                    ?>
+                                                                            </div>
+                                                                            <div class="slider-details-section">
+                                                                                <div class="title">
+                                                                                    <h5>
+                                                                                        <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>" title="<?php echo $ad['title']; ?>">
+                                    <?php
+                                    if (strlen($ad['title']) > 22) {
+                                        echo substr($ad['title'], 0, 21) . '...';
+                                    } else {
+                                        echo $ad['title'];
+                                    }
+                                    ?>
+                                                                                        </a>
+                                                                                    </h5>
+                                                                                </div>
+                                                                                <div class="created-date">
+                                    <?php echo substr($ad['created_at'], 0, 10); ?>
+                                                                                </div>
+                                                                                <div class="description">
+                                    <?php
+                                    if (strlen($ad['description']) > 90) {
+                                        echo substr($ad['description'], 0, 85) . '...';
+                                    } else {
+                                        echo $ad['description'];
+                                    }
+                                    ?>
+                                                                                </div>
+                                                                                <hr />
+                                                                                <div class="slider-item-footer row">
+                                                                                    <div class="col-xl-8 col-xs-8 order-xl-1 order-xs-1 member-details row">
+                                                                                        <div class="col-xl-3 col-xs-3 order-xl-1 order-xs-1">
+                                                                                            <img src="upload/member/<?php echo $MEM->profilePicture; ?>" class="img-responsive img-circle" alt=""/>
+                                                                                        </div>
+                                                                                        <div class="col-xl-9 order-xl-2 col-xs-9 order-xs-2 mem-name">
+                                                                                            <h6 class="" title="<?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>">
+                                    <?php
+                                    if (strlen($MEM->firstName . ' ' . $MEM->lastName) > 14) {
+                                        echo substr($MEM->firstName . ' ' . $MEM->lastName, 0, 13) . '...';
+                                    } else {
+                                        echo $MEM->firstName . ' ' . $MEM->lastName;
+                                    }
+                                    ?>
+                                                                                            </h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xl-4 col-xs-4 order-xl-2 order-xs-2 category">
+                                                                                        <h6><i class="fa fa-list"></i> <?php echo $CAT->name; ?></h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>-->
                                     <?php
                                 }
                                 ?>
@@ -252,6 +374,11 @@ if (isset($_SESSION['id'])) {
                 <!-- ... end Main Content -->
             </div>
         </div>
+        <!--footers-->
+        <?php
+        include './footer.php';
+        ?>
+        <!--end footer-->
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>
@@ -259,6 +386,7 @@ if (isset($_SESSION['id'])) {
         <?php
         include './window-pop-up.php';
         ?>
+
         <!-- ... end Window-popup -->
 
         <!-- JS Scripts -->
@@ -319,56 +447,56 @@ if (isset($_SESSION['id'])) {
         <script src="plugins/OwlCarousel/dist/owl.carousel.min.js" type="text/javascript"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
         <script>
-                                    var placeSearch, autocomplete;
+            var placeSearch, autocomplete;
 
-                                    function initAutocomplete() {
-                                        // Create the autocomplete object, restricting the search to geographical
-                                        // location types.
-                                        var options = {
-                                            types: ['(cities)'],
-                                            componentRestrictions: {country: "lk"}
-                                        };
-                                        var input = document.getElementById('autocomplete');
+            function initAutocomplete() {
+                // Create the autocomplete object, restricting the search to geographical
+                // location types.
+                var options = {
+                    types: ['(cities)'],
+                    componentRestrictions: {country: "lk"}
+                };
+                var input = document.getElementById('autocomplete');
 
-                                        autocomplete = new google.maps.places.Autocomplete(input, options);
+                autocomplete = new google.maps.places.Autocomplete(input, options);
 
-                                        // When the user selects an address from the dropdown, populate the address
-                                        // fields in the form.
-                                        autocomplete.addListener('place_changed', fillInAddress);
-                                    }
+                // When the user selects an address from the dropdown, populate the address
+                // fields in the form.
+                autocomplete.addListener('place_changed', fillInAddress);
+            }
 
-                                    function fillInAddress() {
-                                        // Get the place details from the autocomplete object.
-                                        var place = autocomplete.getPlace();
-                                        $('#city').val(place.place_id);
-                                        //                $('#longitude').val(place.geometry.location.lng());
-                                        //                $('#latitude').val(place.geometry.location.lat());
-                                        for (var component in componentForm) {
-                                            document.getElementById(component).value = '';
-                                            document.getElementById(component).disabled = false;
-                                        }
+            function fillInAddress() {
+                // Get the place details from the autocomplete object.
+                var place = autocomplete.getPlace();
+                $('#city').val(place.place_id);
+                //                $('#longitude').val(place.geometry.location.lng());
+                //                $('#latitude').val(place.geometry.location.lat());
+                for (var component in componentForm) {
+                    document.getElementById(component).value = '';
+                    document.getElementById(component).disabled = false;
+                }
 
-                                        // Get each component of the address from the place details
-                                        // and fill the corresponding field on the form.
-                                    }
+                // Get each component of the address from the place details
+                // and fill the corresponding field on the form.
+            }
 
-                                    // Bias the autocomplete object to the user's geographical location,
-                                    // as supplied by the browser's 'navigator.geolocation' object.
-                                    function geolocate() {
-                                        if (navigator.geolocation) {
-                                            navigator.geolocation.getCurrentPosition(function (position) {
-                                                var geolocation = {
-                                                    lat: position.coords.latitude,
-                                                    lng: position.coords.longitude
-                                                };
-                                                var circle = new google.maps.Circle({
-                                                    center: geolocation,
-                                                    radius: position.coords.accuracy
-                                                });
-                                                autocomplete.setBounds(circle.getBounds());
-                                            });
-                                        }
-                                    }
+            // Bias the autocomplete object to the user's geographical location,
+            // as supplied by the browser's 'navigator.geolocation' object.
+            function geolocate() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var geolocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        var circle = new google.maps.Circle({
+                            center: geolocation,
+                            radius: position.coords.accuracy
+                        });
+                        autocomplete.setBounds(circle.getBounds());
+                    });
+                }
+            }
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2FmnO6PPzu9Udebcq9q_yUuQ_EGItjak&libraries=places&callback=initAutocomplete"
         async defer></script>

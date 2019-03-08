@@ -41,6 +41,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
         <link rel="stylesheet" type="text/css" href="css/main.min.css">
         <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/search-box.css" rel="stylesheet" type="text/css"/>
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="css/images-grid.css" rel="stylesheet" type="text/css"/>
         <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
@@ -58,7 +59,10 @@ $pageLimit = ($page * $setLimit) - $setLimit;
         include './header.php';
         ?>
         <div class="header-spacer"></div>
-        <div class="container index-container">
+        <?php
+        include './banner.php';
+        ?>
+        <div class="container index-container body-content">
             <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
                 <!-- Top Header-Profile -->
 
@@ -158,6 +162,9 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                 </div>
             </div>
         </div>
+        <?php
+        include './footer.php';
+        ?>
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>
@@ -210,5 +217,6 @@ $pageLimit = ($page * $setLimit) - $setLimit;
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="js/images-grid.js" type="text/javascript"></script>
         <script src="js/js/all-ad-slider.js" type="text/javascript"></script>
+        <script src="js/choices.js" type="text/javascript"></script>
     </body>
 </html>

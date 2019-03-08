@@ -54,14 +54,40 @@ if (isset($_POST['upload-ad-image'])) {
                         $handle2->image_y = 100;
                         $handle2->Process($dir_dest . '/thumb2');
                         if ($handle2->processed) {
-                            $handle2->Clean();
-                            header('Content-Type: application/json');
-                            $result = [
-                                "filename" => $handle2->file_dst_name,
-                                "message" => 'success'
-                            ];
-                            echo json_encode($result);
-                            exit();
+                            $handle3 = new Upload($_FILES['upload-other-images']);
+                            if ($handle3->uploaded) {
+                                $handle3->image_resize = true;
+                                $handle3->file_new_name_ext = 'jpg';
+                                $handle3->image_ratio_crop = 'C';
+                                $handle3->file_new_name_body = $imgName;
+                                $handle3->image_x = 350;
+                                $handle3->image_y = 200;
+                                $handle3->Process($dir_dest . '/thumb2');
+                                if ($handle3->processed) {
+                                    $handle3->Clean();
+                                    header('Content-Type: application/json');
+                                    $result = [
+                                        "filename" => $handle3->file_dst_name,
+                                        "message" => 'success'
+                                    ];
+                                    echo json_encode($result);
+                                    exit();
+                                } else {
+                                    header('Content-Type: application/json');
+                                    $result = [
+                                        "message" => 'error'
+                                    ];
+                                    echo json_encode($result);
+                                    exit();
+                                }
+                            } else {
+                                header('Content-Type: application/json');
+                                $result = [
+                                    "message" => 'error'
+                                ];
+                                echo json_encode($result);
+                                exit();
+                            }
                         } else {
                             header('Content-Type: application/json');
                             $result = [

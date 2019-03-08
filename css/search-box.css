@@ -1480,7 +1480,7 @@ span.flatpickr-weekday {
       align-items: center;
   font-family: 'Poppins', sans-serif;
   background-position: center center;
-  padding: 40px;
+  padding: 40px 40px 10px;
 }
 
 .s002 form {

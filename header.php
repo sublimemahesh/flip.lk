@@ -2,7 +2,7 @@
 <header class="header" id="site-header">
     <div class="page-title">
         <a href="./">
-            <img src="img/logo/logo.png" alt=""/>
+            <img src="img/logo/logo.jpg" alt=""/>
         </a>
     </div>
     <div class="header-content-wrapper">
