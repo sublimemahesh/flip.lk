@@ -169,8 +169,8 @@ if (isset($_SESSION['id'])) {
                     <!-- End Category Section-->
 
                     <!--Advertisement Section-->
-                    <div class="ui-block ui-ad-block ad-container">
-                        <div class="hot-items carousel-wrapper container index-container">
+                    <div class="ui-block ui-ad-block ad-container listing-dire">
+                        <div class="hot-items carousel-wrapper container index-container ">
                             <div class="section-heading heading-dark heading-center">
                                 <div class="item-sub-title">Discover our latest listing around the world</div>
                                 <h2 class="item-title">New Listings in Our Directory</h2>
@@ -181,7 +181,7 @@ if (isset($_SESSION['id'])) {
                                                             </div>
                                                             <p class="title-desc">Only with us you can get a new model with a discount.</p>
                                                         </header>-->
-                            <div id="ad-slider" class="owl-carousel owl-theme">
+                            <div id="ad-slider" class="owl-carousel owl-theme ">
                                 <?php
                                 foreach (Advertisement::all() as $key => $ad) {
 

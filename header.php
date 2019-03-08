@@ -291,7 +291,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="./">
                     <div class="responsive-header-logo">
-                        <img src="img/logo/logo.png" alt=""/>
+                        <img src="img/logo/logo.jpg" alt=""/>
                     </div>  
                 </a>
             </li>
