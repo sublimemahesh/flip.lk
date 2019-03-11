@@ -1,6 +1,8 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
-
+if (!isset($_SESSION)) {
+    session_start();
+}
 $id = '';
 
 if (isset($_SESSION['id'])) {
@@ -18,7 +20,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Profile || Flip.lk</title>
+        <title><?php echo $ADVERTISEMENT->title; ?> || View Advertisement || Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,7 +74,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                 <!-- ... end Top Header-Profile -->
                 <div class="container">
                     <div class="row">
-                         <div class="col col-xl-8 order-xl-1 col-lg-8 order-lg-1 col-md-12 col-sm-12 col-12">
+                        <div class="col col-xl-8 order-xl-1 col-lg-8 order-lg-1 col-md-12 col-sm-12 col-12">
                             <div class="ad-breadcrumbs">
                                 <span class="breadcrumb-item"><a href="./" >Home</a> </span>
                                 <span class="breadcrumb-item"><a href="all-advertisement.php" >All advertisements in Sri Lanka</a></span>
@@ -425,6 +427,9 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
         </div>
         <input type="hidden" id="autocomplete" placeholder="Location" value="<?php echo $ADVERTISEMENT->city; ?>">
         <div id="map"></div>
+        <?php
+        include './footer.php';
+        ?>
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>

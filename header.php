@@ -9,19 +9,32 @@
         <div class="control-block">
 
             <div class="control-icon more has-items">
-                <a href="./"><i class="fa fa-home f-a-size header-group-icon" ></i></a>
+                <a href="./">
+                    <!--<i class="fa fa-home f-a-size header-group-icon" ></i>-->
+                    <img src="img/icon/header-icon/home.png" alt=""/>
+                </a>
             </div>
             <div class="control-icon more has-items">
-                <a href="member/"><svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="bottom"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg></a>
+                <a href="member/">
+                    <!--<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="bottom"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>-->
+                    <img src="img/icon/header-icon/newsfeed.png" alt=""/>
+                </a>
             </div>
             <div class="control-icon more has-items">
-                <a href="all-advertisement.php"><i class="fa fa-bullhorn f-a-size header-group-icon" ></i></a>
+                <a href="all-advertisement.php">
+                    <!--<i class="fa fa-bullhorn f-a-size header-group-icon" ></i>-->
+                    <img src="img/icon/header-icon/advertising.png" alt=""/>
+                </a>
             </div>
             <div class="control-icon more has-items">
-                <a href="member/manage-groups.php"><i class="fa fa-users f-a-size header-group-icon" ></i></a>
+                <a href="member/manage-groups.php">
+                    <!--<i class="fa fa-users f-a-size header-group-icon" ></i>-->
+                    <img src="img/icon/header-icon/group.png" alt=""/>
+                </a>
             </div>
             <div class="control-icon more has-items">
-                <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
+                <!--<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>-->
+                <img src="img/icon/header-icon/request.png" alt=""/>
                 <?php
                 if (isset($_SESSION['id'])) {
                     $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
@@ -95,7 +108,8 @@
             </div>
 
             <div class="control-icon more has-items">
-                <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
+                <!--<svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>-->
+                <img src="img/icon/header-icon/message.png" alt=""/>
                 <div class="label-avatar bg-purple">2</div>
 
                 <div class="more-dropdown more-with-triangle triangle-top-center">
@@ -190,9 +204,7 @@
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
                     <?php
-                    
                     if (isset($_SESSION['id'])) {
-                        
                         ?>
                         <img alt="author" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
                         <span class="icon-status online"></span>
@@ -256,26 +268,26 @@
                             </div>
 
                         </div>
-                        <?php
-                    } else {
-                        ?>
-                        <img alt="author" src="upload/member/member.png" class="avatar" id="profile_pic2">
+    <?php
+} else {
+    ?>
+                        <a href="member/login.php"><img alt="author" src="img/icon/header-icon/signin.png" class="signin" id="profile_pic2"></a>
                         <?php
                     }
                     ?>
 
                 </div>
                 <a href="member/profile.php" class="author-name fn">
-                    <?php
-                    if (isset($_SESSION['id'])) {
-                        ?>
+<?php
+if (isset($_SESSION['id'])) {
+    ?>
                         <div class="author-title">
-                            <?php echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                        <?php echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                         </div>
                         <span class="author-subtitle">SPACE COWBOY</span>
-                        <?php
-                    }
-                    ?>
+    <?php
+}
+?>
                 </a>
             </div>
 
@@ -295,18 +307,19 @@
                     </div>  
                 </a>
             </li>
-            <li class="nav-item">
+<!--            <li class="nav-item">
                 <a class="nav-link" href="./">
                     <div class="control-icon has-items">
                         <i class="fa fa-home f-a-size header-group-icon" ></i>
                     </div>
                 </a>
-            </li>
+            </li>-->
 
             <li class="nav-item">
                 <a class="nav-link" href="member/">
                     <div class="control-icon has-items">
-                        <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="bottom"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
+                        <!--<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="bottom"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>-->
+                        <img src="img/icon/header-icon/newsfeed.png" alt=""/>
                     </div>
                 </a>
             </li>
@@ -314,58 +327,62 @@
             <li class="nav-item">
                 <a class="nav-link" href="all-advertisement.php">
                     <div class="control-icon has-items">
-                        <i class="fa fa-bullhorn f-a-size header-group-icon" ></i>
+                        <!--<i class="fa fa-bullhorn f-a-size header-group-icon" ></i>-->
+                        <img src="img/icon/header-icon/advertising.png" alt=""/>
                     </div>
                 </a>
             </li>
 
-            <li class="nav-item">
+<!--            <li class="nav-item">
                 <a class="nav-link" href="member/manage-groups.php">
                     <i class="fa fa-users f-a-size header-group-icon" ></i>
                 </a>
-            </li>
-            
-            
-            
-            
+            </li>-->
+
+
+
+
             <li class="nav-item">
                 <a class="nav-link" href="member/friend-requests.php">
-                    <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                <?php
-                if (isset($_SESSION['id'])) {
-                    $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
-
-                    if ($countu['count'] > 0) {
-                        ?>
-                        <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
+                    <!--<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>-->
+                    <img src="img/icon/header-icon/request.png" alt=""/>
                         <?php
+if (isset($_SESSION['id'])) {
+    $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
+
+    if ($countu['count'] > 0) {
+        ?>
+                            <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
+                            <?php
+                        }
                     }
-                }
-                ?>
+                    ?>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
+                    <!--<svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>-->
+                    <img src="img/icon/header-icon/message.png" alt=""/>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="member/profile.php">
                     <div class="author-thumb">
-                    <?php
-                    if (isset($_SESSION['id'])) {
+<?php
+if (isset($_SESSION['id'])) {
+    ?>
+                            <img alt="author" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
+                            <span class="icon-status online"></span>
+    <?php
+} else {
+    ?>
+                            
+                            <img src="img/icon/header-icon/signin.png" alt=""/>
+                            <?php
+                        }
                         ?>
-                        <img alt="author" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
-                        <span class="icon-status online"></span>
-                        <?php
-                    } else {
-                        ?>
-                        <img alt="author" src="upload/member/member.png" class="avatar" id="profile_pic2">
-                        <?php
-                    }
-                    ?>
 
-                </div>
+                    </div>
                 </a>
             </li>
         </ul>
