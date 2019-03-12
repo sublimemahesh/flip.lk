@@ -2,6 +2,9 @@
     Created on : Dec 17, 2018, 5:27:41 PM
     Author     : W j K n ¨
 */
+a:hover {
+    color: #002bc8;
+}
 .container {
     padding-right: 0px;
     padding-left: 0px;
@@ -10,7 +13,7 @@
     width: 100%;
 }
 .header {
-    background-color: #11215a;
+    background-color: #002bc8;
 }
 .header .page-title {
     padding: 5px 10px 5px 80px;
@@ -1237,7 +1240,43 @@ header .control-icon > svg {
     width: 25px;
     opacity: 1;
 }
+.author-thumb.message-box img{
+    width: 36px;
+}
+.chat-message .notification-event {
+    max-width: 75%;
+    font-size: 12px;
+    padding-left: 15px;
+    
+}
+.chat-message-field .chat-message-item {
+    width: 100%;
+}
+.ad-details-section .author-thumb img {
+    border-radius: 0;
+    width: 60px;
+}
+.ad-details-section .author-thumb {
+    margin-right: 15px;
+}
+.ui-block-title.ad-details-section {
+    border-bottom: 1px solid #e6ecf5;
+    padding: 14px 25px 14px;
+    background: #f3f3f3;
+}
+.ui-block-title.ad-details-section .notification-event {
+    width: 100%;
+    font-size: 11px;
+    line-height: 14px;
 
+}
+.notification-list .active {
+    background: #f5f5f5;
+
+}
+.ui-block-title.reciever-details {
+    padding: 6px 25px 6px;
+}
 @media(min-width: 1400px) {
     .container {
         /*max-width: 1323px;*/

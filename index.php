@@ -66,8 +66,8 @@ if (isset($_SESSION['id'])) {
         include './banner.php';
         ?>
         <div class="">
-            
-            
+
+
             <div class="row">
                 <!-- Main Content -->
                 <main class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
@@ -131,7 +131,7 @@ if (isset($_SESSION['id'])) {
                                                             </div>
                                                             <p class="title-desc">Only with us you can get a new model with a discount.</p>
                                                         </header>-->
-                            <div id="ad-slider" class="owl-carousel owl-theme ">
+                            <!--<div id="ad-slider" class="owl-carousel owl-theme ">-->
 
                             <div id="ad-slider" class="owl-carousel owl-theme">
 
