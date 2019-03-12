@@ -2,6 +2,10 @@
     Created on : Dec 17, 2018, 5:27:41 PM
     Author     : W j K n ¨
 */
+a:hover {
+    color: #002bc8;
+}
+
 .container {
     padding-right: 0px;
     padding-left: 0px;
@@ -1330,8 +1334,12 @@ header .control-icon > svg {
 #more-ads-slider .owl-next {
     background: #fff;
 }
-.ad-contact-details .contact-details {
+.ad-contact-details .contact-details{
     font-size: 17px;
+}
+.ad-contact-details a .contact-details{
+    font-size: 17px;
+    color: #888dbb;
 }
 .ad-category-details {
     margin-top: 20px;

@@ -7,6 +7,7 @@ if (isset($_POST['login'])) {
     $MEMBER = new Member(NULL);
     $email = $_POST['email'];
     $password = md5($_POST['password']);
+    $back = $_POST['back_url'];
 
 
     if (empty($email) || empty($password)) {
@@ -14,7 +15,16 @@ if (isset($_POST['login'])) {
         exit();
     }
     if ($MEMBER->login($email, $password)) {
-        header('Location: ../?message=5');
+
+        if (empty($back)) {
+            header('Location: ../?message=5');
+            exit();
+        } else {
+            unset($_SESSION["back_url"]);
+            redirect($back);
+
+            exit();
+        }
         exit();
     } else {
         header('Location: ../login.php?message=7');
@@ -140,7 +150,7 @@ if (isset($_POST['check-email'])) {
 
             $email = $res['email'];
             $resetcode = $res['reset_code'];
-            
+
             date_default_timezone_set('Asia/Colombo');
 
             $todayis = date("l, F j, Y, g:i a");
@@ -189,11 +199,11 @@ if (isset($_POST['reset-password'])) {
 
     if ($password === $confpassword && $password != NULL && $confpassword != NULL) {
         $result = $MEMBER->SelectResetCode($code);
-        
+
         if ($result) {
             $res = $MEMBER->updatePassword($password, $code);
             if ($res) {
-                
+
                 if ($MEMBER->login($result['email'], md5($password))) {
                     header('Location: ../index.php?message=15');
                 } else {
