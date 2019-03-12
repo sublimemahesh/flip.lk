@@ -1839,7 +1839,7 @@ ul {
 /************************* Footer *************************/
 .footer-top-wrap {
 
-    background-color: #11215a;
+    background-color: #002bc8;
     padding: 90px 0px 38px;
     position: relative;
     z-index: 1;
@@ -1904,7 +1904,7 @@ ul {
     content: "";
     width: 50px;
     height: 4px;
-    background-color: #002bc8;
+    background-color: #fff;
     bottom: 0;
     left: 0;
     position: absolute;
@@ -2014,7 +2014,8 @@ ul {
 }
 .footer-bottom-wrap {
 
-    background-color: #11215a;
+    background-color: #002bc8;
+    /*background-color: #11215a;*/
     min-height: 40px;
     display: -webkit-box;
     display: -moz-box;
@@ -2129,7 +2130,7 @@ letter-spacing: 1px;
     margin-bottom: 75px;
 }
 .header {
-    background-color: #11215a;
+    background-color: #002bc8;
 }
 .product-box .item-content .item-title a:hover {
     color: #002bc8;
