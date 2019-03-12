@@ -328,8 +328,8 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                 </span>
                                             </li>
                                             <li>
-                                                <a href="member/member-message.php?ad=<?php echo $id; ?>">
-                                                <img src="img/icon/search.png" alt=""/>
+                                                <a href="member/member-message.php?ad=<?php echo $id; ?>&back=chat">
+                                                <img src="img/icon/chat.png" alt=""/>
                                                 <span class="contact-details">
                                                     Chat
                                                 </span>

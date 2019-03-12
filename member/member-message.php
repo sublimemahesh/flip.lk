@@ -1,8 +1,20 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
-include_once(dirname(__FILE__) . '/auth.php');
+//include_once(dirname(__FILE__) . '/auth.php');
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!Member::authenticate()) {
+    if ($_GET['back'] == 'chat') {
+//        $_SESSION["back_url"] = 'http://toursrilanka.travel/driver/driver-message.php?id=' . $visitorid;
+        $_SESSION["back_url"] = 'http://localhost/flip.lk/member/member-message.php?ad=' . $_GET['ad'];
+    }
+    
+    redirect('login.php?message=24');
+} else {
+    $MEMBER = new Member($_SESSION['id']);
+}
 
-$MEMBER = new Member($_SESSION['id']);
 $ad = '';
 $id = '';
 
@@ -95,7 +107,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
 
                                     <?php
                                     include './calculate-time.php';
-                                    
+
                                     $maxids = array();
                                     foreach ($allparticipants as $participant) {
                                         $max = AdvertisementMessage::getMaxIDOfDistinctAdvertisement($participant['advertisement'], $MEMBER->id);
@@ -122,7 +134,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                             <div class="author-thumb message-box">
                                                 <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
                                             </div>
-                                            <div class="notification-event">
+                                            <div class="notification-event hidden-xs">
                                                 <a class="h6 notification-friend" href="member-message.php?id=<?php echo $MESSAGE->id; ?>">
                                                     <?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
                                                 </a>
@@ -146,7 +158,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                 </span>
                                                 <!--<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>-->
                                             </div>
-                                            
+
 
                                         </li>
 

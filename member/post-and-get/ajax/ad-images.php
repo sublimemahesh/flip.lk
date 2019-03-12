@@ -62,7 +62,7 @@ if (isset($_POST['upload-ad-image'])) {
                                 $handle3->file_new_name_body = $imgName;
                                 $handle3->image_x = 350;
                                 $handle3->image_y = 200;
-                                $handle3->Process($dir_dest . '/thumb2');
+                                $handle3->Process($dir_dest . '/thumb3');
                                 if ($handle3->processed) {
                                     $handle3->Clean();
                                     header('Content-Type: application/json');

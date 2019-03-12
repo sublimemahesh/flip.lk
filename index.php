@@ -161,7 +161,7 @@ if (isset($_SESSION['id'])) {
                                                         foreach ($images as $key1 => $image) {
                                                             if ($key1 == 0) {
                                                                 ?>
-                                                                <img src="upload/advertisement/<?php echo $image['image_name']; ?>"  alt="Listing" class="img-fluid grid-view-img" />
+                                                                <img src="upload/advertisement/thumb3/<?php echo $image['image_name']; ?>"  alt="Listing" class="img-fluid grid-view-img" />
                                                                 <?php
                                                             }
                                                         }

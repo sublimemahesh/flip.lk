@@ -53,7 +53,7 @@ class AdvertisementMessage {
                 . $this->message . "', '"
                 . $this->parent . "', '"
                 . $this->sender . "')";
-
+        
         $db = new Database();
 
         $result = $db->readQuery($query);

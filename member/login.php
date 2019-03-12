@@ -4,6 +4,11 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 if (!isset($_SESSION)) {
     session_start();
 }
+$back_url = '';
+if (isset($_SESSION["back_url"])) {
+    $back_url = $_SESSION["back_url"];
+}
+
 $CATEGORIES = BusinessCategory::all();
 ?>
 <!DOCTYPE html>
@@ -133,7 +138,7 @@ $CATEGORIES = BusinessCategory::all();
                                                 </div>
                                                 <a href="forgot-password.php" class="forgot">Forgot my Password</a>
                                             </div>
-
+                                            <input type="hidden" class="form-control"  name="back_url" value="<?php echo $back_url; ?>">
                                             <input type="submit" class="btn btn-lg btn-primary full-width" name="login"  value="Login">
 
                                             <div class="or"></div>
@@ -188,6 +193,7 @@ $CATEGORIES = BusinessCategory::all();
                                                     </label>
                                                 </div>
                                             </div>
+
                                             <a href="#" id="btnRegister" class="btn btn-purple btn-lg full-width">Complete Registration!</a>
                                             <input type="hidden" name="save"  value="">
                                         </div>
