@@ -131,7 +131,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                             <span  title="Category"><i class="fa fa-tag"></i> <?php echo $CATEGORY->name; ?></span> <span title="Sub Category"> <i class="fa fa-angle-double-right"></i> <?php echo $SUBCATEGORY->name; ?></span>
                                         </div>
                                         <div class="col-md-5 city-details" title="City">
-                                            <i class="fa fa-map-marker"></i> <span id="city"></span>
+                                            <i class="fa fa-map-marker"></i> <span id="city1"></span>
                                         </div>
                                     </div>
                                     <div class="price-tag">
@@ -329,10 +329,10 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                             </li>
                                             <li>
                                                 <a href="member/member-message.php?ad=<?php echo $id; ?>&back=chat">
-                                                <img src="img/icon/chat.png" alt=""/>
-                                                <span class="contact-details">
-                                                    Chat
-                                                </span>
+                                                    <img src="img/icon/chat.png" alt=""/>
+                                                    <span class="contact-details">
+                                                        Chat
+                                                    </span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -371,6 +371,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                     ?>
                                                     <div class="col-md-12 aaa">
                                                         <div class="ad-item  post ">
+                                                            <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>" title="<?php echo $ad['title']; ?>">
                                                             <div class="ad-item-box row">
                                                                 <div class = "col-xl-4 col-sm-4 col-xs-4 ad-item-image">
                                                                     <?php
@@ -390,16 +391,13 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                                     ?>
                                                                 </div>
                                                                 <div class = "col-xl-8 col-sm-8 col-xs-8 more-ad ad-item-details">
-                                                                    <div class="ad-title">
-                                                                        <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>" title="<?php echo $ad['title']; ?>">
-                                                                            <?php
+                                                                    <div class="ad-title"><?php
                                                                             if (strlen($ad['title']) > 25) {
                                                                                 echo strlen($ad['title'], 0, 22) . '...';
                                                                             } else {
                                                                                 echo $ad['title'];
                                                                             }
                                                                             ?>
-                                                                        </a>
                                                                     </div>
                                                                     <div class="ad-category"><span class="title"><i class="fa fa-tag"></i> </span><?php echo $CATEGORY->name; ?></div>
                                                                     <div class=""><i class="fa fa-clock"></i> <?php echo $result; ?></div>
@@ -412,6 +410,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                                         ?></div>
                                                                 </div>
                                                             </div>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                     <?php
@@ -433,7 +432,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                 </div>
             </div>
         </div>
-        <input type="hidden" id="autocomplete" placeholder="Location" value="<?php echo $ADVERTISEMENT->city; ?>">
+        <input type="hidden" id="autocomplete1" placeholder="Location" value="<?php echo $ADVERTISEMENT->city; ?>">
         <div id="map"></div>
         <?php
         include './footer.php';
@@ -500,6 +499,58 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
             });
         </script>
         <script>
+            var placeSearch, autocomplete;
+            $('#city').val($('#autocomplete2').val());
+            function initAutocomplete() {
+                // Create the autocomplete object, restricting the search to geographical
+                // location types.
+                var options = {
+                    types: ['(cities)'],
+                    componentRestrictions: {country: "lk"}
+                };
+                var input = document.getElementById('autocomplete');
+
+                autocomplete = new google.maps.places.Autocomplete(input, options);
+
+                // When the user selects an address from the dropdown, populate the address
+                // fields in the form.
+                autocomplete.addListener('place_changed', fillInAddress);
+            }
+
+            function fillInAddress() {
+                // Get the place details from the autocomplete object.
+                var place = autocomplete.getPlace();
+                $('#city').val(place.place_id);
+                //                $('#longitude').val(place.geometry.location.lng());
+                //                $('#latitude').val(place.geometry.location.lat());
+                for (var component in componentForm) {
+                    document.getElementById(component).value = '';
+                    document.getElementById(component).disabled = false;
+                }
+
+                // Get each component of the address from the place details
+                // and fill the corresponding field on the form.
+            }
+
+            // Bias the autocomplete object to the user's geographical location,
+            // as supplied by the browser's 'navigator.geolocation' object.
+            function geolocate() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var geolocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        var circle = new google.maps.Circle({
+                            center: geolocation,
+                            radius: position.coords.accuracy
+                        });
+                        autocomplete.setBounds(circle.getBounds());
+                    });
+                }
+            }
+        </script>
+        <script>
             // Retrieve Details from Place_ID
             function initMap() {
                 setTimeout(function () {
@@ -510,21 +561,20 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
 
                     var infowindow = new google.maps.InfoWindow();
                     var service = new google.maps.places.PlacesService(map);
-                    var place_id = $('#autocomplete').val();
+                    var place_id = $('#autocomplete1').val();
 
                     service.getDetails({
                         placeId: place_id
                     }, function (place, status) {
                         if (status === google.maps.places.PlacesServiceStatus.OK) {
 
-                            $('#city').text(place.name);
+                            $('#city1').text(place.name);
                             $('#breadcrumbs-city').text(place.name);
                         }
                     });
 
                 }, 1000);
             }
-
             $(document).ready(function () {
                 initMap();
             });
@@ -586,7 +636,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                 });
             });
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2FmnO6PPzu9Udebcq9q_yUuQ_EGItjak&libraries=places&callback=initMap"
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2FmnO6PPzu9Udebcq9q_yUuQ_EGItjak&libraries=places&callback=initAutocomplete"
         async defer></script>
     </body>
 </html>

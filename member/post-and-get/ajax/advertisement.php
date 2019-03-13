@@ -7,9 +7,10 @@ if ($_POST['option'] == 'SAVEAD') {
     $ADVERTISEMENT = new Advertisement(NULL);
     $ADVERTISEMENT->groupId = $_POST['group'];
     $ADVERTISEMENT->member = $_POST['member'];
-    $ADVERTISEMENT->title = mysql_real_escape_string($_POST['title']);
-    $ADVERTISEMENT->description = mysql_real_escape_string($_POST['description']);
-    ;
+    $ADVERTISEMENT->title = $_POST['title'];
+//    $ADVERTISEMENT->title = mysql_real_escape_string($_POST['title']);
+    $ADVERTISEMENT->description = $_POST['description'];
+//    $ADVERTISEMENT->description = mysql_real_escape_string($_POST['description']);
     $ADVERTISEMENT->city = $_POST['city'];
     $ADVERTISEMENT->address = $_POST['address'];
     $ADVERTISEMENT->category = $_POST['category'];
@@ -41,9 +42,10 @@ if ($_POST['option'] == 'SAVEAD') {
 if ($_POST['option'] == 'EDITAD') {
 
     $ADVERTISEMENT = new Advertisement($_POST['id']);
-    $ADVERTISEMENT->title = mysql_real_escape_string($_POST['title']);
-    ;
-    $ADVERTISEMENT->description = mysql_real_escape_string($_POST['description']);
+//    $ADVERTISEMENT->title = mysql_real_escape_string($_POST['title']);
+    $ADVERTISEMENT->title = $_POST['title'];
+//    $ADVERTISEMENT->description = mysql_real_escape_string($_POST['description']);
+    $ADVERTISEMENT->description = $_POST['description'];
     $ADVERTISEMENT->city = $_POST['city'];
     $ADVERTISEMENT->address = $_POST['address'];
     $ADVERTISEMENT->website = $_POST['website'];

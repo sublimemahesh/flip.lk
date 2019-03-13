@@ -6,10 +6,10 @@ if (!isset($_SESSION)) {
 }
 if (!Member::authenticate()) {
     if ($_GET['back'] == 'chat') {
-//        $_SESSION["back_url"] = 'http://toursrilanka.travel/driver/driver-message.php?id=' . $visitorid;
-        $_SESSION["back_url"] = 'http://localhost/flip.lk/member/member-message.php?ad=' . $_GET['ad'];
+        $_SESSION["back_url"] = 'http://flip.islandwide.website/flip.lk/member/member-message.php?ad=' . $_GET['ad'];
+//        $_SESSION["back_url"] = 'http://localhost/flip.lk/member/member-message.php?ad=' . $_GET['ad'];
     }
-    
+
     redirect('login.php?message=24');
 } else {
     $MEMBER = new Member($_SESSION['id']);
@@ -17,23 +17,22 @@ if (!Member::authenticate()) {
 
 $ad = '';
 $id = '';
-
+$allparticipants = AdvertisementMessage::getDistinctAdvertisements($MEMBER->id);
 if (isset($_GET['ad'])) {
     $ad = $_GET['ad'];
     $ADVERTISEMENT = new Advertisement($ad);
-    $allparticipants = AdvertisementMessage::getDistinctAdvertisements($MEMBER->id);
     $OWNER = new Member($ADVERTISEMENT->member);
+    $CATEGORY = new BusinessCategory($ADVERTISEMENT->category);
+    $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
 }
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $MESSAGES = new AdvertisementMessage($id);
     $ADVERTISEMENT = new Advertisement($MESSAGES->advertisement);
-    $allparticipants = AdvertisementMessage::getDistinctAdvertisements($MEMBER->id);
     $OWNER = new Member($ADVERTISEMENT->member);
+    $CATEGORY = new BusinessCategory($ADVERTISEMENT->category);
+    $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
 }
-
-$CATEGORY = new BusinessCategory($ADVERTISEMENT->category);
-$SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -106,8 +105,6 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                 <ul class="notification-list chat-message">
 
                                     <?php
-                                    include './calculate-time.php';
-
                                     $maxids = array();
                                     foreach ($allparticipants as $participant) {
                                         $max = AdvertisementMessage::getMaxIDOfDistinctAdvertisement($participant['advertisement'], $MEMBER->id);
@@ -240,6 +237,12 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                         $MEM1 = new Member($msg['owner']);
                                                     }
                                                     $result = getTime($msg['created_at']);
+
+                                                    if ($msg['sender'] == 'owner' && $msg['member'] == $MEMBER->id) {
+                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                    } elseif ($msg['sender'] == 'member' && $msg['owner'] == $MEMBER->id) {
+                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                    }
                                                     ?>
                                                     <li>
                                                         <div class="author-thumb message-box">
@@ -282,7 +285,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                     </div>
 
                                     <?php
-                                } elseif ($_GET['id']) {
+                                } elseif (isset($_GET['id'])) {
                                     $ADMESSAGE = new AdvertisementMessage($_GET['id']);
                                     ?>
                                     <div class="chat-field">
@@ -363,6 +366,11 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                         $MEM1 = new Member($msg['owner']);
                                                     }
                                                     $result1 = getTime($msg['created_at']);
+                                                    if ($msg['sender'] == 'owner' && $msg['member'] == $MEMBER->id) {
+                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                    } elseif ($msg['sender'] == 'member' && $msg['owner'] == $MEMBER->id) {
+                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                    }
                                                     ?>
                                                     <li>
                                                         <div class="author-thumb message-box">
@@ -384,7 +392,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                             <form id="send-message" method="post" enctype="multipart/form-data" action="post-and-get/member-message.php">
                                                 <label class="control-label">Write your message...</label>
                                                 <textarea class="form-control" name="message" id="message" placeholder=""  ></textarea>
-                                                <input type="hidden" name="member" value="<?php echo $_SESSION['id']; ?>">
+                                                <input type="hidden" name="member" value="<?php echo $ADMESSAGE->member; ?>">
                                                 <input type="hidden" name="owner" id="owner" value="<?php echo $ADVERTISEMENT->member; ?>">
                                                 <input type="hidden" name="advertisement" id="advertisement" value="<?php echo $ADVERTISEMENT->id; ?>">
                                                 <input type="hidden" name="parent" id="parent" value="<?php echo $firstmsg; ?>">
@@ -402,6 +410,11 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                 </div>
                                             </form>
                                         </div>
+                                    </div>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <div class="chat-field">
                                     </div>
                                     <?php
                                 }
@@ -469,62 +482,62 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
         <script src="js/js/profile.js" type="text/javascript"></script>
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script>
-            var placeSearch, autocomplete, autocomplete2;
+        var placeSearch, autocomplete, autocomplete2;
 
-            function initAutocomplete() {
-                // Create the autocomplete object, restricting the search to geographical
-                // location types.
-                var options = {
-                    types: ['(cities)'],
-                    componentRestrictions: {country: "lk"}
-                };
-                var input = document.getElementById('autocomplete');
-                var input2 = document.getElementById('autocomplete2');
+        function initAutocomplete() {
+            // Create the autocomplete object, restricting the search to geographical
+            // location types.
+            var options = {
+                types: ['(cities)'],
+                componentRestrictions: {country: "lk"}
+            };
+            var input = document.getElementById('autocomplete');
+            var input2 = document.getElementById('autocomplete2');
 
-                autocomplete = new google.maps.places.Autocomplete(input, options);
-                autocomplete2 = new google.maps.places.Autocomplete(input2, options);
+            autocomplete = new google.maps.places.Autocomplete(input, options);
+            autocomplete2 = new google.maps.places.Autocomplete(input2, options);
 
-                // When the user selects an address from the dropdown, populate the address
-                // fields in the form.
-                autocomplete.addListener('place_changed', fillInAddress);
-                autocomplete2.addListener('place_changed', fillInAddress);
+            // When the user selects an address from the dropdown, populate the address
+            // fields in the form.
+            autocomplete.addListener('place_changed', fillInAddress);
+            autocomplete2.addListener('place_changed', fillInAddress);
+        }
+
+        function fillInAddress() {
+            // Get the place details from the autocomplete object.
+            var place = autocomplete.getPlace();
+            var place2 = autocomplete2.getPlace();
+            $('#district').val(place.place_id);
+            $('#city').val(place2.place_id);
+            //                $('#longitude').val(place.geometry.location.lng());
+            //                $('#latitude').val(place.geometry.location.lat());
+            for (var component in componentForm) {
+                document.getElementById(component).value = '';
+                document.getElementById(component).disabled = false;
             }
 
-            function fillInAddress() {
-                // Get the place details from the autocomplete object.
-                var place = autocomplete.getPlace();
-                var place2 = autocomplete2.getPlace();
-                $('#district').val(place.place_id);
-                $('#city').val(place2.place_id);
-//                $('#longitude').val(place.geometry.location.lng());
-//                $('#latitude').val(place.geometry.location.lat());
-                for (var component in componentForm) {
-                    document.getElementById(component).value = '';
-                    document.getElementById(component).disabled = false;
-                }
+            // Get each component of the address from the place details
+            // and fill the corresponding field on the form.
+        }
 
-                // Get each component of the address from the place details
-                // and fill the corresponding field on the form.
-            }
-
-            // Bias the autocomplete object to the user's geographical location,
-            // as supplied by the browser's 'navigator.geolocation' object.
-            function geolocate() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        var geolocation = {
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude
-                        };
-                        var circle = new google.maps.Circle({
-                            center: geolocation,
-                            radius: position.coords.accuracy
-                        });
-                        autocomplete.setBounds(circle.getBounds());
-                        autocomplete2.setBounds(circle.getBounds());
+        // Bias the autocomplete object to the user's geographical location,
+        // as supplied by the browser's 'navigator.geolocation' object.
+        function geolocate() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var geolocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    var circle = new google.maps.Circle({
+                        center: geolocation,
+                        radius: position.coords.accuracy
                     });
-                }
+                    autocomplete.setBounds(circle.getBounds());
+                    autocomplete2.setBounds(circle.getBounds());
+                });
             }
+        }
         </script>
         <script>
             // Retrieve Details from Place_ID
@@ -551,7 +564,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                         placeId: place_id2
                     }, function (place2, status) {
                         if (status === google.maps.places.PlacesServiceStatus.OK) {
-//                        alert(place.name);
+                            //                        alert(place.name);
                             $('#autocomplete2').val(place2.name);
                             $('.city-label').removeClass('is-empty');
                         }

@@ -17,12 +17,12 @@ if (isset($_GET["page"])) {
 $setLimit = 30;
 $pageLimit = ($page * $setLimit) - $setLimit;
 
-$category = '';
+$category1 = '';
 $location = '';
 $keyword = '';
 
 if (isset($_GET['category'])) {
-    $category = $_GET['category'];
+    $category1 = $_GET['category'];
     $BUSCAT = new BusinessCategory($_GET['category']);
 }
 if (isset($_GET['location'])) {
@@ -31,7 +31,8 @@ if (isset($_GET['location'])) {
 if (isset($_GET['keyword'])) {
     $keyword = $_GET['keyword'];
 }
-$advertisements = Advertisement::searchAdvertisements($category, $location, $keyword, $pageLimit, $setLimit);
+
+$advertisements = Advertisement::searchAdvertisements($category1, $location, $keyword, $pageLimit, $setLimit);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +75,7 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
         include './banner.php';
         ?>
         <div class="container index-container body-content">
-            
+
             <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
                 <!-- Top Header-Profile -->
 
@@ -89,22 +90,23 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
                             <div id="newsfeed-items-grid">
                                 <div class="ad-breadcrumbs">
                                     <?php
-                                    if ($category !== "" && $location !== "") {
+                                    if ($category1 !== "" && $location !== "") {
                                         ?>
-                                    <span class="breadcrumb-item"><a href="./" >Home</a> </span>
-                                    <span class="breadcrumb-item">
-                                        <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a></span>
-                                    <span class="breadcrumb-item location"></span>
+                                        <span class="breadcrumb-item"><a href="./" >Home</a> </span>
+                                        <span class="breadcrumb-item">
+                                            <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a></span>
+                                        <span class="breadcrumb-item location"></span>
                                         <?php
-                                    } else if ($category !== "" && $location == "") {
+                                        
+                                    } else if ($category1 !== "" && $location == "") {
                                         ?>
-                                    <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item"><?php echo $BUSCAT->name; ?></span>
+                                        <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item"><?php echo $BUSCAT->name; ?></span>
                                         <?php
-                                    } else if ($location !== "" && $category == "") {
+                                    } else if ($location !== "" && $category1 == "") {
                                         ?>
                                         <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item location"></span>
                                         <?php
-                                    } else if ($keyword !== "" && $location == "" && $category == "") {
+                                    } else if ($keyword !== "" && $location == "" && $category1 == "") {
                                         ?>
                                         <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item">All advertisements in Sri Lanka</span>
                                         <?php
@@ -124,6 +126,7 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
                                             $adimages = AdvertisementImage::getPhotosByAdId($ad['id']);
                                             ?>
                                             <div class="ad-item  post ">
+                                                <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
                                                 <div class="ad-item-box row">
                                                     <div class = "col-xl-2 col-xs-4 ad-item-image">
                                                         <?php
@@ -143,12 +146,13 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
                                                         ?>
                                                     </div>
                                                     <div class = "col-xl-10 col-xs-8 ad-item-details">
-                                                        <div class="ad-title"><a href="view-advertisement.php?id=<?php echo $ad['id']; ?>"><?php echo $ad['title']; ?></a></div>
+                                                        <div class="ad-title"><?php echo $ad['title']; ?></div>
                                                         <div class="ad-city"><span class="title">Location <i class="fa fa-angle-double-right"></i> </span>Galle</div>
                                                         <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
                                                         <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
                                                     </div>
                                                 </div>
+                                                </a>
                                             </div>
                                             <?php
                                         }
@@ -273,56 +277,56 @@ $advertisements = Advertisement::searchAdvertisements($category, $location, $key
         <script src="js/choices.js" type="text/javascript"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
         <script>
-                                    var placeSearch, autocomplete;
-                                    $('#city').val($('#autocomplete2').val());
-                                    function initAutocomplete() {
-                                        // Create the autocomplete object, restricting the search to geographical
-                                        // location types.
-                                        var options = {
-                                            types: ['(cities)'],
-                                            componentRestrictions: {country: "lk"}
-                                        };
-                                        var input = document.getElementById('autocomplete');
+            var placeSearch, autocomplete;
+            $('#city').val($('#autocomplete2').val());
+            function initAutocomplete() {
+                // Create the autocomplete object, restricting the search to geographical
+                // location types.
+                var options = {
+                    types: ['(cities)'],
+                    componentRestrictions: {country: "lk"}
+                };
+                var input = document.getElementById('autocomplete');
 
-                                        autocomplete = new google.maps.places.Autocomplete(input, options);
+                autocomplete = new google.maps.places.Autocomplete(input, options);
 
-                                        // When the user selects an address from the dropdown, populate the address
-                                        // fields in the form.
-                                        autocomplete.addListener('place_changed', fillInAddress);
-                                    }
+                // When the user selects an address from the dropdown, populate the address
+                // fields in the form.
+                autocomplete.addListener('place_changed', fillInAddress);
+            }
 
-                                    function fillInAddress() {
-                                        // Get the place details from the autocomplete object.
-                                        var place = autocomplete.getPlace();
-                                        $('#city').val(place.place_id);
-                                        //                $('#longitude').val(place.geometry.location.lng());
-                                        //                $('#latitude').val(place.geometry.location.lat());
-                                        for (var component in componentForm) {
-                                            document.getElementById(component).value = '';
-                                            document.getElementById(component).disabled = false;
-                                        }
+            function fillInAddress() {
+                // Get the place details from the autocomplete object.
+                var place = autocomplete.getPlace();
+                $('#city').val(place.place_id);
+                //                $('#longitude').val(place.geometry.location.lng());
+                //                $('#latitude').val(place.geometry.location.lat());
+                for (var component in componentForm) {
+                    document.getElementById(component).value = '';
+                    document.getElementById(component).disabled = false;
+                }
 
-                                        // Get each component of the address from the place details
-                                        // and fill the corresponding field on the form.
-                                    }
+                // Get each component of the address from the place details
+                // and fill the corresponding field on the form.
+            }
 
-                                    // Bias the autocomplete object to the user's geographical location,
-                                    // as supplied by the browser's 'navigator.geolocation' object.
-                                    function geolocate() {
-                                        if (navigator.geolocation) {
-                                            navigator.geolocation.getCurrentPosition(function (position) {
-                                                var geolocation = {
-                                                    lat: position.coords.latitude,
-                                                    lng: position.coords.longitude
-                                                };
-                                                var circle = new google.maps.Circle({
-                                                    center: geolocation,
-                                                    radius: position.coords.accuracy
-                                                });
-                                                autocomplete.setBounds(circle.getBounds());
-                                            });
-                                        }
-                                    }
+            // Bias the autocomplete object to the user's geographical location,
+            // as supplied by the browser's 'navigator.geolocation' object.
+            function geolocate() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var geolocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        var circle = new google.maps.Circle({
+                            center: geolocation,
+                            radius: position.coords.accuracy
+                        });
+                        autocomplete.setBounds(circle.getBounds());
+                    });
+                }
+            }
         </script>
         <script>
             // Retrieve Details from Place_ID

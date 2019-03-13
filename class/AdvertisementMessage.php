@@ -315,6 +315,16 @@ class AdvertisementMessage {
         }
     }
 
+    public function countUnreadMessages($id) {
+
+        $query = "SELECT count(`id`) AS `count` FROM `advertisement_message` WHERE (`owner`= $id AND `sender` LIKE 'member' AND `is_viewed`=0) OR (`member`= $id AND `sender` LIKE 'owner' AND `is_viewed`=0) ORDER BY `created_at` DESC";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result['count'];
+    }
+    
     public function getCountOfUnReadMessagesByOwner($owner) {
 
         $query = "SELECT count(`id`) AS `count` FROM `advertisement_message` WHERE `owner`= $owner AND `sender` LIKE 'member' AND `is_viewed`=0";
@@ -338,6 +348,20 @@ class AdvertisementMessage {
     public function getUnReadMessagesByOwner($owner) {
 
         $query = "SELECT * FROM `advertisement_message` WHERE `owner`= $owner AND `sender` LIKE 'member' AND `is_viewed`=0";
+
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+    
+    public function getUnreadMessages($id) {
+
+        $query = "SELECT max(`id`) AS `max` FROM `advertisement_message` WHERE (`owner`= $id AND `sender` LIKE 'member' AND `is_viewed`=0) OR (`member`= $id AND `sender` LIKE 'owner' AND `is_viewed`=0) GROUP BY `advertisement` ORDER BY `created_at` DESC";
 
         $db = new Database();
         $result = $db->readQuery($query);
