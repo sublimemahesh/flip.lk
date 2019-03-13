@@ -82,7 +82,7 @@ if (isset($_SESSION['id'])) {
                                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum
                                         </p>
                                     </div>
-                                    <div class="col-xl-6">
+                                    <div class="col-xl-6 background-image">
                                         <img src="img/shopper.jpg" alt=""/>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@ if (isset($_SESSION['id'])) {
                                 foreach (BusinessCategory::all() as $key => $category) {
                                     if ($key < 12) {
                                         ?>
-                                        <div class="col-lg-3 col-md-6 col-sm-4 ">
+                                        <div class="col-lg-3 col-md-4 col-sm-4 ">
                                             <div class="category-box-layout1">
                                                 <div class="item-icon">
                                                     <img src="upload/business-category/<?php echo $category['image_name']; ?>" alt=""/>

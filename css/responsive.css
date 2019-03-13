@@ -174,8 +174,15 @@ and open the template in the editor.
     .control-icon {
         margin-top: 0px;
     }
+
     
 
+    .mobile-app-tabs{
+        background-color: #002bc8;
+        height: 60px;
+
+
+    }
 
 }
 
@@ -256,20 +263,36 @@ and open the template in the editor.
     .footer-about p{
         text-align: justify;
     }
-    
-     .category-box-layout1 {
+
+    .category-box-layout1 {
         margin-left: 20px;
         margin-right: 20px;
     }
-  
+    .mobile-app-tabs{
+        background-color: #002bc8;
+        height: 40px;
+    }
+    .header .page-title{
+        display: inherit;
+        padding: 7px 143px 58px 6px;
+        margin-left: -54px;
+        margin-right: 58px;
+    }
+    .control-block .author-thumb{
+        margin-right: -49px;
+    }
+    .header{
+        padding-left: 91px;
+    }
+    .s002 form .inner-form .input-field.fifth-wrap .btn-search{
+        margin-left: 128px;
+    }
 }
 
 @media(min-width:992px) and (max-width:1200px) {
     .category-list.container {
-
         max-width: 960px;
         margin: 20px 26px;
-
     }
 }
 
@@ -278,7 +301,7 @@ and open the template in the editor.
         width: 129px;
         height: 129px;
         padding: 8px;
-    }
+    }  
 }
 
 @media(width:375px) {
@@ -339,3 +362,41 @@ and open the template in the editor.
     }
 }
 
+@media (width:1024px){
+    .header .page-title{
+        display: inherit;
+        padding: 9px 313px 15px 9px;
+    }
+    .intro-section h2{
+        text-align: center;
+    }
+    .intro-section p{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .background-image img{
+        width: 909px;
+    }
+}
+@media (width: 768px){
+    .s002 form .inner-form .input-field.fifth-wrap .btn-search{
+        margin-left: 114px;
+    }
+    .header{
+        padding-left: 6px;
+        padding-right: 1px;
+    }
+}
+@media (width: 640px){
+    .header{
+        padding-left: 27px;
+        padding-right: 27px;        
+    }
+
+}
+@media (width: 600px){
+    .header{
+        padding-right: 1px;
+        padding-left: 7px;
+    }  
+}
