@@ -7,48 +7,29 @@
         </a>
     </div>
     <div class="header-content-wrapper">
-        <!--        <form class="search-bar w-search notification-list friend-requests">
-                    <div class="form-group with-button">
-                        <input class="form-control js-user-search" id="find-member" placeholder="Search here people or pages..." type="text" value="<?php
-        if (isset($MEM)) {
-            echo $MEM->firstName . ' ' . $MEM->lastName;
-        }
-        ?>" autocomplete="off">
-                        <div class="" id="name-list-append"></div>
-                        <input type="hidden" name="member" value="" id="member-id"  />
-                        <button>
-                            <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
-                        </button>
-                    </div>
-                </form>-->
-
         <div class="control-block">
 
             <div class="control-icon more has-items">
                 <a href="../">
-                    <!--<i class="fa fa-home f-a-size header-group-icon" ></i>-->
-                    <img src="img/icon/header-icon/home.png" alt=""/>
+                    <img src="img/icon/header-icon/home.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Home"/>
                 </a>
 
             </div>
             <div class="control-icon more has-items">
                 <a href="./">
-<!--                    <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="bottom"   data-original-title="NEWSFEED">
-                    <use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use>
-                    </svg>-->
-                    <img src="img/icon/header-icon/newsfeed.png" alt=""/>
+                    <img src="img/icon/header-icon/newsfeed.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Newsfeed" />
                 </a>
 
             </div>
             <div class="control-icon more has-items">
                 <a href="../all-advertisement.php">
-                    <img src="img/icon/header-icon/advertising.png" alt=""/>
+                    <img src="img/icon/header-icon/advertising.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Advertisements"  />
                 </a>
 
             </div>
             <div class="control-icon more has-items">
                 <a href="manage-groups.php">
-                    <img src="img/icon/header-icon/group.png" alt=""/>
+                    <img src="img/icon/header-icon/group.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Groups" />
                 </a>
 
             </div>
@@ -78,7 +59,7 @@
                                     if ($key < 4) {
                                         $MEMB = new Member($request['requested_by'])
                                         ?>
-                                        <li id="request-to-join-<?php echo $MEMB->id; ?>">
+                                        <li id="request-to-join-<?php echo $MEMB->id; ?>" class="request-to-join-<?php echo $MEMB->id; ?>">
                                             <div class="author-thumb">
                                                 <img src="../upload/member/<?php echo $MEMB->profilePicture; ?>" alt="author">
                                             </div>
@@ -92,8 +73,7 @@
                                                         <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                                     </span>
                                                 </a>
-
-                                                <a href="#" class="accept-request request-del">
+                                                <a href="#" class="accept-request request-del delete-request" row_id="<?php echo $request['id']; ?>">
                                                     <span class="icon-minus">
                                                         <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                                     </span>
@@ -104,6 +84,19 @@
                                             <div class="more">
                                                 <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
                                             </div>
+                                        </li>
+
+                                        <li class="accepted hidden accepted-request-<?php echo $MEMB->id; ?>" id="accepted-request-<?php echo $MEMB->id; ?>">
+                                            <div class="author-thumb member-request-profile-pic">
+                                                <img src="../upload/member/<?php echo $MEMB->profilePicture; ?>" alt="author">
+                                            </div>
+                                            <div class="notification-event">
+                                                <a href="profile.php?id=<?php echo $MEMB->id; ?>" class="h6 notification-friend"><?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?></a> just became a friend of you.
+                                            </div>
+                                            <span class="notification-icon">
+                                                <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
+                                            </span>
+
                                         </li>
                                         <?php
                                     }
@@ -146,50 +139,49 @@
                             <?php
                             include './calculate-time.php';
                             $unreadmsgs = AdvertisementMessage::getUnreadMessages($MEMBER->id);
-                            if(count($unreadmsgs) > 0) {
-                            foreach ($unreadmsgs as $key => $msg) {
-                                $MESSAGE = new AdvertisementMessage($msg['max']);
-                                if ($key < 6) {
-                                    if ($MESSAGE->owner == $MEMBER->id) {
-                                        $MEM1 = new Member($MESSAGE->member);
-                                    } else {
-                                        $MEM1 = new Member($MESSAGE->owner);
-                                    }
-                                    $res = getTime($MESSAGE->createdAt);
-                                    ?>
-                                    <li class="message-unread">
-                                        <div class="author-thumb">
-                                            <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
-                                        </div>
-                                        <div class="notification-event">
-                                            <a href="member-message.php?id=<?php echo $MESSAGE->id; ?>" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName . ' ' . $MESSAGE->advertisement; ?></a>
-                                            <span class="chat-message-item">
-                                                <?php
-                                                if (strlen($MESSAGE->message) > 50) {
-                                                    echo substr($MESSAGE->message, 0, 48) . '...';
-                                                } else {
-                                                    echo $MESSAGE->message;
-                                                }
-                                                ?>
+                            if (count($unreadmsgs) > 0) {
+                                foreach ($unreadmsgs as $key => $msg) {
+                                    $MESSAGE = new AdvertisementMessage($msg['max']);
+                                    if ($key < 6) {
+                                        if ($MESSAGE->owner == $MEMBER->id) {
+                                            $MEM1 = new Member($MESSAGE->member);
+                                        } else {
+                                            $MEM1 = new Member($MESSAGE->owner);
+                                        }
+                                        $res = getTime($MESSAGE->createdAt);
+                                        ?>
+                                        <li class="message-unread">
+                                            <div class="author-thumb">
+                                                <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
+                                            </div>
+                                            <div class="notification-event">
+                                                <a href="member-message.php?id=<?php echo $MESSAGE->id; ?>" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName . ' ' . $MESSAGE->advertisement; ?></a>
+                                                <span class="chat-message-item">
+                                                    <?php
+                                                    if (strlen($MESSAGE->message) > 50) {
+                                                        echo substr($MESSAGE->message, 0, 48) . '...';
+                                                    } else {
+                                                        echo $MESSAGE->message;
+                                                    }
+                                                    ?>
+                                                </span>
+                                                <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18"><?php echo $res; ?></time></span>
+                                            </div>
+                                            <span class="notification-icon">
+                                                <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
                                             </span>
-                                            <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18"><?php echo $res; ?></time></span>
-                                        </div>
-                                        <span class="notification-icon">
-                                            <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
-                                        </span>
-                                        <div class="more">
-                                            <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                        </div>
-                                    </li>
-                                    <?php
+                                            <div class="more">
+                                                <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
+                                            </div>
+                                        </li>
+                                        <?php
+                                    }
                                 }
-                            }
                             } else {
                                 ?>
                                 <li>There is no any messages.</li>
                                 <?php
                             }
-                            
                             ?>
                         </ul>
                     </div>

@@ -90,7 +90,6 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                             <div id="newsfeed-items-grid">
                                 <div class="ui-block post">
                                     <?php
-                                    include './calculate-time.php';
                                     $result = getTime($ADVERTISEMENT->createdAt);
                                     ?>
                                     <div class="ad-main-title">

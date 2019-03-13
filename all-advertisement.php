@@ -82,7 +82,6 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                 </div>   
                                 <div class="ui-block">
                                     <?php
-                                    include './calculate-time.php';
                                     $advertisements = Advertisement::getAllAdvertisements($pageLimit, $setLimit);
                                     if (count($advertisements) > 0) {
                                         foreach ($advertisements as $key => $ad) {

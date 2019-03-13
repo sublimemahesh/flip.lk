@@ -1,52 +1,7 @@
 $(document).ready(function () {
-    $('#follow-btn').click(function () {
-
-        var requestedTo, requestedBy;
-        requestedTo = $(this).attr('requested-to');
-        requestedBy = $(this).attr('requested-by');
-
-        $.ajax({
-            url: "post-and-get/ajax/friend-request.php",
-            type: "POST",
-            data: {
-                requestedTo: requestedTo,
-                requestedBy: requestedBy,
-                option: 'FOLLOWFRIEND'
-            },
-            dataType: 'json',
-            success: function (mess) {
-                $('#join-block').addClass('hidden');
-                $('#request-cancel-block').removeClass('hidden');
-                location.reload();
-            }
-        });
-    });
-
-    $('#cancel-friend-request-btn').click(function () {
-
-        var row_id;
-        row_id = $(this).attr('row-id');
-
-        $.ajax({
-            url: "post-and-get/ajax/friend-request.php",
-            type: "POST",
-            data: {
-                row: row_id,
-                option: 'CANCELREQUEST'
-            },
-            dataType: 'json',
-            success: function (mess) {
-                $('#request-cancel-block').addClass('hidden');
-                $('#join-block').removeClass('hidden');
-                location.reload();
-            }
-        });
-    });
-
     $('.confirm-request').click(function () {
         
         var row = $(this).attr('row_id');
-
         $.ajax({
             url: "post-and-get/ajax/friend-request.php",
             type: "POST",
@@ -69,7 +24,7 @@ $(document).ready(function () {
 
         var row_id;
         row_id = $(this).attr('row_id');
-
+alert(row_id);
         $.ajax({
             url: "post-and-get/ajax/friend-request.php",
             type: "POST",

@@ -291,7 +291,7 @@ if (isset($_SESSION['id'])) {
         <script src="js/base-init.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
-        <script src="js/js/find-friends.js" type="text/javascript"></script>
+        <script src="js/js/friend-request.js" type="text/javascript"></script>
         <script src="js/js/post-images.js" type="text/javascript"></script>
         <script src="js/images-grid.js" type="text/javascript"></script>
         <script src="js/js/index-ad-slider.js" type="text/javascript"></script>
