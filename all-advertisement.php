@@ -92,6 +92,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                             $adimages = AdvertisementImage::getPhotosByAdId($ad['id']);
                                             ?>
                                             <div class="ad-item  post ">
+                                                <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
                                                 <div class="ad-item-box row">
                                                     <div class = "col-xl-2 col-xs-4 ad-item-image">
                                                         <?php
@@ -111,12 +112,13 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                         ?>
                                                     </div>
                                                     <div class = "col-xl-10 col-xs-8 ad-item-details">
-                                                        <div class="ad-title"><a href="view-advertisement.php?id=<?php echo $ad['id']; ?>"><?php echo $ad['title']; ?></a></div>
+                                                        <div class="ad-title"><?php echo $ad['title']; ?></div>
                                                         <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
                                                         <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php if($ad['price'] == 0) { echo 'Negotiable'; } else { echo 'Rs. ' . number_format($ad['price']);} ?></div>
                                                         <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
                                                     </div>
                                                 </div>
+                                                </a>
                                             </div>
                                             <?php
                                         }

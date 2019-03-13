@@ -21,7 +21,9 @@ if (isset($_POST['member-message'])) {
 
     $RESULT = $MESSAGE->create();
     if ($RESULT) {
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        $arr = explode("?",$_SERVER['HTTP_REFERER']);
+        
+        header('Location: ' . $arr[0] . '?id=' . $RESULT->id);
     } else {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }

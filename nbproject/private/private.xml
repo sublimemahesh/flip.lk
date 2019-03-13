@@ -14,11 +14,7 @@
         <group>
             <file>file:/C:/xampp/htdocs/flip.lk/member/member-message.php</file>
             <file>file:/C:/xampp/htdocs/flip.lk/index.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/class/AdvertisementMessage.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/view-advertisement.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/css/style.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/member-message.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/class/include.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/ajax/ad-images.php</file>
         </group>
     </open-files>
 </project-private>

@@ -10,30 +10,25 @@
 
             <div class="control-icon more has-items">
                 <a href="./">
-                    <!--<i class="fa fa-home f-a-size header-group-icon" ></i>-->
                     <img src="img/icon/header-icon/home.png" alt=""/>
                 </a>
             </div>
             <div class="control-icon more has-items">
                 <a href="member/">
-                    <!--<svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="bottom"   data-original-title="NEWSFEED"><use xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>-->
                     <img src="img/icon/header-icon/newsfeed.png" alt=""/>
                 </a>
             </div>
             <div class="control-icon more has-items">
                 <a href="all-advertisement.php">
-                    <!--<i class="fa fa-bullhorn f-a-size header-group-icon" ></i>-->
                     <img src="img/icon/header-icon/advertising.png" alt=""/>
                 </a>
             </div>
             <div class="control-icon more has-items">
                 <a href="member/manage-groups.php">
-                    <!--<i class="fa fa-users f-a-size header-group-icon" ></i>-->
                     <img src="img/icon/header-icon/group.png" alt=""/>
                 </a>
             </div>
             <div class="control-icon more has-items">
-                <!--<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>-->
                 <img src="img/icon/header-icon/request.png" alt=""/>
                 <?php
                 if (isset($_SESSION['id'])) {
@@ -103,14 +98,22 @@
                         </ul>
                     </div>
 
-                    <a href="member/friend-requests.php" class="view-all bg-blue">See All</a>
+                    <a href="member/friend-requests.php" class="view-all bg-theme-blue">See All</a>
                 </div>
             </div>
 
             <div class="control-icon more has-items">
-                <!--<svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>-->
                 <img src="img/icon/header-icon/message.png" alt=""/>
-                <div class="label-avatar bg-purple">2</div>
+                <?php
+                if (isset($_SESSION['id'])) {
+                    $countmsg = AdvertisementMessage::countUnreadMessages($MEMBER->id);
+                    if ($countmsg > 0) {
+                        ?>
+                        <div class="label-avatar bg-blue newest-request"><?php echo $countmsg; ?></div>
+                        <?php
+                    }
+                }
+                ?>
 
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
@@ -121,86 +124,60 @@
 
                     <div class="mCustomScrollbar" data-mcs-theme="dark">
                         <ul class="notification-list chat-message">
-                            <li class="message-unread">
-                                <div class="author-thumb">
-                                    <img src="img/avatar59-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    <a href="#" class="h6 notification-friend">Diana Jameson</a>
-                                    <span class="chat-message-item">Hi James! It’s Diana, I just wanted to let you know that we have to reschedule...</span>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
-                                </div>
-                                <span class="notification-icon">
-                                    <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
-                                </span>
-                                <div class="more">
-                                    <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="author-thumb">
-                                    <img src="img/avatar60-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    <a href="#" class="h6 notification-friend">Jake Parker</a>
-                                    <span class="chat-message-item">Great, I’ll see you tomorrow!.</span>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
-                                </div>
-                                <span class="notification-icon">
-                                    <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
-                                </span>
-
-                                <div class="more">
-                                    <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="author-thumb">
-                                    <img src="img/avatar61-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    <a href="#" class="h6 notification-friend">Elaine Dreyfuss</a>
-                                    <span class="chat-message-item">We’ll have to check that at the office and see if the client is on board with...</span>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 9:56pm</time></span>
-                                </div>
-                                <span class="notification-icon">
-                                    <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
-                                </span>
-                                <div class="more">
-                                    <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                </div>
-                            </li>
-
-                            <li class="chat-group">
-                                <div class="author-thumb">
-                                    <img src="img/avatar11-sm.jpg" alt="author">
-                                    <img src="img/avatar12-sm.jpg" alt="author">
-                                    <img src="img/avatar13-sm.jpg" alt="author">
-                                    <img src="img/avatar10-sm.jpg" alt="author">
-                                </div>
-                                <div class="notification-event">
-                                    <a href="#" class="h6 notification-friend">You, Faye, Ed &amp; Jet +3</a>
-                                    <span class="last-message-author">Ed:</span>
-                                    <span class="chat-message-item">Yeah! Seems fine by me!</span>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 16th at 10:23am</time></span>
-                                </div>
-                                <span class="notification-icon">
-                                    <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
-                                </span>
-                                <div class="more">
-                                    <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                </div>
-                            </li>
+                            <?php
+                            include './calculate-time.php';
+                            if (isset($_SESSION['id'])) {
+                                $unreadmsgs = AdvertisementMessage::getUnreadMessages($MEMBER->id);
+                                if (count($unreadmsgs) > 0) {
+                                    foreach ($unreadmsgs as $key => $msg) {
+                                        $MESSAGE = new AdvertisementMessage($msg['max']);
+                                        if ($key < 6) {
+                                            if ($MESSAGE->owner == $MEMBER->id) {
+                                                $MEM1 = new Member($MESSAGE->member);
+                                            } else {
+                                                $MEM1 = new Member($MESSAGE->owner);
+                                            }
+                                            $res = getTime($MESSAGE->createdAt);
+                                            ?>
+                                            <li class="message-unread">
+                                                <div class="author-thumb">
+                                                    <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
+                                                </div>
+                                                <div class="notification-event">
+                                                    <a href="member-message.php?id=<?php echo $MESSAGE->id; ?>" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName . ' ' . $MESSAGE->advertisement; ?></a>
+                                                    <span class="chat-message-item">
+                                                        <?php
+                                                        if (strlen($MESSAGE->message) > 50) {
+                                                            echo substr($MESSAGE->message, 0, 48) . '...';
+                                                        } else {
+                                                            echo $MESSAGE->message;
+                                                        }
+                                                        ?>
+                                                    </span>
+                                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18"><?php echo $res; ?></time></span>
+                                                </div>
+                                                <span class="notification-icon">
+                                                    <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
+                                                </span>
+                                                <div class="more">
+                                                    <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
+                                                </div>
+                                            </li>
+                                            <?php
+                                        }
+                                    }
+                                } else {
+                                    ?>
+                                    <li>There is no any messages.</li>
+                                    <?php
+                                }
+                            }
+                            ?>
                         </ul>
                     </div>
-
-                    <a href="#" class="view-all bg-purple">View All Messages</a>
+                    <a href="member-message.php" class="view-all bg-theme-blue">View All Messages</a>
                 </div>
             </div>
-
-
-
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
                     <?php
@@ -268,9 +245,9 @@
                             </div>
 
                         </div>
-    <?php
-} else {
-    ?>
+                        <?php
+                    } else {
+                        ?>
                         <a href="member/login.php"><img alt="author" src="img/icon/header-icon/signin.png" class="signin" id="profile_pic2"></a>
                         <?php
                     }
@@ -278,16 +255,16 @@
 
                 </div>
                 <a href="member/profile.php" class="author-name fn">
-<?php
-if (isset($_SESSION['id'])) {
-    ?>
+                    <?php
+                    if (isset($_SESSION['id'])) {
+                        ?>
                         <div class="author-title">
-                        <?php echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                            <?php echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                         </div>
                         <span class="author-subtitle">SPACE COWBOY</span>
-    <?php
-}
-?>
+                        <?php
+                    }
+                    ?>
                 </a>
             </div>
 
@@ -307,13 +284,13 @@ if (isset($_SESSION['id'])) {
                     </div>  
                 </a>
             </li>
-<!--            <li class="nav-item">
-                <a class="nav-link" href="./">
-                    <div class="control-icon has-items">
-                        <i class="fa fa-home f-a-size header-group-icon" ></i>
-                    </div>
-                </a>
-            </li>-->
+            <!--            <li class="nav-item">
+                            <a class="nav-link" href="./">
+                                <div class="control-icon has-items">
+                                    <i class="fa fa-home f-a-size header-group-icon" ></i>
+                                </div>
+                            </a>
+                        </li>-->
 
             <li class="nav-item">
                 <a class="nav-link" href="member/">
@@ -333,11 +310,11 @@ if (isset($_SESSION['id'])) {
                 </a>
             </li>
 
-<!--            <li class="nav-item">
-                <a class="nav-link" href="member/manage-groups.php">
-                    <i class="fa fa-users f-a-size header-group-icon" ></i>
-                </a>
-            </li>-->
+            <!--            <li class="nav-item">
+                            <a class="nav-link" href="member/manage-groups.php">
+                                <i class="fa fa-users f-a-size header-group-icon" ></i>
+                            </a>
+                        </li>-->
 
 
 
@@ -346,12 +323,12 @@ if (isset($_SESSION['id'])) {
                 <a class="nav-link" href="member/friend-requests.php">
                     <!--<svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>-->
                     <img src="img/icon/header-icon/request.png" alt=""/>
-                        <?php
-if (isset($_SESSION['id'])) {
-    $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
+                    <?php
+                    if (isset($_SESSION['id'])) {
+                        $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
 
-    if ($countu['count'] > 0) {
-        ?>
+                        if ($countu['count'] > 0) {
+                            ?>
                             <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
                             <?php
                         }
@@ -368,15 +345,15 @@ if (isset($_SESSION['id'])) {
             <li class="nav-item">
                 <a class="nav-link" href="member/profile.php">
                     <div class="author-thumb">
-<?php
-if (isset($_SESSION['id'])) {
-    ?>
+                        <?php
+                        if (isset($_SESSION['id'])) {
+                            ?>
                             <img alt="author" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
                             <span class="icon-status online"></span>
-    <?php
-} else {
-    ?>
-                            
+                            <?php
+                        } else {
+                            ?>
+
                             <img src="img/icon/header-icon/signin.png" alt=""/>
                             <?php
                         }

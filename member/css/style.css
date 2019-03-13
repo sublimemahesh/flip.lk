@@ -1277,6 +1277,15 @@ header .control-icon > svg {
 .ui-block-title.reciever-details {
     padding: 6px 25px 6px;
 }
+.control-icon .message-unread a.notification-friend {
+    color: #000;
+}
+.control-icon .message-unread a.notification-friend:hover {
+    color: #002bc8;
+}
+.bg-theme-blue {
+    background-color: #002bc8;
+}
 @media(min-width: 1400px) {
     .container {
         /*max-width: 1323px;*/
