@@ -4,7 +4,7 @@ $(document).ready(function () {
         if (e.which != 38) {
             if (e.which != 40) {
                 if (e.which != 13) {
-                    var keyword = $('.js-user-search').val();
+                    var keyword = $(this).val();
                     if (keyword == '') {
                         $('#name-list-append').empty();
                     }
@@ -27,7 +27,7 @@ $(document).ready(function () {
                                         html += '</div>';
                                         html += '<div class="col-xs-9 notification-event">';
                                         html += '<span class="h6 notification-friend">' + this.first_name + ' ' + this.last_name + '</span>';
-                                        html += '<span class="chat-message-item">4 Friends in Common</span>';
+//                                        html += '<span class="chat-message-item">4 Friends in Common</span>';
                                         html += '</div>';
                                         html += '<span class="col-xs-1 notification-icon">';
                                         html += '<svg class="olymp-happy-face-icon">';
@@ -44,7 +44,7 @@ $(document).ready(function () {
                                         html += '</div>';
                                         html += '<div class="col-xs-9 notification-event">';
                                         html += '<span class="h6 notification-friend">' + this.first_name + ' ' + this.last_name + '</span>';
-                                        html += '<span class="chat-message-item">4 Friends in Common</span>';
+//                                        html += '<span class="chat-message-item">4 Friends in Common</span>';
                                         html += '</div>';
                                         html += '<span class="col-xs-1 notification-icon">';
                                         html += '<svg class="olymp-happy-face-icon">';

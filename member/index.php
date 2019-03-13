@@ -150,7 +150,6 @@ $MEMBER = new Member($_SESSION['id']);
                     <div id="newsfeed-items-grid">
 
                         <?php
-                        include './calculate-time.php';
                         $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id);
 
                         if (count($ads) > 0) {

@@ -487,7 +487,7 @@ $(document).ready(function () {
 
 //$(document).ready(function () {
 //    var topUserSearch = $('.js-user-search');
-//
+//alert(topUserSearch);
 //    $.ajax({
 //        url: "post-and-get/ajax/member.php",
 //        cache: false,
@@ -499,7 +499,7 @@ $(document).ready(function () {
 //        },
 //        success: function (result) {
 //            console.log
-//            (result);
+//                    (result);
 //
 //            if (topUserSearch.length) {
 //                topUserSearch.selectize({
@@ -532,6 +532,8 @@ $(document).ready(function () {
 //
 //        }
 //    });
+//});
+
 //
 ////    var name = 'Kavini Nisansala';
 ////    var opt = [

@@ -363,6 +363,11 @@ select.form-control.sub-category-select:not([size]):not([multiple]) {
 .friend-requests .notification-icon {
     margin-top: -31px;
 }
+#name-list-append {
+    position: absolute;
+    z-index: 9999;
+    width:100%;
+}
 #name-list-append .author-thumb img, #member-name-list-append .author-thumb img {
     height: 40px;
     width: 40px;
@@ -856,9 +861,9 @@ input[type='submit'].share-post {
 .search-bar .form-group.with-button input {
     height: 78%;
 }
-.form-group.with-button button {
+/*.form-group.with-button button {
     height: 78%;
-}
+}*/
 .header-spacer {
     display: block;
     height: 70px;
@@ -1247,7 +1252,7 @@ header .control-icon > svg {
     max-width: 75%;
     font-size: 12px;
     padding-left: 15px;
-    
+
 }
 .chat-message-field .chat-message-item {
     width: 100%;
@@ -1285,6 +1290,9 @@ header .control-icon > svg {
 }
 .bg-theme-blue {
     background-color: #002bc8;
+}
+.form-group.with-button .find-friends button {
+    height: 100%;
 }
 @media(min-width: 1400px) {
     .container {

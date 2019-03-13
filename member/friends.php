@@ -74,7 +74,7 @@ if ($count_requests['count'] == 0) {
                     <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="ui-block responsive-flex">
                             <div class="ui-block-title">
-                                <div class="h6 title col-sm-4">
+                                <div class="h6 title col-sm-2">
                                     <?php echo $MEM->firstName . ' ' . $MEM->lastName . ' (' . $count1 . ')'; ?> 
                                 </div>
                                 <form class="w-search col-sm-4">
@@ -85,7 +85,25 @@ if ($count_requests['count'] == 0) {
                                         </button>
                                     </div>
                                 </form>
-                                <div class="col-sm-4 friend-request">
+<!--                                <form class="w-search col-sm-4">
+                                    <div class="form-group with-button">
+                                        <input class="form-control js-user-search" id="find-member" type="text" placeholder="Find Friends...">
+                                        <button class="search-btn">
+                                            <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
+                                        </button>
+                                    </div>
+                                </form>-->
+                                <form class="w-search col-sm-4">
+                                    <div class="form-group with-button">
+                                        <input class="form-control find-friends" id="find-member" placeholder="Find Friends..." type="text" value="" autocomplete="off">
+                                        <div class="" id="name-list-append"></div>
+                                        <input type="hidden" name="member" value="" id="member-id"  />
+                                        <button>
+                                            <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
+                                        </button>
+                                    </div>
+                                </form>
+                                <div class="col-sm-2 friend-request">
                                     <?php
                                     if ($MEM->id == $MEMBER->id) {
                                         ?>

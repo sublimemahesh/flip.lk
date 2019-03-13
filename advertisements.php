@@ -116,7 +116,6 @@ $advertisements = Advertisement::searchAdvertisements($category1, $location, $ke
                                 </div>
                                 <div class="ui-block">
                                     <?php
-                                    include './calculate-time.php';
 
                                     if (count($advertisements) > 0) {
                                         foreach ($advertisements as $key => $ad) {
@@ -269,7 +268,6 @@ $advertisements = Advertisement::searchAdvertisements($category1, $location, $ke
         <script src="js/base-init.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
-        <script src="js/js/find-friends.js" type="text/javascript"></script>
         <script src="js/js/friend-request.js" type="text/javascript"></script>
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="js/images-grid.js" type="text/javascript"></script>

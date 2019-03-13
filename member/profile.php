@@ -282,7 +282,6 @@ $propic = $MEMBER->profilePicture;
                         <div id="newsfeed-items-grid">
 
                             <?php
-                            include './calculate-time.php';
                             $posts = Post::getPostsByMember($MEM->id);
                             if (count($posts) > 0) {
                                 foreach ($posts as $key => $post) {

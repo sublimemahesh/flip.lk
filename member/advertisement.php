@@ -71,7 +71,6 @@ if (isset($_GET['id'])) {
                         <div id="newsfeed-items-grid">
 
                             <?php
-                            include './calculate-time.php';
                             $ads = Advertisement::getAdsByMember($MEMBER->id);
                             if (count($ads) > 0) {
                                 foreach ($ads as $key => $ad) {

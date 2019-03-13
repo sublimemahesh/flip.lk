@@ -10,22 +10,22 @@
 
             <div class="control-icon more has-items">
                 <a href="./">
-                    <img src="img/icon/header-icon/home.png" alt=""/>
+                    <img src="img/icon/header-icon/home.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Home"/>
                 </a>
             </div>
             <div class="control-icon more has-items">
                 <a href="member/">
-                    <img src="img/icon/header-icon/newsfeed.png" alt=""/>
+                    <img src="img/icon/header-icon/newsfeed.png" alt=""  data-toggle="tooltip" data-placement="bottom" title="Newsfeed" />
                 </a>
             </div>
             <div class="control-icon more has-items">
                 <a href="all-advertisement.php">
-                    <img src="img/icon/header-icon/advertising.png" alt=""/>
+                    <img src="img/icon/header-icon/advertising.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Advertisements"  />
                 </a>
             </div>
             <div class="control-icon more has-items">
                 <a href="member/manage-groups.php">
-                    <img src="img/icon/header-icon/group.png" alt=""/>
+                    <img src="img/icon/header-icon/group.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Groups"  />
                 </a>
             </div>
             <div class="control-icon more has-items">
@@ -57,7 +57,7 @@
                                         if ($key < 4) {
                                             $MEMB = new Member($request['requested_by'])
                                             ?>
-                                            <li id="request-to-join-<?php echo $MEMB->id; ?>">
+                                            <li id="request-to-join-<?php echo $MEMB->id; ?>" class="request-to-join-<?php echo $MEMB->id; ?>">
                                                 <div class="author-thumb">
                                                     <img src="upload/member/<?php echo $MEMB->profilePicture; ?>" alt="author">
                                                 </div>
@@ -72,17 +72,25 @@
                                                         </span>
                                                     </a>
 
-                                                    <a href="#" class="accept-request request-del">
+                                                    <a href="#" class="accept-request request-del delete-request" row_id="<?php echo $request['id']; ?>">
                                                         <span class="icon-minus">
                                                             <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                                         </span>
                                                     </a>
 
                                                 </span>
-
-                                                <div class="more">
-                                                    <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
+                                            </li>
+                                            <li class="accepted hidden accepted-request-<?php echo $MEMB->id; ?>" id="accepted-request-<?php echo $MEMB->id; ?>">
+                                                <div class="author-thumb member-request-profile-pic">
+                                                    <img src="../upload/member/<?php echo $MEMB->profilePicture; ?>" alt="author">
                                                 </div>
+                                                <div class="notification-event">
+                                                    <a href="profile.php?id=<?php echo $MEMB->id; ?>" class="h6 notification-friend"><?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?></a> just became a friend of you.
+                                                </div>
+                                                <span class="notification-icon">
+                                                    <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                </span>
+
                                             </li>
                                             <?php
                                         }
