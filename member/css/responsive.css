@@ -171,6 +171,12 @@ and open the template in the editor.
     .control-icon {
         margin-top: 0px;
     }
+     .mobile-app-tabs{
+        background-color: initial;
+    }
+    .profile-menu li a, .profile-menu li > div{
+        font-size: 13px;
+    }
 }
 
 
@@ -205,6 +211,22 @@ and open the template in the editor.
     .hidden-sm {
         display: none;
     }
+      .mobile-app-tabs{
+        background-color: #002bc8;
+        height: 40px;
+    }
+      .header .page-title{
+        display: inherit;
+        padding: 7px 143px 58px 6px;
+        margin-left: -54px;
+        margin-right: 58px;
+    }
+     .control-block .author-thumb{
+        margin-right: -49px;
+    }
+    .header{
+        padding-left: 91px;
+    }
 
 }
 @media(min-width:992px) and (max-width:1200px) {
@@ -218,11 +240,49 @@ and open the template in the editor.
     }
 }
 @media(width:360px) {
-
+ .profile-menu li a, .profile-menu li > div{
+        font-size: 12px;
+    }
+    .mobile-app-tabs{
+        background-color: initial;
+    }
 }
 @media(width:375px) {
-
+ .mobile-app-tabs{
+        background-color: initial;
+    }
+    .profile-menu li a, .profile-menu li > div{
+        font-size: 12.5px;
+    }
+    
 }
 @media(width:414px) {
-
+ .mobile-app-tabs{
+        background-color: initial;
+    }
+}
+@media (width: 768px){
+    .mobile-app-tabs{
+        background-color: initial;
+    }
+}
+@media (width:1024px){
+    .header .page-title{
+        display: inherit;
+        padding: 9px 313px 15px 9px;
+    }
+ 
+}
+@media (width: 640px){
+    .header{
+        padding-left: 27px;
+        padding-right: 27px;        
+    }
+}
+@media (width: 600px){
+    .header{
+        padding-right: 1px;
+        padding-left: 7px;
+    }
+    
 }
