@@ -40,9 +40,9 @@ $CATEGORIES = BusinessCategory::all();
         <div class="header--standard header--standard-landing" id="header--standard">
             <div class="container">
                 <div class="header--standard-wrap">
-                    <a href="#" class="logo">
+                    <a href="../" class="logo">
                         <div class="img-wrap">
-                            <img src="img/logo/logo.png" alt="Olympus">
+                            <img src="img/logo/logo.jpg" alt="flip.lk">
                         </div>
                     </a>
                     <a href="#" class="open-responsive-menu js-open-responsive-menu">
@@ -63,7 +63,7 @@ $CATEGORIES = BusinessCategory::all();
                         <p>We are the best and biggest social network with 5 billion active users all around the world. Share you
                             thoughts, write blog posts, show your favourite music via Stopify, earn badges and much more!
                         </p>
-                        <a href="#" class="btn btn-md btn-border c-white">Register Now!</a>
+                        <!--<a href="#" class="btn btn-md btn-border c-white">Register Now!</a>-->
                     </div>
                 </div>
 
@@ -108,7 +108,7 @@ $CATEGORIES = BusinessCategory::all();
                                                 <input class="form-control" placeholder="" type="email" name="email">
                                             </div>
                                             
-                                            <input type="submit" class="btn btn-lg btn-purple full-width" name="check-email"  value="Send Email">
+                                            <input type="submit" class="btn btn-lg btn-primary full-width" name="check-email"  value="Send Email">
                                         </div>
                                     </div>
                                 </form>
