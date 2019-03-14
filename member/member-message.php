@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>My Account - Personal Information</title>
+        <title>Chat - Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -97,10 +97,18 @@ if (isset($_GET['id'])) {
                     <div class="ui-block">
                         <div class="ui-block-title">
                             <h6 class="title">Chat / Messages</h6>
+                            <?php
+                            if (isset($_GET['id']) || isset($_GET['ad'])) {
+                                ?>
+                                <a href="member-message.php"><h6 class="hidden-xl hidden-lg hidden-md hidden-sm">Back</h6></a>
+                                <?php
+                            }
+                            ?>
+
                         </div>
 
-                        <div class="row">
-                            <div class="col col-xl-5 col-lg-6 col-md-12 col-sm-12  padding-r-0">
+                        <div class="row hidden-xs">
+                            <div class="col col-xl-5 col-lg-5 col-md-4 col-sm-4 col-xs-12  padding-r-0">
                                 <!-- Notification List Chat Messages -->
                                 <ul class="notification-list chat-message">
 
@@ -167,7 +175,350 @@ if (isset($_GET['id'])) {
                                 <!-- ... end Notification List Chat Messages -->
                             </div>
 
-                            <div class="col col-xl-7 col-lg-6 col-md-12 col-sm-12  padding-l-0">
+                            <div class="col col-xl-7 col-lg-7 col-md-8 col-sm-8  padding-l-0">
+                                <!-- Chat Field -->
+                                <?php
+                                if (isset($_GET['ad'])) {
+                                    ?>
+                                    <div class="chat-field">
+                                        <div class="ui-block-title reciever-details">
+                                            <h6 class="title"><?php echo $OWNER->firstName . ' ' . $OWNER->lastName; ?></h6>
+                                            <div class="author-thumb message-box">
+                                                <img src="../upload/member/<?php echo $OWNER->profilePicture; ?>" alt="author">
+                                            </div>
+                                        </div>
+                                        <div class="ui-block-title ad-details-section">
+                                            <?php
+                                            $images = AdvertisementImage::getPhotosByAdId($ADVERTISEMENT->id);
+                                            if (count($images) > 0) {
+                                                foreach ($images as $key => $img) {
+                                                    if ($key == 0) {
+                                                        ?>
+                                                        <div class="author-thumb">
+                                                            <img src="../upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt="author">
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                }
+                                            } else {
+                                                ?>
+                                                <div class="author-thumb">
+                                                    <img src="../upload/advertisement/thumb2/advertising.jpg" alt="author">
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
+                                            <div class="notification-event">
+                                                <a class="h6 notification-friend" href="#">
+                                                    <?php
+                                                    if (strlen($ADVERTISEMENT->title) > 20) {
+                                                        echo substr($ADVERTISEMENT->title, 0, 18) . '...';
+                                                    } else {
+                                                        echo $ADVERTISEMENT->title;
+                                                    }
+                                                    ?>
+                                                </a><br />
+                                                <span class="chat-message-item">
+                                                    <?php echo $CATEGORY->name . ', ' . $SUBCATEGORY->name; ?>
+                                                </span><br />
+                                                <span class="chat-message-item">
+                                                    <?php
+                                                    if ($ADVERTISEMENT->price) {
+                                                        echo 'Rs. ' . number_format($ADVERTISEMENT->price);
+                                                    } else {
+                                                        echo 'Price negotiable ';
+                                                    }
+                                                    ?>
+                                                </span><br />
+                                                <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
+                                            </div>
+                                        </div>
+                                        <div class="mCustomScrollbar" data-mcs-theme="dark">
+                                            <ul class="notification-list chat-message chat-message-field">
+                                                <?php
+                                                $MESSAGES = AdvertisementMessage::getMessagesByMemberOwnerAndAdASC($MEMBER->id, $OWNER->id, $ad);
+
+
+
+
+                                                foreach ($MESSAGES as $key => $msg) {
+                                                    if ($key == 0) {
+                                                        $firstmsg = $msg['id'];
+                                                    }
+
+                                                    if ($msg['sender'] = 'member') {
+                                                        $MEM1 = new Member($msg['member']);
+                                                    } else {
+                                                        $MEM1 = new Member($msg['owner']);
+                                                    }
+                                                    $result = getTime($msg['created_at']);
+
+                                                    if ($msg['sender'] == 'owner' && $msg['member'] == $MEMBER->id) {
+                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                    } elseif ($msg['sender'] == 'member' && $msg['owner'] == $MEMBER->id) {
+                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                    }
+                                                    ?>
+                                                    <li>
+                                                        <div class="author-thumb message-box">
+                                                            <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
+                                                        </div>
+                                                        <div class="notification-event">
+                                                            <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
+                                                            <span class="notification-date"><time class="entry-date updated" datetime=""><?php echo $result; ?></time></span>
+                                                            <div class="chat-message-item"><?php echo $msg['message']; ?></div>
+                                                        </div>
+
+                                                    </li>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </ul>
+                                        </div>
+                                        <div class="form-group label-floating is-empty">
+                                            <form id="send-message" method="post" enctype="multipart/form-data" action="post-and-get/member-message.php">
+                                                <label class="control-label">Write your message...</label>
+                                                <textarea class="form-control" name="message" id="message" placeholder=""  ></textarea>
+                                                <input type="hidden" name="member" value="<?php echo $_SESSION['id']; ?>">
+                                                <input type="hidden" name="owner" id="owner" value="<?php echo $ADVERTISEMENT->member; ?>">
+                                                <input type="hidden" name="advertisement" id="advertisement" value="<?php echo $ADVERTISEMENT->id; ?>">
+                                                <input type="hidden" name="parent" id="parent" value="<?php echo $firstmsg; ?>">
+                                                <input type="hidden" name="sender" value="<?php
+                                                if ($MEMBER->id == $ADVERTISEMENT->member) {
+                                                    echo 'owner';
+                                                } else {
+                                                    echo 'member';
+                                                }
+                                                ?>">
+                                                <div class="add-options-message">
+                                                    <button type="submit" name="member-message" id="member-message" class="btn btn-primary btn-sm">
+                                                        Send
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <?php
+                                } elseif (isset($_GET['id'])) {
+                                    $ADMESSAGE = new AdvertisementMessage($_GET['id']);
+                                    ?>
+                                    <div class="chat-field">
+                                        <div class="ui-block-title">
+                                            <h6 class="title">
+                                                <?php
+                                                if ($ADMESSAGE->owner == $MEMBER->id) {
+                                                    $MEM2 = new Member($ADMESSAGE->member);
+                                                } else {
+                                                    $MEM2 = new Member($ADMESSAGE->owner);
+                                                }
+
+                                                echo $MEM2->firstName . ' ' . $MEM2->lastName;
+                                                ?>
+                                            </h6>
+                                            <div class="author-thumb message-box">
+                                                <img src="../upload/member/<?php echo $MEM2->profilePicture; ?>" alt="author">
+                                            </div>
+                                        </div>
+                                        <div class="ui-block-title ad-details-section">
+                                            <?php
+                                            $images = AdvertisementImage::getPhotosByAdId($ADVERTISEMENT->id);
+                                            if (count($images) > 0) {
+                                                foreach ($images as $key => $img) {
+                                                    if ($key == 0) {
+                                                        ?>
+                                                        <div class="author-thumb">
+                                                            <img src="../upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt="author">
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                }
+                                            } else {
+                                                ?>
+                                                <div class="author-thumb">
+                                                    <img src="../upload/advertisement/thumb2/advertising.jpg" alt="author">
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
+                                            <div class="notification-event">
+                                                <a class="h6 notification-friend" href="#">
+                                                    <?php
+                                                    if (strlen($ADVERTISEMENT->title) > 20) {
+                                                        echo substr($ADVERTISEMENT->title, 0, 18) . '...';
+                                                    } else {
+                                                        echo $ADVERTISEMENT->title;
+                                                    }
+                                                    ?>
+                                                </a><br />
+                                                <span class="chat-message-item">
+                                                    <?php echo $CATEGORY->name . ', ' . $SUBCATEGORY->name; ?>
+                                                </span><br />
+                                                <span class="chat-message-item">
+                                                    <?php
+                                                    if ($ADVERTISEMENT->price) {
+                                                        echo 'Rs. ' . number_format($ADVERTISEMENT->price);
+                                                    } else {
+                                                        echo 'Price negotiable ';
+                                                    }
+                                                    ?>
+                                                </span><br />
+                                                <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mCustomScrollbar" data-mcs-theme="dark">
+                                            <ul class="notification-list chat-message chat-message-field">
+                                                <?php
+                                                if ($ADMESSAGE->parent == 0) {
+                                                    $MESSAGES = AdvertisementMessage::getParentMessage($_GET['id']);
+                                                } else {
+                                                    $MESSAGES = AdvertisementMessage::getMessagesByParent($ADMESSAGE->parent);
+                                                }
+
+
+
+                                                foreach ($MESSAGES as $key => $msg) {
+                                                    if ($key == 0) {
+                                                        $firstmsg = $msg['id'];
+                                                    }
+                                                    if ($msg['sender'] == 'member') {
+                                                        $MEM1 = new Member($msg['member']);
+                                                    } else {
+                                                        $MEM1 = new Member($msg['owner']);
+                                                    }
+                                                    $result1 = getTime($msg['created_at']);
+                                                    if ($msg['sender'] == 'owner' && $msg['member'] == $MEMBER->id) {
+                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                    } elseif ($msg['sender'] == 'member' && $msg['owner'] == $MEMBER->id) {
+                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                    }
+                                                    ?>
+                                                    <li>
+                                                        <div class="author-thumb message-box">
+                                                            <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
+                                                        </div>
+                                                        <div class="notification-event">
+                                                            <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
+                                                            <span class="notification-date"><time class="entry-date updated" datetime=""><?php echo $result1; ?></time></span>
+                                                            <div class="chat-message-item"><?php echo $msg['message']; ?></div>
+                                                        </div>
+
+                                                    </li>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </ul>
+                                        </div>
+                                        <div class="form-group label-floating is-empty">
+                                            <form id="send-message" method="post" enctype="multipart/form-data" action="post-and-get/member-message.php">
+                                                <label class="control-label">Write your message...</label>
+                                                <textarea class="form-control" name="message" id="message" placeholder=""  ></textarea>
+                                                <input type="hidden" name="member" value="<?php echo $ADMESSAGE->member; ?>">
+                                                <input type="hidden" name="owner" id="owner" value="<?php echo $ADVERTISEMENT->member; ?>">
+                                                <input type="hidden" name="advertisement" id="advertisement" value="<?php echo $ADVERTISEMENT->id; ?>">
+                                                <input type="hidden" name="parent" id="parent" value="<?php echo $firstmsg; ?>">
+                                                <input type="hidden" name="sender" value="<?php
+                                                if ($MEMBER->id == $ADVERTISEMENT->member) {
+                                                    echo 'owner';
+                                                } else {
+                                                    echo 'member';
+                                                }
+                                                ?>">
+                                                <div class="add-options-message">
+                                                    <button type="submit" name="member-message" id="member-message" class="btn btn-primary btn-sm">
+                                                        Send
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <div class="chat-field">
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+
+                                <!-- ... end Chat Field -->
+                            </div>
+                        </div>
+
+                        <div class="hidden-xl hidden-lg hidden-md hidden-sm">
+                            <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12  padding-r-0">
+                                <!-- Notification List Chat Messages -->
+                                <ul class="notification-list chat-message">
+
+                                    <?php
+                                    if (!isset($_GET['id']) && !isset($_GET['ad'])) {
+                                        $maxids = array();
+                                        foreach ($allparticipants as $participant) {
+                                            $max = AdvertisementMessage::getMaxIDOfDistinctAdvertisement($participant['advertisement'], $MEMBER->id);
+
+                                            array_push($maxids, $max['max']);
+//                                        return $maxids;
+                                        }
+                                        rsort($maxids);
+                                        foreach ($maxids as $key => $maxid) {
+                                            $MESSAGE = new AdvertisementMessage($maxid);
+                                            $AD1 = new Advertisement($MESSAGE->advertisement);
+                                            if ($MESSAGE->owner == $MEMBER->id) {
+                                                $MEM = new Member($MESSAGE->member);
+                                            } elseif ($MESSAGE->member == $MEMBER->id) {
+                                                $MEM = new Member($MESSAGE->owner);
+                                            }
+                                            ?>
+
+                                            <li class="<?php
+                                            if (isset($ADVERTISEMENT)) {
+                                                if ($MESSAGE->advertisement == $ADVERTISEMENT->id) {
+                                                    echo 'active';
+                                                }
+                                            }
+                                            ?>">
+                                                <div class="author-thumb message-box">
+                                                    <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
+                                                </div>
+                                                <div class="notification-event hidden-xs">
+                                                    <a class="h6 notification-friend" href="member-message.php?id=<?php echo $MESSAGE->id; ?>">
+                                                        <?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
+                                                    </a>
+                                                    <span class="chat-message-item">
+                                                        <?php
+                                                        if (strlen($AD1->title) > 20) {
+                                                            echo substr($AD1->title, 0, 18) . '...';
+                                                        } else {
+                                                            echo $AD1->title;
+                                                        }
+                                                        ?>
+                                                    </span><br />
+                                                    <span class="chat-message-item">
+                                                        <?php
+                                                        if (strlen($MESSAGE->message) > 30) {
+                                                            echo substr($MESSAGE->message, 0, 28) . '...';
+                                                        } else {
+                                                            echo $MESSAGE->message;
+                                                        }
+                                                        ?>
+                                                    </span>
+                                                    <!--<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>-->
+                                                </div>
+
+
+                                            </li>
+
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                </ul>
+
+                                <!-- ... end Notification List Chat Messages -->
+                            </div>
+
+                            <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12  padding-l-0">
                                 <!-- Chat Field -->
                                 <?php
                                 if (isset($_GET['ad'])) {
@@ -482,62 +833,62 @@ if (isset($_GET['id'])) {
         <script src="js/js/profile.js" type="text/javascript"></script>
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script>
-        var placeSearch, autocomplete, autocomplete2;
+            var placeSearch, autocomplete, autocomplete2;
 
-        function initAutocomplete() {
-            // Create the autocomplete object, restricting the search to geographical
-            // location types.
-            var options = {
-                types: ['(cities)'],
-                componentRestrictions: {country: "lk"}
-            };
-            var input = document.getElementById('autocomplete');
-            var input2 = document.getElementById('autocomplete2');
+            function initAutocomplete() {
+                // Create the autocomplete object, restricting the search to geographical
+                // location types.
+                var options = {
+                    types: ['(cities)'],
+                    componentRestrictions: {country: "lk"}
+                };
+                var input = document.getElementById('autocomplete');
+                var input2 = document.getElementById('autocomplete2');
 
-            autocomplete = new google.maps.places.Autocomplete(input, options);
-            autocomplete2 = new google.maps.places.Autocomplete(input2, options);
+                autocomplete = new google.maps.places.Autocomplete(input, options);
+                autocomplete2 = new google.maps.places.Autocomplete(input2, options);
 
-            // When the user selects an address from the dropdown, populate the address
-            // fields in the form.
-            autocomplete.addListener('place_changed', fillInAddress);
-            autocomplete2.addListener('place_changed', fillInAddress);
-        }
-
-        function fillInAddress() {
-            // Get the place details from the autocomplete object.
-            var place = autocomplete.getPlace();
-            var place2 = autocomplete2.getPlace();
-            $('#district').val(place.place_id);
-            $('#city').val(place2.place_id);
-            //                $('#longitude').val(place.geometry.location.lng());
-            //                $('#latitude').val(place.geometry.location.lat());
-            for (var component in componentForm) {
-                document.getElementById(component).value = '';
-                document.getElementById(component).disabled = false;
+                // When the user selects an address from the dropdown, populate the address
+                // fields in the form.
+                autocomplete.addListener('place_changed', fillInAddress);
+                autocomplete2.addListener('place_changed', fillInAddress);
             }
 
-            // Get each component of the address from the place details
-            // and fill the corresponding field on the form.
-        }
+            function fillInAddress() {
+                // Get the place details from the autocomplete object.
+                var place = autocomplete.getPlace();
+                var place2 = autocomplete2.getPlace();
+                $('#district').val(place.place_id);
+                $('#city').val(place2.place_id);
+                //                $('#longitude').val(place.geometry.location.lng());
+                //                $('#latitude').val(place.geometry.location.lat());
+                for (var component in componentForm) {
+                    document.getElementById(component).value = '';
+                    document.getElementById(component).disabled = false;
+                }
 
-        // Bias the autocomplete object to the user's geographical location,
-        // as supplied by the browser's 'navigator.geolocation' object.
-        function geolocate() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    var geolocation = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-                    var circle = new google.maps.Circle({
-                        center: geolocation,
-                        radius: position.coords.accuracy
+                // Get each component of the address from the place details
+                // and fill the corresponding field on the form.
+            }
+
+            // Bias the autocomplete object to the user's geographical location,
+            // as supplied by the browser's 'navigator.geolocation' object.
+            function geolocate() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var geolocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        var circle = new google.maps.Circle({
+                            center: geolocation,
+                            radius: position.coords.accuracy
+                        });
+                        autocomplete.setBounds(circle.getBounds());
+                        autocomplete2.setBounds(circle.getBounds());
                     });
-                    autocomplete.setBounds(circle.getBounds());
-                    autocomplete2.setBounds(circle.getBounds());
-                });
+                }
             }
-        }
         </script>
         <script>
             // Retrieve Details from Place_ID

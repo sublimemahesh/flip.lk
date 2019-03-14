@@ -73,15 +73,19 @@ $propic = $MEMBER->profilePicture;
                         <?php
                         if (isset($_GET['id'])) {
                             $isFriend = Friend::checkMemberAlreadyAFriend($MEMBER->id, $id);
-                            if ($isFriend) {
-                                ?>
-                                <div class="ui-block">
-                                    <div class="row">
-                                        <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
-                                            <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="unfollow-friend" row-id="<?php echo $isFriend['id']; ?>" friend-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Unfollow<div class="ripple-container"></div></a>
+                            if ($isFriend || $id == $MEMBER->id) {
+                                if ($isFriend) {
+                                    ?>
+                                    <div class="ui-block">
+                                        <div class="row">
+                                            <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
+                                                <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="unfollow-friend" row-id="<?php echo $isFriend['id']; ?>" friend-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Unfollow<div class="ripple-container"></div></a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <?php
+                                }
+                                ?>
                                 <div class="ui-block">
 
                                     <!-- News Feed Form  -->
@@ -121,7 +125,7 @@ $propic = $MEMBER->profilePicture;
                                                         <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
                                                             <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
                                                         </a>
-                                                        <input type="submit" name="save-post" class="btn btn-primary btn-md-2 share-post" value="Share" />
+                                                        <input type="submit" name="save-post" class="btn btn-primary btn-md-2 share-post" value="Post" />
 
                                                     </div>
 
@@ -268,7 +272,7 @@ $propic = $MEMBER->profilePicture;
                                                         <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
                                                     </a>
                                                     <input type="hidden" value ="<?php echo $_SESSION['id']; ?>" id="member" name="member" />
-                                                    <input type="submit" name="save-post" class="btn btn-primary btn-md-2 share-post" value="Share" />
+                                                    <input type="submit" name="save-post" class="btn btn-primary btn-md-2 share-post" value="Post" />
                                                 </div>
                                             </form>
                                         </div>

@@ -24,7 +24,6 @@ $(document).ready(function () {
 
         var row_id;
         row_id = $(this).attr('row_id');
-alert(row_id);
         $.ajax({
             url: "post-and-get/ajax/friend-request.php",
             type: "POST",

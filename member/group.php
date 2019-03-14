@@ -177,7 +177,6 @@ $GROUP = new Group($id);
                         <div id="newsfeed-items-grid">
 
                             <?php
-                            include './calculate-time.php';
                             $ads = Advertisement::getAdsByGroup($GROUP->id);
                             if (count($ads) > 0) {
                                 foreach ($ads as $key => $ad) {
