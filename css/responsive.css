@@ -178,7 +178,7 @@ and open the template in the editor.
     
 
     .mobile-app-tabs{
-        background-color: #002bc8;
+        background-color: initial;
         height: 60px;
 
 
@@ -269,7 +269,7 @@ and open the template in the editor.
         margin-right: 20px;
     }
     .mobile-app-tabs{
-        background-color: #002bc8;
+        background-color: initial;
         height: 40px;
     }
     .header .page-title{
@@ -387,12 +387,38 @@ and open the template in the editor.
         padding-right: 1px;
         height: 64px;
     }
+    .has-items img{
+        max-width: 61%;
+    }
+    .nav-link img{
+       max-width: 61%; 
+    }
+    .responsive-header-logo img{
+        max-width: 100%;
+        margin-left: -283px;
+    }
+    .mobile-app-tabs{
+        margin-left: 301px;
+    }
 }
 @media (width: 640px){
     .header{
         padding-left: 27px;
         padding-right: 27px;        
     }
+    .has-items img{
+        max-width: 61%;
+    }
+    .nav-link img{
+       max-width: 61%; 
+    }
+    .responsive-header-logo img{
+        max-width: 80%;
+   }
+     .s002 form .inner-form .input-field.fifth-wrap .btn-search{
+        margin-left: 0px;
+    }
+   
 
 }
 @media (width: 600px){
@@ -400,4 +426,18 @@ and open the template in the editor.
         padding-right: 1px;
         padding-left: 7px;
     }  
+    .has-items img{
+        max-width: 61%;
+    }
+    .nav-link img{
+       max-width: 61%; 
+    }
+    .responsive-header-logo img{
+        max-width: 85%;
+    }
+     .s002 form .inner-form .input-field.fifth-wrap .btn-search{
+        margin-left: 0px;
+    }
+    
 }
+
