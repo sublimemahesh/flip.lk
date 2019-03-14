@@ -385,6 +385,7 @@ and open the template in the editor.
     .header{
         padding-left: 6px;
         padding-right: 1px;
+        height: 64px;
     }
 }
 @media (width: 640px){

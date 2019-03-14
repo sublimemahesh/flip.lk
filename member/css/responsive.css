@@ -265,6 +265,15 @@ and open the template in the editor.
     .mobile-app-tabs{
         background-color: initial;
     }
+    .header{
+        height: 64px;
+    }
+    .header .page-title {
+    display: inherit;
+    padding: 7px 143px 58px 6px;
+    margin-left: -54px;
+    margin-right: 58px;
+    }
 }
 @media (width:1024px){
     .header .page-title{
