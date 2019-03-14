@@ -99,6 +99,8 @@ if (isset($_SESSION['id'])) {
                             <div class="row">
                                 <?php
                                 foreach (BusinessCategory::all() as $key => $category) {
+                                    $count = Advertisement::countAdsByCategory($category['id']);
+                                    
                                     if ($key < 12) {
                                         ?>
                                         <div class="col-lg-3 col-md-4 col-sm-4 ">
@@ -107,7 +109,15 @@ if (isset($_SESSION['id'])) {
                                                     <img src="upload/business-category/<?php echo $category['image_name']; ?>" alt=""/>
                                                 </div>
                                                 <h3 class="item-title"><a href="advertisements.php?category=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></h3>
-                                                <div class="listing-number">40 Listings</div>
+                                                <div class="listing-number">
+                                                    <?php
+                                                    if($count == 1) {
+                                                        echo number_format($count) . ' Advertisement';
+                                                    } else {
+                                                        echo number_format($count) . ' Advertisements';
+                                                    }
+                                                    ?>
+                                                </div>
                                             </div>
                                         </div>
                                         <?php
@@ -124,14 +134,6 @@ if (isset($_SESSION['id'])) {
                                 <div class="item-sub-title">Discover our latest listing around the world</div>
                                 <h2 class="item-title">New Listings in Our Directory</h2>
                             </div>
-
-                            <!--                            <header class="content-title">
-                                                            <div class="title-bg">
-                                                                <h2 class="title1">Advertisements</h2>
-                                                            </div>
-                                                            <p class="title-desc">Only with us you can get a new model with a discount.</p>
-                                                        </header>-->
-                            <!--<div id="ad-slider" class="owl-carousel owl-theme ">-->
 
                             <div id="ad-slider" class="owl-carousel owl-theme">
 
@@ -185,15 +187,15 @@ if (isset($_SESSION['id'])) {
                                                             ?>
                                                         </a>
                                                     </h3>
-                                                    <span class="item-paragraph">
+                                                    <!--<span class="item-paragraph">-->
                                                         <?php
-                                                        if (strlen($ad['description']) > 50) {
-                                                            echo substr($ad['description'], 0, 45) . '...';
-                                                        } else {
-                                                            echo $ad['description'];
-                                                        }
+//                                                        if (strlen($ad['description']) > 50) {
+//                                                            echo substr($ad['description'], 0, 45) . '...';
+//                                                        } else {
+//                                                            echo $ad['description'];
+//                                                        }
                                                         ?>
-                                                    </span>
+                                                    <!--</span>-->
                                                     <ul class="contact-info">
                                                         <li><i class="fas fa-map-marker-alt"></i><?php echo $ad['address']; ?></li>
                                                         <li><i class="fas fa-phone"></i>

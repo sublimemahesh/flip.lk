@@ -13,7 +13,7 @@ if (isset($_GET["page"])) {
 } else {
     $page = 1;
 }
-$setLimit = 30;
+$setLimit = 20;
 $pageLimit = ($page * $setLimit) - $setLimit;
 ?> 
 <!DOCTYPE html>
@@ -130,6 +130,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                     }
                                     ?>
                                 </div>
+                                <?php Advertisement::showPagination($setLimit, $page); ?>
                             </div>
                         </div>
                         <!-- ... end Main Content -->

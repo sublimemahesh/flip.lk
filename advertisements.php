@@ -14,16 +14,21 @@ if (isset($_GET["page"])) {
 } else {
     $page = 1;
 }
-$setLimit = 30;
+$setLimit = 20;
 $pageLimit = ($page * $setLimit) - $setLimit;
 
 $category1 = '';
+$subcategory = '';
 $location = '';
 $keyword = '';
 
 if (isset($_GET['category'])) {
     $category1 = $_GET['category'];
     $BUSCAT = new BusinessCategory($_GET['category']);
+}
+if (isset($_GET['subcategory'])) {
+    $subcategory = $_GET['subcategory'];
+    $BUSSUBCAT = new BusinessSubCategory($_GET['subcategory']);
 }
 if (isset($_GET['location'])) {
     $location = $_GET['location'];
@@ -32,7 +37,7 @@ if (isset($_GET['keyword'])) {
     $keyword = $_GET['keyword'];
 }
 
-$advertisements = Advertisement::searchAdvertisements($category1, $location, $keyword, $pageLimit, $setLimit);
+$advertisements = Advertisement::searchAdvertisements($category1, $subcategory, $location, $keyword, $pageLimit, $setLimit);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -91,17 +96,41 @@ $advertisements = Advertisement::searchAdvertisements($category1, $location, $ke
                                 <div class="ad-breadcrumbs">
                                     <?php
                                     if ($category1 !== "" && $location !== "") {
-                                        ?>
-                                        <span class="breadcrumb-item"><a href="./" >Home</a> </span>
-                                        <span class="breadcrumb-item">
-                                            <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a></span>
-                                        <span class="breadcrumb-item location"></span>
-                                        <?php
-                                        
+                                        if (empty($subcategory)) {
+                                            ?>
+                                            <span class="breadcrumb-item"><a href="./" >Home</a> </span>
+                                            <span class="breadcrumb-item">
+                                                <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a></span>
+                                            <span class="breadcrumb-item location"></span>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <span class="breadcrumb-item"><a href="./" >Home</a> </span>
+                                            <span class="breadcrumb-item">
+                                                <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a>
+                                            </span>
+                                            <span class="breadcrumb-item">
+                                                <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>&subcategory=<?php echo $BUSSUBCAT->id; ?>" ><?php echo $BUSSUBCAT->name; ?></a>
+                                            </span>
+                                            <span class="breadcrumb-item location"></span>
+                                            <?php
+                                        }
                                     } else if ($category1 !== "" && $location == "") {
-                                        ?>
-                                        <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item"><?php echo $BUSCAT->name; ?></span>
-                                        <?php
+                                        if (empty($subcategory)) {
+                                            ?>
+                                            <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item"><?php echo $BUSCAT->name; ?></span>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <span class="breadcrumb-item"><a href="./" >Home</a> </span>
+                                            <span class="breadcrumb-item">
+                                                <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a>
+                                            </span>
+                                            <span class="breadcrumb-item">
+                                                <?php echo $BUSSUBCAT->name; ?>
+                                            </span>
+                                            <?php
+                                        }
                                     } else if ($location !== "" && $category1 == "") {
                                         ?>
                                         <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item location"></span>
@@ -116,7 +145,6 @@ $advertisements = Advertisement::searchAdvertisements($category1, $location, $ke
                                 </div>
                                 <div class="ui-block">
                                     <?php
-
                                     if (count($advertisements) > 0) {
                                         foreach ($advertisements as $key => $ad) {
                                             $result = getTime($ad['created_at']);
@@ -126,31 +154,31 @@ $advertisements = Advertisement::searchAdvertisements($category1, $location, $ke
                                             ?>
                                             <div class="ad-item  post ">
                                                 <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
-                                                <div class="ad-item-box row">
-                                                    <div class = "col-xl-2 col-xs-4 ad-item-image">
-                                                        <?php
-                                                        if (count($adimages) > 0) {
-                                                            foreach ($adimages as $key => $img) {
-                                                                if ($key == 0) {
-                                                                    ?>
-                                                                    <img src="upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt=""/>
-                                                                    <?php
-                                                                }
-                                                            }
-                                                        } else {
-                                                            ?>
-                                                            <img src="upload/advertisement/thumb2/advertising.jpg" alt=""/>
+                                                    <div class="ad-item-box row">
+                                                        <div class = "col-xl-2 col-xs-4 ad-item-image">
                                                             <?php
-                                                        }
-                                                        ?>
+                                                            if (count($adimages) > 0) {
+                                                                foreach ($adimages as $key => $img) {
+                                                                    if ($key == 0) {
+                                                                        ?>
+                                                                        <img src="upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt=""/>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                ?>
+                                                                <img src="upload/advertisement/thumb2/advertising.jpg" alt=""/>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </div>
+                                                        <div class = "col-xl-10 col-xs-8 ad-item-details">
+                                                            <div class="ad-title"><?php echo $ad['title']; ?></div>
+                                                            <div class="ad-city"><span class="title">Location <i class="fa fa-angle-double-right"></i> </span>Galle</div>
+                                                            <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
+                                                            <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                        </div>
                                                     </div>
-                                                    <div class = "col-xl-10 col-xs-8 ad-item-details">
-                                                        <div class="ad-title"><?php echo $ad['title']; ?></div>
-                                                        <div class="ad-city"><span class="title">Location <i class="fa fa-angle-double-right"></i> </span>Galle</div>
-                                                        <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
-                                                        <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
-                                                    </div>
-                                                </div>
                                                 </a>
                                             </div>
                                             <?php
@@ -164,23 +192,7 @@ $advertisements = Advertisement::searchAdvertisements($category1, $location, $ke
                                     }
                                     ?>
                                 </div>
-
-
-                                <!--                                <div class="ad-item  post ">
-                                                                    <div class="ad-item-box row">
-                                                                        <div class = "col-xl-2 ad-item-image">
-                                                                            <img src="upload/advertisement/thumb2/-109062521_191094078385_1548755239_n.jpg" alt=""/>
-                                                                        </div>
-                                                                        <div class = "col-xl-10 ad-item-details">
-                                                                            <div class="ad-title"><a href="view-advertisement.php?id=">Advertisement 01</a></div>
-                                                                            <div class="ad-city"><span class="title">Location <i class="fa fa-angle-double-right"></i> </span>Galle</div>
-                                                                            <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span>ABC</div>
-                                                                            <div class="ad-time"><i class="fa fa-clock"></i> 15 days ago</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>-->
-
-
+                                <?php Advertisement::showPaginationOfSearchedAdvertisement($category1, $subcategory, $location, $keyword, $setLimit, $page); ?>
                             </div>
                         </div>
                         <!-- ... end Main Content -->
@@ -194,15 +206,49 @@ $advertisements = Advertisement::searchAdvertisements($category1, $location, $ke
                                     <!-- W-Personal-Info -->
                                     <ul class="widget w-personal-info item-block category-list">
                                         <?php
-                                        foreach (BusinessCategory::all() as $category) {
+                                        if (empty($_GET['category'])) {
+                                            foreach (BusinessCategory::all() as $category) {
+                                                $count = Advertisement::countAdsByCategory($category['id']);
+                                                ?>
+                                                <li>
+                                                    <span class="text category-icon">
+                                                        <img src="upload/business-category/<?php echo $category['image_name']; ?>">
+                                                        <a href="advertisements.php?category=<?php echo $category['id']; ?>"><?php echo $category['name'] . ' (' . number_format($count) . ')'; ?></a>
+                                                    </span>
+                                                </li>
+
+                                                <?php
+                                            }
+                                        } else {
+                                            $count1 = Advertisement::countAdsByCategory($category1);
                                             ?>
                                             <li>
+                                                <span class="text category-list-title">
+
+                                                    <a href="all-advertisement.php">
+                                                        <i class="fa fa-angle-left fa-2x"></i>
+                                                        <span>All Categories</span>
+                                                    </a>
+                                                </span>
+                                            </li>
+                                            <li>
                                                 <span class="text category-icon">
-                                                    <img src="upload/business-category/<?php echo $category['image_name']; ?>">
-                                                    <a href="advertisements.php?category=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a>
+                                                    <img src="upload/business-category/<?php echo $BUSCAT->image_name; ?>">
+                                                    <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>"><?php echo $BUSCAT->name . ' (' . number_format($count1) . ')'; ?></a>
                                                 </span>
                                             </li>
                                             <?php
+                                            foreach (BusinessSubCategory::getSubCategoriesByCategory($BUSCAT->id) as $subcategory) {
+                                                $countsubcat = Advertisement::countAdsBySubCategory($subcategory['id']);
+                                                ?>
+                                                <li>
+                                                    <span class="text subcategory-icon">
+                                                        <img src="upload/business_subcategory/<?php echo $subcategory['image_name']; ?>">
+                                                        <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>&subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
+                                                    </span>
+                                                </li>
+                                                <?php
+                                            }
                                         }
                                         ?>
 

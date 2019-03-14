@@ -3,7 +3,7 @@
     Author     : W j K n ¨
 */
 a:hover {
-    color: #002bc8;
+    color: #003263;
 }
 .container {
     padding-right: 0px;
@@ -13,7 +13,7 @@ a:hover {
     width: 100%;
 }
 .header {
-    background-color: #002bc8;
+    background-color: #003263;
 }
 .header .page-title {
     padding: 5px 10px 5px 80px;
@@ -1289,35 +1289,35 @@ header .control-icon > svg {
     color: #000;
 }
 .control-icon .message-unread a.notification-friend:hover {
-    color: #002bc8;
+    color: #003263;
 }
 .bg-theme-blue {
-    background-color: #002bc8;
+    background-color: #003263;
 }
 .form-group.with-button .find-friends button {
     height: 100%;
 }
 .btn-primary {
-    background-color: #002bc8;
-    border-color: #002bc8;
+    background-color: #003263;
+    border-color: #003263;
 }
 .btn-primary:hover {
     background-color: #fff;
-    border-color: #002bc8;
-    color: #002bc8;
+    border-color: #003263;
+    color: #003263;
 }
 .back-to-top {
-    background-color: #002bc8;
+    background-color: #003263;
 }
 .bg-primary {
-    background-color: #002bc8 !important;
+    background-color: #003263 !important;
 }
 .news-feed-form .nav-tabs .nav-link.active {
-    fill: #002bc8;
+    fill: #003263;
     color: #515365;
 }
 .more-dropdown li a:hover {
-    color: #002bc8;
+    color: #003263;
 }
 .no-chats {
     text-align: center;

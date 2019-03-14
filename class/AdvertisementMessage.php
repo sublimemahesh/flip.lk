@@ -111,21 +111,6 @@ class AdvertisementMessage {
         return $db->readQuery($query);
     }
 
-    public function getMessagesByOwnerId($owner) {
-
-        $query = "SELECT * FROM `advertisement_message` WHERE `owner`= $owner ORDER BY created_at DESC";
-
-        $db = new Database();
-
-        $result = $db->readQuery($query);
-        $array_res = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            array_push($array_res, $row);
-        }
-        return $array_res;
-    }
-
     public function getDistinctAdvertisements($member) {
         $query = "SELECT distinct(advertisement) FROM `advertisement_message` WHERE `owner`= $member OR `member`= $member";
 
@@ -192,111 +177,6 @@ class AdvertisementMessage {
         }
         return $array_res;
     }
-    
-    
-    public function getDistinctMembersByOwnerId($owner) {
-        $query = "SELECT distinct(member) FROM `advertisement_message` WHERE `owner`= $owner ";
-
-        $db = new Database();
-
-        $result = $db->readQuery($query);
-        $array_res = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            array_push($array_res, $row);
-        }
-        return $array_res;
-    }
-
-    public function getDistinctMembersOfUnReadMessagesByOwnerId($owner) {
-        $query = "SELECT distinct(member) FROM `advertisement_message` WHERE `owner`= $owner AND `sender` LIKE 'member' AND `is_viewed` = 0;";
-
-        $db = new Database();
-
-        $result = $db->readQuery($query);
-        $array_res = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            array_push($array_res, $row);
-        }
-        return $array_res;
-    }
-
-    public function getMaxIDOfDistinctOwner($owner, $member) {
-
-        $query = "SELECT max(id) AS `max` FROM `advertisement_message` WHERE `owner`= $owner and `member` = $member";
-
-        $db = new Database();
-
-        $result = mysql_fetch_array($db->readQuery($query));
-        return $result;
-    }
-
-    public function getMaxIDOfDistinctMember($member, $owner) {
-
-        $query = "SELECT max(id) AS `max` FROM `advertisement_message` WHERE `member`= $member and `owner`= $owner";
-
-        $db = new Database();
-
-        $result = mysql_fetch_array($db->readQuery($query));
-        return $result;
-    }
-
-    public function getUnReadMaxIDOfDistinctMember($member, $owner) {
-
-        $query = "SELECT max(id) AS `max` FROM `advertisement_message` WHERE `member`= $member AND `owner`= $owner AND `is_viewed` = 0";
-
-        $db = new Database();
-
-        $result = mysql_fetch_array($db->readQuery($query));
-        return $result;
-    }
-
-    public function getLatestMessageByMemberAndOwner($member, $owner) {
-
-        $query = "SELECT * FROM `advertisement_message` WHERE `member`= $member AND `owner`= $owner ORDER BY created_at DESC LIMIT 1";
-
-        $db = new Database();
-
-        $result = mysql_fetch_array($db->readQuery($query));
-        return $result;
-    }
-
-    public function getMessagesByMemberAndOwnerASC($member, $owner) {
-
-        $query = "SELECT * FROM `advertisement_message` WHERE `member`= $member AND `owner`= $owner ORDER BY created_at ASC";
-
-        $db = new Database();
-
-        $result = $db->readQuery($query);
-        $array_res = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            array_push($array_res, $row);
-        }
-        return $array_res;
-    }
-
-    public function arrange($key, $img) {
-        $query = "UPDATE `advertisement_message` SET `message` = '" . $key . "'  WHERE id = '" . $img . "'";
-        $db = new Database();
-        $result = $db->readQuery($query);
-        return $result;
-    }
-
-    public static function getDistinctOwnersByMemberId($member) {
-        $query = "SELECT distinct(owner) FROM `advertisement_message` WHERE `member`= $member";
-//        dd($query);
-        $db = new Database();
-
-        $result = $db->readQuery($query);
-        $array_res = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            array_push($array_res, $row);
-        }
-        return $array_res;
-    }
 
     public function updateViewingStatus($id) {
 
@@ -325,40 +205,6 @@ class AdvertisementMessage {
         return $result['count'];
     }
     
-    public function getCountOfUnReadMessagesByOwner($owner) {
-
-        $query = "SELECT count(`id`) AS `count` FROM `advertisement_message` WHERE `owner`= $owner AND `sender` LIKE 'member' AND `is_viewed`=0";
-
-        $db = new Database();
-
-        $result = mysql_fetch_array($db->readQuery($query));
-        return $result['count'];
-    }
-
-    public function getCountUnreadMessagesByMember($member, $owner) {
-
-        $query = "SELECT count(`id`) AS `count` FROM `advertisement_message` WHERE `member` = $member AND `owner`= $owner AND `is_viewed`=0";
-
-        $db = new Database();
-
-        $result = mysql_fetch_array($db->readQuery($query));
-        return $result['count'];
-    }
-
-    public function getUnReadMessagesByOwner($owner) {
-
-        $query = "SELECT * FROM `advertisement_message` WHERE `owner`= $owner AND `sender` LIKE 'member' AND `is_viewed`=0";
-
-        $db = new Database();
-        $result = $db->readQuery($query);
-        $array_res = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            array_push($array_res, $row);
-        }
-        return $array_res;
-    }
-    
     public function getUnreadMessages($id) {
 
         $query = "SELECT max(`id`) AS `max` FROM `advertisement_message` WHERE (`owner`= $id AND `sender` LIKE 'member' AND `is_viewed`=0) OR (`member`= $id AND `sender` LIKE 'owner' AND `is_viewed`=0) GROUP BY `advertisement` ORDER BY `created_at` DESC";
@@ -372,5 +218,4 @@ class AdvertisementMessage {
         }
         return $array_res;
     }
-
 }
