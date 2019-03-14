@@ -171,11 +171,36 @@ and open the template in the editor.
     .control-icon {
         margin-top: 0px;
     }
-     .mobile-app-tabs{
+    .mobile-app-tabs{
         background-color: initial;
     }
     .profile-menu li a, .profile-menu li > div{
         font-size: 13px;
+    }
+    .ui-block-title.ad-details-section{
+        background: #fff;
+
+    }
+    .ui-block-title.ad-details-section:hover{
+        background: #abbfbf4d;
+    }
+    .notification-list.chat-message{
+        background: #fff;
+    }
+    .notification-list.chat-message:hover{
+        background: #abbfbf4d;
+    }
+    .chat-field{
+        margin-right: -16px;
+    }
+    .ui-block-title.reciever-details{
+        background: #fff;
+    }
+    .chat-field textarea{
+        background: #fff;
+    }
+    .ui-block-title{
+        background: #fff;  
     }
 }
 
@@ -211,21 +236,46 @@ and open the template in the editor.
     .hidden-sm {
         display: none;
     }
-      .mobile-app-tabs{
-        background-color: #002bc8;
+    .mobile-app-tabs{
+        background-color: initial;
         height: 40px;
     }
-      .header .page-title{
+    .header .page-title{
         display: inherit;
         padding: 7px 143px 58px 6px;
         margin-left: -54px;
         margin-right: 58px;
     }
-     .control-block .author-thumb{
+    .control-block .author-thumb{
         margin-right: -49px;
     }
     .header{
         padding-left: 91px;
+    }
+    .ui-block-title.ad-details-section{
+        background: #fff;
+
+    }
+    .ui-block-title.ad-details-section:hover{
+        background: #abbfbf4d;
+    }
+    .notification-list.chat-message{
+        background: #fff;
+    }
+    .notification-list.chat-message:hover{
+        background: #abbfbf4d;
+    }
+    /*    .chat-field{
+            margin-right: -17px;
+        }*/
+    .ui-block-title.reciever-details{
+        background: #fff;
+    }
+    .chat-field textarea{
+        background: #fff;
+    }
+    .ui-block-title{
+        background: #fff;  
     }
 
 }
@@ -233,46 +283,213 @@ and open the template in the editor.
     .hidden-md {
         display: none;
     }
+    .ui-block-title.ad-details-section{
+        background: #fff;
+
+    }
+    .ui-block-title.ad-details-section:hover{
+        background: #abbfbf4d;
+    }
+    .notification-list.chat-message{
+        background: #fff;
+    }
+    .notification-list.chat-message:hover{
+        background: #abbfbf4d;
+    }
+    /*    .chat-field{
+            margin-right: -17px;
+        }*/
+    .ui-block-title.reciever-details{
+        background: #fff;
+    }
+    .chat-field textarea{
+        background: #fff;
+    }
+    .ui-block-title{
+        background: #fff;  
+    }
 }
 @media(min-width:1200px) {
     .hidden-lg {
         display: none;
     }
+    .ui-block-title.ad-details-section{
+        background: #fff;
+
+    }
+    .ui-block-title.ad-details-section:hover{
+        background: #abbfbf4d;
+    }
+    .notification-list.chat-message{
+        background: #fff;
+    }
+    .notification-list.chat-message:hover{
+        background: #abbfbf4d;
+    }
+    /*    .chat-field{
+            margin-right: -17px;
+        }*/
+    .ui-block-title.reciever-details{
+        background: #fff;
+    }
+    .chat-field textarea{
+        background: #fff;
+    }
+    .ui-block-title{
+        background: #fff;  
+    }
 }
 @media(width:360px) {
- .profile-menu li a, .profile-menu li > div{
+    .profile-menu li a, .profile-menu li > div{
         font-size: 12px;
     }
     .mobile-app-tabs{
         background-color: initial;
     }
+    .ui-block-title.ad-details-section{
+        background: #fff;
+
+    }
+    .ui-block-title.ad-details-section:hover{
+        background: #abbfbf4d;
+    }
+    .notification-list.chat-message{
+        background: #fff;
+    }
+    .notification-list.chat-message:hover{
+        background: #abbfbf4d;
+    }
+    .chat-field{
+        margin-right: -16px;
+    }
+    .ui-block-title.reciever-details{
+        background: #fff;
+    }
+    .chat-field textarea{
+        background: #fff;
+    }
+    .ui-block-title{
+        background: #fff;  
+    }
+
 }
 @media(width:375px) {
- .mobile-app-tabs{
+    .mobile-app-tabs{
         background-color: initial;
     }
     .profile-menu li a, .profile-menu li > div{
         font-size: 12.5px;
     }
-    
+    .ui-block-title.ad-details-section{
+        background: #fff;
+
+    }
+    .ui-block-title.ad-details-section:hover{
+        background: #abbfbf4d;
+    }
+    .notification-list.chat-message{
+        background: #fff;
+    }
+    .notification-list.chat-message:hover{
+        background: #abbfbf4d;
+    }
+    .chat-field{
+        margin-right: -16px;
+    }
+    .ui-block-title.reciever-details{
+        background: #fff;
+    }
+    .chat-field textarea{
+        background: #fff;
+    }
+    .ui-block-title{
+        background: #fff;  
+    }
+
 }
 @media(width:414px) {
- .mobile-app-tabs{
+    .mobile-app-tabs{
         background-color: initial;
+    }
+    .ui-block-title.ad-details-section{
+        background: #fff;
+
+    }
+    .ui-block-title.ad-details-section:hover{
+        background: #abbfbf4d;
+    }
+    .notification-list.chat-message{
+        background: #fff;
+    }
+    .notification-list.chat-message:hover{
+        background: #abbfbf4d;
+    }
+    .chat-field{
+        margin-right: -16px;
+    }
+    .ui-block-title.reciever-details{
+        background: #fff;
+    }
+    .chat-field textarea{
+        background: #fff;
+    }
+    .ui-block-title{
+        background: #fff;  
     }
 }
 @media (width: 768px){
     .mobile-app-tabs{
         background-color: initial;
     }
+    /*    .header{
+            
+        }
+        .header .page-title {
+        display: inherit;
+        padding: 7px 143px 58px 6px;
+        margin-left: -54px;
+        margin-right: 58px;
+        }*/
     .header{
+        padding-left: 6px;
+        padding-right: 1px;
         height: 64px;
     }
-    .header .page-title {
-    display: inherit;
-    padding: 7px 143px 58px 6px;
-    margin-left: -54px;
-    margin-right: 58px;
+    .ui-block-title.ad-details-section{
+        background: #fff;
+
+    }
+    .ui-block-title.ad-details-section:hover{
+        background: #abbfbf4d;
+    }
+    .notification-list.chat-message{
+        background: #fff;
+    }
+    .notification-list.chat-message:hover{
+        background: #abbfbf4d;
+    }
+  
+    .ui-block-title.reciever-details{
+        background: #fff;
+    }
+    .chat-field textarea{
+        background: #fff;
+    }
+    .ui-block-title{
+        background: #fff;  
+    }
+    .has-items img{
+        max-width: 61%;
+    }
+    .nav-link img{
+       max-width: 61%; 
+    }
+    .responsive-header-logo img{
+        max-width: 100%;
+        margin-left: -283px;
+    }
+    .mobile-app-tabs{
+        margin-left: 301px;
     }
 }
 @media (width:1024px){
@@ -280,12 +497,75 @@ and open the template in the editor.
         display: inherit;
         padding: 9px 313px 15px 9px;
     }
- 
+    .ui-block-title.ad-details-section{
+        background: #fff;
+
+    }
+    .ui-block-title.ad-details-section:hover{
+        background: #abbfbf4d;
+    }
+    .notification-list.chat-message{
+        background: #fff;
+    }
+    .notification-list.chat-message:hover{
+        background: #abbfbf4d;
+    }
+    /*    .chat-field{
+            margin-right: -17px;
+        }*/
+    .ui-block-title.reciever-details{
+        background: #fff;
+    }
+    .chat-field textarea{
+        background: #fff;
+    }
+    .ui-block-title{
+        background: #fff;  
+    }
+
 }
 @media (width: 640px){
     .header{
         padding-left: 27px;
         padding-right: 27px;        
+    }
+    .ui-block-title.ad-details-section{
+        background: #fff;
+
+    }
+    .ui-block-title.ad-details-section:hover{
+        background: #abbfbf4d;
+    }
+    .notification-list.chat-message{
+        background: #fff;
+    }
+    .notification-list.chat-message:hover{
+        background: #abbfbf4d;
+    }
+    /*    .chat-field{
+            margin-right: -17px;
+        }*/
+    .ui-block-title.reciever-details{
+        background: #fff;
+    }
+    .chat-field textarea{
+        background: #fff;
+    }
+    .ui-block-title{
+        background: #fff;  
+    }
+        .has-items img{
+        max-width: 61%;
+    }
+    .nav-link img{
+       max-width: 61%; 
+    }
+    .responsive-header-logo img{
+        max-width: 80%;
+        /*margin-left: -283px;*/
+    }
+    .mobile-app-tabs{
+        /*margin-left: 301px;*/
     }
 }
 @media (width: 600px){
@@ -293,5 +573,44 @@ and open the template in the editor.
         padding-right: 1px;
         padding-left: 7px;
     }
-    
+    .ui-block-title.ad-details-section{
+        background: #fff;
+
+    }
+    .ui-block-title.ad-details-section:hover{
+        background: #abbfbf4d;
+    }
+    .notification-list.chat-message{
+        background: #fff;
+    }
+    .notification-list.chat-message:hover{
+        background: #abbfbf4d;
+    }
+    /*    .chat-field{
+            margin-right: -17px;
+        }*/
+    .ui-block-title.reciever-details{
+        background: #fff;
+    }
+    .chat-field textarea{
+        background: #fff;
+    }
+    .ui-block-title{
+        background: #fff;  
+    }
+    .profile-menu{
+        margin-bottom: 6px;
+    }
+    .has-items img{
+        max-width: 61%;
+    }
+    .nav-link img{
+       max-width: 61%; 
+    }
+    .responsive-header-logo img{
+        max-width: 85%;
+      
+    }
+   
+
 }
