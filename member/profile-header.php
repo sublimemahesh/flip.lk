@@ -4,7 +4,17 @@
             <div class="ui-block">
                 <div class="top-header">
                     <div class="top-header-thumb">
-                        <img src="../upload/member/cover-picture/<?php echo $MEM->coverPicture; ?>" id="cover_pic" alt="nature">
+                        <?php
+                        if ($MEM->coverPicture) {
+                            ?>
+                            <img src="../upload/member/cover-picture/<?php echo $MEM->coverPicture; ?>" alt="cover" id="cover_pic">
+                            <?php
+                        } else {
+                            ?>
+                            <img src="../upload/member/cover-picture/cover.jpg" alt="cover" id="cover_pic">
+                            <?php
+                        }
+                        ?>
                     </div>
                     <div class="profile-section">
                         <div class="row hidden-xs">
@@ -31,7 +41,7 @@
                                             <a href="#">Photos</a>
                                         </li>
                                         <li>
-                                            <a href="#">Messages</a>
+                                            <a href="member-message.php">Messages</a>
                                         </li>
 
                                     </ul>
@@ -61,7 +71,7 @@
                                             <a href="advertisement.php">My Advertisement</a>
                                         </li>
                                         <li>
-                                            <a href="#">Messages</a>
+                                            <a href="member-message.php">Messages</a>
                                         </li>
 
                                     </ul>
@@ -90,7 +100,7 @@
                                             <a href="#">Photos</a>
                                         </li>
                                         <li>
-                                            <a href="#">Messages</a>
+                                            <a href="member-message.php">Messages</a>
                                         </li>
 
                                     </ul>
@@ -115,7 +125,7 @@
                                             <a href="advertisement.php">My Advertisement</a>
                                         </li>
                                         <li>
-                                            <a href="#">Messages</a>
+                                            <a href="member-message.php">Messages</a>
                                         </li>
 
                                     </ul>
@@ -152,7 +162,17 @@
                     </div>
                     <div class="top-header-author">
                         <a href="profile.php" class="author-thumb main-profile-pic">
-                            <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" id="profile_pic1" alt="profile picture">
+                            <?php
+                            if ($MEM->profilePicture) {
+                                ?>
+                                <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="profile picture" id="profile_pic1">
+                                <?php
+                            } else {
+                                ?>
+                                <img src="../upload/member/member.png" alt="profile picture" id="profile_pic1">
+                                <?php
+                            }
+                            ?>
                         </a>
                         <div class="author-content">
                             <a href="profile.php" class="h4 author-name"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>

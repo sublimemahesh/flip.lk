@@ -51,9 +51,9 @@ if (isset($_GET['c'])) {
         <div class="header--standard header--standard-landing" id="header--standard">
             <div class="container">
                 <div class="header--standard-wrap">
-                    <a href="#" class="logo">
+                    <a href="../" class="logo">
                         <div class="img-wrap">
-                            <img src="img/logo/logo.png" alt="Olympus">
+                            <img src="img/logo/logo.jpg" alt="flip.lk">
                         </div>
                     </a>
                     <a href="#" class="open-responsive-menu js-open-responsive-menu">
@@ -67,7 +67,7 @@ if (isset($_GET['c'])) {
         <!-- ... end Header Standard Landing  -->
         <div class="header-spacer--standard"></div>
 
-        <div class="container">
+        <div class="container login-container">
             <div class="row display-flex">
                 <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                     <div class="landing-content">
@@ -75,7 +75,7 @@ if (isset($_GET['c'])) {
                         <p>We are the best and biggest social network with 5 billion active users all around the world. Share you
                             thoughts, write blog posts, show your favourite music via Stopify, earn badges and much more!
                         </p>
-                        <a href="#" class="btn btn-md btn-border c-white">Register Now!</a>
+                        <!--<a href="#" class="btn btn-md btn-border c-white">Register Now!</a>-->
                     </div>
                 </div>
 

@@ -48,7 +48,7 @@ $CATEGORIES = BusinessCategory::all();
                 <div class="header--standard-wrap">
                     <a href="../" class="logo">
                         <div class="img-wrap">
-                            <img src="img/logo/logo.png" alt="Olympus">
+                            <img src="img/logo/logo.jpg" alt="flip.lk">
                         </div>
 
                     </a>
@@ -70,7 +70,7 @@ $CATEGORIES = BusinessCategory::all();
                         <p>We are the best and biggest social network with 5 billion active users all around the world. Share you
                             thoughts, write blog posts, show your favourite music via Stopify, earn badges and much more!
                         </p>
-                        <a href="#" class="btn btn-md btn-border c-white">Register Now!</a>
+                        <a  href="#" class="btn btn-md btn-border c-white btn-register" id="">Register Now!</a>
                     </div>
                 </div>
 
@@ -148,7 +148,7 @@ $CATEGORIES = BusinessCategory::all();
                                             <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Login with Twitter</a>
 
 
-                                            <p>Don’t you have an account? <a href="#">Register Now!</a> it’s really simple and you can start enjoing all the benefits!</p>
+                                            <p>Don’t you have an account? <a href="#" class="btn-register">Register Now!</a> it’s really simple and you can start enjoing all the benefits!</p>
                                         </div>
                                     </div>
                                 </form>
