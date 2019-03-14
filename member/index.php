@@ -135,7 +135,7 @@ $MEMBER = new Member($_SESSION['id']);
                                                 <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
                                             </a>
                                             <input type="hidden" value ="<?php echo $_SESSION['id']; ?>" id="member" name="member" />
-                                            <input type="submit" name="save-post" class="btn btn-primary btn-md-2 share-post" value="Share" />
+                                            <input type="submit" name="save-post" class="btn btn-primary btn-md-2 share-post" value="Post" />
                                         </div>
                                     </form>
                                 </div>

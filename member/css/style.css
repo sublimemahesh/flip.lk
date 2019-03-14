@@ -1294,6 +1294,20 @@ header .control-icon > svg {
 .form-group.with-button .find-friends button {
     height: 100%;
 }
+.btn-primary {
+    background-color: #002bc8;
+    border-color: #002bc8;
+}
+.btn-primary:hover {
+    background-color: #fff;
+    border-color: #002bc8;
+    color: #002bc8;
+}
+.back-to-top {
+    background-color: #002bc8;
+}
+
+
 @media(min-width: 1400px) {
     .container {
         /*max-width: 1323px;*/

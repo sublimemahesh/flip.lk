@@ -2173,6 +2173,25 @@ a.see-more:hover {
 .bg-theme-blue {
     background-color: #002bc8;
 }
+.footer-box .footer-social ul li a:hover {
+    background-color: #fff;
+    color: #002bc8;
+}
+.footer-box .widget_nav_menu li a:hover {
+    color: #fff;
+}
+.btn-primary {
+    background-color: #002bc8;
+    border-color: #002bc8;
+}
+.btn-primary:hover {
+    background-color: #fff;
+    border-color: #002bc8;
+    color: #002bc8;
+}
+.back-to-top {
+    background-color: #002bc8;
+}
 
 /*.more-ads-section {
     height: 340px;
