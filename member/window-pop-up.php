@@ -59,7 +59,7 @@
                     <?php
                     if (empty($MEMBER->coverPicture)) {
                         ?>
-                        <img src="../upload/member/cover-picture/cover.png" class="img img-responsive img-thumbnail cover-pic" id="cover_pic"/>
+                    <img src="image/cover.jpg" class="img img-responsive img-thumbnail cover-pic" id="cover_pic"/>
                         <?php
                     } else {
                         ?>

@@ -190,7 +190,17 @@
             </div>
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
-                    <img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
+                    <?php
+                    if ($MEMBER->profilePicture) {
+                        ?>
+                        <img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
+                        <?php
+                    } else {
+                        ?>
+                        <img alt="author" src="../upload/member/member.png" class="avatar" id="profile_pic2">
+                        <?php
+                    }
+                    ?>
                     <span class="icon-status online"></span>
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">

@@ -151,8 +151,10 @@ a:hover {
     margin:10px 0px;
 }
 .upload-span {
-    height: 250px;
-    width: 250px;
+    height: 243px;
+    width: 243px;
+    /*    height: 250px;
+        width: 250px;*/
     position: absolute;
     vertical-align: middle;
     padding-top: 20%;
@@ -163,7 +165,8 @@ a:hover {
 }
 .upload-span2 {
     height: 167px;
-    width: 387px;
+    width: 382px;
+    /*width: 387px;*/
     position: absolute;
     vertical-align: middle;
     padding-top: 10%;
@@ -1305,6 +1308,22 @@ header .control-icon > svg {
 }
 .back-to-top {
     background-color: #002bc8;
+}
+.bg-primary {
+    background-color: #002bc8 !important;
+}
+.news-feed-form .nav-tabs .nav-link.active {
+    fill: #002bc8;
+    color: #515365;
+}
+.more-dropdown li a:hover {
+    color: #002bc8;
+}
+.no-chats {
+    text-align: center;
+}
+.no-chats h3, .no-chats h6 {
+    margin-bottom: 20px;
 }
 
 

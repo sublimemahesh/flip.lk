@@ -108,351 +108,14 @@ if (isset($_GET['id'])) {
                         </div>
 
                         <div class="row hidden-xs">
-                            <div class="col col-xl-5 col-lg-5 col-md-4 col-sm-4 col-xs-12  padding-r-0">
-                                <!-- Notification List Chat Messages -->
-                                <ul class="notification-list chat-message">
-
-                                    <?php
-                                    $maxids = array();
-                                    foreach ($allparticipants as $participant) {
-                                        $max = AdvertisementMessage::getMaxIDOfDistinctAdvertisement($participant['advertisement'], $MEMBER->id);
-
-                                        array_push($maxids, $max['max']);
-//                                        return $maxids;
-                                    }
-                                    rsort($maxids);
-                                    foreach ($maxids as $key => $maxid) {
-                                        $MESSAGE = new AdvertisementMessage($maxid);
-                                        $AD1 = new Advertisement($MESSAGE->advertisement);
-                                        if ($MESSAGE->owner == $MEMBER->id) {
-                                            $MEM = new Member($MESSAGE->member);
-                                        } elseif ($MESSAGE->member == $MEMBER->id) {
-                                            $MEM = new Member($MESSAGE->owner);
-                                        }
-                                        ?>
-
-                                        <li class="<?php
-                                        if ($MESSAGE->advertisement == $ADVERTISEMENT->id) {
-                                            echo 'active';
-                                        }
-                                        ?>">
-                                            <div class="author-thumb message-box">
-                                                <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
-                                            </div>
-                                            <div class="notification-event hidden-xs">
-                                                <a class="h6 notification-friend" href="member-message.php?id=<?php echo $MESSAGE->id; ?>">
-                                                    <?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
-                                                </a>
-                                                <span class="chat-message-item">
-                                                    <?php
-                                                    if (strlen($AD1->title) > 20) {
-                                                        echo substr($AD1->title, 0, 18) . '...';
-                                                    } else {
-                                                        echo $AD1->title;
-                                                    }
-                                                    ?>
-                                                </span><br />
-                                                <span class="chat-message-item">
-                                                    <?php
-                                                    if (strlen($MESSAGE->message) > 30) {
-                                                        echo substr($MESSAGE->message, 0, 28) . '...';
-                                                    } else {
-                                                        echo $MESSAGE->message;
-                                                    }
-                                                    ?>
-                                                </span>
-                                                <!--<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>-->
-                                            </div>
-
-
-                                        </li>
+                            <?php
+                            if (isset($_GET['id']) || isset($_GET['ad'])) {
+                                ?>
+                                <div class="col col-xl-5 col-lg-5 col-md-4 col-sm-4 col-xs-12  padding-r-0">
+                                    <!-- Notification List Chat Messages -->
+                                    <ul class="notification-list chat-message">
 
                                         <?php
-                                    }
-                                    ?>
-                                </ul>
-
-                                <!-- ... end Notification List Chat Messages -->
-                            </div>
-
-                            <div class="col col-xl-7 col-lg-7 col-md-8 col-sm-8  padding-l-0">
-                                <!-- Chat Field -->
-                                <?php
-                                if (isset($_GET['ad'])) {
-                                    ?>
-                                    <div class="chat-field">
-                                        <div class="ui-block-title reciever-details">
-                                            <h6 class="title"><?php echo $OWNER->firstName . ' ' . $OWNER->lastName; ?></h6>
-                                            <div class="author-thumb message-box">
-                                                <img src="../upload/member/<?php echo $OWNER->profilePicture; ?>" alt="author">
-                                            </div>
-                                        </div>
-                                        <div class="ui-block-title ad-details-section">
-                                            <?php
-                                            $images = AdvertisementImage::getPhotosByAdId($ADVERTISEMENT->id);
-                                            if (count($images) > 0) {
-                                                foreach ($images as $key => $img) {
-                                                    if ($key == 0) {
-                                                        ?>
-                                                        <div class="author-thumb">
-                                                            <img src="../upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt="author">
-                                                        </div>
-                                                        <?php
-                                                    }
-                                                }
-                                            } else {
-                                                ?>
-                                                <div class="author-thumb">
-                                                    <img src="../upload/advertisement/thumb2/advertising.jpg" alt="author">
-                                                </div>
-                                                <?php
-                                            }
-                                            ?>
-                                            <div class="notification-event">
-                                                <a class="h6 notification-friend" href="#">
-                                                    <?php
-                                                    if (strlen($ADVERTISEMENT->title) > 20) {
-                                                        echo substr($ADVERTISEMENT->title, 0, 18) . '...';
-                                                    } else {
-                                                        echo $ADVERTISEMENT->title;
-                                                    }
-                                                    ?>
-                                                </a><br />
-                                                <span class="chat-message-item">
-                                                    <?php echo $CATEGORY->name . ', ' . $SUBCATEGORY->name; ?>
-                                                </span><br />
-                                                <span class="chat-message-item">
-                                                    <?php
-                                                    if ($ADVERTISEMENT->price) {
-                                                        echo 'Rs. ' . number_format($ADVERTISEMENT->price);
-                                                    } else {
-                                                        echo 'Price negotiable ';
-                                                    }
-                                                    ?>
-                                                </span><br />
-                                                <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
-                                            </div>
-                                        </div>
-                                        <div class="mCustomScrollbar" data-mcs-theme="dark">
-                                            <ul class="notification-list chat-message chat-message-field">
-                                                <?php
-                                                $MESSAGES = AdvertisementMessage::getMessagesByMemberOwnerAndAdASC($MEMBER->id, $OWNER->id, $ad);
-
-
-
-
-                                                foreach ($MESSAGES as $key => $msg) {
-                                                    if ($key == 0) {
-                                                        $firstmsg = $msg['id'];
-                                                    }
-
-                                                    if ($msg['sender'] = 'member') {
-                                                        $MEM1 = new Member($msg['member']);
-                                                    } else {
-                                                        $MEM1 = new Member($msg['owner']);
-                                                    }
-                                                    $result = getTime($msg['created_at']);
-
-                                                    if ($msg['sender'] == 'owner' && $msg['member'] == $MEMBER->id) {
-                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
-                                                    } elseif ($msg['sender'] == 'member' && $msg['owner'] == $MEMBER->id) {
-                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
-                                                    }
-                                                    ?>
-                                                    <li>
-                                                        <div class="author-thumb message-box">
-                                                            <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
-                                                        </div>
-                                                        <div class="notification-event">
-                                                            <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
-                                                            <span class="notification-date"><time class="entry-date updated" datetime=""><?php echo $result; ?></time></span>
-                                                            <div class="chat-message-item"><?php echo $msg['message']; ?></div>
-                                                        </div>
-
-                                                    </li>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </ul>
-                                        </div>
-                                        <div class="form-group label-floating is-empty">
-                                            <form id="send-message" method="post" enctype="multipart/form-data" action="post-and-get/member-message.php">
-                                                <label class="control-label">Write your message...</label>
-                                                <textarea class="form-control" name="message" id="message" placeholder=""  ></textarea>
-                                                <input type="hidden" name="member" value="<?php echo $_SESSION['id']; ?>">
-                                                <input type="hidden" name="owner" id="owner" value="<?php echo $ADVERTISEMENT->member; ?>">
-                                                <input type="hidden" name="advertisement" id="advertisement" value="<?php echo $ADVERTISEMENT->id; ?>">
-                                                <input type="hidden" name="parent" id="parent" value="<?php echo $firstmsg; ?>">
-                                                <input type="hidden" name="sender" value="<?php
-                                                if ($MEMBER->id == $ADVERTISEMENT->member) {
-                                                    echo 'owner';
-                                                } else {
-                                                    echo 'member';
-                                                }
-                                                ?>">
-                                                <div class="add-options-message">
-                                                    <button type="submit" name="member-message" id="member-message" class="btn btn-primary btn-sm">
-                                                        Send
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    <?php
-                                } elseif (isset($_GET['id'])) {
-                                    $ADMESSAGE = new AdvertisementMessage($_GET['id']);
-                                    ?>
-                                    <div class="chat-field">
-                                        <div class="ui-block-title">
-                                            <h6 class="title">
-                                                <?php
-                                                if ($ADMESSAGE->owner == $MEMBER->id) {
-                                                    $MEM2 = new Member($ADMESSAGE->member);
-                                                } else {
-                                                    $MEM2 = new Member($ADMESSAGE->owner);
-                                                }
-
-                                                echo $MEM2->firstName . ' ' . $MEM2->lastName;
-                                                ?>
-                                            </h6>
-                                            <div class="author-thumb message-box">
-                                                <img src="../upload/member/<?php echo $MEM2->profilePicture; ?>" alt="author">
-                                            </div>
-                                        </div>
-                                        <div class="ui-block-title ad-details-section">
-                                            <?php
-                                            $images = AdvertisementImage::getPhotosByAdId($ADVERTISEMENT->id);
-                                            if (count($images) > 0) {
-                                                foreach ($images as $key => $img) {
-                                                    if ($key == 0) {
-                                                        ?>
-                                                        <div class="author-thumb">
-                                                            <img src="../upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt="author">
-                                                        </div>
-                                                        <?php
-                                                    }
-                                                }
-                                            } else {
-                                                ?>
-                                                <div class="author-thumb">
-                                                    <img src="../upload/advertisement/thumb2/advertising.jpg" alt="author">
-                                                </div>
-                                                <?php
-                                            }
-                                            ?>
-                                            <div class="notification-event">
-                                                <a class="h6 notification-friend" href="#">
-                                                    <?php
-                                                    if (strlen($ADVERTISEMENT->title) > 20) {
-                                                        echo substr($ADVERTISEMENT->title, 0, 18) . '...';
-                                                    } else {
-                                                        echo $ADVERTISEMENT->title;
-                                                    }
-                                                    ?>
-                                                </a><br />
-                                                <span class="chat-message-item">
-                                                    <?php echo $CATEGORY->name . ', ' . $SUBCATEGORY->name; ?>
-                                                </span><br />
-                                                <span class="chat-message-item">
-                                                    <?php
-                                                    if ($ADVERTISEMENT->price) {
-                                                        echo 'Rs. ' . number_format($ADVERTISEMENT->price);
-                                                    } else {
-                                                        echo 'Price negotiable ';
-                                                    }
-                                                    ?>
-                                                </span><br />
-                                                <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="mCustomScrollbar" data-mcs-theme="dark">
-                                            <ul class="notification-list chat-message chat-message-field">
-                                                <?php
-                                                if ($ADMESSAGE->parent == 0) {
-                                                    $MESSAGES = AdvertisementMessage::getParentMessage($_GET['id']);
-                                                } else {
-                                                    $MESSAGES = AdvertisementMessage::getMessagesByParent($ADMESSAGE->parent);
-                                                }
-
-
-
-                                                foreach ($MESSAGES as $key => $msg) {
-                                                    if ($key == 0) {
-                                                        $firstmsg = $msg['id'];
-                                                    }
-                                                    if ($msg['sender'] == 'member') {
-                                                        $MEM1 = new Member($msg['member']);
-                                                    } else {
-                                                        $MEM1 = new Member($msg['owner']);
-                                                    }
-                                                    $result1 = getTime($msg['created_at']);
-                                                    if ($msg['sender'] == 'owner' && $msg['member'] == $MEMBER->id) {
-                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
-                                                    } elseif ($msg['sender'] == 'member' && $msg['owner'] == $MEMBER->id) {
-                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
-                                                    }
-                                                    ?>
-                                                    <li>
-                                                        <div class="author-thumb message-box">
-                                                            <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
-                                                        </div>
-                                                        <div class="notification-event">
-                                                            <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
-                                                            <span class="notification-date"><time class="entry-date updated" datetime=""><?php echo $result1; ?></time></span>
-                                                            <div class="chat-message-item"><?php echo $msg['message']; ?></div>
-                                                        </div>
-
-                                                    </li>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </ul>
-                                        </div>
-                                        <div class="form-group label-floating is-empty">
-                                            <form id="send-message" method="post" enctype="multipart/form-data" action="post-and-get/member-message.php">
-                                                <label class="control-label">Write your message...</label>
-                                                <textarea class="form-control" name="message" id="message" placeholder=""  ></textarea>
-                                                <input type="hidden" name="member" value="<?php echo $ADMESSAGE->member; ?>">
-                                                <input type="hidden" name="owner" id="owner" value="<?php echo $ADVERTISEMENT->member; ?>">
-                                                <input type="hidden" name="advertisement" id="advertisement" value="<?php echo $ADVERTISEMENT->id; ?>">
-                                                <input type="hidden" name="parent" id="parent" value="<?php echo $firstmsg; ?>">
-                                                <input type="hidden" name="sender" value="<?php
-                                                if ($MEMBER->id == $ADVERTISEMENT->member) {
-                                                    echo 'owner';
-                                                } else {
-                                                    echo 'member';
-                                                }
-                                                ?>">
-                                                <div class="add-options-message">
-                                                    <button type="submit" name="member-message" id="member-message" class="btn btn-primary btn-sm">
-                                                        Send
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <?php
-                                } else {
-                                    ?>
-                                    <div class="chat-field">
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-
-                                <!-- ... end Chat Field -->
-                            </div>
-                        </div>
-
-                        <div class="hidden-xl hidden-lg hidden-md hidden-sm">
-                            <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12  padding-r-0">
-                                <!-- Notification List Chat Messages -->
-                                <ul class="notification-list chat-message">
-
-                                    <?php
-                                    if (!isset($_GET['id']) && !isset($_GET['ad'])) {
                                         $maxids = array();
                                         foreach ($allparticipants as $participant) {
                                             $max = AdvertisementMessage::getMaxIDOfDistinctAdvertisement($participant['advertisement'], $MEMBER->id);
@@ -472,10 +135,8 @@ if (isset($_GET['id'])) {
                                             ?>
 
                                             <li class="<?php
-                                            if (isset($ADVERTISEMENT)) {
-                                                if ($MESSAGE->advertisement == $ADVERTISEMENT->id) {
-                                                    echo 'active';
-                                                }
+                                            if ($MESSAGE->advertisement == $ADVERTISEMENT->id) {
+                                                echo 'active';
                                             }
                                             ?>">
                                                 <div class="author-thumb message-box">
@@ -511,268 +172,633 @@ if (isset($_GET['id'])) {
 
                                             <?php
                                         }
+                                        ?>
+                                    </ul>
+
+                                    <!-- ... end Notification List Chat Messages -->
+                                </div>
+
+                                <div class="col col-xl-7 col-lg-7 col-md-8 col-sm-8  padding-l-0">
+                                    <!-- Chat Field -->
+                                    <?php
+                                    if (isset($_GET['ad'])) {
+                                        ?>
+                                        <div class="chat-field">
+                                            <div class="ui-block-title reciever-details">
+                                                <h6 class="title"><?php echo $OWNER->firstName . ' ' . $OWNER->lastName; ?></h6>
+                                                <div class="author-thumb message-box">
+                                                    <img src="../upload/member/<?php echo $OWNER->profilePicture; ?>" alt="author">
+                                                </div>
+                                            </div>
+                                            <div class="ui-block-title ad-details-section">
+                                                <?php
+                                                $images = AdvertisementImage::getPhotosByAdId($ADVERTISEMENT->id);
+                                                if (count($images) > 0) {
+                                                    foreach ($images as $key => $img) {
+                                                        if ($key == 0) {
+                                                            ?>
+                                                            <div class="author-thumb">
+                                                                <img src="../upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt="author">
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                    }
+                                                } else {
+                                                    ?>
+                                                    <div class="author-thumb">
+                                                        <img src="../upload/advertisement/thumb2/advertising.jpg" alt="author">
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
+                                                <div class="notification-event">
+                                                    <a class="h6 notification-friend" href="#">
+                                                        <?php
+                                                        if (strlen($ADVERTISEMENT->title) > 20) {
+                                                            echo substr($ADVERTISEMENT->title, 0, 18) . '...';
+                                                        } else {
+                                                            echo $ADVERTISEMENT->title;
+                                                        }
+                                                        ?>
+                                                    </a><br />
+                                                    <span class="chat-message-item">
+                                                        <?php echo $CATEGORY->name . ', ' . $SUBCATEGORY->name; ?>
+                                                    </span><br />
+                                                    <span class="chat-message-item">
+                                                        <?php
+                                                        if ($ADVERTISEMENT->price) {
+                                                            echo 'Rs. ' . number_format($ADVERTISEMENT->price);
+                                                        } else {
+                                                            echo 'Price negotiable ';
+                                                        }
+                                                        ?>
+                                                    </span><br />
+                                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
+                                                </div>
+                                            </div>
+                                            <div class="mCustomScrollbar" data-mcs-theme="dark">
+                                                <ul class="notification-list chat-message chat-message-field">
+                                                    <?php
+                                                    $MESSAGES = AdvertisementMessage::getMessagesByMemberOwnerAndAdASC($MEMBER->id, $OWNER->id, $ad);
+
+
+
+
+                                                    foreach ($MESSAGES as $key => $msg) {
+                                                        if ($key == 0) {
+                                                            $firstmsg = $msg['id'];
+                                                        }
+
+                                                        if ($msg['sender'] = 'member') {
+                                                            $MEM1 = new Member($msg['member']);
+                                                        } else {
+                                                            $MEM1 = new Member($msg['owner']);
+                                                        }
+                                                        $result = getTime($msg['created_at']);
+
+                                                        if ($msg['sender'] == 'owner' && $msg['member'] == $MEMBER->id) {
+                                                            $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                        } elseif ($msg['sender'] == 'member' && $msg['owner'] == $MEMBER->id) {
+                                                            $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                        }
+                                                        ?>
+                                                        <li>
+                                                            <div class="author-thumb message-box">
+                                                                <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
+                                                            </div>
+                                                            <div class="notification-event">
+                                                                <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
+                                                                <span class="notification-date"><time class="entry-date updated" datetime=""><?php echo $result; ?></time></span>
+                                                                <div class="chat-message-item"><?php echo $msg['message']; ?></div>
+                                                            </div>
+
+                                                        </li>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                            <div class="form-group label-floating is-empty">
+                                                <form id="send-message" method="post" enctype="multipart/form-data" action="post-and-get/member-message.php">
+                                                    <label class="control-label">Write your message...</label>
+                                                    <textarea class="form-control" name="message" id="message" placeholder=""  ></textarea>
+                                                    <input type="hidden" name="member" value="<?php echo $_SESSION['id']; ?>">
+                                                    <input type="hidden" name="owner" id="owner" value="<?php echo $ADVERTISEMENT->member; ?>">
+                                                    <input type="hidden" name="advertisement" id="advertisement" value="<?php echo $ADVERTISEMENT->id; ?>">
+                                                    <input type="hidden" name="parent" id="parent" value="<?php echo $firstmsg; ?>">
+                                                    <input type="hidden" name="sender" value="<?php
+                                                    if ($MEMBER->id == $ADVERTISEMENT->member) {
+                                                        echo 'owner';
+                                                    } else {
+                                                        echo 'member';
+                                                    }
+                                                    ?>">
+                                                    <div class="add-options-message">
+                                                        <button type="submit" name="member-message" id="member-message" class="btn btn-primary btn-sm">
+                                                            Send
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                        <?php
+                                    } elseif (isset($_GET['id'])) {
+                                        $ADMESSAGE = new AdvertisementMessage($_GET['id']);
+                                        ?>
+                                        <div class="chat-field">
+                                            <div class="ui-block-title">
+                                                <h6 class="title">
+                                                    <?php
+                                                    if ($ADMESSAGE->owner == $MEMBER->id) {
+                                                        $MEM2 = new Member($ADMESSAGE->member);
+                                                    } else {
+                                                        $MEM2 = new Member($ADMESSAGE->owner);
+                                                    }
+
+                                                    echo $MEM2->firstName . ' ' . $MEM2->lastName;
+                                                    ?>
+                                                </h6>
+                                                <div class="author-thumb message-box">
+                                                    <img src="../upload/member/<?php echo $MEM2->profilePicture; ?>" alt="author">
+                                                </div>
+                                            </div>
+                                            <div class="ui-block-title ad-details-section">
+                                                <?php
+                                                $images = AdvertisementImage::getPhotosByAdId($ADVERTISEMENT->id);
+                                                if (count($images) > 0) {
+                                                    foreach ($images as $key => $img) {
+                                                        if ($key == 0) {
+                                                            ?>
+                                                            <div class="author-thumb">
+                                                                <img src="../upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt="author">
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                    }
+                                                } else {
+                                                    ?>
+                                                    <div class="author-thumb">
+                                                        <img src="../upload/advertisement/thumb2/advertising.jpg" alt="author">
+                                                    </div>
+                                                    <?php
+                                                }
+                                                ?>
+                                                <div class="notification-event">
+                                                    <a class="h6 notification-friend" href="#">
+                                                        <?php
+                                                        if (strlen($ADVERTISEMENT->title) > 20) {
+                                                            echo substr($ADVERTISEMENT->title, 0, 18) . '...';
+                                                        } else {
+                                                            echo $ADVERTISEMENT->title;
+                                                        }
+                                                        ?>
+                                                    </a><br />
+                                                    <span class="chat-message-item">
+                                                        <?php echo $CATEGORY->name . ', ' . $SUBCATEGORY->name; ?>
+                                                    </span><br />
+                                                    <span class="chat-message-item">
+                                                        <?php
+                                                        if ($ADVERTISEMENT->price) {
+                                                            echo 'Rs. ' . number_format($ADVERTISEMENT->price);
+                                                        } else {
+                                                            echo 'Price negotiable ';
+                                                        }
+                                                        ?>
+                                                    </span><br />
+                                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="mCustomScrollbar" data-mcs-theme="dark">
+                                                <ul class="notification-list chat-message chat-message-field">
+                                                    <?php
+                                                    if ($ADMESSAGE->parent == 0) {
+                                                        $MESSAGES = AdvertisementMessage::getParentMessage($_GET['id']);
+                                                    } else {
+                                                        $MESSAGES = AdvertisementMessage::getMessagesByParent($ADMESSAGE->parent);
+                                                    }
+
+
+
+                                                    foreach ($MESSAGES as $key => $msg) {
+                                                        if ($key == 0) {
+                                                            $firstmsg = $msg['id'];
+                                                        }
+                                                        if ($msg['sender'] == 'member') {
+                                                            $MEM1 = new Member($msg['member']);
+                                                        } else {
+                                                            $MEM1 = new Member($msg['owner']);
+                                                        }
+                                                        $result1 = getTime($msg['created_at']);
+                                                        if ($msg['sender'] == 'owner' && $msg['member'] == $MEMBER->id) {
+                                                            $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                        } elseif ($msg['sender'] == 'member' && $msg['owner'] == $MEMBER->id) {
+                                                            $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                        }
+                                                        ?>
+                                                        <li>
+                                                            <div class="author-thumb message-box">
+                                                                <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
+                                                            </div>
+                                                            <div class="notification-event">
+                                                                <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
+                                                                <span class="notification-date"><time class="entry-date updated" datetime=""><?php echo $result1; ?></time></span>
+                                                                <div class="chat-message-item"><?php echo $msg['message']; ?></div>
+                                                            </div>
+
+                                                        </li>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                            <div class="form-group label-floating is-empty">
+                                                <form id="send-message" method="post" enctype="multipart/form-data" action="post-and-get/member-message.php">
+                                                    <label class="control-label">Write your message...</label>
+                                                    <textarea class="form-control" name="message" id="message" placeholder=""  ></textarea>
+                                                    <input type="hidden" name="member" value="<?php echo $ADMESSAGE->member; ?>">
+                                                    <input type="hidden" name="owner" id="owner" value="<?php echo $ADVERTISEMENT->member; ?>">
+                                                    <input type="hidden" name="advertisement" id="advertisement" value="<?php echo $ADVERTISEMENT->id; ?>">
+                                                    <input type="hidden" name="parent" id="parent" value="<?php echo $firstmsg; ?>">
+                                                    <input type="hidden" name="sender" value="<?php
+                                                    if ($MEMBER->id == $ADVERTISEMENT->member) {
+                                                        echo 'owner';
+                                                    } else {
+                                                        echo 'member';
+                                                    }
+                                                    ?>">
+                                                    <div class="add-options-message">
+                                                        <button type="submit" name="member-message" id="member-message" class="btn btn-primary btn-sm">
+                                                            Send
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <?php
                                     }
                                     ?>
-                                </ul>
 
-                                <!-- ... end Notification List Chat Messages -->
-                            </div>
-
-                            <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12  padding-l-0">
-                                <!-- Chat Field -->
+                                    <!-- ... end Chat Field -->
+                                </div>
                                 <?php
-                                if (isset($_GET['ad'])) {
-                                    ?>
-                                    <div class="chat-field">
-                                        <div class="ui-block-title reciever-details">
-                                            <h6 class="title"><?php echo $OWNER->firstName . ' ' . $OWNER->lastName; ?></h6>
-                                            <div class="author-thumb message-box">
-                                                <img src="../upload/member/<?php echo $OWNER->profilePicture; ?>" alt="author">
-                                            </div>
-                                        </div>
-                                        <div class="ui-block-title ad-details-section">
-                                            <?php
-                                            foreach (AdvertisementImage::getPhotosByAdId($ADVERTISEMENT->id) as $key => $img) {
-                                                if ($key == 0) {
-                                                    ?>
-                                                    <div class="author-thumb">
-                                                        <img src="../upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt="author">
-                                                    </div>
-                                                    <?php
-                                                }
-                                                ?>
-                                                <?php
-                                            }
-                                            ?>
-                                            <div class="notification-event">
-                                                <a class="h6 notification-friend" href="#">
-                                                    <?php
-                                                    if (strlen($ADVERTISEMENT->title) > 20) {
-                                                        echo substr($ADVERTISEMENT->title, 0, 18) . '...';
-                                                    } else {
-                                                        echo $ADVERTISEMENT->title;
-                                                    }
-                                                    ?>
-                                                </a><br />
-                                                <span class="chat-message-item">
-                                                    <?php echo $CATEGORY->name . ', ' . $SUBCATEGORY->name; ?>
-                                                </span><br />
-                                                <span class="chat-message-item">
-                                                    <?php
-                                                    if ($ADVERTISEMENT->price) {
-                                                        echo 'Rs. ' . number_format($ADVERTISEMENT->price);
-                                                    } else {
-                                                        echo 'Price negotiable ';
-                                                    }
-                                                    ?>
-                                                </span><br />
-                                                <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
-                                            </div>
-                                        </div>
-                                        <div class="mCustomScrollbar" data-mcs-theme="dark">
-                                            <ul class="notification-list chat-message chat-message-field">
-                                                <?php
-                                                $MESSAGES = AdvertisementMessage::getMessagesByMemberOwnerAndAdASC($MEMBER->id, $OWNER->id, $ad);
-
-
-
-
-                                                foreach ($MESSAGES as $key => $msg) {
-                                                    if ($key == 0) {
-                                                        $firstmsg = $msg['id'];
-                                                    }
-
-                                                    if ($msg['sender'] = 'member') {
-                                                        $MEM1 = new Member($msg['member']);
-                                                    } else {
-                                                        $MEM1 = new Member($msg['owner']);
-                                                    }
-                                                    $result = getTime($msg['created_at']);
-
-                                                    if ($msg['sender'] == 'owner' && $msg['member'] == $MEMBER->id) {
-                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
-                                                    } elseif ($msg['sender'] == 'member' && $msg['owner'] == $MEMBER->id) {
-                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
-                                                    }
-                                                    ?>
-                                                    <li>
-                                                        <div class="author-thumb message-box">
-                                                            <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
-                                                        </div>
-                                                        <div class="notification-event">
-                                                            <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
-                                                            <span class="notification-date"><time class="entry-date updated" datetime=""><?php echo $result; ?></time></span>
-                                                            <div class="chat-message-item"><?php echo $msg['message']; ?></div>
-                                                        </div>
-
-                                                    </li>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </ul>
-                                        </div>
-                                        <div class="form-group label-floating is-empty">
-                                            <form id="send-message" method="post" enctype="multipart/form-data" action="post-and-get/member-message.php">
-                                                <label class="control-label">Write your message...</label>
-                                                <textarea class="form-control" name="message" id="message" placeholder=""  ></textarea>
-                                                <input type="hidden" name="member" value="<?php echo $_SESSION['id']; ?>">
-                                                <input type="hidden" name="owner" id="owner" value="<?php echo $ADVERTISEMENT->member; ?>">
-                                                <input type="hidden" name="advertisement" id="advertisement" value="<?php echo $ADVERTISEMENT->id; ?>">
-                                                <input type="hidden" name="parent" id="parent" value="<?php echo $firstmsg; ?>">
-                                                <input type="hidden" name="sender" value="<?php
-                                                if ($MEMBER->id == $ADVERTISEMENT->member) {
-                                                    echo 'owner';
-                                                } else {
-                                                    echo 'member';
-                                                }
-                                                ?>">
-                                                <div class="add-options-message">
-                                                    <button type="submit" name="member-message" id="member-message" class="btn btn-primary btn-sm">
-                                                        Send
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    <?php
-                                } elseif (isset($_GET['id'])) {
-                                    $ADMESSAGE = new AdvertisementMessage($_GET['id']);
-                                    ?>
-                                    <div class="chat-field">
-                                        <div class="ui-block-title">
-                                            <h6 class="title">
-                                                <?php
-                                                if ($ADMESSAGE->owner == $MEMBER->id) {
-                                                    $MEM2 = new Member($ADMESSAGE->member);
-                                                } else {
-                                                    $MEM2 = new Member($ADMESSAGE->owner);
-                                                }
-
-                                                echo $MEM2->firstName . ' ' . $MEM2->lastName;
-                                                ?>
-                                            </h6>
-                                            <div class="author-thumb message-box">
-                                                <img src="../upload/member/<?php echo $MEM2->profilePicture; ?>" alt="author">
-                                            </div>
-                                        </div>
-                                        <div class="ui-block-title ad-details-section">
-                                            <?php
-                                            foreach (AdvertisementImage::getPhotosByAdId($ADVERTISEMENT->id) as $key => $img) {
-                                                if ($key == 0) {
-                                                    ?>
-                                                    <div class="author-thumb">
-                                                        <img src="../upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt="author">
-                                                    </div>
-                                                    <?php
-                                                }
-                                                ?>
-                                                <?php
-                                            }
-                                            ?>
-                                            <div class="notification-event">
-                                                <a class="h6 notification-friend" href="#">
-                                                    <?php
-                                                    if (strlen($ADVERTISEMENT->title) > 20) {
-                                                        echo substr($ADVERTISEMENT->title, 0, 18) . '...';
-                                                    } else {
-                                                        echo $ADVERTISEMENT->title;
-                                                    }
-                                                    ?>
-                                                </a><br />
-                                                <span class="chat-message-item">
-                                                    <?php echo $CATEGORY->name . ', ' . $SUBCATEGORY->name; ?>
-                                                </span><br />
-                                                <span class="chat-message-item">
-                                                    <?php
-                                                    if ($ADVERTISEMENT->price) {
-                                                        echo 'Rs. ' . number_format($ADVERTISEMENT->price);
-                                                    } else {
-                                                        echo 'Price negotiable ';
-                                                    }
-                                                    ?>
-                                                </span><br />
-                                                <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="mCustomScrollbar" data-mcs-theme="dark">
-                                            <ul class="notification-list chat-message chat-message-field">
-                                                <?php
-                                                if ($ADMESSAGE->parent == 0) {
-                                                    $MESSAGES = AdvertisementMessage::getParentMessage($_GET['id']);
-                                                } else {
-                                                    $MESSAGES = AdvertisementMessage::getMessagesByParent($ADMESSAGE->parent);
-                                                }
-
-
-
-                                                foreach ($MESSAGES as $key => $msg) {
-                                                    if ($key == 0) {
-                                                        $firstmsg = $msg['id'];
-                                                    }
-                                                    if ($msg['sender'] == 'member') {
-                                                        $MEM1 = new Member($msg['member']);
-                                                    } else {
-                                                        $MEM1 = new Member($msg['owner']);
-                                                    }
-                                                    $result1 = getTime($msg['created_at']);
-                                                    if ($msg['sender'] == 'owner' && $msg['member'] == $MEMBER->id) {
-                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
-                                                    } elseif ($msg['sender'] == 'member' && $msg['owner'] == $MEMBER->id) {
-                                                        $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
-                                                    }
-                                                    ?>
-                                                    <li>
-                                                        <div class="author-thumb message-box">
-                                                            <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
-                                                        </div>
-                                                        <div class="notification-event">
-                                                            <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
-                                                            <span class="notification-date"><time class="entry-date updated" datetime=""><?php echo $result1; ?></time></span>
-                                                            <div class="chat-message-item"><?php echo $msg['message']; ?></div>
-                                                        </div>
-
-                                                    </li>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </ul>
-                                        </div>
-                                        <div class="form-group label-floating is-empty">
-                                            <form id="send-message" method="post" enctype="multipart/form-data" action="post-and-get/member-message.php">
-                                                <label class="control-label">Write your message...</label>
-                                                <textarea class="form-control" name="message" id="message" placeholder=""  ></textarea>
-                                                <input type="hidden" name="member" value="<?php echo $ADMESSAGE->member; ?>">
-                                                <input type="hidden" name="owner" id="owner" value="<?php echo $ADVERTISEMENT->member; ?>">
-                                                <input type="hidden" name="advertisement" id="advertisement" value="<?php echo $ADVERTISEMENT->id; ?>">
-                                                <input type="hidden" name="parent" id="parent" value="<?php echo $firstmsg; ?>">
-                                                <input type="hidden" name="sender" value="<?php
-                                                if ($MEMBER->id == $ADVERTISEMENT->member) {
-                                                    echo 'owner';
-                                                } else {
-                                                    echo 'member';
-                                                }
-                                                ?>">
-                                                <div class="add-options-message">
-                                                    <button type="submit" name="member-message" id="member-message" class="btn btn-primary btn-sm">
-                                                        Send
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <?php
-                                } else {
-                                    ?>
-                                    <div class="chat-field">
-                                    </div>
-                                    <?php
-                                }
+                            } else {
                                 ?>
+                                <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12  padding-r-0">
+                                    <div class="post no-chats">
+                                        <h3>No Conversations yet!.</h3><br/>
+                                        <h6>Click "Chat" on an ad to start chatting.</h6><br/>
+                                        <a href="../all-advertisement.php" class="btn btn-primary btn-sm">
+                                            Browse Advertisements
+                                        </a>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
 
-                                <!-- ... end Chat Field -->
-                            </div>
+                        <div class="hidden-xl hidden-lg hidden-md hidden-sm">
+                            <?php
+                            if (isset($_GET['id']) || isset($_GET['ad'])) {
+                                ?>
+                                <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12  padding-r-0">
+                                    <!-- Notification List Chat Messages -->
+                                    <ul class="notification-list chat-message">
+
+                                        <?php
+                                        if (!isset($_GET['id']) && !isset($_GET['ad'])) {
+                                            $maxids = array();
+                                            foreach ($allparticipants as $participant) {
+                                                $max = AdvertisementMessage::getMaxIDOfDistinctAdvertisement($participant['advertisement'], $MEMBER->id);
+
+                                                array_push($maxids, $max['max']);
+//                                        return $maxids;
+                                            }
+                                            rsort($maxids);
+                                            foreach ($maxids as $key => $maxid) {
+                                                $MESSAGE = new AdvertisementMessage($maxid);
+                                                $AD1 = new Advertisement($MESSAGE->advertisement);
+                                                if ($MESSAGE->owner == $MEMBER->id) {
+                                                    $MEM = new Member($MESSAGE->member);
+                                                } elseif ($MESSAGE->member == $MEMBER->id) {
+                                                    $MEM = new Member($MESSAGE->owner);
+                                                }
+                                                ?>
+
+                                                <li class="<?php
+                                                if (isset($ADVERTISEMENT)) {
+                                                    if ($MESSAGE->advertisement == $ADVERTISEMENT->id) {
+                                                        echo 'active';
+                                                    }
+                                                }
+                                                ?>">
+                                                    <div class="author-thumb message-box">
+                                                        <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
+                                                    </div>
+                                                    <div class="notification-event hidden-xs">
+                                                        <a class="h6 notification-friend" href="member-message.php?id=<?php echo $MESSAGE->id; ?>">
+                                                            <?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
+                                                        </a>
+                                                        <span class="chat-message-item">
+                                                            <?php
+                                                            if (strlen($AD1->title) > 20) {
+                                                                echo substr($AD1->title, 0, 18) . '...';
+                                                            } else {
+                                                                echo $AD1->title;
+                                                            }
+                                                            ?>
+                                                        </span><br />
+                                                        <span class="chat-message-item">
+                                                            <?php
+                                                            if (strlen($MESSAGE->message) > 30) {
+                                                                echo substr($MESSAGE->message, 0, 28) . '...';
+                                                            } else {
+                                                                echo $MESSAGE->message;
+                                                            }
+                                                            ?>
+                                                        </span>
+                                                        <!--<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>-->
+                                                    </div>
+
+
+                                                </li>
+
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </ul>
+
+                                    <!-- ... end Notification List Chat Messages -->
+                                </div>
+
+                                <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12  padding-l-0">
+                                    <!-- Chat Field -->
+                                    <?php
+                                    if (isset($_GET['ad'])) {
+                                        ?>
+                                        <div class="chat-field">
+                                            <div class="ui-block-title reciever-details">
+                                                <h6 class="title"><?php echo $OWNER->firstName . ' ' . $OWNER->lastName; ?></h6>
+                                                <div class="author-thumb message-box">
+                                                    <img src="../upload/member/<?php echo $OWNER->profilePicture; ?>" alt="author">
+                                                </div>
+                                            </div>
+                                            <div class="ui-block-title ad-details-section">
+                                                <?php
+                                                foreach (AdvertisementImage::getPhotosByAdId($ADVERTISEMENT->id) as $key => $img) {
+                                                    if ($key == 0) {
+                                                        ?>
+                                                        <div class="author-thumb">
+                                                            <img src="../upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt="author">
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    <?php
+                                                }
+                                                ?>
+                                                <div class="notification-event">
+                                                    <a class="h6 notification-friend" href="#">
+                                                        <?php
+                                                        if (strlen($ADVERTISEMENT->title) > 20) {
+                                                            echo substr($ADVERTISEMENT->title, 0, 18) . '...';
+                                                        } else {
+                                                            echo $ADVERTISEMENT->title;
+                                                        }
+                                                        ?>
+                                                    </a><br />
+                                                    <span class="chat-message-item">
+                                                        <?php echo $CATEGORY->name . ', ' . $SUBCATEGORY->name; ?>
+                                                    </span><br />
+                                                    <span class="chat-message-item">
+                                                        <?php
+                                                        if ($ADVERTISEMENT->price) {
+                                                            echo 'Rs. ' . number_format($ADVERTISEMENT->price);
+                                                        } else {
+                                                            echo 'Price negotiable ';
+                                                        }
+                                                        ?>
+                                                    </span><br />
+                                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
+                                                </div>
+                                            </div>
+                                            <div class="mCustomScrollbar" data-mcs-theme="dark">
+                                                <ul class="notification-list chat-message chat-message-field">
+                                                    <?php
+                                                    $MESSAGES = AdvertisementMessage::getMessagesByMemberOwnerAndAdASC($MEMBER->id, $OWNER->id, $ad);
+
+
+
+
+                                                    foreach ($MESSAGES as $key => $msg) {
+                                                        if ($key == 0) {
+                                                            $firstmsg = $msg['id'];
+                                                        }
+
+                                                        if ($msg['sender'] = 'member') {
+                                                            $MEM1 = new Member($msg['member']);
+                                                        } else {
+                                                            $MEM1 = new Member($msg['owner']);
+                                                        }
+                                                        $result = getTime($msg['created_at']);
+
+                                                        if ($msg['sender'] == 'owner' && $msg['member'] == $MEMBER->id) {
+                                                            $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                        } elseif ($msg['sender'] == 'member' && $msg['owner'] == $MEMBER->id) {
+                                                            $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                        }
+                                                        ?>
+                                                        <li>
+                                                            <div class="author-thumb message-box">
+                                                                <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
+                                                            </div>
+                                                            <div class="notification-event">
+                                                                <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
+                                                                <span class="notification-date"><time class="entry-date updated" datetime=""><?php echo $result; ?></time></span>
+                                                                <div class="chat-message-item"><?php echo $msg['message']; ?></div>
+                                                            </div>
+
+                                                        </li>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                            <div class="form-group label-floating is-empty">
+                                                <form id="send-message" method="post" enctype="multipart/form-data" action="post-and-get/member-message.php">
+                                                    <label class="control-label">Write your message...</label>
+                                                    <textarea class="form-control" name="message" id="message" placeholder=""  ></textarea>
+                                                    <input type="hidden" name="member" value="<?php echo $_SESSION['id']; ?>">
+                                                    <input type="hidden" name="owner" id="owner" value="<?php echo $ADVERTISEMENT->member; ?>">
+                                                    <input type="hidden" name="advertisement" id="advertisement" value="<?php echo $ADVERTISEMENT->id; ?>">
+                                                    <input type="hidden" name="parent" id="parent" value="<?php echo $firstmsg; ?>">
+                                                    <input type="hidden" name="sender" value="<?php
+                                                    if ($MEMBER->id == $ADVERTISEMENT->member) {
+                                                        echo 'owner';
+                                                    } else {
+                                                        echo 'member';
+                                                    }
+                                                    ?>">
+                                                    <div class="add-options-message">
+                                                        <button type="submit" name="member-message" id="member-message" class="btn btn-primary btn-sm">
+                                                            Send
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                        <?php
+                                    } elseif (isset($_GET['id'])) {
+                                        $ADMESSAGE = new AdvertisementMessage($_GET['id']);
+                                        ?>
+                                        <div class="chat-field">
+                                            <div class="ui-block-title">
+                                                <h6 class="title">
+                                                    <?php
+                                                    if ($ADMESSAGE->owner == $MEMBER->id) {
+                                                        $MEM2 = new Member($ADMESSAGE->member);
+                                                    } else {
+                                                        $MEM2 = new Member($ADMESSAGE->owner);
+                                                    }
+
+                                                    echo $MEM2->firstName . ' ' . $MEM2->lastName;
+                                                    ?>
+                                                </h6>
+                                                <div class="author-thumb message-box">
+                                                    <img src="../upload/member/<?php echo $MEM2->profilePicture; ?>" alt="author">
+                                                </div>
+                                            </div>
+                                            <div class="ui-block-title ad-details-section">
+                                                <?php
+                                                foreach (AdvertisementImage::getPhotosByAdId($ADVERTISEMENT->id) as $key => $img) {
+                                                    if ($key == 0) {
+                                                        ?>
+                                                        <div class="author-thumb">
+                                                            <img src="../upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt="author">
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    <?php
+                                                }
+                                                ?>
+                                                <div class="notification-event">
+                                                    <a class="h6 notification-friend" href="#">
+                                                        <?php
+                                                        if (strlen($ADVERTISEMENT->title) > 20) {
+                                                            echo substr($ADVERTISEMENT->title, 0, 18) . '...';
+                                                        } else {
+                                                            echo $ADVERTISEMENT->title;
+                                                        }
+                                                        ?>
+                                                    </a><br />
+                                                    <span class="chat-message-item">
+                                                        <?php echo $CATEGORY->name . ', ' . $SUBCATEGORY->name; ?>
+                                                    </span><br />
+                                                    <span class="chat-message-item">
+                                                        <?php
+                                                        if ($ADVERTISEMENT->price) {
+                                                            echo 'Rs. ' . number_format($ADVERTISEMENT->price);
+                                                        } else {
+                                                            echo 'Price negotiable ';
+                                                        }
+                                                        ?>
+                                                    </span><br />
+                                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="mCustomScrollbar" data-mcs-theme="dark">
+                                                <ul class="notification-list chat-message chat-message-field">
+                                                    <?php
+                                                    if ($ADMESSAGE->parent == 0) {
+                                                        $MESSAGES = AdvertisementMessage::getParentMessage($_GET['id']);
+                                                    } else {
+                                                        $MESSAGES = AdvertisementMessage::getMessagesByParent($ADMESSAGE->parent);
+                                                    }
+
+
+
+                                                    foreach ($MESSAGES as $key => $msg) {
+                                                        if ($key == 0) {
+                                                            $firstmsg = $msg['id'];
+                                                        }
+                                                        if ($msg['sender'] == 'member') {
+                                                            $MEM1 = new Member($msg['member']);
+                                                        } else {
+                                                            $MEM1 = new Member($msg['owner']);
+                                                        }
+                                                        $result1 = getTime($msg['created_at']);
+                                                        if ($msg['sender'] == 'owner' && $msg['member'] == $MEMBER->id) {
+                                                            $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                        } elseif ($msg['sender'] == 'member' && $msg['owner'] == $MEMBER->id) {
+                                                            $viewmessage = AdvertisementMessage::updateViewingStatus($msg['id']);
+                                                        }
+                                                        ?>
+                                                        <li>
+                                                            <div class="author-thumb message-box">
+                                                                <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
+                                                            </div>
+                                                            <div class="notification-event">
+                                                                <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
+                                                                <span class="notification-date"><time class="entry-date updated" datetime=""><?php echo $result1; ?></time></span>
+                                                                <div class="chat-message-item"><?php echo $msg['message']; ?></div>
+                                                            </div>
+
+                                                        </li>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                            <div class="form-group label-floating is-empty">
+                                                <form id="send-message" method="post" enctype="multipart/form-data" action="post-and-get/member-message.php">
+                                                    <label class="control-label">Write your message...</label>
+                                                    <textarea class="form-control" name="message" id="message" placeholder=""  ></textarea>
+                                                    <input type="hidden" name="member" value="<?php echo $ADMESSAGE->member; ?>">
+                                                    <input type="hidden" name="owner" id="owner" value="<?php echo $ADVERTISEMENT->member; ?>">
+                                                    <input type="hidden" name="advertisement" id="advertisement" value="<?php echo $ADVERTISEMENT->id; ?>">
+                                                    <input type="hidden" name="parent" id="parent" value="<?php echo $firstmsg; ?>">
+                                                    <input type="hidden" name="sender" value="<?php
+                                                    if ($MEMBER->id == $ADVERTISEMENT->member) {
+                                                        echo 'owner';
+                                                    } else {
+                                                        echo 'member';
+                                                    }
+                                                    ?>">
+                                                    <div class="add-options-message">
+                                                        <button type="submit" name="member-message" id="member-message" class="btn btn-primary btn-sm">
+                                                            Send
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+
+                                    <!-- ... end Chat Field -->
+                                </div>
+                                <?php
+                            } else {
+                                ?>
+                                <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12  padding-r-0">
+                                    <div class="post no-chats">
+                                        <h3>No Conversations yet!.</h3><br/>
+                                        <h6>Click "Chat" on an ad to start chatting.</h6><br/>
+                                        <a href="../all-advertisement.php" class="btn btn-primary btn-sm">
+                                            Browse Advertisements
+                                        </a>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

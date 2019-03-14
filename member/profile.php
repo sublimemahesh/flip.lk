@@ -108,7 +108,17 @@ $propic = $MEMBER->profilePicture;
                                             <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
                                                 <form>
                                                     <div class="author-thumb">
-                                                        <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
+                                                        <?php
+                                                        if ($MEMBER->profilePicture) {
+                                                            ?>
+                                                            <img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="profile" class="avatar" id="profile_pic2">
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img alt="author" src="../upload/member/member.png" class="avatar" alt="profile" id="profile_pic2">
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                     <div class="form-group with-icon label-floating is-empty">
                                                         <label class="control-label">Share what you are thinking here...</label>
@@ -216,7 +226,17 @@ $propic = $MEMBER->profilePicture;
                                         <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
                                             <form action="post-and-get/post.php" method="post" id="post-form">
                                                 <div class="author-thumb">
-                                                    <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
+                                                    <?php
+                                                        if ($MEMBER->profilePicture) {
+                                                            ?>
+                                                            <img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="profile" class="avatar" id="profile_pic2">
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img alt="author" src="../upload/member/member.png" class="avatar" alt="profile" id="profile_pic2">
+                                                            <?php
+                                                        }
+                                                        ?>
                                                 </div>
                                                 <div class="form-group with-icon label-floating is-empty">
                                                     <label class="control-label">Share what you are thinking here...</label>
