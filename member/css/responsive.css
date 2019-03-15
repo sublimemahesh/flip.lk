@@ -277,6 +277,7 @@ and open the template in the editor.
     .ui-block-title{
         background: #fff;  
     }
+  
 
 }
 @media(min-width:992px) and (max-width:1200px) {
@@ -441,15 +442,7 @@ and open the template in the editor.
     .mobile-app-tabs{
         background-color: initial;
     }
-    /*    .header{
-            
-        }
-        .header .page-title {
-        display: inherit;
-        padding: 7px 143px 58px 6px;
-        margin-left: -54px;
-        margin-right: 58px;
-        }*/
+
     .header{
         padding-left: 6px;
         padding-right: 1px;
@@ -468,7 +461,7 @@ and open the template in the editor.
     .notification-list.chat-message:hover{
         background: #abbfbf4d;
     }
-  
+
     .ui-block-title.reciever-details{
         background: #fff;
     }
@@ -482,7 +475,7 @@ and open the template in the editor.
         max-width: 61%;
     }
     .nav-link img{
-       max-width: 61%; 
+        max-width: 61%; 
     }
     .responsive-header-logo img{
         max-width: 100%;
@@ -491,7 +484,23 @@ and open the template in the editor.
     .mobile-app-tabs{
         margin-left: 301px;
     }
+
+    .top-header-author{
+        bottom: 200px;
+    }
+    .control-block-button .btn-control:last-child{
+        margin-left: 464px;
+    }
+    .top-header{
+        height: 316px;
+    }
+    .profile-menu{
+        justify-content: space-evenly;
+    }
 }
+
+
+
 @media (width:1024px){
     .header .page-title{
         display: inherit;
@@ -554,18 +563,27 @@ and open the template in the editor.
     .ui-block-title{
         background: #fff;  
     }
-        .has-items img{
+    .has-items img{
         max-width: 61%;
     }
     .nav-link img{
-       max-width: 61%; 
+        max-width: 61%; 
     }
     .responsive-header-logo img{
         max-width: 80%;
         /*margin-left: -283px;*/
     }
-    .mobile-app-tabs{
-        /*margin-left: 301px;*/
+    .top-header-author{
+        bottom: 200px;
+    }
+    .control-block-button .btn-control:last-child{
+        margin-left: 464px;
+    }
+     .top-header{
+        height: 316px;
+    }
+    .profile-menu{
+        justify-content: space-evenly;
     }
 }
 @media (width: 600px){
@@ -605,12 +623,35 @@ and open the template in the editor.
         max-width: 61%;
     }
     .nav-link img{
-       max-width: 61%; 
+        max-width: 61%; 
     }
     .responsive-header-logo img{
         max-width: 85%;
-      
-    }
-   
 
+    }
+    .top-header-author{
+        bottom: 200px;
+    }
+    .control-block-button .btn-control:last-child{
+        margin-left: 464px;
+    }
+     .top-header{
+        height: 316px;
+    }
+    .profile-menu{
+        justify-content: space-evenly;
+    }
+
+
+}
+@media (width: 800px){
+      .control-block-button .btn-control:last-child{
+        margin-left: 433px;
+    }
+    .top-header-author{
+        bottom: 174px;
+    }
+    .top-header{
+        height: 328px;
+    }
 }

@@ -2,7 +2,7 @@
     <section class="footer-top-wrap">
         <div class="container footer-container">
             <div class="row">
-                <div class="single-item col-lg-3 col-md-3 col-12">
+                <div class="single-item col-lg-3 col-md-3 col-12 col-sm-3">
                     <div class="footer-box">
                         <div class="footer-logo">
                             <a href="./"><img src="img/logo/logo.jpg" class="img-fluid" alt="footer-logo"></a>
@@ -13,7 +13,7 @@
                         
                     </div>
                 </div>
-                <div class="single-item col-lg-3 col-md-3 col-12">
+                <div class="single-item col-lg-3 col-md-3 col-12 col-sm-3">
                     <div class="footer-box">
                         <div class="footer-header">
                             <h3>Top Highlights</h3>
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="single-item col-lg-3 col-md-3 col-12">
+                <div class="single-item col-lg-3 col-md-3 col-12 col-sm-3">
                     <div class="footer-box">
                         <div class="footer-header">
                             <h3>Support</h3>
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="single-item col-lg-3 col-md-3 col-12">
+                <div class="single-item col-lg-3 col-md-3 col-12 col-sm-3">
                     <div class="footer-box">
                         <div class="footer-header">
                             <h3>Follow Us On</h3>
