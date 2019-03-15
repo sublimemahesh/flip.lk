@@ -174,14 +174,18 @@ and open the template in the editor.
     .control-icon {
         margin-top: 0px;
     }
-
-    
-
     .mobile-app-tabs{
         background-color: initial;
         height: 60px;
-
-
+    }
+    .footer-logo img{
+        width: 167px;
+    }
+    .footer-box .footer-header h3{
+        font-size: 24px;
+    }
+    .footer-box .widget_nav_menu li a{
+        font-size: 16px;
     }
 
 }
@@ -377,6 +381,9 @@ and open the template in the editor.
     .background-image img{
         width: 909px;
     }
+    .footer-box{
+        margin-left: 12px;
+    }
 }
 @media (width: 768px){
     .s002 form .inner-form .input-field.fifth-wrap .btn-search{
@@ -391,7 +398,7 @@ and open the template in the editor.
         max-width: 61%;
     }
     .nav-link img{
-       max-width: 61%; 
+        max-width: 61%; 
     }
     .responsive-header-logo img{
         max-width: 100%;
@@ -399,6 +406,19 @@ and open the template in the editor.
     }
     .mobile-app-tabs{
         margin-left: 301px;
+    }
+    .footer-box .footer-header h3{
+        font-size: 22px;
+    }
+    .footer-about p{
+        margin-top: -16px;
+    }
+    .footer-box .widget_nav_menu li a{
+        font-size: 16px;
+    }
+    .footer-box .footer-contact-info li{
+        font-size: 16px;
+        margin-bottom: 6px;
     }
 }
 @media (width: 640px){
@@ -410,15 +430,28 @@ and open the template in the editor.
         max-width: 61%;
     }
     .nav-link img{
-       max-width: 61%; 
+        max-width: 61%; 
     }
     .responsive-header-logo img{
         max-width: 80%;
-   }
-     .s002 form .inner-form .input-field.fifth-wrap .btn-search{
+    }
+    .s002 form .inner-form .input-field.fifth-wrap .btn-search{
         margin-left: 0px;
     }
-   
+    .footer-box .footer-header h3{
+        font-size: 19px;
+    }
+    .footer-about p{
+        margin-top: -16px;
+    }
+    .footer-box .widget_nav_menu li a{
+        font-size: 16px;
+    }
+    .footer-box .footer-contact-info li{
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
 
 }
 @media (width: 600px){
@@ -430,14 +463,28 @@ and open the template in the editor.
         max-width: 61%;
     }
     .nav-link img{
-       max-width: 61%; 
+        max-width: 61%; 
     }
     .responsive-header-logo img{
         max-width: 85%;
     }
-     .s002 form .inner-form .input-field.fifth-wrap .btn-search{
+    .s002 form .inner-form .input-field.fifth-wrap .btn-search{
         margin-left: 0px;
     }
+    .footer-box .footer-header h3{
+        font-size: 18px;
+    }
+    .footer-about p{
+        margin-top: -16px;
+    }
+    .footer-box .widget_nav_menu li a{
+        font-size: 16px;
+    }
+    .footer-box .footer-contact-info li{
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
     
+
 }
 

@@ -49,7 +49,7 @@
                                 <?php
                             } else {
                                 ?>
-                                <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
+                                <div class="col col-lg-5 col-md-5 col-sm-6 col-12">
                                     <ul class="profile-menu">
 
                                         <li>
@@ -65,7 +65,7 @@
 
                                     </ul>
                                 </div>
-                                <div class="col col-lg-5 ml-auto col-md-5 col-sm-12 col-12">
+                                <div class="col col-lg-5 ml-auto col-md-5 col-sm-6 col-12">
                                     <ul class="profile-menu">
                                         <li>
                                             <a href="advertisement.php">My Advertisement</a>
