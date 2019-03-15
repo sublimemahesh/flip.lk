@@ -265,9 +265,7 @@ and open the template in the editor.
     .notification-list.chat-message:hover{
         background: #abbfbf4d;
     }
-    /*    .chat-field{
-            margin-right: -17px;
-        }*/
+  
     .ui-block-title.reciever-details{
         background: #fff;
     }
