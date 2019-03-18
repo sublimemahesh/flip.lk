@@ -239,7 +239,7 @@ $CATEGORIES = BusinessCategory::all();
                                         </div>
                                     </div>
 
-                                    <div class="col col-lg-6 col-md-4 col-sm-12 col-12">
+                                    <div class="col col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="row upload-group-pro-pic pro-img">
                                             <div class="uploadgroupphotobx" id="uploadgroupphotobx"> 
                                                 <div class="progroupimg">
@@ -261,7 +261,7 @@ $CATEGORIES = BusinessCategory::all();
 
                                         </div>
                                     </div>
-                                    <div class="col col-lg-6 col-md-4 col-sm-12 col-12">
+                                    <div class="col col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="row upload-group-cover-pic">
                                             <div class="uploadgroupphotobx2" id="uploadgroupphotobx2"> 
                                                 <div class="coverimg">

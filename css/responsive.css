@@ -187,7 +187,6 @@ and open the template in the editor.
     .footer-box .widget_nav_menu li a{
         font-size: 16px;
     }
-
 }
 
 @media(min-width:577px) and (max-width:990px) {
@@ -420,6 +419,7 @@ and open the template in the editor.
         font-size: 16px;
         margin-bottom: 6px;
     }
+    
 }
 @media (width: 640px){
     .header{
@@ -450,6 +450,9 @@ and open the template in the editor.
     .footer-box .footer-contact-info li{
         font-size: 16px;
         margin-bottom: 6px;
+    }
+    .single-item{
+        margin-left: -8px;
     }
 
 
