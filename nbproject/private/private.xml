@@ -11,6 +11,7 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+
         <group>
             <file>file:/C:/xampp/htdocs/flip.lk/css/responsive.css</file>
             <file>file:/C:/xampp/htdocs/flip.lk/header.php</file>
@@ -18,5 +19,8 @@
             <file>file:/C:/xampp/htdocs/flip.lk/member/css/responsive.css</file>
             <file>file:/C:/xampp/htdocs/flip.lk/footer.php</file>
         </group>
+
+        <group/>
+ #94 Create Option to Manage all Business Group in the Website
     </open-files>
 </project-private>
