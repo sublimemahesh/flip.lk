@@ -202,6 +202,9 @@ and open the template in the editor.
     .ui-block-title{
         background: #fff;  
     }
+    .upload-group-span2{
+        width: 307px;
+    }
 }
 
 
@@ -275,6 +278,12 @@ and open the template in the editor.
     .ui-block-title{
         background: #fff;  
     }
+    .upload-group-pro-pic.pro-img{
+        margin: 8px -6px 36px;
+    }
+    .upload-group-span2{
+        width: 259px;
+    }
   
 
 }
@@ -337,6 +346,12 @@ and open the template in the editor.
     .ui-block-title{
         background: #fff;  
     }
+/*    .upload-group-pro-pic.pro-img{
+        margin: 10px 100px 45px;
+    }
+    .upload-cover-pic, .upload-group-cover-pic{
+        margin: 10px 12px;
+    }*/
 }
 @media(width:360px) {
     .profile-menu li a, .profile-menu li > div{
@@ -370,6 +385,23 @@ and open the template in the editor.
     .ui-block-title{
         background: #fff;  
     }
+    .upload-group-cover-pic{
+        margin: 0px -25px 22px -10px;
+
+    }
+    .uploadphotobx2 img, .uploadgroupphotobx2 img{
+        width: 299px;
+    }
+    .upload-group-span2{
+        width: 299px;
+    }
+    upload-group-span2{
+        padding-left: 25px;
+    }
+    .coverimg img{
+        /*padding-left: 26px;*/
+    }
+    
 
 }
 @media(width:375px) {
@@ -404,6 +436,9 @@ and open the template in the editor.
     .ui-block-title{
         background: #fff;  
     }
+    .upload-group-span2{
+        width: 297px;
+    }
 
 }
 @media(width:414px) {
@@ -434,6 +469,12 @@ and open the template in the editor.
     }
     .ui-block-title{
         background: #fff;  
+    }
+    .upload-group-pro-pic.pro-img{
+        margin: 6px 80px 43px;
+    }
+    .upload-group-span2{
+        width: 336px;
     }
 }
 @media (width: 768px){
@@ -495,6 +536,12 @@ and open the template in the editor.
     .profile-menu{
         justify-content: space-evenly;
     }
+    .uploadphotobx2 img, .uploadgroupphotobx2 img{
+        width: 312px;
+    }
+    .upload-group-span2{
+        width: 312px;
+    }
 }
 
 
@@ -528,6 +575,12 @@ and open the template in the editor.
     }
     .ui-block-title{
         background: #fff;  
+    }
+    .upload-group-pro-pic.pro-img{
+        margin: 8px 26px 39px;
+    }
+    .upload-group-span2{
+        width: 236px;
     }
 
 }
@@ -582,6 +635,12 @@ and open the template in the editor.
     }
     .profile-menu{
         justify-content: space-evenly;
+    }
+    .uploadphotobx2 img, .uploadgroupphotobx2 img{
+        width: 312px;
+    }
+    .upload-group-span2{
+        width: 266px;
     }
 }
 @media (width: 600px){
@@ -639,6 +698,12 @@ and open the template in the editor.
     .profile-menu{
         justify-content: space-evenly;
     }
+    .uploadphotobx2 img, .uploadgroupphotobx2 img{
+        width: 312px;
+    }
+    .upload-group-span2{
+        width: 245px;
+    }
 
 
 }
@@ -651,5 +716,73 @@ and open the template in the editor.
     }
     .top-header{
         height: 328px;
+    }
+    .upload-cover-pic, .upload-group-cover-pic{
+        margin: 6px 15px;
+    }
+    .upload-group-span2{
+        width: 216px;
+    }
+    
+}
+@media(min-width:1200px) and (max-width:1440px){
+    .hidden-lg {
+        display: none;
+    }
+    .ui-block-title.ad-details-section{
+        background: #fff;
+
+    }
+    .ui-block-title.ad-details-section:hover{
+        background: #abbfbf4d;
+    }
+    .notification-list.chat-message{
+        background: #fff;
+    }
+    .notification-list.chat-message:hover{
+        background: #abbfbf4d;
+    }
+    /*    .chat-field{
+            margin-right: -17px;
+        }*/
+    .ui-block-title.reciever-details{
+        background: #fff;
+    }
+    .chat-field textarea{
+        background: #fff;
+    }
+    .ui-block-title{
+        background: #fff;  
+    }
+    .upload-group-pro-pic.pro-img{
+        margin: 10px 88px 45px;
+    }
+    .upload-cover-pic, .upload-group-cover-pic{
+        margin: 10px 27px;
+    }
+    
+    .upload-group-span2{
+        /*width: 312px;*/
+    }
+    .uploadphotobx2 img, .uploadgroupphotobx2 img{
+        width: 342px;
+    }
+}
+@media (width: 1440px){
+    .uploadphotobx2 img, .uploadgroupphotobx2 img{
+        width: 313px;
+    }
+}
+@media (width: 1280px){
+    .upload-group-span2{
+        width: 292px;
+    }
+}
+@media (width: 412px){
+    .upload-group-span2{
+        width: 334px;
+    }
+    .upload-group-pro-pic.pro-img{
+        margin: 10px 77px 45px;
     }
 }
