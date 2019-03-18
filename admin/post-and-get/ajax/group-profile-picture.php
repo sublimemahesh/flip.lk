@@ -2,13 +2,14 @@
 include_once(dirname(__FILE__) . '/../../../class/include.php');
 
 if (isset($_POST['upload-group-profile'])) {
-    $dir_dest = '../../../upload/group/';
+    $dir_dest = '../../upload/group/profile/';
 
     $handle = new Upload($_FILES['group-profile-picture']);
     $imgName = null;
 
     if ($_POST['group_profile']) {
         $img = $_POST['group_profile'];
+
         if ($handle->uploaded) {
             $handle->image_resize = true;
             $handle->file_new_name_body = TRUE;
@@ -26,7 +27,7 @@ if (isset($_POST['upload-group-profile'])) {
                 $imgName = $handle->file_dst_name;
             }
         }
-        
+        dd($imgName);
         if (!isset($_SESSION)) {
             session_start();
         }
