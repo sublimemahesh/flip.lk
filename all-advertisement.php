@@ -113,71 +113,82 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                         <div class = "col-xl-10 col-xs-8 ad-item-details">
                                                             <div class="ad-title"><?php echo $ad['title']; ?></div>
                                                             <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
-                                                            <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php if ($ad['price'] == 0) {
-                                                        echo 'Negotiable';
-                                                    } else {
-                                                        echo 'Rs. ' . number_format($ad['price']);
-                                                    } ?></div>
+                                                            <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php
+                                                                if ($ad['price'] == 0) {
+                                                                    echo 'Negotiable';
+                                                                } else {
+                                                                    echo 'Rs. ' . number_format($ad['price']);
+                                                                }
+                                                                ?></div>
                                                             <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
                                                         </div>
                                                     </div>
                                                 </a>
                                             </div>
-        <?php
-    }
-} else {
-    ?>
+                                            <?php
+                                        }
+                                    } else {
+                                        ?>
                                         <div class="ui-block no-post">
                                             <h5>There is no any advertisements.</h5>
                                         </div>
-                                    <?php
-                                }
-                                ?>
+                                        <?php
+                                    }
+                                    ?>
                                 </div>
-<?php Advertisement::showPagination($setLimit, $page); ?>
+                                <?php Advertisement::showPagination($setLimit, $page); ?>
                             </div>
                         </div>
                         <!-- ... end Main Content -->
                         <!-- Left Sidebar -->
-                       
-                        
-                         <div id="sidebar" class="sidebar col col-xl-4 order-xl-1 col-lg-4 order-lg-1 col-md-12 col-sm-12 col-12">
 
 
-                                <div id="secondary" class="secondary">
-                                    <nav id="site-navigation" class="main-navigation" role="navigation">
-                                        <div class="menu-feature-container">
-                                            Category
-                                            <ul id="menu-feature" class="nav-menu">
-                                                <li id="menu-item-1"  class="menu-item category collapsible"><a href="#">Layout</a>
-                                                    <i class="icon-1 fa fa-angle-down cat-dropdown" id1="1" times="0"></i>
-                                                    <ul class="sub-menu menu-item-1 hidden">
-                                                        <li id="sub-category-" class="menu-item "><a href="#">Grid</a></li>
-                                                        <li id="sub-category-" class="menu-item"><a href="#" aria-current="page">Pinterest</a></li>
-                                                        <li id="sub-category-" class="menu-item"><a href="#">Masonry</a></li>
-                                                        <li id="sub-category-" class="menu-item"><a href="#">Timeline</a></li>
-                                                        <li id="sub-category-" class="menu-item"><a href="#">One and others</a></li>
-                                                        <li id="sub-category-" class="menu-item"><a href="#">Collapsible list</a></li>
-                                                        <li id="sub-category-" class="menu-item"><a href="#">Scrollable list</a></li>
-                                                        <li id="sub-category-" class="menu-item"><a href="#">Glossary list</a></li>
-                                                        <li id="sub-category-" class="menu-item"><a href="#" target="_blank">Multiple Views on page</a></li>
-                                                        <li id="sub-category-" class="menu-item"><a href="#">Multiple post types on View</a></li>
+                        <div id="sidebar" class="sidebar col col-xl-4 order-xl-1 col-lg-4 order-lg-1 col-md-12 col-sm-12 col-12">
+
+
+                            <div id="secondary" class="secondary">
+                                <nav id="site-navigation" class="main-navigation" role="navigation">
+                                    <div class="menu-feature-container">
+                                        <p>Categories</p>
+                                        <ul id="menu-feature" class="nav-menu">
+                                            <?php
+                                            foreach (BusinessCategory::all() as $category) {
+                                                $count = Advertisement::countAdsByCategory($category['id']);
+                                                ?>
+                                                <li id="menu-item-<?php echo $category['id']; ?>"  class="menu-item category collapsible collapsible1"> <img src="upload/business-category/<?php echo $category['image_name']; ?>"><?php echo $category['name'] . ' (' . number_format($count) . ')'; ?>
+                                                    <i class="icon-<?php echo $category['id']; ?> fa fa-angle-down cat-dropdown" id1="<?php echo $category['id']; ?>" times="0"></i>
+                                                    <ul class="sub-menu menu-item-<?php echo $category['id']; ?> hidden">
+                                                        <?php
+                                                        foreach (BusinessSubCategory::getSubCategoriesByCategory($category['id']) as $subcategory) {
+                                                            $countsubcat = Advertisement::countAdsBySubCategory($subcategory['id']);
+                                                            ?>
+
+                                                            <li id="sub-category-" class="menu-item ">
+                                                                <a href="advertisements.php?category=<?php echo $category['id']; ?>&subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
+                                                            </li>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </ul>
                                                 </li>
-                                                
-                                            </ul>
-                                        </div>
-                                    </nav><!-- .main-navigation -->
-                                </div><!-- .secondary -->
-                            </div>
+
+
+                                                <?php
+                                            }
+                                            ?>
+                                        </ul>
+                                    </div>
+                                </nav><!-- .main-navigation -->
+                            </div><!-- .secondary -->
+                        </div>
                         <!-- ... end Left Sidebar -->
                     </div>
                 </div>
             </div>
         </div>
-<?php
-include './footer.php';
-?>
+        <?php
+        include './footer.php';
+        ?>
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>
@@ -233,7 +244,7 @@ include './footer.php';
         <script src="js/choices.js" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
-                
+
 //                $(".cat-dropdown").click(function () {
                 $(".category").on('click', '.cat-dropdown', function () {
                     var attr = $(this).attr("id1");
@@ -241,14 +252,14 @@ include './footer.php';
                     if (times == 0) {
                         $(".menu-item-" + attr).removeClass("hidden");
                         $(this).attr("times", "1");
-                        $(".icon-1").removeClass("fa-angle-down");
-                        $(".icon-1").addClass("fa-angle-up");
+                        $(".icon-" + attr).removeClass("fa-angle-down");
+                        $(".icon-" + attr).addClass("fa-angle-up");
 
                     } else {
                         $(".menu-item-" + attr).addClass("hidden");
                         $(this).attr("times", "0");
-                        $(".icon-1").removeClass("fa-angle-up");
-                        $(".icon-1").addClass("fa-angle-down");
+                        $(".icon-" + attr).removeClass("fa-angle-up");
+                        $(".icon-" + attr).addClass("fa-angle-down");
                     }
                 });
             });

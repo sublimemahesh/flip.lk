@@ -197,65 +197,43 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                         </div>
                         <!-- ... end Main Content -->
                         <!-- Left Sidebar -->
-                        <div class="col col-xl-4 order-xl-1 col-lg-4 order-lg-1 col-md-12 col-sm-12 col-12 hidden-sm">
-                            <div class="ui-block">
-                                <div class="ui-block-title">
-                                    <h6 class="title">All Categories</h6>
-                                </div>
-                                <div class="ui-block-content">
-                                    <!-- W-Personal-Info -->
-                                    <ul class="widget w-personal-info item-block category-list">
-                                        <?php
-                                        if (empty($_GET['category'])) {
+                        <div class="sidebar col col-xl-4 order-xl-1 col-lg-4 order-lg-1 col-md-12 col-sm-12 col-12 hidden-sm">
+                            
+                            <div id="secondary" class="secondary">
+                                <nav id="site-navigation" class="main-navigation" role="navigation">
+                                    <div class="menu-feature-container">
+                                        <p>Categories</p>
+                                        <ul id="menu-feature" class="nav-menu">
+                                            <?php
                                             foreach (BusinessCategory::all() as $category) {
                                                 $count = Advertisement::countAdsByCategory($category['id']);
                                                 ?>
-                                                <li>
-                                                    <span class="text category-icon">
-                                                        <img src="upload/business-category/<?php echo $category['image_name']; ?>">
-                                                        <a href="advertisements.php?category=<?php echo $category['id']; ?>"><?php echo $category['name'] . ' (' . number_format($count) . ')'; ?></a>
-                                                    </span>
+                                                <li id="menu-item-<?php echo $category['id']; ?>"  class="menu-item category collapsible collapsible1"> <img src="upload/business-category/<?php echo $category['image_name']; ?>"><?php echo $category['name'] . ' (' . number_format($count) . ')'; ?>
+                                                    <i class="icon-<?php echo $category['id']; ?> fa fa-angle-down cat-dropdown" id1="<?php echo $category['id']; ?>" times="0"></i>
+                                                    <ul class="sub-menu menu-item-<?php echo $category['id']; ?> hidden">
+                                                        <?php
+                                                        foreach (BusinessSubCategory::getSubCategoriesByCategory($category['id']) as $subcategory) {
+                                                            $countsubcat = Advertisement::countAdsBySubCategory($subcategory['id']);
+                                                            ?>
+
+                                                            <li id="sub-category-" class="menu-item ">
+                                                                <a href="advertisements.php?category=<?php echo $category['id']; ?>&subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
+                                                            </li>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </ul>
                                                 </li>
+
 
                                                 <?php
                                             }
-                                        } else {
-                                            $count1 = Advertisement::countAdsByCategory($category1);
                                             ?>
-                                            <li>
-                                                <span class="text category-list-title">
-
-                                                    <a href="all-advertisement.php">
-                                                        <i class="fa fa-angle-left fa-2x"></i>
-                                                        <span>All Categories</span>
-                                                    </a>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <span class="text category-icon">
-                                                    <img src="upload/business-category/<?php echo $BUSCAT->image_name; ?>">
-                                                    <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>"><?php echo $BUSCAT->name . ' (' . number_format($count1) . ')'; ?></a>
-                                                </span>
-                                            </li>
-                                            <?php
-                                            foreach (BusinessSubCategory::getSubCategoriesByCategory($BUSCAT->id) as $subcategory) {
-                                                $countsubcat = Advertisement::countAdsBySubCategory($subcategory['id']);
-                                                ?>
-                                                <li>
-                                                    <span class="text subcategory-icon">
-                                                        <img src="upload/business_subcategory/<?php echo $subcategory['image_name']; ?>">
-                                                        <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>&subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
-                                                    </span>
-                                                </li>
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-
-                                    </ul>
-                                    <!-- .. end W-Personal-Info -->
-                                </div>
-                            </div>
+                                        </ul>
+                                    </div>
+                                </nav><!-- .main-navigation -->
+                            </div><!-- .secondary -->
+                            
                         </div>
                         <!-- ... end Left Sidebar -->
                     </div>
@@ -406,5 +384,28 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2FmnO6PPzu9Udebcq9q_yUuQ_EGItjak&libraries=places&callback=initAutocomplete"
         async defer></script>
+         <script>
+            $(document).ready(function () {
+
+//                $(".cat-dropdown").click(function () {
+                $(".category").on('click', '.cat-dropdown', function () {
+                    var attr = $(this).attr("id1");
+                    var times = $(this).attr("times");
+                    if (times == 0) {
+                        $(".menu-item-" + attr).removeClass("hidden");
+                        $(this).attr("times", "1");
+                        $(".icon-" + attr).removeClass("fa-angle-down");
+                        $(".icon-" + attr).addClass("fa-angle-up");
+
+                    } else {
+                        $(".menu-item-" + attr).addClass("hidden");
+                        $(this).attr("times", "0");
+                        $(".icon-" + attr).removeClass("fa-angle-up");
+                        $(".icon-" + attr).addClass("fa-angle-down");
+                    }
+                });
+            });
+
+        </script>
     </body>
 </html>
