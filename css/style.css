@@ -2252,7 +2252,7 @@ ul.setPaginate li.dot {
 
 /*Category sidebar list*/
 .sidebar {
-    
+
     background-color: #fff;
 }
 .secondary {
@@ -2366,4 +2366,29 @@ ul {
         /*max-width: 1323px;*/
         max-width: 1253px;
     }
+}
+.menu-feature-container p{
+    color: #9a9fbf;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: Roboto,-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+}
+.collapsible1{
+    color: #065a75;
+    font-weight: 420;
+    font-size: 14px;
+}
+
+#menu-feature .category a{
+    color: #717b83;
+    font-size: 13px;
+    margin-left: 35px;
+    font-weight: 420;
+}
+.collapsible1 img{
+    max-width: 25px;
+    margin-right: 9px;
+}
+.main-navigation li{
+    padding: 15px 0 7px 0px;
 }
