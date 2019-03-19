@@ -92,83 +92,92 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                             ?>
                                             <div class="ad-item  post ">
                                                 <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
-                                                <div class="ad-item-box row">
-                                                    <div class = "col-xl-2 col-xs-4 ad-item-image">
-                                                        <?php
-                                                        if (count($adimages) > 0) {
-                                                            foreach ($adimages as $key => $img) {
-                                                                if ($key == 0) {
-                                                                    ?>
-                                                                    <img src="upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt=""/>
-                                                                    <?php
-                                                                }
-                                                            }
-                                                        } else {
-                                                            ?>
-                                                            <img src="upload/advertisement/thumb2/advertising.jpg" alt=""/>
+                                                    <div class="ad-item-box row">
+                                                        <div class = "col-xl-2 col-xs-4 ad-item-image">
                                                             <?php
-                                                        }
-                                                        ?>
+                                                            if (count($adimages) > 0) {
+                                                                foreach ($adimages as $key => $img) {
+                                                                    if ($key == 0) {
+                                                                        ?>
+                                                                        <img src="upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt=""/>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                ?>
+                                                                <img src="upload/advertisement/thumb2/advertising.jpg" alt=""/>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </div>
+                                                        <div class = "col-xl-10 col-xs-8 ad-item-details">
+                                                            <div class="ad-title"><?php echo $ad['title']; ?></div>
+                                                            <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
+                                                            <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php if ($ad['price'] == 0) {
+                                                        echo 'Negotiable';
+                                                    } else {
+                                                        echo 'Rs. ' . number_format($ad['price']);
+                                                    } ?></div>
+                                                            <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                        </div>
                                                     </div>
-                                                    <div class = "col-xl-10 col-xs-8 ad-item-details">
-                                                        <div class="ad-title"><?php echo $ad['title']; ?></div>
-                                                        <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
-                                                        <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php if($ad['price'] == 0) { echo 'Negotiable'; } else { echo 'Rs. ' . number_format($ad['price']);} ?></div>
-                                                        <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
-                                                    </div>
-                                                </div>
                                                 </a>
                                             </div>
-                                            <?php
-                                        }
-                                    } else {
-                                        ?>
+        <?php
+    }
+} else {
+    ?>
                                         <div class="ui-block no-post">
                                             <h5>There is no any advertisements.</h5>
                                         </div>
-                                        <?php
-                                    }
-                                    ?>
+                                    <?php
+                                }
+                                ?>
                                 </div>
-                                <?php Advertisement::showPagination($setLimit, $page); ?>
+<?php Advertisement::showPagination($setLimit, $page); ?>
                             </div>
                         </div>
                         <!-- ... end Main Content -->
                         <!-- Left Sidebar -->
-                        <div class="col col-xl-4 order-xl-1 col-lg-4 order-lg-1 col-md-12 col-sm-12 col-12 hidden-sm">
-                            <div class="ui-block">
-                                <div class="ui-block-title">
-                                    <h6 class="title">All Categories</h6>
-                                </div>
-                                <div class="ui-block-content">
-                                    <!-- W-Personal-Info -->
-                                    <ul class="widget w-personal-info item-block category-list">
-                                        <?php
-                                        foreach (BusinessCategory::all() as $category) {
-                                            ?>
-                                            <li>
-                                                <span class="text category-icon">
-                                                    <img src="upload/business-category/<?php echo $category['image_name']; ?>">
-                                                    <a href="advertisements.php?category=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a>
-                                                </span>
-                                            </li>
-                                            <?php
-                                        }
-                                        ?>
+                       
+                        
+                         <div id="sidebar" class="sidebar col col-xl-4 order-xl-1 col-lg-4 order-lg-1 col-md-12 col-sm-12 col-12">
 
-                                    </ul>
-                                    <!-- .. end W-Personal-Info -->
-                                </div>
+
+                                <div id="secondary" class="secondary">
+                                    <nav id="site-navigation" class="main-navigation" role="navigation">
+                                        <div class="menu-feature-container">
+                                            Category
+                                            <ul id="menu-feature" class="nav-menu">
+                                                <li id="menu-item-1"  class="menu-item category collapsible"><a href="#">Layout</a>
+                                                    <i class="icon-1 fa fa-angle-down cat-dropdown" id1="1" times="0"></i>
+                                                    <ul class="sub-menu menu-item-1 hidden">
+                                                        <li id="sub-category-" class="menu-item "><a href="#">Grid</a></li>
+                                                        <li id="sub-category-" class="menu-item"><a href="#" aria-current="page">Pinterest</a></li>
+                                                        <li id="sub-category-" class="menu-item"><a href="#">Masonry</a></li>
+                                                        <li id="sub-category-" class="menu-item"><a href="#">Timeline</a></li>
+                                                        <li id="sub-category-" class="menu-item"><a href="#">One and others</a></li>
+                                                        <li id="sub-category-" class="menu-item"><a href="#">Collapsible list</a></li>
+                                                        <li id="sub-category-" class="menu-item"><a href="#">Scrollable list</a></li>
+                                                        <li id="sub-category-" class="menu-item"><a href="#">Glossary list</a></li>
+                                                        <li id="sub-category-" class="menu-item"><a href="#" target="_blank">Multiple Views on page</a></li>
+                                                        <li id="sub-category-" class="menu-item"><a href="#">Multiple post types on View</a></li>
+                                                    </ul>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </nav><!-- .main-navigation -->
+                                </div><!-- .secondary -->
                             </div>
-                        </div>
                         <!-- ... end Left Sidebar -->
                     </div>
                 </div>
             </div>
         </div>
-        <?php
-        include './footer.php';
-        ?>
+<?php
+include './footer.php';
+?>
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>
@@ -222,5 +231,28 @@ $pageLimit = ($page * $setLimit) - $setLimit;
         <script src="js/images-grid.js" type="text/javascript"></script>
         <script src="js/js/all-ad-slider.js" type="text/javascript"></script>
         <script src="js/choices.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function () {
+                
+//                $(".cat-dropdown").click(function () {
+                $(".category").on('click', '.cat-dropdown', function () {
+                    var attr = $(this).attr("id1");
+                    var times = $(this).attr("times");
+                    if (times == 0) {
+                        $(".menu-item-" + attr).removeClass("hidden");
+                        $(this).attr("times", "1");
+                        $(".icon-1").removeClass("fa-angle-down");
+                        $(".icon-1").addClass("fa-angle-up");
+
+                    } else {
+                        $(".menu-item-" + attr).addClass("hidden");
+                        $(this).attr("times", "0");
+                        $(".icon-1").removeClass("fa-angle-up");
+                        $(".icon-1").addClass("fa-angle-down");
+                    }
+                });
+            });
+
+        </script>
     </body>
 </html>
