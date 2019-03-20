@@ -1,6 +1,7 @@
 $(document).ready(function () {
     if ($('#c').val() == 'c') {
-        $('.nav-link').click();
+        $('#cover-pic-upload').css('display', 'block');
+        $('#profile-pic-upload').css('display', 'none');
     }
     $('#cover-picture').change(function () {
         var formData = new FormData($('#form-cover-picture')[0]);

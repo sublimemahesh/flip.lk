@@ -205,6 +205,7 @@ and open the template in the editor.
     .upload-group-span2{
         width: 307px;
     }
+    
 }
 
 
@@ -401,8 +402,6 @@ and open the template in the editor.
     .coverimg img{
         /*padding-left: 26px;*/
     }
-    
-
 }
 @media(width:375px) {
     .mobile-app-tabs{

@@ -4,7 +4,6 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 if (!isset($_SESSION)) {
     session_start();
 }
-$CATEGORIES = BusinessCategory::all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
