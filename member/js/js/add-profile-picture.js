@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
 //    $('.proimg').empty();
     $('#profile-picture').change(function () {
 
@@ -20,7 +20,7 @@ $(document).ready(function () {
 //                $('.proimg').append(html);
                 $('#pro').val(mess);
                 window.location.replace('login2.php');
-                
+
 
 
             },
@@ -42,8 +42,9 @@ $(document).ready(function () {
             async: false,
             dataType: 'json',
             success: function (result) {
-                if(result.response === 'success') {
-                            $('.nav-link').click();
+                if (result.response === 'success') {
+                    $('#cover-pic-upload').css('display', 'block');
+                    $('#profile-pic-upload').css('display', 'none');
                 }
 
 

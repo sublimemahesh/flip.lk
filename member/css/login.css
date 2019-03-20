@@ -258,3 +258,61 @@ body {
     padding: 0px 0px 15px;
     color: #3a5c7b;
 }
+
+/*login2.php*/
+.upload-pro-pic {
+    text-align: center;
+    margin: 30px auto;
+    width: 243px;
+    margin-bottom: 50px;
+}
+.upload-span {
+    height: 243px;
+    width: 243px;
+    padding-top: 8%;
+    font-size: 16px;
+}
+.upload-span2 {
+    height: 167px;
+    width: 313px;
+    padding-top: 5%;
+}
+.upload-cover-pic {
+    margin: 10px auto;
+    width: 313px;
+    margin-bottom: 50px;
+}
+a#upload-pro-pic, a#upload-cover-pic {
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+
+}
+@media(max-width:576px) {
+    .bg-facebook {
+        margin-bottom: 12px;
+    }
+    .upload-span {
+        padding-top: 27%;
+    }
+    .upload-cover-pic {
+        width: 250px;
+    }
+    .upload-span2 {
+        width: 250px;
+        padding-top: 15%;
+    }
+}
+@media(min-width:576px) and (max-width: 990px) {
+    .upload-span {
+        padding-top: 17%;
+    }
+    .upload-span2 {
+        padding-top: 9%;
+    }
+}
+@media(width: 800px) {
+    .upload-span {
+        padding-top: 15%;
+    }
+}

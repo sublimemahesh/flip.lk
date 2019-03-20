@@ -311,6 +311,23 @@ $MEMBER = new Member(1);
                 padding: 20px 25px 0px;
                 color: #3a5c7b;
             }
+
+
+
+
+            .upload-pro-pic {
+
+                text-align: center;
+                margin: 30px auto;
+                width: 243px;
+
+            }
+            .upload-span {
+
+                height: 243px;
+                width: 243px;
+                padding-top: 7%;
+            }
         </style>
 
     </head>
@@ -324,8 +341,8 @@ $MEMBER = new Member(1);
             <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
                 <div class="form">
                     <div class="tab-content">
-                        <div id="forgot-password">   
-                            <h1>Reset Password</h1>
+                        <div id="profile-pic-upload">   
+                            <h1>Upload Profile Picture</h1>
                             <div class="top-bott20 m-l-25 m-r-15">
                                 <?php
                                 if (isset($_GET['message'])) {
@@ -343,27 +360,105 @@ $MEMBER = new Member(1);
                                 $vali->show_message();
                                 ?>
                             </div>
-                            <p>Please check your email for your code. Your code is 5 characters in length.</p>
-                            <form class="content" id="register" action="post-and-get/member.php" method="post">
-                                <div class="field-wrap">
-                                    <label>
-                                       Password Reset Code<span class="req">*</span>
-                                    </label>
-                                    <input type="text" required autocomplete="off"  name="code"/>
+                            <form class="content" id="form-profile-picture">
+                                <div class="row upload-pro-pic">
+                                        <!--<img src="image/driver.png" alt=""/>-->
+                                    <div class="uploadphotobx" id="uploadphotobx"> 
+
+
+                                        <div class="proimg">
+                                            <?php
+                                            if (isset($_SESSION['image'])) {
+                                                ?>
+                                                <img src="../upload/member/<?php echo $img; ?>" class="profile-default-image pro-pic" alt=""/>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <img src="image/profile.png" class="profile-default-image" alt=""/>
+                                                <?php
+                                            }
+                                            ?>
+                                        </div>
+                                        <label class="uploadBox">
+                                            <!--<input type="file" name="profile-picture" id="profile-picture" class="profile-picture" sort="1" value="">-->
+                                            <input type="hidden" name="upload-profile" id="upload-profile" value="TRUE">
+                                            <input type="hidden" name="sort" id="sort" value="1">
+                                        </label>
+
+
+                                    </div>
+                                    <span class="upload-span" id="upload-span">
+                                        <i class="fa fa-camera fa-2x"></i><br />
+                                        Click here to Upload photo
+                                        <input type="file" name="profile-picture" id="profile-picture" class="profile-picture" sort="1" value="">
+                                    </span>
+
                                 </div>
-                                <div class="field-wrap">
-                                    <label>
-                                        Password<span class="req">*</span>
-                                    </label>
-                                    <input type="password" required autocomplete="off"  name="password"/>
+                                <input type="hidden" id="pro" name="profile" value="<?php echo $img; ?>" />
+                                <input type="hidden" id="id" name="id" value="<?php echo $_SESSION['id']; ?>" />
+                                <a class="button button-block" id="upload-pro-pic" name="upload-pro-pic"/>Upload Profile Picture</a>
+
+                            </form>
+                        </div>
+                        <div id="cover-pic-upload">   
+                            <h1>Upload Cover Picture</h1>
+                            <div class="top-bott20 m-l-25 m-r-15">
+                                <?php
+                                if (isset($_GET['message'])) {
+
+                                    $MESSAGE = New Message($_GET['message']);
+                                    ?>
+                                    <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
+                                        <?php echo $MESSAGE->description; ?>
+                                    </div>
+                                    <?php
+                                }
+
+                                $vali = new Validator();
+
+                                $vali->show_message();
+                                ?>
+                            </div>
+                            <form class="content" id="form-profile-picture">
+                                <div class="row upload-cover-pic">
+                                        <!--<img src="image/driver.png" alt=""/>-->
+                                    <div class="uploadphotobx2" id="uploadphotobx2"> 
+
+
+                                        <div class="coverimg">
+                                            <?php
+                                            if (isset($_SESSION['cover'])) {
+                                                ?>
+                                                <img src="../upload/member/cover-picture/thumb/<?php echo $cover; ?>" class="cover-default-image cover-pic" alt=""/>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <img src="image/cover.jpg" class="cover-default-image" alt=""/>
+                                                <?php
+                                            }
+                                            ?>
+                                        </div>
+                                        <label class="uploadBox2">
+                                            <!--<input type="file" name="profile-picture" id="profile-picture" class="profile-picture" sort="1" value="">-->
+                                            <input type="hidden" name="upload-cover" id="upload-cover" value="TRUE">
+                                            <input type="hidden" name="sort" id="sort" value="1">
+                                        </label>
+
+
+                                    </div>
+                                    <span class="upload-span2" id="upload-span2">
+                                        <i class="fa fa-camera fa-2x"></i><br />
+                                        Click here to Upload photo
+                                        <input type="file" name="cover-picture" id="cover-picture" class="cover-picture" sort="1" value="">
+                                    </span>
+
                                 </div>
-                                <div class="field-wrap">
-                                    <label>
-                                        Confirm Password<span class="req">*</span>
-                                    </label>
-                                    <input type="password" required autocomplete="off"  name="cpassword"/>
-                                </div>
-                                <button type="submit" class="button button-block" name="reset-password"/>Reset Password</button>
+                                <input type="hidden" id="cover" name="cover" value="<?php echo $cover; ?>" />
+                                <input type="hidden" id="c" name="c" value="<?php echo $c; ?>" />
+                                <input type="hidden" id="id" name="id" value="<?php echo $_SESSION['id']; ?>" />
+
+                                <a class="button button-block" id="upload-cover-pic" name="upload-pro-pic"/>Upload Cover Picture</a>
+
                             </form>
                         </div>
                     </div><!-- tab-content -->
@@ -372,6 +467,8 @@ $MEMBER = new Member(1);
         </div>
         <script src="js/jquery-3.2.1.js"></script>
         <script src="js/js/add-member.js" type="text/javascript"></script>
+        <script src="js/js/add-profile-picture.js" type="text/javascript"></script>
+        <script src="js/js/add-cover-picture.js" type="text/javascript"></script>
         <script>
             $('.form').find('input, textarea').on('keyup blur focus', function (e) {
                 var $this = $(this),

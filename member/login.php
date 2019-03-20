@@ -8,8 +8,6 @@ $back_url = '';
 if (isset($_SESSION["back_url"])) {
     $back_url = $_SESSION["back_url"];
 }
-
-$CATEGORIES = BusinessCategory::all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,10 +75,10 @@ $CATEGORIES = BusinessCategory::all();
                                 ?>
                             </div>
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-sm-6">
                                     <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Login with Facebook</a>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-sm-6">
                                     <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Login with Twitter</a>
                                 </div>
                             </div>
@@ -124,10 +122,10 @@ $CATEGORIES = BusinessCategory::all();
                                 ?>
                             </div>
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-sm-6">
                                     <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Sign up with Facebook</a>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-sm-6">
                                     <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Sign up with Twitter</a>
                                 </div>
                             </div>
