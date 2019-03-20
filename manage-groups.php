@@ -1,12 +1,12 @@
 <?php
-include_once(dirname(__FILE__) . '/../class/include.php');
-include_once(dirname(__FILE__) . '/auth.php');
+include_once(dirname(__FILE__) . '/class/include.php');
+if (!isset($_SESSION)) {
+    session_start();
+}
+$MEMBER = '';
 
-
-$MEMBER = new Member($_SESSION['id']);
-$id = '';
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+if (isset($_SESSION['id'])) {
+    $MEMBER = new Member($_SESSION['id']);
 }
 $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($MEMBER->id);
 ?>
