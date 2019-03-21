@@ -1333,3 +1333,24 @@ header .control-icon > svg {
         max-width: 1253px;
     }
 }
+.page-title img{
+    padding-top: 4px;
+}
+.more{
+    padding-bottom: 10px;
+}
+.has-items1 img{
+    padding-top: 4px;
+}
+.control-block .author-title{
+    padding-top: 7px;
+}
+.control-block .author-thumb{
+    padding-top: 9px;
+}
+.icon-status.online{
+    margin-top: 9px;
+}
+.has-items-news img{
+    height: 24px;
+}

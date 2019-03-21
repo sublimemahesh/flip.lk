@@ -14,7 +14,7 @@
                 </a>
 
             </div>
-            <div class="control-icon more has-items">
+            <div class="control-icon more has-items has-items-news">
                 <a href="./">
                     <img src="img/icon/header-icon/newsfeed.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Newsfeed" />
                 </a>
@@ -32,7 +32,7 @@
                 </a>
 
             </div>
-            <div class="control-icon more has-items">
+            <div class="control-icon more has-items has-items1">
                 <img src="img/icon/header-icon/request.png" alt=""/>
                 <?php
                 if (isset($_SESSION['id'])) {
@@ -310,20 +310,20 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./">
-                    <div class="control-icon has-items">
+                    <div class="control-icon has-items has-item">
                         <img src="img/icon/header-icon/newsfeed.png" alt=""/>
                     </div>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../all-advertisement.php">
-                    <div class="control-icon has-items">
+                    <div class="control-icon has-items has-item">
                         <img src="img/icon/header-icon/advertising.png" alt=""/>
                     </div>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="friend-requests.php">
+                <a class="nav-link nav-link1" href="friend-requests.php">
                     <img src="img/icon/header-icon/request.png" alt=""/>
                     <?php
                     if (isset($_SESSION['id'])) {
@@ -339,13 +339,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="member-message.php">
+                <a class="nav-link nav-link1" href="member-message.php">
                     <img src="img/icon/header-icon/message.png" alt=""/>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="profile.php">
-                    <div class="author-thumb">
+                    <div class="author-thumb nav-link1">
                         <?php
                         if (isset($_SESSION['id'])) {
                             ?>

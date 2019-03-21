@@ -182,9 +182,31 @@ and open the template in the editor.
         width: 167px;
     }
     .footer-box .footer-header h3{
-        font-size: 24px;
+        font-size: 20px;
     }
     .footer-box .widget_nav_menu li a{
+        font-size: 14px;
+    }
+    .responsive-header-logo img{
+        padding-bottom: 5px;  
+    }
+    .has-items img{
+        padding-bottom: 7px;
+    }
+    .nav-link img{
+        padding-bottom: 7px;
+    }
+    .avatar{
+        width: 24px;
+    }
+    .author-thumb .icon-status{
+        width: 6px;
+        height: 6px;
+    }
+    .footer-box .footer-contact-info li{
+        font-size: 15px;
+    }
+    .footer-box .footer-contact-info li svg{
         font-size: 16px;
     }
 }
@@ -290,6 +312,19 @@ and open the template in the editor.
     .s002 form .inner-form .input-field.fifth-wrap .btn-search{
         margin-left: 128px;
     }
+    .page-title img{
+        width: 150px;
+    }
+    .page-title img{
+        padding-top: 2px;
+    }
+    .avatar{
+        margin-top: 8px;
+        width: 32px;
+    }
+    .icon-status.online{
+        margin-top: 9px;
+    }
 }
 
 @media(min-width:992px) and (max-width:1200px) {
@@ -315,6 +350,9 @@ and open the template in the editor.
     }
     .category-list .cat-title h4 {
         font-size: 17px;
+    }
+    .avatar{
+      width: 23px;  
     }
 }
 
@@ -346,6 +384,16 @@ and open the template in the editor.
     }
     .listing-dire .owl-dots{
         margin-bottom: 70px; 
+    }
+    .page-title img{
+        width: 140px;
+        padding-top: 4px;
+    }
+    .avatar{
+        margin-top: 6px;
+    }
+    .icon-status.online{
+        margin-top: 7px;
     }
 }
 @media(min-width:1200px) and (max-width:1400px) {
@@ -383,6 +431,17 @@ and open the template in the editor.
     .footer-box{
         margin-left: 12px;
     }
+    .page-title img{
+        width: 150px;
+    }
+    .avatar{
+        width: 32px;
+        margin-top: 8px;
+    }
+    .icon-status.online{
+        margin-top: 8px;
+    }
+
 }
 @media (width: 768px){
     .s002 form .inner-form .input-field.fifth-wrap .btn-search{
@@ -419,7 +478,17 @@ and open the template in the editor.
         font-size: 16px;
         margin-bottom: 6px;
     }
-    
+    .has-items img{
+        padding-bottom: 10px;
+    }
+    .avatar{
+        width: 46px;
+        margin-bottom: 9px;
+    }
+    .footer-box .footer-contact-info li svg{
+        font-size: 17px;
+    }
+
 }
 @media (width: 640px){
     .header{
@@ -454,6 +523,28 @@ and open the template in the editor.
     .single-item{
         margin-left: -8px;
     }
+    .has-items img{
+        margin-bottom: 11px;
+    }
+    .avatar{
+        width: 41px;
+        margin-bottom: 10px;
+    }
+    .has-item img{
+        padding-bottom: 14px;
+        height: 37px;
+        width: 37px;
+    }
+    .responsive-header-logo img{
+        padding-bottom: 4px;
+        margin-left: -118px;
+    }
+    .nav-link1 img{
+        padding-bottom: 2px;
+    }
+    .mobile-app-tabs{
+        margin-left: 138px;
+    }
 
 
 }
@@ -487,7 +578,68 @@ and open the template in the editor.
         font-size: 16px;
         margin-bottom: 6px;
     }
-    
+    .icon-status.online{
+        margin-top: 0px;
+    }
+    .author-thumb .icon-status{
+        width: 6px;
+        height: 6px;
+    }
+    .has-item img{
+        padding-bottom: 14px;
+    }
+    .btn-md-2{
+        margin-right: 85px;
+    }
+    .ui-block{
+        margin-left: -85px;
+    }
+    .responsive-header-logo img{
+        margin-left: -120px;
+        margin-bottom: 5px;
+    }
+    .mobile-app-tabs{
+        margin-left: 140px;
+    }
+    .has-item img{
+        height: 36px;
+        width: 36px;
+    }
+    .avatar{
+        margin-top: -1px;
+        width: 43px;
+    }
+    .has-items img{
+        margin-bottom: 11px;
+    }
+    .intro-section p{
+        margin-left: 85px;
+    }
+    .footer-box .footer-contact-info li svg{
+        font-size: 16px;
+        left: -21px;
+    }
+    .footer-box .footer-contact-info li{
+        padding-left: 5px;
+    }
 
+
+}
+@media (width: 1440px){
+    .page-title img{
+        padding-top: 4px;
+        width: 140px;
+    }
+    .avatar{
+        margin-top: 7px;
+    }
+    .icon-status.online{
+        margin-top: 8px;
+    }
+}
+@media (width: 800px){
+    .avatar{
+        width: 28px;
+    }
 }
 

@@ -18,7 +18,7 @@ and open the template in the editor.
     }
     #site-header-responsive .responsive-header-logo {
         width: 100px;
-        margin-top: 0px;
+        margin-top: -6px;
         margin-left: 10px;
     }
     #site-header-responsive .nav-item:first-child {
@@ -160,7 +160,7 @@ and open the template in the editor.
         margin-top: 0px;
     }
     #site-header-responsive .nav-link img {
-        width: 20px;
+        width: 22px;
     }
     #site-header-responsive .responsive-header-logo img {
         width: 100px;
@@ -169,7 +169,7 @@ and open the template in the editor.
         margin-top: 0px;
     }
     .control-icon {
-        margin-top: 0px;
+        margin-top: -7px;
     }
     .mobile-app-tabs{
         background-color: initial;
@@ -205,7 +205,24 @@ and open the template in the editor.
     .upload-group-span2{
         width: 307px;
     }
+
     
+
+    .icon-status.online{
+        margin-top: 2px;
+        margin-left: 0px;
+    }
+    .author-thumb .icon-status{
+        width: 6px;
+        height: 6px;
+    }
+    .nav-link img{
+        padding-bottom: 3px;
+    }
+    .nav-link1 img{
+        padding-bottom: 8px;
+    }
+
 }
 
 
@@ -269,7 +286,7 @@ and open the template in the editor.
     .notification-list.chat-message:hover{
         background: #abbfbf4d;
     }
-  
+
     .ui-block-title.reciever-details{
         background: #fff;
     }
@@ -285,9 +302,14 @@ and open the template in the editor.
     .upload-group-span2{
         width: 259px;
     }
-  
-
+    .ui-block.first-block{
+        margin-top: 20px;
+        margin-left: -85px;
+    }
 }
+
+
+
 @media(min-width:992px) and (max-width:1200px) {
     .hidden-md {
         display: none;
@@ -347,12 +369,12 @@ and open the template in the editor.
     .ui-block-title{
         background: #fff;  
     }
-/*    .upload-group-pro-pic.pro-img{
-        margin: 10px 100px 45px;
-    }
-    .upload-cover-pic, .upload-group-cover-pic{
-        margin: 10px 12px;
-    }*/
+    /*    .upload-group-pro-pic.pro-img{
+            margin: 10px 100px 45px;
+        }
+        .upload-cover-pic, .upload-group-cover-pic{
+            margin: 10px 12px;
+        }*/
 }
 @media(width:360px) {
     .profile-menu li a, .profile-menu li > div{
@@ -402,6 +424,7 @@ and open the template in the editor.
     .coverimg img{
         /*padding-left: 26px;*/
     }
+
 }
 @media(width:375px) {
     .mobile-app-tabs{
@@ -541,9 +564,21 @@ and open the template in the editor.
     .upload-group-span2{
         width: 312px;
     }
+    .author-thumb .icon-status{
+        width: 6px;
+        height: 6px;
+        top: -9px;
+        left: 0px;
+    }
+
+    .control-icon{
+        margin-top: -4px;
+    }
+    .has-items img{
+        height: 23px;
+        width: 32px;
+    }
 }
-
-
 
 @media (width:1024px){
     .header .page-title{
@@ -629,7 +664,7 @@ and open the template in the editor.
     .control-block-button .btn-control:last-child{
         margin-left: 464px;
     }
-     .top-header{
+    .top-header{
         height: 316px;
     }
     .profile-menu{
@@ -641,6 +676,34 @@ and open the template in the editor.
     .upload-group-span2{
         width: 266px;
     }
+    .icon-status.online{
+        margin-top: 0px;
+    }
+    .author-thumb .icon-status{
+        width: 6px;
+        height: 6px;
+    }
+    .has-item img{
+        padding-bottom: 14px;
+        height: 37px;
+        width: 37px;
+    }
+    .responsive-header-logo img{
+        padding-bottom: 4px;
+        margin-left: -118px;
+    }
+    .nav-link1 img{
+        padding-bottom: 2px;
+    }
+    .mobile-app-tabs{
+        margin-left: 138px;
+    }
+/*    .btn-md-2{
+        margin-right: 53px;
+    }
+    .ui-block{
+        margin-left: -85px;
+    }*/
 }
 @media (width: 600px){
     .header{
@@ -691,7 +754,7 @@ and open the template in the editor.
     .control-block-button .btn-control:last-child{
         margin-left: 464px;
     }
-     .top-header{
+    .top-header{
         height: 316px;
     }
     .profile-menu{
@@ -703,11 +766,43 @@ and open the template in the editor.
     .upload-group-span2{
         width: 245px;
     }
+    .icon-status.online{
+        margin-top: 0px;
+    }
+    .author-thumb .icon-status{
+        width: 6px;
+        height: 6px;
+    }
+    .has-item img{
+        padding-bottom: 14px;
+    }
+/*    .btn-md-2{
+        margin-right: 85px;
+    }*/
+/*    .ui-block{
+        margin-left: -85px;
+    }*/
+    .responsive-header-logo img{
+        margin-left: -120px;
+    }
+    .mobile-app-tabs{
+        margin-left: 140px;
+    }
+    .has-item img{
+        height: 36px;
+        width: 36px;
+    }
+    .avatar{
+        width: 44px;
+    }
+    .nav-link1 img{
+        margin-bottom: 4px;
+    }
 
 
 }
 @media (width: 800px){
-      .control-block-button .btn-control:last-child{
+    .control-block-button .btn-control:last-child{
         margin-left: 433px;
     }
     .top-header-author{
@@ -722,7 +817,13 @@ and open the template in the editor.
     .upload-group-span2{
         width: 216px;
     }
-    
+    .avatar{
+        width: 28px;
+    }
+    .has-items-news img{
+        height: 21px;
+    }
+
 }
 @media(min-width:1200px) and (max-width:1440px){
     .hidden-lg {
@@ -759,7 +860,7 @@ and open the template in the editor.
     .upload-cover-pic, .upload-group-cover-pic{
         margin: 10px 27px;
     }
-    
+
     .upload-group-span2{
         /*width: 312px;*/
     }
@@ -775,6 +876,16 @@ and open the template in the editor.
 @media (width: 1280px){
     .upload-group-span2{
         width: 292px;
+    }
+    .page-title img{
+        width: 140px;
+        padding-top: 4px;
+    }
+    .avatar{
+        margin-top: 6px;
+    }
+    .icon-status.online{
+        margin-top: 7px;
     }
 }
 @media (width: 412px){

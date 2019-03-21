@@ -2391,5 +2391,13 @@ ul {
 }
 .main-navigation li{
     padding: 15px 0 7px 0px;
-   
+}
+.more{
+    padding-bottom: 7px;
+}
+.author-thumb img.signin{
+    padding-top: 11px;
+}
+.has-items1 img{
+    padding-top: 4px;
 }
