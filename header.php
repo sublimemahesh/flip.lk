@@ -28,7 +28,7 @@
                     <img src="img/icon/header-icon/group.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Groups"  />
                 </a>
             </div>
-            <div class="control-icon more has-items">
+            <div class="control-icon more has-items has-items1">
                 <img src="img/icon/header-icon/request.png" alt=""/>
                 <?php
                 if (isset($_SESSION['id'])) {
