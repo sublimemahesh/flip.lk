@@ -13,12 +13,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         
  #94 Create Option to Manage all Business Group in the Website
-    <group>
-            <file>file:/C:/xampp/htdocs/flip.lk/css/responsive.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/create-group.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/css/responsive.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/css/style.css</file>
-        </group>
+    
         <group>
             <file>file:/C:/xampp/htdocs/flip.lk/manage-groups.php</file>
             <file>file:/C:/xampp/htdocs/flip.lk/class/BusinessSubCategory.php</file>
@@ -28,6 +23,13 @@
             <file>file:/C:/xampp/htdocs/flip.lk/css/style.css</file>
             <file>file:/C:/xampp/htdocs/flip.lk/advertisements.php</file>
             <file>file:/C:/xampp/htdocs/flip.lk/member/auth.php</file>
+        </group>
+        <group>
+            <file>file:/C:/xampp/htdocs/flip.lk/Bootstrap/dist/css/bootstrap.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/Bootstrap/dist/css/bootstrap.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/css/style.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/Bootstrap/dist/css/bootstrap-grid.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/Bootstrap/dist/css/bootstrap-reboot.css</file>
         </group>
     </open-files>
 </project-private>
