@@ -1375,3 +1375,18 @@ header .control-icon > svg {
     border: 1px solid #bdc0d5;
 
 }
+.btn-post{
+    background-color: #ccd6e0;
+    font-size: 12px;
+    margin-left: 24px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    color: #003263;
+    font-weight: 700;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-style: solid;
+    border-color: #ccd6e0;
+    margin-left: 2px;
+}

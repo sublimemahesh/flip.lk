@@ -7,7 +7,9 @@ if (!isset($_SESSION)) {
 $back_url = '';
 if (isset($_SESSION["back_url"])) {
     $back_url = $_SESSION["back_url"];
+
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

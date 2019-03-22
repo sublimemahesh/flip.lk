@@ -1,6 +1,21 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
-include_once(dirname(__FILE__) . '/auth.php');
+//include_once(dirname(__FILE__) . '/auth.php');
+
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!Member::authenticate()) {
+    if ($_GET['back'] == 'ad') {
+//        $_SESSION["back_url"] = 'http://flip.islandwide.website/flip.lk/member/create-advertisement.php';
+        $_SESSION["back_url"] = 'http://localhost/flip.lk/member/create-advertisement.php';
+    }
+    
+    redirect('login.php?message=24');
+} else {
+    $MEMBER = new Member($_SESSION['id']);
+}
 
 $MEMBER = new Member($_SESSION['id']);
 $id = '';
