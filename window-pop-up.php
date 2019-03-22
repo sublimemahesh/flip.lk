@@ -928,15 +928,15 @@
                 <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
             </a>
 
-            <div class="modal-header">
-                <h6 class="title">Please Log In First to Continue.</h6>
+            <div class="modal-header modal-header1">
+                <h6 class="title title-1">Please Log In First to Continue.</h6>
             </div>
 
             <div class="modal-body">
                 <div class="news-feed-form">
                     
-                    <article class="hentry post has-post-thumbnail shared-photo">
-                        <a href="member/login.php" id="login-first-btn" class="btn btn-md-2 btn-primary" page-url="<?php echo $_SERVER['REQUEST_URI']; ?>" member="<?php echo $MEMBER->id; ?>">Login</a>
+                    <article class="hentry post has-post-thumbnail shared-photo shared-photo1">
+                        <a href="member/login.php" id="login-first-btn" class="btn btn-md-2 btn-primary btn-primary1" page-url="<?php echo $_SERVER['REQUEST_URI']; ?>" member="<?php echo $MEMBER->id; ?>">Login Now</a>
                     </article>
                 </div>
             </div>

@@ -2403,7 +2403,19 @@ ul {
 }
 .has-items1 img{
     padding-top: 4px;
-
-
-
+}
+.btn-primary1{
+    margin-left: 217px;
+    margin-top: 22px;
+}
+.title-1{
+    margin-left: 152px;
+    color: #003263;
+    font-size: 17px;
+}
+.modal-header1{
+    border-bottom: 0px;
+}
+.shared-photo1{
+    margin-bottom: -13px;
 }
