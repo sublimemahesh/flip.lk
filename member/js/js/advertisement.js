@@ -44,7 +44,7 @@ $(document).ready(function () {
             var description = tinyMCE.get('description').getContent();
             var city = $('#city').val();
             var address = $('#address').val();
-            var category = $('#category').val();
+            var category = $('#select-business-category').val();
             var subCategory = $('#sub-category').val();
             var website = $('#website').val();
             var price = $('#price').val();

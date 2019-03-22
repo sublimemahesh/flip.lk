@@ -184,10 +184,12 @@ $groups = Group::searchGroups($category1, $subcategory, $pageLimit, $setLimit);
                                 </div>
                                 
                             </div>
+                            
                             <div class="row">
                             <?php Group::showPaginationOfSearchedGroups($category1, $subcategory, $setLimit, $page); ?>
                             </div>
                         </div>
+                        
                         <!-- ... end Main Content -->
                         <!-- Left Sidebar -->
                         <div class="sidebar col col-xl-4 order-xl-1 col-lg-4 order-lg-1 col-md-12 col-sm-12 col-12 hidden-sm">

@@ -240,7 +240,7 @@ $propic = $MEMBER->profilePicture;
                                                 </div>
                                                 <div class="form-group with-icon label-floating is-empty">
                                                     <label class="control-label">Share what you are thinking here...</label>
-                                                    <textarea class="form-control" placeholder="" name="description"></textarea>
+                                                    <textarea class="form-control post-description" placeholder="" name="description"></textarea>
                                                     <div class="flipScrollableArea hidden" id="image-list" style="/*! height: 112px; */ /*! width: 100%; */">
                                                         <div class="flipScrollableAreaWrap">
                                                             <div class="flipScrollableAreaBody" style="height: 112px;">
@@ -292,7 +292,7 @@ $propic = $MEMBER->profilePicture;
                                                         <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
                                                     </a>
                                                     <input type="hidden" value ="<?php echo $_SESSION['id']; ?>" id="member" name="member" />
-                                                    <input type="submit" name="save-post" class="btn btn-primary btn-md-2 share-post" value="Post" />
+                                                    <input type="submit" name="save-post" class="btn btn-primary btn-md-2 share-post" disabled="" value="Post" />
                                                 </div>
                                             </form>
                                         </div>
