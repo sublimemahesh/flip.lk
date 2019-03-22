@@ -6,10 +6,11 @@ $MEMBER = new Member($_SESSION['id']);
 $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
+    $GROUP = new Group($id);
+    $CATEGORY = new BusinessCategory($GROUP->category);
+    $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
 }
-$GROUP = new Group($id);
-$CATEGORY = new BusinessCategory($GROUP->category);
-$SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
+$CATEGORIES = BusinessCategory::all();
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -197,19 +198,52 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                             <input class="form-control" placeholder="" name="price" id="price" type="text" value="" >
                                         </div>
                                     </div>
-                                    <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="form-group label-floating">
-                                            <label class="control-label">Category</label>
-                                            <input class="form-control" placeholder="" name="" type="text" value="<?php echo $CATEGORY->name; ?>" disabled="">
+                                    <?php
+                                    if (isset($_GET['id'])) {
+                                        ?>
+                                        <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Category</label>
+                                                <input class="form-control" placeholder="" name="" type="text" value="<?php echo $CATEGORY->name; ?>" disabled="">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="form-group label-floating">
-                                            <label class="control-label">Sub Category</label>
-                                            <input class="form-control" placeholder="" name="" type="text" value="<?php echo $SUBCATEGORY->name; ?>" disabled="">
+                                        <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Sub Category</label>
+                                                <input class="form-control" placeholder="" name="" type="text" value="<?php echo $SUBCATEGORY->name; ?>" disabled="">
+                                            </div>
                                         </div>
-                                    </div>
-
+                                        <input type="hidden" name="category" id="select-business-category" value="<?php echo $GROUP->category; ?>" />
+                                        <input type="hidden" name="subcategory" id="sub-category" value="<?php echo $GROUP->subCategory; ?>" />
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+                                            <div class="form-group label-floating is-select">
+                                                <label class="control-label">Business Category</label>
+                                                <select class="selectpicker form-control" id="select-business-category" name="category">
+                                                    <option value="">-- Please Select Business Category -- </option>
+                                                    <?php
+                                                    foreach ($CATEGORIES as $category) {
+                                                        ?>
+                                                        <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+                                            <div class="form-group label-floating is-select">
+                                                <label class="control-label">Business Sub Category</label>
+                                                <select class="form-control sub-category-select"  name="sub_category" id="sub-category">
+                                                    <option value="">-- Please Select Business Sub Category -- </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
                                     <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Website</label>
@@ -250,9 +284,12 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                     </div>
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                         <input type="hidden" name="member" id="member" value="<?php echo $_SESSION['id']; ?>" />
-                                        <input type="hidden" name="group"id="group" value="<?php echo $id; ?>" />
-                                        <input type="hidden" name="category" id="category" value="<?php echo $GROUP->category; ?>" />
-                                        <input type="hidden" name="subcategory" id="sub-category" value="<?php echo $GROUP->subCategory; ?>" />
+                                        <input type="hidden" name="group"id="group" value="<?php if (empty($id)) {
+                                        echo '0';
+                                    } else {
+                                        echo $id;
+                                    } ?>" />
+
                                         <input type="hidden" name="create" id="" value="" />
                                         <a name="" id="create-ad" class="btn btn-primary btn-lg full-width" >Save all Changes</a>
                                         <div id="map" class="hidden"></div>
@@ -267,18 +304,18 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                         </div>
                     </div>
                 </div>
-                <?php
-                include './account-navigation.php';
-                ?>
+<?php
+include './account-navigation.php';
+?>
             </div>
             <!--</div>-->
         </div>
         <!-- ... end Your Account Personal Information -->
 
         <!-- Window-popup -->
-        <?php
-        include './window-pop-up.php';
-        ?>
+<?php
+include './window-pop-up.php';
+?>
         <!-- ... end Window-popup -->
 
         <a class="back-to-top" href="#">
@@ -327,6 +364,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
         <script src="plugins/tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script>
         <script src="js/heartcode-canvasloader.js" type="text/javascript"></script>
         <script src="js/image-preloader.js" type="text/javascript"></script>
+        <script src="js/js/sub-categories.js" type="text/javascript"></script>
         <script>
                                                 tinymce.init({
                                                     selector: "#description",

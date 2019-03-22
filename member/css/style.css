@@ -1354,3 +1354,24 @@ header .control-icon > svg {
 .has-items-news img{
     height: 24px;
 }
+.btn-primary:hover {
+    background-color: #003263;
+    color: #fff;
+    border: 1px solid #003263;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+    color: #003263;
+    background-color: #003263;
+    border-color: #003263;
+}
+.btn-primary.focus, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+    color: #fff;
+}
+.btn-primary:disabled:hover {
+
+    background-color: #bdc0d5;
+    color: #fff;
+    border: 1px solid #bdc0d5;
+
+}

@@ -1,4 +1,12 @@
 $(document).ready(function () {
+    $('.post-description').keyup(function () {
+        if ($('.post-description').val() || $('.post-all-images').val()) {
+            $('.share-post').removeAttr('disabled');
+        } else {
+            $('.share-post').attr('disabled', true);
+        }
+    });
+
     $('#upload_first_image').change(function () {
 
         $('.flipScrollableArea').removeClass('hidden');
@@ -48,7 +56,7 @@ $(document).ready(function () {
                     html += '<span>';
                     html += '<div class="_uploadedimages" style="width: 100px; height: 100px;" id="js_3mg" aria-controls="js_3mh" aria-haspopup="true">';
                     html += '<img alt="Cute-baby-girl-pics-for-facebook-profile-4-1024x640.jpg" class="img" src="../upload/post/thumb2/' + mess.filename + '" width="100" height="100">';
-                    html += '<input type="hidden" name="post-all-images[]" value="' + mess.filename + '"/>';
+                    html += '<input type="hidden" class="post-all-images" name="post-all-images[]" value="' + mess.filename + '"/>';
                     html += '<i class="img-post-delete _buttons _btn _removebtn _5upp _42ft fa fa-times" title="Remove Photo" id="' + arr[0] + '"></i>';
                     html += '</div>';
                     html += '</span>';
@@ -67,12 +75,14 @@ $(document).ready(function () {
                     var newleft1 = parseInt(left1) + 105;
 //                    $('._uploadouterbox').css('left', newleft + 'px');
                     $('._uploadloaderbox').css('left', newleft1 + 'px');
+                    $('.share-post').removeAttr('disabled');
 //                }
                 },
                 cache: false,
                 contentType: false,
                 processData: false
             });
+
         }, 2000);
 
     });
@@ -124,7 +134,7 @@ $(document).ready(function () {
                     html += '<span>';
                     html += '<div class="_uploadedimages" style="width: 100px; height: 100px;" id="js_3mg" aria-controls="js_3mh" aria-haspopup="true">';
                     html += '<img alt="Cute-baby-girl-pics-for-facebook-profile-4-1024x640.jpg" class="img" src="../upload/post/thumb2/' + mess.filename + '" width="100" height="100">';
-                    html += '<input type="hidden" name="post-all-images[]" value="' + mess.filename + '"/>';
+                    html += '<input type="hidden" class="post-all-images" name="post-all-images[]" value="' + mess.filename + '"/>';
                     html += '<i class="img-post-delete _buttons _btn _removebtn _5upp _42ft fa fa-times" title="Remove Photo" id="' + arr[0] + '"></i>';
                     html += '</div>';
                     html += '</span>';
@@ -140,6 +150,7 @@ $(document).ready(function () {
                     var left1 = $('._uploadloaderbox').css('left');
                     var newleft1 = parseInt(left1) + 105;
                     $('._uploadloaderbox').css('left', newleft1 + 'px');
+                    $('.share-post').removeAttr('disabled');
                 },
                 cache: false,
                 contentType: false,
@@ -172,6 +183,11 @@ $(document).ready(function () {
                     var left1 = $('._uploadloaderbox').css('left');
                     var newleft1 = parseInt(left1) - 110;
                     $('._uploadloaderbox').css('left', newleft1 + 'px');
+                }
+                if ($('.post-description').val() || $('.post-all-images').val()) {
+                    $('.share-post').removeAttr('disabled');
+                } else {
+                    $('.share-post').attr('disabled', true);
                 }
             }
         });
@@ -224,7 +240,7 @@ $(document).ready(function () {
                     html += '<span>';
                     html += '<div class="_uploadedimages" style="width: 100px; height: 100px;" id="js_3mg" aria-controls="js_3mh" aria-haspopup="true">';
                     html += '<img alt="Cute-baby-girl-pics-for-facebook-profile-4-1024x640.jpg" class="img" src="../upload/post/thumb2/' + mess.filename + '" width="100" height="100">';
-                    html += '<input type="hidden" name="post-all-images[]" value="' + mess.filename + '"/>';
+                    html += '<input type="hidden" class="post-all-images" name="post-all-images[]" value="' + mess.filename + '"/>';
                     html += '<i class="img-edit-post-delete _buttons _btn _removebtn _5upp _42ft fa fa-times" title="Remove Photo" onClick="removePhoto(this)" id="' + arr[0] + '"></i>';
                     html += '<input type="hidden" id="rem-photo" value="' + arr[0] + '"/>';
                     html += '</div>';
@@ -330,7 +346,7 @@ $(document).ready(function () {
                 html += '<span>';
                 html += '<div class="_uploadedimages" style="width: 100px; height: 100px;" id="js_3mg" aria-controls="js_3mh" aria-haspopup="true">';
                 html += '<img alt="Cute-baby-girl-pics-for-facebook-profile-4-1024x640.jpg" class="img" src="../upload/post/thumb2/' + mess.filename + '" width="100" height="100">';
-                html += '<input type="hidden" name="post-all-images[]" value="' + mess.filename + '"/>';
+                html += '<input type="hidden" class="post-all-images" name="post-all-images[]" value="' + mess.filename + '"/>';
                 html += '<i class="img-post-delete _buttons _btn _removebtn _5upp _42ft fa fa-times" title="Remove Photo" id="' + arr[0] + '"></i>';
                 html += '</div>';
                 html += '</span>';
@@ -354,6 +370,7 @@ $(document).ready(function () {
 
         var image = this.id;
 
+
         $.ajax({
             url: 'post-and-get/ajax/post-images.php',
             type: "POST",
@@ -371,6 +388,11 @@ $(document).ready(function () {
                 } else {
                     var newleft = parseInt(left) - 100;
                     $('._uploadouterbox').css('left', newleft + 'px');
+                }
+                if ($('.post-description').val() || $('.post-all-images').val()) {
+                    $('.share-post').removeAttr('disabled');
+                } else {
+                    $('.share-post').attr('disabled', true);
                 }
             }
         });
