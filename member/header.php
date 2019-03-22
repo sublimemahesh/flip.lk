@@ -196,6 +196,11 @@
                     <a href="member-message.php" class="view-all bg-theme-blue">View All Messages</a>
                 </div>
             </div>
+             <div class="control-icon more has-items">
+                <a href="create-advertisement.php?back=ad">
+                    <button class="btn-post">Post Your Ad</button>
+                </a>
+            </div>
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
                     <?php
@@ -292,6 +297,7 @@
                     ?>
                 </a>
             </div>
+          
 
         </div>
     </div>

@@ -7,7 +7,6 @@
     </div>
     <div class="header-content-wrapper">
         <div class="control-block">
-
             <div class="control-icon more has-items">
                 <a href="./">
                     <img src="img/icon/header-icon/home.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Home"/>
@@ -28,6 +27,7 @@
                     <img src="img/icon/header-icon/group.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Groups"  />
                 </a>
             </div>
+
             <div class="control-icon more has-items has-items1">
                 <img src="img/icon/header-icon/request.png" alt=""/>
                 <?php
@@ -186,6 +186,12 @@
                     <a href="member/member-message.php" class="view-all bg-theme-blue">View All Messages</a>
                 </div>
             </div>
+            
+              <div class="control-icon more has-items">
+                <a href="member/create-advertisement.php?back=ad">
+                    <button class="btn-post">Post Your Ad</button>
+                </a>
+            </div>
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
                     <?php
@@ -284,7 +290,7 @@
                     ?>
                 </a>
             </div>
-
+           
         </div>
     </div>
 
