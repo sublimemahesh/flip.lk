@@ -899,7 +899,7 @@
             <div class="modal-body">
                 <div class="news-feed-form">
                     <div class="author-thumb">
-                        <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
+                        <img src="upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
                     </div>
                     <div class="form-group with-icon label-floating is-empty">
                         <label class="control-label">Share what you are thinking here...</label>
@@ -918,3 +918,29 @@
     </div>
 </div>
 <!-- ... end  Window-popup Share Ad -->
+
+<!-- Window-popup Login -->
+<div class="modal fade" id="login-first" tabindex="-1" role="dialog" aria-labelledby="login-first" aria-hidden="true">
+    <div class="modal-dialog window-popup update-header-photo" role="document">
+
+        <div class="modal-content">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="modal-header">
+                <h6 class="title">Please Log In First to Continue.</h6>
+            </div>
+
+            <div class="modal-body">
+                <div class="news-feed-form">
+                    
+                    <article class="hentry post has-post-thumbnail shared-photo">
+                        <a href="member/login.php" id="login-first-btn" class="btn btn-md-2 btn-primary" page-url="<?php echo $_SERVER['REQUEST_URI']; ?>" member="<?php echo $MEMBER->id; ?>">Login</a>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ... end  Window-popup Login -->

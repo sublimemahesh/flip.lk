@@ -15,6 +15,12 @@ if (isset($_SESSION['cover'])) {
 if (isset($_GET['c'])) {
     $c = 'c';
 }
+
+$back_url = '';
+if (isset($_SESSION["back_url"])) {
+    $back_url = $_SESSION["back_url"];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -171,7 +177,7 @@ if (isset($_GET['c'])) {
                                 <input type="hidden" id="cover" name="cover" value="<?php echo $cover; ?>" />
                                 <input type="hidden" id="c" name="c" value="<?php echo $c; ?>" />
                                 <input type="hidden" id="id" name="id" value="<?php echo $_SESSION['id']; ?>" />
-
+                                <input type="hidden" class="form-control"  name="back_url" value="<?php echo $back_url; ?>">
                                 <a class="button button-block" id="upload-cover-pic" name="upload-pro-pic"/>Upload</a>
 
                             </form>

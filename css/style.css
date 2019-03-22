@@ -2212,6 +2212,8 @@ ul.setPaginate {
     overflow: hidden;
     font: 12px 'Tahoma';
     list-style-type: none;
+    /*position: absolute;*/
+    /*bottom: -53px;*/
 }
 ul.setPaginate li.setPage {
     padding: 15px 10px;
@@ -2391,6 +2393,7 @@ ul {
 }
 .main-navigation li{
     padding: 15px 0 7px 0px;
+
 }
 .more{
     padding-bottom: 7px;
@@ -2400,4 +2403,7 @@ ul {
 }
 .has-items1 img{
     padding-top: 4px;
+
+
+
 }

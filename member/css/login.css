@@ -288,6 +288,14 @@ a#upload-pro-pic, a#upload-cover-pic {
     color: #fff;
 
 }
+.upload-cover-pic input[type="file"] {
+    min-height: 168px;
+    min-width: 243px;
+    left: 0px;
+    text-align: left;
+    top: 0px;
+
+}
 @media(max-width:576px) {
     .bg-facebook {
         margin-bottom: 12px;

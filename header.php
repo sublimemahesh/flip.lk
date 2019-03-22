@@ -24,7 +24,7 @@
                 </a>
             </div>
             <div class="control-icon more has-items">
-                <a href="member/manage-groups.php">
+                <a href="groups.php">
                     <img src="img/icon/header-icon/group.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Groups"  />
                 </a>
             </div>

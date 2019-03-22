@@ -96,7 +96,7 @@ if (isset($_SESSION["back_url"])) {
                                     </label>
                                     <input type="password" required autocomplete="off"  name="password"/>
                                 </div>
-                                <p class="forgot"><a href="#">Forgot Password?</a></p>
+                                <p class="forgot"><a href="forgot-password.php">Forgot Password?</a></p>
                                 <input type="hidden" class="form-control"  name="back_url" value="<?php echo $back_url; ?>">
                                 <button type="submit" class="button button-block" name="login"/>Log In</button>
 

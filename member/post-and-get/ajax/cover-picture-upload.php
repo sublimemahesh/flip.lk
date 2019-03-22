@@ -8,7 +8,8 @@ if (isset($_POST['upload-cover'])) {
 
     $MEMBER->coverPicture = $_POST['cover'];
     $result = $MEMBER->updateCoverPicture();
-
+    $back = $_POST['back_url'];
+    
     header('Content-Type: application/json');
     $arr = array();
     if ($result) {
@@ -16,7 +17,13 @@ if (isset($_POST['upload-cover'])) {
             session_start();
         }
         unset($_SESSION['cover']);
-        $arr['response'] = 'success';
+        if (empty($back)) {
+            $arr['response'] = 'success';
+        } else {
+            unset($_SESSION["back_url"]);
+            $arr['back'] = $back;
+        }
+        
     } else {
         $arr['response'] = 'error';
     }
