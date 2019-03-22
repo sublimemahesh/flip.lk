@@ -9,6 +9,7 @@ if (isset($_GET['id'])) {
 }
 
 $GROUP = new Group($id);
+
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -228,7 +229,9 @@ $GROUP = new Group($id);
 
                                                 </div>
                                                 <h5><b><?php echo $ad['title']; ?></b></h5>
-                                                <?php echo $ad['description']; ?>
+                                                <span class="more">
+                                                    <?php echo $ad['description']; ?>
+                                                </span>
 
                                                 <div class="post-thumb">
                                                     <div id="gallery-<?php echo $ad['id']; ?>"></div>
@@ -554,6 +557,7 @@ $GROUP = new Group($id);
         <script src="js/js/ad-comment.js" type="text/javascript"></script>
         <script src="js/js/ad-reply.js" type="text/javascript"></script>
         <script src="js/js/shared-ad.js" type="text/javascript"></script>
+        <script src="js/js/read-more-and-less.js" type="text/javascript"></script>
         <script>
             // Retrieve Details from Place_ID
             function initMap() {

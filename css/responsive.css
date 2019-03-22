@@ -328,6 +328,9 @@ and open the template in the editor.
 }
 
 @media(min-width:992px) and (max-width:1200px) {
+    .hidden-md {
+        display: none;
+    }
     .category-list.container {
         max-width: 960px;
         margin: 20px 26px;
@@ -478,6 +481,7 @@ and open the template in the editor.
         font-size: 16px;
         margin-bottom: 6px;
     }
+
     .has-items img{
         padding-bottom: 10px;
     }
@@ -488,6 +492,8 @@ and open the template in the editor.
     .footer-box .footer-contact-info li svg{
         font-size: 17px;
     }
+
+
 
 }
 @media (width: 640px){
@@ -578,6 +584,7 @@ and open the template in the editor.
         font-size: 16px;
         margin-bottom: 6px;
     }
+
     .icon-status.online{
         margin-top: 0px;
     }
@@ -624,6 +631,13 @@ and open the template in the editor.
     }
 
 
+
+
+}
+@media(min-width:1200px) {
+    .hidden-lg {
+        display: none;
+    }
 }
 @media (width: 1440px){
     .page-title img{

@@ -49,6 +49,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->
         </div>
     </div>
     <?php
+    if(isset($_SESSION['id'])) {
     if (GroupMember::checkMemberIsAnAdmin($MEMBER->id, $GROUP->id)) {
         ?>
         <div class="ui-block">
@@ -73,6 +74,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->
             </div>
         </div>
         <?php
+    }
     }
     ?>
 

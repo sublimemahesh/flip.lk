@@ -38,6 +38,8 @@ $(document).ready(function () {
             success: function (result) {
                 if (result.response === 'success') {
                     window.location.replace('index.php');
+                } else if(result.back) {
+                    window.location.replace(result.back);
                 }
 
             },
