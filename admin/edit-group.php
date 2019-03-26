@@ -1,15 +1,22 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . './auth.php');
+$id = "";
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+$GROUP = new Group($id);
 
 $CATEGORIES = BusinessCategory::all();
+$SUBCATEGORIES = BusinessSubCategory::all();
 ?>
 <!DOCTYPE html>
 <html> 
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Add New Group || Flip.lk</title>
+        <title>Edit Group || Flip.lk</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -18,7 +25,6 @@ $CATEGORIES = BusinessCategory::all();
         <link href="plugins/node-waves/waves.css" rel="stylesheet" />
         <link href="plugins/animate-css/animate.css" rel="stylesheet" />
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
-        <!--        <link href="css/style.css" rel="stylesheet">-->
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/themes/all-themes.css" rel="stylesheet" />
     </head>
@@ -55,7 +61,7 @@ $CATEGORIES = BusinessCategory::all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="group-name" class="form-control" placeholder="Enter name" autocomplete="off" name="group_name" required="TRUE">
+                                                    <input type="text" id="group-name" class="form-control" placeholder="Enter name" autocomplete="off" name="group_name" value="<?php echo $GROUP->name; ?>" required="TRUE">
                                                 </div>
                                             </div>
                                         </div>
@@ -68,7 +74,7 @@ $CATEGORIES = BusinessCategory::all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="email" id="email" class="form-control" placeholder="Enter email" autocomplete="off" name="email" required="TRUE">
+                                                    <input type="email" id="email" class="form-control" placeholder="Enter email" autocomplete="off" name="email" value="<?php echo $GROUP->email; ?>" required="TRUE">
                                                 </div>
                                             </div>
                                         </div>
@@ -81,7 +87,7 @@ $CATEGORIES = BusinessCategory::all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="phone-number" class="form-control" placeholder="Enter Phone Number" autocomplete="off" name="phone_number" required="TRUE">
+                                                    <input type="text" id="phone-number" class="form-control" placeholder="Enter Phone Number" autocomplete="off" name="phone_number" value="<?php echo $GROUP->phoneNumber; ?>" required="TRUE">
                                                 </div>
                                             </div>
                                         </div>
@@ -99,7 +105,9 @@ $CATEGORIES = BusinessCategory::all();
                                                         <?php
                                                         foreach ($CATEGORIES as $category) {
                                                             ?>
-                                                            <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+                                                            <option value="<?php echo $category['id']; ?>" <?php if ($category['id'] == $GROUP->category) {
+                                                            echo 'selected';
+                                                        }; ?>><?php echo $category['name']; ?></option>
                                                             <?php
                                                         }
                                                         ?>
@@ -118,6 +126,15 @@ $CATEGORIES = BusinessCategory::all();
                                                 <div class="form-line">
                                                     <select class="form-control sub-category-select"  name="sub_category" id="sub-category">
                                                         <option value="">-- Please Select Business Sub Category -- </option>
+                                                        <?php
+                                                        foreach ($SUBCATEGORIES as $subcategory) {
+                                                            ?>
+                                                            <option value="<?php echo $subcategory['id']; ?>" <?php if ($subcategory['id'] == $GROUP->subCategory) {
+                                                            echo 'selected';
+                                                        }; ?>><?php echo $subcategory['name']; ?></option>
+    <?php
+}
+?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -131,7 +148,7 @@ $CATEGORIES = BusinessCategory::all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="address" class="form-control" placeholder="Enter Address" autocomplete="off" name="address" required="TRUE">
+                                                    <input type="text" id="address" class="form-control" placeholder="Enter Address" autocomplete="off" name="address" value="<?php echo $GROUP->address; ?>" required="TRUE">
                                                 </div>
                                             </div>
                                         </div>
@@ -145,7 +162,7 @@ $CATEGORIES = BusinessCategory::all();
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <input type="text" id="autocomplete" class="form-control" placeholder="" onFocus="geolocate()" name="autocomplete" required="TRUE">
-                                                    <input type="hidden" name="district" id="district"  value=""/>
+                                                    <input type="hidden" name="district" id="district"  value="<?php echo $GROUP->district; ?>"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -159,7 +176,7 @@ $CATEGORIES = BusinessCategory::all();
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <input type="text" id="autocomplete2" class="form-control" placeholder="" onFocus="geolocate()" name="autocomplete" required="TRUE">
-                                                    <input type="hidden" name="city" id="city"  value=""/>
+                                                    <input type="hidden" name="city" id="city"  value="<?php echo $GROUP->city; ?>"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -173,7 +190,7 @@ $CATEGORIES = BusinessCategory::all();
                                             <div class="form-group form-float">
                                                 <label class="form-label"></label>
                                                 <div class="form-line">
-                                                    <textarea id="description" name="description" class="form-control" rows="5"></textarea> 
+                                                    <textarea id="description" name="description" class="form-control" rows="5"><?php echo $GROUP->description; ?></textarea> 
                                                 </div>
                                             </div>
                                         </div>
@@ -186,9 +203,9 @@ $CATEGORIES = BusinessCategory::all();
                                             <div class="form-group form-float">
                                                 <label class="form-label">Profile Picture</label>
                                                 <div class="form-line">
-                                                    <img src="../member/image/profile.png" class="img img-responsive img-thumbnail group_profile_pic" alt=""/>
+                                                    <img src="../upload/group/<?php echo $GROUP->profilePicture; ?>" class="img img-responsive img-thumbnail group_profile_pic" alt=""/>
                                                     <input type="file" id="group_profile" class="form-control" name="group_profile"  required="true">
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -196,16 +213,19 @@ $CATEGORIES = BusinessCategory::all();
                                             <div class="form-group form-float">
                                                 <label class="form-label">Cover Picture</label>
                                                 <div class="form-line">
-                                                    <img src="../member/image/cover.jpg"  class="img img-responsive img-thumbnail" alt=""/>
+                                                    <img src="../upload/group/cover-picture/thumb/<?php echo $GROUP->coverPicture; ?>"  class="img img-responsive img-thumbnail" alt=""/>
                                                     <input type="file" id="group_cover" class="form-control" name="group_cover"  required="true">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div id="map"></div>
                                     <div class="row clearfix">
                                         <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                                            <input type="submit" name="create-group" class="btn btn-primary m-t-15 waves-effect" value="create-group"/>
+                                            <input type="hidden" name="id" value="<?php echo $GROUP->id; ?>"/>
+                                            <input type="hidden" name="oldProfilePic" value="<?php echo $GROUP->profilePicture; ?>"/>
+                                            <input type="hidden" name="oldCoverPic" value="<?php echo $GROUP->coverPicture; ?>"/>
+                                            <input type="submit" name="edit-group" class="btn btn-primary m-t-15 waves-effect" value="Save Changes"/>
                                         </div>
                                     </div>
                                     <hr/>
@@ -318,6 +338,44 @@ $CATEGORIES = BusinessCategory::all();
                     });
                 }
             }
+        </script>
+        <script>
+            // Retrieve Details from Place_ID
+            function initMap() {
+                setTimeout(function () {
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: -33.866, lng: 151.196},
+                        zoom: 15
+                    });
+
+                    var infowindow = new google.maps.InfoWindow();
+                    var service = new google.maps.places.PlacesService(map);
+                    var place_id = $('#district').val();
+                    var place_id1 = $('#city').val();
+                    service.getDetails({
+                        placeId: place_id
+                    }, function (place, status) {
+                        if (status === google.maps.places.PlacesServiceStatus.OK) {
+//                        alert(place.name);
+                            $('#autocomplete').val(place.name);
+                        }
+                    });
+                    service.getDetails({
+                        placeId: place_id1
+                    }, function (place, status) {
+                        if (status === google.maps.places.PlacesServiceStatus.OK) {
+//                        alert(place.name);
+                            $('#autocomplete2').val(place.name);
+                        }
+                    });
+                }, 1000);
+            }
+
+            $(document).ready(function () {
+                initMap();
+            });
+
+
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2FmnO6PPzu9Udebcq9q_yUuQ_EGItjak&libraries=places&callback=initAutocomplete"
         async defer></script>
