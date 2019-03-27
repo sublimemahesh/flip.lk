@@ -2458,3 +2458,27 @@ a .ad-title{
     margin-top: 3px;
     margin-left: 70px;
 }
+
+/*about-us page*/
+.about-box {
+    border-left: 1px solid #ccc;
+}
+.about-box-icon-hover {
+    color: #003263;
+}
+.about-box:last-child {
+    border-right: 1px solid #ccc;
+}
+.about-box svg {
+    font-size: 48px;
+}
+.about-main-img img {
+    margin-top: -145px;
+}
+.about-section.ui-block, .about-section-values.ui-block {
+    border: 0;
+}
+.about-section.ui-block {  
+    padding-top: 100px;
+background: #f8f8f8;
+}
