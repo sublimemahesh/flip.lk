@@ -8279,3 +8279,6 @@ input[type="checkbox"] {
     text-align: center;
 }
  /*group cover end*/
+ .group_profile_pic {
+     width: 146px;
+ }
