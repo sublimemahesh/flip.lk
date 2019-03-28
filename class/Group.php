@@ -129,7 +129,7 @@ class Group {
 
     public function all() {
 
-        $query = "SELECT * FROM `groups`";
+        $query = "SELECT * FROM `groups` ORDER BY `created_at` ASC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -202,9 +202,6 @@ class Group {
         unlink(Helper::getSitePath() . "upload/group/" . $this->profilePicture);
         unlink(Helper::getSitePath() . "upload/group/cover-picture/" . $this->coverPicture);
         unlink(Helper::getSitePath() . "upload/group/cover-picture/thumb/" . $this->coverPicture);
-//        unlink("localhost/flip.lk/upload/group/" . $this->profilePicture);
-//        unlink("localhost/flip.lk/upload/group/cover-picture/" . $this->coverPicture);
-//        unlink("localhost/flip.lk/upload/group/cover-picture/thumb/" . $this->coverPicture);
 
         if (GroupMember::deleteAllMembersInGroup($this->id)) {
             $query = 'DELETE FROM `groups` WHERE id="' . $this->id . '"';
@@ -219,6 +216,23 @@ class Group {
 
         $query = "UPDATE  `groups` SET "
                 . "`status` ='" . $this->status . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
+    
+    public function suspendGroup() {
+
+        $query = "UPDATE  `groups` SET "
+                . "`is_suspend` ='" . $this->isSuspend . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();

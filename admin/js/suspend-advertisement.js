@@ -14,7 +14,7 @@ $(document).ready(function () {
         }, function () {
 
             $.ajax({
-                url: "ajax/suspend-advertisement.php",
+                url: "post-and-get/ajax/suspend-advertisement.php",
                 type: "POST",
                 data: {id: id, option: 'SUSPEND'},
                 dataType: "JSON",
@@ -51,7 +51,7 @@ $(document).ready(function () {
         }, function () {
 
             $.ajax({
-                url: "ajax/suspend-advertisement.php",
+                url: "post-and-get/ajax/suspend-advertisement.php",
                 type: "POST",
                 data: {id: id, option: 'REMOVESUSPEND'},
                 dataType: "JSON",

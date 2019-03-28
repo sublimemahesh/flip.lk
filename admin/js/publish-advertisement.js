@@ -14,7 +14,7 @@ $(document).ready(function () {
         }, function () {
 
             $.ajax({
-                url: "ajax/publish-advertisement.php",
+                url: "post-and-get/ajax/publish-advertisement.php",
                 type: "POST",
                 data: {id: id, option: 'PUBLISH'},
                 dataType: "JSON",
@@ -51,7 +51,7 @@ $(document).ready(function () {
         }, function () {
 
             $.ajax({
-                url: "ajax/publish-advertisement.php",
+                url: "post-and-get/ajax/publish-advertisement.php",
                 type: "POST",
                 data: {id: id, option: 'UNPUBLISH'},
                 dataType: "JSON",

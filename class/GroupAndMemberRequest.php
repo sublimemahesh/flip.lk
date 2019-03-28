@@ -79,6 +79,15 @@ class GroupAndMemberRequest {
         return $result;
     }
 
+    public function getApprovedDate($group, $member) {
+
+        $query = "SELECT `approved_date` FROM `group_and_member_request` WHERE `group_id` = " . $group . " AND `member` = " . $member;
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        return $result;
+    }
+
     public function update() {
 
         $query = 'UPDATE `group_and_member_request` SET '
@@ -154,13 +163,10 @@ class GroupAndMemberRequest {
     }
 
     public function approveRequest() {
-
-        date_default_timezone_set('Asia/Colombo');
-        $date = date('Y-m-d H:i:s');
         
         $query = 'UPDATE `group_and_member_request` SET '
                 . '`is_approved`= "' . $this->isApproved . '", '
-                . '`approved_date`= "' . $date . '" '
+                . '`approved_date`= "' . $this->approvedDate . '" '
                 . ' WHERE id="' . $this->id . '"';
 
         $db = new Database();
