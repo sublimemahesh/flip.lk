@@ -343,6 +343,12 @@
                     <img src="img/icon/header-icon/message.png" alt=""/>
                 </a>
             </li>
+            <div class="control-icon more has-items ">
+                <a href="create-advertisement.php?back=ad">
+                    <button class="btn-post"><i class="fa-sticky-note-o "></i></button>
+                    <!--<img src="img/icon/header-icon/images-post.png" alt=""/>-->
+                </a>
+            </div>
             <li class="nav-item">
                 <a class="nav-link" href="member/profile.php">
                     <div class="author-thumb">

@@ -8,7 +8,18 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
             <div class="ui-block first-block">
                 <div class="top-header top-header-favorit">
                     <div class="top-header-thumb">
+                        <?php
+                        if($GROUP->coverPicture) {
+                            ?>
+                        
                         <img src="../upload/group/cover-picture/<?php echo $GROUP->coverPicture; ?>" alt="nature">
+                        <?php
+                        } else {
+                       ?>
+                        <img src="../upload/group/cover-picture/Cover.jpg" alt="nature">
+                        <?php
+                        }
+                        ?>
                         <div class="top-header-author">
                             <div class="author-thumb">
                                 <img src="../upload/group/<?php echo $GROUP->profilePicture; ?>" alt="author">

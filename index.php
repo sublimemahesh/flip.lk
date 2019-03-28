@@ -100,7 +100,7 @@ if (isset($_SESSION['id'])) {
                                 <?php
                                 foreach (BusinessCategory::all() as $key => $category) {
                                     $count = Advertisement::countAdsByCategory($category['id']);
-                                    
+
                                     if ($key < 12) {
                                         ?>
                                         <div class="col-lg-3 col-md-4 col-sm-4 ">
@@ -111,7 +111,7 @@ if (isset($_SESSION['id'])) {
                                                 <h3 class="item-title"><a href="advertisements.php?category=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></h3>
                                                 <div class="listing-number">
                                                     <?php
-                                                    if($count == 1) {
+                                                    if ($count == 1) {
                                                         echo number_format($count) . ' Advertisement';
                                                     } else {
                                                         echo number_format($count) . ' Advertisements';
@@ -143,6 +143,7 @@ if (isset($_SESSION['id'])) {
                                     $images = AdvertisementImage::getPhotosByAdId($ad['id']);
                                     $MEM = new Member($ad['member']);
                                     $CAT = new BusinessCategory($ad['category']);
+                                    $result = getTime($ad['created_at']);
                                     ?>
                                     <div class="item" style="">
                                         <div class="listing-box-grid">
@@ -188,13 +189,13 @@ if (isset($_SESSION['id'])) {
                                                         </a>
                                                     </h3>
                                                     <!--<span class="item-paragraph">-->
-                                                        <?php
+                                                    <?php
 //                                                        if (strlen($ad['description']) > 50) {
 //                                                            echo substr($ad['description'], 0, 45) . '...';
 //                                                        } else {
 //                                                            echo $ad['description'];
 //                                                        }
-                                                        ?>
+                                                    ?>
                                                     <!--</span>-->
                                                     <ul class="contact-info">
                                                         <li><i class="fas fa-map-marker-alt"></i><?php echo $ad['address']; ?></li>
@@ -209,7 +210,7 @@ if (isset($_SESSION['id'])) {
                                                             }
                                                             ?>
                                                         </li>
-                                                        <li><i class="fas fa-globe"></i>
+                                                        <li class="globe-icon"><i class="fas fa-globe"></i>
                                                             <?php
                                                             if ($ad['website']) {
                                                                 echo $ad['website'];
@@ -222,7 +223,9 @@ if (isset($_SESSION['id'])) {
                                                     <ul class="meta-item">
                                                         <li class="ctg-name">
                                                             <a><img src="upload/member/<?php echo $MEM->profilePicture; ?>" class="img-responsive img-circle" alt=""/> <?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
+                                                                <div class="ad-time ad-time1"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
                                                             </a>
+
                                                         </li>
 
                                                     </ul>

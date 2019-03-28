@@ -1675,7 +1675,7 @@ ul {
 
 }
 .listing-box-grid .product-box .item-content {
-    padding: 50px 30px 30px;
+    padding: 28px 30px 30px;
     border-radius: 0 0 4px 4px;
 }
 .product-box.border-box .item-content {
@@ -1700,7 +1700,7 @@ ul {
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    font-size: 22px;
+    font-size: 18px;
 }
 .item-paragraph p{
     margin: 0 0 20px 0;
@@ -1713,7 +1713,7 @@ ul {
     margin-bottom: 10px;
     position: relative;
     padding-left: 30px;
-    font-size: 15px;
+    font-size: 12px;
 }
 .product-box .item-content .contact-info li svg {
     margin-right: 10px;
@@ -1722,7 +1722,7 @@ ul {
     left: 0;
     top: 3px;
     line-height: 1;
-    font-size: 20px;
+    font-size: 15px;
 }
 .product-box .item-content .contact-info li svg::before {
     font-size: 20px;
@@ -2433,5 +2433,28 @@ ul {
     border-style: solid;
     border-color: #ccd6e0;
     margin-left: 2px;
+    font-family: Roboto,-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 
+}
+a .ad-title{
+    padding-bottom: 5px;
+}
+.ad-category{
+    padding-bottom: 5px;
+}
+.ad-subcategory{
+    margin-left: 232px;
+    margin-top: -23px;
+    color: #7f7d86;
+}
+.ad-time{
+    margin-top: 10px;
+}
+.globe-icon{
+    margin-left: 124px;
+    margin-top: -31px;
+}
+.ad-time1{
+    margin-top: 3px;
+    margin-left: 70px;
 }

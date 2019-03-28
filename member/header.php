@@ -349,6 +349,11 @@
                     <img src="img/icon/header-icon/message.png" alt=""/>
                 </a>
             </li>
+            <div class="control-icon more has-items hidden-sm">
+                <a href="create-advertisement.php?back=ad">
+                    <button class="btn-post">Post Your Ad</button>
+                </a>
+            </div>
             <li class="nav-item">
                 <a class="nav-link" href="profile.php">
                     <div class="author-thumb nav-link1">
