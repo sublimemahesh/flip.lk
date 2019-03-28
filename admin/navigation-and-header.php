@@ -355,13 +355,7 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="create-group.php">
-                                <i class="material-icons">add</i>
-                                <span>Add New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
+                            <a href="manage-groups.php">
                                 <i class="material-icons">list</i>
                                 <span>Manage</span>
                             </a>

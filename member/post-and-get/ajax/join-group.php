@@ -1,4 +1,5 @@
 <?php
+
 include_once(dirname(__FILE__) . '/../../../class/include.php');
 
 if ($_POST['option'] == 'JOINGROUP') {
@@ -28,14 +29,19 @@ if ($_POST['option'] == 'CANCELREQUEST') {
 }
 
 if ($_POST['option'] == 'APPROVEREQUEST') {
-    
+
+    date_default_timezone_set('Asia/Colombo');
+    $date = date('Y-m-d H:i:s');
+
     $REQUEST = new GroupAndMemberRequest($_POST['row']);
     $REQUEST->isApproved = 1;
-    
+    $REQUEST->approvedDate = $date;
+
     $req = $REQUEST->approveRequest();
     
     if($req) {
         $GROUPMEMBERS = new GroupMember(NULL);
+        $GROUPMEMBERS->joinedAt = $date;
         $GROUPMEMBERS->groupId = $req->groupId;
         $GROUPMEMBERS->member = $req->member;
         $GROUPMEMBERS->status = 'member';
@@ -60,11 +66,11 @@ if ($_POST['option'] == 'DECLINEREQUEST') {
 
 if ($_POST['option'] == 'LEAVEGROUP') {
     
-    $res = GroupMember::leaveGroup($_POST['member'],$_POST['group']);
+    $res = GroupMember::leaveGroup($_POST['member'], $_POST['group']);
    
     $result = '';
-    if($res) {
-        $result = GroupAndMemberRequest::leaveGroup($_POST['member'],$_POST['group']);
+    if ($res) {
+        $result = GroupAndMemberRequest::leaveGroup($_POST['member'], $_POST['group']);
     }
     header('Content-Type: application/json');
     echo json_encode($result);
@@ -72,7 +78,7 @@ if ($_POST['option'] == 'LEAVEGROUP') {
 }
 
 if ($_POST['option'] == 'ADDMEMBER') {
-    
+
     $REQUEST = new GroupAndMemberRequest(NULL);
     $REQUEST->groupId = $_POST['group'];
     $REQUEST->member = $_POST['member'];
@@ -91,7 +97,7 @@ if ($_POST['option'] == 'ADDMEMBER') {
 if ($_POST['option'] == 'CHECKMEMBEREXIST') {
     
     $GROUP = GroupMember::checkMemberAlreadyExistInTheGroup($_POST['member'], $_POST['group']);
-    if($GROUP) {
+    if ($GROUP) {
         $result = true;
     } else {
         $result = false;
@@ -103,7 +109,7 @@ if ($_POST['option'] == 'CHECKMEMBEREXIST') {
 if ($_POST['option'] == 'CHECKINVITED') {
     
     $res = GroupAndMemberRequest::checkAlreadyInvitedToTheGroup($_POST['member'], $_POST['group']);
-    if($res) {
+    if ($res) {
         $result = true;
     } else {
         $result = false;

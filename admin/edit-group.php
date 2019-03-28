@@ -204,7 +204,7 @@ $SUBCATEGORIES = BusinessSubCategory::all();
                                                 <label class="form-label">Profile Picture</label>
                                                 <div class="form-line">
                                                     <img src="../upload/group/<?php echo $GROUP->profilePicture; ?>" class="img img-responsive img-thumbnail group_profile_pic" alt=""/>
-                                                    <input type="file" id="group_profile" class="form-control" name="group_profile"  required="true">
+                                                    <input type="file" id="group_profile" class="form-control" name="group_profile">
 
                                                 </div>
                                             </div>
@@ -214,7 +214,7 @@ $SUBCATEGORIES = BusinessSubCategory::all();
                                                 <label class="form-label">Cover Picture</label>
                                                 <div class="form-line">
                                                     <img src="../upload/group/cover-picture/thumb/<?php echo $GROUP->coverPicture; ?>"  class="img img-responsive img-thumbnail" alt=""/>
-                                                    <input type="file" id="group_cover" class="form-control" name="group_cover"  required="true">
+                                                    <input type="file" id="group_cover" class="form-control" name="group_cover">
                                                 </div>
                                             </div>
                                         </div>

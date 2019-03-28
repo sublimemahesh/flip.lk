@@ -88,7 +88,7 @@ $(document).ready(function () {
         });
     });
 
-    $('#find-member').keypress(function (e) {
+    $('#find-member').keyup(function (e) {
 
         var $selected = $('div .selected'), $div = $('div.member');
         if (e.keyCode == 40) {

@@ -113,3 +113,43 @@ if (isset($_POST['edit-group'])) {
         }
     }
 }
+
+if (isset($_POST['add-member'])) {
+    date_default_timezone_set('Asia/Colombo');
+    $date = date('Y-m-d H:i:s');
+
+    $GROUPMEMBER = new GroupMember(NULL);
+    $VALID = new Validator();
+    $GROUPMEMBER->member = $_POST['member'];
+    $GROUPMEMBER->groupId = $_POST['group_id'];
+    $GROUPMEMBER->joinedAt = $date;
+    $GROUPMEMBER->status = 'member';
+
+
+    $VALID->check($GROUPMEMBER, [
+        'member' => ['required' => TRUE],
+        'groupId' => ['required' => TRUE],
+        'joinedAt' => ['required' => TRUE]
+    ]);
+
+    if ($VALID->passed()) {
+        $result = $GROUPMEMBER->create();
+        $url = explode("?", $_SERVER['HTTP_REFERER']);
+
+        if ($result) {
+            if (!isset($_SESSION)) {
+                session_start();
+            }
+            $VALID->addError("Your data was saved successfully", 'success');
+            $_SESSION['ERRORS'] = $VALID->errors();
+
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        } else {
+            if (!isset($_SESSION)) {
+                session_start();
+            }
+            $_SESSION['ERRORS'] = $VALID->errors();
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+    }
+}

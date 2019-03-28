@@ -8,6 +8,7 @@
 class GroupMember {
 
     public $id;
+    public $joinedAt;
     public $groupId;
     public $member;
     public $status;
@@ -15,13 +16,14 @@ class GroupMember {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`group_id`,`member`,`status` FROM `group_members` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`joined_at`,`group_id`,`member`,`status` FROM `group_members` WHERE `id`=" . $id;
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
+            $this->joinedAt = $result['joined_at'];
             $this->groupId = $result['group_id'];
             $this->member = $result['member'];
             $this->status = $result['status'];
@@ -33,10 +35,12 @@ class GroupMember {
     public function create() {
 
         $query = "INSERT INTO `group_members` ("
+                . "`joined_at`,"
                 . "`group_id`,"
                 . "`member`,"
                 . "`status`) "
                 . "VALUES  ("
+                . "'" . $this->joinedAt . "',"
                 . "'" . $this->groupId . "',"
                 . "'" . $this->member . "',"
                 . "'" . $this->status . "'"
@@ -58,6 +62,20 @@ class GroupMember {
     public function all() {
 
         $query = "SELECT * FROM `group_members` ORDER BY `id` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function getMembersByGroup($group) {
+
+        $query = "SELECT * FROM `group_members` WHERE `group_id` = $group ORDER BY `id` DESC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -114,7 +132,7 @@ class GroupMember {
                 . "`member` ='" . $this->member . "', "
                 . "`status` ='" . $this->status . "' "
                 . "WHERE `id` = '" . $this->id . "'";
-
+        dd($query);
         $db = new Database();
 
         $result = $db->readQuery($query);
