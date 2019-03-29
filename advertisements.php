@@ -155,7 +155,7 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                                             <div class="ad-item  post ">
                                                 <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
                                                     <div class="ad-item-box row">
-                                                        <div class = "col-xl-2 col-xs-4 ad-item-image">
+                                                        <div class = "col-xl-4 col-xs-4 ad-item-image">
                                                             <?php
                                                             if (count($adimages) > 0) {
                                                                 foreach ($adimages as $key => $img) {
@@ -172,11 +172,19 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                                                             }
                                                             ?>
                                                         </div>
-                                                        <div class = "col-xl-10 col-xs-8 ad-item-details">
+                                                        <div class = "col-xl-8 col-xs-8 ad-item-details">
                                                             <div class="ad-title"><?php echo $ad['title']; ?></div>
                                                             <div class="ad-city"><span class="title">Location <i class="fa fa-angle-double-right"></i> </span>Galle</div>
                                                             <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
-                                                            <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                            <?php
+                                                            foreach (BusinessSubCategory::getSubCategoriesByCategory($category['id']) as $subcategory) {
+                                                                $countsubcat = Advertisement::countAdsBySubCategory($subcategory['id']);
+                                                                ?>
+                                                                <div class="ad-subcategory1"><span class="title">Sub Category <i class="fa fa-angle-double-right"></i> </span><?php echo $subcategory['name']; ?></div>
+                                                                    <?php
+                                                                }
+                                                                ?>
+                                                            <div class="ad-time ad-time0"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
                                                         </div>
                                                     </div>
                                                 </a>

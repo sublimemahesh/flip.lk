@@ -118,11 +118,11 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                             foreach (BusinessSubCategory::getSubCategoriesByCategory($category['id']) as $subcategory) {
                                                                 $countsubcat = Advertisement::countAdsBySubCategory($subcategory['id']);
                                                                 ?>
-                                                                <div class="ad-subcategory"><span class="title">Sub Category <i class="fa fa-angle-double-right"></i> </span><?php echo $subcategory['name']; ?>
+                                                                <div class="ad-subcategory"><span class="title">Sub Category <i class="fa fa-angle-double-right"></i> </span><?php echo $subcategory['name']; ?></div>
                                                                     <?php
                                                                 }
                                                                 ?>
-                                                            </div>
+                                                            
                                                             
                                                             <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php
                                                         if ($ad['price'] == 0) {

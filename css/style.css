@@ -2459,6 +2459,7 @@ a .ad-title{
     margin-left: 70px;
 }
 
+
 /*about-us page*/
 .about-box {
     border-left: 1px solid #ccc;
@@ -2482,3 +2483,19 @@ a .ad-title{
     padding-top: 100px;
 background: #f8f8f8;
 }
+
+.sidebar{
+    margin-top: 30px;
+    border-radius: 5px;
+    margin-bottom: 16px;
+}
+.ad-time0{
+    margin-right: -1px;
+}
+.ad-subcategory1{
+    margin-top: -25px;
+    margin-left: 219px;
+    color: #7f7d86;
+}
+
+
