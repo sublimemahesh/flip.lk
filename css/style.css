@@ -2511,6 +2511,18 @@ a .ad-title{
     margin-left: 219px;
     color: #7f7d86;
 }
+.contactus{
+    padding-bottom: 20px;
+}
+.contactMess textArea{
+    width: 100%;
+
+}
+.contact-icon{
+    font-size: 29px;
+    width: 53px;
+    color: #003263;
+}
 
 .entry-single-list-title{
     margin-top: 30px;
