@@ -2481,8 +2481,13 @@ a .ad-title{
 }
 .about-section.ui-block {  
 
+
     padding-top: 80px;
 background: #fcfcfc;
+=======
+    padding-top: 100px;
+    background: #f8f8f8;
+ #159 Create Terms and Conditions Page
 }
 
 .sidebar{
@@ -2498,6 +2503,49 @@ background: #fcfcfc;
     margin-left: 219px;
     color: #7f7d86;
 }
+.entry-single-list-title{
+    margin-top: 30px;
+    color: #9a9fbf;
+    font-size: 23px;
+}
+
+.terms1{
+    border: 0px solid;
+    background-color: #fff;
+    border-radius: 5px;
+    font-family: Roboto,-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    margin-top: 61px;
+    margin-bottom: 61px;
+}
+.entry-single-content{
+    margin: 26px;
+}
+
+.entry-single-content ul li{
+    font-size: 14px;
+    margin-top: 15px;
+    color: #065a75;
+}
+.icon1{
+    margin-right: 5px;
+    color: #065a75;
+}
+.entry-single-title{
+    font-weight: 400px;
+    
+}
+.term{
+    font-size: 12px;
+}
+.entry-single-content p{
+    color: #065a75;
+}
+.entry-single-content h2{
+    color: #003263;
+    font-weight: 600;
+    font-size: 31px;
+}
+
 
 .icon-box {
     text-align: center;
