@@ -101,8 +101,7 @@ if (isset($_POST['update'])) {
     $VALID = new Validator();
     $VALID->check($PAGES, [
         'title' => ['required' => TRUE],
-        'description' => ['required' => TRUE],
-        'image_name' => ['required' => TRUE]
+        'description' => ['required' => TRUE]
     ]);
 
 
