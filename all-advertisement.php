@@ -176,7 +176,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                             ?>
 
                                                             <li id="sub-category-" class="menu-item ">
-                                                                <a href="advertisements.php?category=<?php echo $category['id']; ?>&subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
+                                                                <a href="advertisements.php?category=<?php echo $category['id']; ?>subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
                                                             </li>
                                                             <?php
                                                         }

@@ -110,7 +110,7 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                                                 <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a>
                                             </span>
                                             <span class="breadcrumb-item">
-                                                <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>&subcategory=<?php echo $BUSSUBCAT->id; ?>" ><?php echo $BUSSUBCAT->name; ?></a>
+                                                <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>subcategory=<?php echo $BUSSUBCAT->id; ?>" ><?php echo $BUSSUBCAT->name; ?></a>
                                             </span>
                                             <span class="breadcrumb-item location"></span>
                                             <?php
@@ -225,7 +225,7 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                                                             ?>
 
                                                             <li id="sub-category-" class="menu-item ">
-                                                                <a href="advertisements.php?category=<?php echo $category['id']; ?>&subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
+                                                                <a href="advertisements.php?category=<?php echo $category['id']; ?>subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
                                                             </li>
                                                             <?php
                                                         }
