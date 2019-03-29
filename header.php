@@ -9,38 +9,46 @@
         <div class="control-block">
             <div class="control-icon more has-items">
                 <a href="./">
-                    <img src="img/icon/header-icon/home.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Home"/>
+                    <span><img src="img/icon/header-icon/home.png" alt=""/></span>
+                    Home
                 </a>
             </div>
             <div class="control-icon more has-items">
                 <a href="member/">
-                    <img src="img/icon/header-icon/newsfeed.png" alt=""  data-toggle="tooltip" data-placement="bottom" title="Newsfeed" />
+                    <span><img src="img/icon/header-icon/newsfeed.png" alt="" /></span>
+                    Newsfeed
                 </a>
             </div>
             <div class="control-icon more has-items">
                 <a href="all-advertisement.php">
-                    <img src="img/icon/header-icon/advertising.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Advertisements"  />
+                    <span><img src="img/icon/header-icon/advertising.png" alt="" /></span>
+                    Advertisements
                 </a>
             </div>
             <div class="control-icon more has-items">
                 <a href="groups.php">
-                    <img src="img/icon/header-icon/group.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Groups"  />
+                    <span><img src="img/icon/header-icon/group.png" alt=""  /></span>
+                    Groups
                 </a>
             </div>
 
             <div class="control-icon more has-items has-items1">
-                <img src="img/icon/header-icon/request.png" alt=""/>
-                <?php
-                if (isset($_SESSION['id'])) {
-                    $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
+                <span>
+                    <img src="img/icon/header-icon/request.png" alt=""/>
+                    <?php
+                    if (isset($_SESSION['id'])) {
+                        $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
 
-                    if ($countu['count'] > 0) {
-                        ?>
-                        <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
-                        <?php
+                        if ($countu['count'] > 0) {
+                            ?>
+                            <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
+                            <?php
+                        }
                     }
-                }
-                ?>
+                    ?>
+                </span>
+                Requests
+
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
                         <h6 class="title">FOLLOW REQUESTS</h6>
@@ -111,7 +119,8 @@
             </div>
 
             <div class="control-icon more has-items">
-                <img src="img/icon/header-icon/message.png" alt=""/>
+                <span><img src="img/icon/header-icon/message.png" alt=""/></span>
+                Messaging
                 <?php
                 if (isset($_SESSION['id'])) {
                     $countmsg = AdvertisementMessage::countUnreadMessages($MEMBER->id);
@@ -186,19 +195,17 @@
                     <a href="member/member-message.php" class="view-all bg-theme-blue">View All Messages</a>
                 </div>
             </div>
-            
-              <div class="control-icon more has-items">
-                <a href="member/create-advertisement.php?back=ad">
-                    <button class="btn-post">Post Your Ad</button>
-                </a>
-            </div>
-            <div class="author-page author vcard inline-items more">
+
+
+            <div class="control-icon author-page author vcard inline-items more">
                 <div class="author-thumb">
+                    <a href="member/profile.php">
                     <?php
                     if (isset($_SESSION['id'])) {
                         if ($MEMBER->profilePicture) {
                             ?>
-                            <img alt="author" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
+                    <span><img alt="author" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2"></span>
+                    Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                             <?php
                         } else {
                             ?>
@@ -206,8 +213,9 @@
                             <?php
                         }
                         ?>
+                    </a>
 
-                        <span class="icon-status online"></span>
+<!--                        <span class="icon-status online"></span>-->
                         <div class="more-dropdown more-with-triangle">
                             <div class="mCustomScrollbar" data-mcs-theme="dark">
                                 <div class="ui-block-title ui-block-title-small">
@@ -245,23 +253,18 @@
 
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="terms-and-conditions.php">
                                             <span>Terms and Conditions</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <span>FAQs</span>
+                                        <a href="about-us.php">
+                                            <span>About Us</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <span>Careers</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span>Contact</span>
+                                        <a href="contact-us.php">
+                                            <span>Contact Us</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -277,20 +280,29 @@
                     ?>
 
                 </div>
-                <a href="member/profile.php" class="author-name fn">
+<!--                <a href="member/profile.php" class="author-name fn">
                     <?php
-                    if (isset($_SESSION['id'])) {
+//                    if (isset($_SESSION['id'])) {
                         ?>
                         <div class="author-title">
-                            <?php echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                            <?php // echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                         </div>
                         <span class="author-subtitle">SPACE COWBOY</span>
                         <?php
-                    }
+//                    }
                     ?>
+                </a>-->
+            </div>
+
+            <div class=" more has-items">
+                <a href="member/create-advertisement.php?back=ad">
+                    <button class="btn-post">
+                        <i class="icon fa fa-thumbtack"></i>
+                        Post Your Ad
+                    </button>
                 </a>
             </div>
-           
+
         </div>
     </div>
 
