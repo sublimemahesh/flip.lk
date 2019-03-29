@@ -59,58 +59,9 @@ $TERMS = New Page(6);
         include './banner.php';
         ?>
         <div class="">
-
-
             <div class="row">
                 <!-- Main Content -->
                 <main class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-
-<!--                    <section class="about-section-values ui-block ui-ad-block intro-section category-wrap-layout1 padding-top-100 padding-bottom-100 ">
-                        <div class="">
-                            <div class="container index-container">
-                                <div class="row">
-                                    <div class="col-sm-4 about-box">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <i class="fa fa-eye about-box-icon"></i>
-                                            </div>
-                                            <div class="col-sm-9">
-                                                <h5>Vision</h5>
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 about-box">
-
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <i class="fa fa-rocket about-box-icon"></i>
-                                            </div>
-                                            <div class="col-sm-9">
-                                                <h5>Mission</h5>
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 about-box">
-
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <i class="fa fa-handshake about-box-icon"></i>
-                                            </div>
-                                            <div class="col-sm-9">
-                                                <h5>Value</h5>
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </section>-->
-
                     <section class=" term">
                         <div class="">
                             <div class="container index-container">

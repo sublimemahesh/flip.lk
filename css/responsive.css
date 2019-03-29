@@ -241,6 +241,22 @@ and open the template in the editor.
     .about-main-description p {
         font-size: 14px;
     }
+    .hidden-xs{
+        display: none;
+    }
+    .profile-menu li a, .profile-menu li > div{
+        font-size: 11px;
+    }
+    .author-thumb img{
+        margin-top: 0px;
+    }
+    .top-header-author .author-thumb{
+        margin-top: -60px;
+    }
+    .control-block-button .btn-control:last-child{
+        margin-right: 13px;
+    }
+    
 }
 
 @media(min-width:577px) and (max-width:990px) {
