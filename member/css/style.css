@@ -16,10 +16,11 @@ a:hover {
     background-color: #003263;
 }
 .header .page-title {
-    padding: 5px 10px 5px 80px;
+    /*padding: 5px 10px 5px 80px;*/
+    padding: 4px 10px 7px 80px;
 }
 .page-title img {
-    width: 140px;
+    width: 167px;
 }
 .link-find-friend {
     padding: 25px 13px;
@@ -849,11 +850,11 @@ input[type='submit'].share-post {
     color: #000;
 }
 .header {
-    height: 61px;
+    height: 58px;
     padding-right: 80px;
 }
 .control-icon {
-    margin-right: 35px;
+    margin-right: 27px;
 }
 .search-bar {
     height: 55px;
@@ -879,7 +880,7 @@ input[type='submit'].share-post {
     margin-bottom: 10px;
 }
 .control-icon a {
-    color: #fff;
+    color: #9a9fbf;
 }
 .delete-comment {
     cursor: pointer;
@@ -1241,11 +1242,11 @@ header .control-icon > svg {
 }
 
 #site-header .control-icon img {
-    width: 25px;
+    height: 22px;
     opacity: 0.8;
 }
 #site-header .control-icon img:hover {
-    width: 25px;
+    height: 22px;
     opacity: 1;
 }
 .author-thumb.message-box img{
@@ -1376,17 +1377,77 @@ header .control-icon > svg {
 
 }
 .btn-post{
-    background-color: #ccd6e0;
-    font-size: 12px;
-    margin-left: 24px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 5px;
-    color: #003263;
+    background-color: #003263;
+    font-size: 13px;
+    border-radius: 0px;
+    color: #fff;
     font-weight: 700;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    border-style: solid;
-    border-color: #ccd6e0;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border: 1px solid #ccd6e0;
     margin-left: 2px;
+    font-family: Roboto,-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    margin-top: 5px;
+}
+.btn-post:hover {
+    background-color: #ccd6e0;
+    color: #003263;
+    border: 1px solid #ccd6e0;
+}
+.btn-post:hover .icon {
+    color: #003263;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+.btn-post .icon {
+    font-size: 15px;
+    margin-right: 5px;
+    margin-top: 2px;
+}
+.icon-box {
+    text-align: center;
+}
+.control-icon span, .author-page span {
+    display: block;
+}
+.author-page span img {
+    width: 22px;
+}
+.control-icon span img {
+    float: none;
+}
+#site-header .control-icon {
+    text-align: center;
+}
+/*#site-header .control-icon  {
+    border-right: 1px solid #eee;
+}*/
+#site-header .olymp-dropdown-arrow-icon {
+    height: 15px;
+    width: 10px;
+    padding-top: 5px;
+}
+#site-header .avatar {
+    margin-top: 0px;
+}
+#site-header .control-icon .label-avatar {
+    width: 17px;
+    height: 17px;
+    line-height: 17px;
+    top: -7px;
+    right: 6px;
+}
+.more-dropdown li a:hover {
+    color: #003263;
+}
+.control-icon a:hover {
+    color: #fff;
+}
+#site-header .more {
+    padding-bottom: 4px;
+}
+#site-header .control-block .author-thumb {
+
+    padding-top: 0px;
+
 }

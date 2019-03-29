@@ -33,22 +33,23 @@
             </div>
 
             <div class="control-icon more has-items has-items1">
-                <span>
-                    <img src="img/icon/header-icon/request.png" alt=""/>
-                    <?php
-                    if (isset($_SESSION['id'])) {
-                        $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
+                <a href="#">
+                    <span>
+                        <img src="img/icon/header-icon/request.png" alt=""/>
+                        <?php
+                        if (isset($_SESSION['id'])) {
+                            $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
 
-                        if ($countu['count'] > 0) {
-                            ?>
-                            <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
-                            <?php
+                            if ($countu['count'] > 0) {
+                                ?>
+                                <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
+                                <?php
+                            }
                         }
-                    }
-                    ?>
-                </span>
-                Requests
-
+                        ?>
+                    </span>
+                    Requests
+                </a>
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
                         <h6 class="title">FOLLOW REQUESTS</h6>
@@ -119,18 +120,22 @@
             </div>
 
             <div class="control-icon more has-items">
-                <span><img src="img/icon/header-icon/message.png" alt=""/></span>
-                Messaging
-                <?php
-                if (isset($_SESSION['id'])) {
-                    $countmsg = AdvertisementMessage::countUnreadMessages($MEMBER->id);
-                    if ($countmsg > 0) {
-                        ?>
-                        <div class="label-avatar bg-blue newest-request"><?php echo $countmsg; ?></div>
+                <a href="#">
+                    <span>
+                        <img src="img/icon/header-icon/message.png" alt=""/>
                         <?php
-                    }
-                }
-                ?>
+                        if (isset($_SESSION['id'])) {
+                            $countmsg = AdvertisementMessage::countUnreadMessages($MEMBER->id);
+                            if ($countmsg > 0) {
+                                ?>
+                                <div class="label-avatar bg-blue newest-request"><?php echo $countmsg; ?></div>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </span>
+                    Messaging
+                </a>
 
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
@@ -200,22 +205,23 @@
             <div class="control-icon author-page author vcard inline-items more">
                 <div class="author-thumb">
                     <a href="member/profile.php">
-                    <?php
-                    if (isset($_SESSION['id'])) {
-                        if ($MEMBER->profilePicture) {
+                        <?php
+                        if (isset($_SESSION['id'])) {
+                            if ($MEMBER->profilePicture) {
+                                ?>
+                                <span><img alt="author" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2"></span>
+                                Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                                <?php
+                            } else {
+                                ?>
+                                <span><img alt="author" src="upload/member/member.png" class="avatar" id="profile_pic2"></span>
+                                Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                                    <?php
+                            }
                             ?>
-                    <span><img alt="author" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2"></span>
-                    Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
-                            <?php
-                        } else {
-                            ?>
-                            <img alt="author" src="upload/member/member.png" class="avatar" id="profile_pic2">
-                            <?php
-                        }
-                        ?>
-                    </a>
+                        </a>
 
-<!--                        <span class="icon-status online"></span>-->
+            <!--                        <span class="icon-status online"></span>-->
                         <div class="more-dropdown more-with-triangle">
                             <div class="mCustomScrollbar" data-mcs-theme="dark">
                                 <div class="ui-block-title ui-block-title-small">
@@ -274,24 +280,28 @@
                         <?php
                     } else {
                         ?>
-                        <a href="member/login.php"><img alt="author" src="img/icon/header-icon/signin.png" class="signin" id="profile_pic2"></a>
+                        <a href="member/login.php">
+                            <span><img alt="author" src="img/icon/header-icon/signin.png" class="signin" id="profile_pic2">
+                            </span>
+                        Sign In
+                        </a>
                         <?php
                     }
                     ?>
 
                 </div>
-<!--                <a href="member/profile.php" class="author-name fn">
-                    <?php
+                <!--                <a href="member/profile.php" class="author-name fn">
+                <?php
 //                    if (isset($_SESSION['id'])) {
-                        ?>
-                        <div class="author-title">
-                            <?php // echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
-                        </div>
-                        <span class="author-subtitle">SPACE COWBOY</span>
-                        <?php
+                ?>
+                                        <div class="author-title">
+                <?php // echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                                        </div>
+                                        <span class="author-subtitle">SPACE COWBOY</span>
+                <?php
 //                    }
-                    ?>
-                </a>-->
+                ?>
+                                </a>-->
             </div>
 
             <div class=" more has-items">
