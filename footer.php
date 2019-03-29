@@ -1,3 +1,17 @@
+<?php
+$MEMBER = '';
+
+if (isset($_SESSION['id'])) {
+    $MEMBER = new Member($_SESSION['id']);
+
+    $CONTACTUS = New Page(7);
+    $PHONE_NUMBER1 = New Page(8);
+    $PHONE_NUMBER2 = New Page(9);
+    $EMAIL = New Page(10);
+    $LOCATION = New Page(11);
+}
+?> 
+
 <footer>
     <section class="footer-top-wrap">
         <div class="container footer-container">
@@ -10,7 +24,7 @@
                         <div class="footer-about">
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="single-item col-lg-3 col-md-3 col-12 col-sm-3">
@@ -51,13 +65,14 @@
                         </div>
                         <div class="footer-contact-info">
                             <ul>
-                                <li><i class="fas fa-map-marker-alt"></i>34 Street kancas City United States
-                                    area.</li>
-                                <li><i class="fas fa-phone"></i>+123 6669 000</li>
-                                <li><i class="far fa-envelope"></i>info@listygo.com</li>
+                                <li><i class="fas fa-map-marker-alt"></i>
+                                    <?php echo $LOCATION->description; ?>
+                                </li>
+                                <li><i class="fas fa-phone"></i>  <?php echo $PHONE_NUMBER1->description; ?></li>
+                                <li><i class="far fa-envelope"></i><?php echo $EMAIL->description; ?></li>
                             </ul>
                         </div>
-                        
+
                         <div class="footer-social">
                             <ul>
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
