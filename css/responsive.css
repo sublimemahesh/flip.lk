@@ -220,6 +220,27 @@ and open the template in the editor.
     .btn-post{
         font-size: 2px;  
     }
+    .about-description h5 {
+        font-size: 22px;
+    }
+    .about-box {
+        margin-bottom: 20px;
+    }
+    .about-box:last-child {
+        margin-bottom: 0px;
+    }
+    .about-main-img img {
+        margin-top: 0px;
+    }
+    .about-main-img {
+        margin-bottom: 30px;
+    }
+    .about-main-description {
+        text-align: center;
+    }
+    .about-main-description p {
+        font-size: 14px;
+    }
 }
 
 @media(min-width:577px) and (max-width:990px) {
@@ -344,6 +365,16 @@ and open the template in the editor.
     .control-icon{
         margin-right: 20px;
     }
+    .about-description h5 {
+        font-size: 22px;
+    }
+    .about-main-description {
+        text-align: center;
+    }
+    .about-main-img {
+        margin-bottom: 30px;
+    }
+
 }
 
 @media(min-width:992px) and (max-width:1200px) {
@@ -484,6 +515,7 @@ and open the template in the editor.
     .control-icon{
         margin-right: 19px;
     }
+    
 
 }
 @media (width: 768px){
