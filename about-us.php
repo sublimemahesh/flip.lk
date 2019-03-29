@@ -8,6 +8,10 @@ $MEMBER = '';
 if (isset($_SESSION['id'])) {
     $MEMBER = new Member($_SESSION['id']);
 }
+$ABOUT = New Page(1);
+$VISION = New Page(2);
+$MISSION = New Page(3);
+$VALUE = New Page(4);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +79,7 @@ if (isset($_SESSION['id'])) {
                                             </div>
                                             <div class="col-md-9 about-description">
                                                 <h5>Vision</h5>
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
+                                                <p><?php echo $VISION->description; ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -87,7 +91,7 @@ if (isset($_SESSION['id'])) {
                                             </div>
                                             <div class="col-md-9 about-description">
                                                 <h5>Mission</h5>
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
+                                                <p><?php echo $MISSION->description; ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -99,7 +103,7 @@ if (isset($_SESSION['id'])) {
                                             </div>
                                             <div class="col-md-9 about-description">
                                                 <h5>Value</h5>
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
+                                                <p><?php echo $VALUE->description; ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -114,12 +118,12 @@ if (isset($_SESSION['id'])) {
                             <div class="container index-container">
                                 <div class="row">
                                     <div class="col-md-7  about-main-img">
-                                        <img src="img/about.png" alt=""/>
+                                        <img src="upload/page/<?php echo $ABOUT->image_name; ?>" alt=""/>
                                     </div>
                                     <div class="col-md-5 about-main-description">
                                         <span id="typed2" style="white-space:pre;"></span>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum
+                                            <?php echo $ABOUT->description; ?>
                                         </p>
                                     </div>
 
