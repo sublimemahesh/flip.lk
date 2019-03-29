@@ -7,6 +7,12 @@ $MEMBER = '';
 
 if (isset($_SESSION['id'])) {
     $MEMBER = new Member($_SESSION['id']);
+
+    $CONTACTUS = New Page(7);
+    $PHONE_NUMBER1 = New Page(8);
+    $PHONE_NUMBER2 = New Page(9);
+    $EMAIL = New Page(10);
+    $LOCATION = New Page(11);
 }
 ?> 
 <!DOCTYPE html>
@@ -81,10 +87,7 @@ if (isset($_SESSION['id'])) {
                                                     <div class="form-group label-floating">
 
                                                         <P>
-                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                                                            Aenean commodo ligula eget dolor. Aenean massa. 
-                                                            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, 
-                                                            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                                                            <?php echo $CONTACTUS->description; ?>
                                                         </P>
                                                         <div class="company-contact-info-area">
                                                             <div class="company-info-item d-flex align-items-center">
@@ -93,7 +96,11 @@ if (isset($_SESSION['id'])) {
                                                                 </div>
                                                                 <div class="content box-details">
                                                                     <span class="title">Phone Number</span>
-                                                                    <p>0098 7898569</p>
+                                                                  
+                                                                        <?php echo $PHONE_NUMBER1->description; ?> 
+                                                                        <?php echo $PHONE_NUMBER2->description; ?>
+                                                                    
+
                                                                 </div>
                                                             </div><!-- company-info-item end -->
                                                             <div class="company-info-item d-flex align-items-center">
@@ -102,7 +109,7 @@ if (isset($_SESSION['id'])) {
                                                                 </div>
                                                                 <div class="content box-details">
                                                                     <span class="title">Email Address</span>
-                                                                    <p>info@flip.com</p>
+                                                                     <?php echo $EMAIL->description; ?>
                                                                 </div>
                                                             </div><!-- company-info-item end -->
 
@@ -112,25 +119,20 @@ if (isset($_SESSION['id'])) {
                                                                 </div>
                                                                 <div class="content address box-details">
                                                                     <span class="title">location</span>
-                                                                    <p>32,ABC Road,USA .</p>
+                                                                    <?php echo $LOCATION->description; ?>
                                                                 </div>
                                                             </div><!-- company-info-item end -->
                                                         </div>
-
-
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>  
-
                                     <div class="col-sm-6">
                                         <div class="ui-block">
                                             <div class="ui-block-title">
                                                 <h6 class="title">Personal Information</h6>
                                             </div>
-
                                             <div class="ui-block-content">
                                                 <!-- Contact Form  -->
                                                 <div class="row">
@@ -144,7 +146,6 @@ if (isset($_SESSION['id'])) {
                                                             <span id="spanContact"></span>
                                                         </div>
                                                     </div>
-
                                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                                         <div class="form-group label-floating">
                                                             <input type class="form-control" placeholder="Email Address" name="txtEmail" id="txtEmail" >
@@ -155,9 +156,6 @@ if (isset($_SESSION['id'])) {
                                                             <span id="spanSubject"></span>
                                                         </div>
                                                     </div>
-
-
-
                                                     <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <div class="form-group label-floating">
                                                             <textarea class="form-control" name="txtmessage" id="txtmessage" placeholder="Message"></textarea>
@@ -169,7 +167,6 @@ if (isset($_SESSION['id'])) {
                                                             <input class="form-control" placeholder="Security Code" name="captchacode" id="captchacode" >
                                                             <span id="capspan"></span>
                                                         </div>
-
                                                     </div>
 
                                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
@@ -199,15 +196,15 @@ if (isset($_SESSION['id'])) {
                         </div>
                     </section>
                     <!--<section class="about-section ui-block ui-ad-block intro-section category-wrap-layout1 padding-top-100 padding-bottom-100 ">-->
-                        
+
                     <!--</section>-->
                 </main>
                 <!-- ... end Main Content -->
             </div>
         </div>
         <div class="event-map">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.612711302738!2d80.29093631420835!3d6.0477529956202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDInNTEuOSJOIDgwwrAxNyczNS4zIkU!5e0!3m2!1sen!2slk!4v1553857522508!5m2!1sen!2slk" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                                </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.612711302738!2d80.29093631420835!3d6.0477529956202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDInNTEuOSJOIDgwwrAxNyczNS4zIkU!5e0!3m2!1sen!2slk!4v1553857522508!5m2!1sen!2slk" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
         <!--footers-->
         <?php
         include './footer.php';
