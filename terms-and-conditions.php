@@ -8,6 +8,7 @@ $MEMBER = '';
 if (isset($_SESSION['id'])) {
     $MEMBER = new Member($_SESSION['id']);
 }
+$TERMS = New Page(6);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -115,27 +116,7 @@ if (isset($_SESSION['id'])) {
                             <div class="container index-container">
                                 <div class="row terms1">
                                     <div class="entry-single-content">
-                                        <h2 class="entry-single-title ">Terms and Conditions</h2>
-                                        <p>We will provide our services to you, which are subject to the conditions stated below in this document. Every time you visit this website, use its services or make a purchase, you accept the following conditions. This is why we urge you to read them carefully. </p>
-
-                                        <h3 class="entry-single-list-title">Conditions of use</h3>
-                                        <ul class="details">
-                                            <li><i class="fa fa-angle-right icon1"></i>The content of the pages of this website is for your general information and use only. It is subject to change without notice.</li>
-                                            <li><i class="fa fa-angle-right icon1"></i>Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.</li>
-                                            <li><i class="fa fa-angle-right icon1"></i>Your use of any information or materials on this website is entirely at your own risk, for which we shall not be liable. It shall be your own responsibility to ensure that any products, services or information available through this website meet your specific requirements.</li>
-                                            <li><i class="fa fa-angle-right icon1"></i>This website contains material which is owned by or licensed to us. This material includes, but is not limited to, the design, layout, look, appearance and graphics. Reproduction is prohibited other than in accordance with the copyright notice, which forms part of these terms and conditions.</li>
-                                            <li><i class="fa fa-angle-right icon1"></i>All trademarks reproduced in this website, which are not the property of, or licensed to the operator, are acknowledged on the website.</li>
-                                            <li><i class="fa fa-angle-right icon1"></i>Unauthorised use of this website may give rise to a claim for damages and/or be a criminal offence.</li>
-                                            <li><i class="fa fa-angle-right icon1"></i>This website may also include links to third party websites. These links are provided for your convenience to provide further information. They do not signify that we endorse the website(s). We have no responsibility for the content of the linked website(s).</li>
-
-                                        </ul>
-                                        <h3 class="entry-single-list-title">Privacy</h3>
-                                        <ul>
-                                            <li><i class="fa fa-angle-right icon1"></i>This privacy policy sets out how Flip.lk uses and protects any information that you give Flip.lk when you use this website.</li>
-                                            <li><i class="fa fa-angle-right icon1"></i>Flip.lk is committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website you can be assured that it will only be used in accordance with this privacy statement.</li>
-                                            <li><i class="fa fa-angle-right icon1"></i>Flip.lk may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you are happy with any changes. This policy is effective from 29th March 2019. </li>
-
-                                        </ul>
+                                        <?php echo $TERMS->description; ?>
 
                                     </div>
 
