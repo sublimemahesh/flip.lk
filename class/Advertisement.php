@@ -472,7 +472,7 @@ class Advertisement {
 
         $setPaginate = "";
         if ($setLastpage > 1) {
-            $setPaginate .= "<ul class='setPaginate'>";
+            $setPaginate .= "<ul class='pagination justify-content-center'>";
             $setPaginate .= "<li class='setPage'>Page $page of $setLastpage</li>";
             if ($setLastpage < 7 + ($adjacents * 2)) {
                 for ($counter = 1; $counter <= $setLastpage; $counter++) {
@@ -533,6 +533,7 @@ class Advertisement {
         }
 
         echo $setPaginate;
+        
     }
 
 }

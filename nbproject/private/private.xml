@@ -14,26 +14,9 @@
         
  #94 Create Option to Manage all Business Group in the Website
     
-        <group>
-            <file>file:/C:/xampp/htdocs/flip.lk/manage-groups.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/class/BusinessSubCategory.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/manage-groups.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/all-advertisement.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/index.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/css/style.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/advertisements.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/auth.php</file>
-        </group>
-        <group>
-            <file>file:/C:/xampp/htdocs/flip.lk/class/Advertisement.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/manage-groups.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/manage-groups.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/header.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/groups.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/class/Group.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/css/style.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/auth.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/advertisements.php</file>
-        </group>
+        
+        
+        <group/>
+        <group/>
     </open-files>
 </project-private>
