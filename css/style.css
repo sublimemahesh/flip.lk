@@ -2480,8 +2480,9 @@ a .ad-title{
     border: 0;
 }
 .about-section.ui-block {  
-    padding-top: 100px;
-background: #f8f8f8;
+
+    padding-top: 80px;
+background: #fcfcfc;
 }
 
 .sidebar{
@@ -2498,4 +2499,7 @@ background: #f8f8f8;
     color: #7f7d86;
 }
 
+.icon-box {
+    text-align: center;
+}
 

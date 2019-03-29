@@ -70,10 +70,10 @@ if (isset($_SESSION['id'])) {
                                 <div class="row">
                                     <div class="col-sm-4 about-box">
                                         <div class="row">
-                                            <div class="col-sm-3">
+                                            <div class="col-md-3 icon-box">
                                                 <i class="fa fa-eye about-box-icon"></i>
                                             </div>
-                                            <div class="col-sm-9">
+                                            <div class="col-md-9 about-description">
                                                 <h5>Vision</h5>
                                                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
                                             </div>
@@ -82,10 +82,10 @@ if (isset($_SESSION['id'])) {
                                     <div class="col-sm-4 about-box">
 
                                         <div class="row">
-                                            <div class="col-sm-3">
+                                            <div class="col-md-3 icon-box">
                                                 <i class="fa fa-rocket about-box-icon"></i>
                                             </div>
-                                            <div class="col-sm-9">
+                                            <div class="col-md-9 about-description">
                                                 <h5>Mission</h5>
                                                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
                                             </div>
@@ -94,10 +94,10 @@ if (isset($_SESSION['id'])) {
                                     <div class="col-sm-4 about-box">
 
                                         <div class="row">
-                                            <div class="col-sm-3">
+                                            <div class="col-md-3 icon-box">
                                                 <i class="fa fa-handshake about-box-icon"></i>
                                             </div>
-                                            <div class="col-sm-9">
+                                            <div class="col-md-9 about-description">
                                                 <h5>Value</h5>
                                                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
                                             </div>
@@ -116,7 +116,8 @@ if (isset($_SESSION['id'])) {
                                     <div class="col-md-7  about-main-img">
                                         <img src="img/about.png" alt=""/>
                                     </div>
-                                    <div class="col-md-5 ">
+                                    <div class="col-md-5 about-main-description">
+                                        <span id="typed2" style="white-space:pre;"></span>
                                         <p>
                                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum
                                         </p>
@@ -154,6 +155,7 @@ if (isset($_SESSION['id'])) {
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="js/choices.js" type="text/javascript"></script>
         <script src="plugins/OwlCarousel/dist/owl.carousel.min.js" type="text/javascript"></script>
+        <script src="plugins/type-js/js/typed.min.js" type="text/javascript"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
         <script>
             $(document).ready(function() {

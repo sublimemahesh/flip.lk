@@ -52,5 +52,15 @@ $(document).ready(function () {
         }
     });
     
-    
+//    Typed-js master
+
+    var typed2 = new Typed('#typed2', {
+        strings: ['<b style="font-size: 40px; color: #003263;">FLIP.LK</b>', '<b style="font-size: 28px; color: #003263;">Sri Lankan Biggest Business Group</b>'],
+        typeSpeed: 100,
+        backSpeed: 0,
+        fadeOut: true,
+        loop: true
+    });
+
+
 });
