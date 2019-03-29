@@ -10,29 +10,35 @@
 
             <div class="control-icon more has-items">
                 <a href="../">
-                    <img src="img/icon/header-icon/home.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Home"/>
+                    <span><img src="img/icon/header-icon/home.png" alt="" /></span>
+                Home
                 </a>
 
             </div>
             <div class="control-icon more has-items has-items-news">
                 <a href="./">
-                    <img src="img/icon/header-icon/newsfeed.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Newsfeed" />
+                    <span><img src="img/icon/header-icon/newsfeed.png" alt=""  /></span>
+                Newsfeed
                 </a>
 
             </div>
             <div class="control-icon more has-items">
                 <a href="../all-advertisement.php">
-                    <img src="img/icon/header-icon/advertising.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Advertisements"  />
+                    <span><img src="img/icon/header-icon/advertising.png" alt=""   /></span>
+                Advertisements
                 </a>
 
             </div>
             <div class="control-icon more has-items">
                 <a href="manage-groups.php">
-                    <img src="img/icon/header-icon/group.png" alt="" data-toggle="tooltip" data-placement="bottom" title="Groups" />
+                    <span><img src="img/icon/header-icon/group.png" alt=""  /></span>
+                Groups
                 </a>
 
             </div>
             <div class="control-icon more has-items has-items1">
+                <a href="#">
+                    <span>
                 <img src="img/icon/header-icon/request.png" alt=""/>
                 <?php
                 if (isset($_SESSION['id'])) {
@@ -44,6 +50,9 @@
                     }
                 }
                 ?>
+                        </span>
+                Requests
+                </a>
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
                         <h6 class="title">FOLLOW REQUESTS</h6>
@@ -119,6 +128,8 @@
             </div>
 
             <div class="control-icon more has-items">
+                <a href="#">
+                    <span>
                 <img src="img/icon/header-icon/message.png" alt=""/>
                 <?php
                 if (isset($_SESSION['id'])) {
@@ -130,7 +141,9 @@
                     }
                 }
                 ?>
-
+</span>
+                    Messaging
+                </a>
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
                         <h6 class="title">Chat / Messages</h6>
@@ -196,26 +209,24 @@
                     <a href="member-message.php" class="view-all bg-theme-blue">View All Messages</a>
                 </div>
             </div>
-             <div class="control-icon more has-items">
-                <a href="create-advertisement.php?back=ad">
-                    <button class="btn-post">Post Your Ad</button>
-                </a>
-            </div>
-            <div class="author-page author vcard inline-items more">
+             
+            <div class="control-icon author-page author vcard inline-items more">
                 <div class="author-thumb">
+                    <span>
                     <?php
                     if (isset($_SESSION['id'])) {
                         if ($MEMBER->profilePicture) {
                             ?>
-                            <img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
+                            <span><img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2"></span>
+                            Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                             <?php
                         } else {
                             ?>
-                            <img alt="author" src="../upload/member/member.png" class="avatar" id="profile_pic2">
-                            <?php
+                            <span><img alt="author" src="../upload/member/member.png" class="avatar" id="profile_pic2"></span>
+                            Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                                <?php
                         }
                         ?>
-                        <span class="icon-status online"></span>
                         <div class="more-dropdown more-with-triangle">
                             <div class="mCustomScrollbar" data-mcs-theme="dark">
                                 <div class="ui-block-title ui-block-title-small">
@@ -251,25 +262,20 @@
                                     <h6 class="title">About Flip.lk</h6>
                                 </div>
 
-                                <ul>
+                               <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="../terms-and-conditions.php">
                                             <span>Terms and Conditions</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <span>FAQs</span>
+                                        <a href="../about-us.php">
+                                            <span>About Us</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <span>Careers</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span>Contact</span>
+                                        <a href="../contact-us.php">
+                                            <span>Contact Us</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -279,22 +285,25 @@
                         <?php
                     } else {
                         ?>
-                        <a href="login.php"><img alt="author" src="img/icon/header-icon/signin.png" class="signin" id="profile_pic2"></a>
+                        <a href="login.php">
+                            <span>
+                                <img alt="author" src="img/icon/header-icon/signin.png" class="signin" id="profile_pic2">
+                            </span>
+                            Sign In
+                                </a>
                         <?php
                     }
                     ?>
                 </div>
-                <a href="profile.php" class="author-name fn">
-                    <?php
-                    if (isset($_SESSION['id'])) {
-                        ?>
-                        <div class="author-title">
-                            <?php echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
-                        </div>
-                        <span class="author-subtitle">SPACE COWBOY</span>
-                        <?php
-                    }
-                    ?>
+               
+            </div>
+            
+            <div class="more has-items">
+                <a href="create-advertisement.php?back=ad">
+                    <button class="btn-post">
+                        <i class="icon fa fa-thumbtack"></i>
+                        Post Your Ad
+                    </button>
                 </a>
             </div>
           

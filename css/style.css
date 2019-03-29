@@ -14,7 +14,8 @@ a:hover {
     width: 100%;
 }
 .header .page-title {
-    padding: 5px 10px 19px 80px;
+    /*padding: 5px 10px 19px 80px;*/
+    padding: 8px 10px 8px 80px;
 }
 #site-header .control-icon img {
     height: 22px;
@@ -852,7 +853,8 @@ input[type='submit'].share-post {
     color: #000;
 }
 .header {
-    height: 61px;
+    /*height: 61px;*/
+    height: 58px;
     padding-right: 80px;
 }
 .control-icon {
@@ -2399,7 +2401,7 @@ ul {
     padding-bottom: 7px;
 }
 .author-thumb img.signin{
-    padding-top: 11px;
+    /*padding-top: 11px;*/
 }
 .has-items1 img{
     padding-top: 4px;
@@ -2604,6 +2606,12 @@ a .ad-title{
 }
 .more-dropdown li a:hover {
     color: #003263;
+}
+.control-icon a:hover {
+    color: #fff;
+}
+#site-header .more {
+    padding-bottom: 4px;
 }
 
 
