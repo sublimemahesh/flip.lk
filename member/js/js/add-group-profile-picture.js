@@ -29,7 +29,6 @@ $(document).ready(function () {
                 $('.group-profile-default-image').css('display', 'none');
                 $('#group-pro').val(mess);
 //                window.location.replace('create-group.php');
-//                alert(111);
             },
             cache: false,
             contentType: false,

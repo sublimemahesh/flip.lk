@@ -930,7 +930,7 @@ input[type='submit'].share-post {
     display: block;
     font-size: 1px;
     filter: alpha(opacity=0);
-    min-height: 255px;
+    min-height: 204px;
     min-width: 25px;
     opacity: 0;
     position: absolute;
@@ -938,7 +938,7 @@ input[type='submit'].share-post {
     text-align: left;
     top: 44px;
     cursor: pointer;
-    width: 430;
+    width: 452px;
 
 }
 .upload-profile-pic input[type="file"] {

@@ -92,13 +92,15 @@ $VALUE = New Page(4);
                     <section class="about-section ui-block ui-ad-block intro-section category-wrap-layout1 padding-top-100 padding-bottom-100 ">
                         <div class="">
                             <div class="container index-container">
+                                <div class="section-heading heading-dark heading-center">
+                                    <div class="item-sub-title">Understand to achieve anything requires faith and belief in yourself.</div>
+                                    <h2 class="item-title">This is our Company important</h2>
+                                </div>
                                 <div class="row">
                                     <div class="col-sm-4 about-box">
                                         <div class="row">
-                                            <div class="col-md-3 icon-box">
+                                            <div class="col-md-12 about-description">
                                                 <i class="fa fa-eye about-box-icon"></i>
-                                            </div>
-                                            <div class="col-md-9 about-description">
                                                 <h5>Vision</h5>
                                                 <p><?php echo $VISION->description; ?></p>
                                             </div>
@@ -107,10 +109,8 @@ $VALUE = New Page(4);
                                     <div class="col-sm-4 about-box">
 
                                         <div class="row">
-                                            <div class="col-md-3 icon-box">
+                                            <div class="col-md-12 about-description">
                                                 <i class="fa fa-rocket about-box-icon"></i>
-                                            </div>
-                                            <div class="col-md-9 about-description">
                                                 <h5>Mission</h5>
                                                 <p><?php echo $MISSION->description; ?></p>
                                             </div>
@@ -119,10 +119,8 @@ $VALUE = New Page(4);
                                     <div class="col-sm-4 about-box">
 
                                         <div class="row">
-                                            <div class="col-md-3 icon-box">
+                                            <div class="col-md-12 about-description">
                                                 <i class="fa fa-handshake about-box-icon"></i>
-                                            </div>
-                                            <div class="col-md-9 about-description">
                                                 <h5>Value</h5>
                                                 <p><?php echo $VALUE->description; ?></p>
                                             </div>
@@ -134,64 +132,7 @@ $VALUE = New Page(4);
                             </div>
                         </div>
                     </section>
-                    
-                    
-                    <!--///// tet-->
-                     <section class="welcome-section section-padding section-bg">
-            <div class="container paddingtop">
-                <div class="section-header text-center">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <h2 class="section-title">This is our Company important</h2>
-                            <p>Understand to achieve anything requires faith and belief in yourself.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-wrapper">
-                    <div class="row mt-mb-15 justify-content-center">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-item-style-four item-0">
-                                <div class="single-item-head d-flex align-items-center">
-                                    <div class="icon"><i class="fa fa-eye"></i></div>
-                                    <h5 class="item-title">Vision</h5>
-                                </div>
-                                <div class="content">
 
-                                    <p>To assist the travelers, gain the most out of their coverage and give a customer service with a smile</p>
-                                </div>
-                            </div>
-                        </div><!--benefits-item end -->
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-item-style-four item-0">
-                                <div class="single-item-head d-flex align-items-center">
-                                    <div class="icon"><i class="fa fa-rocket"></i></div>
-                                    <h5 class="item-title">Mission</h5>
-                                </div>
-                                <div class="content">
-
-                                    <p>Being a knowledgeable and experienced would help ascertaining travelers believes, Keep them totally satisfied.we strive to do our best, and are committed to ensuring a dream travel to all our guests.
-                                    </p>
-                                </div>
-                            </div>
-                        </div><!--benefits-item end -->
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-item-style-four item-0">
-                                <div class="single-item-head d-flex align-items-center">
-                                    <div class="icon"><i class="fa fa-handshake-o"></i></div>
-                                    <h5 class="item-title">Value</h5>
-                                </div>
-                                <div class="content">
-
-                                    <p>get a happy comment for our service in a guests.and get a good name  for tour services</p>
-                                </div>
-                            </div>
-                        </div><!--benefits-item end -->
-                    </div>
-                </div>
-            </div>
-        </section>
-                    <!--end test-->
-                    
 
                 </main>
                 <!-- ... end Main Content -->

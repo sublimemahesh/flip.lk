@@ -5,7 +5,7 @@ $(document).ready(function () {
         var member, group;
         member = $(this).attr('member-id');
         group = $(this).attr('group-id');
-alert(member);
+        
         $.ajax({
             url: "post-and-get/ajax/join-group.php",
             type: "POST",

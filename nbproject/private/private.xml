@@ -17,16 +17,25 @@
         
         
         
-        <group>
-            <file>file:/C:/xampp/htdocs/flip.lk/header.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/index.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/all-advertisement.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/css/style.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/advertisement.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/advertisements.php</file>
-        </group>
+        
         <group>
             <file>file:/C:/xampp/htdocs/flip.lk/footer.php</file>
+        </group>
+        <group>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/header.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/post-and-get/ajax/ad-reply.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/css/flaticon.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/view-advertisement.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/css/style.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/js/js/join-group.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/css/login.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/css/responsive.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/index.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/header.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/css/style.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/css/responsive.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/post-and-get/ajax/join-group.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/about-us.php</file>
         </group>
     </open-files>
 </project-private>
