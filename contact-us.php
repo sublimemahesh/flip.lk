@@ -7,13 +7,13 @@ $MEMBER = '';
 
 if (isset($_SESSION['id'])) {
     $MEMBER = new Member($_SESSION['id']);
-
+}
     $CONTACTUS = New Page(7);
     $PHONE_NUMBER1 = New Page(8);
     $PHONE_NUMBER2 = New Page(9);
     $EMAIL = New Page(10);
     $LOCATION = New Page(11);
-}
+
 ?> 
 <!DOCTYPE html>
 <html lang="en">
