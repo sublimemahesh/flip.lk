@@ -93,7 +93,7 @@ if (isset($_SESSION['id'])) {
                                                 <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
                                             </div>
                                             <div class="how-it-work text-center ">
-                                                <div class="how-it-work-icon"> <i class="flaticon-people-2"></i> </div>
+                                                <div class="how-it-work-icon"> <img src="img/post_ads.png" alt=""/> </div>
                                                 <h4>Post Free Ad</h4>
                                                 <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
                                             </div>
@@ -173,117 +173,7 @@ if (isset($_SESSION['id'])) {
                         </div>
                     </section>
                     <!--Advertisement Section-->
-<!--                    <div class="ui-block ui-ad-block ad-container listing-dire">
-                        <div class="hot-items carousel-wrapper container index-container ">
-                            <div class="section-heading heading-dark heading-center">
-                                <div class="item-sub-title">Discover our latest listing around the world</div>
-                                <h2 class="item-title">New Listings in Our Directory</h2>
-                            </div>
 
-                            <div id="ad-slider" class="owl-carousel owl-theme">
-
-                                <?php
-                                foreach (Advertisement::all() as $key => $ad) {
-
-                                    $images = AdvertisementImage::getPhotosByAdId($ad['id']);
-                                    $MEM = new Member($ad['member']);
-                                    $CAT = new BusinessCategory($ad['category']);
-                                    $result = getTime($ad['created_at']);
-                                    ?>
-                                    <div class="item" style="">
-                                        <div class="listing-box-grid">
-                                            <div class="product-box border-box">
-                                                <div class="item-img bg--gradient-50">
-                                                    <div class="item-status status-open active">
-                                                        <?php
-                                                        if ($ad['price']) {
-                                                            echo 'Rs. ' . number_format($ad['price']);
-                                                        } else {
-                                                            echo 'Negotiable';
-                                                        }
-                                                        ?>
-                                                    </div>
-                                                    <div class="item-status status-save">Save 15%</div>
-                                                    <?php
-                                                    if (count($images) > 0) {
-                                                        foreach ($images as $key1 => $image) {
-                                                            if ($key1 == 0) {
-                                                                ?>
-                                                                <img src="upload/advertisement/thumb3/<?php echo $image['image_name']; ?>"  alt="Listing" class="img-fluid grid-view-img" />
-                                                                <?php
-                                                            }
-                                                        }
-                                                    } else {
-                                                        ?>
-                                                        <img src="upload/advertisement/thumb3/advertising.jpg"  alt="Listing" class="img-fluid grid-view-img" />
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                    <div class="item-logo" title="<?php echo $CAT->name; ?>"><img src="upload/business-category/<?php echo $CAT->image_name; ?>" alt="Logo"></div>
-                                                </div>
-                                                <div class="item-content">
-                                                    <h3 class="item-title">
-                                                        <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
-                                                            <?php
-                                                            if (strlen($ad['title']) > 22) {
-                                                                echo substr($ad['title'], 0, 21) . '...';
-                                                            } else {
-                                                                echo $ad['title'];
-                                                            }
-                                                            ?>
-                                                        </a>
-                                                    </h3>
-                                                    <span class="item-paragraph">
-                                                        <?php
-//                                                        if (strlen($ad['description']) > 50) {
-//                                                            echo substr($ad['description'], 0, 45) . '...';
-//                                                        } else {
-//                                                            echo $ad['description'];
-//                                                        }
-                                                        ?>
-                                                    </span>
-                                                    <ul class="contact-info">
-                                                        <li><i class="fas fa-map-marker-alt"></i><?php echo $ad['address']; ?></li>
-                                                        <li><i class="fas fa-phone"></i>
-                                                            <?php
-                                                            if ($ad['phone_number']) {
-                                                                echo $ad['phone_number'];
-                                                            } elseif ($MEM->phoneNumber) {
-                                                                echo $MEM->phoneNumber;
-                                                            } else {
-                                                                echo '-';
-                                                            }
-                                                            ?>
-                                                        </li>
-                                                        <li class="globe-icon"><i class="fas fa-globe"></i>
-                                                            <?php
-                                                            if ($ad['website']) {
-                                                                echo $ad['website'];
-                                                            } else {
-                                                                echo '-';
-                                                            }
-                                                            ?>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="meta-item">
-                                                        <li class="ctg-name">
-                                                            <a><img src="upload/member/<?php echo $MEM->profilePicture; ?>" class="img-responsive img-circle" alt=""/> <?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
-                                                                <div class="ad-time ad-time1"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
-                                                            </a>
-
-                                                        </li>
-
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </div>-->
                     <div class="container advertisement-section">
                         <div class="hot-items carousel-wrapper container index-container ">
                         <div class="section-heading heading-dark heading-center">
@@ -302,6 +192,7 @@ if (isset($_SESSION['id'])) {
                                     $images = AdvertisementImage::getPhotosByAdId($ad['id']);
                                     $MEM = new Member($ad['member']);
                                     $CAT = new BusinessCategory($ad['category']);
+                                    $SUBCAT = new BusinessSubCategory($ad['sub_category']);
                                     $result = getTime($ad['created_at']);
                                     
                                     ?>
@@ -333,8 +224,8 @@ if (isset($_SESSION['id'])) {
                                                     ?>
                                                     </figure>
                                                     <div class="feature-content">
-                                                        <div class="product">
-                                                            <a href="#"><?php echo $CAT->name; ?></a>
+                                                        <div class="product-category">
+                                                            <a href="#"><?php echo $CAT->name; ?> <i class="fa fa-angle-right"></i> <?php echo $SUBCAT->name; ?></a>
                                                             <!--<a href="#">camera</a>-->
                                                         </div>
                                                         <h4>
@@ -349,28 +240,25 @@ if (isset($_SESSION['id'])) {
                                                         </a>
                                                             <!--<a href="ads-details.html">Canon SX Powershot ...</a>-->
                                                         </h4>
-                                                        <div class="meta-tag">
+                                                        <div class="ad-owner-details meta-tag">
                                                             <span>
                                                                 <i class="lni-user fa fa-user"></i><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
                                                             </span>
-                                                            
                                                             <span>
-                                                                <i class="lni-tag fa fa-phone"></i> <?php
-                                                            if ($ad['phone_number']) {
-                                                                echo $ad['phone_number'];
-                                                            } elseif ($MEM->phoneNumber) {
-                                                                echo $MEM->phoneNumber;
+                                                                <i class="lni-map-marker fa fa-envelope"></i> 
+                                                                <?php
+                                                            if ($ad['email']) {
+                                                                echo $ad['email'];
+                                                            } elseif ($MEM->email) {
+                                                                echo $MEM->email;
                                                             } else {
                                                                 echo '-';
                                                             }
                                                             ?>
                                                             </span>
-                                                            <span>
-                                                                <i class="lni-map-marker fa fa-envelope"></i> <?php echo $ad['address']; ?>
-                                                            </span>
                                                         </div>
                                                         <div class="desc">
-                                                        <p class="dsc"><?php echo $ad['description']; ?></p>
+                                                        <p class="dsc"><?php echo substr($ad['description'],0, 100) . '...'; ?></p>
                                                         </div>
                                                         <div class="listing-bottom">
                                                             <?php
