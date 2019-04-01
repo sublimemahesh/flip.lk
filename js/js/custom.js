@@ -9,20 +9,22 @@ $(document).ready(function () {
         autoPlay: 3000, //Set AutoPlay to 3 seconds
         items: 4,
         nav: true,
-        dot: true,
+        dot: false,
         margin: 10,
         responsive: {
             0: {
                 items: 1,
-                dots: true,
+                dot: false,
                 nav: false
             },
             600: {
                 items: 2,
+                dot: false,
                 nav: false
             },
             1000: {
                 items: 3,
+                dot: false,
                 nav: true,
             }
         }

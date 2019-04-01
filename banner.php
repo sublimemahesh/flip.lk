@@ -1,4 +1,4 @@
-<section class="main-banner-wrap-layout1 bg-common overlay-dark-30 bg--gradient-top-30" data-bg-image="img/site-main-figure1.jpg" style="background-image: url(&quot;img/banner2.jpg&quot;);">
+<section class="main-banner-wrap-layout1 bg-common overlay-dark-30 bg--gradient-top-30" data-bg-image="img/site-main-figure1.jpg" style="background-image: url(&quot;img/banner.jpg&quot;);">
     <div class="container">
         <div class="main-banner-box-layout1">
             <p class="item-sub-title">Browse &amp; connect with great places around the world</p>
@@ -46,9 +46,7 @@
                             </div>
                             <div class="input-field first-wrap">
                                 <div class="icon-wrap">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
-                                    </svg>
+                                    <i class="fa fa-search"></i>
                                 </div>
                                 <input id="search" type="text" name="keyword" placeholder="What are you looking for?" />
                             </div>
