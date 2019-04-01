@@ -858,7 +858,7 @@ input[type='submit'].share-post {
     padding-right: 80px;
 }
 .control-icon {
-    margin-right: 20px;
+    margin-right: 22px;
 }
 .search-bar {
     height: 55px;
@@ -1862,8 +1862,8 @@ ul {
 
 }
 .footer-box .footer-logo {
-    /*text-align: center;*/
-    padding-bottom: 25px;
+    text-align: center;
+    /*padding-bottom: 25px;*/
 
 }
 .footer-logo img {
@@ -1886,7 +1886,7 @@ ul {
     margin-bottom: 15px;
     position: relative;
     padding-left: 42px;
-
+    margin-top: 19px;
 }
 .footer-box .footer-contact-info li svg {
 
@@ -1905,7 +1905,7 @@ ul {
 .footer-box .footer-header h3 {
 
     color: #ffffff;
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 500;
     padding-bottom: 20px;
 
@@ -1977,7 +1977,7 @@ ul {
     width: 45px;
     height: 40px;
     color: #ffffff;
-    font-size: 14px;
+    font-size: 22px;
     font-weight: 400;
     border-radius: 4px;
     -webkit-transition: all 0.3s ease-out;
@@ -1985,6 +1985,7 @@ ul {
     -ms-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
+    border: 1px solid #fff;
 
 }
 .footer-box ul.folow-us {
@@ -2178,6 +2179,7 @@ a.see-more:hover {
 .footer-box .footer-social ul li a:hover {
     background-color: #fff;
     color: #003263;
+    border: 0;
 }
 .footer-box .widget_nav_menu li a:hover {
     color: #fff;
@@ -2627,8 +2629,38 @@ a .ad-title{
     margin-right: 0px;
 }
 #site-header .control-icon img.follower-request {
- height: 26px;   
+    height: 26px;   
+}
+.footer-contact-info p, .footer-about p, .footer-box .widget_nav_menu li a {
+    font-size: 14px;
+}
+.footer-about p {
+    text-align: justify;
+    color: #999999;
+}
+.footer-box .footer-social ul li a {
+    font-size: 22px;   
+}
+.contact-info-title {
+    font-size: 13px;
+    color: #fff;
+
 }
 .footer-contact-info p {
-    font-size: 17px;
+    margin-bottom: 0px;
+}
+.footer-box {
+    color: #999999;
+}
+.widget_nav_menu ul {
+    margin-top: 19px;
+}
+.copyright {
+    position: absolute;
+    width: 100%;
+    margin-top: -11px;
+}
+.footer-box .widget_nav_menu li svg {
+    margin-right: 15px;
+    font-size: 14px;
 }
