@@ -76,7 +76,7 @@ if (isset($_SESSION["back_url"])) {
                                 $vali->show_message();
                                 ?>
                             </div>
-                            <div class="row">
+<!--                            <div class="row">
                                 <div class="col-sm-6">
                                     <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Login with Facebook</a>
                                 </div>
@@ -84,7 +84,7 @@ if (isset($_SESSION["back_url"])) {
                                     <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Login with Twitter</a>
                                 </div>
                             </div>
-                            <div class="or"></div>
+                            <div class="or"></div>-->
                             <form  action="post-and-get/member.php" method="post">
                                 <div class="field-wrap">
                                     <label>
@@ -123,7 +123,7 @@ if (isset($_SESSION["back_url"])) {
                                 $vali->show_message();
                                 ?>
                             </div>
-                            <div class="row">
+<!--                            <div class="row">
                                 <div class="col-sm-6">
                                     <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Sign up with Facebook</a>
                                 </div>
@@ -131,7 +131,7 @@ if (isset($_SESSION["back_url"])) {
                                     <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Sign up with Twitter</a>
                                 </div>
                             </div>
-                            <div class="or"></div>
+                            <div class="or"></div>-->
 
                             <form id="register" action="#">
                                 <div class="top-row">
