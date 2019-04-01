@@ -67,8 +67,29 @@ $VALUE = New Page(4);
             <div class="row">
                 <!-- Main Content -->
                 <main class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-
                     <section class="about-section-values ui-block ui-ad-block intro-section category-wrap-layout1 padding-top-100 padding-bottom-100 ">
+
+                        <div class="">
+                            <div class="container index-container">
+                                <div class="row">
+                                    <div class="col-md-7  about-main-img">
+                                        <img src="upload/page/<?php echo $ABOUT->image_name; ?>" alt=""/>
+                                    </div>
+                                    <div class="col-md-5 about-main-description">
+                                        <span id="typed2" style="white-space:pre;"></span>
+                                        <p>
+                                            <?php echo $ABOUT->description; ?>
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section class="about-section ui-block ui-ad-block intro-section category-wrap-layout1 padding-top-100 padding-bottom-100 ">
                         <div class="">
                             <div class="container index-container">
                                 <div class="row">
@@ -113,25 +134,64 @@ $VALUE = New Page(4);
                             </div>
                         </div>
                     </section>
-                    <section class="about-section ui-block ui-ad-block intro-section category-wrap-layout1 padding-top-100 padding-bottom-100 ">
-                        <div class="">
-                            <div class="container index-container">
-                                <div class="row">
-                                    <div class="col-md-7  about-main-img">
-                                        <img src="upload/page/<?php echo $ABOUT->image_name; ?>" alt=""/>
-                                    </div>
-                                    <div class="col-md-5 about-main-description">
-                                        <span id="typed2" style="white-space:pre;"></span>
-                                        <p>
-                                            <?php echo $ABOUT->description; ?>
-                                        </p>
-                                    </div>
-
-                                </div>
-
-                            </div>
+                    
+                    
+                    <!--///// tet-->
+                     <section class="welcome-section section-padding section-bg">
+            <div class="container paddingtop">
+                <div class="section-header text-center">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <h2 class="section-title">This is our Company important</h2>
+                            <p>Understand to achieve anything requires faith and belief in yourself.</p>
                         </div>
-                    </section>
+                    </div>
+                </div>
+                <div class="section-wrapper">
+                    <div class="row mt-mb-15 justify-content-center">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-item-style-four item-0">
+                                <div class="single-item-head d-flex align-items-center">
+                                    <div class="icon"><i class="fa fa-eye"></i></div>
+                                    <h5 class="item-title">Vision</h5>
+                                </div>
+                                <div class="content">
+
+                                    <p>To assist the travelers, gain the most out of their coverage and give a customer service with a smile</p>
+                                </div>
+                            </div>
+                        </div><!--benefits-item end -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-item-style-four item-0">
+                                <div class="single-item-head d-flex align-items-center">
+                                    <div class="icon"><i class="fa fa-rocket"></i></div>
+                                    <h5 class="item-title">Mission</h5>
+                                </div>
+                                <div class="content">
+
+                                    <p>Being a knowledgeable and experienced would help ascertaining travelers believes, Keep them totally satisfied.we strive to do our best, and are committed to ensuring a dream travel to all our guests.
+                                    </p>
+                                </div>
+                            </div>
+                        </div><!--benefits-item end -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-item-style-four item-0">
+                                <div class="single-item-head d-flex align-items-center">
+                                    <div class="icon"><i class="fa fa-handshake-o"></i></div>
+                                    <h5 class="item-title">Value</h5>
+                                </div>
+                                <div class="content">
+
+                                    <p>get a happy comment for our service in a guests.and get a good name  for tour services</p>
+                                </div>
+                            </div>
+                        </div><!--benefits-item end -->
+                    </div>
+                </div>
+            </div>
+        </section>
+                    <!--end test-->
+                    
 
                 </main>
                 <!-- ... end Main Content -->
@@ -162,7 +222,7 @@ $VALUE = New Page(4);
         <script src="plugins/type-js/js/typed.min.js" type="text/javascript"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $('.about-box').mouseover(function () {
                     $(this).find('.about-box-icon').addClass('about-box-icon-hover');
                 });
