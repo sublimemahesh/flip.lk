@@ -15,13 +15,6 @@
                 </a>
 
             </div>
-            <div class="control-icon more has-items has-items-news">
-                <a href="./">
-                    <span><img src="img/icon/header-icon/newsfeed.png" alt=""  /></span>
-                Newsfeed
-                </a>
-
-            </div>
             <div class="control-icon more has-items">
                 <a href="../all-advertisement.php">
                     <span><img src="img/icon/header-icon/advertising.png" alt=""   /></span>
@@ -36,10 +29,17 @@
                 </a>
 
             </div>
+            <div class="control-icon more has-items has-items-news">
+                <a href="./">
+                    <span><img src="img/icon/header-icon/newsfeed.png" alt=""  /></span>
+                Newsfeed
+                </a>
+
+            </div>
             <div class="control-icon more has-items has-items1">
                 <a href="#">
                     <span>
-                <img src="img/icon/header-icon/request.png" alt=""/>
+                <img class="follower-request" src="img/icon/header-icon/request.png" alt=""/>
                 <?php
                 if (isset($_SESSION['id'])) {
                     $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);

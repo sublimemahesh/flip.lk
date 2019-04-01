@@ -15,7 +15,7 @@ a:hover {
 }
 .header .page-title {
     /*padding: 5px 10px 19px 80px;*/
-    padding: 8px 10px 8px 80px;
+    padding: 9px 10px 9px 80px;
 }
 #site-header .control-icon img {
     height: 22px;
@@ -858,7 +858,7 @@ input[type='submit'].share-post {
     padding-right: 80px;
 }
 .control-icon {
-    margin-right: 27px;
+    margin-right: 20px;
 }
 .search-bar {
     height: 55px;
@@ -2430,7 +2430,7 @@ ul {
     padding-top: 9px;
     padding-bottom: 9px;
     border: 1px solid #ccd6e0;
-    margin-left: 2px;
+    margin-left: 0px;
     font-family: Roboto,-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
     margin-top: 5px;
 }
@@ -2621,4 +2621,11 @@ a .ad-title{
 }
 .event-map{
     margin-bottom: -6px;
+}
+
+#site-header .control-block .author-thumb {
+    margin-right: 0px;
+}
+#site-header .control-icon img.follower-request {
+ height: 26px;   
 }
