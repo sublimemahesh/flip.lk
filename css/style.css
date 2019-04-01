@@ -2629,3 +2629,6 @@ a .ad-title{
 #site-header .control-icon img.follower-request {
  height: 26px;   
 }
+.footer-contact-info p {
+    font-size: 17px;
+}
