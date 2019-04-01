@@ -9,22 +9,22 @@ $(document).ready(function () {
         autoPlay: 3000, //Set AutoPlay to 3 seconds
         items: 4,
         nav: true,
-        dot: false,
+        dots: false,
         margin: 10,
         responsive: {
             0: {
                 items: 1,
-                dot: false,
+                dots: false,
                 nav: false
             },
             600: {
                 items: 2,
-                dot: false,
+                dots: false,
                 nav: false
             },
             1000: {
                 items: 3,
-                dot: false,
+                dots: false,
                 nav: true,
             }
         }
@@ -35,7 +35,7 @@ $(document).ready(function () {
         itemsDesktop: [1199, 3],
         itemsDesktopSmall: [979, 3],
         nav: true,
-        dot: true,
+        dots: true,
         margin: 10,
         responsive: {
             0: {
