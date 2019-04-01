@@ -16,17 +16,7 @@
     
         
         
-        <group>
-            <file>file:/C:/xampp/htdocs/flip.lk/banner.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/css/responsive.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/header.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/index.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/all-advertisement.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/css/style.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/css/responsive.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/group-header.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/advertisement.php</file>
-        </group>
+        
         <group>
             <file>file:/C:/xampp/htdocs/flip.lk/header.php</file>
             <file>file:/C:/xampp/htdocs/flip.lk/index.php</file>
@@ -34,6 +24,9 @@
             <file>file:/C:/xampp/htdocs/flip.lk/css/style.css</file>
             <file>file:/C:/xampp/htdocs/flip.lk/member/advertisement.php</file>
             <file>file:/C:/xampp/htdocs/flip.lk/advertisements.php</file>
+        </group>
+        <group>
+            <file>file:/C:/xampp/htdocs/flip.lk/footer.php</file>
         </group>
     </open-files>
 </project-private>
