@@ -87,18 +87,21 @@ if (isset($_SESSION['id'])) {
                                             <div class="how-it-work text-center">
                                                 <div class="how-it-work-icon"> 
                                                     <!--<i class="flaticon-people"></i>-->
-                                                    <img src="img/icon/header-icon/user_add-512.png" alt=""/>
+                                                    <img src="img/icon/header-icon/user-male-plus.png" alt=""/>
                                                 </div>
                                                 <h4>Create Your Account</h4>
                                                 <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
                                             </div>
                                             <div class="how-it-work text-center ">
-                                                <div class="how-it-work-icon"> <img src="img/post_ads.png" alt=""/> </div>
+                                                <div class="how-it-work-icon"> <img src="img/icon/header-icon/post_ad.png" alt=""/> </div>
                                                 <h4>Post Free Ad</h4>
                                                 <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
                                             </div>
                                             <div class="how-it-work text-center">
-                                                <div class="how-it-work-icon "> <i class="flaticon-heart-1"></i> </div>
+                                                <div class="how-it-work-icon ">
+                                                    <!--<i class="flaticon-heart-1"></i>--> 
+                                                    <img src="img/icon/header-icon/deal_done.png" alt=""/>
+                                                </div>
                                                 <h4>Deal Done</h4>
                                                 <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
                                             </div>
