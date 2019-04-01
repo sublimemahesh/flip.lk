@@ -1145,18 +1145,20 @@ header .control-icon > svg {
     border: 1px solid #ccc;
     padding: 0px 14px;
     border-radius: 10px 0px 0px 10px;
+    margin-right: 227px;
 }
 #ad-slider .owl-next span{
     font-size: 58px;
     border: 1px solid #ccc;
     padding: 0px 14px;
     border-radius: 0px 10px 10px 0px;
+    margin-right: 26px;
 }
 #ad-slider .owl-prev {
     background: #fff;
 }
 #ad-slider .owl-next {
-    background: #fff;
+    background: transparent;
 }
 #ad-slider .slider-details-section {
     border: 1px solid #ccc;
@@ -1389,6 +1391,7 @@ a .ad-title:hover {
 }
 #ad-slider .owl-nav .disabled {
     color: #ddd0d0;
+    background: transparent;
 }
 #ad-slider .owl-nav .disabled:hover {
     color: #ddd0d0;
@@ -1410,6 +1413,7 @@ a .ad-title:hover {
 }
 #ad-slider .owl-prev {
     margin-right: -6px;
+    background: transparent;
 }
 #more-ads-slider .owl-prev {
     margin-right: -6px;
@@ -2466,7 +2470,7 @@ a .ad-title{
     margin-top: 10px;
 }
 .globe-icon{
-    margin-left: 124px;
+    margin-left: 168px;
     margin-top: -31px;
 }
 .ad-time1{
@@ -2625,6 +2629,7 @@ a .ad-title{
     margin-bottom: -6px;
 }
 
+
 #site-header .control-block .author-thumb {
     margin-right: 0px;
 }
@@ -2664,3 +2669,143 @@ a .ad-title{
     margin-right: 15px;
     font-size: 14px;
 }
+
+/*--Advertisement section--*/
+.product-box .item-img .item-logo img{
+    border: 2px solid #fff;
+}
+.product-box .item-content .meta-item li.ctg-name a img{
+    height: 38px;
+    width: 38px;
+
+}
+.product-box.border-box .item-content{
+    background-color: #fbfbfb;
+}
+.product-box.border-box .item-content:hover{
+    background-color: #fff;
+}
+#ad-slider .owl-nav{
+    margin-top: -324px;
+}
+#ad-slider .owl-prev{
+    margin-right: 945px;
+}
+#ad-slider .owl-next{
+    margin-right: -97px;
+}
+
+.advertisement-section{
+    max-width: 1140px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.section-title{
+    font-size: 30px;
+    color: #333;
+    line-height: 52px;
+    font-weight: 700;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+.section-title::before{
+    position: absolute;
+    content: '';
+    height: 3px;
+    width: 70px;
+    margin-left: -90px;
+    bottom: 40px;
+    background-color: #E91E63
+}
+.add-row{
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    display: flex;
+}
+.featured-box{
+    width: 100%;
+    background: #fff;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    box-shadow: 2px 2px 2px 2px #b9cccc;
+}
+.featured-box figure{
+    margin: 0;
+    width: 100%;
+    float: left;
+    position: relative;
+}
+.featured-box figure .icon{
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+}
+.featured-box .feature-content{
+    display: inline-block;
+    box-shadow: 0px 0px 10px rgba(175, 175, 175, 0.23);
+    padding: 15px;
+}
+.btn-common{
+    background-color: #003263;
+    position: relative;
+    color: #fff;
+    z-index: 1;
+    border-radius: 4px;
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    font-size: 14px;
+    padding: 7px 20px;
+    cursor: pointer;
+    font-weight: 400;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    display: inline-block;
+    line-height: 1.5;
+}
+.featured-box .feature-content .listing-bottom{
+    padding: 15px 0;
+    border-top: 1px solid #E5E5E5;
+    width: 100%;
+}
+.featured-box .feature-content h4 a{
+    color: #003263;
+}
+.featured-box .feature-content h4{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 25px;
+    margin-bottom: 10px;
+}
+.featured-box .feature-content .product{
+    width: 100%;
+    float: left;
+    font-size: 12px;
+    line-height: 18px;
+    list-style: none;
+    margin: 0 0 15px;
+}
+.featured-box .feature-content .dsc{
+    line-height: 27px;
+    margin-bottom: 22px;
+    text-align: justify;
+}
+.meta-tag span{
+    margin-right: 13px;
+}
+.ad-time1{
+    margin-top: -18px;
+}
+.desc p{
+    text-align: justify;
+}
+

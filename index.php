@@ -130,7 +130,7 @@ if (isset($_SESSION['id'])) {
                         </div>
                     </section>
                     <!--Advertisement Section-->
-                    <div class="ui-block ui-ad-block ad-container listing-dire">
+<!--                    <div class="ui-block ui-ad-block ad-container listing-dire">
                         <div class="hot-items carousel-wrapper container index-container ">
                             <div class="section-heading heading-dark heading-center">
                                 <div class="item-sub-title">Discover our latest listing around the world</div>
@@ -160,7 +160,7 @@ if (isset($_SESSION['id'])) {
                                                         }
                                                         ?>
                                                     </div>
-                                                    <!--<div class="item-status status-save">Save 15%</div>-->
+                                                    <div class="item-status status-save">Save 15%</div>
                                                     <?php
                                                     if (count($images) > 0) {
                                                         foreach ($images as $key1 => $image) {
@@ -190,15 +190,15 @@ if (isset($_SESSION['id'])) {
                                                             ?>
                                                         </a>
                                                     </h3>
-                                                    <!--<span class="item-paragraph">-->
-                                                    <?php
+                                                    <span class="item-paragraph">
+                                                        <?php
 //                                                        if (strlen($ad['description']) > 50) {
 //                                                            echo substr($ad['description'], 0, 45) . '...';
 //                                                        } else {
 //                                                            echo $ad['description'];
 //                                                        }
-                                                    ?>
-                                                    <!--</span>-->
+                                                        ?>
+                                                    </span>
                                                     <ul class="contact-info">
                                                         <li><i class="fas fa-map-marker-alt"></i><?php echo $ad['address']; ?></li>
                                                         <li><i class="fas fa-phone"></i>
@@ -240,24 +240,148 @@ if (isset($_SESSION['id'])) {
                                 ?>
                             </div>
                         </div>
+                    </div>-->
+                    <div class="container advertisement-section">
+                        <div class="hot-items carousel-wrapper container index-container ">
+                        <div class="section-heading heading-dark heading-center">
+                            <div class="item-sub-title">Discover our latest listing around the world</div>
+                            <h2 class="item-title">New Listings in Our Directory</h2>
+                        </div>
+
+                        <!--<h1 class="section-title">Latest Products</h1>-->
+                        <div class="row add-row">
+
+                            <!--<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">-->
+                                <div id="ad-slider" class="owl-carousel owl-theme">
+                                <?php
+                                foreach (Advertisement::all() as $key => $ad) {
+
+                                    $images = AdvertisementImage::getPhotosByAdId($ad['id']);
+                                    $MEM = new Member($ad['member']);
+                                    $CAT = new BusinessCategory($ad['category']);
+                                    $result = getTime($ad['created_at']);
+                                    
+                                    ?>
+                                    <div class="featured-box">
+                                        <figure>
+                                            <div class="icon">
+                                                <span class="bg-green"><i class="lni-heart"></i></span>
+                                                <span><i class="lni-bookmark"></i></span>
+                                            </div>
+                                            
+                                                        <!--<a href="#"><img class="img-fluid" src="assets/img/featured/img-1.jpg" alt=""></a>-->
+                                                        <!--<img src="img/461448820105rajadahana-dodangoda-yatadola-flyer.jpg" alt=""/>-->
+                                                        
+                                                        
+                                                        <?php
+                                                    if (count($images) > 0) {
+                                                        foreach ($images as $key1 => $image) {
+                                                            if ($key1 == 0) {
+                                                                ?>
+                                                                <img src="upload/advertisement/thumb3/<?php echo $image['image_name']; ?>"  alt="Listing" class="img-fluid grid-view-img" />
+                                                                <?php
+                                                            }
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        <img src="upload/advertisement/thumb3/advertising.jpg"  alt="Listing" class="img-fluid grid-view-img" />
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    </figure>
+                                                    <div class="feature-content">
+                                                        <div class="product">
+                                                            <a href="#"><?php echo $CAT->name; ?></a>
+                                                            <!--<a href="#">camera</a>-->
+                                                        </div>
+                                                        <h4>
+                                                            <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
+                                                            <?php
+                                                            if (strlen($ad['title']) > 22) {
+                                                                echo substr($ad['title'], 0, 21) . '...';
+                                                            } else {
+                                                                echo $ad['title'];
+                                                            }
+                                                            ?>
+                                                        </a>
+                                                            <!--<a href="ads-details.html">Canon SX Powershot ...</a>-->
+                                                        </h4>
+                                                        <div class="meta-tag">
+                                                            <span>
+                                                                <i class="lni-user fa fa-user"></i><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
+                                                            </span>
+                                                            
+                                                            <span>
+                                                                <i class="lni-tag fa fa-phone"></i> <?php
+                                                            if ($ad['phone_number']) {
+                                                                echo $ad['phone_number'];
+                                                            } elseif ($MEM->phoneNumber) {
+                                                                echo $MEM->phoneNumber;
+                                                            } else {
+                                                                echo '-';
+                                                            }
+                                                            ?>
+                                                            </span>
+                                                            <span>
+                                                                <i class="lni-map-marker fa fa-envelope"></i> <?php echo $ad['address']; ?>
+                                                            </span>
+                                                        </div>
+                                                        <div class="desc">
+                                                        <p class="dsc"><?php echo $ad['description']; ?></p>
+                                                        </div>
+                                                        <div class="listing-bottom">
+                                                            <?php
+                                                            if ($ad['price']) {
+                                                                echo 'Rs. ' . number_format($ad['price']);
+                                                            } else {
+                                                                echo 'Negotiable';
+                                                            }
+                                                            ?>
+                                                            <!--<div class="item-status status-save">Save 15%</div>-->
+                                                            <!--<h3 class="price float-left">$249.00</h3>-->
+                                                            <ul class="meta-item">
+                                                        <li class="ctg-name">
+                                                            <a>
+                                                                <!--<img src="upload/member/<?php echo $MEM->profilePicture; ?>" class="img-responsive img-circle" alt=""/> <?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>-->
+                                                                <div class="ad-time ad-time1"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                            </a>
+
+                                                        </li>
+
+                                                    </ul>
+                                                            <!--<a href="ads-details.html" class="btn btn-common float-right">View Details</a>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                            
+                                        }
+                                        ?>
+                            
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+
+
+                            <!--End Advertisement Section-->
+                        </main>
+                        <!-- ... end Main Content -->
                     </div>
-                    <!--End Advertisement Section-->
-                </main>
-                <!-- ... end Main Content -->
-            </div>
-        </div>
-        <!--footers-->
-        <?php
-        include './footer.php';
-        ?>
-        <!--end footer-->
-        <a class="back-to-top" href="#">
-            <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
-        </a>
-        <!-- Window-popup -->
-        <?php
-        include './window-pop-up.php';
-        ?>
+                </div>
+                <!--footers-->
+                <?php
+                include './footer.php';
+                ?>
+                <!--end footer-->
+                <a class="back-to-top" href="#">
+                    <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
+                </a>
+                <!-- Window-popup -->
+                <?php
+                include './window-pop-up.php';
+                ?>
 
         <!-- ... end Window-popup -->
 
