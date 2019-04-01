@@ -8,12 +8,11 @@ $MEMBER = '';
 if (isset($_SESSION['id'])) {
     $MEMBER = new Member($_SESSION['id']);
 }
-    $CONTACTUS = New Page(7);
-    $PHONE_NUMBER1 = New Page(8);
-    $PHONE_NUMBER2 = New Page(9);
-    $EMAIL = New Page(10);
-    $LOCATION = New Page(11);
-
+$CONTACTUS = New Page(7);
+$PHONE_NUMBER1 = New Page(8);
+$PHONE_NUMBER2 = New Page(9);
+$EMAIL = New Page(10);
+$LOCATION = New Page(11);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -76,7 +75,7 @@ if (isset($_SESSION['id'])) {
                             <div class="container index-container">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="ui-block">
+                                        <div class="ui-block contact-us-block">
                                             <div class="ui-block-title">
                                                 <h6 class="title">Find Us</h6>
                                             </div>
@@ -96,10 +95,8 @@ if (isset($_SESSION['id'])) {
                                                                 </div>
                                                                 <div class="content box-details">
                                                                     <span class="title">Phone Number</span>
-                                                                  
-                                                                        <?php echo $PHONE_NUMBER1->description; ?> 
-                                                                        <?php echo $PHONE_NUMBER2->description; ?>
-                                                                    
+                                                                    <?php echo $PHONE_NUMBER1->description; ?> 
+                                                                    <?php echo $PHONE_NUMBER2->description; ?>
 
                                                                 </div>
                                                             </div><!-- company-info-item end -->
@@ -109,7 +106,7 @@ if (isset($_SESSION['id'])) {
                                                                 </div>
                                                                 <div class="content box-details">
                                                                     <span class="title">Email Address</span>
-                                                                     <?php echo $EMAIL->description; ?>
+                                                                    <?php echo $EMAIL->description; ?>
                                                                 </div>
                                                             </div><!-- company-info-item end -->
 
@@ -129,7 +126,7 @@ if (isset($_SESSION['id'])) {
                                         </div>
                                     </div>  
                                     <div class="col-sm-6">
-                                        <div class="ui-block">
+                                        <div class="ui-block contact-us-block">
                                             <div class="ui-block-title">
                                                 <h6 class="title">Personal Information</h6>
                                             </div>
@@ -138,11 +135,11 @@ if (isset($_SESSION['id'])) {
                                                 <div class="row">
                                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                                         <div class="form-group label-floating">
-                                                            <input class="form-control" placeholder="Your name" name="txtFullName" id="txtFullName">
+                                                            <input class="form-control" placeholder="Your Name" name="txtFullName" id="txtFullName">
                                                             <span id="spanFullName"></span>
                                                         </div>
                                                         <div class="form-group label-floating">
-                                                            <input class="form-control" placeholder="Phone number" name="txtContact" id="txtContact">
+                                                            <input class="form-control" placeholder="Phone Number" name="txtContact" id="txtContact">
                                                             <span id="spanContact"></span>
                                                         </div>
                                                     </div>
@@ -162,14 +159,14 @@ if (isset($_SESSION['id'])) {
                                                             <span id="spanmessage"></span>
                                                         </div>
                                                     </div>
-                                                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12 ">
                                                         <div class="form-group label-floating contactus">
                                                             <input class="form-control" placeholder="Security Code" name="captchacode" id="captchacode" >
                                                             <span id="capspan"></span>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12 capchatext">
                                                         <div class="form-group label-floating">
                                                             <?php
                                                             include ("./contact-us-form/captchacode-widget.php");
@@ -178,7 +175,7 @@ if (isset($_SESSION['id'])) {
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-12 col-lg-4 contact-us-button">
                                                         <div class="frm-group">
                                                             <button type="submit" id="btnSubmit" class="btn btn-primary  full-width">Send Your Message</button>
                                                              <!--<input type="submit" name="update" class="btn btn-primary btn-lg full-width" value="Save all Changes" />-->

@@ -256,7 +256,22 @@ and open the template in the editor.
     .control-block-button .btn-control:last-child{
         margin-right: 13px;
     }
-    
+    .capchatext{
+        margin-top: -27px;
+        padding-bottom: 36px;
+    }
+    .contact-us-block{
+        margin: 6px;
+    }
+    .event-map{
+        margin-bottom: -6px;
+    }
+    .contact-us-button {
+        margin-top: 0px;
+        margin-bottom: -9px;
+
+    }
+
 }
 
 @media(min-width:577px) and (max-width:990px) {
@@ -390,7 +405,23 @@ and open the template in the editor.
     .about-main-img {
         margin-bottom: 30px;
     }
-
+    .contact-us-block{
+        margin: 6px;
+    }
+    .capchatext{
+        margin-top: -12px;
+        padding-bottom: 36px;
+    }
+    .refresh-img {
+        margin: -31px 18px 22px 127px;
+    }
+    .event-map{
+        margin-bottom: -6px;
+    }
+    .contact-us-button {
+        margin-top: 0px;
+        margin-bottom: -9px;
+    }
 }
 
 @media(min-width:992px) and (max-width:1200px) {
@@ -531,7 +562,7 @@ and open the template in the editor.
     .control-icon{
         margin-right: 19px;
     }
-    
+
 
 }
 @media (width: 768px){
