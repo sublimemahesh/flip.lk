@@ -270,7 +270,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                             <div class="ui-block">
                                 <div class="ad-contact-details">
                                     <div class="col-xl-12 order-xl-1">
-                                        <h5>Contact</h5>
+                                        <h5>Contact Details</h5>
                                         <ul>
                                             <li>
                                                 <img src="img/icon/phone.png"  alt=""/>

@@ -230,11 +230,11 @@
 
                                 <ul class="account-settings">
                                     <li>
-                                        <a href="member/personal-information.php">
+                                        <a href="member/profile.php">
 
                                             <svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
 
-                                            <span>Profile Settings</span>
+                                            <span>My Profile</span>
                                         </a>
                                     </li>
                                     <li>

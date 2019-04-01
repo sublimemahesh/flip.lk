@@ -23,7 +23,7 @@
 
             </div>
             <div class="control-icon more has-items">
-                <a href="manage-groups.php">
+                <a href="../groups.php">
                     <span><img src="img/icon/header-icon/group.png" alt=""  /></span>
                 Groups
                 </a>
@@ -235,11 +235,11 @@
 
                                 <ul class="account-settings">
                                     <li>
-                                        <a href="personal-information.php">
+                                        <a href="profile.php">
 
                                             <svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
 
-                                            <span>Profile Settings</span>
+                                            <span>My Profile</span>
                                         </a>
                                     </li>
                                     <li>

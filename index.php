@@ -78,14 +78,57 @@ if (isset($_SESSION['id'])) {
                         <div class="">
                             <div class="container index-container">
                                 <div class="row">
-                                    <div class="col-xl-6">
-                                        <h2>Flip.lk</h2>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum
-                                        </p>
+                                    <div class="col-xl-12 hidden-xs">
+                                        <div class="section-heading heading-dark heading-center">
+                                            <div class="item-sub-title">Discover our latest listing around the world</div>
+                                            <h2 class="item-title">How It Works</h2>
+                                        </div>
+                                        <div class="row">
+                                            <div class="how-it-work text-center">
+                                                <div class="how-it-work-icon"> 
+                                                    <!--<i class="flaticon-people"></i>-->
+                                                    <img src="img/icon/header-icon/user_add-512.png" alt=""/>
+                                                </div>
+                                                <h4>Create Your Account</h4>
+                                                <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
+                                            </div>
+                                            <div class="how-it-work text-center ">
+                                                <div class="how-it-work-icon"> <i class="flaticon-people-2"></i> </div>
+                                                <h4>Post Free Ad</h4>
+                                                <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
+                                            </div>
+                                            <div class="how-it-work text-center">
+                                                <div class="how-it-work-icon "> <i class="flaticon-heart-1"></i> </div>
+                                                <h4>Deal Done</h4>
+                                                <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-xl-6 background-image">
-                                        <img src="img/shopper.jpg" alt=""/>
+                                    <div class="col-xl-12  hidden-xl hidden-lg hidden-md hidden-sm">
+                                        <div class="section-heading heading-dark heading-center">
+                                            <div class="item-sub-title">Discover our latest listing around the world</div>
+                                            <h2 class="item-title">How It Works</h2>
+                                        </div>
+                                        <div class="row">
+                                            <div class="how-it-works-xs col-xl-12">
+                                                <div class="how-it-works-xs-icon"> 
+
+                                                    <img src="img/icon/header-icon/user_add-512.png" alt=""/>
+                                                </div>
+                                                <h4>Create Your Account</h4>
+                                                <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
+                                            </div>
+                                            <div class="how-it-works-xs col-xl-12">
+                                                <div class="how-it-works-xs-icon"> <i class="flaticon-people-2"></i> </div>
+                                                <h4>Post Free Ad</h4>
+                                                <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
+                                            </div>
+                                            <div class="how-it-works-xs col-xl-12">
+                                                <div class="how-it-works-xs-icon"> <i class="flaticon-heart-1"></i> </div>
+                                                <h4>Deal Done</h4>
+                                                <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 

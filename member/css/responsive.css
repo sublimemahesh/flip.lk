@@ -907,7 +907,7 @@ and open the template in the editor.
         margin: 10px 88px 45px;
     }
     .upload-cover-pic, .upload-group-cover-pic{
-        margin: 10px 27px;
+        margin: 10px 0px;
     }
 
     .upload-group-span2{
