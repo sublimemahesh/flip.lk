@@ -92,7 +92,7 @@ $VALUE = New Page(4);
                     <section class="about-section ui-block ui-ad-block intro-section category-wrap-layout1 padding-top-100 padding-bottom-100 ">
                         <div class="">
                             <div class="container index-container">
-                                <div class="section-heading heading-dark heading-center">
+                                <div class="section-heading heading-dark heading-center section1">
                                     <div class="item-sub-title">Understand to achieve anything requires faith and belief in yourself.</div>
                                     <h2 class="item-title">This is our Company important</h2>
                                 </div>
@@ -100,17 +100,21 @@ $VALUE = New Page(4);
                                     <div class="col-sm-4 about-box">
                                         <div class="row">
                                             <div class="col-md-12 about-description">
-                                                <i class="fa fa-eye about-box-icon"></i>
+                                                <!--<i class="fa fa-eye about-box-icon"></i>-->
+                                                <img src="img/icon/about-us-icon/eye-512.png" alt=""/>
                                                 <h5>Vision</h5>
                                                 <p><?php echo $VISION->description; ?></p>
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <div class="col-sm-4 about-box">
 
                                         <div class="row">
                                             <div class="col-md-12 about-description">
-                                                <i class="fa fa-rocket about-box-icon"></i>
+                                      
+                                                  <!--<i class="fa fa-rocket about-box-icon"></i>-->
+                                                <img src="img/icon/about-us-icon/mission-icon.png" alt=""/>
                                                 <h5>Mission</h5>
                                                 <p><?php echo $MISSION->description; ?></p>
                                             </div>
@@ -120,7 +124,8 @@ $VALUE = New Page(4);
 
                                         <div class="row">
                                             <div class="col-md-12 about-description">
-                                                <i class="fa fa-handshake about-box-icon"></i>
+                                                <!--<i class="fa fa-handshake about-box-icon"></i>-->
+                                                <img src="img/icon/about-us-icon/004-handshake.png" alt=""/>
                                                 <h5>Value</h5>
                                                 <p><?php echo $VALUE->description; ?></p>
                                             </div>

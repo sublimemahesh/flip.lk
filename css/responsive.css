@@ -271,6 +271,12 @@ and open the template in the editor.
         margin-bottom: -9px;
 
     }
+    #typed2{
+        white-space:normal;
+    }
+    /*    .about-main-description span{
+            white-space:normal;
+        }*/
 
 }
 
@@ -422,6 +428,13 @@ and open the template in the editor.
         margin-top: 0px;
         margin-bottom: -9px;
     }
+    .control-block{
+        margin-left: -25px;
+        font-size: 7px;
+    }
+    .btn-post{
+        font-size: 6px;
+    }
 }
 
 @media(min-width:992px) and (max-width:1200px) {
@@ -508,6 +521,9 @@ and open the template in the editor.
     .icon-status.online{
         margin-top: 7px;
     }
+/*    .control-block{
+        margin-right: 15px;
+    }*/
 }
 @media(min-width:1200px) and (max-width:1400px) {
     .category-list.container {
@@ -561,6 +577,13 @@ and open the template in the editor.
     }
     .control-icon{
         margin-right: 19px;
+    }
+    .control-block{
+        margin-left: -145px;
+    }
+    .btn-post{
+        height: 35px;
+        font-size: 7px;
     }
 
 
@@ -768,6 +791,9 @@ and open the template in the editor.
     .mobile-app-tabs{
         margin-left: 74px;
     }
+    .intro-section p{
+        margin-left: -2px;
+    }
 
 
 
@@ -790,6 +816,9 @@ and open the template in the editor.
         margin-top: 8px;
     }
 }
+/*.control-block{
+    margin-right: 92px;
+}*/
 @media (width: 800px){
     .avatar{
         width: 28px;
