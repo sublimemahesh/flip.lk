@@ -307,7 +307,7 @@
 </header>
 <!-- ... end Header-BP -->
 <!-- Responsive Header-BP -->
-<header class="header header-responsive" id="site-header-responsive">
+<!--<header class="header header-responsive" id="site-header-responsive">
     <div class="header-content-wrapper">
         <ul class="nav nav-tabs mobile-app-tabs" role="tablist">
             <li class="nav-item">
@@ -356,7 +356,7 @@
             <div class="control-icon more has-items ">
                 <a href="create-advertisement.php?back=ad">
                     <button class="btn-post"><i class="fa-sticky-note-o "></i></button>
-                    <!--<img src="img/icon/header-icon/images-post.png" alt=""/>-->
+                    <img src="img/icon/header-icon/images-post.png" alt=""/>
                 </a>
             </div>
             <li class="nav-item">
@@ -382,5 +382,65 @@
         </ul>
     </div>
 
-</header>
+</header>-->
 <!-- ... end Responsive Header-BP -->
+
+<!-- Responsive Header-BP -->
+<div class="nav">
+    <div class="nav-header">
+        <div class="nav-title logo">
+            <img src="img/logo/logo.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="nav-btn">
+        <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+    </div>
+    <input type="checkbox" id="nav-check">
+    <div class="nav-links">
+        <a href="./"><img src="img/icon/header-icon/home.png" alt=""/>Home</a>
+        <a href="all-advertisement.php"><img src="img/icon/header-icon/advertising.png" alt="" />Advertisements</a>
+        <a href="groups.php"><img src="img/icon/header-icon/group.png" alt=""  />Groups</a>
+        <a href="member/"><img src="img/icon/header-icon/newsfeed.png" alt="" />Newsfeed</a>
+        <a href="member/friend-requests.php"><img class="follower-request" src="img/icon/header-icon/request.png" alt=""/>Requests</a>
+        <a href="member/member-message.php"><img src="img/icon/header-icon/message.png" alt=""/>Messaging</a>
+
+        <?php
+        if (isset($_SESSION['id'])) {
+            ?>
+            <a href="member/profile.php">
+                <?php
+                if ($MEMBER->profilePicture) {
+                    ?>
+                    <img alt="author" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
+                    Profile
+                    <?php
+                } else {
+                    ?>
+                    <img alt="author" src="upload/member/member.png" class="avatar" id="profile_pic2">
+                    Profile
+                    <?php
+                }
+                ?>
+            </a>
+            <?php
+        } else {
+            ?>
+            <a href="member/login.php">
+                <img alt="author" src="img/icon/header-icon/signin.png" class="signin" id="profile_pic2">
+                Sign In
+            </a>
+            <?php
+        }
+        ?>
+        <a href="member/create-advertisement.php?back=ad">
+            <button class="btn-post">
+                <i class="icon fa fa-thumbtack"></i>
+                Post Your Ad
+            </button>
+        </a>
+    </div>
+</div>

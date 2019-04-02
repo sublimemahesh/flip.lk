@@ -17,6 +17,9 @@ a:hover {
     /*padding: 5px 10px 19px 80px;*/
     padding: 9px 10px 9px 80px;
 }
+.nav {
+    display: none;
+}
 #site-header .control-icon img {
     height: 22px;
     opacity: 0.8;

@@ -241,6 +241,12 @@ and open the template in the editor.
     .nav > .nav-links > a:last-child:hover {
         background-color: #003263;
     }
+    .nav > .nav-links  {
+        z-index: 999;
+    }
+    .nav {
+        display: block;
+    }
 }
 
 

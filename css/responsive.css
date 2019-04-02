@@ -12,6 +12,9 @@ and open the template in the editor.
     body, p {
         font-size: 14px;
     }
+    .nav {
+    display: block;
+}
     .header {
         padding-right: 20px;
         padding-left: 20px;
