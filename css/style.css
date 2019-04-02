@@ -2746,10 +2746,10 @@ a .ad-title{
 .how-it-works-xs-icon {
     text-align: center;
 
-margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 .how-it-works-xs-icon img {
-height: 150px;
+    height: 150px;
 }
 .how-it-works-xs h4 {
     margin: 35px 0 20px;
@@ -2912,3 +2912,39 @@ height: 150px;
 .ad-owner-details svg {
     margin-right: 6px;
 }
+/*--About Us Page--*/
+.about-box{
+    border-left: 1px solid #ccc; 
+    /*box-shadow: 2px 0px 2px 0px #E91E63;*/
+}
+.about-box-icon{
+    border: 1px solid #ccc;
+    padding: 11px;  
+    box-shadow: 4px 4px #b3c2e0;
+}
+.about-box-icon:hover{
+    box-shadow: 4px 4px #fcfcfc;
+}
+.about-box-icon:hover{
+    background: #003263;
+    color: #fcfcfc;
+}
+.about-box svg {
+    font-size: 66px;
+}
+.about-description h5{
+    margin-top: 21px;
+}
+.about-section.ui-block{
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+.section1{
+    margin-bottom: 54px;
+}
+.about-description img{
+    width: 64px;
+}
+/*.about-description h5:hover{
+    color: #003263;                               
+}*/
