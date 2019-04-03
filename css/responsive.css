@@ -277,7 +277,21 @@ and open the template in the editor.
     /*    .about-main-description span{
             white-space:normal;
         }*/
+    .header-spacer {
 
+        display: block;
+        height: 15px;
+
+    }
+    .btn-post{
+        padding: 12px 24px;
+        font-size: 14px;
+        display: inline-flex;
+        margin: auto;
+    }
+    .nav > .nav-links > a:last-child:hover {
+        background-color: #003263;
+    }
 }
 
 @media(min-width:577px) and (max-width:990px) {
@@ -456,13 +470,6 @@ and open the template in the editor.
     .nav-item:first-child{
         left: -30px;
     }
-    .btn-post{
-        padding-top: 12px;
-        padding-bottom: 2px;
-        font-size: 2px; 
-    }
-
-
 }
 
 @media(width:375px) {
@@ -570,20 +577,11 @@ and open the template in the editor.
     .icon-status.online{
         margin-top: 8px;
     }
-    .btn-post{
-        width: 78px;
-        height: 28px;
-        font-size: 9px;
-    }
     .control-icon{
         margin-right: 19px;
     }
     .control-block{
         margin-left: -145px;
-    }
-    .btn-post{
-        height: 35px;
-        font-size: 7px;
     }
 
 
@@ -706,21 +704,6 @@ and open the template in the editor.
     .nav-item:first-child{
         left: 65px;
     }
-    .footer-box .footer-header h3{
-        font-size: 17px;
-    }
-    .footer-box .widget_nav_menu li a{
-        font-size: 14px;
-    }
-    .footer-about p{
-        margin-top: 28px;
-    }
-    .footer-box .footer-contact-info li svg{
-        font-size: 15px;
-    }
-    .contact-info-title{
-        margin-left: -20px;
-    }
 }
 @media (width: 600px){
     .header{
@@ -809,21 +792,6 @@ and open the template in the editor.
     .intro-section p{
         margin-left: -2px;
     }
-    .footer-box .footer-header h3{
-        font-size: 16px;
-    }
-    .footer-about p{
-        margin-top: 29px;
-    }
-    
-    .footer-box .widget_nav_menu li a{
-        font-size: 13px;
-    }
-    .contact-info-title{
-        font-size: 13px;
-    }
-  
-    
 
 
 
@@ -856,8 +824,5 @@ and open the template in the editor.
     .btn-primary1{
         margin-left: 244px;
     }
-/*    .about-box:hover{
-        box-shadow: 0px 1px 8px 0px black;
-    }*/
 }
 
