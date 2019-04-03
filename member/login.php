@@ -4,6 +4,9 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 if (!isset($_SESSION)) {
     session_start();
 }
+if(isset($_SESSION['id'])) {
+    $MEMBER = new Member($_SESSION['id']);
+}
 $back_url = '';
 if (isset($_SESSION["back_url"])) {
     $back_url = $_SESSION["back_url"];
