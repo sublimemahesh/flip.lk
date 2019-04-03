@@ -290,18 +290,6 @@
                     ?>
 
                 </div>
-                <!--                <a href="member/profile.php" class="author-name fn">
-                <?php
-//                    if (isset($_SESSION['id'])) {
-                ?>
-                                        <div class="author-title">
-                <?php // echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
-                                        </div>
-                                        <span class="author-subtitle">SPACE COWBOY</span>
-                <?php
-//                    }
-                ?>
-                                </a>-->
             </div>
 
             <div class=" more has-items">

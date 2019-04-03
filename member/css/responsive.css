@@ -16,6 +16,9 @@ and open the template in the editor.
         padding-right: 20px;
         padding-left: 20px;
     }
+    .nav {
+    display: block;
+}
     #site-header-responsive .responsive-header-logo {
         width: 100px;
         margin-top: -6px;
@@ -223,7 +226,21 @@ and open the template in the editor.
     .nav-link1 img{
         padding-bottom: 8px;
     }
+    .header-spacer {
 
+        display: block;
+        height: 15px;
+
+    }
+    .btn-post{
+        padding: 12px 24px;
+        font-size: 14px;
+        display: inline-flex;
+        margin: auto;
+    }
+    .nav > .nav-links > a:last-child:hover {
+        background-color: #003263;
+    }
 }
 
 
@@ -307,15 +324,9 @@ and open the template in the editor.
         margin-top: 20px;
         margin-left: -85px;
     }
-    .btn-post{
-        font-size: 9px;
-        width: 73px;
-        height: 28px;
-    }
     .control-icon{
         margin-right: 20px;
     }
-
 }
 
 
@@ -432,12 +443,6 @@ and open the template in the editor.
         padding-left: 25px;
     }
 
-    .btn-post{
-        padding-top: 12px;
-        padding-bottom: 2px;
-        font-size: 2px; 
-    }
-
 
 }
 @media(width:375px) {
@@ -511,9 +516,6 @@ and open the template in the editor.
     }
     .upload-group-span2{
         width: 336px;
-    }
-    .btn-post{
-        font-size: 8px;
     }
 }
 @media (width: 768px){
@@ -639,11 +641,6 @@ and open the template in the editor.
     .upload-group-span2{
         width: 236px;
     }
-    .btn-post{
-        width: 78px;
-        height: 28px;
-        font-size: 9px;
-    }
     .control-icon{
         margin-right: 19px;
     }
@@ -751,9 +748,6 @@ and open the template in the editor.
     .nav-item:first-child{
         left: 65px;
     }
-    .form-login{
-        margin-left: -64px;
-    }
 }
 @media (width: 600px){
     .header{
@@ -851,10 +845,6 @@ and open the template in the editor.
     .mobile-app-tabs{
         margin-left: 74px;
     }
-    .form-login{
-        margin-left: -84px;
-        margin-top: 93px;
-    }
 
 
 }
@@ -879,9 +869,6 @@ and open the template in the editor.
     }
     .has-items-news img{
         height: 21px;
-    }
-    .form-login{
-        margin-left: -21px;
     }
 
 }
