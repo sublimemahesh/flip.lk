@@ -208,7 +208,7 @@ and open the template in the editor.
     .btn-post{
         font-size: 2px;
     }
-    
+
     .icon-status.online{
         margin-top: 2px;
         margin-left: 0px;
@@ -307,7 +307,7 @@ and open the template in the editor.
         margin-top: 20px;
         margin-left: -85px;
     }
-     .btn-post{
+    .btn-post{
         font-size: 9px;
         width: 73px;
         height: 28px;
@@ -315,6 +315,7 @@ and open the template in the editor.
     .control-icon{
         margin-right: 20px;
     }
+
 }
 
 
@@ -430,8 +431,8 @@ and open the template in the editor.
     upload-group-span2{
         padding-left: 25px;
     }
-  
-     .btn-post{
+
+    .btn-post{
         padding-top: 12px;
         padding-bottom: 2px;
         font-size: 2px; 
@@ -594,7 +595,7 @@ and open the template in the editor.
         height: 23px;
         width: 32px;
     }
-      .btn-primary1{
+    .btn-primary1{
         margin-left: 237px;
     }
     .responsive-header-logo{
@@ -638,7 +639,7 @@ and open the template in the editor.
     .upload-group-span2{
         width: 236px;
     }
-     .btn-post{
+    .btn-post{
         width: 78px;
         height: 28px;
         font-size: 9px;
@@ -718,19 +719,19 @@ and open the template in the editor.
         height: 37px;
         width: 37px;
     }
-  
+
     .nav-link1 img{
         padding-bottom: 2px;
     }
     .mobile-app-tabs{
         margin-left: 138px;
     }
-/*    .btn-md-2{
-        margin-right: 53px;
-    }
-    .ui-block{
-        margin-left: -85px;
-    }*/
+    /*    .btn-md-2{
+            margin-right: 53px;
+        }
+        .ui-block{
+            margin-left: -85px;
+        }*/
     .responsive-header-logo img{
         padding-bottom: 4px;
         margin-left: -40px;
@@ -749,6 +750,9 @@ and open the template in the editor.
     }
     .nav-item:first-child{
         left: 65px;
+    }
+    .form-login{
+        margin-left: -64px;
     }
 }
 @media (width: 600px){
@@ -822,12 +826,12 @@ and open the template in the editor.
     .has-item img{
         padding-bottom: 14px;
     }
-/*    .btn-md-2{
-        margin-right: 85px;
-    }*/
-/*    .ui-block{
-        margin-left: -85px;
-    }*/
+    /*    .btn-md-2{
+            margin-right: 85px;
+        }*/
+    /*    .ui-block{
+            margin-left: -85px;
+        }*/
     .responsive-header-logo img{
         margin-left: -53px;
     }
@@ -844,8 +848,12 @@ and open the template in the editor.
     .nav-link1 img{
         margin-bottom: 4px;
     }
-     .mobile-app-tabs{
+    .mobile-app-tabs{
         margin-left: 74px;
+    }
+    .form-login{
+        margin-left: -84px;
+        margin-top: 93px;
     }
 
 
@@ -871,6 +879,9 @@ and open the template in the editor.
     }
     .has-items-news img{
         height: 21px;
+    }
+    .form-login{
+        margin-left: -21px;
     }
 
 }

@@ -2945,6 +2945,6 @@ a .ad-title{
 .about-description img{
     width: 64px;
 }
-/*.about-description h5:hover{
-    color: #003263;                               
-}*/
+.about-box:hover{
+        box-shadow: 0px 1px 8px 0px #000;
+    }

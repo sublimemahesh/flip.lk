@@ -521,9 +521,9 @@ and open the template in the editor.
     .icon-status.online{
         margin-top: 7px;
     }
-/*    .control-block{
-        margin-right: 15px;
-    }*/
+    /*    .control-block{
+            margin-right: 15px;
+        }*/
 }
 @media(min-width:1200px) and (max-width:1400px) {
     .category-list.container {
@@ -706,6 +706,21 @@ and open the template in the editor.
     .nav-item:first-child{
         left: 65px;
     }
+    .footer-box .footer-header h3{
+        font-size: 17px;
+    }
+    .footer-box .widget_nav_menu li a{
+        font-size: 14px;
+    }
+    .footer-about p{
+        margin-top: 28px;
+    }
+    .footer-box .footer-contact-info li svg{
+        font-size: 15px;
+    }
+    .contact-info-title{
+        margin-left: -20px;
+    }
 }
 @media (width: 600px){
     .header{
@@ -794,6 +809,21 @@ and open the template in the editor.
     .intro-section p{
         margin-left: -2px;
     }
+    .footer-box .footer-header h3{
+        font-size: 16px;
+    }
+    .footer-about p{
+        margin-top: 29px;
+    }
+    
+    .footer-box .widget_nav_menu li a{
+        font-size: 13px;
+    }
+    .contact-info-title{
+        font-size: 13px;
+    }
+  
+    
 
 
 
@@ -826,5 +856,8 @@ and open the template in the editor.
     .btn-primary1{
         margin-left: 244px;
     }
+/*    .about-box:hover{
+        box-shadow: 0px 1px 8px 0px black;
+    }*/
 }
 

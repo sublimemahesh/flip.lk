@@ -121,15 +121,17 @@ if (isset($_SESSION['id'])) {
                                                 <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
                                             </div>
                                             <div class="how-it-works-xs col-xl-12">
-                                                <div class="how-it-works-xs-icon">
-                                                    <img src="img/icon/header-icon/post_ad.png" alt=""/> 
+                                                <div class="how-it-works-xs-icon"> 
+                                                    <img src="img/icon/header-icon/post_ad.png" alt=""/>
+                                                    <!--<i class="flaticon-people-2"></i>--> 
                                                 </div>
                                                 <h4>Post Free Ad</h4>
                                                 <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
                                             </div>
                                             <div class="how-it-works-xs col-xl-12">
-                                                <div class="how-it-works-xs-icon">
+                                                <div class="how-it-works-xs-icon"> 
                                                     <img src="img/icon/header-icon/deal_done.png" alt=""/>
+                                                    <!--<i class="flaticon-heart-1"></i>--> 
                                                 </div>
                                                 <h4>Deal Done</h4>
                                                 <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>

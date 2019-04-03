@@ -50,7 +50,7 @@ if (isset($_SESSION["back_url"])) {
         <div class="header-spacer"></div>
         <div class="container index-container body-content">
 
-            <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
+            <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12 form-login">
                 <div class="form">
 
                     <ul class="tab-group">
