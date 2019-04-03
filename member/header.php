@@ -11,47 +11,47 @@
             <div class="control-icon more has-items">
                 <a href="../">
                     <span><img src="img/icon/header-icon/home.png" alt="" /></span>
-                Home
+                    Home
                 </a>
 
             </div>
             <div class="control-icon more has-items">
                 <a href="../all-advertisement.php">
                     <span><img src="img/icon/header-icon/advertising.png" alt=""   /></span>
-                Advertisements
+                    Advertisements
                 </a>
 
             </div>
             <div class="control-icon more has-items">
                 <a href="../groups.php">
                     <span><img src="img/icon/header-icon/group.png" alt=""  /></span>
-                Groups
+                    Groups
                 </a>
 
             </div>
             <div class="control-icon more has-items has-items-news">
                 <a href="./">
                     <span><img src="img/icon/header-icon/newsfeed.png" alt=""  /></span>
-                Newsfeed
+                    Newsfeed
                 </a>
 
             </div>
             <div class="control-icon more has-items has-items1">
                 <a href="#">
                     <span>
-                <img class="follower-request" src="img/icon/header-icon/request.png" alt=""/>
-                <?php
-                if (isset($_SESSION['id'])) {
-                    $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
-                    if ($countu['count'] > 0) {
-                        ?>
-                        <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
+                        <img class="follower-request" src="img/icon/header-icon/request.png" alt=""/>
                         <?php
-                    }
-                }
-                ?>
-                        </span>
-                Requests
+                        if (isset($_SESSION['id'])) {
+                            $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
+                            if ($countu['count'] > 0) {
+                                ?>
+                                <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </span>
+                    Requests
                 </a>
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
@@ -130,18 +130,18 @@
             <div class="control-icon more has-items">
                 <a href="#">
                     <span>
-                <img src="img/icon/header-icon/message.png" alt=""/>
-                <?php
-                if (isset($_SESSION['id'])) {
-                    $countmsg = AdvertisementMessage::countUnreadMessages($MEMBER->id);
-                    if ($countmsg > 0) {
-                        ?>
-                        <div class="label-avatar bg-blue newest-request"><?php echo $countmsg; ?></div>
+                        <img src="img/icon/header-icon/message.png" alt=""/>
                         <?php
-                    }
-                }
-                ?>
-</span>
+                        if (isset($_SESSION['id'])) {
+                            $countmsg = AdvertisementMessage::countUnreadMessages($MEMBER->id);
+                            if ($countmsg > 0) {
+                                ?>
+                                <div class="label-avatar bg-blue newest-request"><?php echo $countmsg; ?></div>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </span>
                     Messaging
                 </a>
                 <div class="more-dropdown more-with-triangle triangle-top-center">
@@ -209,95 +209,95 @@
                     <a href="member-message.php" class="view-all bg-theme-blue">View All Messages</a>
                 </div>
             </div>
-             
+
             <div class="control-icon author-page author vcard inline-items more">
                 <div class="author-thumb">
                     <span>
-                    <?php
-                    if (isset($_SESSION['id'])) {
-                        if ($MEMBER->profilePicture) {
+                        <?php
+                        if (isset($_SESSION['id'])) {
+                            if ($MEMBER->profilePicture) {
+                                ?>
+                                <span><img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2"></span>
+                                Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                                <?php
+                            } else {
+                                ?>
+                                <span><img alt="author" src="../upload/member/member.png" class="avatar" id="profile_pic2"></span>
+                                Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                                <?php
+                            }
                             ?>
-                            <span><img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2"></span>
-                            Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                            <div class="more-dropdown more-with-triangle">
+                                <div class="mCustomScrollbar" data-mcs-theme="dark">
+                                    <div class="ui-block-title ui-block-title-small">
+                                        <h6 class="title">Your Account</h6>
+                                    </div>
+
+                                    <ul class="account-settings">
+                                        <li>
+                                            <a href="profile.php">
+
+                                                <svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
+
+                                                <span>My Profile</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="manage-groups.php">
+                                                <svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
+
+                                                <span>My Groups</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="log-out.php">
+                                                <svg class="olymp-logout-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-logout-icon"></use></svg>
+
+                                                <span>Log Out</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="ui-block-title ui-block-title-small">
+                                        <h6 class="title">About Flip.lk</h6>
+                                    </div>
+
+                                    <ul>
+                                        <li>
+                                            <a href="../terms-and-conditions.php">
+                                                <span>Terms and Conditions</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../about-us.php">
+                                                <span>About Us</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../contact-us.php">
+                                                <span>Contact Us</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
                             <?php
                         } else {
                             ?>
-                            <span><img alt="author" src="../upload/member/member.png" class="avatar" id="profile_pic2"></span>
-                            Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
-                                <?php
+                            <a href="login.php">
+                                <span>
+                                    <img alt="author" src="img/icon/header-icon/signin.png" class="signin" id="profile_pic2">
+                                </span>
+                                Sign In
+                            </a>
+                            <?php
                         }
                         ?>
-                        <div class="more-dropdown more-with-triangle">
-                            <div class="mCustomScrollbar" data-mcs-theme="dark">
-                                <div class="ui-block-title ui-block-title-small">
-                                    <h6 class="title">Your Account</h6>
-                                </div>
-
-                                <ul class="account-settings">
-                                    <li>
-                                        <a href="profile.php">
-
-                                            <svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
-
-                                            <span>My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="manage-groups.php">
-                                            <svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
-
-                                            <span>My Groups</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="log-out.php">
-                                            <svg class="olymp-logout-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-logout-icon"></use></svg>
-
-                                            <span>Log Out</span>
-                                        </a>
-                                    </li>
-                                </ul>
-
-                                <div class="ui-block-title ui-block-title-small">
-                                    <h6 class="title">About Flip.lk</h6>
-                                </div>
-
-                               <ul>
-                                    <li>
-                                        <a href="../terms-and-conditions.php">
-                                            <span>Terms and Conditions</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../about-us.php">
-                                            <span>About Us</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../contact-us.php">
-                                            <span>Contact Us</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                        <?php
-                    } else {
-                        ?>
-                        <a href="login.php">
-                            <span>
-                                <img alt="author" src="img/icon/header-icon/signin.png" class="signin" id="profile_pic2">
-                            </span>
-                            Sign In
-                                </a>
-                        <?php
-                    }
-                    ?>
                 </div>
-               
+
             </div>
-            
+
             <div class="more has-items">
                 <a href="create-advertisement.php?back=ad">
                     <button class="btn-post">
@@ -306,7 +306,7 @@
                     </button>
                 </a>
             </div>
-          
+
 
         </div>
     </div>
@@ -340,17 +340,17 @@
             <li class="nav-item">
                 <a class="nav-link nav-link1" href="friend-requests.php">
                     <img src="img/icon/header-icon/request.png" alt=""/>
-                    <?php
-                    if (isset($_SESSION['id'])) {
-                        $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
+<?php
+if (isset($_SESSION['id'])) {
+    $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
 
-                        if ($countu['count'] > 0) {
-                            ?>
-                            <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
-                            <?php
-                        }
-                    }
-                    ?>
+    if ($countu['count'] > 0) {
+        ?>
+                                    <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
+        <?php
+    }
+}
+?>
                 </a>
             </li>
             <li class="nav-item">
@@ -366,18 +366,18 @@
             <li class="nav-item">
                 <a class="nav-link" href="profile.php">
                     <div class="author-thumb nav-link1">
-                        <?php
-                        if (isset($_SESSION['id'])) {
-                            ?>
-                            <img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
-                            <span class="icon-status online"></span>
-                            <?php
-                        } else {
-                            ?>
-                            <img alt="author" src="../upload/member/member.png" class="avatar" id="profile_pic2">
-                            <?php
-                        }
-                        ?>
+<?php
+if (isset($_SESSION['id'])) {
+    ?>
+                                <img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
+                                <span class="icon-status online"></span>
+    <?php
+} else {
+    ?>
+                                <img alt="author" src="../upload/member/member.png" class="avatar" id="profile_pic2">
+    <?php
+}
+?>
 
                     </div>
                 </a>
@@ -389,60 +389,60 @@
 
 <!-- Responsive Header-BP -->
 <div class="nav">
-            <div class="nav-header">
-                <div class="nav-title logo">
-                    <img src="img/logo/logo.jpg" alt=""/>
-                </div>
-            </div>
-            <div class="nav-btn">
-                <label for="nav-check">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-            </div>
-            <input type="checkbox" id="nav-check">
-            <div class="nav-links">
-                <a href="../"><img src="img/icon/header-icon/home.png" alt=""/>Home</a>
-                <a href="../all-advertisement.php"><img src="img/icon/header-icon/advertising.png" alt="" />Advertisements</a>
-                <a href="../groups.php"><img src="img/icon/header-icon/group.png" alt=""  />Groups</a>
-                <a href="./"><img src="img/icon/header-icon/newsfeed.png" alt="" />Newsfeed</a>
-                <a href="friend-requests.php"><img class="follower-request" src="img/icon/header-icon/request.png" alt=""/>Requests</a>
-                <a href="member-message.php"><img src="img/icon/header-icon/message.png" alt=""/>Messaging</a>
+    <div class="nav-header">
+        <div class="nav-title logo">
+            <img src="img/logo/logo.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="nav-btn">
+        <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+    </div>
+    <input type="checkbox" id="nav-check">
+    <div class="nav-links">
+        <a href="../"><img src="img/icon/header-icon/home.png" alt=""/>Home</a>
+        <a href="../all-advertisement.php"><img src="img/icon/header-icon/advertising.png" alt="" />Advertisements</a>
+        <a href="../groups.php"><img src="img/icon/header-icon/group.png" alt=""  />Groups</a>
+        <a href="./"><img src="img/icon/header-icon/newsfeed.png" alt="" />Newsfeed</a>
+        <a href="friend-requests.php"><img class="follower-request" src="img/icon/header-icon/request.png" alt=""/>Requests</a>
+        <a href="member-message.php"><img src="img/icon/header-icon/message.png" alt=""/>Messaging</a>
 
+        <?php
+        if (isset($_SESSION['id'])) {
+            ?>
+            <a href="profile.php">
                 <?php
-                if (isset($_SESSION['id'])) {
+                if ($MEMBER->profilePicture) {
                     ?>
-                    <a href="profile.php">
-                        <?php
-                        if ($MEMBER->profilePicture) {
-                            ?>
-                            <img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
-                            Profile
-                            <?php
-                        } else {
-                            ?>
-                            <img alt="author" src="../upload/member/member.png" class="avatar" id="profile_pic2">
-                            Profile
-                            <?php
-                        }
-                        ?>
-                    </a>
+                    <img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
+                    Profile
                     <?php
                 } else {
                     ?>
-                    <a href="login.php">
-                        <img alt="author" src="img/icon/header-icon/signin.png" class="signin" id="profile_pic2">
-                        Sign In
-                    </a>
+                    <img alt="author" src="../upload/member/member.png" class="avatar" id="profile_pic2">
+                    Profile
                     <?php
                 }
                 ?>
-                 <a href="create-advertisement.php?back=ad">
-                    <button class="btn-post">
-                        <i class="icon fa fa-thumbtack"></i>
-                        Post Your Ad
-                    </button>
-                </a>
-            </div>
-        </div>
+            </a>
+            <?php
+        } else {
+            ?>
+            <a href="login.php">
+                <img alt="author" src="img/icon/header-icon/signin.png" class="signin" id="profile_pic2">
+                Sign In
+            </a>
+            <?php
+        }
+        ?>
+        <a href="create-advertisement.php?back=ad">
+            <button class="btn-post">
+                <i class="icon fa fa-thumbtack"></i>
+                Post Your Ad
+            </button>
+        </a>
+    </div>
+</div>

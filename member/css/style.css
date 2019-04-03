@@ -1325,6 +1325,8 @@ header .control-icon > svg {
 }
 .no-chats h3, .no-chats h6 {
     margin-bottom: 20px;
+}.nav {
+    display: none;
 }
 
 
@@ -1451,7 +1453,7 @@ header .control-icon > svg {
     margin-right: 0px;
 }
 #site-header .control-icon img.follower-request {
- height: 26px;   
+    height: 26px;   
 }
 
 /*Responsive Header*/
@@ -1462,33 +1464,39 @@ header .control-icon > svg {
     position: relative;
     border-bottom: 1px solid #fff;
 }
+
 .nav > .nav-header {
     display: inline;
 }
+
 .nav > .nav-header > .nav-title {
     display: inline-block;
     font-size: 22px;
     color: #fff;
     padding: 7px 10px 6px 10px;
 }
+
 .nav > .nav-btn {
     display: none;
 }
+
 .nav > .nav-links {
     display: inline;
     float: right;
     font-size: 18px;
-    z-index: 9999;
 }
+
 .nav > .nav-links > a {
     display: inline-flex;
     padding: 13px 10px 13px 10px;
     text-decoration: none;
     color: #efefef;
 }
+
 .nav > .nav-links > a:hover {
     background-color: rgba(0, 0, 0, 0.3);
 }
+
 .nav > #nav-check {
     display: none;
 }
@@ -1548,4 +1556,7 @@ header .control-icon > svg {
         height: calc(100vh - 50px);
         overflow-y: auto;
     }
+
+
 }
+
