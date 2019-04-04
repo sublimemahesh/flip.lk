@@ -277,6 +277,7 @@ and open the template in the editor.
     #typed2{
         white-space:normal;
     }
+
     /*    .about-main-description span{
             white-space:normal;
         }*/
@@ -284,6 +285,11 @@ and open the template in the editor.
 
         display: block;
         height: 15px;
+
+    .copyright{
+        margin-top: -22px;
+    }
+
 
     }
     .btn-post{
@@ -473,6 +479,19 @@ and open the template in the editor.
     .nav-item:first-child{
         left: -30px;
     }
+
+    .btn-post{
+        padding-top: 12px;
+        padding-bottom: 2px;
+        font-size: 2px; 
+    }
+    .copyright{
+        margin-top: -22px;
+    }
+
+
+
+
 }
 
 @media(width:375px) {
@@ -486,6 +505,9 @@ and open the template in the editor.
     }
     .avatar{
         width: 23px;  
+    }
+    .copyright{
+        margin-top: -22px;
     }
 }
 
@@ -586,6 +608,15 @@ and open the template in the editor.
     .control-block{
         margin-left: -145px;
     }
+
+    .btn-post{
+        height: 35px;
+        font-size: 7px;
+    }
+    .office h3{
+        margin-bottom: -14px;
+    }
+
 
 
 }
@@ -796,6 +827,23 @@ and open the template in the editor.
         margin-left: -2px;
     }
 
+    .footer-box .footer-header h3{
+        font-size: 16px;
+    }
+    .footer-about p{
+        margin-top: 29px;
+    }
+
+    .footer-box .widget_nav_menu li a{
+        font-size: 13px;
+    }
+    .contact-info-title{
+        font-size: 13px;
+    }
+
+
+
+
 
 
 
@@ -827,5 +875,11 @@ and open the template in the editor.
     .btn-primary1{
         margin-left: 244px;
     }
+
+  
+    .office h3{
+        margin-bottom: -10px;
+    }
+
 }
 

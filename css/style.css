@@ -2948,6 +2948,7 @@ a .ad-title{
 .about-description img{
     width: 64px;
 }
+
 /*.about-description h5:hover{
     color: #003263;                               
 }*/
@@ -3047,4 +3048,85 @@ a .ad-title{
     }
 }
 
+
+
+.about-box:hover{
+    box-shadow: 0px 1px 8px 0px #000;
+}
+/*--Contact Us--*/
+
+.definitions_wrap{
+    width: 100%;
+    height: auto;
+    clear: both;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.office{
+    width: 100%;
+    height: auto;
+    float: left;
+    position: relative;
+    padding: 1px 80px 22px 40px;
+    background-color: #003263;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: -11px;
+}
+.office h3{
+    font-family: "Raleway";
+    font-size: 22px;
+    color: #eeeeee;
+    font-weight: 500;
+    margin-top: 13px;
+    margin-bottom: -5px;
+}
+.office .icon{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 60px;
+    background-color: #04133c;
+}
+.short_info_wrap{
+    width: 100%;
+    height: auto;
+    float: left;
+    background-color: #ccc;
+    padding: 35px 30px 45px 38px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 28px;
+}
+.company-contact-info-area{
+    margin-top: -45px;
+}
+.icon img{
+    margin-top: 21px;
+    margin-left: 18px;
+}
+.intro-section1 p{
+    line-height: 13px;
+}
+.map{
+    color: #fff; 
+    font-size: 29px;
+    margin-top: 16px;
+    margin-left: 20px;
+}
+.icon-email img{
+    margin-top: 13px;
+    margin-left: 14px;
+}
+.contact-frame{
+    background-color: #fff;
+    border-radius: 0px;
+    border: 7px solid #003263;
+    margin-bottom: 15px;
+}
 
