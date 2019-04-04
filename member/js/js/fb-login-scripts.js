@@ -64,14 +64,14 @@ function checkLoginState() {
                         if (result.message === 'success-log') {
 
                             if (result.back === '') {
-                                window.location.replace("visitor-profile.php");
+                                window.location.replace("./");
                             } else {
                                 window.location = result.back;
                             }
 
                         } else if (result.message === 'success-cre') {
                             if (result.back === '') {
-                                window.location.replace('visitor-profile.php?message=22');
+                                window.location.replace('./?message=22');
                             } else {
                                 window.location = result.back;
                             }
@@ -90,7 +90,7 @@ function checkLoginState() {
 
 
 $(document).ready(function () {
-    $('#fb-login').click(function () {
+    $('.fb-login').click(function () {
         checkLoginState();
     });
 });

@@ -40,6 +40,9 @@ if (isset($_SESSION["back_url"])) {
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
         <link href="css/login.css" rel="stylesheet" type="text/css"/>
+        <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+        <script src="js/js/google-login.js" type="text/javascript"></script>
+        
     </head>
     <body class="landing-page">
 <?php
@@ -79,10 +82,10 @@ if (isset($_GET['message'])) {
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left" id="fb-login"><i class="fab fa-facebook-f" aria-hidden="true"></i>Login with Facebook</a>
+                                    <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left fb-login" id="fb-login"><i class="fab fa-facebook-f" aria-hidden="true"></i>Login with Facebook</a>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Login with Twitter</a>
+                                    <a href="#" class="btn btn-lg bg-google full-width btn-icon-left google-login" id="google-login"><i class="fab fa-google" aria-hidden="true"></i>Login with Google</a>
                                 </div>
                             </div>
                             <div class="or"></div>
@@ -126,10 +129,10 @@ if (isset($_GET['message'])) {
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Sign up with Facebook</a>
+                                    <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left fb-login" id="fb-login"><i class="fab fa-facebook-f" aria-hidden="true"></i>Sign up with Facebook</a>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Sign up with Twitter</a>
+                                    <a href="#" class="btn btn-lg bg-google full-width btn-icon-left google-login" id="google-login1"><i class="fab fa-google" aria-hidden="true"></i>Sign up with Google</a>
                                 </div>
                             </div>
                             <div class="or"></div>
@@ -189,5 +192,6 @@ if (isset($_GET['message'])) {
         <script src="js/js/add-member.js" type="text/javascript"></script>
         <script src="js/js/login.js" type="text/javascript"></script>
         <script src="js/js/fb-login-scripts.js" type="text/javascript"></script>
+
     </body>
 </html>
