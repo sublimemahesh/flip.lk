@@ -50,9 +50,8 @@ function attachSignin(element) {
                     dataType: "JSON",
                     success: function (result) {
                         if (result.message === 'success-log') {
-
                             if (result.back === '') {
-                                window.location.replace("./");
+                                window.location.replace("index.php");
                             } else {
                                 window.location = result.back;
                             }
@@ -76,7 +75,11 @@ function attachSignin(element) {
 }
 $(document).ready(function () {
     $('#google-login').click(function () {
-        console.log();
+        alert(111);
+        init();
+    });
+    $('#google-login1').click(function () {
+        console.log(111);
         init();
     });
 });

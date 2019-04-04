@@ -185,7 +185,6 @@ class Member {
         if (!isset($_SESSION)) {
             session_start();
         }
-
         $id = NULL;
         $authToken = NULL;
 
@@ -948,7 +947,7 @@ class Member {
     public function loginByGoogle($memberID, $password) {
 
         $query = "SELECT * FROM `member` WHERE `google_id`= '" . $memberID . "' AND `password`= '" . $password . "'";
-
+        
         $db = new Database();
 
         $result = mysql_fetch_array($db->readQuery($query));
@@ -957,6 +956,7 @@ class Member {
             return FALSE;
         } else {
             $this->id = $result['id'];
+            
             $member = $this->__construct($this->id);
 
             if (!isset($_SESSION)) {
@@ -965,8 +965,7 @@ class Member {
             }
 
             $_SESSION["login"] = TRUE;
-
-            $_SESSION["id"] = $member->id;
+            $_SESSION["id"] = $member["id"];
 
             return TRUE;
         }
