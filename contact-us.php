@@ -70,63 +70,70 @@ $LOCATION = New Page(11);
                 <!-- Main Content -->
                 <main class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
 
-                    <section class="about-section-values ui-block ui-ad-block intro-section category-wrap-layout1 padding-top-100 padding-bottom-100 ">
+                    <section class="about-section-values ui-block ui-ad-block intro-section category-wrap-layout1 padding-top-100 padding-bottom-100 intro-section1">
                         <div class="">
                             <div class="container index-container">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="ui-block contact-us-block">
-                                            <div class="ui-block-title">
-                                                <h6 class="title">Find Us</h6>
-                                            </div>
-
-                                            <div class="ui-block-content">
-
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="form-group label-floating">
-
-                                                        <P>
-                                                            <?php echo $CONTACTUS->description; ?>
-                                                        </P>
-                                                        <div class="company-contact-info-area">
-                                                            <div class="company-info-item d-flex align-items-center">
-                                                                <div class="contact-icon">
-                                                                    <i class="fa fa-phone"></i>
-                                                                </div>
-                                                                <div class="content box-details">
-                                                                    <span class="title">Phone Number</span>
-                                                                    <?php echo $PHONE_NUMBER1->description; ?> 
-                                                                    <?php echo $PHONE_NUMBER2->description; ?>
-
-                                                                </div>
-                                                            </div><!-- company-info-item end -->
-                                                            <div class="company-info-item d-flex align-items-center">
-                                                                <div class="contact-icon">
-                                                                    <i class="fa fa-envelope"></i>
-                                                                </div>
-                                                                <div class="content box-details">
-                                                                    <span class="title">Email Address</span>
-                                                                    <?php echo $EMAIL->description; ?>
-                                                                </div>
-                                                            </div><!-- company-info-item end -->
-
-                                                            <div class="company-info-item d-flex align-items-center">
-                                                                <div class="contact-icon">
-                                                                    <i class="fa fa-map-marker"></i>
-                                                                </div>
-                                                                <div class="content address box-details">
-                                                                    <span class="title">location</span>
-                                                                    <?php echo $LOCATION->description; ?>
-                                                                </div>
-                                                            </div><!-- company-info-item end -->
+                                        <div class="ui-block-content">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="form-group label-floating">
+                                                    <div class="company-contact-info-area">
+                                                        <div class="office">
+                                                            <h3>Contact No</h3>
+                                                            <div class="icon">
+                                                                <img src="img/icon/about-us-icon/phone-call.png" alt=""/>
+                                                            </div>
                                                         </div>
+                                                        <div class="short_info_wrap">
+
+                                                            <div class="row">
+                                                                <!--<label>Phone:</label>-->
+                                                                <?php echo $PHONE_NUMBER1->description; ?> 
+
+
+                                                            </div>
+                                                            <div class="row">
+                                                                <!--<label>Mobile:</label>-->
+                                                                <!--<span> 076-155-4800     </span>-->
+                                                                <?php echo $PHONE_NUMBER2->description; ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="office">
+                                                            <h3>E-mail</h3>
+                                                            <div class="icon icon-email">
+                                                                <img src="img/icon/about-us-icon/opened-email-envelope.png" alt=""/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="short_info_wrap">
+
+                                                            <div class="row">
+                                                                <?php echo $EMAIL->description; ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="office">
+                                                            <h3>Location</h3>
+                                                            <div class="icon">
+                                                                <i class="fas fa-map-marker-alt map"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="short_info_wrap">
+
+                                                            <div class="row">
+                                                            </div>
+                                                            <div class="row">
+                                                                <?php echo $LOCATION->description; ?>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- company-info-item end -->
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>  
                                     <div class="col-sm-6">
-                                        <div class="ui-block contact-us-block">
+                                        <div class="ui-block contact-us-block contact-frame">
                                             <div class="ui-block-title">
                                                 <h6 class="title">Personal Information</h6>
                                             </div>
@@ -192,8 +199,6 @@ $LOCATION = New Page(11);
                             </div>
                         </div>
                     </section>
-                    <!--<section class="about-section ui-block ui-ad-block intro-section category-wrap-layout1 padding-top-100 padding-bottom-100 ">-->
-
                     <!--</section>-->
                 </main>
                 <!-- ... end Main Content -->
