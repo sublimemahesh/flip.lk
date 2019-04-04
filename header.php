@@ -31,7 +31,6 @@
                     Newsfeed
                 </a>
             </div>
-
             <div class="control-icon more has-items has-items1">
                 <a href="#">
                     <span>
@@ -61,7 +60,6 @@
                             <?php
                             if (isset($_SESSION['id'])) {
                                 if (count(FriendRequest::getFriendRequestsByMember($MEMBER->id)) > 0) {
-
                                     foreach (FriendRequest::getFriendRequestsByMember($MEMBER->id) as $key => $request) {
                                         if ($key < 4) {
                                             $MEMB = new Member($request['requested_by'])
@@ -80,13 +78,11 @@
                                                             <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                                         </span>
                                                     </a>
-
                                                     <a href="#" class="accept-request request-del delete-request" row_id="<?php echo $request['id']; ?>">
                                                         <span class="icon-minus">
                                                             <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                                         </span>
                                                     </a>
-
                                                 </span>
                                             </li>
                                             <li class="accepted hidden accepted-request-<?php echo $MEMB->id; ?>" id="accepted-request-<?php echo $MEMB->id; ?>">
@@ -99,7 +95,6 @@
                                                 <span class="notification-icon">
                                                     <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                                 </span>
-
                                             </li>
                                             <?php
                                         }
@@ -111,14 +106,11 @@
                                 }
                             }
                             ?>
-
                         </ul>
                     </div>
-
                     <a href="member/friend-requests.php" class="view-all bg-theme-blue">See All</a>
                 </div>
             </div>
-
             <div class="control-icon more has-items">
                 <a href="#">
                     <span>
@@ -136,14 +128,12 @@
                     </span>
                     Messaging
                 </a>
-
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
                         <h6 class="title">Chat / Messages</h6>
                         <a href="#">Mark all as read</a>
                         <a href="#">Settings</a>
                     </div>
-
                     <div class="mCustomScrollbar" data-mcs-theme="dark">
                         <ul class="notification-list chat-message">
                             <?php
@@ -200,8 +190,6 @@
                     <a href="member/member-message.php" class="view-all bg-theme-blue">View All Messages</a>
                 </div>
             </div>
-
-
             <div class="control-icon author-page author vcard inline-items more">
                 <div class="author-thumb">
                     <a href="member/profile.php">
@@ -216,24 +204,19 @@
                                 ?>
                                 <span><img alt="author" src="upload/member/member.png" class="avatar" id="profile_pic2"></span>
                                 Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
-                                    <?php
+                                <?php
                             }
                             ?>
                         </a>
-
-            <!--                        <span class="icon-status online"></span>-->
                         <div class="more-dropdown more-with-triangle">
                             <div class="mCustomScrollbar" data-mcs-theme="dark">
                                 <div class="ui-block-title ui-block-title-small">
                                     <h6 class="title">Your Account</h6>
                                 </div>
-
                                 <ul class="account-settings">
                                     <li>
                                         <a href="member/profile.php">
-
                                             <svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
-
                                             <span>My Profile</span>
                                         </a>
                                     </li>
@@ -252,11 +235,9 @@
                                         </a>
                                     </li>
                                 </ul>
-
                                 <div class="ui-block-title ui-block-title-small">
                                     <h6 class="title">About Flip.lk</h6>
                                 </div>
-
                                 <ul>
                                     <li>
                                         <a href="terms-and-conditions.php">
@@ -283,15 +264,13 @@
                         <a href="member/login.php">
                             <span><img alt="author" src="img/icon/header-icon/signin.png" class="signin" id="profile_pic2">
                             </span>
-                        Sign In
+                            Sign In
                         </a>
                         <?php
                     }
                     ?>
-
                 </div>
             </div>
-
             <div class=" more has-items">
                 <a href="member/create-advertisement.php?back=ad">
                     <button class="btn-post">
@@ -306,85 +285,6 @@
 
 </header>
 <!-- ... end Header-BP -->
-<!-- Responsive Header-BP -->
-<!--<header class="header header-responsive" id="site-header-responsive">
-    <div class="header-content-wrapper">
-        <ul class="nav nav-tabs mobile-app-tabs" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link" href="./">
-                    <div class="responsive-header-logo">
-                        <img src="img/logo/logo.jpg" alt=""/>
-                    </div>  
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="member/">
-                    <div class="control-icon has-items">
-                        <img src="img/icon/header-icon/newsfeed.png" alt=""/>
-                    </div>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="all-advertisement.php">
-                    <div class="control-icon has-items">
-                        <img src="img/icon/header-icon/advertising.png" alt=""/>
-                    </div>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="member/friend-requests.php">
-                    <img src="img/icon/header-icon/request.png" alt=""/>
-                    <?php
-                    if (isset($_SESSION['id'])) {
-                        $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
-
-                        if ($countu['count'] > 0) {
-                            ?>
-                            <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
-                            <?php
-                        }
-                    }
-                    ?>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="member/member-message.php">
-                    <img src="img/icon/header-icon/message.png" alt=""/>
-                </a>
-            </li>
-            <div class="control-icon more has-items ">
-                <a href="create-advertisement.php?back=ad">
-                    <button class="btn-post"><i class="fa-sticky-note-o "></i></button>
-                    <img src="img/icon/header-icon/images-post.png" alt=""/>
-                </a>
-            </div>
-            <li class="nav-item">
-                <a class="nav-link" href="member/profile.php">
-                    <div class="author-thumb">
-                        <?php
-                        if (isset($_SESSION['id'])) {
-                            ?>
-                            <img alt="author" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
-                            <span class="icon-status online"></span>
-                            <?php
-                        } else {
-                            ?>
-
-                            <img src="img/icon/header-icon/signin.png" alt=""/>
-                            <?php
-                        }
-                        ?>
-
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-</header>-->
-<!-- ... end Responsive Header-BP -->
-
 <!-- Responsive Header-BP -->
 <div class="nav">
     <div class="nav-header">
@@ -407,7 +307,6 @@
         <a href="member/"><img src="img/icon/header-icon/newsfeed.png" alt="" />Newsfeed</a>
         <a href="member/friend-requests.php"><img class="follower-request" src="img/icon/header-icon/request.png" alt=""/>Requests</a>
         <a href="member/member-message.php"><img src="img/icon/header-icon/message.png" alt=""/>Messaging</a>
-
         <?php
         if (isset($_SESSION['id'])) {
             ?>

@@ -70,7 +70,6 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
         <div class="container index-container body-content">
             <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
                 <!-- Top Header-Profile -->
-
                 <!-- ... end Top Header-Profile -->
                 <div class="container">
                     <div class="row">
@@ -84,9 +83,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                             </div> 
                         </div>
                         <!-- Main Content -->
-
                         <div class="col col-xl-8 order-xl-1 col-lg-8 order-lg-1 col-md-12 col-sm-12 col-12">
-
                             <div id="newsfeed-items-grid">
                                 <div class="ui-block post">
                                     <?php
@@ -120,7 +117,6 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                     } else {
                                         ?>
                                         <div id="galleria" class="no-images" >
-
                                         </div>
                                         <?php
                                     }
@@ -164,7 +160,6 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                         <li class="comment-item comment-item1" id="li_<?php echo $comment['id']; ?>">
                                                             <div class="post__author author vcard inline-items">
                                                                 <img src="upload/member/<?php echo $COMMENTMEMBER->profilePicture; ?>" alt="author">
-
                                                                 <div class="author-date">
                                                                     <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
                                                                     <div class="post__date">
@@ -192,11 +187,8 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                                     <?php
                                                                 }
                                                                 ?>
-
                                                             </div>
-
                                                             <p class="comment-p" id="comment-p-<?php echo $comment['id']; ?>"><?php echo $comment['comment']; ?></p>
-
                                                         </li>
                                                         <?php
                                                     } else {
@@ -204,7 +196,6 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                         <li class="comment-item comment-item1 has-children" id="li_<?php echo $comment['id']; ?>">
                                                             <div class="post__author author vcard inline-items">
                                                                 <img src="upload/member/<?php echo $COMMENTMEMBER->profilePicture; ?>" alt="author">
-
                                                                 <div class="author-date">
                                                                     <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
                                                                     <div class="post__date">
@@ -213,11 +204,8 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                                         </time>
                                                                     </div>
                                                                 </div>
-
                                                             </div>
-
                                                             <p class="ad-comment-p" id="ad-comment-p-<?php echo $comment['id']; ?>"><?php echo $comment['comment']; ?></p>
-
                                                             <ul class="children comment-reply-list" id="comment-reply-list-<?php echo $comment['id']; ?>" comment-id="<?php echo $comment['id']; ?>">
                                                                 <a href="#" class="see-more-replies hidden" id="see-more-replies-<?php echo $comment['id']; ?>">View all replies</a>
                                                                 <?php
@@ -238,10 +226,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-
-
                                                                         <p class="reply-p" id="ad-reply-p-<?php echo $reply['id']; ?>"><?php echo $reply['reply']; ?></p>
-
                                                                     </li>
                                                                     <?php
                                                                 }
@@ -252,19 +237,15 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                     }
                                                 }
                                                 ?>
-
                                             </ul>
                                             <?php
                                         }
                                         ?>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                         <!-- ... end Main Content -->
-
                         <!-- Right Sidebar -->
                         <div class="col col-xl-4 order-xl-2 col-lg-4 order-lg-2 col-md-12 col-sm-12 col-12">
                             <div class="ui-block">
@@ -361,7 +342,6 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                 $MEMBER = new Member($ad['member']);
                                                 $CATEGORY = new BusinessCategory($ad['category']);
                                                 $adimages = AdvertisementImage::getPhotosByAdId($ad['id']);
-
                                                 if (($i % 2) === 0) {
                                                     ?>
                                                     <div class="item">
@@ -443,47 +423,9 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
         <!-- ... end Window-popup -->
         <!-- JS Scripts -->
         <script src="js/jquery-3.2.1.js"></script>
-        <script src="js/jquery.appear.js"></script>
-        <script src="js/jquery.mousewheel.js"></script>
-        <script src="js/perfect-scrollbar.js"></script>
-        <script src="js/jquery.matchHeight.js"></script>
-        <script src="js/svgxuse.js"></script>
-        <script src="js/imagesloaded.pkgd.js"></script>
-        <script src="js/Headroom.js"></script>
-        <script src="js/velocity.js"></script>
-        <script src="js/ScrollMagic.js"></script>
-        <script src="js/jquery.waypoints.js"></script>
-        <script src="js/jquery.countTo.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/material.min.js"></script>
-        <script src="js/bootstrap-select.js"></script>
-        <script src="js/smooth-scroll.js"></script>
-        <script src="js/selectize.js"></script>
-        <script src="js/swiper.jquery.js"></script>
-        <script src="js/moment.js"></script>
-        <script src="js/daterangepicker.js"></script>
-        <script src="js/simplecalendar.js"></script>
-        <script src="js/fullcalendar.js"></script>
-        <script src="js/isotope.pkgd.js"></script>
-        <script src="js/ajax-pagination.js"></script>
-        <script src="js/Chart.js"></script>
-        <script src="js/chartjs-plugin-deferred.js"></script>
-        <script src="js/circle-progress.js"></script>
-        <script src="js/loader.js"></script>
-        <script src="js/run-chart.js"></script>
-        <script src="js/jquery.magnific-popup.js"></script>
-        <script src="js/jquery.gifplayer.js"></script>
-        <script src="js/mediaelement-and-player.js"></script>
-        <script src="js/mediaelement-playlist-plugin.min.js"></script>
-        <script src="js/sticky-sidebar.js"></script>
-        <script src="js/base-init.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
-        <script src="js/js/find-friends.js" type="text/javascript"></script>
-        <script src="js/js/friend-request.js" type="text/javascript"></script>
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
-        <script src="js/images-grid.js" type="text/javascript"></script>
-        <script src="js/js/all-ad-slider.js" type="text/javascript"></script>
         <script src="js/choices.js" type="text/javascript"></script>
         <script src="plugins/galleria/galleria-1.5.7.min.js" type="text/javascript"></script>
         <script src="plugins/OwlCarousel/dist/owl.carousel.min.js" type="text/javascript"></script>
@@ -492,7 +434,6 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
             $(function () {
                 // Load the classic theme
                 Galleria.loadTheme('plugins/galleria/themes/classic/galleria.classic.min.js');
-
                 // Initialize Galleria
                 Galleria.run('#galleria');
             });
