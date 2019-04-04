@@ -1843,7 +1843,8 @@ ul {
     margin-right: 0;
 }
 .hot-items {
-    margin-top: 80px;
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 .heading-dark .item-title {
     color: #111111;

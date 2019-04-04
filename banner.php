@@ -8,12 +8,9 @@
                 <div class="s002">
                     <form action="advertisements.php" method="get">
                         <div class="inner-form">
-
                             <div class="input-field fouth-wrap">
                                 <div class="icon-wrap">
-<!--                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-                                    </svg>-->
+
                                     <svg height="24" viewBox="0 -52 512 512" width="24" xmlns="http://www.w3.org/2000/svg">
                                         <path d="m0 0h113.292969v113.292969h-113.292969zm0 0"/>
                                         <path d="m149.296875 0h362.703125v113.292969h-362.703125zm0 0"/>
@@ -25,7 +22,6 @@
                                 </div>
                                 <select data-trigger="" name="category">
                                     <option value="">Category</option>
-
                                     <?php
                                     foreach (BusinessCategory::all() as $key => $category) {
                                         ?>
@@ -50,7 +46,6 @@
                                 </div>
                                 <input id="search" type="text" name="keyword" placeholder="What are you looking for?" />
                             </div>
-
                             <div class="input-field fifth-wrap">
                                 <button class="btn-search" type="submit">SEARCH</button>
                             </div>

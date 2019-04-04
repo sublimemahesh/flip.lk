@@ -80,18 +80,13 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
         include './banner.php';
         ?>
         <div class="container index-container body-content">
-
             <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
                 <!-- Top Header-Profile -->
-
                 <!-- ... end Top Header-Profile -->
                 <div class="container">
                     <div class="row">
-
                         <!-- Main Content -->
-
                         <div class="col col-xl-8 col-xl-offset-2 order-xl-2 col-lg-8 order-lg-1 col-md-12 col-sm-12 col-12">
-
                             <div id="newsfeed-items-grid">
                                 <div class="ad-breadcrumbs">
                                     <?php
@@ -141,7 +136,6 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                                         <?php
                                     }
                                     ?>
-
                                 </div>
                                 <div class="ui-block">
                                     <?php
@@ -181,9 +175,9 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                                                                 $countsubcat = Advertisement::countAdsBySubCategory($subcategory['id']);
                                                                 ?>
                                                                 <div class="ad-subcategory1"><span class="title">Sub Category <i class="fa fa-angle-double-right"></i> </span><?php echo $subcategory['name']; ?></div>
-                                                                    <?php
-                                                                }
-                                                                ?>
+                                                                <?php
+                                                            }
+                                                            ?>
                                                             <div class="ad-time ad-time0"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
                                                         </div>
                                                     </div>
@@ -206,7 +200,7 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                         <!-- ... end Main Content -->
                         <!-- Left Sidebar -->
                         <div class="sidebar col col-xl-4 order-xl-1 col-lg-4 order-lg-1 col-md-12 col-sm-12 col-12 hidden-sm">
-                            
+
                             <div id="secondary" class="secondary">
                                 <nav id="site-navigation" class="main-navigation" role="navigation">
                                     <div class="menu-feature-container">
@@ -232,8 +226,6 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                                                         ?>
                                                     </ul>
                                                 </li>
-
-
                                                 <?php
                                             }
                                             ?>
@@ -241,7 +233,6 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                                     </div>
                                 </nav><!-- .main-navigation -->
                             </div><!-- .secondary -->
-                            
                         </div>
                         <!-- ... end Left Sidebar -->
                     </div>
@@ -256,54 +247,9 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>
-        <!-- Window-popup -->
-
-
-        <!-- ... end Window-popup -->
-
-
         <!-- JS Scripts -->
         <script src="js/jquery-3.2.1.js"></script>
-        <script src="js/jquery.appear.js"></script>
-        <script src="js/jquery.mousewheel.js"></script>
-        <script src="js/perfect-scrollbar.js"></script>
-        <script src="js/jquery.matchHeight.js"></script>
-        <script src="js/svgxuse.js"></script>
-        <script src="js/imagesloaded.pkgd.js"></script>
-        <script src="js/Headroom.js"></script>
-        <script src="js/velocity.js"></script>
-        <script src="js/ScrollMagic.js"></script>
-        <script src="js/jquery.waypoints.js"></script>
-        <script src="js/jquery.countTo.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/material.min.js"></script>
-        <script src="js/bootstrap-select.js"></script>
-        <script src="js/smooth-scroll.js"></script>
-        <script src="js/selectize.js"></script>
-        <script src="js/swiper.jquery.js"></script>
-        <script src="js/moment.js"></script>
-        <script src="js/daterangepicker.js"></script>
-        <script src="js/simplecalendar.js"></script>
-        <script src="js/fullcalendar.js"></script>
-        <script src="js/isotope.pkgd.js"></script>
-        <script src="js/ajax-pagination.js"></script>
-        <script src="js/Chart.js"></script>
-        <script src="js/chartjs-plugin-deferred.js"></script>
-        <script src="js/circle-progress.js"></script>
-        <script src="js/loader.js"></script>
-        <script src="js/run-chart.js"></script>
-        <script src="js/jquery.magnific-popup.js"></script>
-        <script src="js/jquery.gifplayer.js"></script>
-        <script src="js/mediaelement-and-player.js"></script>
-        <script src="js/mediaelement-playlist-plugin.min.js"></script>
-        <script src="js/sticky-sidebar.js"></script>
-        <script src="js/base-init.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
-        <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
-        <script src="js/js/friend-request.js" type="text/javascript"></script>
-        <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
-        <script src="js/images-grid.js" type="text/javascript"></script>
-        <script src="js/js/all-ad-slider.js" type="text/javascript"></script>
         <script src="js/choices.js" type="text/javascript"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
         <script>
@@ -392,10 +338,8 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2FmnO6PPzu9Udebcq9q_yUuQ_EGItjak&libraries=places&callback=initAutocomplete"
         async defer></script>
-         <script>
+        <script>
             $(document).ready(function () {
-
-//                $(".cat-dropdown").click(function () {
                 $(".category").on('click', '.cat-dropdown', function () {
                     var attr = $(this).attr("id1");
                     var times = $(this).attr("times");
@@ -413,7 +357,6 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                     }
                 });
             });
-
         </script>
     </body>
 </html>

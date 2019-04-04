@@ -47,15 +47,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="css/images-grid.css" rel="stylesheet" type="text/css"/>
         <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
-        <style>
-            .comment-item1 {
-                display: none;
-            }
-            .comment-reply-item {
-                display: none;
-            }
-        </style>
-    </head>
+     </head>
     <body>
         <?php
         include './header.php';
@@ -66,16 +58,10 @@ $pageLimit = ($page * $setLimit) - $setLimit;
         ?>
         <div class="container index-container body-content">
             <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-                <!-- Top Header-Profile -->
-
-                <!-- ... end Top Header-Profile -->
                 <div class="container">
                     <div class="row">
-
                         <!-- Main Content -->
-
                         <div class="col col-xl-8 col-xl-offset-2 order-xl-2 col-lg-8 order-lg-1 col-md-12 col-sm-12 col-12">
-
                             <div id="newsfeed-items-grid">
                                 <div class="ad-breadcrumbs">
                                     <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item">All advertisements in Sri Lanka</span>
@@ -112,8 +98,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                         </div>
                                                         <div class = "col-xl-8 col-xs-8 ad-item-details">
                                                             <div class="ad-title"><?php echo $ad['title']; ?></div>
-                                                            
-                                                            <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
+                                                           <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
                                                             <?php
                                                             foreach (BusinessSubCategory::getSubCategoriesByCategory($category['id']) as $subcategory) {
                                                                 $countsubcat = Advertisement::countAdsBySubCategory($subcategory['id']);
@@ -122,8 +107,6 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                                     <?php
                                                                 }
                                                                 ?>
-                                                            
-                                                            
                                                             <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php
                                                         if ($ad['price'] == 0) {
                                                             echo 'Negotiable';
@@ -132,8 +115,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                         }
                                                                 ?></div>
                                                             <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
-                                                            
-                                                        </div>
+                                                         </div>
                                                     </div>
                                                 </a>
                                             </div>
@@ -153,11 +135,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                         </div>
                         <!-- ... end Main Content -->
                         <!-- Left Sidebar -->
-
-
                         <div id="sidebar" class="sidebar col col-xl-4 order-xl-1 col-lg-4 order-lg-1 col-md-12 col-sm-12 col-12">
-
-
                             <div id="secondary" class="secondary">
                                 <nav id="site-navigation" class="main-navigation" role="navigation">
                                     <div class="menu-feature-container">
@@ -174,7 +152,6 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                         foreach (BusinessSubCategory::getSubCategoriesByCategory($category['id']) as $subcategory) {
                                                             $countsubcat = Advertisement::countAdsBySubCategory($subcategory['id']);
                                                             ?>
-
                                                             <li id="sub-category-" class="menu-item ">
                                                                 <a href="advertisements.php?category=<?php echo $category['id']; ?>subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
                                                             </li>
@@ -183,8 +160,6 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                         ?>
                                                     </ul>
                                                 </li>
-
-
                                                 <?php
                                             }
                                             ?>
@@ -204,60 +179,14 @@ $pageLimit = ($page * $setLimit) - $setLimit;
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>
-        <!-- Window-popup -->
-
-
-        <!-- ... end Window-popup -->
-
-
         <!-- JS Scripts -->
         <script src="js/jquery-3.2.1.js"></script>
-        <script src="js/jquery.appear.js"></script>
-        <script src="js/jquery.mousewheel.js"></script>
-        <script src="js/perfect-scrollbar.js"></script>
-        <script src="js/jquery.matchHeight.js"></script>
-        <script src="js/svgxuse.js"></script>
-        <script src="js/imagesloaded.pkgd.js"></script>
-        <script src="js/Headroom.js"></script>
-        <script src="js/velocity.js"></script>
-        <script src="js/ScrollMagic.js"></script>
-        <script src="js/jquery.waypoints.js"></script>
-        <script src="js/jquery.countTo.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/material.min.js"></script>
-        <script src="js/bootstrap-select.js"></script>
-        <script src="js/smooth-scroll.js"></script>
-        <script src="js/selectize.js"></script>
-        <script src="js/swiper.jquery.js"></script>
-        <script src="js/moment.js"></script>
-        <script src="js/daterangepicker.js"></script>
-        <script src="js/simplecalendar.js"></script>
-        <script src="js/fullcalendar.js"></script>
-        <script src="js/isotope.pkgd.js"></script>
-        <script src="js/ajax-pagination.js"></script>
-        <script src="js/Chart.js"></script>
-        <script src="js/chartjs-plugin-deferred.js"></script>
-        <script src="js/circle-progress.js"></script>
-        <script src="js/loader.js"></script>
-        <script src="js/run-chart.js"></script>
-        <script src="js/jquery.magnific-popup.js"></script>
-        <script src="js/jquery.gifplayer.js"></script>
-        <script src="js/mediaelement-and-player.js"></script>
-        <script src="js/mediaelement-playlist-plugin.min.js"></script>
-        <script src="js/sticky-sidebar.js"></script>
-        <script src="js/base-init.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
-        <script src="js/js/find-friends.js" type="text/javascript"></script>
-        <script src="js/js/friend-request.js" type="text/javascript"></script>
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
-        <script src="js/images-grid.js" type="text/javascript"></script>
-        <script src="js/js/all-ad-slider.js" type="text/javascript"></script>
         <script src="js/choices.js" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
-
-//                $(".cat-dropdown").click(function () {
                 $(".category").on('click', '.cat-dropdown', function () {
                     var attr = $(this).attr("id1");
                     var times = $(this).attr("times");
@@ -275,7 +204,6 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                     }
                 });
             });
-
         </script>
     </body>
 </html>
