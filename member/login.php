@@ -19,6 +19,8 @@ if (isset($_SESSION["back_url"])) {
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+        <script src="js/js/google-login.js" type="text/javascript"></script>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <!-- Main Font -->
         <script src="js/webfontloader.min.js"></script>
@@ -40,8 +42,7 @@ if (isset($_SESSION["back_url"])) {
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
         <link href="css/login.css" rel="stylesheet" type="text/css"/>
-        <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-        <script src="js/js/google-login.js" type="text/javascript"></script>
+        
         
     </head>
     <body class="landing-page">
@@ -50,6 +51,7 @@ include './header.php';
 ?>
         <div class="header-spacer"></div>
         <div class="container index-container body-content">
+            <a href="post-and-get/ajax/google-login.php"></a>
 
             <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12 form-login">
                 <div class="form">
@@ -192,6 +194,7 @@ if (isset($_GET['message'])) {
         <script src="js/js/add-member.js" type="text/javascript"></script>
         <script src="js/js/login.js" type="text/javascript"></script>
         <script src="js/js/fb-login-scripts.js" type="text/javascript"></script>
+        
 
     </body>
 </html>

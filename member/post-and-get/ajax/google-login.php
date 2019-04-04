@@ -47,6 +47,7 @@ if (isset($_POST['memberLogin'])) {
         }
     } else {
         $res = $MEMBER->loginByGoogle($memberID, $password);
+        
         if ($res === false) {
             $response['message'] = 'error-log';
             echo json_encode($response);
