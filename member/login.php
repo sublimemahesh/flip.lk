@@ -4,15 +4,13 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 if (!isset($_SESSION)) {
     session_start();
 }
-if(isset($_SESSION['id'])) {
+if (isset($_SESSION['id'])) {
     $MEMBER = new Member($_SESSION['id']);
 }
 $back_url = '';
 if (isset($_SESSION["back_url"])) {
     $back_url = $_SESSION["back_url"];
-
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,9 +42,9 @@ if (isset($_SESSION["back_url"])) {
         <link href="css/login.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="landing-page">
-        <?php
-        include './header.php';
-        ?>
+<?php
+include './header.php';
+?>
         <div class="header-spacer"></div>
         <div class="container index-container body-content">
 
@@ -63,31 +61,31 @@ if (isset($_SESSION["back_url"])) {
                             <h1>Welcome Back!</h1>
 
                             <div class="top-bott20 m-l-25 m-r-15">
-                                <?php
-                                if (isset($_GET['message'])) {
+<?php
+if (isset($_GET['message'])) {
 
-                                    $MESSAGE = New Message($_GET['message']);
-                                    ?>
+    $MESSAGE = New Message($_GET['message']);
+    ?>
                                     <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
-                                        <?php echo $MESSAGE->description; ?>
+                                    <?php echo $MESSAGE->description; ?>
                                     </div>
-                                    <?php
-                                }
+                                        <?php
+                                    }
 
-                                $vali = new Validator();
+                                    $vali = new Validator();
 
-                                $vali->show_message();
-                                ?>
+                                    $vali->show_message();
+                                    ?>
                             </div>
-<!--                            <div class="row">
+                            <div class="row">
                                 <div class="col-sm-6">
-                                    <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Login with Facebook</a>
+                                    <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left" id="fb-login"><i class="fab fa-facebook-f" aria-hidden="true"></i>Login with Facebook</a>
                                 </div>
                                 <div class="col-sm-6">
                                     <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Login with Twitter</a>
                                 </div>
                             </div>
-                            <div class="or"></div>-->
+                            <div class="or"></div>
                             <form  action="post-and-get/member.php" method="post">
                                 <div class="field-wrap">
                                     <label>
@@ -110,23 +108,23 @@ if (isset($_SESSION["back_url"])) {
                         <div id="signup">   
                             <h1>Sign Up for Free</h1>
                             <div class="top-bott20 m-l-25 m-r-15">
-                                <?php
-                                if (isset($_GET['message'])) {
+<?php
+if (isset($_GET['message'])) {
 
-                                    $MESSAGE = New Message($_GET['message']);
-                                    ?>
+    $MESSAGE = New Message($_GET['message']);
+    ?>
                                     <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
-                                        <?php echo $MESSAGE->description; ?>
+                                    <?php echo $MESSAGE->description; ?>
                                     </div>
-                                    <?php
-                                }
+                                        <?php
+                                    }
 
-                                $vali = new Validator();
+                                    $vali = new Validator();
 
-                                $vali->show_message();
-                                ?>
+                                    $vali->show_message();
+                                    ?>
                             </div>
-<!--                            <div class="row">
+                            <div class="row">
                                 <div class="col-sm-6">
                                     <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Sign up with Facebook</a>
                                 </div>
@@ -134,7 +132,7 @@ if (isset($_SESSION["back_url"])) {
                                     <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Sign up with Twitter</a>
                                 </div>
                             </div>
-                            <div class="or"></div>-->
+                            <div class="or"></div>
 
                             <form id="register" action="#">
                                 <div class="top-row">
@@ -190,6 +188,6 @@ if (isset($_SESSION["back_url"])) {
         <!--custom js-->
         <script src="js/js/add-member.js" type="text/javascript"></script>
         <script src="js/js/login.js" type="text/javascript"></script>
-
+        <script src="js/js/fb-login-scripts.js" type="text/javascript"></script>
     </body>
 </html>
