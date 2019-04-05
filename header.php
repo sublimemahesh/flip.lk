@@ -197,13 +197,29 @@
                         if (isset($_SESSION['id'])) {
                             if ($MEMBER->profilePicture) {
                                 ?>
-                                <span><img alt="author" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2"></span>
-                                <span class="nav-topic">Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                                <span>
+                                    <?php
+                                    if ($MEMBER->facebookID && substr($MEMBER->profilePicture, 0, 5) === "https") {
+                                        ?>
+                                        <img alt="profile picture" src="<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
+                                        <?php
+                                    } elseif ($MEMBER->googleID && substr($MEMBER->profilePicture, 0, 5) === "https") {
+                                        ?>
+                                        <img alt="profile picture" src="<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <img alt="profile picture" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
+                                        <?php
+                                    }
+                                    ?>
+                                </span>
+                                <span class="nav-topic">Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg></span>
                                 <?php
                             } else {
                                 ?>
-                                <span><img alt="author" src="upload/member/member.png" class="avatar" id="profile_pic2"></span>
-                                <span class="nav-topic">Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                                <span><img alt="profile picture" src="upload/member/member.png" class="avatar" id="profile_pic2"></span>
+                                <span class="nav-topic">Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg></span>
                                 <?php
                             }
                             ?>

@@ -167,7 +167,28 @@ $MEMBER = new Member($_SESSION['id']);
                                             <article class="hentry post has-post-thumbnail shared-photo post_<?php echo $ad['id']; ?>" id="post-id" post-id="<?php echo $ad['id']; ?>">
 
                                                 <div class="post__author author vcard inline-items">
-                                                    <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
+                                                    <?php
+                                                if ($MEM->profilePicture) {
+
+                                                    if ($MEM->facebookID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                        ?>
+                                                        <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
+                                                        <?php
+                                                    } elseif ($MEM->googleID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                        ?>
+                                                        <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <img alt="profile picture" src="../upload/member/<?php echo $MEM->profilePicture; ?>">
+                                                        <?php
+                                                    }
+                                                } else {
+                                                    ?>
+                                                    <img alt="author" src="../upload/member/member.png">
+                                                    <?php
+                                                }
+                                                ?>
 
                                                     <div class="author-date">
                                                         <?php
@@ -228,7 +249,28 @@ $MEMBER = new Member($_SESSION['id']);
                                                     <ul class="children single-children">
                                                         <li class="comment-item">
                                                             <div class="post__author author vcard inline-items">
-                                                                <img src="../upload/member/<?php echo $MEM2->profilePicture; ?>" alt="author">
+                                                                <?php
+                                                if ($MEM2->profilePicture) {
+
+                                                    if ($MEM2->facebookID && substr($MEM2->profilePicture, 0, 5) === "https") {
+                                                        ?>
+                                                        <img alt="profile picture" src="<?php echo $MEM2->profilePicture; ?>">
+                                                        <?php
+                                                    } elseif ($MEM2->googleID && substr($MEM2->profilePicture, 0, 5) === "https") {
+                                                        ?>
+                                                        <img alt="profile picture" src="<?php echo $MEM2->profilePicture; ?>">
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <img alt="profile picture" src="../upload/member/<?php echo $MEM2->profilePicture; ?>">
+                                                        <?php
+                                                    }
+                                                } else {
+                                                    ?>
+                                                    <img alt="author" src="../upload/member/member.png">
+                                                    <?php
+                                                }
+                                                ?>
                                                                 <div class="author-date">
                                                                     <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $MEM->id; ?>"><?php echo $MEM2->firstName . ' ' . $MEM2->lastName; ?></a> <i class="fa fa-caret-right"></i> <a class="h6 post__author-name fn" href="group.php?id=<?php echo $GROUP->id; ?>"><?php echo $GROUP->name; ?></a>
                                                                     <div class="post__date">
@@ -607,7 +649,28 @@ $MEMBER = new Member($_SESSION['id']);
                                                             ?>
                                                             <li class="comment-item comment-item1" id="li_<?php echo $comment['id']; ?>">
                                                                 <div class="post__author author vcard inline-items">
-                                                                    <img src="../upload/member/<?php echo $COMMENTMEMBER->profilePicture; ?>" alt="author">
+                                                                    <?php
+                                                                if ($COMMENTMEMBER->profilePicture) {
+
+                                                                    if ($COMMENTMEMBER->facebookID && substr($COMMENTMEMBER->profilePicture, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="<?php echo $COMMENTMEMBER->profilePicture; ?>">
+                                                                        <?php
+                                                                    } elseif ($COMMENTMEMBER->googleID && substr($COMMENTMEMBER->profilePicture, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="<?php echo $COMMENTMEMBER->profilePicture; ?>">
+                                                                        <?php
+                                                                    } else {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="../upload/member/<?php echo $COMMENTMEMBER->profilePicture; ?>">
+                                                                        <?php
+                                                                    }
+                                                                } else {
+                                                                    ?>
+                                                                    <img alt="profile picture" src="../upload/member/member.png">
+                                                                    <?php
+                                                                }
+                                                                ?>
 
                                                                     <div class="author-date">
                                                                         <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
@@ -655,7 +718,28 @@ $MEMBER = new Member($_SESSION['id']);
 
                                                                 <div class="reply-form inline-items hidden" id="reply-form-<?php echo $comment['id']; ?>">
                                                                     <div class="post__author author vcard inline-items">
-                                                                        <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author">
+                                                                        <?php
+                                                                    if ($MEMBER->profilePicture) {
+
+                                                                        if ($MEMBER->facebookID && substr($MEMBER->profilePicture, 0, 5) === "https") {
+                                                                            ?>
+                                                                            <img alt="profile picture" src="<?php echo $MEMBER->profilePicture; ?>">
+                                                                            <?php
+                                                                        } elseif ($MEMBER->googleID && substr($MEMBER->profilePicture, 0, 5) === "https") {
+                                                                            ?>
+                                                                            <img alt="profile picture" src="<?php echo $MEMBER->profilePicture; ?>">
+                                                                            <?php
+                                                                        } else {
+                                                                            ?>
+                                                                            <img alt="profile picture" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>">
+                                                                            <?php
+                                                                        }
+                                                                    } else {
+                                                                        ?>
+                                                                        <img alt="author" src="../upload/member/member.png">
+                                                                        <?php
+                                                                    }
+                                                                    ?>
                                                                         <div class="form-group with-icon-right is-empty">
                                                                             <textarea class="form-control" placeholder="" name="reply" id="reply-<?php echo $comment['id']; ?>"></textarea>
                                                                             <span class="material-input"></span></div>
@@ -670,7 +754,28 @@ $MEMBER = new Member($_SESSION['id']);
                                                             ?>
                                                             <li class="comment-item comment-item1 has-children" id="li_<?php echo $comment['id']; ?>">
                                                                 <div class="post__author author vcard inline-items">
-                                                                    <img src="../upload/member/<?php echo $COMMENTMEMBER->profilePicture; ?>" alt="author">
+                                                                    <?php
+                                                                if ($COMMENTMEMBER->profilePicture) {
+
+                                                                    if ($COMMENTMEMBER->facebookID && substr($COMMENTMEMBER->profilePicture, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="<?php echo $COMMENTMEMBER->profilePicture; ?>">
+                                                                        <?php
+                                                                    } elseif ($COMMENTMEMBER->googleID && substr($COMMENTMEMBER->profilePicture, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="<?php echo $COMMENTMEMBER->profilePicture; ?>">
+                                                                        <?php
+                                                                    } else {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="../upload/member/<?php echo $COMMENTMEMBER->profilePicture; ?>">
+                                                                        <?php
+                                                                    }
+                                                                } else {
+                                                                    ?>
+                                                                    <img alt="profile picture" src="../upload/member/member.png">
+                                                                    <?php
+                                                                }
+                                                                ?>
 
                                                                     <div class="author-date">
                                                                         <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>

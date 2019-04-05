@@ -108,7 +108,27 @@ if ($count_members['count'] == 0) {
                                                 </div>
                                                 <div class="friend-avatar">
                                                     <div class="author-thumb member-request-profile-pic">
-                                                        <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
+                                                        <?php
+                                                        if ($MEM->profilePicture) {
+                                                            if ($MEM->facebookID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                                ?>
+                                                                <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
+                                                                <?php
+                                                            } elseif ($MEM->googleID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                                ?>
+                                                                <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <img alt="profile picture" src="../upload/member/<?php echo $MEM->profilePicture; ?>">
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                            ?>
+                                                                <img src="../upload/member/member.png" alt="profile picture">
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                     <div class="author-content">
                                                         <a href="profile.php?id=<?php echo $MEM->id; ?>" class="h5 author-name"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>
@@ -308,21 +328,21 @@ if ($count_members['count'] == 0) {
 
                         </div>
 
-<!--                        <nav aria-label="Page navigation">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                <li class="page-item"><a class="page-link" href="#">12</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>-->
+                        <!--                        <nav aria-label="Page navigation">
+                                                    <ul class="pagination justify-content-center">
+                                                        <li class="page-item disabled">
+                                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                                        </li>
+                                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">...</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">12</a></li>
+                                                        <li class="page-item">
+                                                            <a class="page-link" href="#">Next</a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>-->
                     </div>
                     <?php
                     include './group-about-nav.php';

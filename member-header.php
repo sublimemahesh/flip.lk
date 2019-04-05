@@ -166,9 +166,20 @@
                         <a href="profile.php" class="author-thumb main-profile-pic">
                             <?php
                             if ($MEM->profilePicture) {
-                                ?>
-                                <img src="upload/member/<?php echo $MEM->profilePicture; ?>" alt="profile picture" id="profile_pic1">
-                                <?php
+
+                                if ($MEM->facebookID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                    ?>
+                                    <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>" id="profile_pic1">
+                                    <?php
+                                } elseif ($MEM->googleID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                    ?>
+                                    <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>" id="profile_pic1">
+                                    <?php
+                                } else {
+                                    ?>
+                                    <img alt="profile picture" src="upload/member/<?php echo $MEM->profilePicture; ?>" id="profile_pic1">
+                                    <?php
+                                }
                             } else {
                                 ?>
                                 <img src="upload/member/member.png" alt="profile picture" id="profile_pic1">
