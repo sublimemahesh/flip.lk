@@ -1429,7 +1429,7 @@ a .ad-title:hover {
 /***********************Index Category Section ***************************/
 .bg--dark {
 
-    background-color: #111111;
+    background-color: #f2f2f2;
 
 }
 .padding-bottom-100 {
@@ -1447,7 +1447,7 @@ a .ad-title:hover {
     position: relative;
 
 }
-.overlay-dark-70::before {
+/*.overlay-dark-70::before {
 
     content: "";
     position: absolute;
@@ -1458,7 +1458,7 @@ a .ad-title:hover {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
 
-}
+}*/
 .overlay-dark-70 > div {
 
     position: relative;
@@ -1468,9 +1468,11 @@ a .ad-title:hover {
 .category-box-layout1 {
     border-radius: 4px;
     background-color: #ffffff;
-    padding: 30px 8px;
+    /*padding: 30px 8px;*/
+    padding: 20px 8px;
     text-align: center;
-    margin-bottom: 30px;
+    width: 220px;
+    margin: 0 auto 30px;
 
 }
 .category-box-layout1 .item-icon {
@@ -1513,7 +1515,8 @@ a .ad-title:hover {
     margin-left: 0;
 }
 .category-box-layout1 .item-title {
-    font-size: 20px;
+    /*font-size: 20px;*/
+    font-size: 17px;
     font-weight: 600;
     color: #111111;
     margin-bottom: 10px;
@@ -1528,12 +1531,19 @@ a .ad-title:hover {
     transition: all 0.3s ease-in-out;
 }
 .category-box-layout1:hover .item-icon {
-    -webkit-box-shadow: 0px 10px 12px 0px #b6b6b6;
+/*    -webkit-box-shadow: 0px 10px 12px 0px #b6b6b6;
     -moz-box-shadow: 0px 10px 12px 0px #b6b6b6;
-    box-shadow: 0 10px 12px 0px #b6b6b6;
+    box-shadow: 0 10px 12px 0px #b6b6b6;*/
+}
+.listing-number {
+    color: #888da8;
 }
 .heading-center {
     text-align: center;
+}
+a .category-box-layout1:hover {
+    border: 2px solid #003263;
+    box-shadow: 9px 9px 17px -8px rgba(0,0,0,0.82);
 }
 .section-heading {
     margin-bottom: 40px;
@@ -1843,8 +1853,8 @@ ul {
     margin-right: 0;
 }
 .hot-items {
-    margin-top: 100px;
-    margin-bottom: 100px;
+    /*    margin-top: 100px;
+        margin-bottom: 100px;*/
 }
 .heading-dark .item-title {
     color: #111111;
@@ -2349,11 +2359,7 @@ ul {
 #menu-feature {
     font-size: 16px;
 }
-#menu-feature .category a {
-    font-size: 16px;
-    font-weight: 600;
-    color: #003263;
-}
+
 .cat-dropdown {
     z-index: 9999;
     position: relative;
@@ -2387,13 +2393,13 @@ ul {
     font-weight: 400;
     font-family: Roboto,-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
-.collapsible1{
+.collapsible1 a{
     color: #065a75;
     font-weight: 420;
     font-size: 14px;
 }
 
-#menu-feature .category a{
+#menu-feature .category .sub-menu  a{
     color: #717b83;
     font-size: 13px;
     margin-left: 35px;
@@ -2702,24 +2708,23 @@ a .ad-title{
     width: 125px;
     z-index: 2;
 }
-.how-it-work i {
+.how-it-work img {
     background: #fff none repeat scroll 0 0;
     border-radius: 50%;
     box-shadow: 0 0 8px 0 rgba(50, 50, 50, 0.1);
     color: #233141;
     font-size: 50px;
-    height: 120px;
-    left: 15px;
-    padding: 45px 0;
+    height: 110px;
+    left: 20px;
     position: absolute;
     text-align: center;
-    top: 15px;
+    top: 20px;
     -webkit-transition: all 0.3s ease-out 0s;
     -moz-transition: all 0.3s ease-out 0s;
     -ms-transition: all 0.3s ease-out 0s;
     -o-transition: all 0.3s ease-out 0s;
     transition: all 0.3s ease-out 0s;
-    width: 120px;
+    width: 110px;
 }
 .how-it-work-icon::after {
     background: rgba(0, 0, 0, 0) url("../img/dashed-line.jpg") repeat scroll 0 0;
@@ -3130,6 +3135,7 @@ a .ad-title{
     border: 7px solid #003263;
     margin-bottom: 15px;
 }
+
 /*--Advertisements Section-Index.php--*/
 .button-view{
     float: right;
@@ -3167,4 +3173,8 @@ a .ad-title{
 }
 .timer1{
     margin-right: 4px;
+}
+.padding-bottom-70 {
+    padding-bottom: 70px;
+
 }

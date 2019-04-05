@@ -210,7 +210,7 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                                             foreach (BusinessCategory::all() as $category) {
                                                 $count = Advertisement::countAdsByCategory($category['id']);
                                                 ?>
-                                                <li id="menu-item-<?php echo $category['id']; ?>"  class="menu-item category collapsible collapsible1"> <img src="upload/business-category/<?php echo $category['image_name']; ?>"><?php echo $category['name'] . ' (' . number_format($count) . ')'; ?>
+                                            <li id="menu-item-<?php echo $category['id']; ?>"  class="menu-item category collapsible collapsible1"> <a href="advertisements.php?category=<?php echo $category['id']; ?>"><img src="upload/business-category/<?php echo $category['image_name']; ?>"><?php echo $category['name'] . ' (' . number_format($count) . ')'; ?></a>
                                                     <i class="icon-<?php echo $category['id']; ?> fa fa-angle-down cat-dropdown" id1="<?php echo $category['id']; ?>" times="0"></i>
                                                     <ul class="sub-menu menu-item-<?php echo $category['id']; ?> hidden">
                                                         <?php
@@ -219,7 +219,7 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                                                             ?>
 
                                                             <li id="sub-category-" class="menu-item ">
-                                                                <a href="advertisements.php?category=<?php echo $category['id']; ?>subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
+                                                                <a href="advertisements.php?category=<?php echo $category['id']; ?>&subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
                                                             </li>
                                                             <?php
                                                         }
@@ -244,9 +244,6 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
         <?php
         include './footer.php';
         ?>
-        <a class="back-to-top" href="#">
-            <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
-        </a>
         <!-- JS Scripts -->
         <script src="js/jquery-3.2.1.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
