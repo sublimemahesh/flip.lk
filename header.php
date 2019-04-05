@@ -1,5 +1,5 @@
 <!-- Header-BP -->
-<header class="header" id="site-header">
+<header class="header " id="site-header">
     <div class="page-title">
         <a href="./">
             <img src="img/logo/logo.jpg" alt=""/>
