@@ -650,6 +650,9 @@ and open the template in the editor.
     .responsive-header-logo{
         margin-right: -68px;
     }
+    .icon-profile a span{
+        margin-top: 6px;
+    }
 
 }
 @media (width: 640px){
@@ -715,6 +718,14 @@ and open the template in the editor.
     }
     .nav-item:first-child{
         left: 65px;
+    }
+    .header-content-wrapper{
+        margin-top: -56px;
+        margin-right: -9px;
+    }
+    .btn-post{
+        font-size: 12px;
+        margin-left: -21px;
     }
 }
 @media (width: 600px){
@@ -818,12 +829,10 @@ and open the template in the editor.
     .contact-info-title{
         font-size: 13px;
     }
-
-
-
-
-
-
+       .header-content-wrapper{
+        margin-top: -56px;
+        margin-right: -9px;
+    }
 
 }
 @media(min-width:1200px) {

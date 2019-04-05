@@ -749,6 +749,10 @@ and open the template in the editor.
     .nav-item:first-child{
         left: 65px;
     }
+    .header-content-wrapper{
+        margin-top: -56px;
+        margin-right: -9px;
+    }
 }
 @media (width: 600px){
     .header{
@@ -845,6 +849,10 @@ and open the template in the editor.
     }
     .mobile-app-tabs{
         margin-left: 74px;
+    }
+      .header-content-wrapper{
+        margin-top: -56px;
+        margin-right: -9px;
     }
 
 

@@ -29,14 +29,14 @@
                 </a>
 
             </div>
-            <div class="control-icon more has-items has-items-news">
+            <div class="control-icon more has-items has-items-news icon-newsfeed">
                 <a href="./">
                     <span><img src="img/icon/header-icon/newsfeed.png" alt=""  /></span>
                     <span class="nav-topic">Newsfeed</span>
                 </a>
 
             </div>
-            <div class="control-icon more has-items has-items1">
+            <div class="control-icon more has-items has-items1 icon-request">
                 <a href="friend-requests.php">
                     <span>
                         <img class="follower-request" src="img/icon/header-icon/request.png" alt=""/>
@@ -211,7 +211,7 @@
             </div>
 
             <div class="control-icon author-page author vcard inline-items more">
-                <div class="author-thumb">
+                <div class="author-thumb icon-profile">
                     <span>
                         <?php
                         if (isset($_SESSION['id'])) {
@@ -227,6 +227,7 @@
                                 <?php
                             }
                             ?>
+                    </span>
                             <div class="more-dropdown more-with-triangle">
                                 <div class="mCustomScrollbar" data-mcs-theme="dark">
                                     <div class="ui-block-title ui-block-title-small">

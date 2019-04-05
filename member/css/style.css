@@ -1556,7 +1556,19 @@ header .control-icon > svg {
         height: calc(100vh - 50px);
         overflow-y: auto;
     }
-
-
 }
+/*--Header Icon--*/
+.icon-newsfeed span{
+    margin-top: 1px;
+}
+.icon-request span{
+    margin-top: -1px;
+}
+.icon-profile span{
+    margin-top: 1px;
+}
+#site-header .avatar{
+    margin-top: 2px;
+}
+
 
