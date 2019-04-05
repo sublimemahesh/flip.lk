@@ -144,6 +144,7 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                                             $result = getTime($ad['created_at']);
                                             $MEMBER = new Member($ad['member']);
                                             $CATEGORY = new BusinessCategory($ad['category']);
+                                            $SUBCATEGORY = new BusinessSubCategory($ad['sub_category']);
                                             $adimages = AdvertisementImage::getPhotosByAdId($ad['id']);
                                             ?>
                                             <div class="ad-item  post ">
@@ -168,16 +169,15 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                                                         </div>
                                                         <div class = "col-xl-8 col-xs-8 ad-item-details">
                                                             <div class="ad-title"><?php echo $ad['title']; ?></div>
-                                                            <div class="ad-city"><span class="title">Location <i class="fa fa-angle-double-right"></i> </span>Galle</div>
                                                             <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
-                                                            <?php
-                                                            foreach (BusinessSubCategory::getSubCategoriesByCategory($category['id']) as $subcategory) {
-                                                                $countsubcat = Advertisement::countAdsBySubCategory($subcategory['id']);
-                                                                ?>
-                                                                <div class="ad-subcategory1"><span class="title">Sub Category <i class="fa fa-angle-double-right"></i> </span><?php echo $subcategory['name']; ?></div>
-                                                                <?php
-                                                            }
-                                                            ?>
+                                                            <div class="ad-subcategory1"><span class="title">Sub Category <i class="fa fa-angle-double-right"></i> </span><?php echo $SUBCATEGORY->name; ?></div>
+                                                            <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php
+                                                                if ($ad['price'] == 0) {
+                                                                    echo 'Negotiable';
+                                                                } else {
+                                                                    echo 'Rs. ' . number_format($ad['price']);
+                                                                }
+                                                                ?></div>
                                                             <div class="ad-time ad-time0"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
                                                         </div>
                                                     </div>
@@ -210,7 +210,7 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                                             foreach (BusinessCategory::all() as $category) {
                                                 $count = Advertisement::countAdsByCategory($category['id']);
                                                 ?>
-                                            <li id="menu-item-<?php echo $category['id']; ?>"  class="menu-item category collapsible collapsible1"> <a href="advertisements.php?category=<?php echo $category['id']; ?>"><img src="upload/business-category/<?php echo $category['image_name']; ?>"><?php echo $category['name'] . ' (' . number_format($count) . ')'; ?></a>
+                                                <li id="menu-item-<?php echo $category['id']; ?>"  class="menu-item category collapsible collapsible1"> <a href="advertisements.php?category=<?php echo $category['id']; ?>"><img src="upload/business-category/<?php echo $category['image_name']; ?>"><?php echo $category['name'] . ' (' . number_format($count) . ')'; ?></a>
                                                     <i class="icon-<?php echo $category['id']; ?> fa fa-angle-down cat-dropdown" id1="<?php echo $category['id']; ?>" times="0"></i>
                                                     <ul class="sub-menu menu-item-<?php echo $category['id']; ?> hidden">
                                                         <?php
