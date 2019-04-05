@@ -3177,6 +3177,7 @@ a .ad-title{
 .timer1{
     margin-right: 4px;
 }
+
 .padding-bottom-70 {
     padding-bottom: 70px;
 
@@ -3189,4 +3190,18 @@ a .ad-title{
 }
 .ad-item-details .title {
     color: #000;
+}
+/*--Header Icon--*/
+.icon-newsfeed span{
+    margin-top: 1px;
+}
+.icon-request span{
+    margin-top: -1px;
+}
+.icon-message span{
+    margin-top: 1px;
+}
+.icon-profile a span{
+    margin-top: 2px;
+
 }

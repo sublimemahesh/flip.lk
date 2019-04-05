@@ -25,13 +25,13 @@
                     <span class="nav-topic">Groups</span>
                 </a>
             </div>
-            <div class="control-icon more has-items">
+            <div class="control-icon more has-items icon-newsfeed">
                 <a href="member/">
                     <span><img src="img/icon/header-icon/newsfeed.png" alt="" /></span>
                     <span class="nav-topic">Newsfeed</span>
                 </a>
             </div>
-            <div class="control-icon more has-items has-items1">
+            <div class="control-icon more has-items has-items1 icon-request">
                 <a href="member/friend-requests.php">
                     <span>
                         <img class="follower-request" src="img/icon/header-icon/request.png" alt=""/>
@@ -111,7 +111,7 @@
                     <a href="member/friend-requests.php" class="view-all bg-theme-blue">See All</a>
                 </div>
             </div>
-            <div class="control-icon more has-items">
+            <div class="control-icon more has-items icon-message">
                 <a href="member/member-message.php">
                     <span>
                         <img src="img/icon/header-icon/message.png" alt=""/>
@@ -191,7 +191,7 @@
                 </div>
             </div>
             <div class="control-icon author-page author vcard inline-items more">
-                <div class="author-thumb">
+                <div class="author-thumb icon-profile">
                     <a href="member/profile.php">
                         <?php
                         if (isset($_SESSION['id'])) {
