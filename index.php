@@ -177,6 +177,9 @@ if (isset($_SESSION['id'])) {
                                         ?>
                                         <div class="featured-box">
                                             <figure>
+                                                <span class="price-save">
+                                                    <i class="fa fa-clock timer1"></i> <?php echo $result; ?>
+                                                </span>
                                                 <div class="icon">
                                                     <span class="bg-green"><i class="lni-heart"></i></span>
                                                     <span><i class="lni-bookmark"></i></span>
@@ -199,8 +202,8 @@ if (isset($_SESSION['id'])) {
                                             </figure>
                                             <div class="feature-content">
                                                 <div class="product-category">
-                                                    <a href="#"><?php echo $CAT->name; ?> <i class="fa fa-angle-right"></i> <?php echo $SUBCAT->name; ?></a>
-                                                 </div>
+                                                    <?php echo $CAT->name; ?> <i class="fa fa-angle-right"></i> <?php echo $SUBCAT->name; ?>
+                                                </div>
                                                 <h4>
                                                     <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
                                                         <?php
@@ -211,7 +214,7 @@ if (isset($_SESSION['id'])) {
                                                         }
                                                         ?>
                                                     </a>
-                                                 </h4>
+                                                </h4>
                                                 <div class="ad-owner-details meta-tag">
                                                     <span>
                                                         <i class="lni-user fa fa-user"></i><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
@@ -233,21 +236,19 @@ if (isset($_SESSION['id'])) {
                                                     <p class="dsc"><?php echo substr($ad['description'], 0, 100) . '...'; ?></p>
                                                 </div>
                                                 <div class="listing-bottom">
-                                                    <?php
-                                                    if ($ad['price']) {
-                                                        echo 'Rs. ' . number_format($ad['price']);
-                                                    } else {
-                                                        echo 'Negotiable';
-                                                    }
-                                                    ?>
+                                                    <h3>
+                                                        <?php
+                                                        if ($ad['price']) {
+                                                            echo 'Rs. ' . number_format($ad['price']);
+                                                        } else {
+                                                            echo 'Negotiable';
+                                                        }
+                                                        ?>
+                                                    </h3>
                                                     <ul class="meta-item">
-                                                        <li class="ctg-name">
-                                                            <a>
-                                                                <div class="ad-time ad-time1"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
-                                                            </a>
-                                                        </li>
+                                                        <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>" class="btn btn-common button-view">View More</a>
                                                     </ul>
-                                                  </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <?php
@@ -256,8 +257,8 @@ if (isset($_SESSION['id'])) {
                                 </div>
                             </div>
                         </div>
-                        </div>
-                        <!--End Advertisement Section-->
+                    </div>
+                    <!--End Advertisement Section-->
                 </main>
                 <!-- ... end Main Content -->
             </div>

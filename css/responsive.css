@@ -847,9 +847,11 @@ and open the template in the editor.
         margin-left: 244px;
     }
 
-
     .office h3{
         margin-bottom: -10px;
+    }
+    .footer-about p{
+        margin-left: 16px;
     }
 
 }
