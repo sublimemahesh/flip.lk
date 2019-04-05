@@ -10,29 +10,29 @@
             <div class="control-icon more has-items">
                 <a href="./">
                     <span><img src="img/icon/header-icon/home.png" alt=""/></span>
-                    Home
+                    <span class="nav-topic">Home</span>
                 </a>
             </div>
             <div class="control-icon more has-items">
                 <a href="all-advertisement.php">
                     <span><img src="img/icon/header-icon/advertising.png" alt="" /></span>
-                    Advertisements
+                    <span class="nav-topic">Advertisements</span>
                 </a>
             </div>
             <div class="control-icon more has-items">
                 <a href="groups.php">
                     <span><img src="img/icon/header-icon/group.png" alt=""  /></span>
-                    Groups
+                    <span class="nav-topic">Groups</span>
                 </a>
             </div>
             <div class="control-icon more has-items">
                 <a href="member/">
                     <span><img src="img/icon/header-icon/newsfeed.png" alt="" /></span>
-                    Newsfeed
+                    <span class="nav-topic">Newsfeed</span>
                 </a>
             </div>
             <div class="control-icon more has-items has-items1">
-                <a href="#">
+                <a href="member/friend-requests.php">
                     <span>
                         <img class="follower-request" src="img/icon/header-icon/request.png" alt=""/>
                         <?php
@@ -47,7 +47,7 @@
                         }
                         ?>
                     </span>
-                    Requests
+                    <span class="nav-topic">Requests</span>
                 </a>
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="control-icon more has-items">
-                <a href="#">
+                <a href="member/member-message.php">
                     <span>
                         <img src="img/icon/header-icon/message.png" alt=""/>
                         <?php
@@ -126,7 +126,7 @@
                         }
                         ?>
                     </span>
-                    Messaging
+                    <span class="nav-topic">Messaging</span>
                 </a>
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
@@ -198,12 +198,12 @@
                             if ($MEMBER->profilePicture) {
                                 ?>
                                 <span><img alt="author" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2"></span>
-                                Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                                <span class="nav-topic">Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                                 <?php
                             } else {
                                 ?>
                                 <span><img alt="author" src="upload/member/member.png" class="avatar" id="profile_pic2"></span>
-                                Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                                <span class="nav-topic">Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                                 <?php
                             }
                             ?>
@@ -264,7 +264,7 @@
                         <a href="member/login.php">
                             <span><img alt="author" src="img/icon/header-icon/signin.png" class="signin" id="profile_pic2">
                             </span>
-                            Sign In
+                            <span class="nav-topic">Sign In</span>
                         </a>
                         <?php
                     }

@@ -296,6 +296,11 @@ a#upload-pro-pic, a#upload-cover-pic {
     top: 0px;
 
 }
+.nav-btn label {
+    position: relative;
+    left: 0;
+    transform: translateY(0px);
+}
 @media(max-width:576px) {
     .bg-facebook {
         margin-bottom: 12px;
