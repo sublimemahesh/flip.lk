@@ -122,7 +122,27 @@ if ($count_members['count'] == 0) {
                                                     </div>
                                                     <div class="friend-avatar">
                                                         <div class="author-thumb member-request-profile-pic">
-                                                            <img src="upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
+                                                            <?php
+                                                            if ($MEM->profilePicture) {
+                                                                if ($MEM->facebookID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                                    ?>
+                                                                    <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
+                                                                    <?php
+                                                                } elseif ($MEM->googleID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                                    ?>
+                                                                    <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                    <img alt="profile picture" src="upload/member/<?php echo $MEM->profilePicture; ?>">
+                                                                    <?php
+                                                                }
+                                                            } else {
+                                                                ?>
+                                                                <img src="upload/member/member.png" alt="profile picture">
+                                                                <?php
+                                                            }
+                                                            ?>
                                                         </div>
                                                         <div class="author-content">
                                                             <a href="view-member.php?id=<?php echo $MEM->id; ?>" class="h5 author-name"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>
@@ -237,9 +257,27 @@ if ($count_members['count'] == 0) {
                                                                     <img src="upload/member/member.png" alt="friend" alt="member">
                                                                     <?php
                                                                 } else {
-                                                                    ?>
-                                                                    <img src="upload/member/<?php echo $MEM->profilePicture; ?>" alt="friend">
-                                                                    <?php
+                                                                    
+                                                                    if ($MEM->profilePicture) {
+                                                                        if ($MEM->facebookID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                                            ?>
+                                                                            <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
+                                                                            <?php
+                                                                        } elseif ($MEM->googleID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                                            ?>
+                                                                            <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
+                                                                            <?php
+                                                                        } else {
+                                                                            ?>
+                                                                            <img alt="profile picture" src="upload/member/<?php echo $MEM->profilePicture; ?>">
+                                                                            <?php
+                                                                        }
+                                                                    } else {
+                                                                        ?>
+                                                                        <img src="upload/member/member.png" alt="profile picture">
+                                                                        <?php
+                                                                    }
+                                                                    
                                                                 }
                                                                 ?>
                                                             </div>
@@ -251,7 +289,7 @@ if ($count_members['count'] == 0) {
                                                                     <?php
                                                                 } else {
                                                                     ?>
-                                                                    <a href="profile.php?id=<?php echo $MEM->id; ?>" class="h5 author-name"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>
+                                                                    <a href="view-member.php?id=<?php echo $MEM->id; ?>" class="h5 author-name"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>
                                                                     <?php
                                                                 }
                                                                 ?>

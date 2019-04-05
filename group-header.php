@@ -8,10 +8,31 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
             <div class="ui-block first-block">
                 <div class="top-header top-header-favorit">
                     <div class="top-header-thumb">
-                        <img src="upload/group/cover-picture/<?php echo $GROUP->coverPicture; ?>" alt="nature">
+                        <?php
+                        if (isset($GROUP->coverPicture)) {
+                            ?>
+                            <img src="upload/group/cover-picture/<?php echo $GROUP->coverPicture; ?>" alt="nature">
+                            <?php
+                        } else {
+                            ?>
+                            <img src="upload/group/cover-picture/Cover.jpg" alt="nature">
+                            <?php
+                        }
+                        ?>
+
                         <div class="top-header-author">
                             <div class="author-thumb">
-                                <img src="upload/group/<?php echo $GROUP->profilePicture; ?>" alt="author">
+                                <?php
+                                if (isset($GROUP->profilePicture)) {
+                                    ?>
+                                    <img src="upload/group/<?php echo $GROUP->coverPicture; ?>" alt="Cover Picture">
+                                    <?php
+                                } else {
+                                    ?>
+                                    <img src="upload/group/member.png" alt="PRofile picture">
+                                    <?php
+                                }
+                                ?>
                             </div>
                             <div class="author-content">
                                 <a href="#" class="h3 author-name"><?php echo $GROUP->name; ?></a>
@@ -30,13 +51,13 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                         <a href="members.php?id=<?php echo $GROUP->id; ?>">Members</a>
                                     </li>
                                     <li>
-                                        <a href="#">Photos</a>
+                                        <a href="#"></a>
                                     </li>
                                     <li>
-                                        <a href="#">Videos</a>
+                                        <a href="#"></a>
                                     </li>
                                     <li>
-                                        <a href="#">Events</a>
+                                        <a href="#"></a>
                                     </li>
                                 </ul>
                             </div>
