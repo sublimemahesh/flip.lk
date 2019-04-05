@@ -265,15 +265,6 @@ if ($count_friends['count'] == 0) {
         <?php
         include './window-pop-up.php';
         ?>
-        <a class="back-to-top" href="#">
-            <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
-        </a>
-        <!-- Window-popup -->
-
-
-        <!-- ... end Window-popup -->
-
-
         <!-- JS Scripts -->
         <script src="js/jquery-3.2.1.js"></script>
         <script src="js/jquery.appear.js"></script>

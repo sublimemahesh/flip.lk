@@ -47,7 +47,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="css/images-grid.css" rel="stylesheet" type="text/css"/>
         <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
-     </head>
+    </head>
     <body>
         <?php
         include './header.php';
@@ -74,6 +74,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                             $result = getTime($ad['created_at']);
                                             $MEMBER = new Member($ad['member']);
                                             $CATEGORY = new BusinessCategory($ad['category']);
+                                            $SUBCATEGORY = new BusinessSubCategory($ad['sub_category']);
                                             $adimages = AdvertisementImage::getPhotosByAdId($ad['id']);
                                             ?>
                                             <div class="ad-item  post ">
@@ -98,24 +99,17 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                         </div>
                                                         <div class = "col-xl-8 col-xs-8 ad-item-details">
                                                             <div class="ad-title"><?php echo $ad['title']; ?></div>
-                                                           <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
-                                                            <?php
-                                                            foreach (BusinessSubCategory::getSubCategoriesByCategory($category['id']) as $subcategory) {
-                                                                $countsubcat = Advertisement::countAdsBySubCategory($subcategory['id']);
-                                                                ?>
-                                                                <div class="ad-subcategory"><span class="title">Sub Category <i class="fa fa-angle-double-right"></i> </span><?php echo $subcategory['name']; ?></div>
-                                                                    <?php
-                                                                }
-                                                                ?>
+                                                            <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
+                                                            <div class="ad-subcategory"><span class="title">Sub Category <i class="fa fa-angle-double-right"></i> </span><?php echo $SUBCATEGORY->name; ?></div>
                                                             <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php
-                                                        if ($ad['price'] == 0) {
-                                                            echo 'Negotiable';
-                                                        } else {
-                                                            echo 'Rs. ' . number_format($ad['price']);
-                                                        }
+                                                                if ($ad['price'] == 0) {
+                                                                    echo 'Negotiable';
+                                                                } else {
+                                                                    echo 'Rs. ' . number_format($ad['price']);
+                                                                }
                                                                 ?></div>
                                                             <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
-                                                         </div>
+                                                        </div>
                                                     </div>
                                                 </a>
                                             </div>
@@ -145,7 +139,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                             foreach (BusinessCategory::all() as $category) {
                                                 $count = Advertisement::countAdsByCategory($category['id']);
                                                 ?>
-                                                <li id="menu-item-<?php echo $category['id']; ?>"  class="menu-item category collapsible collapsible1"> <img src="upload/business-category/<?php echo $category['image_name']; ?>"><?php echo $category['name'] . ' (' . number_format($count) . ')'; ?>
+                                                <li id="menu-item-<?php echo $category['id']; ?>"  class="menu-item category collapsible collapsible1"><a href="advertisements.php?category=<?php echo $category['id']; ?>"> <img src="upload/business-category/<?php echo $category['image_name']; ?>"><?php echo $category['name'] . ' (' . number_format($count) . ')'; ?></a>
                                                     <i class="icon-<?php echo $category['id']; ?> fa fa-angle-down cat-dropdown" id1="<?php echo $category['id']; ?>" times="0"></i>
                                                     <ul class="sub-menu menu-item-<?php echo $category['id']; ?> hidden">
                                                         <?php
@@ -153,7 +147,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                             $countsubcat = Advertisement::countAdsBySubCategory($subcategory['id']);
                                                             ?>
                                                             <li id="sub-category-" class="menu-item ">
-                                                                <a href="advertisements.php?category=<?php echo $category['id']; ?>subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
+                                                                <a href="advertisements.php?category=<?php echo $category['id']; ?>&subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
                                                             </li>
                                                             <?php
                                                         }
@@ -176,9 +170,6 @@ $pageLimit = ($page * $setLimit) - $setLimit;
         <?php
         include './footer.php';
         ?>
-        <a class="back-to-top" href="#">
-            <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
-        </a>
         <!-- JS Scripts -->
         <script src="js/jquery-3.2.1.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>

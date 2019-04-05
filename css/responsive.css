@@ -159,12 +159,6 @@ and open the template in the editor.
     .footer-about p{
         text-align: justify;
     }
-    .category-box-layout1 {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
-
     #site-header-responsive .nav-link img {
         width: 20px;
     }
@@ -297,6 +291,9 @@ and open the template in the editor.
     }
     .nav > .nav-links > a:last-child:hover {
         background-color: #003263;
+    }
+    .s002 {
+        padding: 40px 40px 10px;
     }
 }
 
@@ -452,6 +449,16 @@ and open the template in the editor.
     }
     .nav {
         display: none;
+    }
+    .category-box-layout1 {
+        width: 195px;
+    }
+    .category-box-layout1 .item-title {
+        font-size: 15px;
+        margin-bottom: 3px;
+    }
+    .listing-number {
+        font-size: 12px;
     }
 }
 
@@ -961,6 +968,6 @@ and open the template in the editor.
 
     }
     .has-items img {
-     padding-bottom: 0px;   
+        padding-bottom: 0px;   
     }
 }

@@ -148,9 +148,6 @@ $VALUE = New Page(4);
         include './footer.php';
         ?>
         <!--end footer-->
-        <a class="back-to-top" href="#">
-            <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
-        </a>
         <!-- Window-popup -->
         <?php
         include './window-pop-up.php';

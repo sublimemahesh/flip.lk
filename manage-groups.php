@@ -377,12 +377,7 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
             </div>
             <!--</div>-->
             <!-- ... end Main Content Groups -->
-
         </div>
-        <a class="back-to-top" href="#">
-            <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
-        </a>
-
         <!-- Window-popup -->
         <?php
         include './window-pop-up.php';
