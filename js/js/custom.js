@@ -6,7 +6,9 @@ $(document).ready(function () {
         }
     });
     $("#ad-slider").owlCarousel({
-        autoPlay: 3000, //Set AutoPlay to 3 seconds
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
         items: 4,
         nav: true,
         dots: false,
@@ -53,7 +55,6 @@ $(document).ready(function () {
             }
         }
     });
-    
 //    Typed-js master
 
     var typed2 = new Typed('#typed2', {
@@ -63,6 +64,4 @@ $(document).ready(function () {
         fadeOut: true,
         loop: true
     });
-
-
 });

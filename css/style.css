@@ -1531,9 +1531,9 @@ a .ad-title:hover {
     transition: all 0.3s ease-in-out;
 }
 .category-box-layout1:hover .item-icon {
-/*    -webkit-box-shadow: 0px 10px 12px 0px #b6b6b6;
-    -moz-box-shadow: 0px 10px 12px 0px #b6b6b6;
-    box-shadow: 0 10px 12px 0px #b6b6b6;*/
+    /*    -webkit-box-shadow: 0px 10px 12px 0px #b6b6b6;
+        -moz-box-shadow: 0px 10px 12px 0px #b6b6b6;
+        box-shadow: 0 10px 12px 0px #b6b6b6;*/
 }
 .listing-number {
     color: #888da8;
@@ -2853,7 +2853,10 @@ a .ad-title{
 }
 .featured-box .feature-content{
     /*display: inline-block;*/
-    box-shadow: 0px 0px 10px rgba(175, 175, 175, 0.23);
+    /*box-shadow: 0px 0px 10px rgba(175, 175, 175, 0.23);*/
+    -webkit-box-shadow: 10px 10px 19px -12px rgba(0,0,0,0.46);
+    -moz-box-shadow: 10px 10px 19px -12px rgba(0,0,0,0.46);
+    box-shadow: 10px 10px 19px -12px rgba(0,0,0,0.46);
     padding: 15px;
 }
 .btn-common{
@@ -3177,4 +3180,13 @@ a .ad-title{
 .padding-bottom-70 {
     padding-bottom: 70px;
 
+}
+.ad-owner-details {
+    margin-bottom: 20px;
+}
+.ad-section {
+    padding: 10px 20px;
+}
+.ad-item-details .title {
+    color: #000;
 }
