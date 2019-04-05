@@ -17,8 +17,8 @@ and open the template in the editor.
         padding-left: 20px;
     }
     .nav {
-    display: block;
-}
+        display: block;
+    }
     #site-header-responsive .responsive-header-logo {
         width: 100px;
         margin-top: -6px;
@@ -251,6 +251,10 @@ and open the template in the editor.
 
 
 @media(min-width:577px) and (max-width:990px) {
+    .header {
+        display: block;
+
+    }
     body, p {
         font-size: 14px;
     }
@@ -287,9 +291,9 @@ and open the template in the editor.
     }
     .header .page-title{
         display: inherit;
-        padding: 7px 143px 58px 6px;
-        margin-left: -54px;
-        margin-right: 58px;
+        padding: 7px 20px 58px 6px;
+        margin-left: 0px;
+        margin-right: 0px;
     }
     .control-block .author-thumb{
         margin-right: -49px;
@@ -557,12 +561,7 @@ and open the template in the editor.
     .ui-block-title{
         background: #fff;  
     }
-    .has-items img{
-        max-width: 61%;
-    }
-    .nav-link img{
-        max-width: 61%; 
-    }
+
     .responsive-header-logo img{
         max-width: 100%;
         margin-left: -283px;
@@ -598,10 +597,6 @@ and open the template in the editor.
 
     .control-icon{
         margin-top: -4px;
-    }
-    .has-items img{
-        height: 23px;
-        width: 32px;
     }
     .btn-primary1{
         margin-left: 237px;
@@ -948,4 +943,106 @@ and open the template in the editor.
     .upload-group-pro-pic.pro-img{
         margin: 10px 77px 45px;
     }
+}
+@media (max-width: 1080px){
+    .header {
+        height: 56px;
+        padding-left: 0;
+        padding-right: 0;
+
+    }
+    .header-content-wrapper {
+        height: 100%;
+        float: right;
+    }
+    .control-block {
+        padding: 0px 20px 0;
+        float: right;
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+
+    }
+    #site-header .more {
+
+        padding-bottom: 4px;
+
+    }
+    #site-header .control-icon {
+
+        text-align: center;
+
+    }
+    .control-icon.has-items {
+
+        fill: #fff;
+
+    }
+    .control-icon {
+
+        margin-right: 22px;
+
+    }
+    .more {
+
+        position: relative;
+        transition: all .3s ease;
+        color: #888da8;
+        fill: #c0c4d8;
+
+    }
+    .control-icon {
+
+        margin-right: 29px;
+        fill: #9a9fbf;
+        margin-top: 5px;
+
+    }
+    .control-icon a {
+
+        color: #9a9fbf;
+
+    }
+    .control-icon span, .author-page span {
+
+        display: block;
+
+    }
+    #site-header .control-icon img {
+
+        height: 23px;
+        opacity: 0.8;
+
+    }
+    .control-icon span img {
+
+        float: none;
+
+    }
+    .control-icon span.nav-topic {
+        display: none;
+
+    }
+    .header .page-title {
+
+        display: inherit;
+        padding: 7px 20px 7px 17px;
+    }
+    #site-header .control-icon img:hover {
+
+    height: 23px;
+    opacity: 1;
+    fill: #fff;
+    
+
+}
+#site-header .control-icon img.follower-request:hover {
+
+    height: 26px;
+
+}
 }

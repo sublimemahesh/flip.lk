@@ -11,33 +11,33 @@
             <div class="control-icon more has-items">
                 <a href="../">
                     <span><img src="img/icon/header-icon/home.png" alt="" /></span>
-                    Home
+                    <span class="nav-topic">Home</span>
                 </a>
 
             </div>
             <div class="control-icon more has-items">
                 <a href="../all-advertisement.php">
                     <span><img src="img/icon/header-icon/advertising.png" alt=""   /></span>
-                    Advertisements
+                    <span class="nav-topic">Advertisements</span>
                 </a>
 
             </div>
             <div class="control-icon more has-items">
                 <a href="../groups.php">
                     <span><img src="img/icon/header-icon/group.png" alt=""  /></span>
-                    Groups
+                    <span class="nav-topic">Groups</span>
                 </a>
 
             </div>
             <div class="control-icon more has-items has-items-news">
                 <a href="./">
                     <span><img src="img/icon/header-icon/newsfeed.png" alt=""  /></span>
-                    Newsfeed
+                    <span class="nav-topic">Newsfeed</span>
                 </a>
 
             </div>
             <div class="control-icon more has-items has-items1">
-                <a href="#">
+                <a href="friend-requests.php">
                     <span>
                         <img class="follower-request" src="img/icon/header-icon/request.png" alt=""/>
                         <?php
@@ -51,7 +51,7 @@
                         }
                         ?>
                     </span>
-                    Requests
+                    <span class="nav-topic">Requests</span>
                 </a>
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
@@ -128,7 +128,7 @@
             </div>
 
             <div class="control-icon more has-items">
-                <a href="#">
+                <a href="member-message.php">
                     <span>
                         <img src="img/icon/header-icon/message.png" alt=""/>
                         <?php
@@ -142,7 +142,7 @@
                         }
                         ?>
                     </span>
-                    Messaging
+                    <span class="nav-topic">Messaging</span>
                 </a>
                 <div class="more-dropdown more-with-triangle triangle-top-center">
                     <div class="ui-block-title ui-block-title-small">
@@ -218,12 +218,12 @@
                             if ($MEMBER->profilePicture) {
                                 ?>
                                 <span><img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2"></span>
-                                Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                                <span class="nav-topic">Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg></span>
                                 <?php
                             } else {
                                 ?>
                                 <span><img alt="author" src="../upload/member/member.png" class="avatar" id="profile_pic2"></span>
-                                Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                                <span class="nav-topic">Me <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg></span>
                                 <?php
                             }
                             ?>
@@ -289,7 +289,7 @@
                                 <span>
                                     <img alt="author" src="img/icon/header-icon/signin.png" class="signin" id="profile_pic2">
                                 </span>
-                                Sign In
+                                <span class="nav-topic">Sign In</span>
                             </a>
                             <?php
                         }
@@ -312,80 +312,6 @@
     </div>
 </header>
 <!-- ... end Header-BP -->
-<!-- Responsive Header-BP -->
-<!--<header class="header header-responsive" id="site-header-responsive">
-    <div class="header-content-wrapper">
-        <ul class="nav nav-tabs mobile-app-tabs" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link" href="../">
-                    <div class="responsive-header-logo">
-                        <img src="img/logo/logo.jpg" alt=""/>
-                    </div>  
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./">
-                    <div class="control-icon has-items has-item">
-                        <img src="img/icon/header-icon/newsfeed.png" alt=""/>
-                    </div>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../all-advertisement.php">
-                    <div class="control-icon has-items has-item">
-                        <img src="img/icon/header-icon/advertising.png" alt=""/>
-                    </div>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link nav-link1" href="friend-requests.php">
-                    <img src="img/icon/header-icon/request.png" alt=""/>
-<?php
-if (isset($_SESSION['id'])) {
-    $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
-
-    if ($countu['count'] > 0) {
-        ?>
-                                    <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
-        <?php
-    }
-}
-?>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link nav-link1" href="member-message.php">
-                    <img src="img/icon/header-icon/message.png" alt=""/>
-                </a>
-            </li>
-            <div class="control-icon more has-items hidden-sm">
-                <a href="create-advertisement.php?back=ad">
-                    <button class="btn-post">Post Your Ad</button>
-                </a>
-            </div>
-            <li class="nav-item">
-                <a class="nav-link" href="profile.php">
-                    <div class="author-thumb nav-link1">
-<?php
-if (isset($_SESSION['id'])) {
-    ?>
-                                <img alt="author" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
-                                <span class="icon-status online"></span>
-    <?php
-} else {
-    ?>
-                                <img alt="author" src="../upload/member/member.png" class="avatar" id="profile_pic2">
-    <?php
-}
-?>
-
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </div>
-</header>-->
-<!-- ... end Responsive Header-BP -->
 
 <!-- Responsive Header-BP -->
 <div class="nav">
