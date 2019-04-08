@@ -452,6 +452,16 @@ $LOCATION = New Page(11);
 </html>
 
 
- 
+                                                <div class="categories">
+                                                    <?php
+                                                    if (strlen($advertisements->title) > 25) {
+                                                        echo substr($advertisements->title, 0, 25) . '...';
+                                                    } else {
+                                                        echo $advertisements->title;
+                                                    }
+                                                    ?>
+                                                </div>
+
+<div class="ad-title"><?php echo $ad['title']; ?></div>
 
 

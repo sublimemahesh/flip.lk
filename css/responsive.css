@@ -295,7 +295,49 @@ and open the template in the editor.
     .s002 {
         padding: 40px 40px 10px;
     }
+    .ad-subcategory{
+        margin-left: -1px;
+        margin-top: -6px;
+        font-size: 12px;
+    }
+    .ad-category{
+        font-size: 12px;
+    }
+    .ad-city{
+        font-size: 12px;
+    }
+    .ad-time{
+        font-size: 12px;
+    }
+    .ad-subcategory1{
+        margin-top: -5px;
+        margin-left: 0px;
+        font-size: 12px;
+    }
+    a .ad-title{
+        font-size: 15px;
+    }
+    .ad-contact-details img{
+        width: 28px;
+        margin-right: 4px;
+    }
+    .ad-contact-details .contact-details{
+        font-size: 15px;
+    }
+    .ad-contact-details a .contact-details{
+        font-size: 15px;
+    }
+    .container-view{
+        margin-top: 41px;
+        margin-bottom: 41px;
+    }
+    .nav-links a img{
+        width: 32px;
+        height: 32px;
+    }
+
 }
+
 
 @media(min-width:577px) and (max-width:990px) {
     .header {
@@ -460,6 +502,17 @@ and open the template in the editor.
     .listing-number {
         font-size: 12px;
     }
+    .ad-subcategory{
+        margin-left: 200px;
+        font-size: 12px;
+    }
+    .ad-time{
+        font-size: 12px;
+    }
+    .ad-subcategory1{
+        margin-left: 200px;
+        font-size: 12px;
+    }
 }
 
 @media(min-width:992px) and (max-width:1200px) {
@@ -600,6 +653,30 @@ and open the template in the editor.
     .office h3{
         margin-bottom: -14px;
     }
+    .ad-subcategory{
+        margin-left: 162px;
+        font-size: 12px;
+    }
+    .ad-subcategory1{
+        margin-left: 162px;
+        font-size: 12px;
+    }
+    #more-ads-slider .owl-nav{
+        display: none;
+    }
+    .ad-description p{
+        font-size: 15px;
+    }
+    .ad-contact-details img{
+        width: 37px;
+    }
+    .ad-contact-details .contact-details{
+        font-size: 15px;
+    }
+    .ad-contact-details a .contact-details{
+        font-size: 15px;
+    }
+
 
 
 
@@ -652,6 +729,18 @@ and open the template in the editor.
     }
     .icon-profile a span{
         margin-top: 6px;
+    }
+    .ad-subcategory{
+        margin-left: 0px;
+        margin-top: -4px;
+    }
+    .ad-subcategory1{
+        margin-top: -3px;
+        margin-left: 0px;
+        font-size: 12px;
+    }
+    .title1{
+        font-size: 36px;
     }
 
 }
@@ -726,6 +815,14 @@ and open the template in the editor.
     .btn-post{
         font-size: 12px;
         margin-left: -21px;
+    }
+    .ad-subcategory{
+        margin-top: -4px;
+        margin-left: 0px;
+    }
+    .ad-subcategory1{
+        margin-top: -3px;
+        margin-left: 0px;
     }
 }
 @media (width: 600px){
@@ -829,9 +926,21 @@ and open the template in the editor.
     .contact-info-title{
         font-size: 13px;
     }
-       .header-content-wrapper{
+    .header-content-wrapper{
         margin-top: -56px;
         margin-right: -9px;
+    }
+    .ad-subcategory{
+        margin-left: 0px;
+        margin-top: -5px;
+    }
+    .ad-subcategory{
+        margin-left: 0px;
+        margin-top: -3px;
+    }
+    .ad-subcategory1{
+        margin-left: 0px;
+        margin-top: -3px;
     }
 
 }
