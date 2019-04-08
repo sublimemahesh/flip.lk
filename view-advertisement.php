@@ -67,7 +67,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
         <?php
         include './banner.php';
         ?>
-        <div class="container index-container body-content">
+        <div class="container index-container body-content container-view">
             <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
                 <!-- Top Header-Profile -->
                 <!-- ... end Top Header-Profile -->
