@@ -39,7 +39,7 @@ class Member {
         if ($id) {
 
             $query = "SELECT `id`,`created_at`,`first_name`,`last_name`,`email`,`phone_number`,`profile_picture`,`cover_picture`,`district`,`city`,`address`,`dob`,`occupation`,`gender`,`civil_status`,`about_me`,`category`,`sub_category`,`facebook_id`,`google_id`,`auth_token`,`last_login`,`reset_code`,`status`,`is_confirmed`,`is_suspend` FROM `member` WHERE `id`=" . $id;
-
+            
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));

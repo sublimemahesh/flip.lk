@@ -1570,5 +1570,11 @@ header .control-icon > svg {
 #site-header .avatar{
     margin-top: 2px;
 }
-
+.loader img {
+    width: 50px;
+    
+}
+.loader {
+    text-align: center;
+}
 

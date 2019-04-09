@@ -2,13 +2,13 @@
 
 include_once(dirname(__FILE__) . '/../../../class/include.php');
 if ($_POST['option'] == 'ADDREPLY') {
-
+    
     $REPLY = new PostCommentReply(NULL);
     $REPLY->comment = $_POST['comment'];
     $REPLY->member = $_POST['member'];
     $REPLY->reply = $_POST['reply'];
-
     $result = $REPLY->create();
+    
     $MEMBER = new Member($_POST['member']);
     $array= array();
 

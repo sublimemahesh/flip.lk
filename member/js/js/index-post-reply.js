@@ -1,16 +1,17 @@
 $(document).ready(function () {
-    $('.add-reply').click(function () {
+    $('#output').on('click', '.add-reply', function () {
         var comment_id = this.id;
         $('#reply-form-' + comment_id).removeClass('hidden');
     });
-    $('.index-post-reply').click(function () {
 
+    $('#output').on('click', '.index-post-reply', function () {
+        
         var comment = $(this).attr('comment');
         var type = $(this).attr('type');
         var member = $(this).attr('member');
-        var reply = $('#reply-' + comment).val();
-
+        var reply =  $('#comment-reply-list-' + comment).find('#reply-' + comment).val();
         if (type == 'post') {
+            
             $.ajax({
                 url: "post-and-get/ajax/post-reply.php",
                 type: "POST",
@@ -22,6 +23,7 @@ $(document).ready(function () {
                 },
                 dataType: "JSON",
                 success: function (result) {
+                    
                     if (result) {
                         $('#reply-' + comment).val('');
                         var html = '';
@@ -47,6 +49,7 @@ $(document).ready(function () {
                         html += '<p>' + result.reply + '</p>';
                         html += '<a class="reply add-reply" id="' + comment + '">Reply</a>';
                         html += '</li>';
+                        alert(html);
                         $('#comment-reply-list-' + comment).append(html);
                     }
                 }
@@ -94,39 +97,36 @@ $(document).ready(function () {
                 }
             });
         }
-
-
-
         $('#reply-form-' + comment).addClass('hidden');
         $('#reply-list-' + comment).removeClass('hidden');
     });
-    $(function () {
-        $(".comment-reply-list").each(function (index) {
-
-            if ($(this).children(".comment-reply-item").length > 1) {
-
-                var comment = $(this).attr('comment-id');
-                $("#see-more-replies-" + comment).removeClass('hidden');
-            }
-            $(this).children(".comment-reply-item").slice(-1).show();
-        });
-
-        $(".see-more-replies").click(function (e) {
-            e.preventDefault();
-            var $link = $(this);
-            var $div = $link.closest('.comment-reply-list');
-
-            if ($link.hasClass('visible')) {
-                $link.text('Show all replies');
-                $div.children(".comment-reply-item").slice(0, -1).slideUp()
-            } else {
-                $link.text('Show less replies');
-                $div.children(".comment-reply-item").slideDown();
-            }
-
-            $link.toggleClass('visible');
-        });
-    });
+//    $(function () {
+//        $(".comment-reply-list").each(function (index) {
+//
+//            if ($(this).children(".comment-reply-item").length > 1) {
+//
+//                var comment = $(this).attr('comment-id');
+//                $("#see-more-replies-" + comment).removeClass('hidden');
+//            }
+//            $(this).children(".comment-reply-item").slice(-1).show();
+//        });
+//
+//        $(".see-more-replies").click(function (e) {
+//            e.preventDefault();
+//            var $link = $(this);
+//            var $div = $link.closest('.comment-reply-list');
+//
+//            if ($link.hasClass('visible')) {
+//                $link.text('Show all replies');
+//                $div.children(".comment-reply-item").slice(0, -1).slideUp()
+//            } else {
+//                $link.text('Show less replies');
+//                $div.children(".comment-reply-item").slideDown();
+//            }
+//
+//            $link.toggleClass('visible');
+//        });
+//    });
 
     $('.edit-reply').click(function () {
         var reply = this.id;
@@ -146,11 +146,11 @@ $(document).ready(function () {
     $('.edit-ad-reply').click(function () {
         var reply = this.id;
         var p = $('#ad-reply-p-' + reply).text();
-        
+
         $('#ad-reply-p-' + reply).addClass('hidden');
 
-            $('#ad-reply-edit-form-' + reply).removeClass('hidden');
-            $('#ad-reply-' + reply).val(p);
+        $('#ad-reply-edit-form-' + reply).removeClass('hidden');
+        $('#ad-reply-' + reply).val(p);
 
     });
     $('.reply-edited-cancel').click(function () {
@@ -256,25 +256,25 @@ $(document).ready(function () {
         var id = $(this).attr('reply');
         var reply = $('#ad-reply-' + id).val();
 
-            $.ajax({
-                url: "post-and-get/ajax/ad-reply.php",
-                type: "POST",
-                data: {
-                    id: id,
-                    reply: reply,
-                    option: 'UPDATEREPLY'
-                },
-                dataType: "JSON",
-                success: function (result) {
+        $.ajax({
+            url: "post-and-get/ajax/ad-reply.php",
+            type: "POST",
+            data: {
+                id: id,
+                reply: reply,
+                option: 'UPDATEREPLY'
+            },
+            dataType: "JSON",
+            success: function (result) {
 
-                    if (result) {
-                        $('#ad-reply-p-' + id).removeClass('hidden');
-                        $('#ad-reply-p-' + id).text(result.reply);
-                        $('#ad-reply-edit-form-' + id).addClass('hidden');
-                        $('#ad-reply-' + id).val('');
-                    }
+                if (result) {
+                    $('#ad-reply-p-' + id).removeClass('hidden');
+                    $('#ad-reply-p-' + id).text(result.reply);
+                    $('#ad-reply-edit-form-' + id).addClass('hidden');
+                    $('#ad-reply-' + id).val('');
                 }
-            });
+            }
+        });
 
 
         $('#reply-form-' + reply).removeClass('hidden');
