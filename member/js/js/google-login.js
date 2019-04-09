@@ -1,21 +1,31 @@
 var googleUser = {};
-//var startApp = function () {
-function init() {
+var startApp = function () {
     gapi.load('auth2', function () {
         // Retrieve the singleton for the GoogleAuth library and set up the client.
         auth2 = gapi.auth2.init({
             client_id: '75588900629-8gegistgsfrbrald43buibgncs7t7qin.apps.googleusercontent.com',
-            cookiepolicy: 'single_host_origin',
+            cookiepolicy: 'single_host_origin'
             // Request scopes in addition to 'profile' and 'email'
             //scope: 'additional_scope'
-            //client secret:  grXB3Tqf8P0KKrzca8vn2bJK 
         });
         attachSignin(document.getElementById('google-login'));
+    });
+};
+var startApp1 = function () {
+    gapi.load('auth2', function () {
+        // Retrieve the singleton for the GoogleAuth library and set up the client.
+        auth2 = gapi.auth2.init({
+            client_id: '75588900629-8gegistgsfrbrald43buibgncs7t7qin.apps.googleusercontent.com',
+            cookiepolicy: 'single_host_origin'
+            // Request scopes in addition to 'profile' and 'email'
+            //scope: 'additional_scope'
+        });
         attachSignin(document.getElementById('google-login1'));
     });
 };
 
 function attachSignin(element) {
+
     console.log(element.id);
     auth2.attachClickHandler(element, {},
             function (googleUser) {
@@ -31,7 +41,7 @@ function attachSignin(element) {
                 usrid = profile.getId();
                 name = profile.getName();
                 small_image = profile.getImageUrl();
-                image = small_image + '?sz=500';
+                image = small_image + '?sz=300';
 
                 $.ajax({
                     url: "post-and-get/ajax/google-login.php",
@@ -48,38 +58,20 @@ function attachSignin(element) {
                         memberLogin: '1'
                     },
                     dataType: "JSON",
-                    success: function (result) {
-                        if (result.message === 'success-log') {
-                            if (result.back === '') {
-                                window.location.replace("index.php");
-                            } else {
-                                window.location = result.back;
-                            }
+                    success: function (jsonStr) {
+                        if (jsonStr.message = "success-log") {
+                            window.location.replace("index.php");
+                        }
+                        if (jsonStr.message = "success-cre") {
 
-                        } else if (result.message === 'success-cre') {
-                            if (result.back === '') {
-                                window.location.replace('./?message=22');
-                            } else {
-                                window.location = result.back;
-                            }
-
+                            window.location.replace("index.php");
                         }
                     }
                 });
 
-                     
+                    
             }, function (error) {
-        document.getElementById('google-error-display').innerText = "Something went wrong with google sign in";
-//        JSON.stringify(error, undefined, 2);
+        // document.getElementById('google-error-display').innerText = "Something went wrong with google sign in";
+        JSON.stringify(error, undefined, 2);
     });
 }
-$(document).ready(function () {
-    $('#google-login').click(function () {
-        alert(111);
-        init();
-    });
-    $('#google-login1').click(function () {
-        console.log(111);
-        init();
-    });
-});
