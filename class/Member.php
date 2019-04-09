@@ -197,7 +197,7 @@ class Member {
         }
 
         $query = "SELECT `id` FROM `member` WHERE `id`= '" . $id . "' AND `auth_token`= '" . $authToken . "'";
-
+    
         $db = new Database();
 
         $result = mysql_fetch_array($db->readQuery($query));
@@ -881,13 +881,14 @@ class Member {
 
     public function loginByFB($memberID, $password) {
 
-        $query = "SELECT * FROM `member` WHERE `facebook_id`= '" . $memberID . "' AND `password`= '" . $password . "'";
-
+        $query = "SELECT * FROM `member` WHERE `facebook_id`= '" . $memberID . "'";
+        
         $db = new Database();
 
         $result = mysql_fetch_array($db->readQuery($query));
-
+        
         if (!$result) {
+        
             return FALSE;
         } else {
             $this->id = $result['id'];
@@ -900,7 +901,7 @@ class Member {
 
             $_SESSION["login"] = TRUE;
 
-            $_SESSION["id"] = $member->id;
+            $_SESSION["id"] = $member["id"];
 
             return TRUE;
         }
