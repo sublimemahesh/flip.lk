@@ -25,11 +25,11 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                 <?php
                                 if (isset($GROUP->profilePicture)) {
                                     ?>
-                                    <img src="upload/group/<?php echo $GROUP->coverPicture; ?>" alt="Cover Picture">
+                                    <img src="upload/group/<?php echo $GROUP->profilePicture; ?>" alt="Profile Picture">
                                     <?php
                                 } else {
                                     ?>
-                                    <img src="upload/group/member.png" alt="PRofile picture">
+                                    <img src="upload/group/member.png" alt="Profile picture">
                                     <?php
                                 }
                                 ?>

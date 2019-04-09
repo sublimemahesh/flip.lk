@@ -247,6 +247,10 @@ and open the template in the editor.
     .nav {
         display: block;
     }
+    .friend-request .request-label-avatar{
+        right: 18px;
+        top: 10px;
+    }
 }
 
 
@@ -336,6 +340,9 @@ and open the template in the editor.
     }
     .control-icon{
         margin-right: 20px;
+    }
+    .friend-request .request-label-avatar{
+        right: 18px;
     }
 }
 
@@ -604,6 +611,17 @@ and open the template in the editor.
     .responsive-header-logo{
         margin-right: -68px;
     }
+/*      .header-content-wrapper{
+        margin-top: -56px;
+        margin-right: -9px;
+    }*/
+    .is-empty{
+        margin-right: -341px;
+    }
+    .friend-request .request-label-avatar{
+        right: 18px;
+    }
+
 }
 
 @media (width:1024px){
@@ -644,6 +662,9 @@ and open the template in the editor.
     }
     .control-icon{
         margin-right: 19px;
+    }
+    .friend-request .request-label-avatar{
+        right: 18px;
     }
 
 }
@@ -850,9 +871,11 @@ and open the template in the editor.
     .mobile-app-tabs{
         margin-left: 74px;
     }
-      .header-content-wrapper{
-        margin-top: -56px;
-        margin-right: -9px;
+   .is-empty{
+        margin-right: -341px;
+    }
+    .friend-request .request-label-avatar{
+        right: 18px;
     }
 
 
@@ -1042,15 +1065,15 @@ and open the template in the editor.
     }
     #site-header .control-icon img:hover {
 
-    height: 23px;
-    opacity: 1;
-    fill: #fff;
-    
+        height: 23px;
+        opacity: 1;
+        fill: #fff;
 
-}
-#site-header .control-icon img.follower-request:hover {
 
-    height: 26px;
+    }
+    #site-header .control-icon img.follower-request:hover {
 
-}
+        height: 26px;
+
+    }
 }

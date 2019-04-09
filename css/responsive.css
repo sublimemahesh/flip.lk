@@ -335,9 +335,63 @@ and open the template in the editor.
         width: 32px;
         height: 32px;
     }
-
+    .top-header-author .author-thumb{
+        margin-top: 64px;
+    }
+    .top-header.top-header-favorit .author-content{
+        margin-top: 57px;
+    }
+    .active{
+        margin-right: 248px;
+    }
+    .join-group-btn{
+        margin-left: 4px;  
+    }
+    .news-feed-form .nav-tabs .nav-link.active{
+        margin-left: 26px;
+    }
+    .share-post{
+        padding-right: 41px;
+    }
+    .profile-menu li a, .profile-menu li > div{
+        margin-top: -17px;
+    }
+    .add-options-message{
+        padding: 22px 0px;
+    }
+    .top-header.top-header-favorit .profile-menu li{
+        margin-bottom: 0px;
+    }
+    .top-header-author .author-thumb{
+        margin-top: 57px;
+    }
+    .profile-menu{
+        margin-left: 131px;
+    }
+    .top-header-author .author-thumb{
+        margin-top: 76px;
+    }
+    .share-post{
+        padding-left: 20px;
+    }
+    .tab-content{
+        margin-right: -212px;
+    }
+    .add-options-message{
+        margin-left: 19px;
+    }
+    .join-group-btn{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .author-thumb img{
+        font-size: 11px;
+        margin-top: -1px;
+    }
+    .author-thumb1 img{
+        margin-top: -15px;
+    }
 }
-
 
 @media(min-width:577px) and (max-width:990px) {
     .header {
@@ -513,6 +567,15 @@ and open the template in the editor.
         margin-left: 200px;
         font-size: 12px;
     }
+    .author-thumb{
+        padding-top: 0px;
+    }
+    #site-header .avatar{
+        margin-top: -1px;
+    }
+    .author-thumb1 img{
+        margin-top: -20px;
+    }
 }
 
 @media(min-width:992px) and (max-width:1200px) {
@@ -537,6 +600,9 @@ and open the template in the editor.
     .copyright{
         margin-top: -22px;
     }
+    .profile-menu{
+        margin-left: 180px;
+    }
 }
 
 @media(width:375px) {
@@ -554,6 +620,16 @@ and open the template in the editor.
     .copyright{
         margin-top: -22px;
     }
+    .top-header-author .author-thumb{
+        margin-top: 67px;
+    }
+    .join-group-section{
+        margin-left: -14px;
+    }
+    .join-group-btn{
+        padding-left: 2px;
+        padding-right: 3px;
+    }
 }
 
 @media(width:414px) {
@@ -564,6 +640,22 @@ and open the template in the editor.
     }
     .category-list .cat-title h4 {
         font-size: 17px;
+    }
+    .top-header-author .author-thumb{
+        margin-top: 76px;
+    }
+    .share-post{
+        padding-left: 13px;
+    }
+    .tab-content{
+        margin-right: -212px;
+    }
+    .add-options-message{
+        margin-left: 19px;
+    }
+    .join-group-btn{
+        padding-left: 5px;
+        padding-right: 8px;
     }
 }
 
@@ -613,6 +705,12 @@ and open the template in the editor.
     }
     #ad-slider .owl-nav {
         margin-top: -310px;
+    }
+/*    .author-thumb img{
+        margin-top: 50px;
+    }*/
+    .author-thumb1 img{
+        margin-top: -2px;
     }
 }
 
@@ -675,6 +773,15 @@ and open the template in the editor.
     }
     .ad-contact-details a .contact-details{
         font-size: 15px;
+    }
+    .profile-menu{
+        margin-left: 68px;
+    }
+    .author-thumb img{
+        margin-top: 0px;
+    }
+    .author-thumb1 img{
+        margin-top: -14px;
     }
 
 
@@ -742,7 +849,29 @@ and open the template in the editor.
     .title1{
         font-size: 36px;
     }
-
+    .top-header.top-header-favorit .author-thumb{
+        margin-top: -53px;
+        margin-left: -71px;
+    }
+    .author-thumb{
+        padding-top: 0px;
+    }
+    .profile-menu{
+        margin-left: 161px;
+    }
+    .top-header-author .author-thumb{
+        margin-top: 79px;
+    }
+    .top-header.top-header-favorit .top-header-author{
+        bottom: -40px;
+    }
+    .top-header.top-header-favorit .author-content{
+        margin-top: -24px;
+    }
+    .author-thumb1 img{
+        margin-top: -18px;
+        margin-left: -11px;
+    }
 }
 @media (width: 640px){
     .header{
@@ -824,6 +953,16 @@ and open the template in the editor.
         margin-top: -3px;
         margin-left: 0px;
     }
+    .top-header.top-header-favorit .top-header-author{
+        bottom: -38px;
+    }
+    .profile-menu{
+        margin-left: 13px;
+    }
+    .author-thumb1 img{
+        margin-top: -106px;
+    }
+
 }
 @media (width: 600px){
     .header{
@@ -942,6 +1081,20 @@ and open the template in the editor.
         margin-left: 0px;
         margin-top: -3px;
     }
+    .top-header.top-header-favorit .top-header-author{
+        bottom: -32px;
+    }
+    .profile-menu{
+        margin-left: 18px;
+    }
+    .author-thumb1 img{
+        margin-left: -10px;
+        margin-top: -15px;
+    }
+    #site-header .avatar{
+        margin-top: -14px;
+    }
+
 
 }
 @media(min-width:1200px) {
@@ -960,6 +1113,12 @@ and open the template in the editor.
     .icon-status.online{
         margin-top: 8px;
     }
+/*    .author-thumb img{
+        margin-top: 50px;
+    }*/
+    .author-thumb1 img{
+        margin-top: -2px;
+    }
 }
 /*.control-block{
     margin-right: 92px;
@@ -977,6 +1136,12 @@ and open the template in the editor.
     }
     .footer-about p{
         margin-left: 16px;
+    }
+    .top-header.top-header-favorit .top-header-author{
+        bottom: -40px;
+    }
+    .author-thumb1 img{
+        margin-top: -13px;
     }
 
 }
@@ -1087,5 +1252,37 @@ and open the template in the editor.
     }
     .has-items img {
         padding-bottom: 0px;   
+    }
+}
+@media (width: 384px){
+    .top-header-author .author-thumb{
+        margin-top: 68px;
+    }
+    .join-group-btn{
+        padding-left: 3px;
+        padding-right: 4px;
+    }
+
+
+}
+@media (width: 412px){
+    .top-header-author .author-thumb{
+        margin-top: 79px;
+    }
+    .top-header.top-header-favorit .author-content{
+        margin-top: 70px;
+    }
+    .author-thumb1 img{
+        margin-top: -15px;
+    }
+    .join-group-btn{
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+}
+@media (width: 834px){
+    .author-thumb1 img{
+        margin-top: -17px;
     }
 }
