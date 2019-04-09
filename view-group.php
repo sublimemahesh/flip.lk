@@ -114,7 +114,7 @@ if (isset($_SESSION['id'])) {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
                                                     <form>
-                                                        <div class="author-thumb">
+                                                        <div class="author-thumb author-thumb1">
                                                             <img src="upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
                                                         </div>
                                                         <div class="form-group with-icon label-floating is-empty">
@@ -155,9 +155,9 @@ if (isset($_SESSION['id'])) {
                                     }
                                     ?>
                                     <div class="ui-block <?php
-                            if ($join == 'false') {
-                                echo 'hidden';
-                            }
+                                    if ($join == 'false') {
+                                        echo 'hidden';
+                                    }
                                     ?>" id="join-block">
                                         <div class="row">
                                             <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
@@ -169,9 +169,9 @@ if (isset($_SESSION['id'])) {
                                         </div>
                                     </div>
                                     <div class="ui-block <?php
-                            if ($join == 'true') {
-                                echo 'hidden';
-                            }
+                                    if ($join == 'true') {
+                                        echo 'hidden';
+                                    }
                                     ?>" id="request-cancel-block">
                                         <div class="row">
                                             <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
@@ -231,7 +231,8 @@ if (isset($_SESSION['id'])) {
                                                         }
                                                         ?>
                                                         </ul>
-                                                    </div>-->
+                                                    </div>
+                                                </article>
 
                                             </div>
                                             <h5><b><?php echo $ad['title']; ?></b></h5>
@@ -594,56 +595,56 @@ if (isset($_SESSION['id'])) {
     <script src="js/js/shared-ad.js" type="text/javascript"></script>
     <script src="js/js/login-first.js" type="text/javascript"></script>
     <script>
-        var placeSearch, autocomplete;
-        $('#city').val($('#autocomplete2').val());
-        function initAutocomplete() {
-            // Create the autocomplete object, restricting the search to geographical
-            // location types.
-            var options = {
-                types: ['(cities)'],
-                componentRestrictions: {country: "lk"}
-            };
-            var input = document.getElementById('autocomplete');
+            var placeSearch, autocomplete;
+            $('#city').val($('#autocomplete2').val());
+            function initAutocomplete() {
+                // Create the autocomplete object, restricting the search to geographical
+                // location types.
+                var options = {
+                    types: ['(cities)'],
+                    componentRestrictions: {country: "lk"}
+                };
+                var input = document.getElementById('autocomplete');
 
-            autocomplete = new google.maps.places.Autocomplete(input, options);
+                autocomplete = new google.maps.places.Autocomplete(input, options);
 
-            // When the user selects an address from the dropdown, populate the address
-            // fields in the form.
-            autocomplete.addListener('place_changed', fillInAddress);
-        }
-
-        function fillInAddress() {
-            // Get the place details from the autocomplete object.
-            var place = autocomplete.getPlace();
-            $('#city').val(place.place_id);
-            //                $('#longitude').val(place.geometry.location.lng());
-            //                $('#latitude').val(place.geometry.location.lat());
-            for (var component in componentForm) {
-                document.getElementById(component).value = '';
-                document.getElementById(component).disabled = false;
+                // When the user selects an address from the dropdown, populate the address
+                // fields in the form.
+                autocomplete.addListener('place_changed', fillInAddress);
             }
 
-            // Get each component of the address from the place details
-            // and fill the corresponding field on the form.
-        }
+            function fillInAddress() {
+                // Get the place details from the autocomplete object.
+                var place = autocomplete.getPlace();
+                $('#city').val(place.place_id);
+                //                $('#longitude').val(place.geometry.location.lng());
+                //                $('#latitude').val(place.geometry.location.lat());
+                for (var component in componentForm) {
+                    document.getElementById(component).value = '';
+                    document.getElementById(component).disabled = false;
+                }
 
-        // Bias the autocomplete object to the user's geographical location,
-        // as supplied by the browser's 'navigator.geolocation' object.
-        function geolocate() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    var geolocation = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-                    var circle = new google.maps.Circle({
-                        center: geolocation,
-                        radius: position.coords.accuracy
+                // Get each component of the address from the place details
+                // and fill the corresponding field on the form.
+            }
+
+            // Bias the autocomplete object to the user's geographical location,
+            // as supplied by the browser's 'navigator.geolocation' object.
+            function geolocate() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var geolocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        var circle = new google.maps.Circle({
+                            center: geolocation,
+                            radius: position.coords.accuracy
+                        });
+                        autocomplete.setBounds(circle.getBounds());
                     });
-                    autocomplete.setBounds(circle.getBounds());
-                });
+                }
             }
-        }
     </script>
     <script>
         // Retrieve Details from Place_ID
