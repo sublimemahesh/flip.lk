@@ -209,7 +209,34 @@ class Advertisement {
         return $result['count'];
     }
 
-    public function getAdsAndPostsByMember($member) {
+    public function getAllAdsAndPostsByMember($member) {
+
+        $query = "SELECT `id`, 'ad' AS `type`, `created_at` FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `member` <> $member UNION ALL SELECT `id`, 'post' AS `type`, `created_at` FROM `post` WHERE `member` in (SELECT `member` FROM `friends` WHERE `friend` = $member) OR `member` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) ORDER BY `created_at` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+    public function getAdsAndPostsByMember($member, $offset, $limit) {
+
+        $query = "SELECT `id`, 'ad' AS `type`, `created_at` FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `member` <> $member UNION ALL SELECT `id`, 'post' AS `type`, `created_at` FROM `post` WHERE `member` in (SELECT `member` FROM `friends` WHERE `friend` = $member) OR `member` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) ORDER BY `created_at` DESC LIMIT $offset, $limit";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+    
+    public function getCountOfAdsAndPostsByMember($member) {
 
         $query = "SELECT `id`, 'ad' AS `type`, `created_at` FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `member` <> $member UNION ALL SELECT `id`, 'post' AS `type`, `created_at` FROM `post` WHERE `member` in (SELECT `member` FROM `friends` WHERE `friend` = $member) OR `member` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) ORDER BY `created_at` DESC";
         $db = new Database();

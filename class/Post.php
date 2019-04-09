@@ -158,4 +158,25 @@ class Post {
         return $array_res;
     }
     
+    public function totalRows() {
+
+        $query = "SELECT count(*) 'total_rows' FROM `post`";
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+        
+        return $result;
+    }
+    public function limitRows($offset, $limit) {
+
+        $query = "SELECT * FROM `post` limit $offset, $limit";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+//        while ($row = mysql_fetch_array($result)) {
+//            array_push($array_res, $row);
+//        }
+
+        return $result;
+    }
 }

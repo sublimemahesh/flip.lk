@@ -102,7 +102,7 @@ if ($_POST['option'] === 'DELETEAD') {
 
 if ($_POST['option'] === 'GETADSBYGROUPSOFMEMBER') {
 
-    $ad = Advertisement::getAdsAndPostsByMember($_POST['member']);
+    $ad = Advertisement::getAdsAndPostsByMember($_POST['member'], $_POST['offset'], $_POST['limit']);
 
     header('Content-type: application/json');
     echo json_encode($ad);

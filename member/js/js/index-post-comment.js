@@ -1,11 +1,11 @@
 $(document).ready(function () {
-    $('.add-comment').click(function () {
+    $('#output').on('click', '.add-comment', function () {
         var post_id = this.id;
         $('#comment-form-' + post_id).removeClass('hidden');
         $('#comment-list-' + post_id).removeClass('hidden');
+//        $('#output').find('#comment-list-' + post_id).removeClass('hidden');
     });
-    $('.index-post-comment').click(function () {
-
+    $('#output').on('click', '.index-post-comment', function () {
         var post = $(this).attr('post');
         var type = $(this).attr('type');
         var member = $(this).attr('member');
@@ -101,14 +101,16 @@ $(document).ready(function () {
         $(".comments-list").each(function (index) {
 
             if ($(this).children(".comment-item").length > 3) {
-                var post = $(this).attr('post-id');
-                $("#see-more-" + post).removeClass('hidden');
-            }
-            $(this).children(".comment-item").slice(-3).show();
-        });
+                    var post = $(this).attr('post-id');
+                    $("#see-more-" + post).removeClass('hidden');
+                }
+                $(this).children(".comment-item").slice(-3).show();
+            });
 
+//            $('.comments-list').on('click', '.see-more', function () {
+//                alert(111);
         $(".see-more").click(function (e) {
-            e.preventDefault();
+                    e.preventDefault();
             var $link = $(this);
             var $div = $link.closest('.comments-list');
 
@@ -143,9 +145,9 @@ $(document).ready(function () {
         var p = $('#ad-comment-p-' + comment).text();
         $('#ad-comment-p-' + comment).addClass('hidden');
 
-            $('#ad-comment-edit-form-' + comment).removeClass('hidden');
-            $('#ad-comment-' + comment).val(p);
-        
+        $('#ad-comment-edit-form-' + comment).removeClass('hidden');
+        $('#ad-comment-' + comment).val(p);
+
     });
     $('.post-edited-cancel').click(function () {
         var comment = $(this).attr('comment');
@@ -278,7 +280,7 @@ $(document).ready(function () {
         var id = $(this).attr('comment');
         var comment = $('#ad-comment-' + id).val();
 
-            $.ajax({
+        $.ajax({
             url: "post-and-get/ajax/ad-comment.php",
             type: "POST",
             data: {
@@ -288,7 +290,7 @@ $(document).ready(function () {
             },
             dataType: "JSON",
             success: function (result) {
-                
+
                 if (result) {
                     $('#ad-comment-p-' + id).removeClass('hidden');
                     $('#ad-comment-p-' + id).text(result.comment);
@@ -297,7 +299,7 @@ $(document).ready(function () {
                 }
             }
         });
-        
+
 //        $('#comment-form-' + post).removeClass('hidden');
 //        $('#comment-list-' + post).removeClass('hidden');
     });

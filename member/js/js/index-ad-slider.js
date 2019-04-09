@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     var memberid = $('#member').val();
     $.ajax({
         url: "post-and-get/ajax/advertisement.php",
@@ -7,6 +8,8 @@ $(document).ready(function () {
         type: "POST",
         data: {
             member: memberid,
+            offset: offset,
+            limit: limit,
             option: 'GETADSBYGROUPSOFMEMBER'
         },
         success: function (ads) {
@@ -122,5 +125,5 @@ $(document).ready(function () {
 
         }
     });
-
+    
 });
