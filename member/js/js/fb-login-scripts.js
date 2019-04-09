@@ -64,7 +64,7 @@ function checkLoginState() {
                         if (result.message === 'success-log') {
 
                             if (result.back === '') {
-                                window.location.replace("./");
+                                window.location.replace("index.php");
                             } else {
                                 window.location = result.back;
                             }
