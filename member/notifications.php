@@ -13,6 +13,8 @@ if (isset($_GET['id'])) {
 } else {
     $MEM = new Member($_SESSION['id']);
 }
+
+$res = Notification::updateAllAsViewed();
 ?>
 <!DOCTYPE html>
 <html lang="en">

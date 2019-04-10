@@ -103,6 +103,22 @@ class Notification {
             return FALSE;
         }
     }
+    public function updateAllAsViewed() {
+
+        $query = "UPDATE  `notification` SET "
+                . "`is_viewed` = 1 "
+                . "WHERE `is_viewed` = 0";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
 
     public function delete() {
 
