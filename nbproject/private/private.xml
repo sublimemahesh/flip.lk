@@ -21,7 +21,7 @@
         
         
         
-        <group/>
+        
         <group>
             <file>file:/C:/xampp/htdocs/flip.lk/class/Advertisement.php</file>
             <file>file:/C:/xampp/htdocs/flip.lk/member/group-settings.php</file>
@@ -30,6 +30,15 @@
             <file>file:/C:/xampp/htdocs/flip.lk/class/GroupAndMemberRequest.php</file>
             <file>file:/C:/xampp/htdocs/flip.lk/member/group-details.php</file>
             <file>file:/C:/xampp/htdocs/flip.lk/member/advertisement.php</file>
+        </group>
+        <group>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/auth.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/class/Database.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/login.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/fb-login-scripts.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/class/Member.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/ajax/fb-login.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/google-login.js</file>
         </group>
     </open-files>
 </project-private>
