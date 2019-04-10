@@ -75,13 +75,13 @@ $members = GroupMember::getAllMembersByGroup($id);
 
                                 </div>
                                 <div class="col-sm-3">
-                                    <a href="group-details.php?id=<?php echo $id; ?>&filter=published">Unpublished Ads - <?php if(count($unpublisedAds) > 9 || count($unpublisedAds) == 0) { echo count($unpublisedAds); } else { echo '0' . count($unpublisedAds); } ?></a>
+                                    <a href="group-details.php?id=<?php echo $id; ?>&filter=unpublished">Unpublished Ads - <?php if(count($unpublisedAds) > 9 || count($unpublisedAds) == 0) { echo count($unpublisedAds); } else { echo '0' . count($unpublisedAds); } ?></a>
                                 </div>
                                 <div class="col-sm-3">
-                                    <a href="group-details.php?id=<?php echo $id; ?>&filter=published">Member Requests - <?php if($member_request > 9 || $member_request == 0) { echo $member_request; } else { echo '0' . $member_request; } ?></a>
+                                    <a href="group-details.php?id=<?php echo $id; ?>&filter=requests">Member Requests - <?php if($member_request > 9 || $member_request == 0) { echo $member_request; } else { echo '0' . $member_request; } ?></a>
                                 </div>
                                 <div class="col-sm-3">
-                                    <a href="group-details.php?id=<?php echo $id; ?>&filter=published">Group Members - <?php if(count($members) > 9 || count($members) == 0) { echo count($members); } else { echo '0' . count($members); } ?></a>
+                                    <a href="group-details.php?id=<?php echo $id; ?>&filter=members">Group Members - <?php if(count($members) > 9 || count($members) == 0) { echo count($members); } else { echo '0' . count($members); } ?></a>
                                 </div>
                             </div>
                         </div>

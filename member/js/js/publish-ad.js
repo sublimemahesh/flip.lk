@@ -83,16 +83,16 @@ $(document).ready(function () {
         });
     });
 
-    $('#view-ad-details').on('click', 'publish-ad', function () {
+    $('.view-ad-btn').on('click', '#publish-ad', function () {
         var adid = $(this).attr('ad');
         var status = 1;
         $.ajax({
-            url: "post-and-get/ajax/publish-ad.php",
+            url: "post-and-get/ajax/advertisement.php",
             cache: false,
             dataType: "json",
             type: "POST",
             data: {
-                ad: adid,
+                id: adid,
                 status: status,
                 option: 'UPDATESTATUS'
             },
@@ -105,11 +105,12 @@ $(document).ready(function () {
                     showConfirmButton: false
                 });
                 $('#view-ad').modal('hide');
+                $('#li_unp_' + adid).remove();
 
             }
         });
     });
-    $('#view-ad-details').on('click', 'unpublish-ad', function () {
+    $('.view-ad-btn').on('click', '#unpublish-ad', function () {
         var adid = $(this).attr('ad');
         var status = 0;
         $.ajax({
@@ -118,7 +119,7 @@ $(document).ready(function () {
             dataType: "json",
             type: "POST",
             data: {
-                ad: adid,
+                id: adid,
                 status: status,
                 option: 'UPDATESTATUS'
             },
@@ -131,6 +132,7 @@ $(document).ready(function () {
                     showConfirmButton: false
                 });
                 $('#view-ad').modal('hide');
+                $('#li_p_' + adid).remove();
 
             }
         });
