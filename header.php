@@ -282,7 +282,7 @@
                             </ul>
                         </div>
 
-                        <a href="notifications.php" class="view-all bg-theme-blue">View All</a>
+                        <a href="member/notifications.php" class="view-all bg-theme-blue">View All</a>
                     </div>
                 </div>
                 <?php
