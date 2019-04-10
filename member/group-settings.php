@@ -69,21 +69,141 @@ $members = GroupMember::getAllMembersByGroup($id);
                 <div class="row">
                     <div class="col col-xl-8 order-xl-2 col-lg-8 order-lg-2 col-md-6 order-md-1 col-sm-12 col-12">
                         <div class="ui-block">
-                            <div class="row">
-                                <div class="col-sm-3">
+                            <div class="row content1">
+<!--                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2 ads">
+                                    <img src="img/icon/header-icon/addon-icon-post-submissions.png" alt=""/>
                                     <a href="group-details.php?id=<?php echo $id; ?>&filter=published">Published Ads - <?php if(count($publisedAds) > 9 || count($publisedAds) == 0) { echo count($publisedAds); } else { echo '0' . count($publisedAds); } ?></a>
+                                    <div class="col-sm-12 margin"></div>
 
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2 ads">
                                     <a href="group-details.php?id=<?php echo $id; ?>&filter=unpublished">Unpublished Ads - <?php if(count($unpublisedAds) > 9 || count($unpublisedAds) == 0) { echo count($unpublisedAds); } else { echo '0' . count($unpublisedAds); } ?></a>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2 ads">
                                     <a href="group-details.php?id=<?php echo $id; ?>&filter=requests">Member Requests - <?php if($member_request > 9 || $member_request == 0) { echo $member_request; } else { echo '0' . $member_request; } ?></a>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2 ads">
                                     <a href="group-details.php?id=<?php echo $id; ?>&filter=members">Group Members - <?php if(count($members) > 9 || count($members) == 0) { echo count($members); } else { echo '0' . count($members); } ?></a>
+                                </div>-->
+
+<div class="panel-content col-xs-3">
+                        <div class="panel panel-primary panel-1">
+                            <div class="panel-heading">
+                                <div class=" row row-1 row-content">
+                                    <div class="col-xs-3 icons">
+                                        <i class="fa fa-check-circle fa-5x img-icon"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">
+                                            <?php if(count($publisedAds) > 9 || count($publisedAds) == 0) { echo count($publisedAds); } else { echo '0' . count($publisedAds); } ?>
+                                        </div>
+                                        <div class="title">
+                                            <a href="group-details.php?id=<?php echo $id; ?>&filter=published">Published Ads </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <a href="group-details.php?id=<?php echo $id; ?>&filter=published">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+</div>
+
+                            <div class="panel-content col-xs-3">
+                             <div class="panel panel-primary panel-1">
+                            <div class="panel-heading">
+                                <div class="row row-1 row-content2">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-times-circle fa-5x img-icon"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">
+                                            <?php if(count($unpublisedAds) > 9 || count($unpublisedAds) == 0) { echo count($unpublisedAds); } else { echo '0' . count($unpublisedAds); } ?>
+                                        </div>
+                                        <div class="title">
+                                            <a href="group-details.php?id=<?php echo $id; ?>&filter=unpublished">Unpublished Ads</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="group-details.php?id=<?php echo $id; ?>&filter=unpublished">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                            </div>
+                            <div class="panel-content col-xs-3">
+                             <div class="panel panel-primary panel-1">
+                            <div class="panel-heading">
+                                <div class="row row-1 row-content1">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-user-plus fa-5x img-icon"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">
+                                            <?php if($member_request > 9 || $member_request == 0) { echo $member_request; } else { echo '0' . $member_request; } ?>
+                                        </div>
+                                        <div class="title">
+                                            <a href="group-details.php?id=<?php echo $id; ?>&filter=requests">Member Requests</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="group-details.php?id=<?php echo $id; ?>&filter=requests">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                            </div>
+                            <div class="panel-content col-xs-3">
+                             <div class="panel panel-primary panel-1">
+                            <div class="panel-heading">
+                                <div class="row row-1 row-content3">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-user-circle fa-5x img-icon"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">
+                                            <?php if(count($members) > 9 || count($members) == 0) { echo count($members); } else { echo '0' . count($members); } ?>
+                                        </div>
+                                        <div class="title">
+                                            <a href="group-details.php?id=<?php echo $id; ?>&filter=members">Group Members</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="group-details.php?id=<?php echo $id; ?>&filter=members">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                            
+                            </div>
+                            </div>
+                            
+                               
+                            
+                         
+                            
+                            
+                            
                         </div>
                         <div class="ui-block">
                             <div class="ui-block-title">

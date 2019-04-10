@@ -1591,6 +1591,7 @@ header .control-icon > svg {
     margin-top: 0;
     background: none;
 }
+
 .chat-message .notif-list .notification-event {
     width: 88%;
     max-width: 88%;
@@ -1598,3 +1599,144 @@ header .control-icon > svg {
 .more-dropdown:hover {
     visibility: hidden;
 }
+
+/*==Group Settings==*/
+/*.ads{
+    border: 1px solid black;
+    padding: 12px;
+    margin-left: -12px;
+}
+.margin{
+    border: 1px solid #000; 
+}*/
+/*======*/
+.panel-primary{
+    border-color: black;
+}
+.panel{
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #38a9ff;
+   border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    /*margin-right: 3px;*/
+    /*margin-right: 58px;*/
+}
+.panel-primary > .panel-heading{
+    color: #fff;
+    background-color: #38a9ff;
+    border-color: #38a9ff;
+}
+.panel-heading{
+    padding: 0px 15px;
+    border-bottom: 1px solid transparent;
+    border-bottom-color: transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.row-1{
+    margin-right: -15px;
+    margin-left: -15px;
+    /*margin-bottom: -34px;*/
+}
+.icons{
+    width: 25%;
+}
+.panel-primary > .panel-heading{
+    color: #fff;
+}
+.fa-5x{
+    font-size: 5em;
+}
+.fa{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: inherit;
+    text-rendering: auto;
+}
+/*.col-xs-9{
+    width: 75%;
+}*/
+.text-right{
+    text-align: right;
+    width: 75%;
+}
+.huge{
+    font-size: 32px;
+    padding-right: 14px;
+}
+.text-right{
+    text-align: right;
+}
+.panel-footer{
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.pull-left{
+    float: left !important;
+}
+.pull-right{
+    float: right !important;
+}
+.fa{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.content1{
+    margin-left: 33px;
+    margin-top: 17px
+}
+.title a{
+    font-size: 13px;
+    color: aliceblue;
+    /*margin-right: 12px;*/
+
+}
+.img-icon{
+    font-size: 31px;
+}
+.title{
+    margin-right: 5px;
+}
+.img-icon{
+    margin-top: 9px;
+    margin-left: 13px;
+}
+.pull-left{
+    margin-left: -4px;
+}
+.panel-content{
+   width: 167px; 
+}
+.panel-1{
+    width: 150px;
+}
+
+/*==group details==*/
+.table-careers .head span{
+    font-size: 14px;
+    color: #9a9fbf;
+}
+/*.head{
+    background-color: #fff;
+}*/
+.table-careers li:first-child{
+   background: #fff; 
+}
+.table-careers li:first-child:hover{
+   background: #fff; 
+}
+
+
+
+>>>>>>> #249 Create Design for Group Settings
