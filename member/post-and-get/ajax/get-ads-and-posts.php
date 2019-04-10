@@ -2,7 +2,8 @@
 <?php
 
 include_once(dirname(__FILE__) . '/../../../class/include.php');
-include '/../../calculate-time1.php';
+include_once(dirname(__FILE__) . '/../../calculate-time1.php');
+
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -21,6 +22,7 @@ $total_rows = count(Advertisement::getCountOfAdsAndPostsByMember($MEMBER->id));
 $total_pages = ceil($total_rows / $limit);
 
 $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
+
 //dd(mysql_num_rows($ads));
 //$query = "select * from `posts` limit $offset, $limit";
 //$res = mysql_query($con, $query);
@@ -31,15 +33,19 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
     $results .= '<div id="results">';
 
     if (count($ads) > 0) {
+        
         foreach ($ads as $key => $ad) {
 
             if ($ad['type'] == 'post') {
+               
 //                $results .= '<p style="height:200px;">' . $ad['id'] . '</p>';
                 $POST = new Post($ad['id']);
                 $MEM = new Member($POST->member);
+                
                 if ($MEM->status == 1) {
 
                     $result = getTime1($POST->createdAt);
+                    
                     $count = PostComment::getCountOfCommentsByPostID($ad['id']);
 
                     $results .= '<div class="ui-block">';
@@ -357,6 +363,7 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
                     $results .= '</div>';
                     $results .= '</div>';
                 }
+                 
             } else {
 //                $results .= '<p style="height:200px;">' . $ad['id'] . '</p>';
                 $AD = new Advertisement($ad['id']);
@@ -696,6 +703,7 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
         $results .= '';
     }
     $results .= '</div>';
+
     echo $results;
 //}
 ?>
