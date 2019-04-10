@@ -391,6 +391,9 @@ and open the template in the editor.
     .author-thumb1 img{
         margin-top: -15px;
     }
+    .s002 form .inner-form .input-field input{
+        font-size: 13px;
+    }
 }
 
 @media(min-width:577px) and (max-width:990px) {
@@ -576,6 +579,9 @@ and open the template in the editor.
     .author-thumb1 img{
         margin-top: -20px;
     }
+    .s002 form .inner-form .input-field.fifth-wrap .btn-search{
+        margin-left: 156px;
+    }
 }
 
 @media(min-width:992px) and (max-width:1200px) {
@@ -630,6 +636,9 @@ and open the template in the editor.
         padding-left: 2px;
         padding-right: 3px;
     }
+    .s002 form .inner-form .input-field input{
+        font-size: 15px;
+    }
 }
 
 @media(width:414px) {
@@ -656,6 +665,9 @@ and open the template in the editor.
     .join-group-btn{
         padding-left: 5px;
         padding-right: 8px;
+    }
+    .s002 form .inner-form .input-field input{
+        font-size: 16px;
     }
 }
 
@@ -706,9 +718,9 @@ and open the template in the editor.
     #ad-slider .owl-nav {
         margin-top: -310px;
     }
-/*    .author-thumb img{
-        margin-top: 50px;
-    }*/
+    /*    .author-thumb img{
+            margin-top: 50px;
+        }*/
     .author-thumb1 img{
         margin-top: -2px;
     }
@@ -782,6 +794,13 @@ and open the template in the editor.
     }
     .author-thumb1 img{
         margin-top: -14px;
+    }
+    .s002 form .inner-form .input-field .icon-wrap{
+        width: 26px;
+    }
+    .s002 form .inner-form .input-field input{
+        padding: 10px 6px 10px 27px;
+        font-size: 9px;
     }
 
 
@@ -871,6 +890,9 @@ and open the template in the editor.
     .author-thumb1 img{
         margin-top: -18px;
         margin-left: -11px;
+    }
+    .s002 form .inner-form .input-field.fifth-wrap .btn-search{
+        margin-left: 130px;
     }
 }
 @media (width: 640px){
@@ -1094,6 +1116,10 @@ and open the template in the editor.
     #site-header .avatar{
         margin-top: -14px;
     }
+    .category-box-layout1{
+        width: 151px;
+        margin-left: 14px;
+    }
 
 
 }
@@ -1113,9 +1139,9 @@ and open the template in the editor.
     .icon-status.online{
         margin-top: 8px;
     }
-/*    .author-thumb img{
-        margin-top: 50px;
-    }*/
+    /*    .author-thumb img{
+            margin-top: 50px;
+        }*/
     .author-thumb1 img{
         margin-top: -2px;
     }
@@ -1262,6 +1288,9 @@ and open the template in the editor.
         padding-left: 3px;
         padding-right: 4px;
     }
+    .s002 form .inner-form .input-field input{
+        font-size: 15px;
+    }
 
 
 }
@@ -1278,6 +1307,9 @@ and open the template in the editor.
     .join-group-btn{
         padding-left: 8px;
         padding-right: 8px;
+    }
+    .s002 form .inner-form .input-field input{
+        font-size: 16px;
     }
 
 }
