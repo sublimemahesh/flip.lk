@@ -22,19 +22,19 @@
             <div class="control-icon more has-items">
                 <a href="groups.php">
                     <span><img src="img/icon/header-icon/group.png" alt=""  /></span>
-                    <span class="nav-topic">Groups</span>
-                </a>
-            </div>
-            <div class="control-icon more has-items icon-newsfeed">
-                <a href="member/">
-                    <span><img src="img/icon/header-icon/newsfeed.png" alt="" /></span>
-                    <span class="nav-topic">Newsfeed</span>
+                    <span class="nav-topic">All Groups</span>
                 </a>
             </div>
             <?php
             include './calculate-time.php';
             if (isset($_SESSION['id'])) {
                 ?>
+                <div class="control-icon more has-items icon-newsfeed">
+                    <a href="member/">
+                        <span><img src="img/icon/header-icon/newsfeed.png" alt="" /></span>
+                        <span class="nav-topic">Newsfeed</span>
+                    </a>
+                </div>
                 <div class="control-icon more has-items has-items1 icon-request">
                     <a href="member/friend-requests.php">
                         <span>
@@ -197,7 +197,7 @@
                 <div class="control-icon more has-items">
                     <a href="notifications.php">
                         <span>
-                            <img src="img/icon/header-icon/message.png" alt=""/>
+                            <img src="img/icon/header-icon/notification.png" alt=""/>
                             <?php
                             if (isset($_SESSION['id'])) {
                                 $countnotifications = Notification::countUnviewedNotifications($MEMBER->id);

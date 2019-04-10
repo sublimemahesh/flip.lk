@@ -854,7 +854,7 @@ input[type='submit'].share-post {
     padding-right: 80px;
 }
 .control-icon {
-    margin-right: 22px;
+    margin-right: 30px;
 }
 .search-bar {
     height: 55px;
@@ -1594,4 +1594,7 @@ header .control-icon > svg {
 .chat-message .notif-list .notification-event {
     width: 88%;
     max-width: 88%;
+}
+.more-dropdown:hover {
+    visibility: hidden;
 }
