@@ -240,3 +240,32 @@
     </div>
 </div>
 <!-- ... end  Window-popup Share Ad -->
+
+<!-- Window-popup Published Ad -->
+<div class="modal fade" id="view-ad" tabindex="-1" role="dialog" aria-labelledby="view-ad" aria-hidden="true">
+    <div class="modal-dialog window-popup update-header-photo" role="document">
+
+        <div class="modal-content">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="modal-header">
+                <h6 class="title">View Advertisement</h6>
+            </div>
+
+            <div class="modal-body">
+                <div class="news-feed-form">
+                    <article class="hentry post has-post-thumbnail shared-photo">
+                        <div class="post-thumb">
+                            <div id="gallery2"></div>   
+                        </div>
+                        <ul class="children single-children" id="view-ad-details"></ul>
+                        <span class="view-ad-btn"></span>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ... end  Window-popup Share Ad -->

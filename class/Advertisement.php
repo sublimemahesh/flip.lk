@@ -139,7 +139,7 @@ class Advertisement {
     
     public function getAllAdvertisements($pageLimit, $setLimit) {
 
-        $query = "SELECT * FROM `advertisement` ORDER BY `created_at` DESC LIMIT " . $pageLimit . " , " . $setLimit . "";
+        $query = "SELECT * FROM `advertisement` WHERE `status` = 1 ORDER BY `created_at` DESC LIMIT " . $pageLimit . " , " . $setLimit . "";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -211,7 +211,7 @@ class Advertisement {
 
     public function getAllAdsAndPostsByMember($member) {
 
-        $query = "SELECT `id`, 'ad' AS `type`, `created_at` FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `member` <> $member UNION ALL SELECT `id`, 'post' AS `type`, `created_at` FROM `post` WHERE `member` in (SELECT `member` FROM `friends` WHERE `friend` = $member) OR `member` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) ORDER BY `created_at` DESC";
+        $query = "SELECT `id`, 'ad' AS `type`, `created_at` FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `member` <> $member AND `status` = 1 UNION ALL SELECT `id`, 'post' AS `type`, `created_at` FROM `post` WHERE `member` in (SELECT `member` FROM `friends` WHERE `friend` = $member) OR `member` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) ORDER BY `created_at` DESC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -224,7 +224,7 @@ class Advertisement {
     }
     public function getAdsAndPostsByMember($member, $offset, $limit) {
 
-        $query = "SELECT `id`, 'ad' AS `type`, `created_at` FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `member` <> $member UNION ALL SELECT `id`, 'post' AS `type`, `created_at` FROM `post` WHERE `member` in (SELECT `member` FROM `friends` WHERE `friend` = $member) OR `member` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) ORDER BY `created_at` DESC LIMIT $offset, $limit";
+        $query = "SELECT `id`, 'ad' AS `type`, `created_at` FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `member` <> $member AND `status` = 1 UNION ALL SELECT `id`, 'post' AS `type`, `created_at` FROM `post` WHERE `member` in (SELECT `member` FROM `friends` WHERE `friend` = $member) OR `member` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) ORDER BY `created_at` DESC LIMIT $offset, $limit";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -237,8 +237,8 @@ class Advertisement {
     }
     
     public function getCountOfAdsAndPostsByMember($member) {
-
-        $query = "SELECT `id`, 'ad' AS `type`, `created_at` FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `member` <> $member UNION ALL SELECT `id`, 'post' AS `type`, `created_at` FROM `post` WHERE `member` in (SELECT `member` FROM `friends` WHERE `friend` = $member) OR `member` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) ORDER BY `created_at` DESC";
+        
+        $query = "SELECT `id`, 'ad' AS `type`, `created_at` FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `member` <> $member AND `status` = 1 UNION ALL SELECT `id`, 'post' AS `type`, `created_at` FROM `post` WHERE `member` in (SELECT `member` FROM `friends` WHERE `friend` = $member) OR `member` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) ORDER BY `created_at` DESC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -338,6 +338,34 @@ class Advertisement {
             return FALSE;
         }
     }
+    
+    public function getPublishedAdsByGroup($group) {
+
+        $query = "SELECT * FROM `advertisement` WHERE `group_id` = $group AND `status` = 1 ORDER BY `created_at` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+    
+    public function getUnpublishedAdsByGroup($group) {
+
+        $query = "SELECT * FROM `advertisement` WHERE `group_id` = $group AND `status` = 0 ORDER BY `created_at` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
 
     public function searchAdvertisements($category, $subcategory, $location, $keyword, $pageLimit, $setLimit) {
 
@@ -356,6 +384,7 @@ class Advertisement {
         if (!empty($keyword)) {
             $w[] = "`title` LIKE '%" . $keyword . "%'";
         }
+        $w[] = "`status` = 1";
         if (count($w)) {
             $where = 'WHERE ' . implode(' AND ', $w);
         }
@@ -392,6 +421,7 @@ class Advertisement {
         if (!empty($keyword)) {
             $w[] = "`title` LIKE '%" . $keyword . "%'";
         }
+        $w[] = "`status` = 1";
         if (count($w)) {
             $where = 'WHERE ' . implode(' AND ', $w);
         }
@@ -481,7 +511,7 @@ class Advertisement {
 
         $page_url = "?";
         
-        $query = "SELECT count(*) AS totalCount FROM `advertisement` ORDER BY `created_at` DESC";
+        $query = "SELECT count(*) AS totalCount FROM `advertisement` WHERE `status` = 1 ORDER BY `created_at` DESC";
 
         $rec = mysql_fetch_array(mysql_query($query));
 

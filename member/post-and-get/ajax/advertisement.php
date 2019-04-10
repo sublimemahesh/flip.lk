@@ -3,7 +3,7 @@
 include_once(dirname(__FILE__) . '/../../../class/include.php');
 
 if ($_POST['option'] == 'SAVEAD') {
-
+    
     $ADVERTISEMENT = new Advertisement(NULL);
     $ADVERTISEMENT->groupId = $_POST['group'];
     $ADVERTISEMENT->member = $_POST['member'];
@@ -19,18 +19,25 @@ if ($_POST['option'] == 'SAVEAD') {
     $ADVERTISEMENT->price = $_POST['price'];
     $ADVERTISEMENT->phoneNumber = $_POST['phonenumber'];
     $ADVERTISEMENT->email = $_POST['email'];
-    $ADVERTISEMENT->status = '1';
+    if($ADVERTISEMENT->groupId == 0) {
+        $ADVERTISEMENT->status = '1';
+    } else {
+        $ADVERTISEMENT->status = '0';
+    }
+    
 
     $result = $ADVERTISEMENT->create();
 
     if ($result) {
-        foreach ($_POST["images"] as $key => $img) {
-            $key++;
-            $ADIMAGES = new AdvertisementImage(NULL);
-            $ADIMAGES->advertisement = $result['id'];
-            $ADIMAGES->imageName = $img["value"];
-            $ADIMAGES->sort = $key;
-            $res = $ADIMAGES->create();
+        if (isset($_POST["images"])) {
+            foreach ($_POST["images"] as $key => $img) {
+                $key++;
+                $ADIMAGES = new AdvertisementImage(NULL);
+                $ADIMAGES->advertisement = $result['id'];
+                $ADIMAGES->imageName = $img["value"];
+                $ADIMAGES->sort = $key;
+                $res = $ADIMAGES->create();
+            }
         }
     }
 

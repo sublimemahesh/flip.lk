@@ -121,8 +121,8 @@ class GroupAndMemberRequest {
         $query = "SELECT count(`id`) AS `count` FROM `group_and_member_request` WHERE `group_id` = " . $group . " AND `is_approved` = 0";
         $db = new Database();
         $result = mysql_fetch_array($db->readQuery($query));
-
-        return $result;
+        
+        return $result['count'];
     }
     
     public function getCountOfGroupInvitationsByMember($member) {
