@@ -2517,7 +2517,8 @@ a .ad-title{
 }
 
 .sidebar{
-    margin-top: 30px;
+/*    margin-top: 30px;*/
+    margin-top: 12px;
     border-radius: 5px;
     margin-bottom: 16px;
 }

@@ -339,7 +339,14 @@ and open the template in the editor.
         margin-top: 64px;
     }
     .top-header.top-header-favorit .author-content{
-        margin-top: 57px;
+        margin-top: 6px;
+        color: #000;
+    }
+    .top-header.top-header-favorit .author-name {
+
+        font-size: 18px;
+        color: #000;
+
     }
     .active{
         margin-right: 248px;

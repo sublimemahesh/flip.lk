@@ -282,7 +282,7 @@ class Group {
         return $result['count'];
     }
     
-    public function searchGroups($category, $subcategory, $pageLimit, $setLimit) {
+    public function searchGroups($category1, $subcategory, $location, $keyword, $pageLimit, $setLimit) {
 
         $w = array();
         $where = '';
@@ -292,6 +292,12 @@ class Group {
         }
         if (!empty($subcategory)) {
             $w[] = "`sub_category` = '" . $subcategory . "'";
+        }
+        if (!empty($location)) {
+            $w[] = "`city` LIKE '" . $location . "'";
+        }
+        if (!empty($keyword)) {
+            $w[] = "`name` LIKE '%" . $keyword . "%'";
         }
         if (count($w)) {
             $where = 'WHERE `status` = 1 AND ' . implode(' AND ', $w);
@@ -311,7 +317,7 @@ class Group {
         return $array_res;
     }
 
-    public function showPaginationOfSearchedGroups($category, $subcategory, $per_page, $page) {
+    public function showPaginationOfSearchedGroups($category, $subcategory, $location, $keyword, $per_page, $page) {
 
         $page_url = "?";
 
@@ -323,6 +329,12 @@ class Group {
         }
         if (!empty($subcategory)) {
             $w[] = "`sub_category` = '" . $subcategory . "'";
+        }
+        if (!empty($location)) {
+            $w[] = "`city` LIKE '" . $location . "'";
+        }
+        if (!empty($keyword)) {
+            $w[] = "`name` LIKE '%" . $keyword . "%'";
         }
         if (count($w)) {
             $where = 'WHERE `status` = 1 AND ' . implode(' AND ', $w);
@@ -355,7 +367,7 @@ class Group {
                     if ($counter == $page)
                         $setPaginate .= "<li><a class='current_page'>$counter</a></li>";
                     else
-                        $setPaginate .= "<li><a href='{$page_url}page=$counter&category=$category&subcategory=$subcategory'>$counter</a></li>";
+                        $setPaginate .= "<li><a href='{$page_url}page=$counter&category=$category&subcategory=$subcategory&location=$location&keyword=$keyword'>$counter</a></li>";
                 }
             }
             elseif ($setLastpage > 5 + ($adjacents * 2)) {
@@ -364,42 +376,42 @@ class Group {
                         if ($counter == $page)
                             $setPaginate .= "<li><a class='current_page'>$counter</a></li>";
                         else
-                            $setPaginate .= "<li><a href='{$page_url}page=$counter&category=$category&subcategory=$subcategory'>$counter</a></li>";
+                            $setPaginate .= "<li><a href='{$page_url}page=$counter&category=$category&subcategory=$subcategory&location=$location&keyword=$keyword'>$counter</a></li>";
                     }
                     $setPaginate .= "<li class='dot'>...</li>";
-                    $setPaginate .= "<li><a href='{$page_url}page=$lpm1&category=$category&subcategory=$subcategory'>$lpm1</a></li>";
-                    $setPaginate .= "<li><a href='{$page_url}page=$setLastpage&category=$category&subcategory=$subcategory'>$setLastpage</a></li>";
+                    $setPaginate .= "<li><a href='{$page_url}page=$lpm1&category=$category&subcategory=$subcategory&location=$location&keyword=$keyword'>$lpm1</a></li>";
+                    $setPaginate .= "<li><a href='{$page_url}page=$setLastpage&category=$category&subcategory=$subcategory&location=$location&keyword=$keyword'>$setLastpage</a></li>";
                 }
                 elseif ($setLastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
-                    $setPaginate .= "<li><a href='{$page_url}page=1&category=$category&subcategory=$subcategory'>1</a></li>";
-                    $setPaginate .= "<li><a href='{$page_url}page=2&category=$category&subcategory=$subcategory'>2</a></li>";
+                    $setPaginate .= "<li><a href='{$page_url}page=1&category=$category&subcategory=$subcategory&location=$location&keyword=$keyword'>1</a></li>";
+                    $setPaginate .= "<li><a href='{$page_url}page=2&category=$category&subcategory=$subcategory&location=$location&keyword=$keyword'>2</a></li>";
                     $setPaginate .= "<li class='dot'>...</li>";
                     for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++) {
                         if ($counter == $page)
                             $setPaginate .= "<li><a class='current_page'>$counter</a></li>";
                         else
-                            $setPaginate .= "<li><a href='{$page_url}page=$counter&category=$category&subcategory=$subcategory'>$counter</a></li>";
+                            $setPaginate .= "<li><a href='{$page_url}page=$counter&category=$category&subcategory=$subcategory&location=$location&keyword=$keyword'>$counter</a></li>";
                     }
                     $setPaginate .= "<li class='dot'>..</li>";
-                    $setPaginate .= "<li><a href='{$page_url}page=$lpm1&category=$category&subcategory=$subcategory'>$lpm1</a></li>";
-                    $setPaginate .= "<li><a href='{$page_url}page=$setLastpage&category=$category&subcategory=$subcategory'>$setLastpage</a></li>";
+                    $setPaginate .= "<li><a href='{$page_url}page=$lpm1&category=$category&subcategory=$subcategory&location=$location&keyword=$keyword'>$lpm1</a></li>";
+                    $setPaginate .= "<li><a href='{$page_url}page=$setLastpage&category=$category&subcategory=$subcategory&location=$location&keyword=$keyword'>$setLastpage</a></li>";
                 }
                 else {
-                    $setPaginate .= "<li><a href='{$page_url}page=1&category=$category&subcategory=$subcategory'>1</a></li>";
-                    $setPaginate .= "<li><a href='{$page_url}page=2&category=$category&subcategory=$subcategory'>2</a></li>";
+                    $setPaginate .= "<li><a href='{$page_url}page=1&category=$category&subcategory=$subcategory&location=$location&keyword=$keyword'>1</a></li>";
+                    $setPaginate .= "<li><a href='{$page_url}page=2&category=$category&subcategory=$subcategory&location=$location&keyword=$keyword'>2</a></li>";
                     $setPaginate .= "<li class='dot'>..</li>";
                     for ($counter = $setLastpage - (2 + ($adjacents * 2)); $counter <= $setLastpage; $counter++) {
                         if ($counter == $page)
                             $setPaginate .= "<li><a class='current_page'>$counter</a></li>";
                         else
-                            $setPaginate .= "<li><a href='{$page_url}page=$counter&category=$category&subcategory=$subcategory'>$counter</a></li>";
+                            $setPaginate .= "<li><a href='{$page_url}page=$counter&category=$category&subcategory=$subcategory&location=$location&keyword=$keyword'>$counter</a></li>";
                     }
                 }
             }
 
             if ($page < $counter - 1) {
-                $setPaginate .= "<li><a href='{$page_url}page=$next&category=$category&subcategory=$subcategory'>Next</a></li>";
-                $setPaginate .= "<li><a href='{$page_url}page=$setLastpage&category=$category&subcategory=$subcategory'>Last</a></li>";
+                $setPaginate .= "<li><a href='{$page_url}page=$next&category=$category&subcategory=$subcategory&location=$location&keyword=$keyword'>Next</a></li>";
+                $setPaginate .= "<li><a href='{$page_url}page=$setLastpage&category=$category&subcategory=$subcategory&location=$location&keyword=$keyword'>Last</a></li>";
             } else {
                 $setPaginate .= "<li><a class='current_page'>Next</a></li>";
                 $setPaginate .= "<li><a class='current_page'>Last</a></li>";

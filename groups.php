@@ -30,8 +30,14 @@ if (isset($_GET['subcategory'])) {
     $subcategory = $_GET['subcategory'];
     $BUSSUBCAT = new BusinessSubCategory($_GET['subcategory']);
 }
+if (isset($_GET['location'])) {
+    $location = $_GET['location'];
+}
+if (isset($_GET['keyword'])) {
+    $keyword = $_GET['keyword'];
+}
 
-$groups = Group::searchGroups($category1, $subcategory, $pageLimit, $setLimit);
+$groups = Group::searchGroups($category1, $subcategory, $location, $keyword, $pageLimit, $setLimit);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +77,7 @@ $groups = Group::searchGroups($category1, $subcategory, $pageLimit, $setLimit);
         ?>
         <div class="header-spacer"></div>
         <?php
-        include './banner.php';
+        include './banner-group.php';
         ?>
         <div class="container index-container body-content">
 
@@ -88,34 +94,55 @@ $groups = Group::searchGroups($category1, $subcategory, $pageLimit, $setLimit);
 
                             <div id="newsfeed-items-grid">
                                 <div class="ad-breadcrumbs">
-                                    <?php
-                                    if ($category1 !== "") {
-                                        if (empty($subcategory)) {
+                                    <div class="ad-breadcrumbs">
+                                        <?php
+                                        if ($category1 !== "" && $location !== "") {
+                                            if (empty($subcategory)) {
+                                                ?>
+                                                <span class="breadcrumb-item"><a href="./" >Home</a> </span>
+                                                <span class="breadcrumb-item">
+                                                    <a href="groups.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a></span>
+                                                <span class="breadcrumb-item location"></span>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <span class="breadcrumb-item"><a href="./" >Home</a> </span>
+                                                <span class="breadcrumb-item">
+                                                    <a href="groups.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a>
+                                                </span>
+                                                <span class="breadcrumb-item">
+                                                    <a href="groups.php?category=<?php echo $BUSCAT->id; ?>subcategory=<?php echo $BUSSUBCAT->id; ?>" ><?php echo $BUSSUBCAT->name; ?></a>
+                                                </span>
+                                                <span class="breadcrumb-item location"></span>
+                                                <?php
+                                            }
+                                        } else if ($category1 !== "" && $location == "") {
+                                            if (empty($subcategory)) {
+                                                ?>
+                                                <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item"><?php echo $BUSCAT->name; ?></span>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <span class="breadcrumb-item"><a href="./" >Home</a> </span>
+                                                <span class="breadcrumb-item">
+                                                    <a href="groups.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a>
+                                                </span>
+                                                <span class="breadcrumb-item">
+                                                    <?php echo $BUSSUBCAT->name; ?>
+                                                </span>
+                                                <?php
+                                            }
+                                        } else if ($location !== "" && $category1 == "") {
                                             ?>
-                                            <span class="breadcrumb-item"><a href="./" >Home</a> </span>
-                                            <span class="breadcrumb-item">
-                                                <a href="groups.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a></span>
-                                            <span class="breadcrumb-item location"></span>
+                                            <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item location"></span>
                                             <?php
-                                        } else {
+                                        } else if ($location == "" && $category1 == "") {
                                             ?>
-                                            <span class="breadcrumb-item"><a href="./" >Home</a> </span>
-                                            <span class="breadcrumb-item">
-                                                <a href="groups.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a>
-                                            </span>
-                                            <span class="breadcrumb-item">
-                                                <a href="groups.php?category=<?php echo $BUSCAT->id; ?>&subcategory=<?php echo $BUSSUBCAT->id; ?>" ><?php echo $BUSSUBCAT->name; ?></a>
-                                            </span>
-                                            <span class="breadcrumb-item location"></span>
+                                            <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item">All Groups</span>
                                             <?php
                                         }
-                                    } else  {
                                         ?>
-                                        <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item">All Groups</span>
-                                        <?php
-                                    }
-                                    ?>
-
+                                    </div>
                                 </div>
                                 <div class="ui-block">
                                     <?php
@@ -175,21 +202,21 @@ $groups = Group::searchGroups($category1, $subcategory, $pageLimit, $setLimit);
                                     } else {
                                         ?>
                                         <div class="ui-block no-post">
-                                            <h5>There is no any advertisements.</h5>
+                                            <h5>There is no any groups.</h5>
                                         </div>
                                         <?php
                                     }
                                     ?>
-                                    
+
                                 </div>
-                                
+
                             </div>
-                            
-                            <div class="row">
-                            <?php Group::showPaginationOfSearchedGroups($category1, $subcategory, $setLimit, $page); ?>
+
+                            <div class="row col-xl-12">
+                                <?php Group::showPaginationOfSearchedGroups($category1, $subcategory, $location, $keyword, $setLimit, $page); ?>
                             </div>
                         </div>
-                        
+
                         <!-- ... end Main Content -->
                         <!-- Left Sidebar -->
                         <div class="sidebar col col-xl-4 order-xl-1 col-lg-4 order-lg-1 col-md-12 col-sm-12 col-12 hidden-sm">
@@ -235,7 +262,7 @@ $groups = Group::searchGroups($category1, $subcategory, $pageLimit, $setLimit);
                 </div>
             </div>
         </div>
-        <input type="hidden" id="autocomplete2" placeholder="Location" value="<?php echo $_GET['location']; ?>">
+        <input type="hidden" id="autocomplete2" placeholder="Location" value="<?php echo $location; ?>">
         <div id="map"></div>
         <?php
         include './footer.php';
