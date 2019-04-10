@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
     $MEM = new Member($_SESSION['id']);
 }
 
-$res = Notification::updateAllAsViewed();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -106,6 +106,11 @@ $res = Notification::updateAllAsViewed();
                         </div>
 
                     </div>
+                     <?php
+                    include './profile-left-side.php';
+                    ?>
+
+                    <!-- ... end Left Sidebar -->
                     
                 </div>
             </div>
@@ -120,6 +125,11 @@ $res = Notification::updateAllAsViewed();
         include './window-pop-up.php';
         ?>
         <!-- ... end Window-popup -->
+        <!-- updateAllAsViewed -->
+        <?php
+        $res = Notification::updateAllAsViewed();
+        ?>
+        <!-- ... end updateAllAsViewed -->
 
         <!-- JS Scripts -->
         <script src="js/jquery-3.2.1.js"></script>
