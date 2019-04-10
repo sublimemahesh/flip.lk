@@ -1480,7 +1480,7 @@ span.flatpickr-weekday {
       align-items: center;
   font-family: 'Poppins', sans-serif;
   background-position: center center;
-  padding: 40px 100px 10px;
+  padding: 40px 40px 10px;
 }
 
 .s002 form {
@@ -1582,10 +1582,8 @@ span.flatpickr-weekday {
 }
 
 .s002 form .inner-form .input-field.second-wrap {
-/*  min-width: 225px;
-  max-width: 225px;*/
-min-width: 300px;
-max-width: 300px;
+  min-width: 225px;
+  max-width: 225px;
 }
 
 .s002 form .inner-form .input-field.third-wrap {
@@ -1701,9 +1699,9 @@ max-width: 300px;
 }
 
 @media screen and (max-width: 992px) {
-    .s002 {
+    /*.s002 {
         padding: 40px 0px 10px;
-    }
+    }*/
   .s002 form legend {
     font-size: 50px;
     text-align: center;
@@ -1719,7 +1717,7 @@ max-width: 300px;
     margin-bottom: 15px;
   }
   .s002 form .inner-form .input-field.first-wrap {
-    width: auto;
+    width: 100%;
   }
   .s002 form .inner-form .input-field.second-wrap {
     width: 220px;

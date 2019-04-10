@@ -447,5 +447,6 @@ if ($count_members['count'] == 0) {
         <script src="js/js/ad-reply.js" type="text/javascript"></script>
         <script src="js/js/shared-ad.js" type="text/javascript"></script>
         <script src="js/js/login-first.js" type="text/javascript"></script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
     </body>
 </html>

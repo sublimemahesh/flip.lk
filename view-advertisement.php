@@ -425,6 +425,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
         <script src="plugins/galleria/galleria-1.5.7.min.js" type="text/javascript"></script>
         <script src="plugins/OwlCarousel/dist/owl.carousel.min.js" type="text/javascript"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script>
             $(function () {
                 // Load the classic theme

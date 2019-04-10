@@ -296,6 +296,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
         <script src="plugins/tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script>
         <script src="js/heartcode-canvasloader.js" type="text/javascript"></script>
         <script src="js/image-preloader.js" type="text/javascript"></script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script>
                                                 tinymce.init({
                                                     selector: "#description",

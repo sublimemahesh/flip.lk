@@ -3,7 +3,7 @@
 include_once(dirname(__FILE__) . '/../../../class/include.php');
 
 if ($_POST['option'] == 'SAVEAD') {
-    
+
     $ADVERTISEMENT = new Advertisement(NULL);
     $ADVERTISEMENT->groupId = $_POST['group'];
     $ADVERTISEMENT->member = $_POST['member'];
@@ -19,12 +19,12 @@ if ($_POST['option'] == 'SAVEAD') {
     $ADVERTISEMENT->price = $_POST['price'];
     $ADVERTISEMENT->phoneNumber = $_POST['phonenumber'];
     $ADVERTISEMENT->email = $_POST['email'];
-    if($ADVERTISEMENT->groupId == 0) {
+    if ($ADVERTISEMENT->groupId == 0) {
         $ADVERTISEMENT->status = '1';
     } else {
         $ADVERTISEMENT->status = '0';
     }
-    
+
 
     $result = $ADVERTISEMENT->create();
 
@@ -38,6 +38,18 @@ if ($_POST['option'] == 'SAVEAD') {
                 $ADIMAGES->sort = $key;
                 $res = $ADIMAGES->create();
             }
+        }
+        if ($ADVERTISEMENT->groupId != 0) {
+            $NOTIFICATION = new Notification(NULL);
+            $MEM = new Member($ADVERTISEMENT->member);
+            $GROUP = new Group($ADVERTISEMENT->groupId);
+
+            $NOTIFICATION->imageName = $MEM->profilePicture;
+            $NOTIFICATION->title = 'New Advertisement';
+            $NOTIFICATION->description = $MEM->firstName . ' ' . $MEM->lastName . ' is posted a new advertisement to your group.';
+            $NOTIFICATION->url = 'group-details.php?id=' . $ADVERTISEMENT->groupId . '&filter=unpublished';
+            $NOTIFICATION->user = $GROUP->member;
+            $NOTIFICATION->create();
         }
     }
 

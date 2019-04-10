@@ -94,6 +94,7 @@ if (!isset($_SESSION)) {
             <script defer src="fonts/fontawesome-all.js"></script>
             <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
             <script src="js/js/login.js" type="text/javascript"></script>
+            <script src="js/js/view-notification.js" type="text/javascript"></script>
             <!--custom js-->
     </body>
 </html>

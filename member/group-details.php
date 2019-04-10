@@ -310,6 +310,7 @@ if ($filter == 'published') {
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="js/js/find-friends.js" type="text/javascript"></script>
         <script src="js/js/publish-ad.js" type="text/javascript"></script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script>
             var placeSearch, autocomplete, autocomplete2;
 

@@ -316,5 +316,6 @@ if (isset($_GET['id'])) {
         <script src="js/js/find-friends.js" type="text/javascript"></script>
         <script src="js/js/edit-profile-picture.js" type="text/javascript"></script>
         <script src="js/js/edit-cover-picture.js" type="text/javascript"></script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
     </body>
 </html>

@@ -164,6 +164,7 @@ $VALUE = New Page(4);
         <script src="plugins/OwlCarousel/dist/owl.carousel.min.js" type="text/javascript"></script>
         <script src="plugins/type-js/js/typed.min.js" type="text/javascript"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
                 $('.about-box').mouseover(function () {

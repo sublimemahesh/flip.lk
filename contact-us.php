@@ -228,6 +228,7 @@ $LOCATION = New Page(11);
         <script src="plugins/OwlCarousel/dist/owl.carousel.min.js" type="text/javascript"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
         <script src="contact-us-form/scripts.js" type="text/javascript"></script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
                 $('.about-box').mouseover(function () {

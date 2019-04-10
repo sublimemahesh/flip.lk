@@ -558,6 +558,7 @@ $GROUP = new Group($id);
         <script src="js/js/ad-reply.js" type="text/javascript"></script>
         <script src="js/js/shared-ad.js" type="text/javascript"></script>
         <script src="js/js/read-more-and-less.js" type="text/javascript"></script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script>
             // Retrieve Details from Place_ID
             function initMap() {

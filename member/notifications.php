@@ -2,21 +2,22 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
-$MEM = '';
-$id = '';
 $MEMBER = new Member($_SESSION['id']);
+$id = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $MEM = new Member($_GET['id']);
 } else {
     $MEM = new Member($_SESSION['id']);
 }
-$no_of_request = FriendRequest::getCountOfFriendRequestsByMember($MEMBER->id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>About || Flip.lk</title>
+        <title>About || Groups || Flip.lk</title>
 
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
@@ -52,67 +53,46 @@ $no_of_request = FriendRequest::getCountOfFriendRequestsByMember($MEMBER->id);
             ?>
             <div class="container">
                 <div class="row">
-                    <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
+                    <div class="col col-xl-8 order-xl-2 col-lg-8 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
                         <div class="ui-block">
                             <div class="ui-block-title">
-                                <h6 class="title">Friend requests (<span id="member-request-count"><?php echo $no_of_request['count']; ?></span>)</h6>
+                                <h6 class="title">All Notifications</h6>
+                                <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
                             </div>
 
 
-                            <!-- Notification List Frien Requests -->
+                            <!-- Notification List -->
 
                             <ul class="notification-list friend-requests">
                                 <?php
-                                foreach (FriendRequest::getFriendRequestsByMember($MEMBER->id) as $request) {
-                                    $MEM = new Member($request['requested_by']);
-                                    $view = FriendRequest::updateViewingStatus($request['id']);
+                                foreach (Notification::getUnviewedNotifications($MEMBER->id) as $notification) {
                                     ?>
 
-                                    <li id="request-to-join-<?php echo $MEM->id; ?>" class="request-to-join-<?php echo $MEM->id; ?>">
-                                        <div class="author-thumb">
-                                            <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
-                                        </div>
-                                        <div class="notification-event">
-                                            <a href="profile.php?id=<?php echo $MEM->id; ?>" class="h6 notification-friend"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>
-                                            <span class="chat-message-item">Mutual Friend: Sarah Hetfield</span>
-                                        </div>
-                                        <span class="notification-icon">
-                                            <a href="#" class="accept-request confirm-request" row_id="<?php echo $request['id']; ?>">
-                                                <span class="icon-add">
-                                                    <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                </span>
-                                                Confirm Request
-                                            </a>
-
-                                            <a href="#" class="accept-request request-del delete-request" row_id="<?php echo $request['id']; ?>">
-                                                <span class="icon-minus">
-                                                    <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                </span>
-                                            </a>
-
-                                        </span>
-
-                                        <div class="more">
-                                            <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                            <svg class="olymp-little-delete"><use xlink:href="svg-icons/sprites/icons.svg#olymp-little-delete"></use></svg>
-                                        </div>
-                                    </li>
-
-                                    <li class="accepted hidden accepted-request-<?php echo $MEM->id; ?>" id="accepted-request-<?php echo $MEM->id; ?>">
+                                <li class="notif-list" notification="<?php echo $notification['id']; ?>" id="notif_<?php echo $notification['id']; ?>">
                                         <div class="author-thumb member-request-profile-pic">
-                                            <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
+                                            <?php                      
+                                                if ($notification['image_name']) {
+                                                    if (substr($notification['image_name'], 0, 5) == 'https') {
+                                                        ?>
+                                                        <img src="<?php echo $notification['image_name']; ?>" alt="author">
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <img src="../upload/member/<?php echo $notification['image_name']; ?>" alt="author">
+                                                        <?php
+                                                    }
+                                                } else {
+                                                    ?>
+                                                    <img src="../upload/member/member.png" alt="author">
+                                                    <?php
+                                                }
+                                                ?>
                                         </div>
                                         <div class="notification-event">
-                                            <a href="profile.php?id=<?php echo $MEM->id; ?>" class="h6 notification-friend"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> just became a friend of you.
+                                             <a href="<?php echo $notification['url']; ?>" class="h6 notification-friend"><?php echo $notification['title']; ?></a>
+                                            <span class="chat-message-item"><?php echo $notification['description']; ?></span>
                                         </div>
-                                        <span class="notification-icon">
-                                            <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                        </span>
-
-                                        <div class="more">
-                                            <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                            <svg class="olymp-little-delete"><use xlink:href="svg-icons/sprites/icons.svg#olymp-little-delete"></use></svg>
-                                        </div>
+                                        
                                     </li>
                                     <?php
                                 }
@@ -124,8 +104,10 @@ $no_of_request = FriendRequest::getCountOfFriendRequestsByMember($MEMBER->id);
                         </div>
 
                     </div>
+                    
                 </div>
             </div>
+
         </div>
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
@@ -174,8 +156,8 @@ $no_of_request = FriendRequest::getCountOfFriendRequestsByMember($MEMBER->id);
         <script src="js/base-init.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="js/js/join-group.js" type="text/javascript"></script>
         <script src="js/js/find-friends.js" type="text/javascript"></script>
-        <script src="js/js/friend-request.js" type="text/javascript"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
     </body>
 </html>
