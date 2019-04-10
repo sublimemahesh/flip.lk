@@ -251,6 +251,24 @@ and open the template in the editor.
         right: 18px;
         top: 10px;
     }
+    /*    .row-content{
+            margin-right: 0px;
+        }
+        .row-content1{
+            margin-right: -13px;
+        }*/
+    /*    .panel{
+            margin-right: 17px;
+        }
+        .huge{
+            font-size: 33px;
+            padding-right: 12px;
+            padding-top: 50px;
+        }*/
+    .panel{
+        margin-right: 18px;
+        width: 135px;
+    }
 }
 
 
@@ -343,6 +361,12 @@ and open the template in the editor.
     }
     .friend-request .request-label-avatar{
         right: 18px;
+    }
+    .panel{
+        width: 216px;
+    }
+    .ui-block.first-block{
+        margin-left: 2px;
     }
 }
 
@@ -459,6 +483,10 @@ and open the template in the editor.
     upload-group-span2{
         padding-left: 25px;
     }
+    .panel{
+        margin-right: 11px;
+        width: 167px;
+    }
 
 
 }
@@ -497,6 +525,9 @@ and open the template in the editor.
     .upload-group-span2{
         width: 297px;
     }
+    .panel{
+        width: 214px;
+    }
 
 }
 @media(width:414px) {
@@ -533,6 +564,12 @@ and open the template in the editor.
     }
     .upload-group-span2{
         width: 336px;
+    }
+    .panel{
+        width: 150px;
+    }
+    .top-header.top-header-favorit .top-header-author .author-thumb{
+        margin-top: 25px;
     }
 }
 @media (width: 768px){
@@ -611,15 +648,32 @@ and open the template in the editor.
     .responsive-header-logo{
         margin-right: -68px;
     }
-/*      .header-content-wrapper{
-        margin-top: -56px;
-        margin-right: -9px;
-    }*/
+    /*      .header-content-wrapper{
+            margin-top: -56px;
+            margin-right: -9px;
+        }*/
     .is-empty{
         margin-right: -341px;
     }
     .friend-request .request-label-avatar{
         right: 18px;
+    }
+    .panel{
+        margin-right: 47px;
+        width: 240px;
+    }
+    .title a{
+        font-size: 12px;
+    }
+    .huge{
+        font-size: 38px;
+        padding-right: 5px;
+    }
+    .profile-menu{
+        margin-left: 47px;
+    }
+    .panel-content{
+        width: 289px;
     }
 
 }
@@ -665,6 +719,12 @@ and open the template in the editor.
     }
     .friend-request .request-label-avatar{
         right: 18px;
+    }
+    .panel{
+        width: 180px;
+    }
+    .panel-content{
+        width: 231px;
     }
 
 }
@@ -871,14 +931,20 @@ and open the template in the editor.
     .mobile-app-tabs{
         margin-left: 74px;
     }
-   .is-empty{
+    .is-empty{
         margin-right: -341px;
     }
     .friend-request .request-label-avatar{
         right: 18px;
     }
     .control-block{
-       margin-top: -56px;
+        margin-top: -56px;
+    }
+    .panel{
+        margin-right: 45px;
+    }
+    .panel-content{
+        width: 275px;
     }
 
 
@@ -904,6 +970,9 @@ and open the template in the editor.
     }
     .has-items-news img{
         height: 21px;
+    }
+    .panel{
+        width: 205px;
     }
 
 }
@@ -954,6 +1023,12 @@ and open the template in the editor.
     .uploadphotobx2 img, .uploadgroupphotobx2 img{
         width: 313px;
     }
+    .panel-content{
+        width: 180px;
+    }
+    .panel-1{
+        width: 164px;
+    }
 }
 @media (width: 1280px){
     .upload-group-span2{
@@ -969,6 +1044,13 @@ and open the template in the editor.
     .icon-status.online{
         margin-top: 7px;
     }
+    .panel{
+        margin-right: 55px;
+    }
+    .panel-content{
+        width: 155px;
+    }
+
 }
 @media (width: 412px){
     .upload-group-span2{
@@ -976,6 +1058,9 @@ and open the template in the editor.
     }
     .upload-group-pro-pic.pro-img{
         margin: 10px 77px 45px;
+    }
+    .panel{
+        width: 152px;
     }
 }
 @media (max-width: 1080px){
@@ -1078,5 +1163,13 @@ and open the template in the editor.
 
         height: 26px;
 
+    }
+}
+@media (max-width: 384px){
+    .panel{
+        width: 192px;
+    }
+    .panel-content{
+        width: 170px;
     }
 }
