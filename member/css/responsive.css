@@ -877,6 +877,9 @@ and open the template in the editor.
     .friend-request .request-label-avatar{
         right: 18px;
     }
+    .control-block{
+       margin-top: -56px;
+    }
 
 
 }
