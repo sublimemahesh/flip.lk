@@ -44,7 +44,8 @@ function load_more_data(page, total_pages) {
             }, 3000);
         },
         error: function () {
-            $(".loader").html("No data found!");
+            $('.loader').hide();
+            $(".loader").html("No data found!").show();
         }
     });
 

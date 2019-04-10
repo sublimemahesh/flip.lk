@@ -140,7 +140,28 @@ if (isset($_GET['id'])) {
                                             }
                                             ?>">
                                                 <div class="author-thumb message-box">
-                                                    <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
+                                                    <?php
+                                                    if ($MEM->profilePicture) {
+
+                                                        if ($MEM->facebookID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
+                                                            <?php
+                                                        } elseif ($MEM->googleID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img alt="profile picture" src="../upload/member/<?php echo $MEM->profilePicture; ?>">
+                                                            <?php
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        <img alt="profile picture" src="../upload/member/member.png">
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </div>
                                                 <div class="notification-event hidden-xs">
                                                     <a class="h6 notification-friend" href="member-message.php?id=<?php echo $MESSAGE->id; ?>">
@@ -164,17 +185,12 @@ if (isset($_GET['id'])) {
                                                         }
                                                         ?>
                                                     </span>
-                                                    <!--<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>-->
                                                 </div>
-
-
                                             </li>
-
                                             <?php
                                         }
                                         ?>
                                     </ul>
-
                                     <!-- ... end Notification List Chat Messages -->
                                 </div>
 
@@ -187,7 +203,28 @@ if (isset($_GET['id'])) {
                                             <div class="ui-block-title reciever-details">
                                                 <h6 class="title"><?php echo $OWNER->firstName . ' ' . $OWNER->lastName; ?></h6>
                                                 <div class="author-thumb message-box">
-                                                    <img src="../upload/member/<?php echo $OWNER->profilePicture; ?>" alt="author">
+                                                    <?php
+                                                    if ($OWNER->profilePicture) {
+
+                                                        if ($OWNER->facebookID && substr($OWNER->profilePicture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img alt="profile picture" src="<?php echo $OWNER->profilePicture; ?>">
+                                                            <?php
+                                                        } elseif ($OWNER->googleID && substr($OWNER->profilePicture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img alt="profile picture" src="<?php echo $OWNER->profilePicture; ?>">
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img alt="profile picture" src="../upload/member/<?php echo $OWNER->profilePicture; ?>">
+                                                            <?php
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        <img alt="profile picture" src="../upload/member/member.png">
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </div>
                                             </div>
                                             <div class="ui-block-title ad-details-section">
@@ -264,7 +301,28 @@ if (isset($_GET['id'])) {
                                                         ?>
                                                         <li>
                                                             <div class="author-thumb message-box">
-                                                                <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
+                                                                <?php
+                                                                if ($MEM1->profilePicture) {
+
+                                                                    if ($MEM1->facebookID && substr($MEM1->profilePicture, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="<?php echo $MEM1->profilePicture; ?>">
+                                                                        <?php
+                                                                    } elseif ($MEM1->googleID && substr($MEM1->profilePicture, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="<?php echo $MEM1->profilePicture; ?>">
+                                                                        <?php
+                                                                    } else {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="../upload/member/<?php echo $MEM1->profilePicture; ?>">
+                                                                        <?php
+                                                                    }
+                                                                } else {
+                                                                    ?>
+                                                                    <img alt="profile picture" src="../upload/member/member.png">
+                                                                    <?php
+                                                                }
+                                                                ?>
                                                             </div>
                                                             <div class="notification-event">
                                                                 <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
@@ -320,7 +378,28 @@ if (isset($_GET['id'])) {
                                                     ?>
                                                 </h6>
                                                 <div class="author-thumb message-box">
-                                                    <img src="../upload/member/<?php echo $MEM2->profilePicture; ?>" alt="author">
+                                                    <?php
+                                                    if ($MEM2->profilePicture) {
+
+                                                        if ($MEM2->facebookID && substr($MEM2->profilePicture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img alt="profile picture" src="<?php echo $MEM2->profilePicture; ?>">
+                                                            <?php
+                                                        } elseif ($MEM2->googleID && substr($MEM2->profilePicture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img alt="profile picture" src="<?php echo $MEM2->profilePicture; ?>">
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img alt="profile picture" src="../upload/member/<?php echo $MEM2->profilePicture; ?>">
+                                                            <?php
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        <img alt="profile picture" src="../upload/member/member.png">
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </div>
                                             </div>
                                             <div class="ui-block-title ad-details-section">
@@ -399,7 +478,28 @@ if (isset($_GET['id'])) {
                                                         ?>
                                                         <li>
                                                             <div class="author-thumb message-box">
-                                                                <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
+                                                                <?php
+                                                                if ($MEM1->profilePicture) {
+
+                                                                    if ($MEM1->facebookID && substr($MEM1->profilePicture, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="<?php echo $MEM1->profilePicture; ?>">
+                                                                        <?php
+                                                                    } elseif ($MEM1->googleID && substr($MEM1->profilePicture, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="<?php echo $MEM1->profilePicture; ?>">
+                                                                        <?php
+                                                                    } else {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="../upload/member/<?php echo $MEM1->profilePicture; ?>">
+                                                                        <?php
+                                                                    }
+                                                                } else {
+                                                                    ?>
+                                                                    <img alt="profile picture" src="../upload/member/member.png">
+                                                                    <?php
+                                                                }
+                                                                ?>
                                                             </div>
                                                             <div class="notification-event">
                                                                 <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
@@ -444,17 +544,116 @@ if (isset($_GET['id'])) {
                                 </div>
                                 <?php
                             } else {
-                                ?>
-                                <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12  padding-r-0">
-                                    <div class="post no-chats">
-                                        <h3>No Conversations yet!.</h3><br/>
-                                        <h6>Click "Chat" on an ad to start chatting.</h6><br/>
-                                        <a href="../all-advertisement.php" class="btn btn-primary btn-sm">
-                                            Browse Advertisements
-                                        </a>
+                                if (count($allparticipants) > 0) {
+                                    ?>
+                                    <div class="col col-xl-5 col-lg-5 col-md-4 col-sm-4 col-xs-12  padding-r-0">
+
+                                        <!-- Notification List Chat Messages -->
+                                        <ul class="notification-list chat-message">
+
+                                            <?php
+                                            $maxids = array();
+                                            foreach ($allparticipants as $participant) {
+                                                $max = AdvertisementMessage::getMaxIDOfDistinctAdvertisement($participant['advertisement'], $MEMBER->id);
+
+                                                array_push($maxids, $max['max']);
+//                                        return $maxids;
+                                            }
+                                            rsort($maxids);
+                                            foreach ($maxids as $key => $maxid) {
+                                                $MESSAGE = new AdvertisementMessage($maxid);
+                                                $AD1 = new Advertisement($MESSAGE->advertisement);
+                                                if ($MESSAGE->owner == $MEMBER->id) {
+                                                    $MEM = new Member($MESSAGE->member);
+                                                } elseif ($MESSAGE->member == $MEMBER->id) {
+                                                    $MEM = new Member($MESSAGE->owner);
+                                                }
+                                                ?>
+
+                                                <li class="<?php
+                                                if ($MESSAGE->advertisement == $ADVERTISEMENT->id) {
+                                                    echo 'active';
+                                                }
+                                                ?>">
+                                                    <div class="author-thumb message-box">
+                                                        <?php
+                                                        if ($MEM->profilePicture) {
+
+                                                            if ($MEM->facebookID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                                ?>
+                                                                <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
+                                                                <?php
+                                                            } elseif ($MEM->googleID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                                ?>
+                                                                <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <img alt="profile picture" src="../upload/member/<?php echo $MEM->profilePicture; ?>">
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                            ?>
+                                                            <img alt="profile picture" src="../upload/member/member.png">
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                    <div class="notification-event hidden-xs">
+                                                        <a class="h6 notification-friend" href="member-message.php?id=<?php echo $MESSAGE->id; ?>">
+                                                            <?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
+                                                        </a>
+                                                        <span class="chat-message-item">
+                                                            <?php
+                                                            if (strlen($AD1->title) > 20) {
+                                                                echo substr($AD1->title, 0, 18) . '...';
+                                                            } else {
+                                                                echo $AD1->title;
+                                                            }
+                                                            ?>
+                                                        </span><br />
+                                                        <span class="chat-message-item">
+                                                            <?php
+                                                            if (strlen($MESSAGE->message) > 30) {
+                                                                echo substr($MESSAGE->message, 0, 28) . '...';
+                                                            } else {
+                                                                echo $MESSAGE->message;
+                                                            }
+                                                            ?>
+                                                        </span>
+                                                        <!--<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>-->
+                                                    </div>
+
+
+                                                </li>
+
+                                                <?php
+                                            }
+                                            ?>
+                                        </ul>
+
+                                        <!-- ... end Notification List Chat Messages -->
                                     </div>
-                                </div>
-                                <?php
+
+                                    <div class="col col-xl-7 col-lg-7 col-md-8 col-sm-8  padding-l-0">
+                                        <!-- Chat Field -->
+
+                                        <!-- ... end Chat Field -->
+                                    </div>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12  padding-r-0">
+                                        <div class="post no-chats">
+                                            <h3>No Conversations yet!.</h3><br/>
+                                            <h6>Click "Chat" on an ad to start chatting.</h6><br/>
+                                            <a href="../all-advertisement.php" class="btn btn-primary btn-sm">
+                                                Browse Advertisements
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
                             }
                             ?>
                         </div>
@@ -495,7 +694,28 @@ if (isset($_GET['id'])) {
                                                 }
                                                 ?>">
                                                     <div class="author-thumb message-box">
-                                                        <img src="../upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
+                                                        <?php
+                                                        if ($MEM->profilePicture) {
+
+                                                            if ($MEM->facebookID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                                ?>
+                                                                <img alt="profile picture" src="<?php echo $MEM1->profilePicture; ?>">
+                                                                <?php
+                                                            } elseif ($MEM->googleID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                                ?>
+                                                                <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <img alt="profile picture" src="../upload/member/<?php echo $MEM->profilePicture; ?>">
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                            ?>
+                                                            <img alt="profile picture" src="../upload/member/member.png">
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                     <div class="notification-event hidden-xs">
                                                         <a class="h6 notification-friend" href="member-message.php?id=<?php echo $MESSAGE->id; ?>">
@@ -543,7 +763,28 @@ if (isset($_GET['id'])) {
                                             <div class="ui-block-title reciever-details">
                                                 <h6 class="title"><?php echo $OWNER->firstName . ' ' . $OWNER->lastName; ?></h6>
                                                 <div class="author-thumb message-box">
-                                                    <img src="../upload/member/<?php echo $OWNER->profilePicture; ?>" alt="author">
+                                                    <?php
+                                                    if ($OWNER->profilePicture) {
+
+                                                        if ($OWNER->facebookID && substr($OWNER->profilePicture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img alt="profile picture" src="<?php echo $OWNER->profilePicture; ?>">
+                                                            <?php
+                                                        } elseif ($OWNER->googleID && substr($OWNER->profilePicture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img alt="profile picture" src="<?php echo $OWNER->profilePicture; ?>">
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img alt="profile picture" src="../upload/member/<?php echo $OWNER->profilePicture; ?>">
+                                                            <?php
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        <img alt="profile picture" src="../upload/member/member.png">
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </div>
                                             </div>
                                             <div class="ui-block-title ad-details-section">
@@ -613,7 +854,28 @@ if (isset($_GET['id'])) {
                                                         ?>
                                                         <li>
                                                             <div class="author-thumb message-box">
-                                                                <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
+                                                                <?php
+                                                                if ($MEM1->profilePicture) {
+
+                                                                    if ($MEM1->facebookID && substr($MEM1->profilePicture, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="<?php echo $MEM1->profilePicture; ?>">
+                                                                        <?php
+                                                                    } elseif ($MEM1->googleID && substr($MEM1->profilePicture, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="<?php echo $MEM1->profilePicture; ?>">
+                                                                        <?php
+                                                                    } else {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="../upload/member/<?php echo $MEM1->profilePicture; ?>">
+                                                                        <?php
+                                                                    }
+                                                                } else {
+                                                                    ?>
+                                                                    <img alt="profile picture" src="../upload/member/member.png">
+                                                                    <?php
+                                                                }
+                                                                ?>
                                                             </div>
                                                             <div class="notification-event">
                                                                 <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
@@ -669,7 +931,28 @@ if (isset($_GET['id'])) {
                                                     ?>
                                                 </h6>
                                                 <div class="author-thumb message-box">
-                                                    <img src="../upload/member/<?php echo $MEM2->profilePicture; ?>" alt="author">
+                                                    <?php
+                                                    if ($MEM2->profilePicture) {
+
+                                                        if ($MEM2->facebookID && substr($MEM2->profilePicture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img alt="profile picture" src="<?php echo $MEM2->profilePicture; ?>">
+                                                            <?php
+                                                        } elseif ($MEM2->googleID && substr($MEM2->profilePicture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img alt="profile picture" src="<?php echo $MEM2->profilePicture; ?>">
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img alt="profile picture" src="../upload/member/<?php echo $MEM2->profilePicture; ?>">
+                                                            <?php
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        <img alt="profile picture" src="../upload/member/member.png">
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </div>
                                             </div>
                                             <div class="ui-block-title ad-details-section">
@@ -741,7 +1024,28 @@ if (isset($_GET['id'])) {
                                                         ?>
                                                         <li>
                                                             <div class="author-thumb message-box">
-                                                                <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
+                                                                <?php
+                                                                if ($MEM1->profilePicture) {
+
+                                                                    if ($MEM1->facebookID && substr($MEM1->profilePicture, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="<?php echo $MEM1->profilePicture; ?>">
+                                                                        <?php
+                                                                    } elseif ($MEM1->googleID && substr($MEM1->profilePicture, 0, 5) === "https") {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="<?php echo $MEM1->profilePicture; ?>">
+                                                                        <?php
+                                                                    } else {
+                                                                        ?>
+                                                                        <img alt="profile picture" src="../upload/member/<?php echo $MEM1->profilePicture; ?>">
+                                                                        <?php
+                                                                    }
+                                                                } else {
+                                                                    ?>
+                                                                    <img alt="profile picture" src="../upload/member/member.png">
+                                                                    <?php
+                                                                }
+                                                                ?>
                                                             </div>
                                                             <div class="notification-event">
                                                                 <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
@@ -786,17 +1090,119 @@ if (isset($_GET['id'])) {
                                 </div>
                                 <?php
                             } else {
-                                ?>
-                                <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12  padding-r-0">
-                                    <div class="post no-chats">
-                                        <h3>No Conversations yet!.</h3><br/>
-                                        <h6>Click "Chat" on an ad to start chatting.</h6><br/>
-                                        <a href="../all-advertisement.php" class="btn btn-primary btn-sm">
-                                            Browse Advertisements
-                                        </a>
+                                if (count($allparticipants) > 0) {
+                                    ?>
+                                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12  padding-r-0  padding-l-0">
+                                        <!-- Notification List Chat Messages -->
+                                        <ul class="notification-list chat-message">
+
+                                            <?php
+                                            if (!isset($_GET['id']) && !isset($_GET['ad'])) {
+                                                $maxids = array();
+                                                foreach ($allparticipants as $participant) {
+                                                    $max = AdvertisementMessage::getMaxIDOfDistinctAdvertisement($participant['advertisement'], $MEMBER->id);
+
+                                                    array_push($maxids, $max['max']);
+//                                        return $maxids;
+                                                }
+                                                rsort($maxids);
+                                                foreach ($maxids as $key => $maxid) {
+                                                    $MESSAGE = new AdvertisementMessage($maxid);
+                                                    $AD1 = new Advertisement($MESSAGE->advertisement);
+                                                    if ($MESSAGE->owner == $MEMBER->id) {
+                                                        $MEM = new Member($MESSAGE->member);
+                                                    } elseif ($MESSAGE->member == $MEMBER->id) {
+                                                        $MEM = new Member($MESSAGE->owner);
+                                                    }
+                                                    ?>
+
+                                                    <li class="<?php
+                                                    if (isset($ADVERTISEMENT)) {
+                                                        if ($MESSAGE->advertisement == $ADVERTISEMENT->id) {
+                                                            echo 'active';
+                                                        }
+                                                    }
+                                                    ?>">
+                                                        <div class="author-thumb message-box">
+                                                            <?php
+                                                            if ($MEM->profilePicture) {
+
+                                                                if ($MEM->facebookID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                                    ?>
+                                                                    <img alt="profile picture" src="<?php echo $MEM1->profilePicture; ?>">
+                                                                    <?php
+                                                                } elseif ($MEM->googleID && substr($MEM->profilePicture, 0, 5) === "https") {
+                                                                    ?>
+                                                                    <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                    <img alt="profile picture" src="../upload/member/<?php echo $MEM->profilePicture; ?>">
+                                                                    <?php
+                                                                }
+                                                            } else {
+                                                                ?>
+                                                                <img alt="profile picture" src="../upload/member/member.png">
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </div>
+                                                        <div class="notification-event hidden-xs">
+                                                            <a class="h6 notification-friend" href="member-message.php?id=<?php echo $MESSAGE->id; ?>">
+                                                                <?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
+                                                            </a>
+                                                            <span class="chat-message-item">
+                                                                <?php
+                                                                if (strlen($AD1->title) > 20) {
+                                                                    echo substr($AD1->title, 0, 18) . '...';
+                                                                } else {
+                                                                    echo $AD1->title;
+                                                                }
+                                                                ?>
+                                                            </span><br />
+                                                            <span class="chat-message-item">
+                                                                <?php
+                                                                if (strlen($MESSAGE->message) > 30) {
+                                                                    echo substr($MESSAGE->message, 0, 28) . '...';
+                                                                } else {
+                                                                    echo $MESSAGE->message;
+                                                                }
+                                                                ?>
+                                                            </span>
+                                                            <!--<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>-->
+                                                        </div>
+
+
+                                                    </li>
+
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </ul>
+
+                                        <!-- ... end Notification List Chat Messages -->
                                     </div>
-                                </div>
-                                <?php
+
+                                    <div class="col col-xl-7 col-lg-7 col-md-8 col-sm-8  padding-l-0">
+                                        <!-- Chat Field -->
+
+                                        <!-- ... end Chat Field -->
+                                    </div>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12  padding-r-0">
+                                        <div class="post no-chats">
+                                            <h3>No Conversations yet!.</h3><br/>
+                                            <h6>Click "Chat" on an ad to start chatting.</h6><br/>
+                                            <a href="../all-advertisement.php" class="btn btn-primary btn-sm">
+                                                Browse Advertisements
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
                             }
                             ?>
                         </div>

@@ -36,18 +36,19 @@
             </div>
 
             <div class="ui-block-title">
-                <a href="#" class="h6 title">Notifications</a>
-                <a href="#" class="items-round-little bg-primary">8</a>
+                <a href="notifications.php" class="h6 title">Notifications</a>
+                <a href="#" class="items-round-little bg-blue"><?php echo $countnotifications; ?></a>
             </div>
             <div class="ui-block-title">
-                <a href="#" class="h6 title">Chat / Messages</a>
+                <a href="member-message.php" class="h6 title">Chat / Messages</a>
+                <a href="#" class="items-round-little bg-blue"><?php echo $countmsg; ?></a>
             </div>
             <div class="ui-block-title">
-                <a href="#" class="h6 title">Friend Requests</a>
-                <a href="#" class="items-round-little bg-blue">4</a>
+                <a href="friend-requests.php" class="h6 title">Follow Requests</a>
+                <a href="#" class="items-round-little bg-blue"><?php echo $countu['count']; ?></a>
             </div>
             <div class="ui-block-title ui-block-title-small">
-                <h6 class="title">FAVOURITE PAGE</h6>
+                <h6 class="title">Groups</h6>
             </div>
             <div class="ui-block-title">
                 <a href="create-group.php" class="h6 title">Create Group</a>
@@ -102,14 +103,14 @@
 
                 <div class="ui-block-title">
                     <a href="#" class="h6 title">Notifications</a>
-                    <a href="#" class="items-round-little bg-primary">8</a>
+                    <a href="#" class="items-round-little bg-primary"></a>
                 </div>
                 <div class="ui-block-title">
                     <a href="#" class="h6 title">Chat / Messages</a>
                 </div>
                 <div class="ui-block-title">
                     <a href="#" class="h6 title">Friend Requests</a>
-                    <a href="#" class="items-round-little bg-blue">4</a>
+                    <a href="#" class="items-round-little bg-blue"></a>
                 </div>
                 <div class="ui-block-title ui-block-title-small">
                     <h6 class="title">FAVOURITE PAGE</h6>

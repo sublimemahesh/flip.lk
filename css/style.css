@@ -3209,3 +3209,6 @@ a .ad-title{
 .author-thumb1 img{
     margin-top: -14px;
 }
+#site-header .control-icon .label-avatar.newest-notifications {
+    right: 18px;
+}

@@ -152,5 +152,19 @@ class Notification {
         }
         return $array_res;
     }
+    
+    public function getAllNotificationsByUser($id) {
+
+        $query = "SELECT * FROM `notification` WHERE `user`= $id ORDER BY `created_at` DESC";
+
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
 
 }

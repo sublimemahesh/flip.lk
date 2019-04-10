@@ -203,7 +203,7 @@
                                 $countnotifications = Notification::countUnviewedNotifications($MEMBER->id);
                                 if ($countnotifications > 0) {
                                     ?>
-                                    <div class="label-avatar bg-blue newest-request"><?php echo $countnotifications; ?></div>
+                                    <div class="label-avatar bg-blue newest-request newest-notifications"><?php echo $countnotifications; ?></div>
                                     <?php
                                 }
                             }
