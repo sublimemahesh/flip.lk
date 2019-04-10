@@ -20,13 +20,16 @@
         
         
         
-        <group>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/login.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/fb-login-scripts.js</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/class/Member.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/google-login.js</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/ajax/google-login.php</file>
-        </group>
+        
         <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/flip.lk/class/Advertisement.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/group-settings.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/css/style.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/group-about-nav.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/class/GroupAndMemberRequest.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/group-details.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/advertisement.php</file>
+        </group>
     </open-files>
 </project-private>

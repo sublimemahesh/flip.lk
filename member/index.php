@@ -144,11 +144,7 @@ $MEMBER = new Member($_SESSION['id']);
                         <!-- ... end News Feed Form  -->
                     </div>
 
-
-
-
                     <div id="newsfeed-items-grid">
-
                         <div id="output"><?php include('post-and-get/ajax/get-ads-and-posts.php'); ?></div>
                         <div class="loader"><img src="img/loader/loading.gif" /></div>
                     </div>

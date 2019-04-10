@@ -18,7 +18,7 @@
             <div class="control-icon more has-items">
                 <a href="../all-advertisement.php">
                     <span><img src="img/icon/header-icon/advertising.png" alt=""   /></span>
-                    <span class="nav-topic">Advertisements</span>
+                    <span class="nav-topic">All Ads</span>
                 </a>
 
             </div>
