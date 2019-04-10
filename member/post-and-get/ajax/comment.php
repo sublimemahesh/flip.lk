@@ -10,6 +10,21 @@ if ($_POST['option'] == 'ADDCOMMENT') {
     $COMMENT->comment = $_POST['comment'];
 
     $result = $COMMENT->create();
+    //    Create Notification
+    if ($result) {
+        $NOTIFICATION = new Notification(NULL);
+        $MEM = new Member($COMMENT->member);
+        $POST = new Post($COMMENT->advertisement);
+        
+        $NOTIFICATION->imageName = $MEM->profilePicture;
+        $NOTIFICATION->title = 'New Comment';
+        $NOTIFICATION->description = $MEM->firstName . ' ' . $MEM->lastName . ' is commented on your post.';
+        $NOTIFICATION->url = 'advertisement.php?id=' . $POST->id;
+        $NOTIFICATION->user = $POST->member;
+        $NOTIFICATION->create();
+    }
+    
+    
     $MEMBER = new Member($_POST['member']);
     $array= array();
 

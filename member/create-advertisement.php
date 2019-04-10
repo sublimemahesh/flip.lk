@@ -380,6 +380,7 @@ include './window-pop-up.php';
         <script src="js/heartcode-canvasloader.js" type="text/javascript"></script>
         <script src="js/image-preloader.js" type="text/javascript"></script>
         <script src="js/js/sub-categories.js" type="text/javascript"></script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script>
                                                 tinymce.init({
                                                     selector: "#description",

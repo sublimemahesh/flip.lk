@@ -284,6 +284,7 @@ $groups = Group::searchGroups($category1, $subcategory, $pageLimit, $setLimit);
         <script src="js/js/all-ad-slider.js" type="text/javascript"></script>
         <script src="js/choices.js" type="text/javascript"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script>
             var placeSearch, autocomplete;
             $('#city').val($('#autocomplete2').val());

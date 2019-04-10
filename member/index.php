@@ -255,9 +255,6 @@ $MEMBER = new Member($_SESSION['id']);
         <script src="js/image-preloader.js" type="text/javascript"></script>
         <script src="js/js/read-more-and-less.js" type="text/javascript"></script>
         <script src="js/js/scroll-loader.js" type="text/javascript"></script>
-        <script type="text/javascript">
-
-            
-        </script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
     </body>
 </html>

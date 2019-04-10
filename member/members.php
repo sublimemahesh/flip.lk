@@ -399,5 +399,6 @@ if ($count_members['count'] == 0) {
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="js/js/find-friends.js" type="text/javascript"></script>
         <script src="js/js/group.js" type="text/javascript"></script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
     </body>
 </html>

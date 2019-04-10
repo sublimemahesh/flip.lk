@@ -8,7 +8,7 @@
                 <div class="s002">
                     <form action="advertisements.php" method="get">
                         <div class="inner-form">
-<!--                            <div class="input-field fouth-wrap">
+                            <div class="input-field fouth-wrap">
                                 <div class="icon-wrap">
 
                                     <svg height="24" viewBox="0 -52 512 512" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -23,14 +23,14 @@
                                 <select data-trigger="" name="category">
                                     <option value="">Category</option>
                                     <?php
-//                                    foreach (BusinessCategory::all() as $key => $category) {
+                                  foreach (BusinessCategory::all() as $key => $category) {
                                         ?>
                                         <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
                                         <?php
-//                                    }
+                                    }
                                     ?>
                                 </select>
-                            </div>-->
+                            </div>
                             <div class="input-field second-wrap">
                                 <div class="icon-wrap">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

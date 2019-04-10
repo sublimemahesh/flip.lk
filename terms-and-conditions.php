@@ -93,6 +93,7 @@ $TERMS = New Page(6);
         <script src="js/choices.js" type="text/javascript"></script>
         <script src="plugins/OwlCarousel/dist/owl.carousel.min.js" type="text/javascript"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
                 $('.about-box').mouseover(function () {

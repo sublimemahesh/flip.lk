@@ -726,5 +726,6 @@ $propic = $MEMBER->profilePicture;
         <script src="js/heartcode-canvasloader.js" type="text/javascript"></script>
         <script src="js/image-preloader.js" type="text/javascript"></script>
         <script src="js/js/read-more-and-less.js" type="text/javascript"></script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
     </body>
 </html>

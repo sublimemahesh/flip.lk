@@ -1572,7 +1572,7 @@ header .control-icon > svg {
 }
 .loader img {
     width: 50px;
-    
+
 }
 .loader {
     text-align: center;
@@ -1590,4 +1590,8 @@ header .control-icon > svg {
 .table-careers li:first-child {
     margin-top: 0;
     background: none;
+}
+.chat-message .notif-list .notification-event {
+    width: 88%;
+    max-width: 88%;
 }
