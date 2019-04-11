@@ -90,7 +90,7 @@ if (isset($_SESSION['id'])) {
                                             <div class="ui-block">
                                                 <div class="row">
                                                     <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
-                                                        <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="unfollow-friend" row-id="<?php echo $isFriend['id']; ?>" friend-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Unfollow<div class="ripple-container"></div></a>
+                                                        <a class="btn btn-blue btn-md-2 join-group-btn" id="unfollow-friend" row-id="<?php echo $isFriend['id']; ?>" friend-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Unfollow<div class="ripple-container"></div></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -147,14 +147,14 @@ if (isset($_SESSION['id'])) {
                                                                 <textarea class="form-control" placeholder=""></textarea>
                                                             </div>
                                                             <div class="add-options-message">
-                                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
+                                                                <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
                                                                     <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
                                                                 </a>
-                                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
+                                                                <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
                                                                     <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
                                                                 </a>
 
-                                                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
+                                                                <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
                                                                     <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
                                                                 </a>
                                                                 <input type="submit" name="save-post" class="btn btn-primary btn-md-2 share-post" value="Post" />

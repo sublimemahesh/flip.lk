@@ -700,10 +700,11 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
             }
         }
     } else {
+       
         $results .= '';
     }
     $results .= '</div>';
-
+ 
     echo $results;
 //}
 ?>

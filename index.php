@@ -81,7 +81,7 @@ if (isset($_SESSION['id'])) {
                                                     <img src="img/icon/header-icon/deal_done.png" alt=""/>
                                                 </div>
                                                 <h4>Deal Done</h4>
-                                                <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
+                                                <p><b>Congratulations!</b>Your deal was done.</p>
                                             </div>
                                         </div>
                                     </div>

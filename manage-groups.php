@@ -138,7 +138,27 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
                                                                 ?>
                                                                 <li>
                                                                     <a href="#" title="<?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?>">
-                                                                        <img src="../upload/member/<?php echo $MEMB->profilePicture; ?>" class="friend-list-img" alt="author">
+                                                                        <?php
+                                                                        if ($MEMB->profilePicture) {
+                                                                            if ($MEMB->facebookID && substr($MEMB->profilePicture, 0, 5) === "https") {
+                                                                                ?>
+                                                                                <img alt="profile picture" src="<?php echo $MEMB->profilePicture; ?>" class="friend-list-img">
+                                                                                <?php
+                                                                            } elseif ($MEMB->googleID && substr($MEMB->profilePicture, 0, 5) === "https") {
+                                                                                ?>
+                                                                                <img alt="profile picture" src="<?php echo $MEMB->profilePicture; ?>" class="friend-list-img">
+                                                                                <?php
+                                                                            } else {
+                                                                                ?>
+                                                                                <img alt="profile picture" src="../upload/member/<?php echo $MEMB->profilePicture; ?>" class="friend-list-img">
+                                                                                <?php
+                                                                            }
+                                                                        } else {
+                                                                            ?>
+                                                                            <img alt="author" src="../upload/member/member.png" class="friend-list-img" alt="profile">
+                                                                            <?php
+                                                                        }
+                                                                        ?>
                                                                     </a>
                                                                 </li>
                                                                 <?php
@@ -212,7 +232,27 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
                                                                     ?>
                                                                     <li>
                                                                         <a href="#" title="<?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?>">
-                                                                            <img src="../upload/member/<?php echo $MEMB->profilePicture; ?>" class="friend-list-img" alt="author">
+                                                                            <?php
+                                                                        if ($MEMB->profilePicture) {
+                                                                            if ($MEMB->facebookID && substr($MEMB->profilePicture, 0, 5) === "https") {
+                                                                                ?>
+                                                                                <img alt="profile picture" src="<?php echo $MEMB->profilePicture; ?>" class="friend-list-img">
+                                                                                <?php
+                                                                            } elseif ($MEMB->googleID && substr($MEMB->profilePicture, 0, 5) === "https") {
+                                                                                ?>
+                                                                                <img alt="profile picture" src="<?php echo $MEMB->profilePicture; ?>" class="friend-list-img">
+                                                                                <?php
+                                                                            } else {
+                                                                                ?>
+                                                                                <img alt="profile picture" src="../upload/member/<?php echo $MEMB->profilePicture; ?>" class="friend-list-img">
+                                                                                <?php
+                                                                            }
+                                                                        } else {
+                                                                            ?>
+                                                                            <img alt="author" src="../upload/member/member.png" class="friend-list-img" alt="profile">
+                                                                            <?php
+                                                                        }
+                                                                        ?>
                                                                         </a>
                                                                     </li>
                                                                     <?php
@@ -280,7 +320,27 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
                                                                     ?>
                                                                     <li>
                                                                         <a href="#" title="<?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?>">
-                                                                            <img src="../upload/member/<?php echo $MEMB->profilePicture; ?>" class="friend-list-img" alt="author">
+                                                                            <?php
+                                                                        if ($MEMB->profilePicture) {
+                                                                            if ($MEMB->facebookID && substr($MEMB->profilePicture, 0, 5) === "https") {
+                                                                                ?>
+                                                                                <img alt="profile picture" src="<?php echo $MEMB->profilePicture; ?>" class="friend-list-img">
+                                                                                <?php
+                                                                            } elseif ($MEMB->googleID && substr($MEMB->profilePicture, 0, 5) === "https") {
+                                                                                ?>
+                                                                                <img alt="profile picture" src="<?php echo $MEMB->profilePicture; ?>" class="friend-list-img">
+                                                                                <?php
+                                                                            } else {
+                                                                                ?>
+                                                                                <img alt="profile picture" src="../upload/member/<?php echo $MEMB->profilePicture; ?>" class="friend-list-img">
+                                                                                <?php
+                                                                            }
+                                                                        } else {
+                                                                            ?>
+                                                                            <img alt="author" src="../upload/member/member.png" class="friend-list-img" alt="profile">
+                                                                            <?php
+                                                                        }
+                                                                        ?>
                                                                         </a>
                                                                     </li>
                                                                     <?php

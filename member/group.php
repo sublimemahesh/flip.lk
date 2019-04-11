@@ -71,10 +71,10 @@ $GROUP = new Group($id);
                             <div class="ui-block group-settings-btn">
                                 <div class="row">
                                     <div class="col col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4">
-                                        <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="leave-group" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group<div class="ripple-container"></div></a>
+                                        <a class="btn btn-blue btn-md-2 join-group-btn" id="leave-group" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group<div class="ripple-container"></div></a>
                                     </div>
                                     <div class="col col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4">
-                                        <a href="#" data-toggle="modal" data-target="#add-member" class="btn btn-blue btn-md-2 join-group-btn add-member" id="" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add Members<div class="ripple-container"></div></a>
+                                        <a data-toggle="modal" data-target="#add-member" class="btn btn-blue btn-md-2 join-group-btn add-member" id="" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add Members<div class="ripple-container"></div></a>
                                     </div>
                                     <div class="col col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4">
                                         <a href="create-advertisement.php?id=<?php echo $GROUP->id ?>" class="btn btn-blue btn-md-2 join-group-btn" id="">Post Advertisement<div class="ripple-container"></div></a>
@@ -150,7 +150,7 @@ $GROUP = new Group($id);
                             ?>" id="join-block">
                                 <div class="row">
                                     <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
-                                        <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="join-group-btn" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Join Group<div class="ripple-container"></div></a>
+                                        <a class="btn btn-blue btn-md-2 join-group-btn" id="join-group-btn" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Join Group<div class="ripple-container"></div></a>
                                     </div>
                                     <div class="col col-lg-9 col-md-9 col-sm-8 col-8 join-group-section">
                                         <h5>Join this group to post and comment.</h5>
@@ -164,7 +164,7 @@ $GROUP = new Group($id);
                             ?>" id="request-cancel-block">
                                 <div class="row">
                                     <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
-                                        <a href="#" class="btn btn-smoke btn-light-bg btn-md-2 join-group-btn" id="cancel-request-btn" row-id="<?php echo $rowid; ?>">Cancel Request<div class="ripple-container"></div></a>
+                                        <a class="btn btn-smoke btn-light-bg btn-md-2 join-group-btn" id="cancel-request-btn" row-id="<?php echo $rowid; ?>">Cancel Request<div class="ripple-container"></div></a>
                                     </div>
                                     <div class="col col-lg-9 col-md-9 col-sm-8 col-8 join-group-section">
                                         <h5>Your request has been sent to the approval.</h5>
