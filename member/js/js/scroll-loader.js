@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $('.loader').hide();
+});
+
 $(window).scroll(function () {
 
     if ($(window).scrollTop() == ($(document).height() - $(window).height())) {

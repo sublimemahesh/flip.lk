@@ -76,7 +76,27 @@
                                                 ?>
                                                 <li id="request-to-join-<?php echo $MEMB->id; ?>" class="request-to-join-<?php echo $MEMB->id; ?>">
                                                     <div class="author-thumb">
-                                                        <img src="../upload/member/<?php echo $MEMB->profilePicture; ?>" alt="author">
+                                                        <?php
+                                                        if ($MEMB->profilePicture) {
+                                                            if ($MEMB->facebookID && substr($MEMB->profilePicture, 0, 5) === "https") {
+                                                                ?>
+                                                                <img alt="profile picture" src="<?php echo $MEMB->profilePicture; ?>">
+                                                                <?php
+                                                            } elseif ($MEMB->googleID && substr($MEMB->profilePicture, 0, 5) === "https") {
+                                                                ?>
+                                                                <img alt="profile picture" src="<?php echo $MEMB->profilePicture; ?>">
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <img alt="profile picture" src="../upload/member/<?php echo $MEMB->profilePicture; ?>">
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                            ?>
+                                                            <img alt="author" src="../upload/member/member.png" class="avatar">
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                     <div class="notification-event">
                                                         <a href="#" class="h6 notification-friend"><?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?></a>
@@ -103,7 +123,27 @@
 
                                                 <li class="accepted hidden accepted-request-<?php echo $MEMB->id; ?>" id="accepted-request-<?php echo $MEMB->id; ?>">
                                                     <div class="author-thumb member-request-profile-pic">
-                                                        <img src="../upload/member/<?php echo $MEMB->profilePicture; ?>" alt="author">
+                                                        <?php
+                                                        if ($MEMB->profilePicture) {
+                                                            if ($MEMB->facebookID && substr($MEMB->profilePicture, 0, 5) === "https") {
+                                                                ?>
+                                                                <img alt="profile picture" src="<?php echo $MEMB->profilePicture; ?>">
+                                                                <?php
+                                                            } elseif ($MEMB->googleID && substr($MEMB->profilePicture, 0, 5) === "https") {
+                                                                ?>
+                                                                <img alt="profile picture" src="<?php echo $MEMB->profilePicture; ?>">
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <img alt="profile picture" src="../upload/member/<?php echo $MEMB->profilePicture; ?>">
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                            ?>
+                                                            <img alt="author" src="../upload/member/member.png" class="avatar">
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                     <div class="notification-event">
                                                         <a href="profile.php?id=<?php echo $MEMB->id; ?>" class="h6 notification-friend"><?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?></a> just became a friend of you.

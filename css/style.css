@@ -22,7 +22,6 @@ a:hover {
 }
 #site-header .control-icon img {
     height: 22px;
-    opacity: 0.8;
 }
 
 #site-header .control-icon img:hover {
@@ -887,7 +886,8 @@ input[type='submit'].share-post {
     margin-bottom: 10px;
 }
 .control-icon a {
-    color: #9a9fbf;
+    color: #fbfbfb;
+    font-weight: 600;
 }
 .delete-comment {
     cursor: pointer;
@@ -2517,7 +2517,7 @@ a .ad-title{
 }
 
 .sidebar{
-/*    margin-top: 30px;*/
+    /*    margin-top: 30px;*/
     margin-top: 12px;
     border-radius: 5px;
     margin-bottom: 16px;
