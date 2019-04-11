@@ -23,15 +23,7 @@
         
         
         
-        <group>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/auth.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/class/Database.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/login.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/fb-login-scripts.js</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/class/Member.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/ajax/fb-login.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/google-login.js</file>
-        </group>
+        
         <group>
             <file>file:/C:/xampp/htdocs/flip.lk/member/css/style.css</file>
             <file>file:/C:/xampp/htdocs/flip.lk/index.php</file>
@@ -39,6 +31,11 @@
             <file>file:/C:/xampp/htdocs/flip.lk/css/style.css</file>
             <file>file:/C:/xampp/htdocs/flip.lk/header.php</file>
             <file>file:/C:/xampp/htdocs/flip.lk/member/header.php</file>
+        </group>
+        <group>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/profile.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/notifications.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/css/style.css</file>
         </group>
     </open-files>
 </project-private>

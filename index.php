@@ -301,6 +301,7 @@ if (isset($_SESSION['id'])) {
         <script src="js/js/custom.js" type="text/javascript"></script>
         <script src="js/smooth-scroll.js"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
+        <script src="js/perfect-scrollbar.js"></script>
         <script>
             var placeSearch, autocomplete;
 

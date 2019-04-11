@@ -426,6 +426,9 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
         <script src="plugins/OwlCarousel/dist/owl.carousel.min.js" type="text/javascript"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
+        <script src="js/perfect-scrollbar.js"></script>
+        <script src="js/smooth-scroll.js"></script>
+        <script src="js/base-init.js"></script>
         <script>
             $(function () {
                 // Load the classic theme

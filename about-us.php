@@ -165,6 +165,9 @@ $VALUE = New Page(4);
         <script src="plugins/type-js/js/typed.min.js" type="text/javascript"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
+        <script src="js/perfect-scrollbar.js"></script>
+        <script src="js/smooth-scroll.js"></script>
+        <script src="js/base-init.js"></script>
         <script>
             $(document).ready(function () {
                 $('.about-box').mouseover(function () {
