@@ -1736,3 +1736,9 @@ header .control-icon > svg {
 .table-careers li:first-child:hover{
    background: #fff; 
 }
+.unviewed-notification {
+    background: #f5fcff;
+}
+#site-header .control-icon .label-avatar.newest-notifications {
+    right: 18px;
+}

@@ -85,14 +85,14 @@ if ($count_requests['count'] == 0) {
                                         </button>
                                     </div>
                                 </form>
-<!--                                <form class="w-search col-sm-4">
-                                    <div class="form-group with-button">
-                                        <input class="form-control js-user-search" id="find-member" type="text" placeholder="Find Friends...">
-                                        <button class="search-btn">
-                                            <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
-                                        </button>
-                                    </div>
-                                </form>-->
+                                <!--                                <form class="w-search col-sm-4">
+                                                                    <div class="form-group with-button">
+                                                                        <input class="form-control js-user-search" id="find-member" type="text" placeholder="Find Friends...">
+                                                                        <button class="search-btn">
+                                                                            <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>-->
                                 <form class="w-search col-sm-4">
                                     <div class="form-group with-button">
                                         <input class="form-control find-friends" id="find-member" placeholder="Find Friends..." type="text" value="" autocomplete="off">
@@ -166,9 +166,25 @@ if ($count_requests['count'] == 0) {
                                                     <img src="../upload/member/member.png" alt="author">
                                                     <?php
                                                 } else {
-                                                    ?>
-                                                    <img src="../upload/member/<?php echo $FRI->profilePicture; ?>" alt="author">
-                                                    <?php
+                                                    if ($FRI->profilePicture) {
+                                                        if ($FRI->facebookID && substr($FRI->profilePicture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img alt="profile picture" src="<?php echo $FRI->profilePicture; ?>">
+                                                            <?php
+                                                        } elseif ($FRI->googleID && substr($FRI->profilePicture, 0, 5) === "https") {
+                                                            ?>
+                                                            <img alt="profile picture" src="<?php echo $FRI->profilePicture; ?>">
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img alt="profile picture" src="../upload/member/<?php echo $FRI->profilePicture; ?>">
+                                                            <?php
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        <img alt="profile picture" src="../upload/member/member.png">
+                                                        <?php
+                                                    }
                                                 }
                                                 ?>
                                             </div>

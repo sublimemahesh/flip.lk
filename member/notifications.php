@@ -13,8 +13,6 @@ if (isset($_GET['id'])) {
 } else {
     $MEM = new Member($_SESSION['id']);
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,34 +65,34 @@ if (isset($_GET['id'])) {
 
                             <ul class="notification-list friend-requests">
                                 <?php
-                                foreach (Notification::getUnviewedNotifications($MEMBER->id) as $notification) {
+                                foreach (Notification::getAllNotificationsByUser($MEMBER->id) as $notification) {
                                     ?>
 
-                                <li class="notif-list" notification="<?php echo $notification['id']; ?>" id="notif_<?php echo $notification['id']; ?>">
+                                    <li class="notif-list <?php if($notification['is_viewed'] == 0) { echo 'unviewed-notification'; } ?>" notification="<?php echo $notification['id']; ?>" id="notif_<?php echo $notification['id']; ?>">
                                         <div class="author-thumb member-request-profile-pic">
-                                            <?php                      
-                                                if ($notification['image_name']) {
-                                                    if (substr($notification['image_name'], 0, 5) == 'https') {
-                                                        ?>
-                                                        <img src="<?php echo $notification['image_name']; ?>" alt="author">
-                                                        <?php
-                                                    } else {
-                                                        ?>
-                                                        <img src="../upload/member/<?php echo $notification['image_name']; ?>" alt="author">
-                                                        <?php
-                                                    }
+                                            <?php
+                                            if ($notification['image_name']) {
+                                                if (substr($notification['image_name'], 0, 5) == 'https') {
+                                                    ?>
+                                                    <img src="<?php echo $notification['image_name']; ?>" alt="author">
+                                                    <?php
                                                 } else {
                                                     ?>
-                                                    <img src="../upload/member/member.png" alt="author">
+                                                    <img src="../upload/member/<?php echo $notification['image_name']; ?>" alt="author">
                                                     <?php
                                                 }
+                                            } else {
                                                 ?>
+                                                <img src="../upload/member/member.png" alt="author">
+                                                <?php
+                                            }
+                                            ?>
                                         </div>
                                         <div class="notification-event">
-                                             <a href="<?php echo $notification['url']; ?>" class="h6 notification-friend"><?php echo $notification['title']; ?></a>
+                                            <a href="<?php echo $notification['url']; ?>" class="h6 notification-friend"><?php echo $notification['title']; ?></a>
                                             <span class="chat-message-item"><?php echo $notification['description']; ?></span>
                                         </div>
-                                        
+
                                     </li>
                                     <?php
                                 }
@@ -106,12 +104,12 @@ if (isset($_GET['id'])) {
                         </div>
 
                     </div>
-                     <?php
+                    <?php
                     include './profile-left-side.php';
                     ?>
 
                     <!-- ... end Left Sidebar -->
-                    
+
                 </div>
             </div>
 
@@ -127,7 +125,7 @@ if (isset($_GET['id'])) {
         <!-- ... end Window-popup -->
         <!-- updateAllAsViewed -->
         <?php
-        $res = Notification::updateAllAsViewed();
+//        $res = Notification::updateAllAsViewed();
         ?>
         <!-- ... end updateAllAsViewed -->
 
@@ -171,5 +169,8 @@ if (isset($_GET['id'])) {
         <script src="js/js/join-group.js" type="text/javascript"></script>
         <script src="js/js/find-friends.js" type="text/javascript"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
+        <script>
+            $('.newest-notifications').text('0');
+        </script>
     </body>
 </html>

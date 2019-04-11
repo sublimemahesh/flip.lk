@@ -69,12 +69,12 @@ if (isset($_SESSION['id'])) {
                                                     <img src="img/icon/header-icon/user-male-plus.png" alt=""/>
                                                 </div>
                                                 <h4>Create Your Account</h4>
-                                                <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
+                                                <p>To create your account, just enter your personal information or sign in with Facebook or Google.</p>
                                             </div>
                                             <div class="how-it-work text-center ">
                                                 <div class="how-it-work-icon"> <img src="img/icon/header-icon/post_ad.png" alt=""/> </div>
                                                 <h4>Post Free Ad</h4>
-                                                <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
+                                                <p>Click Post Your Ad button and fill form to post your own advertisement.</p>
                                             </div>
                                             <div class="how-it-work text-center">
                                                 <div class="how-it-work-icon ">
@@ -290,13 +290,10 @@ if (isset($_SESSION['id'])) {
 
         <!-- JS Scripts -->
         <script src="js/jquery-3.2.1.js"></script>
-        <script src="js/jquery.appear.js"></script>
-        <script src="js/bootstrap-select.js"></script>
-        <script src="js/base-init.js"></script>
+        <script src="js/choices.js" type="text/javascript"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
-        <script src="js/choices.js" type="text/javascript"></script>
         <script src="plugins/OwlCarousel/dist/owl.carousel.min.js" type="text/javascript"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
         <script src="js/smooth-scroll.js"></script>

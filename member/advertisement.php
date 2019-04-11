@@ -104,7 +104,7 @@ if (isset($_GET['id'])) {
                                                     }
                                                 } else {
                                                     ?>
-                                                    <img alt="author" src="../upload/member/member.png" class="avatar" alt="profile" id="profile_pic2">
+                                                    <img alt="profile picture" src="../upload/member/member.png" class="avatar" id="profile_pic2">
                                                     <?php
                                                 }
                                                 ?>

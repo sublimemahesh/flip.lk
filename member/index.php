@@ -79,7 +79,28 @@ $MEMBER = new Member($_SESSION['id']);
                                 <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
                                     <form action="post-and-get/post.php" method="post" id="post-form">
                                         <div class="author-thumb">
-                                            <img src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
+                                            <?php
+                                                if ($MEMBER->profilePicture) {
+
+                                                    if ($MEMBER->facebookID && substr($MEMBER->profilePicture, 0, 5) === "https") {
+                                                        ?>
+                                                        <img alt="profile picture" src="<?php echo $MEMBER->profilePicture; ?>" class="avatar">
+                                                        <?php
+                                                    } elseif ($MEMBER->googleID && substr($MEMBER->profilePicture, 0, 5) === "https") {
+                                                        ?>
+                                                        <img alt="profile picture" src="<?php echo $MEMBER->profilePicture; ?>" class="avatar">
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <img alt="profile picture" src="../upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar">
+                                                        <?php
+                                                    }
+                                                } else {
+                                                    ?>
+                                                    <img alt="profile picture" src="../upload/member/member.png" class="avatar">
+                                                    <?php
+                                                }
+                                                ?>
                                         </div>
                                         <div class="form-group with-icon label-floating is-empty">
                                             <label class="control-label">Share what you are thinking here...</label>

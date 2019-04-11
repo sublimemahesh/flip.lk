@@ -48,33 +48,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->
             <!-- ... end W-Personal-Info -->
         </div>
     </div>
-    <?php
-    if (GroupMember::checkMemberIsAnAdmin($MEMBER->id, $GROUP->id)) {
-        ?>
-        <div class="ui-block">
-            <div class="ui-block-title">
-                <h6 class="title">Admin Activity</h6>
-                <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-            </div>
-            <div class="ui-block-content">
 
-                <!-- W-Personal-Info -->
-
-                <ul class="widget w-personal-info item-block">
-                    <li>
-                        <a href="member-requests.php?id=<?php echo $GROUP->id; ?>"<span class="title">Member Requests:</span><span class="request-label-avatar bg-blue"><?php echo $no_of_request['count']; ?></span></a>
-                    </li>
-                    <li>
-                        <a href="group-settings.php?id=<?php echo $GROUP->id; ?>"<span class="title">Group Settings</span></a>
-                    </li>
-                </ul>
-
-                <!-- ... end W-Personal-Info -->
-            </div>
-        </div>
-        <?php
-    }
-    ?>
 
     <div class="ui-block">
         <div class="ui-block-title">
@@ -90,15 +64,35 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->
                 foreach (GroupMember::getAllMembersByGroup($GROUP->id) as $key => $member) {
                     if ($key < 13) {
                         $MEM3 = new Member($member['member']);
-                    
-                    ?>
-                    <li>
-                        <a href="#" title="<?php echo $MEM3->firstName . ' ' . $MEM3->lastName; ?>">
-                            <img src="upload/member/<?php echo $MEM3->profilePicture; ?>" class="friend-list-img" alt="author">
-                        </a>
-                    </li>
-                    <?php
-                }
+                        ?>
+                        <li>
+                            <a href="#" title="<?php echo $MEM3->firstName . ' ' . $MEM3->lastName; ?>">
+                                <?php
+                                if ($MEM3->profilePicture) {
+
+                                    if ($MEM3->facebookID && substr($MEM3->profilePicture, 0, 5) === "https") {
+                                        ?>
+                                        <img alt="profile picture" src="<?php echo $MEM3->profilePicture; ?>" class="friend-list-img">
+                                        <?php
+                                    } elseif ($MEM3->googleID && substr($MEM3->profilePicture, 0, 5) === "https") {
+                                        ?>
+                                        <img alt="profile picture" src="<?php echo $MEM3->profilePicture; ?>" class="friend-list-img">
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <img alt="profile picture" src="../upload/member/<?php echo $MEM3->profilePicture; ?>" class="friend-list-img">
+                                        <?php
+                                    }
+                                } else {
+                                    ?>
+                                    <img src="../upload/member/member.png" class="friend-list-img" alt="profile">
+                                    <?php
+                                }
+                                ?>
+                            </a>
+                        </li>
+                        <?php
+                    }
                 }
                 if (count(GroupMember::getAllMembersByGroup($GROUP->id)) > 13) {
                     ?>

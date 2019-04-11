@@ -68,7 +68,7 @@ if ($_POST['option'] == 'APPROVEREQUEST') {
         $NOTIFICATION->imageName = $GROUP->profilePicture;
         $NOTIFICATION->title = 'Approved Request';
         $NOTIFICATION->description =  $GROUP->name .' is approved your request.';
-        $NOTIFICATION->url = 'group.php?id=' . $GROUP->groupId;
+        $NOTIFICATION->url = 'group.php?id=' . $GROUP->id;
         $NOTIFICATION->user = $req->member;
         $NOTIFICATION->create();
     }
