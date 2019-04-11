@@ -250,6 +250,9 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
         <script src="js/choices.js" type="text/javascript"></script>
         <script src="js/js/custom.js" type="text/javascript"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
+        <script src="js/perfect-scrollbar.js"></script>
+        <script src="js/smooth-scroll.js"></script>
+        <script src="js/base-init.js"></script>
         <script>
             var placeSearch, autocomplete;
             $('#city').val($('#autocomplete2').val());
