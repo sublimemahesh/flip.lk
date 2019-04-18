@@ -3212,3 +3212,6 @@ a .ad-title{
 #site-header .control-icon .label-avatar.newest-notifications {
     right: 18px;
 }
+.control-icon a{
+   color: #888da8;
+}

@@ -138,7 +138,7 @@ $CATEGORIES = BusinessCategory::all();
         <div class="header-spacer header-spacer-small"></div>
         <div class="col col-xl-12 col-12">
             <!-- Main Header Account -->
-            <div class="main-header">
+<!--            <div class="main-header">
                 <div class="content-bg-wrap bg-account"></div>
                 <div class="container">
                     <div class="row">
@@ -153,7 +153,7 @@ $CATEGORIES = BusinessCategory::all();
                     </div>
                 </div>
                 <img class="img-bottom" src="img/account-bottom.png" alt="friends">
-            </div>
+            </div>-->
 
             <!-- ... end Main Header Account -->
             <!-- Your Account Personal Information -->
