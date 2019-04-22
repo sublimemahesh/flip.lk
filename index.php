@@ -41,6 +41,8 @@ if (isset($_SESSION['id'])) {
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
         <link href="css/flaticon.css" rel="stylesheet" type="text/css"/>
+        <!--<link href="css/nice-select.css" rel="stylesheet" type="text/css"/>-->
+        <!--<link href="css/chosen.css" rel="stylesheet" type="text/css"/>-->
     </head>
     <body>
         <?php
@@ -212,12 +214,12 @@ if (isset($_SESSION['id'])) {
                                                     <h4>
                                                         <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
                                                             <?php
-                                                            if($ad['title']) {
-                                                            if (strlen($ad['title']) > 22) {
-                                                                echo substr($ad['title'], 0, 21) . '...';
-                                                            } else {
-                                                                echo $ad['title'];
-                                                            }
+                                                            if ($ad['title']) {
+                                                                if (strlen($ad['title']) > 22) {
+                                                                    echo substr($ad['title'], 0, 21) . '...';
+                                                                } else {
+                                                                    echo $ad['title'];
+                                                                }
                                                             } else {
                                                                 echo 'Advertisement';
                                                             }
@@ -246,7 +248,7 @@ if (isset($_SESSION['id'])) {
 
                                                     <div class="desc">
                                                         <!--<p class="dsc">
-                                                            <?php // echo substr($ad['description'], 0, 100) . '...'; ?>
+                                                        <?php // echo substr($ad['description'], 0, 100) . '...'; ?>
                                                         </p>-->
                                                     </div>
                                                     <div class="listing-bottom">
@@ -267,13 +269,13 @@ if (isset($_SESSION['id'])) {
                                                 </div>
 
                                             </div>
-                                        <?php
-                                    }
-                                    ?>
+                                            <?php
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>
+                            </div>
                         </div>
                     </section>
 
@@ -290,6 +292,13 @@ if (isset($_SESSION['id'])) {
 
         <!-- JS Scripts -->
         <script src="js/jquery-3.2.1.js"></script>
+<!--        <script src="js/jquery.nice-select.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function () {
+                $('select').niceSelect();
+            });
+        </script>-->
+        <!--<script src="js/chosen.jquery.min.js" type="text/javascript"></script>-->
         <script src="js/choices.js" type="text/javascript"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
@@ -299,6 +308,7 @@ if (isset($_SESSION['id'])) {
         <script src="js/smooth-scroll.js"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script src="js/perfect-scrollbar.js"></script>
+        
         <script>
             var placeSearch, autocomplete;
 
