@@ -3214,4 +3214,16 @@ a .ad-title{
 }
 .control-icon a{
    color: #888da8;
+
+.account-settings li a span {
+    color: #cecccc;
+}
+.account-settings li a span:hover {
+    color: #003263;
+}
+.profile-dropdown li a span {
+    color: #cecccc;
+}
+.profile-dropdown li a span:hover {
+    color: #003263;
 }

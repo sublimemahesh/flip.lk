@@ -381,7 +381,7 @@
                             }
                             ?>
                         </span>
-                        <div class="more-dropdown more-with-triangle">
+                        <div class="more-dropdown more-with-triangle profile-dropdown">
                             <div class="mCustomScrollbar" data-mcs-theme="dark">
                                 <div class="ui-block-title ui-block-title-small">
                                     <h6 class="title">Your Account</h6>

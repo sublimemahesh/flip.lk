@@ -170,7 +170,7 @@ if (isset($_GET['id'])) {
         <script src="js/js/find-friends.js" type="text/javascript"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script>
-            $('.newest-notifications').text('0');
+//            $('.newest-notifications').text('0');
         </script>
     </body>
 </html>
