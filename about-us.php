@@ -107,13 +107,13 @@ $VALUE = New Page(4);
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-sm-4 about-box">
 
                                         <div class="row">
                                             <div class="col-md-12 about-description">
-                                      
-                                                  <!--<i class="fa fa-rocket about-box-icon"></i>-->
+
+            <!--<i class="fa fa-rocket about-box-icon"></i>-->
                                                 <img src="img/icon/about-us-icon/mission-icon.png" alt=""/>
                                                 <h5>Mission</h5>
                                                 <p><?php echo $MISSION->description; ?></p>
@@ -176,6 +176,15 @@ $VALUE = New Page(4);
                 $('.about-box').mouseout(function () {
                     $(this).find('.about-box-icon').removeClass('about-box-icon-hover');
                 });
+            });
+            //    Typed-js master
+
+            var typed2 = new Typed('#typed2', {
+                strings: ['<b style="font-size: 40px; color: #003263;">FLIP.LK</b>', '<b style="font-size: 28px; color: #003263;">Sri Lankan Biggest Business Group</b>'],
+                typeSpeed: 100,
+                backSpeed: 0,
+                fadeOut: true,
+                loop: true
             });
         </script>
     </body>
