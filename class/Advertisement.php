@@ -662,6 +662,20 @@ class Advertisement {
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>' . $subject . '</title>
+            <style>
+                .btn {
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                -ms-border-radius: 2px;
+                border-radius: 2px;
+                border: none;
+                font-size: 13px;
+                outline: none;
+                background-color: #1f91f3 !important;
+                color: #fff;
+                }
+            </style>
     </head>
 
     <body bgcolor="#8d8e90">
@@ -759,7 +773,9 @@ class Advertisement {
                                         <td width="2%">&nbsp;</td>
                                     </tr>
                                     <tr>
-                                    <td><a href="https://www.flip.lk/admin/boost-advertisement.php?id=' . $adid . '">Boost Advertisement</a></td>
+                                        <td></td>
+                                        <td style="text-align:center;"><a class="btn" href="https://www.flip.lk/admin/boost-advertisement.php?id=' . $adid . '">Boost Advertisement</a></td>
+                                        <td></td>
                                     </tr>
                                 </table>
                             </td>
