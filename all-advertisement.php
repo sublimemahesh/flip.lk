@@ -121,7 +121,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                                 }
                                                                 ?></div>
                                                             <div class="row boost-time">
-                                                                <div class="boost-ad col-sm-6"><span><i class="fa fa-certificate "></i> Boost Ad </span></div>
+                                                                <div class="boost-ad col-sm-6"><span><i class="fa fa-certificate "></i> Top Ad </span></div>
                                                             <div class="ad-time col-sm-6"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
                                                             </div>
                                                         </div>
@@ -131,12 +131,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                             <?php
                                         }
                                     }
-                                    ?>
-
-
-
-
-                                    <?php
+                                    
                                     $advertisements = Advertisement::getAllAdvertisements($pageLimit, $setLimit);
                                     if (count($advertisements) > 0) {
                                         foreach ($advertisements as $key => $ad) {
