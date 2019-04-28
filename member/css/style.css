@@ -1743,8 +1743,9 @@ header .control-icon > svg {
     right: 18px;
 }
 .control-icon a{
-   color: #888da8;
 
+   color: #888da8;
+}
 .account-settings li a span {
     color: #cecccc;
 }
@@ -1757,3 +1758,18 @@ header .control-icon > svg {
 .profile-dropdown li a span:hover {
     color: #003263;
 }
+
+
+.landing-page{
+    background-image: none;
+    background-color: #f2f2f2;
+}
+.slider-banner{
+    margin-left: 630px;
+    margin-top: -517px;
+}
+#fb-login{
+    margin-left: -15px;
+}
+
+

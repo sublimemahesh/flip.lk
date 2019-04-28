@@ -376,35 +376,11 @@ include './window-pop-up.php';
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <script src="js/js/advertisement.js" type="text/javascript"></script>
         <script src="js/js/ad-images.js" type="text/javascript"></script>
-        <script src="plugins/tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script>
         <script src="js/heartcode-canvasloader.js" type="text/javascript"></script>
         <script src="js/image-preloader.js" type="text/javascript"></script>
         <script src="js/js/sub-categories.js" type="text/javascript"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
-        <script>
-                                                tinymce.init({
-                                                    selector: "#description",
-                                                    // ===========================================
-                                                    // INCLUDE THE PLUGIN
-                                                    // ===========================================
 
-                                                    plugins: [
-                                                        "advlist autolink lists link image charmap print preview anchor",
-                                                        "searchreplace visualblocks code fullscreen",
-                                                        "insertdatetime media table contextmenu paste"
-                                                    ],
-                                                    // ===========================================
-                                                    // PUT PLUGIN'S BUTTON on the toolbar
-                                                    // ===========================================
-
-                                                    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                                                    // ===========================================
-                                                    // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                                                    // ===========================================
-
-                                                    relative_urls: false
-                                                });
-        </script>
         <script>
             var placeSearch, autocomplete;
 
