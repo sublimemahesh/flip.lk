@@ -2477,7 +2477,7 @@ a .ad-title{
     color: #7f7d86;
 }
 .ad-time{
-    margin-top: 10px;
+    /*margin-top: 10px;*/
 }
 .globe-icon{
     margin-left: 168px;
@@ -3228,3 +3228,6 @@ a .ad-title{
     color: #003263;
 }
 
+.post.boost-ad {
+    background: #e6fcff;
+}

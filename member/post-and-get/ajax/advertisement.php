@@ -154,3 +154,15 @@ if ($_POST['option'] === 'GETADBYID') {
     header('Content-type: application/json');
     echo json_encode($ad);
 }
+
+if ($_POST['option'] === 'SENDBOOSTEMAIL') {
+
+    $sendemail = Advertisement::sendBoostAdEmailToAdmin($_POST['adid'], $_POST['fromdate'], $_POST['todate']);
+    
+    header('Content-type: application/json');
+    if($sendemail) {
+        echo json_encode('success');
+    } else {
+        echo json_encode('error');
+    }
+}

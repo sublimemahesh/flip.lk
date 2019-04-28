@@ -22,11 +22,14 @@ class Advertisement {
     public $subCategory;
     public $website;
     public $status;
+    public $isSuspend;
+    public $boostFrom;
+    public $boostTo;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`created_at`,`member`,`group_id`,`title`,`description`,`price`,`city`,`address`,`phone_number`,`email`,`category`,`sub_category`,`website`,`status` FROM `advertisement` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`created_at`,`member`,`group_id`,`title`,`description`,`price`,`city`,`address`,`phone_number`,`email`,`category`,`sub_category`,`website`,`status`,`boost_from`,`boost_to` FROM `advertisement` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -47,6 +50,8 @@ class Advertisement {
             $this->subCategory = $result['sub_category'];
             $this->website = $result['website'];
             $this->status = $result['status'];
+            $this->boostFrom = $result['boost_from'];
+            $this->boostTo = $result['boost_to'];
 
             return $result;
         }
@@ -136,10 +141,26 @@ class Advertisement {
 
         return $array_res;
     }
-    
+
     public function getAllAdvertisements($pageLimit, $setLimit) {
 
         $query = "SELECT * FROM `advertisement` WHERE `status` = 1 ORDER BY `created_at` DESC LIMIT " . $pageLimit . " , " . $setLimit . "";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function getBoostAdvertisements() {
+        date_default_timezone_set('Asia/Colombo');
+        $today = date('Y-m-d');
+
+        $query = "SELECT * FROM `advertisement` WHERE `status` = 1 AND '" . $today . "' BETWEEN `boost_from` AND `boost_to` ORDER BY `created_at` DESC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -178,7 +199,7 @@ class Advertisement {
 
         return $array_res;
     }
-    
+
     public function countAdsByCategory($category) {
 
         $query = "SELECT count(`id`) AS `count` FROM `advertisement` WHERE `category` = $category AND `status` = 1 ORDER BY `created_at` DESC";
@@ -186,7 +207,7 @@ class Advertisement {
         $result = mysql_fetch_array($db->readQuery($query));
         return $result['count'];
     }
-    
+
     public function getAdsBySubCategory($subcategory) {
 
         $query = "SELECT * FROM `advertisement` WHERE `sub_category` = $subcategory AND `status` = 1 ORDER BY `created_at` DESC";
@@ -200,7 +221,7 @@ class Advertisement {
 
         return $array_res;
     }
-    
+
     public function countAdsBySubCategory($subcategory) {
 
         $query = "SELECT count(`id`) AS `count` FROM `advertisement` WHERE `sub_category` = $subcategory AND `status` = 1 ORDER BY `created_at` DESC";
@@ -222,6 +243,7 @@ class Advertisement {
 
         return $array_res;
     }
+
     public function getAdsAndPostsByMember($member, $offset, $limit) {
 
         $query = "SELECT `id`, 'ad' AS `type`, `created_at` FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `member` <> $member AND `status` = 1 UNION ALL SELECT `id`, 'post' AS `type`, `created_at` FROM `post` WHERE `member` in (SELECT `member` FROM `friends` WHERE `friend` = $member) OR `member` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) ORDER BY `created_at` DESC LIMIT $offset, $limit";
@@ -235,9 +257,9 @@ class Advertisement {
 
         return $array_res;
     }
-    
+
     public function getCountOfAdsAndPostsByMember($member) {
-        
+
         $query = "SELECT `id`, 'ad' AS `type`, `created_at` FROM `advertisement` WHERE `group_id` in (SELECT `group_id` FROM `group_members` WHERE `member` = $member) AND `member` <> $member AND `status` = 1 UNION ALL SELECT `id`, 'post' AS `type`, `created_at` FROM `post` WHERE `member` in (SELECT `member` FROM `friends` WHERE `friend` = $member) OR `member` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) ORDER BY `created_at` DESC";
         $db = new Database();
         $result = $db->readQuery($query);
@@ -322,6 +344,24 @@ class Advertisement {
         }
     }
 
+    public function boostAd() {
+
+        $query = "UPDATE  `advertisement` SET "
+                . "`boost_from` ='" . $this->boostFrom . "', "
+                . "`boost_to` ='" . $this->boostTo . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
+
     public function suspendAdvertisement() {
 
         $query = "UPDATE  `advertisement` SET "
@@ -338,7 +378,7 @@ class Advertisement {
             return FALSE;
         }
     }
-    
+
     public function getPublishedAdsByGroup($group) {
 
         $query = "SELECT * FROM `advertisement` WHERE `group_id` = $group AND `status` = 1 ORDER BY `created_at` DESC";
@@ -352,7 +392,7 @@ class Advertisement {
 
         return $array_res;
     }
-    
+
     public function getUnpublishedAdsByGroup($group) {
 
         $query = "SELECT * FROM `advertisement` WHERE `group_id` = $group AND `status` = 0 ORDER BY `created_at` DESC";
@@ -506,11 +546,11 @@ class Advertisement {
 
         echo $setPaginate;
     }
-    
+
     public function showPagination($per_page, $page) {
 
         $page_url = "?";
-        
+
         $query = "SELECT count(*) AS totalCount FROM `advertisement` WHERE `status` = 1 ORDER BY `created_at` DESC";
 
         $rec = mysql_fetch_array(mysql_query($query));
@@ -590,6 +630,162 @@ class Advertisement {
         }
 
         echo $setPaginate;
+    }
+
+    public static function sendBoostAdEmailToAdmin($adid, $fromdate, $to) {
+
+        //----------------------Company Information---------------------
+
+        $AD = new Advertisement($adid);
+        $MEMBER = new Member($AD->member);
+
+        $from = 'info@flip.lk';
+        $reply = $MEMBER->email;
+
+        $subject = "New enquiry to boost advertisement | Flip.lk ";
+        $site = 'flip.lk';
+
+        // mandatory headers for email message, change if you need something different in your setting.
+        $headers = "From: " . $from . "\r\n";
+        $headers .= "Reply-To: " . $reply . "\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+        $USER = new User(1);
+
+        $email = $USER->email;
+        date_default_timezone_set('Asia/Colombo');
+        $todayis = date('Y-m-d H:i:s');
+
+        $html = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>' . $subject . '</title>
+    </head>
+
+    <body bgcolor="#8d8e90">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#8d8e90">
+            <tr>
+                <td>
+                <table width="600" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" align="center">
+                        <tr>
+                            <td align="center" valign="middle">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="2%">&nbsp;</td>
+                                        <td width="96%" align="center" style="border-bottom:1px solid #000000" height="50">
+                                            <font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:18px; " >
+                                                   <h4> ' . $subject . '</h4>
+                                            </font>
+                                        </td>
+                                        <td width="2%">&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="5%">&nbsp;</td>
+                                        <td width="90%" valign="middle">
+                                            <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; ">
+                                                 Hi ' . $USER->name . ',
+                                                <br /><br />
+                                            </font>
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="5%">&nbsp;</td>
+                                        <td width="90%" valign="middle">
+                                            <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                               You have a new boost advertisement enquiry from your website on ' . $todayis . ' as follows. Please pay your attention as soon as possible.
+                                            </font>
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+                                     <tr>
+                                        <td width="5%">&nbsp;<br /><br /></td>
+                                        <td width="90%" valign="middle">
+                                            <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                               We have successfully sent the acknowledgement to the sender.
+                                            </font>
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+                                </table>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="2%">&nbsp;</td>
+                                        <td width="96%" style="border-top:1px solid #000000" >
+                                            
+                                            <font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:14px; " >
+                                                   <h4>&nbsp;&nbsp;&nbsp;Enquiry Details</h4>
+                                            </font>
+                                            <ul>
+                                              <li>
+                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                                         Name : ' . $MEMBER->firstName . ' ' . $MEMBER->lastName . '
+                                                    </font>
+                                                </li>
+                                                
+                                                <li>
+                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                                         Email : ' . $MEMBER->email . '
+                                                    </font>
+                                                </li>
+                                                <li>
+                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                                         Advertisement : <a href="https://www.flip.lk/view-advertisement.php?id=' . $adid . '">' . $AD->title . '</a>
+                                                    </font>
+                                                </li>
+                                                <li>
+                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                                         Boost From : ' . $fromdate . '
+                                                    </font>
+                                                </li>
+                                                <li>
+                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                                         Boost To : ' . $to . '
+                                                    </font>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td width="2%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                    <td><a href="https://www.flip.lk/admin/boost-advertisement.php?id=' . $adid . '">Boost Advertisement</a></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        
+                    </table></td>
+            </tr>
+        </table>
+    </body>
+</html>';
+        if (mail($email, $subject, $html, $headers)) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 
 }
