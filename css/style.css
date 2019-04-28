@@ -3063,6 +3063,17 @@ a .ad-title{
 .about-box:hover{
     box-shadow: 0px 1px 8px 0px #000;
 }
+
+.boost-time {
+    margin-top: 10px;
+}
+.boost-time .boost-ad span {
+    border: 1px solid #ff5e3a;
+padding: 5px 10px;
+}
+.ad-time {
+    text-align: right;
+}
 /*---Contact Us---*/
 
 .definitions_wrap{
@@ -3226,8 +3237,4 @@ a .ad-title{
 }
 .profile-dropdown li a span:hover {
     color: #003263;
-}
-
-.post.boost-ad {
-    background: #e6fcff;
 }

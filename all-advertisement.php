@@ -77,7 +77,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                             $SUBCATEGORY = new BusinessSubCategory($ad['sub_category']);
                                             $adimages = AdvertisementImage::getPhotosByAdId($ad['id']);
                                             ?>
-                                            <div class="ad-item post boost-ad">
+                                            <div class="ad-item post">
                                                 <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
                                                     <div class="ad-item-box row">
                                                         <div class = "col-xl-4 col-xs-4 ad-item-image">
@@ -120,8 +120,8 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                                     echo 'Rs. ' . number_format($ad['price']);
                                                                 }
                                                                 ?></div>
-                                                            <div class="row">
-                                                            <div class="boost-ad col-sm-6"><i class="fa fa-clock"></i> Boost Ad</div>
+                                                            <div class="row boost-time">
+                                                                <div class="boost-ad col-sm-6"><span><i class="fa fa-certificate "></i> Boost Ad </span></div>
                                                             <div class="ad-time col-sm-6"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
                                                             </div>
                                                         </div>
