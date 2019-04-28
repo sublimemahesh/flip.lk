@@ -38,6 +38,7 @@ if (isset($_GET['keyword'])) {
 }
 
 $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, $location, $keyword, $pageLimit, $setLimit);
+$boostadvertisements = Advertisement::searchBoostAdvertisements($category1, $subcategory, $location, $keyword, $pageLimit, $setLimit);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -139,6 +140,69 @@ $advertisements = Advertisement::searchAdvertisements($category1, $subcategory, 
                                 </div>
                                 <div class="ui-block">
                                     <?php
+                                    if (count($boostadvertisements) > 0) {
+                                        foreach ($boostadvertisements as $key => $ad) {
+                                            $result = getTime($ad['created_at']);
+                                            $MEMBER = new Member($ad['member']);
+                                            $CATEGORY = new BusinessCategory($ad['category']);
+                                            $SUBCATEGORY = new BusinessSubCategory($ad['sub_category']);
+                                            $adimages = AdvertisementImage::getPhotosByAdId($ad['id']);
+                                            ?>
+                                            <div class="ad-item post">
+                                                <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
+                                                    <div class="ad-item-box row">
+                                                        <div class = "col-xl-4 col-xs-4 ad-item-image">
+                                                            <?php
+                                                            if (count($adimages) > 0) {
+                                                                foreach ($adimages as $key => $img) {
+                                                                    if ($key == 0) {
+                                                                        ?>
+                                                                        <img src="upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt=""/>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                ?>
+                                                                <img src="upload/advertisement/thumb2/advertising.jpg" alt=""/>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </div>
+                                                        <div class = "col-xl-8 col-xs-8 ad-item-details">
+                                                            <div class="ad-title">
+                                                                <?php
+                                                                if ($ad['title']) {
+                                                                    if (strlen($ad['title']) > 25) {
+                                                                        echo substr($ad['title'], 0, 25) . '...';
+                                                                    } else {
+                                                                        echo $ad['title'];
+                                                                    }
+                                                                } else {
+                                                                    echo 'Advertisement';
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                            <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
+                                                            <div class="ad-subcategory"><span class="title">Sub Category <i class="fa fa-angle-double-right"></i> </span><?php echo $SUBCATEGORY->name; ?></div>
+                                                            <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php
+                                                                if ($ad['price'] == 0) {
+                                                                    echo 'Negotiable';
+                                                                } else {
+                                                                    echo 'Rs. ' . number_format($ad['price']);
+                                                                }
+                                                                ?></div>
+                                                            <div class="row boost-time">
+                                                                <div class="boost-ad col-sm-6"><span><i class="fa fa-certificate "></i> Top Ad </span></div>
+                                                                <div class="ad-time col-sm-6"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <?php
+                                        }
+                                    }
+                                    
                                     if (count($advertisements) > 0) {
                                         foreach ($advertisements as $key => $ad) {
                                             $result = getTime($ad['created_at']);

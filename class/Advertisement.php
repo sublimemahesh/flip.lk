@@ -442,6 +442,42 @@ class Advertisement {
         return $array_res;
     }
 
+    public function searchBoostAdvertisements($category, $subcategory, $location, $keyword, $pageLimit, $setLimit) {
+        date_default_timezone_set('Asia/Colombo');
+        $today = date('Y-m-d');
+        $w = array();
+        $where = '';
+
+        if (!empty($category)) {
+            $w[] = "`category` = '" . $category . "'";
+        }
+        if (!empty($subcategory)) {
+            $w[] = "`sub_category` = '" . $subcategory . "'";
+        }
+        if (!empty($location)) {
+            $w[] = "`city` LIKE '" . $location . "'";
+        }
+        if (!empty($keyword)) {
+            $w[] = "`title` LIKE '%" . $keyword . "%'";
+        }
+        $w[] = "`status` = 1 AND '" . $today . "' BETWEEN `boost_from` AND `boost_to`";
+        if (count($w)) {
+            $where = 'WHERE ' . implode(' AND ', $w);
+        }
+
+        $query = "SELECT * FROM `advertisement` " . $where . " ORDER BY `created_at` DESC LIMIT " . $pageLimit . " , " . $setLimit . "";
+
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
     public function showPaginationOfSearchedAdvertisement($category, $subcategory, $location, $keyword, $per_page, $page) {
 
         $page_url = "?";
