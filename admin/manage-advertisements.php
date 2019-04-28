@@ -141,6 +141,8 @@ $ADVERTISEMENT = new Advertisement($id);
                                                         <a href="#" class="delete-advertisement btn btn-sm btn-danger" data-id="<?php echo $advertisement['id']; ?>">
                                                             <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
                                                         </a>
+                                                        <a href="boost-advertisement.php?id=<?php echo $advertisement['id']; ?>" class="op-link btn btn-sm btn-primary"><i class="glyphicon glyphicon-pencil"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 <?php

@@ -59,7 +59,7 @@
                     <?php
                     if (empty($MEMBER->coverPicture)) {
                         ?>
-                    <img src="image/cover.jpg" class="img img-responsive img-thumbnail cover-pic" id="cover_pic"/>
+                        <img src="image/cover.jpg" class="img img-responsive img-thumbnail cover-pic" id="cover_pic"/>
                         <?php
                     } else {
                         ?>
@@ -96,14 +96,14 @@
             </div>
 
             <div class="modal-body">
-                
-                    <input type="text" name="" id="member-name" class="member-name" member-id="<?php echo $MEMBER->id; ?>" placeholder="Enter name" />
-                    <div class="" id="member-name-list-append"></div>
-                    <input type="hidden" name="member" value="" id="mem-id"  />
+
+                <input type="text" name="" id="member-name" class="member-name" member-id="<?php echo $MEMBER->id; ?>" placeholder="Enter name" />
+                <div class="" id="member-name-list-append"></div>
+                <input type="hidden" name="member" value="" id="mem-id"  />
 
             </div>
             <div class="modal-footer">
-                    <a href="#" class="btn btn-blue btn-md-2 add-members" id="" group-id="<?php echo $GROUP->id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add<div class="ripple-container"></div></a>
+                <a href="#" class="btn btn-blue btn-md-2 add-members" id="" group-id="<?php echo $GROUP->id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add<div class="ripple-container"></div></a>
 
             </div>
         </div>
@@ -125,9 +125,9 @@
 
             <div class="modal-body">
                 <h5><span id="new-member-name"></span> has been invited to the group.</h5>
-             </div>
+            </div>
             <div class="modal-footer">
-                    <a href="#" class="btn btn-blue btn-md-2 done-btn" id="" group-id="<?php echo $GROUP->id; ?>" member-id="<?php echo $MEMBER->id; ?>">Done<div class="ripple-container"></div></a>
+                <a href="#" class="btn btn-blue btn-md-2 done-btn" id="" group-id="<?php echo $GROUP->id; ?>" member-id="<?php echo $MEMBER->id; ?>">Done<div class="ripple-container"></div></a>
 
             </div>
         </div>
@@ -148,9 +148,9 @@
 
             <div class="modal-body">
                 <h5>The person you just tried to add is already a member of this group.</h5>
-             </div>
+            </div>
             <div class="modal-footer">
-                    <a href="#" class="btn btn-blue btn-md-2 close-btn" id="" >Close<div class="ripple-container"></div></a>
+                <a href="#" class="btn btn-blue btn-md-2 close-btn" id="" >Close<div class="ripple-container"></div></a>
 
             </div>
         </div>
@@ -172,9 +172,9 @@
 
             <div class="modal-body">
                 <h5>The person you are trying to invite was already invited to this group.</h5>
-             </div>
+            </div>
             <div class="modal-footer">
-                    <a href="#" class="btn btn-blue btn-md-2 close-btn">Close<div class="ripple-container"></div></a>
+                <a href="#" class="btn btn-blue btn-md-2 close-btn">Close<div class="ripple-container"></div></a>
 
             </div>
         </div>
@@ -269,3 +269,47 @@
     </div>
 </div>
 <!-- ... end  Window-popup Share Ad -->
+
+<!-- Window-popup Boost Post -->
+<div class="modal fade" id="boost-ad" tabindex="-1" role="dialog" aria-labelledby="boost-ad" aria-hidden="true">
+    <div class="modal-dialog window-popup update-header-photo" role="document">
+        <div class="modal-content">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="modal-header">
+                <h6 class="title">Boost Your Advertisement</h6>
+            </div>
+
+            <div class="modal-body">
+                <div class="ui-block-content">
+                    <div class="row">
+
+                        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="form-group date-time-picker label-floating is-empty">
+                                <label class="control-label">Boost From</label>
+                                <input name="datetimepicker" id="boostFrom" placeholder="" value="" />
+                                <span class="input-group-addon">
+                                    <svg class="olymp-month-calendar-icon icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-month-calendar-icon"></use></svg>
+                                </span>
+                            </div>
+                            <div class="form-group date-time-picker label-floating is-empty">
+                                <label class="control-label">Boost To</label>
+                                <input name="datetimepicker" id="boostTo" placeholder="" value="" />
+                                <span class="input-group-addon">
+                                    <svg class="olymp-month-calendar-icon icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-month-calendar-icon"></use></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                            <input type="submit" name="send-boost-email" id="send-boost-email" adid="" class="btn btn-primary btn-lg full-width" value="Boost Ad" />
+                        </div>
+
+                    </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ... end Window-popup Edit Post -->

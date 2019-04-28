@@ -129,10 +129,7 @@ if (isset($_GET['id'])) {
                                                             <a href="#" class="delete-ad" id="<?php echo $ad['id']; ?>">Delete Advertisement</a>
                                                         </li>
                                                         <li>
-                                                            <a href="#">Turn Off Notifications</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Select as Featured</a>
+                                                            <a  href="#" class="boost-ad-link" data-toggle="modal" data-target="#boost-ad" id="<?php echo $ad['id']; ?>">Boost Advertisement</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -597,5 +594,6 @@ if (isset($_GET['id'])) {
         <script src="js/js/edit-cover-picture.js" type="text/javascript"></script>
         <script src="js/js/read-more-and-less.js" type="text/javascript"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
+        <script src="js/js/boost-ad.js" type="text/javascript"></script>
     </body>
 </html>

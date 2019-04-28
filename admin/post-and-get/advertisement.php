@@ -49,3 +49,34 @@ if (isset($_POST['update'])) {
     }
 }
 
+if (isset($_POST['boost-ad'])) {
+    
+    $ADVERTISEMENT = new Advertisement($_POST['id']);
+    $ADVERTISEMENT->boostFrom = $_POST['from_date'];
+    $ADVERTISEMENT->boostTo = $_POST['to_date'];
+
+    $VALID = new Validator();
+
+    $VALID->check($ADVERTISEMENT, [
+        'boostFrom' => ['required' => TRUE],
+        'boostTo' => ['required' => TRUE]
+    ]);
+
+    if ($VALID->passed()) {
+        $result = $ADVERTISEMENT->boostAd();
+
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $VALID->addError("Your changes saved successfully", 'success');
+        $_SESSION['ERRORS'] = $VALID->errors();
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    } else {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $_SESSION['ERRORS'] = $VALID->errors();
+
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+}
