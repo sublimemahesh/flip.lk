@@ -1251,7 +1251,7 @@ a .ad-title:hover {
     color: #003263;
 }
 .ad-city {
-    font-size: 13px;
+    font-size: 14px;
     color: #7f7d86;
     font-weight: 400;
 }
@@ -1261,7 +1261,7 @@ a .ad-title:hover {
     font-weight: 400;
 }
 .ad-category {
-    font-size: 13px;
+    font-size: 14px;
     color: #7f7d86;
     font-weight: 400;
 }
@@ -1271,8 +1271,9 @@ a .ad-title:hover {
     font-weight: 400;
 }
 .ad-time {
-    float: right;
-    color: #888da8; 
+    font-size: 13px;
+    color: #7f7d86;
+    font-weight: 400;
 }
 .ad-item-image {
     border-right: 1px solid #eee;
@@ -2472,6 +2473,7 @@ a .ad-title{
     padding-bottom: 5px;
 }
 .ad-subcategory{
+    font-size: 14px;
     margin-left: 232px;
     margin-top: -23px;
     color: #7f7d86;
@@ -3068,10 +3070,14 @@ a .ad-title{
     margin-top: 10px;
 }
 .boost-time .boost-ad span {
-    border: 1px solid #ff5e3a;
+    border: 1px solid #003263;
     padding: 5px 10px;
+    color: #003263;
 }
-.ad-time {
+.ad-price {
+    color: #003263;
+    font-weight: 600;
+    font-size: 16px;
     text-align: right;
 }
 /*---Contact Us---*/
@@ -3201,7 +3207,8 @@ a .ad-title{
     padding: 10px 20px;
 }
 .ad-item-details .title {
-    color: #000;
+    color: #7f7d86;
+font-weight: 600;
 }
 /*--Header Icon--*/
 .icon-newsfeed span{
@@ -3243,26 +3250,19 @@ a .ad-title{
     margin-left: 0px;
     margin-top: -4px;
 }
-.ad-time{
-    text-align: left;
-    margin-left: -228px;
-    margin-top: 39px;
-}
 .ad-city{
-    margin-left: 325px;
-    margin-top: -66px;
-    color: #003263;
-    font-weight: 600;
+    /*    margin-left: 325px;
+        margin-top: -66px;
+        color: #003263;
+        font-weight: 600;*/
 }
 .boost-ad{
-    margin-top: 70px;
+    /*margin-top: 70px;*/
 }
 .view-details{
     text-align: right;
     margin-left: 0px;
-    margin-bottom: -19px;
-    margin-top: -16px;
-    /*border: 1px solid blue;*/
+    right: -32px;
 }
 .time{
     margin-right: 338px;
@@ -3278,12 +3278,16 @@ a .ad-title{
     color: #fff;
 }
 .boost-time .boost-ad span:hover{
-   border: 1px solid #003263; 
-   color: #003263;
+    border: 1px solid #003263; 
+    color: #003263;
 }
 .view-details span{
     border: 1px solid #003263;
     padding: 5px 10px;
     background: #003263;
     color: #fff; 
+}
+.boost-time .col-sm-6 {
+    padding-left: 0px;
+    padding-right: 0px;
 }

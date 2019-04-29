@@ -12,6 +12,7 @@ if ($_POST['option'] == 'SAVEAD') {
     $ADVERTISEMENT->description = $_POST['description'];
 //    $ADVERTISEMENT->description = mysql_real_escape_string($_POST['description']);
     $ADVERTISEMENT->city = $_POST['city'];
+    $ADVERTISEMENT->cityString = $_POST['cityString'];
     $ADVERTISEMENT->address = $_POST['address'];
     $ADVERTISEMENT->category = $_POST['category'];
     $ADVERTISEMENT->subCategory = $_POST['subcategory'];
@@ -66,6 +67,7 @@ if ($_POST['option'] == 'EDITAD') {
 //    $ADVERTISEMENT->description = mysql_real_escape_string($_POST['description']);
     $ADVERTISEMENT->description = $_POST['description'];
     $ADVERTISEMENT->city = $_POST['city'];
+    $ADVERTISEMENT->cityString = $_POST['cityString'];
     $ADVERTISEMENT->address = $_POST['address'];
     $ADVERTISEMENT->website = $_POST['website'];
     $ADVERTISEMENT->price = $_POST['price'];
