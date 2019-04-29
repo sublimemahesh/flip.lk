@@ -3069,7 +3069,7 @@ a .ad-title{
 }
 .boost-time .boost-ad span {
     border: 1px solid #ff5e3a;
-padding: 5px 10px;
+    padding: 5px 10px;
 }
 .ad-time {
     text-align: right;
@@ -3224,7 +3224,8 @@ padding: 5px 10px;
     right: 18px;
 }
 .control-icon a{
-   color: #888da8;
+    color: #888da8;
+}
 
 .account-settings li a span {
     color: #cecccc;
@@ -3237,4 +3238,52 @@ padding: 5px 10px;
 }
 .profile-dropdown li a span:hover {
     color: #003263;
+}
+.ad-subcategory{
+    margin-left: 0px;
+    margin-top: -4px;
+}
+.ad-time{
+    text-align: left;
+    margin-left: -228px;
+    margin-top: 39px;
+}
+.ad-city{
+    margin-left: 325px;
+    margin-top: -66px;
+    color: #003263;
+    font-weight: 600;
+}
+.boost-ad{
+    margin-top: 70px;
+}
+.view-details{
+    text-align: right;
+    margin-left: 0px;
+    margin-bottom: -19px;
+    margin-top: -16px;
+    /*border: 1px solid blue;*/
+}
+.time{
+    margin-right: 338px;
+    margin-top: 50px;
+}
+.title{
+    color: #003263;
+}
+.boost-time .view-details span{
+    border: 1px solid #003263;
+    padding: 5px 10px;
+    background: #003263;
+    color: #fff;
+}
+.boost-time .boost-ad span:hover{
+   border: 1px solid #003263; 
+   color: #003263;
+}
+.view-details span{
+    border: 1px solid #003263;
+    padding: 5px 10px;
+    background: #003263;
+    color: #fff; 
 }

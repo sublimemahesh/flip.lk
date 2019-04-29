@@ -111,9 +111,9 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                                 }
                                                                 ?>
                                                             </div>
-                                                            <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
-                                                            <div class="ad-subcategory"><span class="title">Sub Category <i class="fa fa-angle-double-right"></i> </span><?php echo $SUBCATEGORY->name; ?></div>
-                                                            <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php
+                                                            <div class="ad-category"><span class="title">Category : </span><?php echo $CATEGORY->name; ?></div>
+                                                            <div class="ad-subcategory"><span class="title">Sub Category : </span><?php echo $SUBCATEGORY->name; ?></div>
+                                                            <div class="ad-city"><span class="title"></span><?php
                                                                 if ($ad['price'] == 0) {
                                                                     echo 'Negotiable';
                                                                 } else {
@@ -123,6 +123,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                             <div class="row boost-time">
                                                                 <div class="boost-ad col-sm-6"><span><i class="fa fa-certificate "></i> Top Ad </span></div>
                                                             <div class="ad-time col-sm-6"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                            <div class="view-details col-sm-12"><span>View Details</span></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -175,17 +176,20 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                                 }
                                                                 ?>
                                                             </div>
-                                                            <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
-                                                            <div class="ad-subcategory"><span class="title">Sub Category <i class="fa fa-angle-double-right"></i> </span><?php echo $SUBCATEGORY->name; ?></div>
-                                                            <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php
+                                                            <div class="ad-category"><span class="title">Category : </span><?php echo $CATEGORY->name; ?></div>
+                                                            <div class="ad-subcategory"><span class="title">Sub Category : </span><?php echo $SUBCATEGORY->name; ?></div>
+                                                            <div class="ad-city"><span class="title"></span><?php
                                                                 if ($ad['price'] == 0) {
                                                                     echo 'Negotiable';
                                                                 } else {
                                                                     echo 'Rs. ' . number_format($ad['price']);
                                                                 }
                                                                 ?></div>
-                                                            <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                            
+                                                            <div class="ad-time time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                            
                                                         </div>
+                                                        <div class="view-details col-sm-12"><span>View Details</span></div>
                                                     </div>
                                                 </a>
                                             </div>
