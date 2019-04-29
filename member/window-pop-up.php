@@ -288,26 +288,23 @@
 
                         <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="form-group date-time-picker label-floating is-empty">
-                                <label class="control-label">Boost From</label>
-                                <input name="datetimepicker" id="boostFrom" placeholder="" value="" />
-                                <span class="input-group-addon">
-                                    <svg class="olymp-month-calendar-icon icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-month-calendar-icon"></use></svg>
-                                </span>
-                            </div>
-                            <div class="form-group date-time-picker label-floating is-empty">
-                                <label class="control-label">Boost To</label>
-                                <input name="datetimepicker" id="boostTo" placeholder="" value="" />
-                                <span class="input-group-addon">
-                                    <svg class="olymp-month-calendar-icon icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-month-calendar-icon"></use></svg>
-                                </span>
+                                <!--<label class="control-label">Select Boost Period</label>-->
+                                <select class="selectpicker form-control" name="boost_period" id="boost_period">
+                                    <option value="">-- Select Boost Period --</option>
+                                    <option value="1">1 Week</option>
+                                    <option value="2">2 Week</option>
+                                    <option value="3">3 Week</option>
+                                    <option value="4">4 Week</option>
+                                    
+                                </select>
                             </div>
                         </div>
                         <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                            <input type="submit" name="send-boost-email" id="send-boost-email" adid="" class="btn btn-primary btn-lg full-width" value="Send Enquiry" />
+                            <input type="submit" name="send-boost-email" id="send-boost-email" adid="" class="btn btn-primary btn-lg full-width" value="Request to Boost" />
                         </div>
 
                     </div>
-            </div>
+                </div>
             </div>
         </div>
     </div>

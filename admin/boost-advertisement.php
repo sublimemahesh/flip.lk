@@ -55,24 +55,18 @@ $ADVERTISEMENT = new Advertisement($id);
                                 <form class="form-horizontal"  method="post" action="post-and-get/advertisement.php" id="form-edit-ad" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="group">Boost From</label>
+                                            <label for="group">Boost Period</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" id="fromdate" class="form-control" placeholder="Enter Date" autocomplete="off" name="from_date" required="TRUE" value="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="title">Boost To</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="text" id="todate" class="form-control" placeholder="Enter Date" autocomplete="off" name="to_date" required="TRUE" value="">
+                                                    <select class="selectpicker form-control" id="period" name="period">
+                                                        <option value="">-- Please Select Period -- </option>
+                                                        <option value="7">1 week</option>
+                                                        <option value="14">2 weeks</option>
+                                                        <option value="21">3 weeks</option>
+                                                        <option value="28">4 weeks</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -113,8 +107,8 @@ $ADVERTISEMENT = new Advertisement($id);
         <script src="js/edit-ad-slider.js" type="text/javascript"></script>
         <script>
             $(function () {
-                $("#fromdate").datepicker({ dateFormat: 'yy-mm-dd' });
-                $("#todate").datepicker({ dateFormat: 'yy-mm-dd' });
+                $("#fromdate").datepicker({dateFormat: 'yy-mm-dd'});
+                $("#todate").datepicker({dateFormat: 'yy-mm-dd'});
             });
         </script>
         <script>

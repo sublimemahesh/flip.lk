@@ -145,7 +145,8 @@ if ($_POST['option'] == 'UPDATESTATUS') {
     header('Content-Type: application/json');
     echo json_encode($result);
     exit();
-}
+}date_default_timezone_set('Asia/Colombo');
+    $todayis = date('Y-m-d H:i:s');
 
 if ($_POST['option'] === 'GETADBYID') {
 
@@ -157,11 +158,21 @@ if ($_POST['option'] === 'GETADBYID') {
 
 if ($_POST['option'] === 'SENDBOOSTEMAIL') {
 
-    $sendemail = Advertisement::sendBoostAdEmailToAdmin($_POST['adid'], $_POST['fromdate'], $_POST['todate']);
-    $sendemail1 = Advertisement::sendBoostAdEmailToCustomer($_POST['adid'], $_POST['fromdate'], $_POST['todate']);
     
+
+    $AD = new Advertisement($_POST['adid']);
+
+    $AD->boosted = 'requested';
+    $AD->boostRequestedDate = $todayis;
+    
+    $result = $AD->updateBoostRequest();
+
+
+    $sendemail = Advertisement::sendBoostAdEmailToAdmin($_POST['adid'], $_POST['period'], $todayis);
+    $sendemail1 = Advertisement::sendBoostAdEmailToCustomer($_POST['adid'], $_POST['period'], $todayis);
+
     header('Content-type: application/json');
-    if($sendemail) {
+    if ($sendemail) {
         echo json_encode('success');
     } else {
         echo json_encode('error');

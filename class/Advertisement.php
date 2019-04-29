@@ -23,13 +23,15 @@ class Advertisement {
     public $website;
     public $status;
     public $isSuspend;
-    public $boostFrom;
-    public $boostTo;
+    public $boosted;
+    public $boostRequestedDate;
+    public $boostPeriod;
+    public $boostActivatedDate;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`created_at`,`member`,`group_id`,`title`,`description`,`price`,`city`,`address`,`phone_number`,`email`,`category`,`sub_category`,`website`,`status`,`boost_from`,`boost_to` FROM `advertisement` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`created_at`,`member`,`group_id`,`title`,`description`,`price`,`city`,`address`,`phone_number`,`email`,`category`,`sub_category`,`website`,`status`,`boosted`,`boost_requested_date`,`boost_period`,`boost_activated_date` FROM `advertisement` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -50,8 +52,10 @@ class Advertisement {
             $this->subCategory = $result['sub_category'];
             $this->website = $result['website'];
             $this->status = $result['status'];
-            $this->boostFrom = $result['boost_from'];
-            $this->boostTo = $result['boost_to'];
+            $this->boosted = $result['boosted'];
+            $this->boostRequestedDate = $result['boost_requested_date'];
+            $this->boostPeriod = $result['boost_period'];
+            $this->boostActivatedDate = $result['boost_activated_date'];
 
             return $result;
         }
@@ -160,7 +164,7 @@ class Advertisement {
         date_default_timezone_set('Asia/Colombo');
         $today = date('Y-m-d');
 
-        $query = "SELECT * FROM `advertisement` WHERE `status` = 1 AND '" . $today . "' BETWEEN `boost_from` AND `boost_to` ORDER BY `created_at` DESC";
+        $query = "SELECT * FROM `advertisement` WHERE `status` = 1 AND '" . $today . "' BETWEEN `boosted` AND `boost_requested_date` ORDER BY `created_at` DESC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -344,11 +348,30 @@ class Advertisement {
         }
     }
 
+    public function updateBoostRequest() {
+
+        $query = "UPDATE  `advertisement` SET "
+                . "`boosted` ='" . $this->boosted . "', "
+                . "`boost_requested_date` ='" . $this->boostRequestedDate . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
+
     public function boostAd() {
 
         $query = "UPDATE  `advertisement` SET "
-                . "`boost_from` ='" . $this->boostFrom . "', "
-                . "`boost_to` ='" . $this->boostTo . "' "
+                . "`boosted` ='" . $this->boosted . "', "
+                . "`boost_period` ='" . $this->boostPeriod . "', "
+                . "`boost_activated_date` ='" . $this->boostActivatedDate . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -460,7 +483,7 @@ class Advertisement {
         if (!empty($keyword)) {
             $w[] = "`title` LIKE '%" . $keyword . "%'";
         }
-        $w[] = "`status` = 1 AND '" . $today . "' BETWEEN `boost_from` AND `boost_to`";
+        $w[] = "`status` = 1 AND '" . $today . "' BETWEEN `boosted` AND `boost_requested_date`";
         if (count($w)) {
             $where = 'WHERE ' . implode(' AND ', $w);
         }
@@ -668,17 +691,21 @@ class Advertisement {
         echo $setPaginate;
     }
 
-    public static function sendBoostAdEmailToAdmin($adid, $fromdate, $to) {
+    public static function sendBoostAdEmailToAdmin($adid, $period, $date) {
 
         //----------------------Company Information---------------------
 
+        $DATA = new DefaultData();
+        $price = $DATA->getAdBoostPrice();
+        $boostprice = $price[$period-1][$period];
+        
         $AD = new Advertisement($adid);
         $MEMBER = new Member($AD->member);
 
         $from = 'info@flip.lk';
         $reply = $MEMBER->email;
 
-        $subject = "New enquiry to boost advertisement | Flip.lk ";
+        $subject = "New request to boost advertisement | Flip.lk | #" . $adid;
         $site = 'flip.lk';
 
         // mandatory headers for email message, change if you need something different in your setting.
@@ -690,8 +717,6 @@ class Advertisement {
         $USER = new User(1);
 
         $email = $USER->email;
-        date_default_timezone_set('Asia/Colombo');
-        $todayis = date('Y-m-d H:i:s');
 
         $html = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -754,7 +779,7 @@ class Advertisement {
                                         <td width="5%">&nbsp;</td>
                                         <td width="90%" valign="middle">
                                             <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                               You have a new boost advertisement enquiry from your website on ' . $todayis . ' as follows. Please pay your attention as soon as possible.
+                                               You have a new request to boost advertisement for ' . $period . ' week from your website on ' . $date . ' as follows. Please pay your attention as soon as possible.
                                             </font>
                                         </td>
                                         <td width="5%">&nbsp;</td>
@@ -775,10 +800,20 @@ class Advertisement {
                                         <td width="96%" style="border-top:1px solid #000000" >
                                             
                                             <font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:14px; " >
-                                                   <h4>&nbsp;&nbsp;&nbsp;Enquiry Details</h4>
+                                                   <h4>&nbsp;&nbsp;&nbsp;Ad Details</h4>
                                             </font>
                                             <ul>
-                                              <li>
+                                                <li>
+                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                                         Ad ID : ' . $adid . '
+                                                    </font>
+                                                </li>
+                                                <li>
+                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                                         Advertisement : <a href="https://www.flip.lk/view-advertisement.php?id=' . $adid . '">' . $AD->title . '</a>
+                                                    </font>
+                                                </li>
+                                                <li>
                                                     <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
                                                          Name : ' . $MEMBER->firstName . ' ' . $MEMBER->lastName . '
                                                     </font>
@@ -789,30 +824,27 @@ class Advertisement {
                                                          Email : ' . $MEMBER->email . '
                                                     </font>
                                                 </li>
+                                                
                                                 <li>
                                                     <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                                         Advertisement : <a href="https://www.flip.lk/view-advertisement.php?id=' . $adid . '">' . $AD->title . '</a>
+                                                         Boost Period : ' . $period . '
                                                     </font>
                                                 </li>
                                                 <li>
                                                     <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                                         Boost From : ' . $fromdate . '
+                                                         Requested Time : ' . $date . '
                                                     </font>
                                                 </li>
                                                 <li>
                                                     <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                                         Boost To : ' . $to . '
+                                                         Price : Rs. ' . $boostprice . '
                                                     </font>
                                                 </li>
                                             </ul>
                                         </td>
                                         <td width="2%">&nbsp;</td>
                                     </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td style="text-align:center;"><a class="btn" href="https://www.flip.lk/admin/boost-advertisement.php?id=' . $adid . '">Boost Advertisement</a></td>
-                                        <td></td>
-                                    </tr>
+                                    
                                 </table>
                             </td>
                         </tr>
@@ -840,10 +872,14 @@ class Advertisement {
         }
     }
 
-    public static function sendBoostAdEmailToCustomer($adid, $fromdate, $to) {
+    public static function sendBoostAdEmailToCustomer($adid, $period, $date) {
 
         //----------------------Company Information---------------------
 
+        $DATA = new DefaultData();
+        $price = $DATA->getAdBoostPrice();
+        $boostprice = $price[$period-1][$period];
+        
         $AD = new Advertisement($adid);
         $MEMBER = new Member($AD->member);
 
@@ -851,9 +887,10 @@ class Advertisement {
         $email = $MEMBER->email;
         $full_name = $MEMBER->firstName . ' ' . $MEMBER->lastName;
 
-        $subject = "New enquiry to boost advertisement | Flip.lk ";
+        $subject = "New request to boost advertisement | Flip.lk | #" . $adid;
         $site = 'flip.lk';
-        $site_link = "https://" . $_SERVER['HTTP_HOST'];
+//        $site_link = "https://" . $_SERVER['HTTP_HOST'];
+        $site_link = "https://www.flip.lk";
         // mandatory headers for email message, change if you need something different in your setting.
         $headers = "From: " . $from . "\r\n";
         $headers .= "Reply-To: " . $from . "\r\n";
@@ -917,7 +954,7 @@ class Advertisement {
                                         <td width="2%">&nbsp;</td>
                                         <td width="96%" align="center" style="border-bottom:1px solid #000000" height="50">
                                             <font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:18px; " >
-                                                   <h4> Boost Advertisement - Flip.lk</h4>
+                                                   <h4> Request to Boost Advertisement - Flip.lk</h4>
                                             </font>
                                         </td>
                                         <td width="2%">&nbsp;</td>
@@ -945,7 +982,7 @@ class Advertisement {
                                         <td width="5%">&nbsp;</td>
                                         <td width="90%" valign="middle">
                                             <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                               Thank you for posting your ad via our website. Your boost advertisement enquiry has been sent to flip.lk and one of representative will be contact you shortly. 
+                                               Thank you for requested to boost your advertisement in ' . $period . ' week(s). 
                                             </font>
                                         </td>
                                         <td width="5%">&nbsp;</td>
@@ -966,25 +1003,35 @@ class Advertisement {
                                         <td width="96%" style="border-top:1px solid #000000" >
                                             
                                             <font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:14px; " >
-                                                   <h4>&nbsp;&nbsp;&nbsp;Enquiry Details</h4>
+                                                   <h4>&nbsp;&nbsp;&nbsp;Ad Details</h4>
                                             </font>
                                             <ul>
-                                             <li>
+                                                <li>
+                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                                         Ad ID : ' . $adid . '
+                                                    </font>
+                                                </li>
+                                                <li>
                                                     <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
                                                          Advertisement : <a href="https://www.flip.lk/view-advertisement.php?id=' . $adid . '">' . $AD->title . '</a>
                                                     </font>
                                                 </li>
-                                                <li>
-                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                                         Boost From : ' . $fromdate . '
-                                                    </font>
-                                                </li>
-                                                <li>
-                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                                         Boost To : ' . $to . '
-                                                    </font>
-                                                </li>
                                                 
+                                                <li>
+                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                                         Boost Period : ' . $period . ' week(s)
+                                                    </font>
+                                                </li>
+                                                <li>
+                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                                         Requested Time : ' . $date . '
+                                                    </font>
+                                                </li>
+                                                <li>
+                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                                         Price : Rs. ' . $boostprice . '
+                                                    </font>
+                                                </li>
                                             </ul>
                                         </td>
                                         <td width="2%">&nbsp;</td>
@@ -1042,7 +1089,199 @@ class Advertisement {
                         </tr>
                                     <tr>
                                         <td width="3%" align="center">&nbsp;</td>
-                                        <td width="28%" align="center"><font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:9px; " > © ' . date('Y') . ' Copyright ' . $comany_name . '</font> </td>
+                                        <td width="28%" align="center"><font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:9px; " > © ' . date('Y') . ' Copyright Flip.lk</font> </td>
+                                        <td width="10%" align="center"></td>
+                                        <td width="3%" align="center"></td> 
+                                        <td width="30%" align="right">
+                                        <font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:9px; " > 
+                                        <a href="http://sublime.lk/">
+                                        web solution by: Synotec Holdings (Pvt) Ltd</a>
+                                        </font>
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table></td>
+            </tr>
+        </table>
+    </body>
+</html>';
+        if (mail($email, $subject, $html, $headers)) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+    
+    public static function sendActivatedMail($adid) {
+
+        //----------------------Company Information---------------------
+        
+        $AD = new Advertisement($adid);
+        $MEMBER = new Member($AD->member);
+
+        $from = 'info@flip.lk';
+        $email = $MEMBER->email;
+        $full_name = $MEMBER->firstName . ' ' . $MEMBER->lastName;
+
+        $subject = "Boost advertisement confirmation | Flip.lk | #" . $adid;
+        $site = 'flip.lk';
+//        $site_link = "https://" . $_SERVER['HTTP_HOST'];
+        $site_link = "https://www.flip.lk";
+        // mandatory headers for email message, change if you need something different in your setting.
+        $headers = "From: " . $from . "\r\n";
+        $headers .= "Reply-To: " . $from . "\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+
+        $html = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Promotional email template</title>
+    </head>
+
+    <body bgcolor="#8d8e90">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#8d8e90">
+            <tr>
+                <td><table width="600" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" align="center">
+                        <tr>
+                            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="40"></td>
+                                        <td width="144">
+                                            <a href= "' . $site_link . '" target="_blank"> '
+                . '<img src="' . $site_link . '/img/logo/logo.jpg" border="0" alt=""/>
+                                            </a>
+                                        </td>
+                                        <td width="393">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td height="46" align="right" valign="middle">
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td width="67%" align="right">
+                                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:18px; " >
+                                                                        <a href= "' . $site_link . '" style="color:#68696a; text-decoration:none; text-transform: uppercase;">
+                                                                            <h4>Flip.lk</h4>
+                                                                        </a>
+                                                                    </font>
+                                                                </td>
+                                                                <td width="4%">&nbsp;</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                               
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table></td>
+                        </tr>
+                        <tr>
+                           <td align="center">
+                                <img src="' . $site_link . '/contact-us-form/img/sli6.gif" alt="" width="598" height="323" border="0"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" valign="middle">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="2%">&nbsp;</td>
+                                        <td width="96%" align="center" style="border-bottom:1px solid #000000" height="50">
+                                            <font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:18px; " >
+                                                   <h4>Boost Advertisement Confirmation - Flip.lk</h4>
+                                            </font>
+                                        </td>
+                                        <td width="2%">&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="5%">&nbsp;</td>
+                                        <td width="90%" valign="middle">
+                                            <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; ">
+                                                 Hi ' . $full_name . ',
+                                                <br /><br />
+                                            </font>
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="5%">&nbsp;</td>
+                                        <td width="90%" valign="middle">
+                                            <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                               The requested for boost your ad has been activated from now on to ' . $AD->boostPeriod . ' days. 
+                                            </font>
+                                        </td>
+                                        <td width="5%">&nbsp;</td>
+                                    </tr>
+                                     
+                                </table>
+                                
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                       
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="2%" align="center">&nbsp;</td>
+                                        <td width="29%" align="center">
+                                            <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:8px; " >
+                                                <strong>Phone No : <br/> 011 2357487 </strong>
+                                            </font>
+                                        </td>
+                                        <td width="2%" align="center">
+                                            <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:8px; " >
+                                              <strong>|</strong>
+                                            </font>
+                                        </td>
+                                        <td width="30%" align="center">
+                                            <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:8px; " >
+                                                <strong>Website : <br/> www.flip.lk  </strong>
+                                            </font>
+                                        </td>
+                                        <td width="2%" align="center">
+                                            <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:8px; " >
+                                                <strong>|</strong>
+                                            </font>
+                                        </td>
+                                        <td width="25%" align="center">
+                                            <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:8px; " >
+						 <strong>E-mail :  <br/> info@flip.lk</strong>
+                                            </font>
+                                        </td> 
+                                    </tr>
+                                </table>
+                                <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                    <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                                    <tr>
+                                        <td width="3%" align="center">&nbsp;</td>
+                                        <td width="28%" align="center"><font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:9px; " > © ' . date('Y') . ' Copyright Flip.lk</font> </td>
                                         <td width="10%" align="center"></td>
                                         <td width="3%" align="center"></td> 
                                         <td width="30%" align="right">
