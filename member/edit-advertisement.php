@@ -219,6 +219,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
 
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                         <input type="hidden" name="id" id="id" value="<?php echo $id; ?>" />
+                                        <input type="hidden" name="city_string" id="city_string" value="<?php echo $ADVERTISEMENT->cityString; ?>"/>
                                         <input type="hidden" name="edit" id="" value="" />
                                         <a name="" id="edit-ad" class="btn btn-primary btn-lg full-width" >Save all Changes</a>
                                         <div id="map" class="hidden"></div>
@@ -345,6 +346,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                 // Get the place details from the autocomplete object.
                 var place = autocomplete.getPlace();
                 $('#city').val(place.place_id);
+                $('#city_string').val(place.name);
                 //                $('#longitude').val(place.geometry.location.lng());
                 //                $('#latitude').val(place.geometry.location.lat());
                 for (var component in componentForm) {

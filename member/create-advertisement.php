@@ -30,7 +30,7 @@ $CATEGORIES = BusinessCategory::all();
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>My Account - Personal Information</title>
+        <title>Create Advertisement | Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -306,6 +306,7 @@ $CATEGORIES = BusinessCategory::all();
                                     } ?>" />
 
                                         <input type="hidden" name="create" id="" value="" />
+                                        <input type="hidden" name="city_string" id="city_string"  value=""/>
                                         <a name="" id="create-ad" class="btn btn-primary btn-lg full-width" >Save all Changes</a>
                                         <div id="map" class="hidden"></div>
                                     </div>
@@ -405,8 +406,7 @@ include './window-pop-up.php';
                 // Get the place details from the autocomplete object.
                 var place = autocomplete.getPlace();
                 $('#city').val(place.place_id);
-                //                $('#longitude').val(place.geometry.location.lng());
-                //                $('#latitude').val(place.geometry.location.lat());
+                $('#city_string').val(place.name);
                 for (var component in componentForm) {
                     document.getElementById(component).value = '';
                     document.getElementById(component).disabled = false;

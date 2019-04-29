@@ -43,6 +43,7 @@ $(document).ready(function () {
             var title = $('#title').val();
             var description = tinyMCE.get('description').getContent();
             var city = $('#city').val();
+            var cityString = $('#city_string').val();
             var address = $('#address').val();
             var category = $('#select-business-category').val();
             var subCategory = $('#sub-category').val();
@@ -62,6 +63,7 @@ $(document).ready(function () {
                     title: title,
                     description: description,
                     city: city,
+                    cityString: cityString,
                     address: address,
                     category: category,
                     subcategory: subCategory,
@@ -125,6 +127,7 @@ $(document).ready(function () {
             var title = $('#title').val();
             var description = tinyMCE.get('description').getContent();
             var city = $('#city').val();
+            var cityString = $('#city_string').val();
             var address = $('#address').val();
             var website = $('#website').val();
             var price = $('#price').val();
@@ -140,6 +143,7 @@ $(document).ready(function () {
                     title: title,
                     description: description,
                     city: city,
+                    cityString: cityString,
                     address: address,
                     website: website,
                     price: price,

@@ -169,31 +169,40 @@ $boostadvertisements = Advertisement::searchBoostAdvertisements($category1, $sub
                                                             ?>
                                                         </div>
                                                         <div class = "col-xl-8 col-xs-8 ad-item-details">
-                                                            <div class="ad-title">
-                                                                <?php
-                                                                if ($ad['title']) {
-                                                                    if (strlen($ad['title']) > 25) {
-                                                                        echo substr($ad['title'], 0, 25) . '...';
+                                                            <div class="row">
+                                                                <div class="col-sm-7">
+                                                                    <div class="ad-title">
+                                                                        <?php
+                                                                        if ($ad['title']) {
+                                                                            if (strlen($ad['title']) > 25) {
+                                                                                echo substr($ad['title'], 0, 25) . '...';
+                                                                            } else {
+                                                                                echo $ad['title'];
+                                                                            }
+                                                                        } else {
+                                                                            echo 'Advertisement';
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-5 ad-price">
+                                                                    <?php
+                                                                    if ($ad['price'] == 0) {
+                                                                        echo 'Negotiable';
                                                                     } else {
-                                                                        echo $ad['title'];
+                                                                        echo 'Rs. ' . number_format($ad['price'],2) . '/=';
                                                                     }
-                                                                } else {
-                                                                    echo 'Advertisement';
-                                                                }
-                                                                ?>
+                                                                    ?>
+                                                                </div>
                                                             </div>
-                                                            <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
-                                                            <div class="ad-subcategory"><span class="title">Sub Category <i class="fa fa-angle-double-right"></i> </span><?php echo $SUBCATEGORY->name; ?></div>
-                                                            <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php
-                                                                if ($ad['price'] == 0) {
-                                                                    echo 'Negotiable';
-                                                                } else {
-                                                                    echo 'Rs. ' . number_format($ad['price']);
-                                                                }
-                                                                ?></div>
-                                                            <div class="row boost-time">
+
+                                                            <div class="ad-category"><span class="title">Category : </span><?php echo $CATEGORY->name; ?></div>
+                                                            <div class="ad-subcategory"><span class="title">Sub Category : </span><?php echo $SUBCATEGORY->name; ?></div>
+                                                            <div class="ad-city"><span class="title">City : </span><?php echo $ad['city_string']; ?></div>
+                                                            <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                            <div class="row boost-time col-sm-12">
                                                                 <div class="boost-ad col-sm-6"><span><i class="fa fa-certificate "></i> Top Ad </span></div>
-                                                                <div class="ad-time col-sm-6"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                                <div class="view-details col-sm-6"><span>View Details</span></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -211,7 +220,7 @@ $boostadvertisements = Advertisement::searchBoostAdvertisements($category1, $sub
                                             $SUBCATEGORY = new BusinessSubCategory($ad['sub_category']);
                                             $adimages = AdvertisementImage::getPhotosByAdId($ad['id']);
                                             ?>
-                                            <div class="ad-item  post ">
+                                            <div class="ad-item post">
                                                 <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
                                                     <div class="ad-item-box row">
                                                         <div class = "col-xl-4 col-xs-4 ad-item-image">
@@ -232,17 +241,41 @@ $boostadvertisements = Advertisement::searchBoostAdvertisements($category1, $sub
                                                             ?>
                                                         </div>
                                                         <div class = "col-xl-8 col-xs-8 ad-item-details">
-                                                            <div class="ad-title"><?php echo $ad['title']; ?></div>
-                                                            <div class="ad-category"><span class="title">Category <i class="fa fa-angle-double-right"></i> </span><?php echo $CATEGORY->name; ?></div>
-                                                            <div class="ad-subcategory1"><span class="title">Sub Category <i class="fa fa-angle-double-right"></i> </span><?php echo $SUBCATEGORY->name; ?></div>
-                                                            <div class="ad-city"><span class="title">Price <i class="fa fa-angle-double-right"></i> </span><?php
-                                                                if ($ad['price'] == 0) {
-                                                                    echo 'Negotiable';
-                                                                } else {
-                                                                    echo 'Rs. ' . number_format($ad['price']);
-                                                                }
-                                                                ?></div>
-                                                            <div class="ad-time ad-time0"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                            <div class="row">
+                                                                <div class="col-sm-7">
+                                                                    <div class="ad-title">
+                                                                        <?php
+                                                                        if ($ad['title']) {
+                                                                            if (strlen($ad['title']) > 25) {
+                                                                                echo substr($ad['title'], 0, 25) . '...';
+                                                                            } else {
+                                                                                echo $ad['title'];
+                                                                            }
+                                                                        } else {
+                                                                            echo 'Advertisement';
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-5 ad-price">
+                                                                    <?php
+                                                                    if ($ad['price'] == 0) {
+                                                                        echo 'Negotiable';
+                                                                    } else {
+                                                                        echo 'Rs. ' . number_format($ad['price'],2) . '/=';
+                                                                    }
+                                                                    ?>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="ad-category"><span class="title">Category : </span><?php echo $CATEGORY->name; ?></div>
+                                                            <div class="ad-subcategory"><span class="title">Sub Category : </span><?php echo $SUBCATEGORY->name; ?></div>
+                                                            <div class="ad-city"><span class="title">City : </span><?php echo $ad['city_string']; ?></div>
+                                                            <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                            <div class="row boost-time col-sm-12">
+                                                                <div class="col-sm-6"></div>
+                                                                <div class="view-details col-sm-6"><span>View Details</span></div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </a>

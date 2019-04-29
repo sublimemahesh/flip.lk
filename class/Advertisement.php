@@ -15,6 +15,7 @@ class Advertisement {
     public $description;
     public $price;
     public $city;
+    public $cityString;
     public $address;
     public $phoneNumber;
     public $email;
@@ -31,7 +32,7 @@ class Advertisement {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`created_at`,`member`,`group_id`,`title`,`description`,`price`,`city`,`address`,`phone_number`,`email`,`category`,`sub_category`,`website`,`status`,`boosted`,`boost_requested_date`,`boost_period`,`boost_activated_date` FROM `advertisement` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`created_at`,`member`,`group_id`,`title`,`description`,`price`,`city`,`city_string`,`address`,`phone_number`,`email`,`category`,`sub_category`,`website`,`status`,`boosted`,`boost_requested_date`,`boost_period`,`boost_activated_date` FROM `advertisement` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -45,6 +46,7 @@ class Advertisement {
             $this->description = $result['description'];
             $this->price = $result['price'];
             $this->city = $result['city'];
+            $this->cityString = $result['city_string'];
             $this->address = $result['address'];
             $this->phoneNumber = $result['phone_number'];
             $this->email = $result['email'];
@@ -73,6 +75,7 @@ class Advertisement {
                 . "`description` , "
                 . "`price` , "
                 . "`city`, "
+                . "`city_string`, "
                 . "`address`, "
                 . "`phone_number`, "
                 . "`email`, "
@@ -88,6 +91,7 @@ class Advertisement {
                 . "'" . $this->description . "', "
                 . "'" . $this->price . "', "
                 . "'" . $this->city . "', "
+                . "'" . $this->cityString . "', "
                 . "'" . $this->address . "', "
                 . "'" . $this->phoneNumber . "', "
                 . "'" . $this->email . "', "
@@ -115,6 +119,7 @@ class Advertisement {
                 . "`description` ='" . $this->description . "', "
                 . "`price` ='" . $this->price . "', "
                 . "`city` ='" . $this->city . "', "
+                . "`city_string` ='" . $this->cityString . "', "
                 . "`address` ='" . $this->address . "', "
                 . "`phone_number` ='" . $this->phoneNumber . "', "
                 . "`email` ='" . $this->email . "', "
@@ -164,7 +169,7 @@ class Advertisement {
         date_default_timezone_set('Asia/Colombo');
         $today = date('Y-m-d');
 
-        $query = "SELECT * FROM `advertisement` WHERE `status` = 1 AND '" . $today . "' BETWEEN `boosted` AND `boost_requested_date` ORDER BY `created_at` DESC";
+        $query = "SELECT * FROM `advertisement` WHERE `status` = 1 AND '" . $today . "' BETWEEN `boosted` AND `boost_requested_date` ORDER BY RAND() LIMIT 2";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
