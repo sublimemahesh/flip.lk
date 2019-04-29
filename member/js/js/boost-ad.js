@@ -5,19 +5,10 @@ $(document).ready(function () {
     });
     $('#send-boost-email').click(function () {
 
-        if (!$('#boostFrom').val() || $('#boostFrom').val().length === 0) {
+        if (!$('#boost_period').val() || $('#boost_period').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter the date which you need to start boosting ad",
-                type: 'error',
-                timer: 2000,
-                showConfirmButton: false
-            });
-            return false;
-        } else if (!$('#boostTo').val() || $('#boostTo').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter the date which you need to stop boosting ad",
+                text: "Please select boost period",
                 type: 'error',
                 timer: 2000,
                 showConfirmButton: false
@@ -25,8 +16,7 @@ $(document).ready(function () {
             return false;
         } else {
             var adid = $(this).attr('adid');
-            var fromdate = $('#boostFrom').val();
-            var todate = $('#boostTo').val();
+            var period = $('#boost_period').val();
 
             $.ajax({
                 type: 'POST',
@@ -34,28 +24,29 @@ $(document).ready(function () {
                 dataType: "json",
                 data: {
                     adid: adid,
-                    fromdate: fromdate,
-                    todate: todate,
+                    period: period,
                     option: 'SENDBOOSTEMAIL'
                 },
                 success: function (result) {
                     if (result === 'success') {
                         swal({
                             title: "Success!",
-                            text: "Your enquiry has been sent successfully.",
+                            text: "Your request has been sent successfully.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false
                         });
+                        $('#boost-ad').modal('hide');
                     } else {
                         swal({
-                            title: "Success!",
+                            title: "Error!",
                             text: "There was an error. Please try again later.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false
                         });
                     }
+                    
 
                 }
             });

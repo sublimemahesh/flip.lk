@@ -51,19 +51,25 @@ if (isset($_POST['update'])) {
 
 if (isset($_POST['boost-ad'])) {
     
+    date_default_timezone_set('Asia/Colombo');
+    $today = date('Y-m-d H:i:s');
+    
     $ADVERTISEMENT = new Advertisement($_POST['id']);
-    $ADVERTISEMENT->boostFrom = $_POST['from_date'];
-    $ADVERTISEMENT->boostTo = $_POST['to_date'];
+    $ADVERTISEMENT->boostPeriod = $_POST['period'];
+    $ADVERTISEMENT->boosted = 'active';
+    $ADVERTISEMENT->boostActivatedDate = $today;
 
     $VALID = new Validator();
 
     $VALID->check($ADVERTISEMENT, [
-        'boostFrom' => ['required' => TRUE],
-        'boostTo' => ['required' => TRUE]
+        'boostPeriod' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
         $result = $ADVERTISEMENT->boostAd();
+        if($result) {
+            $res = $ADVERTISEMENT->sendActivatedMail($_POST['id']);
+        }
 
         if (!isset($_SESSION)) {
             session_start();
