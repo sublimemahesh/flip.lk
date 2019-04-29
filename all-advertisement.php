@@ -86,13 +86,13 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                                 foreach ($adimages as $key => $img) {
                                                                     if ($key == 0) {
                                                                         ?>
-                                                                        <img src="upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt=""/>
+                                                                        <img src="upload/advertisement/thumb3/<?php echo $img['image_name']; ?>" alt=""/>
                                                                         <?php
                                                                     }
                                                                 }
                                                             } else {
                                                                 ?>
-                                                                <img src="upload/advertisement/thumb2/advertising.jpg" alt=""/>
+                                                                <img src="upload/advertisement/thumb3/advertising.jpg" alt=""/>
                                                                 <?php
                                                             }
                                                             ?>
@@ -150,13 +150,13 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                                 foreach ($adimages as $key => $img) {
                                                                     if ($key == 0) {
                                                                         ?>
-                                                                        <img src="upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt=""/>
+                                                                        <img src="upload/advertisement/thumb3/<?php echo $img['image_name']; ?>" alt=""/>
                                                                         <?php
                                                                     }
                                                                 }
                                                             } else {
                                                                 ?>
-                                                                <img src="upload/advertisement/thumb2/advertising.jpg" alt=""/>
+                                                                <img src="upload/advertisement/thumb3/advertising.jpg" alt=""/>
                                                                 <?php
                                                             }
                                                             ?>

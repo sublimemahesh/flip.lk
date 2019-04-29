@@ -303,7 +303,7 @@
                             </div>
                         </div>
                         <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                            <input type="submit" name="send-boost-email" id="send-boost-email" adid="" class="btn btn-primary btn-lg full-width" value="Boost Ad" />
+                            <input type="submit" name="send-boost-email" id="send-boost-email" adid="" class="btn btn-primary btn-lg full-width" value="Send Enquiry" />
                         </div>
 
                     </div>
