@@ -53,7 +53,7 @@ if (isset($_SESSION["back_url"])) {
         <div class="container index-container body-content">
             <a href="post-and-get/ajax/google-login.php"></a>
 
-            <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12 form-login">
+            <div class="col col-xl-6 order-xl-1 col-lg-6 order-lg-1 col-md-12 col-sm-12 col-12 form-login">
                 <div class="form">
 
                     <ul class="tab-group">
@@ -177,9 +177,7 @@ if (isset($_SESSION["back_url"])) {
                                     </label>
                                     <input type="password"required autocomplete="off" name="cpassword"/>
                                 </div>
-
-
-                                <a class="button button-block" id="btnRegister"/>Sing Up Now</a>
+                                <a class="button button-block" id="btnRegister"/>Sign Up Now</a>
                                 <input type="hidden" name="save"  value="">
                             </form>
 
@@ -187,16 +185,38 @@ if (isset($_SESSION["back_url"])) {
                     </div><!-- tab-content -->
                 </div> <!-- /form -->
             </div>
+            <div class="col col-xl-6 order-xl-1 col-lg-6 order-lg-1 col-md-12 col-sm-12 col-12 slider-banner">
+                <div class="banner-sec">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <img class="d-block img-fluid" src="image/slider1.jpg" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block img-fluid" src="image/slider2.jpg" alt="First slide">	
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block img-fluid" src="image/slider3.jpg" alt="First slide">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- JS Scripts -->
-        <script src="js/jquery-3.2.1.js"></script>
-        <script defer src="fonts/fontawesome-all.js"></script>
-        <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
-        <!--custom js-->
-        <script src="js/js/add-member.js" type="text/javascript"></script>
-        <script src="js/js/login.js" type="text/javascript"></script>
-        <script src="js/js/fb-login-scripts.js" type="text/javascript"></script>
+    <!-- JS Scripts -->
+    <script src="js/jquery-3.2.1.js"></script>
+    <script defer src="fonts/fontawesome-all.js"></script>
+    <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <!--custom js-->
+    <script src="js/js/add-member.js" type="text/javascript"></script>
+    <script src="js/js/login.js" type="text/javascript"></script>
+    <script src="js/js/fb-login-scripts.js" type="text/javascript"></script>
 
 
-    </body>
+</body>
 </html>
