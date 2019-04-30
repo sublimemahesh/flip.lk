@@ -87,57 +87,58 @@ $boostadvertisements = Advertisement::searchBoostAdvertisements($category1, $sub
                 <div class="container">
                     <div class="row">
                         <!-- Main Content -->
+                        <div class="ad-breadcrumbs col-sm-12">
+                            <?php
+                            if ($category1 !== "" && $location !== "") {
+                                if (empty($subcategory)) {
+                                    ?>
+                                    <span class="breadcrumb-item"><a href="./" >Home</a> </span>
+                                    <span class="breadcrumb-item">
+                                        <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a></span>
+                                    <span class="breadcrumb-item location"></span>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <span class="breadcrumb-item"><a href="./" >Home</a> </span>
+                                    <span class="breadcrumb-item">
+                                        <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a>
+                                    </span>
+                                    <span class="breadcrumb-item">
+                                        <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>subcategory=<?php echo $BUSSUBCAT->id; ?>" ><?php echo $BUSSUBCAT->name; ?></a>
+                                    </span>
+                                    <span class="breadcrumb-item location"></span>
+                                    <?php
+                                }
+                            } else if ($category1 !== "" && $location == "") {
+                                if (empty($subcategory)) {
+                                    ?>
+                                    <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item"><?php echo $BUSCAT->name; ?></span>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <span class="breadcrumb-item"><a href="./" >Home</a> </span>
+                                    <span class="breadcrumb-item">
+                                        <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a>
+                                    </span>
+                                    <span class="breadcrumb-item">
+                                        <?php echo $BUSSUBCAT->name; ?>
+                                    </span>
+                                    <?php
+                                }
+                            } else if ($location !== "" && $category1 == "") {
+                                ?>
+                                <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item location"></span>
+                                <?php
+                            } else if ($keyword !== "" && $location == "" && $category1 == "") {
+                                ?>
+                                <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item">All advertisements in Sri Lanka</span>
+                                <?php
+                            }
+                            ?>
+                        </div>
                         <div class="col col-xl-8 col-xl-offset-2 order-xl-2 col-lg-8 order-lg-1 col-md-12 col-sm-12 col-12">
                             <div id="newsfeed-items-grid">
-                                <div class="ad-breadcrumbs">
-                                    <?php
-                                    if ($category1 !== "" && $location !== "") {
-                                        if (empty($subcategory)) {
-                                            ?>
-                                            <span class="breadcrumb-item"><a href="./" >Home</a> </span>
-                                            <span class="breadcrumb-item">
-                                                <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a></span>
-                                            <span class="breadcrumb-item location"></span>
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <span class="breadcrumb-item"><a href="./" >Home</a> </span>
-                                            <span class="breadcrumb-item">
-                                                <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a>
-                                            </span>
-                                            <span class="breadcrumb-item">
-                                                <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>subcategory=<?php echo $BUSSUBCAT->id; ?>" ><?php echo $BUSSUBCAT->name; ?></a>
-                                            </span>
-                                            <span class="breadcrumb-item location"></span>
-                                            <?php
-                                        }
-                                    } else if ($category1 !== "" && $location == "") {
-                                        if (empty($subcategory)) {
-                                            ?>
-                                            <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item"><?php echo $BUSCAT->name; ?></span>
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <span class="breadcrumb-item"><a href="./" >Home</a> </span>
-                                            <span class="breadcrumb-item">
-                                                <a href="advertisements.php?category=<?php echo $BUSCAT->id; ?>" ><?php echo $BUSCAT->name; ?></a>
-                                            </span>
-                                            <span class="breadcrumb-item">
-                                                <?php echo $BUSSUBCAT->name; ?>
-                                            </span>
-                                            <?php
-                                        }
-                                    } else if ($location !== "" && $category1 == "") {
-                                        ?>
-                                        <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item location"></span>
-                                        <?php
-                                    } else if ($keyword !== "" && $location == "" && $category1 == "") {
-                                        ?>
-                                        <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item">All advertisements in Sri Lanka</span>
-                                        <?php
-                                    }
-                                    ?>
-                                </div>
+
                                 <div class="ui-block">
                                     <?php
                                     if (count($boostadvertisements) > 0) {
@@ -190,7 +191,7 @@ $boostadvertisements = Advertisement::searchBoostAdvertisements($category1, $sub
                                                                     if ($ad['price'] == 0) {
                                                                         echo 'Negotiable';
                                                                     } else {
-                                                                        echo 'Rs. ' . number_format($ad['price'],2) . '/=';
+                                                                        echo 'Rs. ' . number_format($ad['price'], 2) . '/=';
                                                                     }
                                                                     ?>
                                                                 </div>
@@ -211,7 +212,7 @@ $boostadvertisements = Advertisement::searchBoostAdvertisements($category1, $sub
                                             <?php
                                         }
                                     }
-                                    
+
                                     if (count($advertisements) > 0) {
                                         foreach ($advertisements as $key => $ad) {
                                             $result = getTime($ad['created_at']);
@@ -262,7 +263,7 @@ $boostadvertisements = Advertisement::searchBoostAdvertisements($category1, $sub
                                                                     if ($ad['price'] == 0) {
                                                                         echo 'Negotiable';
                                                                     } else {
-                                                                        echo 'Rs. ' . number_format($ad['price'],2) . '/=';
+                                                                        echo 'Rs. ' . number_format($ad['price'], 2) . '/=';
                                                                     }
                                                                     ?>
                                                                 </div>

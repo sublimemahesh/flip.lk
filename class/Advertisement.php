@@ -32,7 +32,7 @@ class Advertisement {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`created_at`,`member`,`group_id`,`title`,`description`,`price`,`city`,`city_string`,`address`,`phone_number`,`email`,`category`,`sub_category`,`website`,`status`,`boosted`,`boost_requested_date`,`boost_period`,`boost_activated_date` FROM `advertisement` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`created_at`,`member`,`group_id`,`title`,`description`,`price`,`city`,`city_string`,`address`,`phone_number`,`email`,`category`,`sub_category`,`website`,`is_suspend`,`status`,`boosted`,`boost_requested_date`,`boost_period`,`boost_activated_date` FROM `advertisement` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -53,6 +53,7 @@ class Advertisement {
             $this->category = $result['category'];
             $this->subCategory = $result['sub_category'];
             $this->website = $result['website'];
+            $this->isSuspend = $result['is_suspend'];
             $this->status = $result['status'];
             $this->boosted = $result['boosted'];
             $this->boostRequestedDate = $result['boost_requested_date'];
@@ -433,6 +434,14 @@ class Advertisement {
         }
 
         return $array_res;
+    }
+    
+    public function countPublishedAds() {
+
+        $query = "SELECT count(`id`) as count FROM `advertisement` WHERE `is_suspend` = 0 AND `status` = 1";
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result['count'];
     }
 
     public function searchAdvertisements($category, $subcategory, $location, $keyword, $pageLimit, $setLimit) {

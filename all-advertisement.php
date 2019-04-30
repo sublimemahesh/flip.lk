@@ -61,11 +61,12 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                 <div class="container">
                     <div class="row">
                         <!-- Main Content -->
+                        <div class="ad-breadcrumbs col-sm-12">
+                                    <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item">All advertisements in Sri Lanka</span>
+                                </div>
                         <div class="col col-xl-8 col-xl-offset-2 order-xl-2 col-lg-8 order-lg-1 col-md-12 col-sm-12 col-12">
                             <div id="newsfeed-items-grid">
-                                <div class="ad-breadcrumbs">
-                                    <span class="breadcrumb-item"><a href="./" >Home</a> </span><span class="breadcrumb-item">All advertisements in Sri Lanka</span>
-                                </div>   
+                                   
                                 <div class="ui-block">
                                     <?php
                                     $advertisements = Advertisement::getBoostAdvertisements();
@@ -99,7 +100,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                         </div>
                                                         <div class = "col-xl-8 col-xs-7 ad-item-details">
                                                             <div class="row">
-                                                                <div class="col-sm-8">
+                                                                <div class="col-sm-7">
                                                                     <div class="ad-title">
                                                                         <?php
                                                                         if ($ad['title']) {

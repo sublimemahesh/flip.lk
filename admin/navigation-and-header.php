@@ -275,63 +275,10 @@
                         <span>Home</span>
                     </a>
                 </li>
-                <li class="qqq">
-                    <a href="#" class="">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Slider</span>
-                    </a>
-
-                </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">map</i>
-                        <span>Business Category</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="create-business-category.php">
-                                <i class="material-icons">add</i>
-                                <span>Add New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="manage-business-categories.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="arrange-business-categories.php">
-                                <i class="material-icons">compare_arrows</i>
-                                <span>Arrange</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">map</i>
-                        <span>Member</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="create-member.php">
-                                <i class="material-icons">add</i>
-                                <span>Add New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="manage-members.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">map</i>
-                        <span>Advertisement</span>
+                        <span>Advertisements</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
@@ -351,13 +298,59 @@
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">map</i>
-                        <span>Group</span>
+                        <span>Members</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="create-member.php">
+                                <i class="material-icons">add</i>
+                                <span>Add New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-members.php">
+                                <i class="material-icons">list</i>
+                                <span>Manage</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">map</i>
+                        <span>Groups</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
                             <a href="manage-groups.php">
                                 <i class="material-icons">list</i>
                                 <span>Manage</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">map</i>
+                        <span>Business Categories</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="create-business-category.php">
+                                <i class="material-icons">add</i>
+                                <span>Add New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-business-categories.php">
+                                <i class="material-icons">list</i>
+                                <span>Manage</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="arrange-business-categories.php">
+                                <i class="material-icons">compare_arrows</i>
+                                <span>Arrange</span>
                             </a>
                         </li>
                     </ul>

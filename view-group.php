@@ -62,7 +62,7 @@ if (isset($_SESSION['id'])) {
         ?>
         <div class="header-spacer"></div>
         <?php
-        include './banner-group.php';
+        include './banner.php';
         ?>
         <div class="container index-container body-content">
 

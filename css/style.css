@@ -1289,7 +1289,8 @@ a .ad-title:hover {
 .ad-breadcrumbs {
     margin-bottom: 10px;
     margin-left: 3px;
-    font-size: 13px;
+    font-size: 20px;
+    color: #003263;
 }
 /*.breadcrumb-item:hover {
     color: #003263;
@@ -2159,6 +2160,8 @@ ul {
 .body-content {
     margin-top: 75px;
     margin-bottom: 75px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 .header {
     background-color: #003263;
@@ -2173,12 +2176,12 @@ ul {
     color: #000;
 }
 .breadcrumb-item a {
-    color: #888da8;
-    font-weight: 400;
+    color: #003263;
+    font-weight: 600;
 }
 .breadcrumb-item a:hover {
     color: #003263;
-    font-weight: 400;
+    font-weight: 600;
 }
 a.see-more {
     color: #003263;
@@ -2520,7 +2523,7 @@ a .ad-title{
 
 .sidebar{
     /*    margin-top: 30px;*/
-    margin-top: 12px;
+    margin-top: 0px;
     border-radius: 5px;
     margin-bottom: 16px;
 }
@@ -3208,7 +3211,7 @@ a .ad-title{
 }
 .ad-item-details .title {
     color: #7f7d86;
-font-weight: 600;
+    font-weight: 600;
 }
 /*--Header Icon--*/
 .icon-newsfeed span{
@@ -3290,4 +3293,24 @@ font-weight: 600;
 .boost-time .col-sm-6 {
     padding-left: 0px;
     padding-right: 0px;
+}
+.ad-breadcrumbs.col-sm-12 {
+    padding-left: 0px;
+    margin-left: 0px;
+}
+.friend-groups .friends-harmonic {
+    margin-bottom: 25px;
+}
+.friend-groups .friend-avatar .author-thumb {
+    margin-bottom: 18px;
+}
+.friend-avatar {
+    margin-bottom: 13px;
+
+}
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #003263;
+}
+.breadcrumb-item {
+    font-weight: 400;
 }
