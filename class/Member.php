@@ -487,6 +487,14 @@ class Member {
             return $result;
         }
     }
+    
+    public function countMembers() {
+
+        $query = "SELECT count(`id`) as count FROM `member` WHERE `is_suspend` = 0 AND `status` = 1";
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result['count'];
+    }
 
     public function sendConfirmationEmail() {
 

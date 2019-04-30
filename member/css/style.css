@@ -886,7 +886,7 @@ input[type='submit'].share-post {
 .delete-comment {
     cursor: pointer;
 }
-.container.index-container, .container.login-container {
+.container.index-container {
     /*    margin-left: 85px;*/
     margin-left: 85px;
     margin-right: 85px;
@@ -1744,7 +1744,7 @@ header .control-icon > svg {
 }
 .control-icon a{
 
-   color: #888da8;
+    color: #888da8;
 }
 .account-settings li a span {
     color: #cecccc;
@@ -1764,13 +1764,17 @@ header .control-icon > svg {
     background-image: none;
     background-color: #f2f2f2;
 }
-.slider-banner{
-    margin-left: 630px;
-    margin-top: -517px;
-}
-#fb-login{
-    margin-left: -15px;
-}
 
-
+.boost-btn.btn {
+    position: absolute;
+    margin-left: 20px;
+    color: #fff !important;
+    border: 1px solid #1ed760;
+    padding: 2px .75rem;
+}
+.btn-red {
+    background-color: red;
+    border: 1px solid red !important;
+    cursor: inherit;
+}
 

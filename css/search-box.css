@@ -1898,3 +1898,28 @@ span.flatpickr-weekday {
         margin-bottom: 0;
     }
 }
+
+.group-search.s002 form .inner-form {
+    background: transparent;
+    padding: 0 16px 0px 16px;
+}
+.group-search.s002 {
+    padding: 0;
+    min-height: 14vh;
+}
+.group-search.s002 form .inner-form .input-field.fifth-wrap {
+    min-width: 170px;
+    padding-left: 0px;
+}
+.group-search.s002 form .inner-form .input-field input {
+    height: 53px;
+}
+.group-search .category-select-box {
+    height: 55px;
+}
+.group-search.s002 form .inner-form .input-field.fifth-wrap .btn-search {
+    height: 53px;
+}
+.group-search.s002 {
+    display: block;
+}

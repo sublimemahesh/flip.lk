@@ -287,8 +287,8 @@ class Group {
         $w = array();
         $where = '';
 
-        if (!empty($category)) {
-            $w[] = "`category` = '" . $category . "'";
+        if (!empty($category1)) {
+            $w[] = "`category` = '" . $category1 . "'";
         }
         if (!empty($subcategory)) {
             $w[] = "`sub_category` = '" . $subcategory . "'";

@@ -32,7 +32,7 @@ a {
     background:#ffffffb3;
     padding: 40px;
     max-width:600px;
-    margin:1% auto;
+    margin:5px auto;
     border-radius:4px;
     box-shadow:0 4px 10px 4px rgba(#13232f,.3);
 }
@@ -100,7 +100,7 @@ label.active {
     }
 }
 label.highlight {
-    color:#ffffff;
+    color:#b5b5b6;
 }
 input, textarea {
     font-size:16px;
@@ -238,7 +238,7 @@ body {
     vertical-align: -.125em;
 }
 .btn-group-lg > .btn, .btn-lg {
-    padding: 0.7rem 2rem;
+    padding: 0.7rem 0px;
 }
 #register {
     padding: 0;
@@ -301,6 +301,18 @@ a#upload-pro-pic, a#upload-cover-pic {
     left: 0;
     transform: translateY(0px);
 }
+.or::after {
+    background-color: #fbfbfb;
+    color: #b5b5b6;
+}
+.banner-sec {
+    margin-top: 5px;
+}
+.container.login-container {
+    margin-left: auto;
+    margin-right: auto;
+
+}
 @media(max-width:576px) {
     .bg-facebook {
         margin-bottom: 12px;
@@ -315,6 +327,10 @@ a#upload-pro-pic, a#upload-cover-pic {
         width: 250px;
         padding-top: 15%;
     }
+    .or::after {
+        background-color: #fbfbfb;
+        color: #b5b5b6;
+    }
 }
 @media(min-width:576px) and (max-width: 990px) {
     .upload-span {
@@ -324,9 +340,17 @@ a#upload-pro-pic, a#upload-cover-pic {
         padding-top: 9%;
     }
 }
+@media(min-width:990px) and (max-width: 1200px) {
+    .slider-banner {
+        padding: 0 8%;
+    }
+}
 @media(width: 800px) {
     .upload-span {
         padding-top: 15%;
+    }
+    .slider-banner {
+        padding: 0 8%;
     }
 }
 @media(min-width: 1200px) and (max-width: 1400px) {

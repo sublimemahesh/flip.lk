@@ -3,7 +3,6 @@
 include_once(dirname(__FILE__) . '/../../../class/include.php');
 
 if ($_POST['option'] == 'SAVEAD') {
-
     $ADVERTISEMENT = new Advertisement(NULL);
     $ADVERTISEMENT->groupId = $_POST['group'];
     $ADVERTISEMENT->member = $_POST['member'];
@@ -147,8 +146,7 @@ if ($_POST['option'] == 'UPDATESTATUS') {
     header('Content-Type: application/json');
     echo json_encode($result);
     exit();
-}date_default_timezone_set('Asia/Colombo');
-    $todayis = date('Y-m-d H:i:s');
+}
 
 if ($_POST['option'] === 'GETADBYID') {
 
@@ -160,7 +158,8 @@ if ($_POST['option'] === 'GETADBYID') {
 
 if ($_POST['option'] === 'SENDBOOSTEMAIL') {
 
-    
+    date_default_timezone_set('Asia/Colombo');
+    $todayis = date('Y-m-d H:i:s');
 
     $AD = new Advertisement($_POST['adid']);
 

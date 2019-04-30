@@ -78,7 +78,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                 <span class="breadcrumb-item"><a href="./" >Home</a> </span>
                                 <span class="breadcrumb-item"><a href="all-advertisement.php" >All advertisements in Sri Lanka</a></span>
                                 <span class="breadcrumb-item"><a href="advertisements.php?category=<?php echo $ADVERTISEMENT->category; ?>"><?php echo $CATEGORY->name; ?></a></span>
-                                <span class="breadcrumb-item"><a href="advertisements.php?location=<?php echo $ADVERTISEMENT->city; ?>" id="breadcrumbs-city"></a></span>
+                                <span class="breadcrumb-item"><a href="advertisements.php?location=<?php echo $ADVERTISEMENT->city; ?>" id="breadcrumbs-city"><?php echo $ADVERTISEMENT->cityString; ?></a></span>
                                 <span class="breadcrumb-item"><?php echo $ADVERTISEMENT->title; ?></span>
                             </div> 
                         </div>
@@ -126,7 +126,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                             <span  title="Category"><i class="fa fa-tag"></i> <?php echo $CATEGORY->name; ?></span> <span title="Sub Category"> <i class="fa fa-angle-double-right"></i> <?php echo $SUBCATEGORY->name; ?></span>
                                         </div>
                                         <div class="col-md-5 city-details" title="City">
-                                            <i class="fa fa-map-marker"></i> <span id="city1"></span>
+                                            <i class="fa fa-map-marker"></i> <span><?php echo $ADVERTISEMENT->cityString; ?></span>
                                         </div>
                                     </div>
                                     <div class="price-tag">
@@ -488,37 +488,6 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                     });
                 }
             }
-        </script>
-        <script>
-            // Retrieve Details from Place_ID
-            function initMap() {
-                setTimeout(function () {
-                    var map = new google.maps.Map(document.getElementById('map'), {
-                        center: {lat: -33.866, lng: 151.196},
-                        zoom: 15
-                    });
-
-                    var infowindow = new google.maps.InfoWindow();
-                    var service = new google.maps.places.PlacesService(map);
-                    var place_id = $('#autocomplete1').val();
-
-                    service.getDetails({
-                        placeId: place_id
-                    }, function (place, status) {
-                        if (status === google.maps.places.PlacesServiceStatus.OK) {
-
-                            $('#city1').text(place.name);
-                            $('#breadcrumbs-city').text(place.name);
-                        }
-                    });
-
-                }, 1000);
-            }
-            $(document).ready(function () {
-                initMap();
-            });
-
-
         </script>
         <script>
             $(function () {

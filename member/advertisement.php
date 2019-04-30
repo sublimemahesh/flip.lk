@@ -84,7 +84,6 @@ if (isset($_GET['id'])) {
                                         <!-- Post -->
 
                                         <article class="hentry post has-post-thumbnail shared-photo ad_<?php echo $ad['id']; ?>" id="ad-id" post-id="<?php echo $ad['id']; ?>">
-
                                             <div class="post__author author vcard inline-items">
                                                 <?php
                                                 if ($MEMBER->profilePicture) {
@@ -110,6 +109,24 @@ if (isset($_GET['id'])) {
                                                 ?>
                                                 <div class="author-date">
                                                     <a class="h6 post__author-name fn" href="profile.php"><?php echo $MEMBER->firstName . ' ' . $MEMBER->lastName; ?></a> <i class="fa fa-caret-right"></i> <a class="h6 post__author-name fn" href="group.php?id=<?php echo $GROUP->id; ?>"><?php echo $GROUP->name; ?></a> 
+                                                    <?php
+                                                    date_default_timezone_set('Asia/Colombo');
+                                                    $today = date('Y-m-d H:i:s');
+
+                                                    $start_date = $ad['boost_activated_date'];
+                                                    $end_date = date('Y-m-d H:i:s', strtotime($start_date . ' + ' . $ad['boost_period'] . ' days'));
+
+                                                    if ($today > $start_date && $today < $end_date) {
+                                                        ?>
+                                                        <a class="boost-btn btn btn-red">Boosted</a>
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <a class="boost-btn btn btn-green boost-ad-link" data-toggle="modal" data-target="#boost-ad" id="<?php echo $ad['id']; ?>">Boost Ad</a>
+                                                        <?php
+                                                    }
+                                                    ?>
+
                                                     <div class="post__date">
                                                         <time class="published">
                                                             <?php echo $result; ?>
@@ -127,9 +144,6 @@ if (isset($_GET['id'])) {
                                                         </li>
                                                         <li>
                                                             <a href="#" class="delete-ad" id="<?php echo $ad['id']; ?>">Delete Advertisement</a>
-                                                        </li>
-                                                        <li>
-                                                            <a  href="#" class="boost-ad-link" data-toggle="modal" data-target="#boost-ad" id="<?php echo $ad['id']; ?>">Boost Advertisement</a>
                                                         </li>
                                                     </ul>
                                                 </div>
