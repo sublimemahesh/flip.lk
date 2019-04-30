@@ -4,6 +4,8 @@ include_once(dirname(__FILE__) . '/auth.php');
 
 $adcount = Advertisement::countPublishedAds();
 $membercount = Member::countMembers();
+$groupcount = Group::countGroups();
+$categorycount = BusinessCategory::countCategories();
 ?> 
 <!DOCTYPE html>
 <html> 
@@ -68,7 +70,7 @@ $membercount = Member::countMembers();
                     </a>
                     <a href="#">
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="info-box bg-cyan hover-expand-effect">
+                            <div class="info-box bg-pink hover-expand-effect">
                                 <div class="icon">
                                     <i class="material-icons">burst_mode</i>
                                 </div>
@@ -87,7 +89,7 @@ $membercount = Member::countMembers();
                                 </div>
                                 <div class="content">
                                     <div class="text">GROUPS</div>
-                                    <div class="number count-to" data-from="0" data-to="10" data-speed="1000" data-fresh-interval="20"></div>
+                                    <div class="number count-to" data-from="0" data-to="<?php echo $groupcount; ?>" data-speed="1000" data-fresh-interval="20"></div>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +102,7 @@ $membercount = Member::countMembers();
                                 </div>
                                 <div class="content">
                                     <div class="text">CATEGORIES</div>
-                                    <div class="number count-to" data-from="0" data-to="10" data-speed="1000" data-fresh-interval="20"></div>
+                                    <div class="number count-to" data-from="0" data-to="<?php echo $categorycount; ?>" data-speed="1000" data-fresh-interval="20"></div>
                                 </div>
                             </div>
                         </div>

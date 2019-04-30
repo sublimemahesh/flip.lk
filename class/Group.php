@@ -266,6 +266,14 @@ class Group {
         }
     }
     
+    public function countGroups() {
+
+        $query = "SELECT count(`id`) as count FROM `groups` WHERE `status` = 1";
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result['count'];
+    }
+    
     public function countGroupsByCategory($category) {
 
         $query = "SELECT count(`id`) AS `count` FROM `groups` WHERE `category` = $category AND `status` = 1 ORDER BY `created_at` DESC";

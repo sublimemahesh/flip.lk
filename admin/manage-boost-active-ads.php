@@ -50,7 +50,7 @@ $ADVERTISEMENT = new Advertisement($id);
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage Advertisements
+                                    Manage Boost Active Advertisements
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li>
@@ -65,86 +65,38 @@ $ADVERTISEMENT = new Advertisement($id);
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Created At</th> 
+                                            <th>Ad ID</th>
+                                            <th>Active Date</th> 
                                             <th>Title</th> 
                                             <th>Member</th> 
-                                            <th>Group</th>
-                                            <th>Status</th>
+                                            <th>Contact No</th>
                                             <th>Option</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
                                         <?php
-                                        $ADVERTISEMENT = Advertisement::all();
+                                        $ADVERTISEMENT = Advertisement::getBoostActiveAds();
+                                        $i = 1;
                                         if (count($ADVERTISEMENT) > 0) {
                                             foreach ($ADVERTISEMENT as $key => $advertisement) {
                                                 $MEM = new Member($advertisement['member']);
-                                                $GROUP = new Group($advertisement['group_id']);
                                                 ?>
                                                 <tr id="row_<?php echo $advertisement['id']; ?>">
+                                                    <td><?php echo $i; ?></td> 
                                                     <td><?php echo $advertisement['id']; ?></td> 
-
-                                                    <td><?php echo substr($advertisement['created_at'],0,10); ?></td>
+                                                    <td><?php echo substr($advertisement['boost_activated_date'], 0, 10); ?></td>
                                                     <td><?php echo $advertisement['title']; ?></td>
                                                     <td><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></td>
-                                                    <td><?php echo $GROUP->name; ?></td>
-                                                    <td class="text-center">
-                                                        <?php
-                                                        if ($advertisement['status'] == 1) {
-                                                            ?>
-                                                            <i class="glyphicon glyphicon-check op-link btn btn-sm btn-info" title="Publish"></i>
-                                                            <?php
-                                                        } else {
-                                                            ?>
-                                                            <i class="glyphicon glyphicon-unchecked op-link btn btn-sm btn-info" title="Unpublish"></i>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </td>
-
+                                                    <td><?php echo $MEM->phoneNumber; ?></td>
                                                     <td> 
-                                                        <a href="edit-advertisement.php?id=<?php echo $advertisement['id']; ?>" class="op-link btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i>
-                                                        </a>
-
-                                                        <?php
-                                                        if ($advertisement['is_suspend'] == 0) {
-                                                            ?>
-                                                        <a href="#" class="suspend-advertisement btn btn-sm btn-warning" data-id="<?php echo $advertisement['id']; ?>" title="Active">
-                                                            <i class="material-icons">stop</i>
-                                                        </a>
-                                                            <?php
-                                                        } else {
-                                                            ?>
-                                                            <a href="#" class="remove-ad-suspend btn btn-sm btn-warning" data-id="<?php echo $advertisement['id']; ?>"  title="Suspended">
-                                                            <i class="material-icons">play_circle_outline</i>
-                                                        </a>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                        <?php
-                                                        if ($advertisement['status'] == 0) {
-                                                            ?>
-                                                            <a href="#" class="publish-advertisement btn btn-sm btn-info" data-id="<?php echo $advertisement['id']; ?>"  title="Unpublished">
-                                                            <i class="glyphicon glyphicon-eye-close" data-type="cancel"></i>
-                                                        </a>
-                                                            <?php
-                                                        } else {
-                                                            ?>
-                                                            <a href="#" class="unpublish-advertisement btn btn-sm btn-info" data-id="<?php echo $advertisement['id']; ?>"  title="Published">
+                                                        <a href="https://www.flip.lk/view-advertisement.php?id=<?php echo $advertisement['id']; ?>" target="_blank" class="op-link btn btn-sm btn-info"  title="View Ad">
                                                             <i class="glyphicon glyphicon-eye-open" data-type="cancel"></i>
                                                         </a>
-                                                            <?php
-                                                        }
-                                                        ?>
-
-                                                        <a href="#" class="delete-advertisement btn btn-sm btn-danger" data-id="<?php echo $advertisement['id']; ?>">
-                                                            <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
-                                                        </a>
-                                                        
                                                     </td>
                                                 </tr>
                                                 <?php
+                                                $i++;
                                             }
                                         } else {
                                             ?> 
@@ -159,11 +111,11 @@ $ADVERTISEMENT = new Advertisement($id);
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Created At</th> 
+                                            <th>Ad ID</th>
+                                            <th>Requested Date</th> 
                                             <th>Title</th> 
                                             <th>Member</th> 
-                                            <th>Group</th>
-                                            <th>Status</th>
+                                            <th>Contact No</th>
                                             <th>Option</th>
                                         </tr>
                                     </tfoot>
