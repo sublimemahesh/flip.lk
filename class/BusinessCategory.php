@@ -104,4 +104,11 @@ class BusinessCategory {
         $result = $db->readQuery($query);
         return $result;
     }
+    public function countCategories() {
+
+        $query = "SELECT count(`id`) as count FROM `business_category`";
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result['count'];
+    }
 }

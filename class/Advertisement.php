@@ -181,6 +181,33 @@ class Advertisement {
 
         return $array_res;
     }
+    
+    public function getBoostRequestedAds() {
+
+        $query = "SELECT * FROM `advertisement` WHERE `status` = 1 AND `is_suspend` = 0 AND  `boosted` LIKE 'requested' ORDER BY `created_at` ASC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+    public function getBoostActiveAds() {
+
+        $query = "SELECT * FROM `advertisement` WHERE `status` = 1 AND `is_suspend` = 0 AND  `boosted` LIKE 'active' ORDER BY `created_at` ASC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
 
     public function getAdsInAnyGroupsByMember($member) {
 

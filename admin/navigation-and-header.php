@@ -35,7 +35,7 @@
         <div class="navbar-header">
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="javascript:void(0);" class="bars"></a>
-            <a class="navbar-brand" href="index.php">SUBLIME - WEB SITE CONTROL PANEL</a>
+            <a class="navbar-brand" href="index.php">WEBSITE ADMIN PANEL - FLIP.LK</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -277,7 +277,7 @@
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">map</i>
+                        <i class="material-icons">live_tv</i>
                         <span>Advertisements</span>
                     </a>
                     <ul class="ml-menu">
@@ -293,11 +293,23 @@
                                 <span>Manage</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="manage-boost-requested-ads.php">
+                                <i class="material-icons">list</i>
+                                <span>Boost Requested Ads</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-boost-active-ads.php">
+                                <i class="material-icons">list</i>
+                                <span>Boost Active Ads</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">map</i>
+                        <i class="material-icons">person</i>
                         <span>Members</span>
                     </a>
                     <ul class="ml-menu">
@@ -317,7 +329,7 @@
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">map</i>
+                        <i class="material-icons">group</i>
                         <span>Groups</span>
                     </a>
                     <ul class="ml-menu">
@@ -331,7 +343,7 @@
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">map</i>
+                        <i class="material-icons">category</i>
                         <span>Business Categories</span>
                     </a>
                     <ul class="ml-menu">

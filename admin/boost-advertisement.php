@@ -45,7 +45,7 @@ $ADVERTISEMENT = new Advertisement($id);
                                 <h2>Boost Advertisement</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-advertisements.php">
+                                        <a href="manage-boost-requested-ads.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
@@ -62,14 +62,43 @@ $ADVERTISEMENT = new Advertisement($id);
                                                 <div class="form-line">
                                                     <select class="selectpicker form-control" id="period" name="period">
                                                         <option value="">-- Please Select Period -- </option>
-                                                        <option value="7">1 week</option>
-                                                        <option value="14">2 weeks</option>
-                                                        <option value="21">3 weeks</option>
-                                                        <option value="28">4 weeks</option>
+                                                        <?php
+                                                        $i = 0;
+                                                        $period = $ADVERTISEMENT->boostPeriod;
+                                                        for ($i = 1; $i <= 4; $i++) {
+                                                            $days = $i * 7;
+                                                            if ($period == $i * 7) {
+                                                                $selected = 'selected';
+                                                            } else {
+                                                                $selected = '';
+                                                            }
+                                                            if ($i == 1) {
+                                                                echo '<option value="' . $days . '" ' . $selected . '>' . $i . ' week</option>';
+                                                            } else {
+                                                                echo '<option value="' . $days . '" ' . $selected . '>' . $i . ' weeks</option>';
+                                                            }
+                                                        }
+                                                        ?>
                                                     </select>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="group">Boost Period</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" class="form-control" readonly="" value="<?php echo date('Y-m-d'); ?>">
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
