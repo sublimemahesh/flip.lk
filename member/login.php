@@ -217,6 +217,7 @@ if (isset($_SESSION["back_url"])) {
         <script src="js/js/add-member.js" type="text/javascript"></script>
         <script src="js/js/login.js" type="text/javascript"></script>
         <script src="js/js/fb-login-scripts.js" type="text/javascript"></script>
+        <script src="../js/js/boost-ad.js" type="text/javascript"></script>
 
 
     </body>

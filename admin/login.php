@@ -101,6 +101,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
         <!-- Custom Js -->
         <script src="js/admin.js"></script>
         <script src="js/pages/examples/sign-in.js"></script>
+        <script src="../js/js/boost-ad.js" type="text/javascript"></script>
     </body>
 
 </html>

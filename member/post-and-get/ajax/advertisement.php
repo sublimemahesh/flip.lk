@@ -165,6 +165,7 @@ if ($_POST['option'] === 'SENDBOOSTEMAIL') {
 
     $AD->boosted = 'requested';
     $AD->boostRequestedDate = $todayis;
+    $AD->boostPeriod = $_POST['period'];
     
     $result = $AD->updateBoostRequest();
 

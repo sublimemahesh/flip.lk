@@ -76,7 +76,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                         <div class="col col-xl-8 order-xl-1 col-lg-8 order-lg-1 col-md-12 col-sm-12 col-12">
                             <div class="ad-breadcrumbs">
                                 <span class="breadcrumb-item"><a href="./" >Home</a> </span>
-                                <span class="breadcrumb-item"><a href="all-advertisement.php" >All advertisements in Sri Lanka</a></span>
+                                <!--<span class="breadcrumb-item"><a href="all-advertisement.php" >All advertisements in Sri Lanka</a></span>-->
                                 <span class="breadcrumb-item"><a href="advertisements.php?category=<?php echo $ADVERTISEMENT->category; ?>"><?php echo $CATEGORY->name; ?></a></span>
                                 <span class="breadcrumb-item"><a href="advertisements.php?location=<?php echo $ADVERTISEMENT->city; ?>" id="breadcrumbs-city"><?php echo $ADVERTISEMENT->cityString; ?></a></span>
                                 <span class="breadcrumb-item"><?php echo $ADVERTISEMENT->title; ?></span>
@@ -92,9 +92,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                     <div class="ad-main-title">
                                         <?php echo $ADVERTISEMENT->title; ?>
                                     </div>
-                                    <div class="ad-sub-topic">
-                                        Ad posted by <?php echo $MEM->firstName . ' ' . $MEM->lastName . ', ' . $result; ?> 
-                                    </div>
+
                                     <?php
                                     if ($ADIMAGES) {
                                         ?>
@@ -121,14 +119,20 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                         <?php
                                     }
                                     ?>
-                                    <div class="ad-category-details row">
-                                        <div class="col-md-7 category-details">
-                                            <span  title="Category"><i class="fa fa-tag"></i> <?php echo $CATEGORY->name; ?></span> <span title="Sub Category"> <i class="fa fa-angle-double-right"></i> <?php echo $SUBCATEGORY->name; ?></span>
-                                        </div>
-                                        <div class="col-md-5 city-details" title="City">
-                                            <i class="fa fa-map-marker"></i> <span><?php echo $ADVERTISEMENT->cityString; ?></span>
-                                        </div>
-                                    </div>
+                                    <!--                                    <div class="ad-category-details row">
+                                                                            <div class="col-md-7 category-details">
+                                                                                <span  title="Category"><i class="fa fa-tag"></i> <?php echo $CATEGORY->name; ?></span> <span title="Sub Category"> <i class="fa fa-angle-double-right"></i> <?php echo $SUBCATEGORY->name; ?></span>
+                                                                            </div>
+                                                                            <div class="col-md-5 city-details" title="City">
+                                                                                <i class="fa fa-map-marker"></i> <span><?php echo $ADVERTISEMENT->cityString; ?></span>
+                                                                            </div>
+                                                                            <div class="col-md-7 category-details">
+                                                                                <span  title="Category"><i class="fa fa-user"></i> <?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></span> <span title="Sub Category"> <i class="fa fa-angle-double-right"></i> <?php echo $SUBCATEGORY->name; ?></span>
+                                                                            </div>
+                                                                            <div class="col-md-5 city-details" title="City">
+                                                                                <i class="fa fa-clock"></i> <span><?php echo $result; ?></span>
+                                                                            </div>
+                                                                        </div>-->
                                     <div class="price-tag">
                                         <span  title="Price"> 
                                             <?php
@@ -319,6 +323,45 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                     </div>
                                 </div>
                             </div>
+                            <div class="ui-block">
+                                <div class="ad-contact-details">
+                                    <div class="col-xl-12 order-xl-1">
+                                        <h5>Ad Details</h5>
+                                        <ul>
+                                            <li>
+                                                <img src="img/icon/member.png"  alt=""/>
+                                                <span class="contact-details">
+                                                    <?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <img src="img/icon/category.png" alt=""/>
+                                                <span class="contact-details">
+                                                    <?php
+                                                    echo $CATEGORY->name;
+                                                    ?>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <img src="img/icon/subcategory.png" alt=""/>
+                                                <span class="contact-details">
+                                                    <?php
+                                                    echo $SUBCATEGORY->name;
+                                                    ?>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <img src="img/icon/clock.png" alt=""/>
+                                                <span class="contact-details">
+                                                    <?php
+                                                    echo $result;
+                                                    ?>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- ... end Left Sidebar -->
                         <!-- Right Sidebar -->
@@ -351,44 +394,73 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                     <div class="col-md-12 aaa">
                                                         <div class="ad-item  post ">
                                                             <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>" title="<?php echo $ad['title']; ?>">
-                                                            <div class="ad-item-box row">
-                                                                <div class = "col-xl-4 col-sm-4 col-xs-4 ad-item-image">
-                                                                    <?php
-                                                                    if (count($adimages) > 0) {
-                                                                        foreach ($adimages as $key => $img) {
-                                                                            if ($key == 0) {
+                                                                <div class="ad-item-box row">
+                                                                    <div class = "col-xl-4 col-sm-4 col-xs-4 ad-item-image">
+                                                                        <?php
+                                                                        if (count($adimages) > 0) {
+                                                                            foreach ($adimages as $key => $img) {
+                                                                                if ($key == 0) {
+                                                                                    ?>
+                                                                                    <img src="upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt=""/>
+                                                                                    <?php
+                                                                                }
+                                                                            }
+                                                                        } else {
+                                                                            ?>
+                                                                            <img src="upload/advertisement/thumb2/advertising.jpg" alt=""/>
+                                                                            <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                    <div class = "col-xl-8 col-sm-8 col-xs-8 more-ad ad-item-details">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-7">
+                                                                                <div class="ad-title">
+                                                                                    <?php
+                                                                                    if ($ad['title']) {
+                                                                                        if (strlen($ad['title']) > 20) {
+                                                                                            echo substr($ad['title'], 0, 18) . '...';
+                                                                                        } else {
+                                                                                            echo $ad['title'];
+                                                                                        }
+                                                                                    } else {
+                                                                                        echo 'Advertisement';
+                                                                                    }
+                                                                                    ?>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-5 ad-price">
+                                                                                <?php
+                                                                                if ($ad['price'] == 0) {
+                                                                                    echo 'Negotiable';
+                                                                                } else {
+                                                                                    echo 'Rs. ' . number_format($ad['price'], 2) . '/=';
+                                                                                }
                                                                                 ?>
-                                                                                <img src="upload/advertisement/thumb2/<?php echo $img['image_name']; ?>" alt=""/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="ad-category"><span class="title">Category : </span><?php echo $CATEGORY->name; ?></div>
+                                                                        <div class="ad-subcategory"><span class="title">Sub Category : </span><?php echo $SUBCATEGORY->name; ?></div>
+                                                                        <div class="ad-city"><span class="title">City : </span><?php echo $ad['city_string']; ?></div>
+                                                                        <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                                        <div class="row boost-time col-sm-12">
+                                                                            <?php
+                                                                            if ($ad['boosted'] == 'active') {
+                                                                                ?>
+                                                                                <div class="col-sm-6 col-xs-12"></div>
+                                                                                <div class="boost-ad col-sm-6 col-xs-12"><span><i class="fa fa-certificate "></i> Top Ad </span></div>
+                                                                                <?php
+                                                                            } else {
+                                                                                ?>
+                                                                                <div class="col-sm-6  col-xs-12"></div>
+                                                                                <div class="view-details col-sm-6 col-xs-12"><span>View Details</span></div>
                                                                                 <?php
                                                                             }
-                                                                        }
-                                                                    } else {
-                                                                        ?>
-                                                                        <img src="upload/advertisement/thumb2/advertising.jpg" alt=""/>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                </div>
-                                                                <div class = "col-xl-8 col-sm-8 col-xs-8 more-ad ad-item-details">
-                                                                    <div class="ad-title"><?php
-                                                                            if (strlen($ad['title']) > 25) {
-                                                                                echo strlen($ad['title'], 0, 22) . '...';
-                                                                            } else {
-                                                                                echo $ad['title'];
-                                                                            }
                                                                             ?>
+
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="ad-category"><span class="title"><i class="fa fa-tag"></i> </span><?php echo $CATEGORY->name; ?></div>
-                                                                    <div class=""><i class="fa fa-clock"></i> <?php echo $result; ?></div>
-                                                                    <div class=""><i class="fa fa-dollar-sign"></i> <?php
-                                                                        if ($ad['price'] == 0) {
-                                                                            echo 'Price Negotiable';
-                                                                        } else {
-                                                                            echo 'Rs. ' . number_format($ad['price']);
-                                                                        }
-                                                                        ?></div>
                                                                 </div>
-                                                            </div>
                                                             </a>
                                                         </div>
                                                     </div>
