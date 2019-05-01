@@ -8,6 +8,7 @@ $MEMBER = '';
 if (isset($_SESSION['id'])) {
     $MEMBER = new Member($_SESSION['id']);
 }
+
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -308,6 +309,7 @@ if (isset($_SESSION['id'])) {
         <script src="js/smooth-scroll.js"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script src="js/perfect-scrollbar.js"></script>
+        <script src="js/js/boost-ad.js" type="text/javascript"></script>
         
         <script>
             var placeSearch, autocomplete;

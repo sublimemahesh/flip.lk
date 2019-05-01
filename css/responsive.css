@@ -401,6 +401,11 @@ and open the template in the editor.
     .s002 form .inner-form .input-field input{
         font-size: 13px;
     }
+    .ad-breadcrumbs.col-sm-12 {
+
+        padding-left: 0px;
+        margin-left: 17px;
+    }
 }
 
 @media(min-width:577px) and (max-width:990px) {
@@ -564,7 +569,7 @@ and open the template in the editor.
         font-size: 12px;
     }
     .ad-subcategory{
-        margin-left: 200px;
+        margin-left: 0px;
         font-size: 12px;
     }
     .ad-time{
@@ -582,6 +587,33 @@ and open the template in the editor.
     }
     .author-thumb1 img{
         margin-top: -20px;
+    }
+    .ad-breadcrumbs.col-sm-12 {
+
+        padding-left: 0px;
+        margin-left: 17px;
+    }
+    .control-icon {
+        margin-right: 22px;
+        fill: #9a9fbf;
+        margin-top: 5px;
+    }
+    .ad-category, .ad-subcategory, .ad-city, .ad-time {
+        font-size: 12px;
+    }
+    a .ad-title {
+
+        font-size: 15px;
+        color: #000;
+        font-weight: 500;
+        padding-bottom: 0px;
+
+    }
+    .ad-price {
+        font-size: 13px;
+    }
+    .ad-category {
+        padding-bottom: 4px;
     }
 }
 
@@ -808,94 +840,7 @@ and open the template in the editor.
 
 
 }
-@media (width: 768px){
-    .s002 form .inner-form .input-field.fifth-wrap .btn-search{
-        margin-left: 114px;
-    }
-    .header{
-        padding-left: 6px;
-        padding-right: 1px;
-        height: 64px;
-    }
-    .responsive-header-logo img{
-        max-width: 100%;
-        margin-left: -283px;
-    }
-    .mobile-app-tabs{
-        margin-left: 301px;
-    }
-    .footer-box .footer-header h3{
-        font-size: 22px;
-    }
-    .footer-about p{
-        margin-top: -16px;
-    }
-    .footer-box .widget_nav_menu li a{
-        font-size: 16px;
-    }
-    .footer-box .footer-contact-info li{
-        font-size: 16px;
-        margin-bottom: 6px;
-    }
 
-    .has-items img{
-        padding-bottom: 10px;
-    }
-    .avatar{
-        width: 46px;
-        margin-bottom: 9px;
-    }
-    .footer-box .footer-contact-info li svg{
-        font-size: 17px;
-    }
-    .btn-primary1{
-        margin-left: 237px;
-    }
-    .responsive-header-logo{
-        margin-right: -68px;
-    }
-    .icon-profile a span{
-        margin-top: 6px;
-    }
-    .ad-subcategory{
-        margin-left: 0px;
-        margin-top: -4px;
-    }
-    .ad-subcategory1{
-        margin-top: -3px;
-        margin-left: 0px;
-        font-size: 12px;
-    }
-    .title1{
-        font-size: 36px;
-    }
-    .top-header.top-header-favorit .author-thumb{
-        margin-top: -53px;
-        margin-left: -71px;
-    }
-    .author-thumb{
-        padding-top: 0px;
-    }
-    .profile-menu{
-        margin-left: 161px;
-    }
-    .top-header-author .author-thumb{
-        margin-top: 79px;
-    }
-    .top-header.top-header-favorit .top-header-author{
-        bottom: -40px;
-    }
-    .top-header.top-header-favorit .author-content{
-        margin-top: -24px;
-    }
-    .author-thumb1 img{
-        margin-top: -18px;
-        margin-left: -11px;
-    }
-    .s002 form .inner-form .input-field.fifth-wrap .btn-search{
-        margin-left: 130px;
-    }
-}
 @media (width: 640px){
     .header{
         padding-left: 27px;
@@ -1211,11 +1156,6 @@ and open the template in the editor.
         fill: #fff;
 
     }
-    .control-icon {
-
-        margin-right: 22px;
-
-    }
     .more {
 
         position: relative;
@@ -1226,7 +1166,7 @@ and open the template in the editor.
     }
     .control-icon {
 
-        margin-right: 29px;
+        /*margin-right: 29px;*/
         fill: #9a9fbf;
         margin-top: 5px;
 
@@ -1317,5 +1257,98 @@ and open the template in the editor.
 @media (width: 834px){
     .author-thumb1 img{
         margin-top: -17px;
+    }
+}
+@media (width: 768px){
+    .s002 form .inner-form .input-field.fifth-wrap .btn-search{
+        margin-left: 114px;
+    }
+    .header{
+        padding-left: 6px;
+        padding-right: 1px;
+        height: 64px;
+    }
+    .responsive-header-logo img{
+        max-width: 100%;
+        margin-left: -283px;
+    }
+    .mobile-app-tabs{
+        margin-left: 301px;
+    }
+    .footer-box .footer-header h3{
+        font-size: 22px;
+    }
+    .footer-about p{
+        margin-top: -16px;
+    }
+    .footer-box .widget_nav_menu li a{
+        font-size: 16px;
+    }
+    .footer-box .footer-contact-info li{
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    .has-items img{
+        padding-bottom: 10px;
+    }
+    .avatar{
+        width: 46px;
+        margin-bottom: 9px;
+    }
+    .footer-box .footer-contact-info li svg{
+        font-size: 17px;
+    }
+    .btn-primary1{
+        margin-left: 237px;
+    }
+    .responsive-header-logo{
+        margin-right: -68px;
+    }
+    .icon-profile a span{
+        margin-top: 6px;
+    }
+    .ad-subcategory{
+        margin-left: 0px;
+        margin-top: -4px;
+    }
+    .ad-subcategory1{
+        margin-top: -3px;
+        margin-left: 0px;
+        font-size: 12px;
+    }
+    .title1{
+        font-size: 36px;
+    }
+    .top-header.top-header-favorit .author-thumb{
+        margin-top: -53px;
+        margin-left: -71px;
+    }
+    .author-thumb{
+        padding-top: 0px;
+    }
+    .profile-menu{
+        margin-left: 161px;
+    }
+    .top-header-author .author-thumb{
+        margin-top: 79px;
+    }
+    .top-header.top-header-favorit .top-header-author{
+        bottom: -40px;
+    }
+    .top-header.top-header-favorit .author-content{
+        margin-top: -24px;
+    }
+    .author-thumb1 img{
+        margin-top: -18px;
+        margin-left: -11px;
+    }
+    .s002 form .inner-form .input-field.fifth-wrap .btn-search{
+        margin-left: 130px;
+    }
+    .control-icon {
+        margin-right: 22px;
+        fill: #9a9fbf;
+        margin-top: 5px;
     }
 }

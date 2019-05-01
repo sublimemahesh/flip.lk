@@ -129,10 +129,10 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                             <div class="ad-category"><span class="title">Category : </span><?php echo $CATEGORY->name; ?></div>
                                                             <div class="ad-subcategory"><span class="title">Sub Category : </span><?php echo $SUBCATEGORY->name; ?></div>
                                                             <div class="ad-city"><span class="title">City : </span><?php echo $ad['city_string']; ?></div>
-                                                            <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                            
                                                             <div class="row boost-time col-sm-12">
+                                                                <div class="ad-time col-sm-6"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
                                                                 <div class="boost-ad col-sm-6"><span><i class="fa fa-certificate "></i> Top Ad </span></div>
-                                                                <div class="view-details col-sm-6"><span>View Details</span></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -202,9 +202,8 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                             <div class="ad-category"><span class="title">Category : </span><?php echo $CATEGORY->name; ?></div>
                                                             <div class="ad-subcategory"><span class="title">Sub Category : </span><?php echo $SUBCATEGORY->name; ?></div>
                                                             <div class="ad-city"><span class="title">City : </span><?php echo $ad['city_string']; ?></div>
-                                                            <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
                                                             <div class="row boost-time col-sm-12">
-                                                                <div class="col-sm-6"></div>
+                                                                <div class="ad-time col-sm-6"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
                                                                 <div class="view-details col-sm-6"><span>View Details</span></div>
                                                             </div>
                                                         </div>
@@ -278,6 +277,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
         <script src="js/smooth-scroll.js"></script>
         <script src="js/perfect-scrollbar.js"></script>
         <script src="js/base-init.js"></script>
+        <script src="js/js/boost-ad.js" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
                 $(".category").on('click', '.cat-dropdown', function () {

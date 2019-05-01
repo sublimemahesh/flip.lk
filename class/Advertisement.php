@@ -181,7 +181,7 @@ class Advertisement {
 
         return $array_res;
     }
-    
+
     public function getBoostRequestedAds() {
 
         $query = "SELECT * FROM `advertisement` WHERE `status` = 1 AND `is_suspend` = 0 AND  `boosted` LIKE 'requested' ORDER BY `created_at` ASC";
@@ -195,6 +195,7 @@ class Advertisement {
 
         return $array_res;
     }
+
     public function getBoostActiveAds() {
 
         $query = "SELECT * FROM `advertisement` WHERE `status` = 1 AND `is_suspend` = 0 AND  `boosted` LIKE 'active' ORDER BY `created_at` ASC";
@@ -385,6 +386,7 @@ class Advertisement {
 
         $query = "UPDATE  `advertisement` SET "
                 . "`boosted` ='" . $this->boosted . "', "
+                . "`boost_period` ='" . $this->boostPeriod . "', "
                 . "`boost_requested_date` ='" . $this->boostRequestedDate . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
@@ -407,6 +409,22 @@ class Advertisement {
                 . "`boost_activated_date` ='" . $this->boostActivatedDate . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
+    
+    public function deactiveBoostAd() {
+
+        $query = "UPDATE  `advertisement` SET "
+                . "`boosted` ='" . $this->boosted . "' "
+                . "WHERE `id` = '" . $this->id . "'";
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -462,7 +480,7 @@ class Advertisement {
 
         return $array_res;
     }
-    
+
     public function countPublishedAds() {
 
         $query = "SELECT count(`id`) as count FROM `advertisement` WHERE `is_suspend` = 0 AND `status` = 1";
@@ -486,7 +504,14 @@ class Advertisement {
             $w[] = "`city` LIKE '" . $location . "'";
         }
         if (!empty($keyword)) {
-            $w[] = "`title` LIKE '%" . $keyword . "%'";
+
+            if ($keyword == 'iPhone' || $keyword == 'iphone') {
+                $w[] = "`title` LIKE '%iPhone%' OR `title` LIKE '%i Phone%'  OR `title` LIKE '%iphone%'  OR `title` LIKE '%i phone%'";
+            } else if ($keyword == 'i Phone' || $keyword == 'i phone') {
+                $w[] = "`title` LIKE '%iPhone%' OR `title` LIKE '%i Phone%'  OR `title` LIKE '%iphone%'  OR `title` LIKE '%i phone%'";
+            } else {
+                $w[] = "`title` LIKE '%" . $keyword . "%'";
+            }
         }
         $w[] = "`status` = 1";
         if (count($w)) {
@@ -522,7 +547,13 @@ class Advertisement {
             $w[] = "`city` LIKE '" . $location . "'";
         }
         if (!empty($keyword)) {
-            $w[] = "`title` LIKE '%" . $keyword . "%'";
+            if ($keyword == 'iPhone') {
+                $w[] = "`title` LIKE '%iPhone%' OR `title` LIKE '%i Phone%'";
+            } else if ($keyword == 'i Phone') {
+                $w[] = "`title` LIKE '%iPhone%' OR `title` LIKE '%i Phone%'";
+            } else {
+                $w[] = "`title` LIKE '%" . $keyword . "%'";
+            }
         }
         $w[] = "`status` = 1 AND '" . $today . "' BETWEEN `boosted` AND `boost_requested_date`";
         if (count($w)) {
@@ -559,7 +590,13 @@ class Advertisement {
             $w[] = "`city` LIKE '" . $location . "'";
         }
         if (!empty($keyword)) {
-            $w[] = "`title` LIKE '%" . $keyword . "%'";
+            if ($keyword == 'iPhone') {
+                $w[] = "`title` LIKE '%iPhone%' OR `title` LIKE '%i Phone%'";
+            } else if ($keyword == 'i Phone') {
+                $w[] = "`title` LIKE '%iPhone%' OR `title` LIKE '%i Phone%'";
+            } else {
+                $w[] = "`title` LIKE '%" . $keyword . "%'";
+            }
         }
         $w[] = "`status` = 1";
         if (count($w)) {
@@ -738,8 +775,8 @@ class Advertisement {
 
         $DATA = new DefaultData();
         $price = $DATA->getAdBoostPrice();
-        $boostprice = $price[$period-1][$period];
-        
+        $boostprice = $price[$period - 1][$period];
+
         $AD = new Advertisement($adid);
         $MEMBER = new Member($AD->member);
 
@@ -919,8 +956,8 @@ class Advertisement {
 
         $DATA = new DefaultData();
         $price = $DATA->getAdBoostPrice();
-        $boostprice = $price[$period-1][$period];
-        
+        $boostprice = $price[$period - 1][$period];
+
         $AD = new Advertisement($adid);
         $MEMBER = new Member($AD->member);
 
@@ -1155,11 +1192,11 @@ class Advertisement {
             return FALSE;
         }
     }
-    
+
     public static function sendActivatedMail($adid) {
 
         //----------------------Company Information---------------------
-        
+
         $AD = new Advertisement($adid);
         $MEMBER = new Member($AD->member);
 

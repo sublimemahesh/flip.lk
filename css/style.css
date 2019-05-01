@@ -1103,6 +1103,7 @@ header .control-icon > svg {
     padding-left: 8px;
     border-left: 4px solid #7bae23;
     font-size: 40px;
+    font-size: 35px;
     margin-bottom: 15px;
 }
 .title-bg::after {
@@ -1302,6 +1303,7 @@ a .ad-title:hover {
     font-size: 22px;
     color: #003263;
     font-weight: 600;
+    margin-bottom: 10px;
 }
 .ad-sub-topic {
     font-size: 16px;
@@ -3070,7 +3072,7 @@ a .ad-title{
 }
 
 .boost-time {
-    margin-top: 10px;
+    /*margin-top: 10px;*/
 }
 .boost-time .boost-ad span {
     border: 1px solid #003263;
@@ -3260,12 +3262,16 @@ a .ad-title{
         font-weight: 600;*/
 }
 .boost-ad{
-    /*margin-top: 70px;*/
+    text-align: right;
+    margin-left: 0px;
+    right: -31px;
+    margin-top: -7px;
 }
 .view-details{
     text-align: right;
     margin-left: 0px;
-    right: -32px;
+    right: -31px;
+    margin-top: -7px;
 }
 .time{
     margin-right: 338px;
@@ -3313,4 +3319,19 @@ a .ad-title{
 }
 .breadcrumb-item {
     font-weight: 400;
+}
+.more-ad .ad-title {
+    padding-bottom: 0px;
+}
+.more-ad .ad-category, .more-ad .ad-subcategory, .more-ad .ad-city, .more-ad .ad-time {
+    font-size: 14px;
+}
+.more-ad .boost-time {
+    margin-top: 6px;
+}
+.more-ad .ad-price  {
+    font-size: 13px;
+}
+.more-ad .view-details {
+    margin-top: -10px;
 }
