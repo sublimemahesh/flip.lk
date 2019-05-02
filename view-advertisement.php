@@ -376,7 +376,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                 <div class="row">
                                     <div id="more-ads-slider" class="owl-carousel owl-theme">
                                         <?php
-                                        $advertisements = Advertisement::getAdsByCategory($ADVERTISEMENT->category);
+                                        $advertisements = Advertisement::getAdsByCategoryWithoutThisAd($ADVERTISEMENT->category,$id);
                                         $out = '';
                                         if (count($advertisements) > 0) {
                                             $i = 0;
@@ -395,7 +395,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                         <div class="ad-item  post ">
                                                             <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>" title="<?php echo $ad['title']; ?>">
                                                                 <div class="ad-item-box row">
-                                                                    <div class = "col-xl-4 col-sm-4 col-xs-4 ad-item-image">
+                                                                    <div class = "col-xl-4 col-sm-4 col-xs-12 ad-item-image">
                                                                         <?php
                                                                         if (count($adimages) > 0) {
                                                                             foreach ($adimages as $key => $img) {
@@ -412,7 +412,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                                         }
                                                                         ?>
                                                                     </div>
-                                                                    <div class = "col-xl-8 col-sm-8 col-xs-8 more-ad ad-item-details">
+                                                                    <div class = "col-xl-8 col-sm-8 col-xs-12 more-ad ad-item-details">
                                                                         <div class="row">
                                                                             <div class="col-sm-7">
                                                                                 <div class="ad-title">
@@ -443,7 +443,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                                         <div class="ad-subcategory"><span class="title">Sub Category : </span><?php echo $SUBCATEGORY->name; ?></div>
                                                                         <div class="ad-city"><span class="title">City : </span><?php echo $ad['city_string']; ?></div>
                                                                         <div class="ad-time"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
-                                                                        <div class="row boost-time col-sm-12">
+                                                                        <div class="row boost-time">
                                                                             <?php
                                                                             if ($ad['boosted'] == 'active') {
                                                                                 ?>

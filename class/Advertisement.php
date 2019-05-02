@@ -246,6 +246,20 @@ class Advertisement {
         return $result['count'];
     }
 
+    public function getAdsByCategoryWithoutThisAd($category, $ad) {
+
+        $query = "SELECT * FROM `advertisement` WHERE `category` = $category AND `status` = 1 AND `is_suspend` = 0 AND `id` <> $ad ORDER BY `created_at` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
     public function getAdsBySubCategory($subcategory) {
 
         $query = "SELECT * FROM `advertisement` WHERE `sub_category` = $subcategory AND `status` = 1 ORDER BY `created_at` DESC";
@@ -419,7 +433,7 @@ class Advertisement {
             return FALSE;
         }
     }
-    
+
     public function deactiveBoostAd() {
 
         $query = "UPDATE  `advertisement` SET "
@@ -510,7 +524,11 @@ class Advertisement {
             } else if ($keyword == 'i Phone' || $keyword == 'i phone') {
                 $w[] = "`title` LIKE '%iPhone%' OR `title` LIKE '%i Phone%'  OR `title` LIKE '%iphone%'  OR `title` LIKE '%i phone%'";
             } else {
+
+
+
                 $w[] = "`title` LIKE '%" . $keyword . "%'";
+//                $w[] = "MATCH(title) AGAINST('" . $keyword . "')";
             }
         }
         $w[] = "`status` = 1";
@@ -518,7 +536,10 @@ class Advertisement {
             $where = 'WHERE ' . implode(' AND ', $w);
         }
 
-        $query = "SELECT * FROM `advertisement` " . $where . " ORDER BY `created_at` DESC LIMIT " . $pageLimit . " , " . $setLimit . "";
+//        $query = "SELECT * FROM `advertisement` " . $where . " ORDER BY `created_at` DESC LIMIT " . $pageLimit . " , " . $setLimit . "";
+        $query = "SELECT * FROM `advertisement` " . $where . " ORDER BY CASE
+        WHEN `title` LIKE '" . $keyword . "%' THEN 1
+        ELSE 2 END, `created_at` DESC LIMIT " . $pageLimit . " , " . $setLimit . "";
 
         $db = new Database();
         $result = $db->readQuery($query);

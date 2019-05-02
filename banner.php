@@ -22,8 +22,13 @@
                                         <option value="">Category</option>
                                         <?php
                                         foreach (BusinessCategory::all() as $key => $category) {
+                                            if ($category1 == $category['id']) {
+                                                $selected = 'selected';
+                                            } else {
+                                                $selected = '';
+                                            }
                                             ?>
-                                            <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+                                            <option value="<?php echo $category['id']; ?>" <?php echo $selected; ?>><?php echo $category['name']; ?></option>
                                             <?php
                                         }
                                         ?>
@@ -31,7 +36,7 @@
                                 </div>
                             </div>
                             <div class="input-field second-wrap">
-                                <div class="icon-wrap">
+                                <div class="icon-wrap iw-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
                                     </svg>
@@ -40,10 +45,10 @@
                                     <input type="hidden" name="location" id="city"  value=""/>
                             </div>
                             <div class="input-field first-wrap">
-                                <div class="icon-wrap">
+                                <div class="icon-wrap iw-2">
                                     <i class="fa fa-search"></i>
                                 </div>
-                                <input id="search" type="text" name="keyword" placeholder="What are you looking for?" />
+                                <input id="search" type="text" name="keyword" placeholder="What are you looking for?" value="<?php echo $keyword; ?>"/>
                             </div>
                             <div class="input-field fifth-wrap">
                                 <button class="btn-search" type="submit">SEARCH</button>
@@ -78,6 +83,7 @@
             c = document.createElement("DIV");
             c.innerHTML = selElmnt.options[j].innerHTML;
             c.addEventListener("click", function (e) {
+
                 /*when an item is clicked, update the original select box,
                  and the selected item:*/
                 var y, i, k, s, h;
@@ -107,6 +113,8 @@
             closeAllSelect(this);
             this.nextSibling.classList.toggle("select-hide");
             this.classList.toggle("select-arrow-active");
+            $('.iw-1').toggleClass('hidden');
+            $('.iw-2').toggleClass('hidden');
         });
     }
     function closeAllSelect(elmnt) {
@@ -131,4 +139,8 @@
     /*if the user clicks anywhere outside the select box,
      then close all select boxes:*/
     document.addEventListener("click", closeAllSelect);
+
+    $('.select-selected').click(function () {
+
+    });
 </script>
