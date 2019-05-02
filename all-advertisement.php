@@ -81,7 +81,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                             <div class="ad-item post">
                                                 <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
                                                     <div class="ad-item-box row">
-                                                        <div class = "col-xl-4 col-xs-4 ad-item-image">
+                                                        <div class = "col-xl-4 col-xs-12 ad-item-image">
                                                             <?php
                                                             if (count($adimages) > 0) {
                                                                 foreach ($adimages as $key => $img) {
@@ -98,7 +98,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                             }
                                                             ?>
                                                         </div>
-                                                        <div class = "col-xl-8 col-xs-7 ad-item-details">
+                                                        <div class = "col-xl-8 col-xs-12 ad-item-details">
                                                             <div class="row">
                                                                 <div class="col-sm-7">
                                                                     <div class="ad-title">
@@ -130,9 +130,9 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                             <div class="ad-subcategory"><span class="title">Sub Category : </span><?php echo $SUBCATEGORY->name; ?></div>
                                                             <div class="ad-city"><span class="title">City : </span><?php echo $ad['city_string']; ?></div>
                                                             
-                                                            <div class="row boost-time col-sm-12">
-                                                                <div class="ad-time col-sm-6"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
-                                                                <div class="boost-ad col-sm-6"><span><i class="fa fa-certificate "></i> Top Ad </span></div>
+                                                            <div class="row boost-time">
+                                                                <div class="ad-time col-xs-6"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                                <div class="boost-ad col-xs-6"><span><i class="fa fa-certificate "></i> Top Ad </span></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -154,7 +154,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                             <div class="ad-item post">
                                                 <a href="view-advertisement.php?id=<?php echo $ad['id']; ?>">
                                                     <div class="ad-item-box row">
-                                                        <div class = "col-xl-4 col-xs-4 ad-item-image">
+                                                        <div class = "col-xl-4 col-xs-12 ad-item-image">
                                                             <?php
                                                             if (count($adimages) > 0) {
                                                                 foreach ($adimages as $key => $img) {
@@ -171,7 +171,7 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                             }
                                                             ?>
                                                         </div>
-                                                        <div class = "col-xl-8 col-xs-8 ad-item-details">
+                                                        <div class = "col-xl-8 col-xs-12 ad-item-details">
                                                             <div class="row">
                                                                 <div class="col-sm-7">
                                                                     <div class="ad-title">
@@ -202,9 +202,9 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                                             <div class="ad-category"><span class="title">Category : </span><?php echo $CATEGORY->name; ?></div>
                                                             <div class="ad-subcategory"><span class="title">Sub Category : </span><?php echo $SUBCATEGORY->name; ?></div>
                                                             <div class="ad-city"><span class="title">City : </span><?php echo $ad['city_string']; ?></div>
-                                                            <div class="row boost-time col-sm-12">
-                                                                <div class="ad-time col-sm-6"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
-                                                                <div class="view-details col-sm-6"><span>View Details</span></div>
+                                                            <div class="row boost-time">
+                                                                <div class="ad-time col-xs-6"><i class="fa fa-clock"></i> <?php echo $result; ?></div>
+                                                                <div class="view-details col-xs-6"><span>View Details</span></div>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -137,7 +137,8 @@ and open the template in the editor.
         margin-top: 9px;   
     }
     .ad-breadcrumbs {
-        margin-top: 10px;
+        margin-top: 0px;
+        font-size: 18px;
     }
 
     .intro-section h2 {
@@ -298,16 +299,17 @@ and open the template in the editor.
     .ad-subcategory{
         margin-left: -1px;
         margin-top: -6px;
-        font-size: 12px;
+        font-size: 15px;
     }
     .ad-category{
-        font-size: 12px;
+        font-size: 15px;
     }
     .ad-city{
-        font-size: 12px;
+        font-size: 15px;
     }
     .ad-time{
-        font-size: 12px;
+        font-size: 15px;
+        padding-left: 15px;
     }
     .ad-subcategory1{
         margin-top: -5px;
@@ -315,7 +317,26 @@ and open the template in the editor.
         font-size: 12px;
     }
     a .ad-title{
+        font-size: 20px;
+        margin-top: 10px;
+        padding-bottom: 0px;
+    }
+    .ad-price {
+        color: #003263;
+        font-weight: 400;
         font-size: 15px;
+        text-align: left;
+    }
+    .view-details {
+        margin-top: -5px;
+        padding-right: 14px;
+    }
+    .boost-ad {
+        margin-top: -5px;
+        padding-right: 14px;
+    }
+    .ad-item-image {
+        border-right: 0px
     }
     .ad-contact-details img{
         width: 28px;
@@ -350,6 +371,9 @@ and open the template in the editor.
     }
     .active{
         margin-right: 248px;
+    }
+    .owl-dot.active {
+        margin-right: 0px;
     }
     .join-group-btn{
         margin-left: 4px;  
@@ -405,6 +429,34 @@ and open the template in the editor.
 
         padding-left: 0px;
         margin-left: 17px;
+    }
+    .more-ad .ad-category, .more-ad .ad-subcategory, .more-ad .ad-city, .more-ad .ad-time, .more-ad .ad-price{
+        font-size: 15px;
+    }
+    .more-ad .ad-time {
+        padding-left: 0px;
+    }
+    .more-ad .view-details {
+        right: 15px;
+    }
+    #more-ads-slider .post {
+        padding: 15px;
+    }
+    .footer-bottom-wrap {
+        min-height: 60px;
+    }
+    .copyright {
+        padding: 20px 10px 0;
+        margin-top: -40px;
+    }
+    ul.setPaginate {
+        margin-bottom: 15px;
+    }
+    .select-selected {
+        font-size: 13px;
+    }
+    .icon-wrap.hidden {
+        display: none !important;
     }
 }
 

@@ -228,10 +228,10 @@ if (isset($_SESSION['id'])) {
                                                         </a>
                                                     </h4>
                                                     <div class="ad-owner-details meta-tag">
-                                                        <span>
+                                                        <span class="">
                                                             <i class="lni-user fa fa-user"></i><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
                                                         </span>
-
+<br/>
                                                         <span>
                                                             <i class="lni-map-marker fa fa-envelope"></i> 
                                                             <?php
