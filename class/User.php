@@ -132,8 +132,8 @@ class User {
         $id = NULL;
         $authToken = NULL;
 
-        if (isset($_SESSION["id"])) {
-            $id = $_SESSION["id"];
+        if (isset($_SESSION["adminId"])) {
+            $id = $_SESSION["adminId"];
         }
 
         if (isset($_SESSION["authToken"])) {
@@ -160,7 +160,7 @@ class User {
             session_start();
         }
 
-        unset($_SESSION["id"]);
+        unset($_SESSION["adminId"]);
         unset($_SESSION["name"]);
         unset($_SESSION["email"]);
         unset($_SESSION["isActive"]);
@@ -198,7 +198,7 @@ class User {
             session_start();
         }
 
-        $_SESSION["id"] = $user['id'];
+        $_SESSION["adminId"] = $user['id'];
         $_SESSION["name"] = $user['name'];
         $_SESSION["email"] = $user['email'];
         $_SESSION["isActive"] = $user['isActive'];
