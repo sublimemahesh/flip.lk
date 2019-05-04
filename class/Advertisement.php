@@ -502,6 +502,13 @@ class Advertisement {
         $result = mysql_fetch_array($db->readQuery($query));
         return $result['count'];
     }
+    public function countBoostRequestedAds() {
+
+        $query = "SELECT count(`id`) AS `count` FROM `advertisement` WHERE `status` = 1 AND `is_suspend` = 0 AND  `boosted` LIKE 'requested' ORDER BY `created_at` ASC";
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result['count'];
+    }
 
     public function searchAdvertisements($category, $subcategory, $location, $keyword, $pageLimit, $setLimit) {
 

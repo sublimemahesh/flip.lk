@@ -38,7 +38,7 @@
                                 <div class="col col-lg-5 ml-auto col-md-5 col-sm-12 col-12">
                                     <ul class="profile-menu">
                                         <li>
-                                            <a href="#">Photos</a>
+                                            <a>Photos</a>
                                         </li>
                                         <li>
                                             <a href="member-message.php">Messages</a>
@@ -97,7 +97,7 @@
                                             <a href="followers.php?id=<?php echo $MEM->id; ?>">Followers</a>
                                         </li>
                                         <li>
-                                            <a href="#">Photos</a>
+                                            <a>Photos</a>
                                         </li>
                                         <li>
                                             <a href="member-message.php">Messages</a>
@@ -145,10 +145,10 @@
 
                                         <ul class="more-dropdown more-with-triangle triangle-bottom-right">
                                             <li>
-                                                <a href="#" data-toggle="modal" data-target="#update-profile-photo">Update Profile Picture</a>
+                                                <a data-toggle="modal" data-target="#update-profile-photo">Update Profile Picture</a>
                                             </li>
                                             <li>
-                                                <a href="#" data-toggle="modal" data-target="#update-cover-photo">Update Cover Picture</a>
+                                                <a data-toggle="modal" data-target="#update-cover-photo">Update Cover Picture</a>
                                             </li>
                                             <li>
                                                 <a href="personal-information.php">Account Settings</a>

@@ -106,20 +106,20 @@ $MEMBER = new Member($id);
                                                         <?php
                                                         if ($member['is_suspend'] == 0) {
                                                             ?>
-                                                            <a href="#" class="suspend-member btn btn-sm btn-warning" data-id="<?php echo $member['id']; ?>">
+                                                            <a class="suspend-member btn btn-sm btn-warning" data-id="<?php echo $member['id']; ?>">
                                                             <i class="glyphicon glyphicon-eye-open" data-type="cancel"></i>
                                                         </a>
                                                             <?php
                                                         } else {
                                                             ?>
-                                                            <a href="#" class="remove-suspend btn btn-sm btn-warning" data-id="<?php echo $member['id']; ?>">
+                                                            <a class="remove-suspend btn btn-sm btn-warning" data-id="<?php echo $member['id']; ?>">
                                                             <i class="glyphicon glyphicon-eye-close" data-type="cancel"></i>
                                                         </a>
                                                             <?php
                                                         }
                                                         ?>
 
-                                                        <a href="#" class="delete-member btn btn-sm btn-danger" data-id="<?php echo $member['id']; ?>">
+                                                        <a class="delete-member btn btn-sm btn-danger" data-id="<?php echo $member['id']; ?>">
                                                             <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
                                                         </a>
                                                     </td>

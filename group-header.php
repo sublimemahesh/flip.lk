@@ -35,7 +35,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                 ?>
                             </div>
                             <div class="author-content">
-                                <a href="#" class="h3 author-name"><?php echo $GROUP->name; ?></a>
+                                <a class="h3 author-name"><?php echo $GROUP->name; ?></a>
                                 <div class="country"><?php echo $CATEGORY->name; ?> |  <?php echo $SUBCATEGORY->name; ?></div>
                             </div>
                         </div>
@@ -51,13 +51,13 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                         <a href="members.php?id=<?php echo $GROUP->id; ?>">Members</a>
                                     </li>
                                     <li>
-                                        <a href="#"></a>
+                                        <a></a>
                                     </li>
                                     <li>
-                                        <a href="#"></a>
+                                        <a></a>
                                     </li>
                                     <li>
-                                        <a href="#"></a>
+                                        <a></a>
                                     </li>
                                 </ul>
                             </div>

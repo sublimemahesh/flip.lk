@@ -56,8 +56,8 @@
                     <div class="more-dropdown more-with-triangle triangle-top-center">
                         <div class="ui-block-title ui-block-title-small">
                             <h6 class="title">FOLLOW REQUESTS</h6>
-                            <a href="#">Find Followers</a>
-                            <a href="#">Settings</a>
+                            <a>Find Followers</a>
+                            <a>Settings</a>
                         </div>
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
                             <ul class="notification-list friend-requests friend-requests-notification">
@@ -93,16 +93,16 @@
                                                         ?>
                                                     </div>
                                                     <div class="notification-event">
-                                                        <a href="#" class="h6 notification-friend"><?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?></a>
+                                                        <a class="h6 notification-friend"><?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?></a>
                                                         <span class="chat-message-item">Mutual Friend: Sarah Hetfield</span>
                                                     </div>
                                                     <span class="notification-icon">
-                                                        <a href="#" class="accept-request confirm-request" row_id="<?php echo $request['id']; ?>">
+                                                        <a class="accept-request confirm-request" row_id="<?php echo $request['id']; ?>">
                                                             <span class="icon-add without-text">
                                                                 <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                                             </span>
                                                         </a>
-                                                        <a href="#" class="accept-request request-del delete-request" row_id="<?php echo $request['id']; ?>">
+                                                        <a class="accept-request request-del delete-request" row_id="<?php echo $request['id']; ?>">
                                                             <span class="icon-minus">
                                                                 <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                                             </span>
@@ -175,8 +175,8 @@
                     <div class="more-dropdown more-with-triangle triangle-top-center">
                         <div class="ui-block-title ui-block-title-small">
                             <h6 class="title">Chat / Messages</h6>
-                            <a href="#">Mark all as read</a>
-                            <a href="#">Settings</a>
+                            <a>Mark all as read</a>
+                            <a>Settings</a>
                         </div>
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
                             <ul class="notification-list chat-message">
@@ -235,7 +235,7 @@
                 </div>
 
                 <div class="control-icon more has-items">
-                    <a href="notifications.php">
+                    <a href="member/notifications.php">
                         <span>
                             <img src="img/icon/header-icon/notification.png" alt=""/>
                             <?php
@@ -254,8 +254,8 @@
                     <div class="more-dropdown more-with-triangle triangle-top-center">
                         <div class="ui-block-title ui-block-title-small">
                             <h6 class="title">Notifications</h6>
-                            <a href="#">View All</a>
-                            <a href="#">Settings</a>
+                            <a>View All</a>
+                            <a>Settings</a>
                         </div>
 
                         <div class="mCustomScrollbar" data-mcs-theme="dark">

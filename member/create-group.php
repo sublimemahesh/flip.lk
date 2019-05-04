@@ -46,7 +46,7 @@ $CATEGORIES = BusinessCategory::all();
         <!-- Profile Settings Responsive -->
         <div class="profile-settings-responsive">
 
-            <a href="#" class="js-profile-settings-open profile-settings-open">
+            <a class="js-profile-settings-open profile-settings-open">
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
             </a>
@@ -93,14 +93,14 @@ $CATEGORIES = BusinessCategory::all();
 
                         <div class="ui-block-title">
                             <a href="33-YourAccount-Notifications.html" class="h6 title">Notifications</a>
-                            <a href="#" class="items-round-little bg-primary">8</a>
+                            <a class="items-round-little bg-primary">8</a>
                         </div>
                         <div class="ui-block-title">
                             <a href="34-YourAccount-ChatMessages.html" class="h6 title">Chat / Messages</a>
                         </div>
                         <div class="ui-block-title">
                             <a href="35-YourAccount-FriendsRequests.html" class="h6 title">Friend Requests</a>
-                            <a href="#" class="items-round-little bg-blue">4</a>
+                            <a class="items-round-little bg-blue">4</a>
                         </div>
                         <div class="ui-block-title ui-block-title-small">
                             <h6 class="title">FAVOURITE PAGE</h6>
@@ -122,24 +122,7 @@ $CATEGORIES = BusinessCategory::all();
         ?>
 <div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
         <div class="header-spacer header-spacer-small"></div>
-        <!-- Main Header Account -->
-        <div class="main-header">
-            <div class="content-bg-wrap bg-account"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-                        <div class="main-header-content">
-                            <h1>Your Account Dashboard</h1>
-                            <p>Welcome to your account dashboard! Here you’ll find everything you need to change your profile
-                                information, settings, read notifications and requests, view your latest messages, change your pasword and much
-                                more! Also you can create or manage your own favourite page, have fun!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <img class="img-bottom" src="img/account-bottom.png" alt="friends">
-        </div>
-        <!-- ... end Main Header Account -->
+
 
 
         <!-- Your Account Personal Information -->
@@ -282,7 +265,7 @@ $CATEGORIES = BusinessCategory::all();
                                         </div>
                                     </div>
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <a href="#" class="btn btn-secondary btn-lg full-width">Restore all Attributes</a>
+                                        <a class="btn btn-secondary btn-lg full-width">Restore all Attributes</a>
                                     </div>
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                         <input type="hidden" name="member" value="<?php echo $_SESSION['id']; ?>" />
@@ -374,10 +357,10 @@ $CATEGORIES = BusinessCategory::all();
                                     </div>
 
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <a href="#" class="btn btn-secondary btn-lg full-width">Restore all Attributes</a>
+                                        <a class="btn btn-secondary btn-lg full-width">Restore all Attributes</a>
                                     </div>
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <a href="#" class="btn btn-primary btn-lg full-width">Save all Changes</a>
+                                        <a class="btn btn-primary btn-lg full-width">Save all Changes</a>
                                     </div>
                                 </div>
                             </form>
@@ -397,6 +380,9 @@ $CATEGORIES = BusinessCategory::all();
 
         <?php
         include './window-pop-up.php';
+        ?>
+        <?php
+        include './footer.php';
         ?>
         <!-- ... end Window-popup -->
 </div>

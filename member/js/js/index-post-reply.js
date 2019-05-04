@@ -40,7 +40,7 @@ $(document).ready(function () {
                         html += '</time>';
                         html += '</div>';
                         html += '</div>';
-                        html += '<a href="#" class="more">';
+                        html += '<a class="more">';
                         html += '<svg class="olymp-three-dots-icon">';
                         html += '<use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>';
                         html += '</svg>';
@@ -83,7 +83,7 @@ $(document).ready(function () {
                         html += '</time>';
                         html += '</div>';
                         html += '</div>';
-                        html += '<a href="#" class="more">';
+                        html += '<a class="more">';
                         html += '<svg class="olymp-three-dots-icon">';
                         html += '<use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>';
                         html += '</svg>';

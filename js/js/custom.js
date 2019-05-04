@@ -1,15 +1,15 @@
 $(document).ready(function () {
 //    document.getElementById("search").value = "What you are looking for?";
-    
-    if($('#search').val() == '') {
+
+    if ($('#search').val() == '') {
         $('#search').val('');
     }
-    
-   $('#search').click(function() {
-       $(this).val('');
-   });
 
-    
+    $('#search').click(function () {
+        $(this).val('');
+    });
+
+
     $('#autocomplete').keyup(function () {
 
         if ($('#autocomplete').val() == '') {
@@ -66,9 +66,4 @@ $(document).ready(function () {
             }
         }
     });
-
-
-    
-
-
 });

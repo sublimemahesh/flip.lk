@@ -111,13 +111,13 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                         <?php
                                                         if ($group['is_suspend'] == 0) {
                                                             ?>
-                                                        <a href="#" class="suspend-group btn btn-sm btn-warning" data-id="<?php echo $group['id']; ?>" title="Active">
+                                                        <a class="suspend-group btn btn-sm btn-warning" data-id="<?php echo $group['id']; ?>" title="Active">
                                                             <i class="material-icons">stop</i>
                                                         </a>
                                                             <?php
                                                         } else {
                                                             ?>
-                                                            <a href="#" class="remove-ad-suspend btn btn-sm btn-warning" data-id="<?php echo $group['id']; ?>"  title="Suspended">
+                                                            <a class="remove-ad-suspend btn btn-sm btn-warning" data-id="<?php echo $group['id']; ?>"  title="Suspended">
                                                             <i class="material-icons">play_circle_outline</i>
                                                         </a>
                                                             <?php
@@ -126,19 +126,19 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                         <?php
                                                         if ($group['status'] == 0) {
                                                             ?>
-                                                            <a href="#" class="publish-group btn btn-sm btn-info" data-id="<?php echo $group['id']; ?>"  title="Unpublished">
+                                                            <a class="publish-group btn btn-sm btn-info" data-id="<?php echo $group['id']; ?>"  title="Unpublished">
                                                             <i class="glyphicon glyphicon-eye-close" data-type="cancel"></i>
                                                         </a>
                                                             <?php
                                                         } else {
                                                             ?>
-                                                            <a href="#" class="unpublish-group btn btn-sm btn-info" data-id="<?php echo $group['id']; ?>"  title="Published">
+                                                            <a class="unpublish-group btn btn-sm btn-info" data-id="<?php echo $group['id']; ?>"  title="Published">
                                                             <i class="glyphicon glyphicon-eye-open" data-type="cancel"></i>
                                                         </a>
                                                             <?php
                                                         }
                                                         ?>
-                                                        <a href="#" class="delete-group btn btn-sm btn-danger" data-id="<?php echo $group['id']; ?>">
+                                                        <a class="delete-group btn btn-sm btn-danger" data-id="<?php echo $group['id']; ?>">
                                                             <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
                                                         </a>
                                                     </td>

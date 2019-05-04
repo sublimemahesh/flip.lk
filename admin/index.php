@@ -3,9 +3,11 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
 $adcount = Advertisement::countPublishedAds();
+$boostrequestedadcount = Advertisement::countBoostRequestedAds();
 $membercount = Member::countMembers();
 $groupcount = Group::countGroups();
 $categorycount = BusinessCategory::countCategories();
+$subcategorycount = BusinessSubCategory::countSubCategories();
 ?> 
 <!DOCTYPE html>
 <html> 
@@ -55,47 +57,60 @@ $categorycount = BusinessCategory::countCategories();
                 </div>
                 <!-- Widgets -->
                 <div class="row clearfix">
-                    <a href="#">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <a href="manage-advertisements.php">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                             <div class="info-box bg-cyan hover-expand-effect">
                                 <div class="icon">
                                     <i class="material-icons">burst_mode</i>
                                 </div>
                                 <div class="content">
-                                    <div class="text">ADVERTISEMENTS</div>
+                                    <div class="text">ACTIVE ADVERTISEMENTS</div>
                                     <div class="number count-to" data-from="0" data-to="<?php echo $adcount; ?>" data-speed="1000" data-fresh-interval="20"></div>
                                 </div>
                             </div>
                         </div>
                     </a>
-                    <a href="#">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <a href="manage-boost-requested-ads.php">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box bg-indigo hover-expand-effect">
+                                <div class="icon">
+                                    <i class="material-icons">burst_mode</i>
+                                </div>
+                                <div class="content">
+                                    <div class="text">BOOST REQUESTED ADS</div>
+                                    <div class="number count-to" data-from="0" data-to="<?php echo $boostrequestedadcount; ?>" data-speed="1000" data-fresh-interval="20"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="manage-members.php">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                             <div class="info-box bg-pink hover-expand-effect">
                                 <div class="icon">
                                     <i class="material-icons">burst_mode</i>
                                 </div>
                                 <div class="content">
-                                    <div class="text">MEMBERS</div>
+                                    <div class="text">ACTIVE MEMBERS</div>
                                     <div class="number count-to" data-from="0" data-to="<?php echo $membercount; ?>" data-speed="1000" data-fresh-interval="20"></div>
                                 </div>
                             </div>
                         </div>
                     </a>
-                    <a href="#">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <a href="manage-groups.php">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                             <div class="info-box bg-light-green hover-expand-effect">
                                 <div class="icon">
                                     <i class="material-icons">burst_mode</i>
                                 </div>
                                 <div class="content">
-                                    <div class="text">GROUPS</div>
+                                    <div class="text">ACTIVE GROUPS</div>
                                     <div class="number count-to" data-from="0" data-to="<?php echo $groupcount; ?>" data-speed="1000" data-fresh-interval="20"></div>
                                 </div>
                             </div>
                         </div>
                     </a>
-                    <a href="#">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <a href="manage-business-categories.php">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                             <div class="info-box bg-orange hover-expand-effect">
                                 <div class="icon">
                                     <i class="material-icons">burst_mode</i>
@@ -107,35 +122,21 @@ $categorycount = BusinessCategory::countCategories();
                             </div>
                         </div>
                     </a>
-                    <!-- #END# Widgets -->
-                    
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="card">
-                            <div class="header">
-                                <h2>
-                                    ICONS GUIDE
-                                </h2>
-                            </div>
-                            <div class="body">
-                                <div class="row clearfix demo-icon-container">
-                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                        <button class="glyphicon glyphicon-trash delete-btn"></button> <span class="icon-name">Delete</span>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                        <button class="glyphicon glyphicon-pencil edit-btn"></button> <span class="icon-name">Edit</span>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                        <button class="glyphicon glyphicon-random arrange-btn"></button> <span class="icon-name">Arrange</span> 
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                        <button class="glyphicon glyphicon-picture arrange-btn"></button> <span class="icon-name">Add Photos</span>
-                                    </div>                                                         
+                    <a>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box bg-orange hover-expand-effect">
+                                <div class="icon">
+                                    <i class="material-icons">burst_mode</i>
+                                </div>
+                                <div class="content">
+                                    <div class="text">SUB CATEGORIES</div>
+                                    <div class="number count-to" data-from="0" data-to="<?php echo $subcategorycount; ?>" data-speed="1000" data-fresh-interval="20"></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
+                    <!-- #END# Widgets -->
+
                 </div>
             </div>
         </section>

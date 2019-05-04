@@ -309,7 +309,7 @@ and open the template in the editor.
     }
     .ad-time{
         font-size: 15px;
-        padding-left: 15px;
+        padding-left: 0px;
     }
     .ad-subcategory1{
         margin-top: -5px;
@@ -329,7 +329,7 @@ and open the template in the editor.
     }
     .view-details {
         margin-top: -5px;
-        padding-right: 14px;
+        padding-right: 0px;
     }
     .boost-ad {
         margin-top: -5px;

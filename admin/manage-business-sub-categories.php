@@ -135,7 +135,7 @@ $CATEGORY = new BusinessCategory($id)
                                                         <a href="edit-business-sub-category.php?id=<?php echo $subcategory['id']; ?>" class="op-link btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i>
                                                         </a>
 
-                                                        <a href="#" class="delete-business-sub-category btn btn-sm btn-danger" data-id="<?php echo $subcategory['id']; ?>">
+                                                        <a class="delete-business-sub-category btn btn-sm btn-danger" data-id="<?php echo $subcategory['id']; ?>">
                                                             <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
                                                         </a>
 

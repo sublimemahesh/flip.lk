@@ -88,7 +88,7 @@ $GROUP = new Group($id)
                                                         <a href="view-member.php?id=<?php echo $id; ?>" class="btn btn-sm btn-info" title="View Member">
                                                             <i class="glyphicon glyphicon-eye-open" data-type="cancel"></i>
                                                         </a> 
-                                                        <a href="#" class="delete-group-member btn btn-sm btn-danger" data-id="<?php echo $groupmember['id']; ?>" title="Remove Member">
+                                                        <a class="delete-group-member btn btn-sm btn-danger" data-id="<?php echo $groupmember['id']; ?>" title="Remove Member">
                                                             <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
                                                         </a> 
                                                     </td>

@@ -35,7 +35,7 @@
                     }
                     ?>
                     <li>
-                        <a href="#" title="<?php echo $FRIEND->firstName . ' ' . $FRIEND->lastName; ?>">
+                        <a title="<?php echo $FRIEND->firstName . ' ' . $FRIEND->lastName; ?>">
                             <img src="upload/member/<?php echo $FRIEND->profilePicture; ?>" class="friend-list-img" alt="author">
                         </a>
                     </li>
@@ -45,7 +45,7 @@
                 if (count(Friend::getAllFriendsByMember($MEM->id)) > 13) {
                     ?>
                     <li class="all-users">
-                        <a href="#">+<?php echo count(Friend::getAllFriendsByMember($MEM->id)) - 13; ?></a>
+                        <a>+<?php echo count(Friend::getAllFriendsByMember($MEM->id)) - 13; ?></a>
                     </li>
                     <?php
                 }

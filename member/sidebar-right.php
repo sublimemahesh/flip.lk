@@ -78,12 +78,12 @@
         </div>
 
         <div class="search-friend inline-items">
-            <a href="#" class="js-sidebar-open">
+            <a class="js-sidebar-open">
                 <svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
             </a>
         </div>
 
-        <a href="#" class="olympus-chat inline-items js-chat-open">
+        <a class="olympus-chat inline-items js-chat-open">
             <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
         </a>
 
@@ -94,8 +94,8 @@
         <div class="mCustomScrollbar" data-mcs-theme="dark">
 
             <div class="ui-block-title ui-block-title-small">
-                <a href="#" class="title">Close Friends</a>
-                <a href="#">Settings</a>
+                <a class="title">Close Friends</a>
+                <a>Settings</a>
             </div>
 
             <ul class="chat-users">
@@ -107,7 +107,7 @@
                     </div>
 
                     <div class="author-status">
-                        <a href="#" class="h6 author-name">Carol Summers</a>
+                        <a class="h6 author-name">Carol Summers</a>
                         <span class="status">ONLINE</span>
                     </div>
 
@@ -138,7 +138,7 @@
                     </div>
 
                     <div class="author-status">
-                        <a href="#" class="h6 author-name">Mathilda Brinker</a>
+                        <a class="h6 author-name">Mathilda Brinker</a>
                         <span class="status">AT WORK!</span>
                     </div>
 
@@ -171,7 +171,7 @@
                     </div>
 
                     <div class="author-status">
-                        <a href="#" class="h6 author-name">Carol Summers</a>
+                        <a class="h6 author-name">Carol Summers</a>
                         <span class="status">ONLINE</span>
                     </div>
 
@@ -205,7 +205,7 @@
                     </div>
 
                     <div class="author-status">
-                        <a href="#" class="h6 author-name">Michael Maximoff</a>
+                        <a class="h6 author-name">Michael Maximoff</a>
                         <span class="status">AWAY</span>
                     </div>
 
@@ -239,7 +239,7 @@
                     </div>
 
                     <div class="author-status">
-                        <a href="#" class="h6 author-name">Rachel Howlett</a>
+                        <a class="h6 author-name">Rachel Howlett</a>
                         <span class="status">OFFLINE</span>
                     </div>
 
@@ -267,8 +267,8 @@
 
 
             <div class="ui-block-title ui-block-title-small">
-                <a href="#" class="title">MY FAMILY</a>
-                <a href="#">Settings</a>
+                <a class="title">MY FAMILY</a>
+                <a>Settings</a>
             </div>
 
             <ul class="chat-users">
@@ -280,7 +280,7 @@
                     </div>
 
                     <div class="author-status">
-                        <a href="#" class="h6 author-name">Sarah Hetfield</a>
+                        <a class="h6 author-name">Sarah Hetfield</a>
                         <span class="status">ONLINE</span>
                     </div>
 
@@ -306,8 +306,8 @@
 
 
             <div class="ui-block-title ui-block-title-small">
-                <a href="#" class="title">UNCATEGORIZED</a>
-                <a href="#">Settings</a>
+                <a class="title">UNCATEGORIZED</a>
+                <a>Settings</a>
             </div>
 
             <ul class="chat-users">
@@ -319,7 +319,7 @@
                     </div>
 
                     <div class="author-status">
-                        <a href="#" class="h6 author-name">Bruce Peterson</a>
+                        <a class="h6 author-name">Bruce Peterson</a>
                         <span class="status">ONLINE</span>
                     </div>
 
@@ -351,7 +351,7 @@
                     </div>
 
                     <div class="author-status">
-                        <a href="#" class="h6 author-name">Chris Greyson</a>
+                        <a class="h6 author-name">Chris Greyson</a>
                         <span class="status">AWAY</span>
                     </div>
 
@@ -382,7 +382,7 @@
                     </div>
 
                     <div class="author-status">
-                        <a href="#" class="h6 author-name">Nicholas Grisom</a>
+                        <a class="h6 author-name">Nicholas Grisom</a>
                         <span class="status">INVISIBLE</span>
                     </div>
 
@@ -412,7 +412,7 @@
                     </div>
 
                     <div class="author-status">
-                        <a href="#" class="h6 author-name">Chris Greyson</a>
+                        <a class="h6 author-name">Chris Greyson</a>
                         <span class="status">AWAY</span>
                     </div>
 
@@ -442,7 +442,7 @@
                     </div>
 
                     <div class="author-status">
-                        <a href="#" class="h6 author-name">Bruce Peterson</a>
+                        <a class="h6 author-name">Bruce Peterson</a>
                         <span class="status">ONLINE</span>
                     </div>
 
@@ -473,16 +473,16 @@
                 <input class="form-control" placeholder="Search Friends..." value="" type="text">
             </form>
 
-            <a href="#" class="settings">
+            <a class="settings">
                 <svg class="olymp-settings-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-settings-icon"></use></svg>
             </a>
 
-            <a href="#" class="js-sidebar-open">
+            <a class="js-sidebar-open">
                 <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
             </a>
         </div>
 
-        <a href="#" class="olympus-chat inline-items js-chat-open">
+        <a class="olympus-chat inline-items js-chat-open">
 
             <h6 class="olympus-chat-title">OLYMPUS CHAT</h6>
             <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
@@ -495,7 +495,7 @@
 <div class="fixed-sidebar right fixed-sidebar-responsive">
     <div class="fixed-sidebar-right sidebar--small" id="sidebar-right-responsive">
 
-        <a href="#" class="olympus-chat inline-items js-chat-open">
+        <a class="olympus-chat inline-items js-chat-open">
             <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
         </a>
 

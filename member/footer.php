@@ -42,13 +42,13 @@ $LOCATION = New Page(11);
                         </div>
                         <div class="widget_nav_menu">
                             <ul>
-                                <li><i class="fa fa-angle-double-right "></i><a href="./">Home</a></li>
-                                <li><i class="fa fa-angle-double-right "></i><a href="all-advertisement.php">Advertisement</a></li>
-                                <li><i class="fa fa-angle-double-right "></i><a href="groups.php">Groups</a></li>
-                                <li><i class="fa fa-angle-double-right "></i><a href="member/">Newsfeed</a></li>
-                                <li><i class="fa fa-angle-double-right "></i><a href="terms-and-conditions.php">Terms & Conditions</a></li>
-                                <li><i class="fa fa-angle-double-right "></i><a href="about-us.php">About Us</a></li>
-                                <li><i class="fa fa-angle-double-right "></i><a href="contact-us.php">Contact us</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="../">Home</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="../all-advertisement.php">Advertisement</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="../groups.php">Groups</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="./">Newsfeed</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="../terms-and-conditions.php">Terms & Conditions</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="./about-us.php">About Us</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="../contact-us.php">Contact us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -60,13 +60,13 @@ $LOCATION = New Page(11);
                         </div>
                         <div class="widget_nav_menu">
                             <ul>
-                                <li><i class="fa fa-angle-double-right "></i><a href="advertisements.php?location=ChIJA3B6D9FT4joRjYPTMk0uCzI">Colombo</a></li>
-                                <li><i class="fa fa-angle-double-right "></i><a href="advertisements.php?location=ChIJ4_wyabtz4ToRA0zG-QO5NUo">Galle</a></li>
-                                <li><i class="fa fa-angle-double-right "></i><a href="advertisements.php?location=ChIJ06yYZCZm4zoRNTzgoRg4GkE">Kandy</a></li>
-                                <li><i class="fa fa-angle-double-right "></i><a href="advertisements.php?location=ChIJpWrme_1T_joREvW6A5IN2sc">Jaffna</a></li>
-                                <li><i class="fa fa-angle-double-right "></i><a href="advertisements.php?location=ChIJWeFgk_n0_DoRDs9tvJ7-EcE">Anuradhapura</a></li>
-                                <li><i class="fa fa-angle-double-right "></i><a href="advertisements.php?location=ChIJx1QVTkOA4zoRnH2TTEAIFik">Nuwara Eliya</a></li>
-                                <li><i class="fa fa-angle-double-right "></i><a href="advertisements.php?location=ChIJ5VeV5R434joRUXuKDoS6hos">Kalutara</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="../advertisements.php?location=ChIJA3B6D9FT4joRjYPTMk0uCzI">Colombo</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="../advertisements.php?location=ChIJ4_wyabtz4ToRA0zG-QO5NUo">Galle</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="../advertisements.php?location=ChIJ06yYZCZm4zoRNTzgoRg4GkE">Kandy</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="../advertisements.php?location=ChIJpWrme_1T_joREvW6A5IN2sc">Jaffna</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="../advertisements.php?location=ChIJWeFgk_n0_DoRDs9tvJ7-EcE">Anuradhapura</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="../advertisements.php?location=ChIJx1QVTkOA4zoRnH2TTEAIFik">Nuwara Eliya</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="../advertisements.php?location=ChIJ5VeV5R434joRUXuKDoS6hos">Kalutara</a></li>
                             </ul>
                         </div>
                     </div>

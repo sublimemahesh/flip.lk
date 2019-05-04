@@ -57,7 +57,7 @@ if (isset($_GET['id'])) {
                         <div class="ui-block">
                             <div class="ui-block-title">
                                 <h6 class="title">All Notifications</h6>
-                                <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
+                                <a class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
                             </div>
 
 
@@ -121,6 +121,9 @@ if (isset($_GET['id'])) {
         <!-- Window-popup -->
         <?php
         include './window-pop-up.php';
+        ?>
+        <?php
+        include './footer.php';
         ?>
         <!-- ... end Window-popup -->
         <!-- updateAllAsViewed -->

@@ -140,25 +140,25 @@ if ($count_members['count'] == 0) {
                                                     <div class="swiper-wrapper">
                                                         <div class="swiper-slide">
                                                             <div class="friend-count" data-swiper-parallax="-500">
-                                                                <a href="#" class="friend-count-item">
+                                                                <a class="friend-count-item">
                                                                     <div class="h6">52</div>
                                                                     <div class="title">Friends</div>
                                                                 </a>
-                                                                <a href="#" class="friend-count-item">
+                                                                <a class="friend-count-item">
                                                                     <div class="h6">240</div>
                                                                     <div class="title">Photos</div>
                                                                 </a>
-                                                                <a href="#" class="friend-count-item">
+                                                                <a class="friend-count-item">
                                                                     <div class="h6">16</div>
                                                                     <div class="title">Videos</div>
                                                                 </a>
                                                             </div>
                                                             <div class="control-block-button" data-swiper-parallax="-100">
-                                                                <a href="#" class="btn btn-control bg-blue">
+                                                                <a class="btn btn-control bg-blue">
                                                                     <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                                                 </a>
 
-                                                                <a href="#" class="btn btn-control bg-purple">
+                                                                <a class="btn btn-control bg-purple">
                                                                     <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
                                                                 </a>
 
@@ -267,25 +267,25 @@ if ($count_members['count'] == 0) {
                                                         <div class="swiper-wrapper">
                                                             <div class="swiper-slide">
                                                                 <div class="friend-count" data-swiper-parallax="-500">
-                                                                    <a href="#" class="friend-count-item">
+                                                                    <a class="friend-count-item">
                                                                         <div class="h6">52</div>
                                                                         <div class="title">Friends</div>
                                                                     </a>
-                                                                    <a href="#" class="friend-count-item">
+                                                                    <a class="friend-count-item">
                                                                         <div class="h6">240</div>
                                                                         <div class="title">Photos</div>
                                                                     </a>
-                                                                    <a href="#" class="friend-count-item">
+                                                                    <a class="friend-count-item">
                                                                         <div class="h6">16</div>
                                                                         <div class="title">Videos</div>
                                                                     </a>
                                                                 </div>
                                                                 <div class="control-block-button" data-swiper-parallax="-100">
-                                                                    <a href="#" class="btn btn-control bg-blue">
+                                                                    <a class="btn btn-control bg-blue">
                                                                         <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                                                     </a>
 
-                                                                    <a href="#" class="btn btn-control bg-purple">
+                                                                    <a class="btn btn-control bg-purple">
                                                                         <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
                                                                     </a>
 
@@ -357,6 +357,9 @@ if ($count_members['count'] == 0) {
         <!-- Window-popup -->
         <?php
         include './window-pop-up.php';
+        ?>
+        <?php
+        include './footer.php';
         ?>
         <!-- ... end Window-popup -->
 

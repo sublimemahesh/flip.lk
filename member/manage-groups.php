@@ -46,24 +46,7 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
         ?>
         <div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-xs-12 col-12">
             <div class="header-spacer header-spacer-small"></div>
-            <!-- Main Header Groups -->
-            <div class="main-header">
-                <div class="content-bg-wrap bg-group"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-                            <div class="main-header-content">
-                                <h1>Manage your Friend Groups</h1>
-                                <p>Welcome to your friends groups! Do you wanna know what your close friends have been up to? Groups
-                                    will let you easily manage your friends and put the into categories so when you enter you’ll only
-                                    see a newsfeed of those friends that you placed inside the group. Just click on the plus button below and start now!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <img class="img-bottom" src="img/group-bottom.png" alt="friends">
-            </div>
-            <!-- ... end Main Header Groups -->
+            
             <!-- Main Content Groups -->
             <!--        <div class="container">-->
             <div class="row">
@@ -84,7 +67,7 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
                                                 <svg class="olymp-plus-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-plus-icon"></use></svg>
                                             </a>
                                             <div class="author-content">
-                                                <a href="#" class="h5 author-name">Create Group</a>
+                                                <a class="h5 author-name">Create Group</a>
                                                 <!--<div class="country">6 Friends in the Group</div>-->
                                             </div>
                                         </div>
@@ -108,7 +91,7 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
                                                                 <a href="group-settings.php?id=<?php echo $group['id']; ?>">Group Settings</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" class="leave-group" group-id="<?php echo $group['id']; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group</a>
+                                                                <a class="leave-group" group-id="<?php echo $group['id']; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -137,7 +120,7 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
                                                                 $MEMB = new Member($member['member']);
                                                                 ?>
                                                                 <li>
-                                                                    <a href="#" title="<?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?>">
+                                                                    <a title="<?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?>">
                                                                         <img src="../upload/member/<?php echo $MEMB->profilePicture; ?>" class="friend-list-img" alt="author">
                                                                     </a>
                                                                 </li>
@@ -179,10 +162,10 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
                                                             <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
                                                             <ul class="more-dropdown">
                                                                 <li>
-                                                                    <a href="#" class="leave-group" group-id="<?php echo $group['id']; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group</a>
+                                                                    <a class="leave-group" group-id="<?php echo $group['id']; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#">Edit Notification Settings</a>
+                                                                    <a>Edit Notification Settings</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -211,7 +194,7 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
                                                                     $MEMB = new Member($member['member']);
                                                                     ?>
                                                                     <li>
-                                                                        <a href="#" title="<?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?>">
+                                                                        <a title="<?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?>">
                                                                             <img src="../upload/member/<?php echo $MEMB->profilePicture; ?>" class="friend-list-img" alt="author">
                                                                         </a>
                                                                     </li>
@@ -279,7 +262,7 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
                                                                     $MEMB = new Member($member['member']);
                                                                     ?>
                                                                     <li>
-                                                                        <a href="#" title="<?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?>">
+                                                                        <a title="<?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?>">
                                                                             <img src="../upload/member/<?php echo $MEMB->profilePicture; ?>" class="friend-list-img" alt="author">
                                                                         </a>
                                                                     </li>
@@ -306,7 +289,7 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
                     <div class="ui-block group-invitations hidden">
                         <div class="ui-block-title">
                             <h6 class="title">Group Invitations (<span id="group-invitation-count"><?php echo $no_of_invitations['count']; ?></span>)</h6>
-                            <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
+                            <a class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
                         </div>
                         <!-- Notification List Frien Requests -->
 
@@ -325,14 +308,14 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
                                         <span class="chat-message-item">Mutual Friend: Sarah Hetfield</span>
                                     </div>
                                     <span class="notification-icon">
-                                        <a href="#" class="accept-request confirm-invitation" row_id="<?php echo $request['id']; ?>">
+                                        <a class="accept-request confirm-invitation" row_id="<?php echo $request['id']; ?>">
                                             <span class="icon-add">
                                                 <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                             </span>
                                             Confirm Request
                                         </a>
 
-                                        <a href="#" class="accept-request request-del delete-invitation" row_id="<?php echo $request['id']; ?>">
+                                        <a class="accept-request request-del delete-invitation" row_id="<?php echo $request['id']; ?>">
                                             <span class="icon-minus">
                                                 <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                             </span>

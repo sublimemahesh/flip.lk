@@ -178,7 +178,7 @@ if (isset($_SESSION['id'])) {
                                             <div class="ui-block" id="request-cancel-block">
                                                 <div class="row">
                                                     <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
-                                                        <a href="#" class="btn btn-smoke btn-light-bg btn-md-2 join-group-btn" id="cancel-friend-request-btn" row-id="<?php echo $sendrequest['id']; ?>">Cancel Request<div class="ripple-container"></div></a>
+                                                        <a class="btn btn-smoke btn-light-bg btn-md-2 join-group-btn" id="cancel-friend-request-btn" row-id="<?php echo $sendrequest['id']; ?>">Cancel Request<div class="ripple-container"></div></a>
                                                     </div>
                                                     <div class="col col-lg-9 col-md-9 col-sm-8 col-8 join-group-section">
                                                         <h5>Your request has been sent.</h5>
@@ -191,10 +191,10 @@ if (isset($_SESSION['id'])) {
                                             <div class="ui-block" id="request-cancel-block">
                                                 <div class="row">
                                                     <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
-                                                        <a href="#" class="btn btn-smoke btn-light-bg btn-md-2 join-group-btn" id="confirm-request" row-id="<?php echo $getrequest['id']; ?>">Confirm Request<div class="ripple-container"></div></a>
+                                                        <a class="btn btn-smoke btn-light-bg btn-md-2 join-group-btn" id="confirm-request" row-id="<?php echo $getrequest['id']; ?>">Confirm Request<div class="ripple-container"></div></a>
                                                     </div>
                                                     <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
-                                                        <a href="#" class="btn btn-smoke btn-light-bg btn-md-2 join-group-btn" id="delete-request" row-id="<?php echo $getrequest['id']; ?>">Delete Request<div class="ripple-container"></div></a>
+                                                        <a class="btn btn-smoke btn-light-bg btn-md-2 join-group-btn" id="delete-request" row-id="<?php echo $getrequest['id']; ?>">Delete Request<div class="ripple-container"></div></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -204,7 +204,7 @@ if (isset($_SESSION['id'])) {
                                             <div class="ui-block" id="join-block">
                                                 <div class="row">
                                                     <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
-                                                        <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="follow-btn" requested-to="<?php echo $id; ?>" requested-by="<?php echo $MEMBER->id; ?>">Follow<div class="ripple-container"></div></a>
+                                                        <a class="btn btn-blue btn-md-2 join-group-btn" id="follow-btn" requested-to="<?php echo $id; ?>" requested-by="<?php echo $MEMBER->id; ?>">Follow<div class="ripple-container"></div></a>
                                                     </div>
                                                     <div class="col col-lg-9 col-md-9 col-sm-8 col-8 join-group-section">
                                                         <h5>To see what <?php
@@ -308,7 +308,7 @@ if (isset($_SESSION['id'])) {
 
                                                         <div class="add-options-message">
 
-                                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
+                                                            <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
                                                                 <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
                                                                 <div class="_upload">
                                                                     <input  name="post-image" display="inline" role="button" tabindex="0" data-testid="media-tab" type="file" class="_uploadinput _outlinenone" id="upload_first_image">
@@ -316,11 +316,11 @@ if (isset($_SESSION['id'])) {
                                                                 </div>
 
                                                             </a>
-                                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
+                                                            <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
                                                                 <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
                                                             </a>
 
-                                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
+                                                            <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
                                                                 <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
                                                             </a>
                                                             <input type="hidden" value ="<?php echo $_SESSION['id']; ?>" id="member" name="member" />
@@ -402,10 +402,10 @@ if (isset($_SESSION['id'])) {
                                                             </svg>
                                                             <ul class="more-dropdown">
                                                                 <li>
-                                                                    <a href="#" data-toggle="modal" data-target="#edit-post" class="edit-post" id="<?php echo $post['id']; ?>">Edit Post</a>
+                                                                    <a data-toggle="modal" data-target="#edit-post" class="edit-post" id="<?php echo $post['id']; ?>">Edit Post</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#" class="delete-post" id="<?php echo $post['id']; ?>">Delete Post</a>
+                                                                    <a class="delete-post" id="<?php echo $post['id']; ?>">Delete Post</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -509,7 +509,7 @@ if (isset($_SESSION['id'])) {
                                             if (count($comments) > 0) {
                                                 ?>
                                                 <ul class="comments-list hidden" id="comment-list-<?php echo $post['id']; ?>" post-id="<?php echo $post['id']; ?>">
-                                                    <a href="#" class="see-more hidden" id="see-more-<?php echo $post['id']; ?>">Show all comments</a>
+                                                    <a class="see-more hidden" id="see-more-<?php echo $post['id']; ?>">Show all comments</a>
                                                     <?php
                                                     foreach ($comments as $key => $comment) {
                                                         $COMMENTMEMBER = New Member($comment['member']);
@@ -688,7 +688,7 @@ if (isset($_SESSION['id'])) {
                                                                 <a class="reply add-reply" id="<?php echo $comment['id']; ?>">Reply</a>
 
                                                                 <ul class="children comment-reply-list" id="comment-reply-list-<?php echo $comment['id']; ?>" comment-id="<?php echo $comment['id']; ?>">
-                                                                    <a href="#" class="see-more-replies hidden" id="see-more-replies-<?php echo $comment['id']; ?>">View all replies</a>
+                                                                    <a class="see-more-replies hidden" id="see-more-replies-<?php echo $comment['id']; ?>">View all replies</a>
                                                                     <?php
                                                                     foreach ($replies as $reply) {
                                                                         $REPLYMEMBER = New Member($reply['member']);

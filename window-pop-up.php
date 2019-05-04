@@ -2,14 +2,14 @@
 <div class="modal fade" id="update-profile-photo" tabindex="-1" role="dialog" aria-labelledby="update-header-photo" aria-hidden="true">
     <div class="modal-dialog window-popup update-header-photo" role="document">
         <div class="modal-content">
-            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <a class="close icon-close" data-dismiss="modal" aria-label="Close">
                 <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
             </a>
             <div class="modal-header">
                 <h6 class="title">Update Profile Picture</h6>
             </div>
             <div class="modal-body">
-                <a href="#" class="upload-photo-item upload-profile-pic">
+                <a class="upload-photo-item upload-profile-pic">
                     <svg class="olymp-computer-icon upload-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
                     <?php
                     if (empty($MEMBER->profilePicture)) {
@@ -41,14 +41,14 @@
 <div class="modal fade" id="update-cover-photo" tabindex="-1" role="dialog" aria-labelledby="update-header-photo" aria-hidden="true">
     <div class="modal-dialog window-popup update-header-photo" role="document">
         <div class="modal-content">
-            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <a class="close icon-close" data-dismiss="modal" aria-label="Close">
                 <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
             </a>
             <div class="modal-header">
                 <h6 class="title">Update Cover Picture</h6>
             </div>
             <div class="modal-body">
-                <a href="#" class="upload-photo-item upload-cover-pic">
+                <a class="upload-photo-item upload-cover-pic">
                     <?php
                     if (empty($MEMBER->coverPicture)) {
                         ?>
@@ -79,7 +79,7 @@
 <div class="modal fade" id="add-member" tabindex="-1" role="dialog" aria-labelledby="add-member" aria-hidden="true">
     <div class="modal-dialog window-popup update-header-photo" role="document">
         <div class="modal-content">
-            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <a class="close icon-close" data-dismiss="modal" aria-label="Close">
                 <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
             </a>
 
@@ -95,7 +95,7 @@
 
             </div>
             <div class="modal-footer">
-                    <a href="#" class="btn btn-blue btn-md-2 add-members" id="" group-id="<?php echo $GROUP->id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add<div class="ripple-container"></div></a>
+                    <a class="btn btn-blue btn-md-2 add-members" id="" group-id="<?php echo $GROUP->id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add<div class="ripple-container"></div></a>
 
             </div>
         </div>
@@ -107,7 +107,7 @@
 <div class="modal fade" id="add-member-success-msg" tabindex="-1" role="dialog" aria-labelledby="add-member-success-msg" aria-hidden="true">
     <div class="modal-dialog window-popup update-header-photo" role="document">
         <div class="modal-content">
-            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <a class="close icon-close" data-dismiss="modal" aria-label="Close">
                 <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
             </a>
 
@@ -119,7 +119,7 @@
                 <h5><span id="new-member-name"></span> has been invited to the group.</h5>
              </div>
             <div class="modal-footer">
-                    <a href="#" class="btn btn-blue btn-md-2 done-btn" id="" group-id="<?php echo $GROUP->id; ?>" member-id="<?php echo $MEMBER->id; ?>">Done<div class="ripple-container"></div></a>
+                    <a class="btn btn-blue btn-md-2 done-btn" id="" group-id="<?php echo $GROUP->id; ?>" member-id="<?php echo $MEMBER->id; ?>">Done<div class="ripple-container"></div></a>
 
             </div>
         </div>
@@ -130,7 +130,7 @@
 <div class="modal fade close-modal" id="already-a-member" tabindex="-1" role="dialog" aria-labelledby="already-a-member" aria-hidden="true">
     <div class="modal-dialog window-popup update-header-photo" role="document">
         <div class="modal-content">
-            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <a class="close icon-close" data-dismiss="modal" aria-label="Close">
                 <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
             </a>
 
@@ -142,7 +142,7 @@
                 <h5>The person you just tried to add is already a member of this group.</h5>
              </div>
             <div class="modal-footer">
-                    <a href="#" class="btn btn-blue btn-md-2 close-btn" id="" >Close<div class="ripple-container"></div></a>
+                    <a class="btn btn-blue btn-md-2 close-btn" id="" >Close<div class="ripple-container"></div></a>
 
             </div>
         </div>
@@ -154,7 +154,7 @@
 <div class="modal fade close-modal" id="already-invited" tabindex="-1" role="dialog" aria-labelledby="already-invited" aria-hidden="true">
     <div class="modal-dialog window-popup update-header-photo" role="document">
         <div class="modal-content">
-            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <a class="close icon-close" data-dismiss="modal" aria-label="Close">
                 <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
             </a>
 
@@ -166,7 +166,7 @@
                 <h5>The person you are trying to invite was already invited to this group.</h5>
              </div>
             <div class="modal-footer">
-                    <a href="#" class="btn btn-blue btn-md-2 close-btn">Close<div class="ripple-container"></div></a>
+                    <a class="btn btn-blue btn-md-2 close-btn">Close<div class="ripple-container"></div></a>
 
             </div>
         </div>
@@ -178,7 +178,7 @@
 <div class="modal fade" id="edit-post" tabindex="-1" role="dialog" aria-labelledby="edit-post" aria-hidden="true">
     <div class="modal-dialog window-popup update-header-photo" role="document">
         <div class="modal-content">
-            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <a class="close icon-close" data-dismiss="modal" aria-label="Close">
                 <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
             </a>
 
@@ -202,7 +202,7 @@
     <div class="modal-dialog window-popup update-header-photo" role="document">
 
         <div class="modal-content">
-            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <a class="close icon-close" data-dismiss="modal" aria-label="Close">
                 <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
             </a>
 
@@ -238,7 +238,7 @@
     <div class="modal-dialog window-popup update-header-photo" role="document">
 
         <div class="modal-content">
-            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <a class="close icon-close" data-dismiss="modal" aria-label="Close">
                 <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
             </a>
 

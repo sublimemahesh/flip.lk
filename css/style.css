@@ -3264,7 +3264,8 @@ a .ad-title{
 .boost-ad{
     text-align: right;
     margin-left: 0px;
-    right: -31px;
+    /*right: -31px;*/
+    right: 0px;
     margin-top: -7px;
 }
 .view-details{

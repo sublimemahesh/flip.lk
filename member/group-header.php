@@ -25,7 +25,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                 <img src="../upload/group/<?php echo $GROUP->profilePicture; ?>" alt="author">
                             </div>
                             <div class="author-content">
-                                <a href="#" class="h3 author-name"><?php echo $GROUP->name; ?></a>
+                                <a class="h3 author-name"><?php echo $GROUP->name; ?></a>
                                 <div class="country"><?php echo $CATEGORY->name; ?> |  <?php echo $SUBCATEGORY->name; ?></div>
                             </div>
                         </div>
@@ -41,13 +41,13 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                         <a href="members.php?id=<?php echo $GROUP->id; ?>">Members</a>
                                     </li>
                                     <li>
-                                        <a href="#">Photos</a>
+                                        <a>Photos</a>
                                     </li>
                                     <li>
-                                        <a href="#">Videos</a>
+                                        <a>Videos</a>
                                     </li>
                                     <li>
-                                        <a href="#">Events</a>
+                                        <a>Events</a>
                                     </li>
                                 </ul>
                             </div>
