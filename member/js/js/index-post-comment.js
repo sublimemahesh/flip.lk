@@ -38,14 +38,14 @@ $(document).ready(function () {
                         html += '</time>';
                         html += '</div>';
                         html += '</div>';
-                        html += '<a href="#" class="more">';
+                        html += '<a class="more">';
                         html += '<svg class="olymp-three-dots-icon">';
                         html += '<use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>';
                         html += '</svg>';
                         html += '</a>';
                         html += '</div>';
                         html += '<p>' + result.comment + '</p>';
-                        html += '<a href="#" class="reply">Reply</a>';
+                        html += '<a class="reply">Reply</a>';
                         html += '</li>';
                         $('#comment-list-' + post).append(html);
                     }
@@ -77,14 +77,14 @@ $(document).ready(function () {
                         html += '</time>';
                         html += '</div>';
                         html += '</div>';
-                        html += '<a href="#" class="more">';
+                        html += '<a class="more">';
                         html += '<svg class="olymp-three-dots-icon">';
                         html += '<use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>';
                         html += '</svg>';
                         html += '</a>';
                         html += '</div>';
                         html += '<p>' + result.comment + '</p>';
-                        html += '<a href="#" class="reply">Reply</a>';
+                        html += '<a class="reply">Reply</a>';
                         html += '</li>';
                         $('#comment-list-' + post).append(html);
                     }

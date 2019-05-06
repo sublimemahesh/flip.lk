@@ -59,7 +59,7 @@ if (isset($_GET['id'])) {
                         <div class="ui-block">
                             <div class="ui-block-title">
                                 <h6 class="title">Personal Info</h6>
-                                <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
+                                <a class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
                             </div>
                             <div class="ui-block-content">
 
@@ -104,7 +104,7 @@ if (isset($_GET['id'])) {
                                     </li>
                                     <li>
                                         <span class="title">Email:</span>
-                                        <a href="#" class="text"><?php echo $MEM->email; ?></a>
+                                        <a class="text"><?php echo $MEM->email; ?></a>
                                     </li>
                                     <li>
                                         <span class="title">Phone Number:</span>
@@ -113,26 +113,6 @@ if (isset($_GET['id'])) {
                                 </ul>
 
                                 <!-- ... end W-Personal-Info -->
-                                <!-- W-Socials -->
-
-                                <div class="widget w-socials">
-                                    <h6 class="title">Other Social Networks:</h6>
-                                    <a href="#" class="social-item bg-facebook">
-                                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                                        Facebook
-                                    </a>
-                                    <a href="#" class="social-item bg-twitter">
-                                        <i class="fab fa-twitter" aria-hidden="true"></i>
-                                        Twitter
-                                    </a>
-                                    <a href="#" class="social-item bg-dribbble">
-                                        <i class="fab fa-dribbble" aria-hidden="true"></i>
-                                        Dribbble
-                                    </a>
-                                </div>
-
-
-                                <!-- ... end W-Socials -->
                             </div>
                         </div>
                     </div>
@@ -147,7 +127,9 @@ if (isset($_GET['id'])) {
         include './window-pop-up.php';
         ?>
         <!-- ... end Window-popup -->
-
+        <?php
+        include './footer.php';
+        ?>
 
         <!-- JS Scripts -->
         <script src="js/jquery-3.2.1.js"></script>

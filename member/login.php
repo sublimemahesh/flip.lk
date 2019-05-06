@@ -84,10 +84,10 @@ if (isset($_SESSION["back_url"])) {
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left fb-login" id="fb-login"><i class="fab fa-facebook-f" aria-hidden="true"></i>Login with Facebook</a>
+                                        <a class="btn btn-lg bg-facebook full-width btn-icon-left fb-login" id="fb-login"><i class="fab fa-facebook-f" aria-hidden="true"></i>Login with Facebook</a>
                                     </div>
                                     <div class="col-sm-6">
-                                        <a href="#" class="btn btn-lg bg-google full-width btn-icon-left google-login" id="google-login"><i class="fab fa-google" aria-hidden="true"></i>Login with Google</a>
+                                        <a class="btn btn-lg bg-google full-width btn-icon-left google-login" id="google-login"><i class="fab fa-google" aria-hidden="true"></i>Login with Google</a>
                                         <script>startApp();</script>
                                     </div>
                                 </div>
@@ -132,10 +132,10 @@ if (isset($_SESSION["back_url"])) {
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left fb-login" id="fb-login"><i class="fab fa-facebook-f" aria-hidden="true"></i>Sign up with Facebook</a>
+                                        <a class="btn btn-lg bg-facebook full-width btn-icon-left fb-login" id="fb-login"><i class="fab fa-facebook-f" aria-hidden="true"></i>Sign up with Facebook</a>
                                     </div>
                                     <div class="col-sm-6">
-                                        <a href="#" class="btn btn-lg bg-google full-width btn-icon-left google-login" id="google-login1"><i class="fab fa-google" aria-hidden="true"></i>Sign up with Google</a>
+                                        <a class="btn btn-lg bg-google full-width btn-icon-left google-login" id="google-login1"><i class="fab fa-google" aria-hidden="true"></i>Sign up with Google</a>
                                         <script>startApp1();</script>
                                     </div>
                                 </div>

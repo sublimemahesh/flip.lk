@@ -111,14 +111,14 @@ $GROUP = new Group($id);
                                                     <textarea class="form-control" placeholder=""></textarea>
                                                 </div>
                                                 <div class="add-options-message">
-                                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
+                                                    <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
                                                         <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
                                                     </a>
-                                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
+                                                    <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
                                                         <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
                                                     </a>
 
-                                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
+                                                    <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
                                                         <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
                                                     </a>
 
@@ -219,7 +219,7 @@ $GROUP = new Group($id);
                                                                     <a href="edit-advertisement.php?id=<?php echo $ad['id']; ?>" class="edit-ad" id="<?php echo $ad['id']; ?>">Edit Advertisement</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#" class="delete-ad" id="<?php echo $ad['id']; ?>">Delete Advertisement</a>
+                                                                    <a class="delete-ad" id="<?php echo $ad['id']; ?>">Delete Advertisement</a>
                                                                 </li>
                                                                 <?php
                                                             }
@@ -248,7 +248,7 @@ $GROUP = new Group($id);
                                                             <span><?php echo $count['count']; ?></span>
                                                         </a>
 
-                                                        <a href="#" class="post-add-icon inline-items share-ad-link" data-toggle="modal" data-target="#share-ad" id="<?php echo $ad['id']; ?>">
+                                                        <a class="post-add-icon inline-items share-ad-link" data-toggle="modal" data-target="#share-ad" id="<?php echo $ad['id']; ?>">
                                                             <svg class="olymp-share-icon">
                                                             <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
                                                             </svg>
@@ -263,7 +263,7 @@ $GROUP = new Group($id);
                                             if (count($comments) > 0) {
                                                 ?>
                                                 <ul class="comments-list hidden" id="group-comment-list-<?php echo $ad['id']; ?>" ad-id="<?php echo $ad['id']; ?>">
-                                                    <a href="#" class="see-more hidden" id="see-more-<?php echo $ad['id']; ?>">Show all comments</a>
+                                                    <a class="see-more hidden" id="see-more-<?php echo $ad['id']; ?>">Show all comments</a>
                                                     <?php
                                                     foreach ($comments as $key => $comment) {
                                                         $COMMENTMEMBER = New Member($comment['member']);
@@ -382,7 +382,7 @@ $GROUP = new Group($id);
                                                                 <a class="reply add-reply" id="<?php echo $comment['id']; ?>">Reply</a>
 
                                                                 <ul class="children comment-reply-list" id="comment-reply-list-<?php echo $comment['id']; ?>" comment-id="<?php echo $comment['id']; ?>">
-                                                                    <a href="#" class="see-more-replies hidden" id="see-more-replies-<?php echo $comment['id']; ?>">View all replies</a>
+                                                                    <a class="see-more-replies hidden" id="see-more-replies-<?php echo $comment['id']; ?>">View all replies</a>
                                                                     <?php
                                                                     foreach ($replies as $reply) {
                                                                         $REPLYMEMBER = New Member($reply['member']);
@@ -508,6 +508,9 @@ $GROUP = new Group($id);
         <!-- Window-popup -->
         <?php
         include './window-pop-up.php';
+        ?>
+        <?php
+        include './footer.php';
         ?>
         <!-- ... end Window-popup -->
 

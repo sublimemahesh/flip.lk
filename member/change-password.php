@@ -3,6 +3,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
 $MEMBER = new Member($_SESSION['id']);
+$MEM = new Member($_SESSION['id']);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +42,7 @@ $MEMBER = new Member($_SESSION['id']);
         <?php
         include './header.php';
         ?>
-        <div class="header-spacer header-spacer-small"></div>
+        <div class="header-spacer"></div>
  <div class="col col-xl-12 col-12">
         <!-- Main Header Account -->
         <div class="main-header">

@@ -110,13 +110,13 @@ $ADVERTISEMENT = new Advertisement($id);
                                                         <?php
                                                         if ($advertisement['is_suspend'] == 0) {
                                                             ?>
-                                                        <a href="#" class="suspend-advertisement btn btn-sm btn-warning" data-id="<?php echo $advertisement['id']; ?>" title="Active">
+                                                        <a class="suspend-advertisement btn btn-sm btn-warning" data-id="<?php echo $advertisement['id']; ?>" title="Active">
                                                             <i class="material-icons">stop</i>
                                                         </a>
                                                             <?php
                                                         } else {
                                                             ?>
-                                                            <a href="#" class="remove-ad-suspend btn btn-sm btn-warning" data-id="<?php echo $advertisement['id']; ?>"  title="Suspended">
+                                                            <a class="remove-ad-suspend btn btn-sm btn-warning" data-id="<?php echo $advertisement['id']; ?>"  title="Suspended">
                                                             <i class="material-icons">play_circle_outline</i>
                                                         </a>
                                                             <?php
@@ -125,20 +125,20 @@ $ADVERTISEMENT = new Advertisement($id);
                                                         <?php
                                                         if ($advertisement['status'] == 0) {
                                                             ?>
-                                                            <a href="#" class="publish-advertisement btn btn-sm btn-info" data-id="<?php echo $advertisement['id']; ?>"  title="Unpublished">
+                                                            <a class="publish-advertisement btn btn-sm btn-info" data-id="<?php echo $advertisement['id']; ?>"  title="Unpublished">
                                                             <i class="glyphicon glyphicon-eye-close" data-type="cancel"></i>
                                                         </a>
                                                             <?php
                                                         } else {
                                                             ?>
-                                                            <a href="#" class="unpublish-advertisement btn btn-sm btn-info" data-id="<?php echo $advertisement['id']; ?>"  title="Published">
+                                                            <a class="unpublish-advertisement btn btn-sm btn-info" data-id="<?php echo $advertisement['id']; ?>"  title="Published">
                                                             <i class="glyphicon glyphicon-eye-open" data-type="cancel"></i>
                                                         </a>
                                                             <?php
                                                         }
                                                         ?>
 
-                                                        <a href="#" class="delete-advertisement btn btn-sm btn-danger" data-id="<?php echo $advertisement['id']; ?>">
+                                                        <a class="delete-advertisement btn btn-sm btn-danger" data-id="<?php echo $advertisement['id']; ?>">
                                                             <i class="glyphicon glyphicon-trash" data-type="cancel"></i>
                                                         </a>
                                                         

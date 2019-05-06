@@ -153,7 +153,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                         if (count($comments) > 0) {
                                             ?>
                                             <ul class="comments-list" id="comment-list-<?php echo $ADVERTISEMENT->id; ?>" post-id="<?php echo $ADVERTISEMENT->id; ?>">
-                                                <a href="#" class="see-more hidden" id="see-more-<?php echo $ADVERTISEMENT->id; ?>">Show all comments</a>
+                                                <a class="see-more hidden" id="see-more-<?php echo $ADVERTISEMENT->id; ?>">Show all comments</a>
                                                 <?php
                                                 foreach ($comments as $key => $comment) {
                                                     $COMMENTMEMBER = New Member($comment['member']);
@@ -211,7 +211,7 @@ $SUBCATEGORY = new BusinessSubCategory($ADVERTISEMENT->subCategory);
                                                             </div>
                                                             <p class="ad-comment-p" id="ad-comment-p-<?php echo $comment['id']; ?>"><?php echo $comment['comment']; ?></p>
                                                             <ul class="children comment-reply-list" id="comment-reply-list-<?php echo $comment['id']; ?>" comment-id="<?php echo $comment['id']; ?>">
-                                                                <a href="#" class="see-more-replies hidden" id="see-more-replies-<?php echo $comment['id']; ?>">View all replies</a>
+                                                                <a class="see-more-replies hidden" id="see-more-replies-<?php echo $comment['id']; ?>">View all replies</a>
                                                                 <?php
                                                                 foreach ($replies as $reply) {
                                                                     $REPLYMEMBER = New Member($reply['member']);

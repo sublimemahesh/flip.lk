@@ -82,10 +82,10 @@ if (isset($_SESSION['id'])) {
                                     <div class="ui-block group-settings-btn">
                                         <div class="row">
                                             <div class="col col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4">
-                                                <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="leave-group" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group<div class="ripple-container"></div></a>
+                                                <a class="btn btn-blue btn-md-2 join-group-btn" id="leave-group" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group<div class="ripple-container"></div></a>
                                             </div>
                                             <div class="col col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4">
-                                                <a href="#" data-toggle="modal" data-target="#add-member" class="btn btn-blue btn-md-2 join-group-btn add-member" id="" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add Members<div class="ripple-container"></div></a>
+                                                <a data-toggle="modal" data-target="#add-member" class="btn btn-blue btn-md-2 join-group-btn add-member" id="" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add Members<div class="ripple-container"></div></a>
                                             </div>
                                             <div class="col col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4">
                                                 <a href="create-advertisement.php?id=<?php echo $GROUP->id ?>" class="btn btn-blue btn-md-2 join-group-btn" id="">Post Advertisement<div class="ripple-container"></div></a>
@@ -122,14 +122,14 @@ if (isset($_SESSION['id'])) {
                                                             <textarea class="form-control" placeholder=""></textarea>
                                                         </div>
                                                         <div class="add-options-message">
-                                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
+                                                            <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
                                                                 <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
                                                             </a>
-                                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
+                                                            <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
                                                                 <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
                                                             </a>
 
-                                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
+                                                            <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
                                                                 <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
                                                             </a>
 
@@ -161,7 +161,7 @@ if (isset($_SESSION['id'])) {
                                     ?>" id="join-block">
                                         <div class="row">
                                             <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
-                                                <a href="#" class="btn btn-blue btn-md-2 join-group-btn" id="join-group-btn" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Join Group<div class="ripple-container"></div></a>
+                                                <a class="btn btn-blue btn-md-2 join-group-btn" id="join-group-btn" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Join Group<div class="ripple-container"></div></a>
                                             </div>
                                             <div class="col col-lg-9 col-md-9 col-sm-8 col-8 join-group-section">
                                                 <h5>Join this group to post and comment.</h5>
@@ -175,7 +175,7 @@ if (isset($_SESSION['id'])) {
                                     ?>" id="request-cancel-block">
                                         <div class="row">
                                             <div class="col col-lg-3 col-md-3 col-sm-4 col-4">
-                                                <a href="#" class="btn btn-smoke btn-light-bg btn-md-2 join-group-btn" id="cancel-request-btn" row-id="<?php echo $rowid; ?>">Cancel Request<div class="ripple-container"></div></a>
+                                                <a class="btn btn-smoke btn-light-bg btn-md-2 join-group-btn" id="cancel-request-btn" row-id="<?php echo $rowid; ?>">Cancel Request<div class="ripple-container"></div></a>
                                             </div>
                                             <div class="col col-lg-9 col-md-9 col-sm-8 col-8 join-group-section">
                                                 <h5>Your request has been sent to the approval.</h5>
@@ -244,7 +244,7 @@ if (isset($_SESSION['id'])) {
                                                                     </svg>
                                                                     <span><?php echo $count['count']; ?></span>
                                                                 </a>
-                                                                <a href="#" class="post-add-icon inline-items share-ad-link" data-toggle="modal" data-target="#share-ad" id="<?php echo $ad['id']; ?>">
+                                                                <a class="post-add-icon inline-items share-ad-link" data-toggle="modal" data-target="#share-ad" id="<?php echo $ad['id']; ?>">
                                                                     <svg class="olymp-share-icon">
                                                                     <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
                                                                     </svg>
@@ -259,7 +259,7 @@ if (isset($_SESSION['id'])) {
                                                                     </svg>
                                                                     <span><?php echo $count['count']; ?></span>
                                                                 </a>
-                                                                <a href="#" class="post-add-icon inline-items" data-toggle="modal" data-target="#login-first" id="<?php echo $ad['id']; ?>">
+                                                                <a class="post-add-icon inline-items" data-toggle="modal" data-target="#login-first" id="<?php echo $ad['id']; ?>">
                                                                     <svg class="olymp-share-icon">
                                                                     <use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>
                                                                     </svg>
@@ -277,7 +277,7 @@ if (isset($_SESSION['id'])) {
                                                 if (count($comments) > 0) {
                                                     ?>
                                                     <ul class="comments-list hidden" id="group-comment-list-<?php echo $ad['id']; ?>" ad-id="<?php echo $ad['id']; ?>">
-                                                        <a href="#" class="see-more hidden" id="see-more-<?php echo $ad['id']; ?>">Show all comments</a>
+                                                        <a class="see-more hidden" id="see-more-<?php echo $ad['id']; ?>">Show all comments</a>
                                                         <?php
                                                         foreach ($comments as $key => $comment) {
                                                             $COMMENTMEMBER = New Member($comment['member']);
@@ -396,7 +396,7 @@ if (isset($_SESSION['id'])) {
                                                                     <a class="reply add-reply" id="<?php echo $comment['id']; ?>">Reply</a>
 
                                                                     <ul class="children comment-reply-list" id="comment-reply-list-<?php echo $comment['id']; ?>" comment-id="<?php echo $comment['id']; ?>">
-                                                                        <a href="#" class="see-more-replies hidden" id="see-more-replies-<?php echo $comment['id']; ?>">View all replies</a>
+                                                                        <a class="see-more-replies hidden" id="see-more-replies-<?php echo $comment['id']; ?>">View all replies</a>
                                                                         <?php
                                                                         foreach ($replies as $reply) {
                                                                             $REPLYMEMBER = New Member($reply['member']);

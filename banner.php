@@ -19,7 +19,7 @@
                                         <path d="m149.296875 294.011719h362.703125v113.296875h-362.703125zm0 0"/>
                                     </svg>
                                     <select class="category-select-box" name="category">
-                                        <option value="">Category</option>
+                                        <option value="">CATEGORY</option>
                                         <?php
                                         foreach (BusinessCategory::all() as $key => $category) {
                                             if ($category1 == $category['id']) {
@@ -48,7 +48,7 @@
                                 <div class="icon-wrap iw-2">
                                     <i class="fa fa-search"></i>
                                 </div>
-                                <input id="search" type="text" name="keyword" placeholder="What are you looking for?" value="<?php echo $keyword; ?>"/>
+                                <input id="search" type="text" name="keyword" placeholder="What are you looking for?" value="<?php if(isset($keyword)) { echo $keyword; }; ?>"/>
                             </div>
                             <div class="input-field fifth-wrap">
                                 <button class="btn-search" type="submit">SEARCH</button>

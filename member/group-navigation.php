@@ -18,13 +18,13 @@
                     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
                         <ul class="your-profile-menu">
                             <li>
-                                <a href="#" id="groups-you-manage">Groups You Manage</a>
+                                <a id="groups-you-manage">Groups You Manage</a>
                             </li>
                             <li>
-                                <a href="#" id="your-groups">Your Groups</a>
+                                <a id="your-groups">Your Groups</a>
                             </li>
                             <li>
-                                <a href="#" id="discover-groups">Discover Groups</a>
+                                <a id="discover-groups">Discover Groups</a>
                             </li>
                             <li>
                                 <a href="create-group.php" id="discover-groups">Create Group</a>
@@ -33,7 +33,7 @@
                                 <a href="manage-groups.php" id="discover-groups">Manage Groups</a>
                             </li>
                             <li>
-                                <a href="#" id="group-invitations" id="discover-groups">Manage Group Invitations</a>
+                                <a id="group-invitations" id="discover-groups">Manage Group Invitations</a>
                             </li>
 
                         </ul>

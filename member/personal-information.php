@@ -3,6 +3,7 @@ include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
 $MEMBER = new Member($_SESSION['id']);
+$MEM = new Member($_SESSION['id']);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,31 +38,13 @@ $MEMBER = new Member($_SESSION['id']);
         <?php
         include './header.php';
         ?>
-<div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
-        <div class="header-spacer header-spacer-small"></div>
+        <div class="header-spacer"></div>
+        <div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
+            <?php
+            include './profile-header.php';
+            ?>
 
-        <!-- Main Header Account -->
- <!--<div class="col col-xl-12 col-12">-->
-        <div class="main-header">
-            <div class="content-bg-wrap bg-account"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-                        <div class="main-header-content">
-                            <h1>Your Account Dashboard</h1>
-                            <p>Welcome to your account dashboard! Here you’ll find everything you need to change your profile
-                                information, settings, read notifications and requests, view your latest messages, change your pasword and much
-                                more! Also you can create or manage your own favourite page, have fun!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <img class="img-bottom" src="img/account-bottom.png" alt="friends">
-        </div>
-
-        <!-- ... end Main Header Account -->
-        <!-- Your Account Personal Information -->
-        <!--<div class="container">-->
+            <!--<div class="container">-->
             <div class="row">
                 <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
                     <div class="ui-block">
@@ -69,9 +52,9 @@ $MEMBER = new Member($_SESSION['id']);
                             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                 <h6 class="title">Manage Account</h6>
                             </div>
-<!--                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12 manage-group-section">
-                                <a href="#" class="btn btn-blue btn-md-2" id="delete-group" member_id="<?php echo $MEMBER->id; ?>">Delete Profile</a>
-                            </div>-->
+                            <!--                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12 manage-group-section">
+                                                            <a class="btn btn-blue btn-md-2" id="delete-group" member_id="<?php echo $MEMBER->id; ?>">Delete Profile</a>
+                                                        </div>-->
                         </div>
                         <div class="ui-block-content">
                             <div class="description-toggle col-md-6">
@@ -90,20 +73,22 @@ $MEMBER = new Member($_SESSION['id']);
 
                                 <div class="togglebutton">
                                     <label>
-                                        <input type="checkbox" id="active-profile" <?php if ($MEMBER->status == 1) {
+                                        <input type="checkbox" id="active-profile" <?php
+                                        if ($MEMBER->status == 1) {
                                             echo 'checked=""';
-                                        }; ?>  member_id="<?php echo $MEMBER->id; ?>" status="<?php echo $MEMBER->status; ?>">
+                                        };
+                                        ?>  member_id="<?php echo $MEMBER->id; ?>" status="<?php echo $MEMBER->status; ?>">
                                     </label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="ui-block">
                         <div class="ui-block-title">
                             <h6 class="title">Personal Information</h6>
                         </div>
-                        
+
                         <div class="ui-block-content">
                             <!-- Personal Information Form  -->
                             <form action="post-and-get/member.php" method="post">
@@ -207,13 +192,13 @@ $MEMBER = new Member($_SESSION['id']);
                                             </select>
                                         </div>
                                     </div>
-<!--                                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <div class="form-group with-icon label-floating">
-                                            <label class="control-label">Your Facebook Account</label>
-                                            <input class="form-control" type="text" value="www.facebook.com/james-spiegel95321">
-                                            <i class="fab fa-facebook-f c-facebook" aria-hidden="true"></i>
-                                        </div>
-                                    </div>-->
+                                    <!--                                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                                            <div class="form-group with-icon label-floating">
+                                                                                <label class="control-label">Your Facebook Account</label>
+                                                                                <input class="form-control" type="text" value="www.facebook.com/james-spiegel95321">
+                                                                                <i class="fab fa-facebook-f c-facebook" aria-hidden="true"></i>
+                                                                            </div>
+                                                                        </div>-->
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                         <button class="btn btn-secondary btn-lg full-width">Restore all Attributes</button>
                                     </div>
@@ -234,12 +219,15 @@ $MEMBER = new Member($_SESSION['id']);
                 include './account-navigation.php';
                 ?>
             </div>
-        <!--</div>-->
-        <!-- ... end Your Account Personal Information -->
- </div>
+            <!--</div>-->
+            <!-- ... end Your Account Personal Information -->
+        </div>
         <!-- Window-popup -->
         <?php
         include './window-pop-up.php';
+        ?>
+        <?php
+        include './footer.php';
         ?>
         <!-- ... end Window-popup -->
 

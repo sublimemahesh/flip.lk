@@ -77,14 +77,14 @@ $no_of_request = FriendRequest::getCountOfFriendRequestsByMember($MEMBER->id);
                                             <span class="chat-message-item">Mutual Friend: Sarah Hetfield</span>
                                         </div>
                                         <span class="notification-icon">
-                                            <a href="#" class="accept-request confirm-request" row_id="<?php echo $request['id']; ?>">
+                                            <a class="accept-request confirm-request" row_id="<?php echo $request['id']; ?>">
                                                 <span class="icon-add">
                                                     <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                                 </span>
                                                 Confirm Request
                                             </a>
 
-                                            <a href="#" class="accept-request request-del delete-request" row_id="<?php echo $request['id']; ?>">
+                                            <a class="accept-request request-del delete-request" row_id="<?php echo $request['id']; ?>">
                                                 <span class="icon-minus">
                                                     <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                                 </span>
@@ -134,6 +134,9 @@ $no_of_request = FriendRequest::getCountOfFriendRequestsByMember($MEMBER->id);
         <!-- Window-popup -->
         <?php
         include './window-pop-up.php';
+        ?>
+        <?php
+        include './footer.php';
         ?>
         <!-- ... end Window-popup -->
 

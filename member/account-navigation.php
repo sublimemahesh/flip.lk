@@ -24,7 +24,7 @@
                                 <a href="personal-information.php">Personal Information</a>
                             </li>
                             <li>
-                                <a href="#">Account Settings</a>
+                                <a>Account Settings</a>
                             </li>
                             <li>
                                 <a href="change-password.php">Change Password</a>
@@ -37,15 +37,15 @@
 
             <div class="ui-block-title">
                 <a href="notifications.php" class="h6 title">Notifications</a>
-                <a href="#" class="items-round-little bg-blue"><?php echo $countnotifications; ?></a>
+                <a class="items-round-little bg-blue"><?php echo $countnotifications; ?></a>
             </div>
             <div class="ui-block-title">
                 <a href="member-message.php" class="h6 title">Chat / Messages</a>
-                <a href="#" class="items-round-little bg-blue"><?php echo $countmsg; ?></a>
+                <a class="items-round-little bg-blue"><?php echo $countmsg; ?></a>
             </div>
             <div class="ui-block-title">
                 <a href="friend-requests.php" class="h6 title">Follow Requests</a>
-                <a href="#" class="items-round-little bg-blue"><?php echo $countu['count']; ?></a>
+                <a class="items-round-little bg-blue"><?php echo $countu['count']; ?></a>
             </div>
             <div class="ui-block-title ui-block-title-small">
                 <h6 class="title">Groups</h6>
@@ -62,7 +62,7 @@
 </div>
 <!--Responsive-->
 <div class="profile-settings-responsive">
-    <a href="#" class="js-profile-settings-open profile-settings-open">
+    <a class="js-profile-settings-open profile-settings-open">
         <i class="fa fa-angle-right" aria-hidden="true"></i>
         <i class="fa fa-angle-left" aria-hidden="true"></i>
     </a>
@@ -89,7 +89,7 @@
                                     <a href="personal-information.php">Personal Information</a>
                                 </li>
                                 <li>
-                                    <a href="#">Account Settings</a>
+                                    <a>Account Settings</a>
                                 </li>
                                 <li>
                                     <a href="change-password.php">Change Password</a>
@@ -102,15 +102,15 @@
 
 
                 <div class="ui-block-title">
-                    <a href="#" class="h6 title">Notifications</a>
-                    <a href="#" class="items-round-little bg-primary"></a>
+                    <a class="h6 title">Notifications</a>
+                    <a class="items-round-little bg-primary"></a>
                 </div>
                 <div class="ui-block-title">
-                    <a href="#" class="h6 title">Chat / Messages</a>
+                    <a class="h6 title">Chat / Messages</a>
                 </div>
                 <div class="ui-block-title">
-                    <a href="#" class="h6 title">Friend Requests</a>
-                    <a href="#" class="items-round-little bg-blue"></a>
+                    <a class="h6 title">Friend Requests</a>
+                    <a class="items-round-little bg-blue"></a>
                 </div>
                 <div class="ui-block-title ui-block-title-small">
                     <h6 class="title">FAVOURITE PAGE</h6>

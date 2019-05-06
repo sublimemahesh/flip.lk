@@ -332,6 +332,9 @@ include './account-navigation.php';
 <?php
 include './window-pop-up.php';
 ?>
+        <?php
+        include './footer.php';
+        ?>
         <!-- ... end Window-popup -->
 
         <a class="back-to-top" href="#">

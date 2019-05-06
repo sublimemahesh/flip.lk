@@ -215,7 +215,7 @@ $members = GroupMember::getAllMembersByGroup($id);
                                     <h6 class="title">Manage Group</h6>
                                 </div>
                                 <div class="col col-lg-6 col-md-6 col-sm-12 col-12 manage-group-section">
-                                    <a href="#" class="btn btn-blue btn-md-2" id="delete-group" group_id="<?php echo $id; ?>">Delete Group</a>
+                                    <a class="btn btn-blue btn-md-2" id="delete-group" group_id="<?php echo $id; ?>">Delete Group</a>
                                 </div>
                             </div>
                             <div class="ui-block-content">
@@ -397,7 +397,7 @@ $members = GroupMember::getAllMembersByGroup($id);
                                             </div>
                                         </div>
                                         <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                            <a href="#" class="btn btn-secondary btn-lg full-width">Restore all Attributes</a>
+                                            <a class="btn btn-secondary btn-lg full-width">Restore all Attributes</a>
                                         </div>
                                         <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                             <input type="hidden" name="id" value="<?php echo $id; ?>" />
@@ -425,6 +425,9 @@ $members = GroupMember::getAllMembersByGroup($id);
         <!-- Window-popup -->
         <?php
         include './window-pop-up.php';
+        ?>
+        <?php
+        include './footer.php';
         ?>
         <!-- ... end Window-popup -->
 

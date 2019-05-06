@@ -124,6 +124,14 @@ class BusinessSubCategory {
 
         return $result;
     }
+    
+    public function countSubCategories() {
+
+        $query = "SELECT count(`id`) as count FROM `business_sub_category`";
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result['count'];
+    }
 
     public function arrange($key, $img) {
         $query = "UPDATE `business_sub_category` SET `sort` = '" . $key . "'  WHERE id = '" . $img . "'";

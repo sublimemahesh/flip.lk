@@ -108,7 +108,7 @@ if ($filter == 'published') {
                                                             <span class="date"><?php echo substr($ad['created_at'], 0, 10); ?></span>
                                                             <span class="bold"><?php echo $ad['title']; ?></span>
                                                             <span class="town-place"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></span>
-                                                            <span><a href="#" class="btn btn-primary btn-sm full-width view-ad-link" data-toggle="modal" data-target="#view-ad" id="<?php echo $ad['id']; ?>" status="<?php echo $ad['status']; ?>">View Ad</a></span>
+                                                            <span><a class="btn btn-primary btn-sm full-width view-ad-link" data-toggle="modal" data-target="#view-ad" id="<?php echo $ad['id']; ?>" status="<?php echo $ad['status']; ?>">View Ad</a></span>
                                                         </li>
                                                         <?php
                                                         $i++;
@@ -151,7 +151,7 @@ if ($filter == 'published') {
                                                             <span class="date"><?php echo substr($ad['created_at'], 0, 10); ?></span>
                                                             <span class="bold"><?php echo $ad['title']; ?></span>
                                                             <span class="town-place"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></span>
-                                                            <span><a href="#" class="btn btn-primary btn-sm full-width view-ad-link" data-toggle="modal" data-target="#view-ad" id="<?php echo $ad['id']; ?>" status="<?php echo $ad['status']; ?>">View Ad</a></span>
+                                                            <span><a class="btn btn-primary btn-sm full-width view-ad-link" data-toggle="modal" data-target="#view-ad" id="<?php echo $ad['id']; ?>" status="<?php echo $ad['status']; ?>">View Ad</a></span>
                                                         </li>
                                                         <?php
                                                         $i++;
@@ -171,7 +171,7 @@ if ($filter == 'published') {
                             <div class="ui-block">
                                 <div class="ui-block-title">
                                     <h6 class="title">Member requests (<span id="member-request-count"><?php echo count($requests); ?></span>)</h6>
-                                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
+                                    <a class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
                                 </div>
 
 
@@ -192,14 +192,14 @@ if ($filter == 'published') {
                                                 <span class="chat-message-item">Mutual Friend: Sarah Hetfield</span>
                                             </div>
                                             <span class="notification-icon">
-                                                <a href="#" class="accept-request approve-request" id="approve-request" row_id="<?php echo $request['id']; ?>">
+                                                <a class="accept-request approve-request" id="approve-request" row_id="<?php echo $request['id']; ?>">
                                                     <span class="icon-add">
                                                         <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                                     </span>
                                                     Approve Member Request
                                                 </a>
 
-                                                <a href="#" class="accept-request request-del decline-request" id="decline-request" row_id="<?php echo $request['id']; ?>">
+                                                <a class="accept-request request-del decline-request" id="decline-request" row_id="<?php echo $request['id']; ?>">
                                                     <span class="icon-minus">
                                                         <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                                     </span>
@@ -261,6 +261,9 @@ if ($filter == 'published') {
         <!-- Window-popup -->
         <?php
         include './window-pop-up.php';
+        ?>
+        <?php
+        include './footer.php';
         ?>
         <!-- ... end Window-popup -->
 

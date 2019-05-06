@@ -79,7 +79,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                 <h6 class="title">Manage Advertisement</h6>
                             </div>
                             <div class="col col-lg-6 col-md-6 col-sm-12 col-12 manage-group-section">
-                                <a href="#" class="btn btn-blue btn-md-2" id="delete-ad"   ad_id="<?php echo $id; ?>">Delete Advertisement</a>
+                                <a class="btn btn-blue btn-md-2" id="delete-ad"   ad_id="<?php echo $id; ?>">Delete Advertisement</a>
                             </div>
                         </div>
                         <div class="ui-block-content">
@@ -245,6 +245,9 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
         <!-- Window-popup -->
         <?php
         include './window-pop-up.php';
+        ?>
+        <?php
+        include './footer.php';
         ?>
         <!-- ... end Window-popup -->
 

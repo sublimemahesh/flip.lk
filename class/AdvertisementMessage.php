@@ -55,10 +55,11 @@ class AdvertisementMessage {
                 . $this->sender . "')";
         
         $db = new Database();
-
+        
         $result = $db->readQuery($query);
 
         if ($result) {
+            
             $last_id = mysql_insert_id();
 
             return $this->__construct($last_id);
@@ -138,6 +139,21 @@ class AdvertisementMessage {
     public function getMessagesByMemberOwnerAndAdASC($member, $owner, $ad) {
 
         $query = "SELECT * FROM `advertisement_message` WHERE `member`= $member AND `owner` = $owner AND `advertisement`= $ad ORDER BY created_at ASC";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+    
+    public function getMessagesByMembers($member, $owner) {
+
+        $query = "SELECT * FROM `advertisement_message` WHERE `member`= $member AND `owner` = $owner ORDER BY created_at ASC";
 
         $db = new Database();
 

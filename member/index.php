@@ -140,7 +140,7 @@ $MEMBER = new Member($_SESSION['id']);
 
                                         <div class="add-options-message">
 
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
+                                            <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
                                                 <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
                                                 <div class="_upload">
                                                     <input  name="post-image" display="inline" role="button" tabindex="0" data-testid="media-tab" type="file" class="_uploadinput _outlinenone" id="upload_first_image">
@@ -148,11 +148,11 @@ $MEMBER = new Member($_SESSION['id']);
                                                 </div>
 
                                             </a>
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
+                                            <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
                                                 <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
                                             </a>
 
-                                            <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
+                                            <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
                                                 <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
                                             </a>
                                             <input type="hidden" value ="<?php echo $_SESSION['id']; ?>" id="member" name="member" />
@@ -217,6 +217,9 @@ $MEMBER = new Member($_SESSION['id']);
         <!-- Window-popup -->
         <?php
         include './window-pop-up.php';
+        ?>
+        <?php
+        include './footer.php';
         ?>
         <!-- ... end Window-popup -->
 

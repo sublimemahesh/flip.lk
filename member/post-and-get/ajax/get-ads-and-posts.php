@@ -86,7 +86,7 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
                         $results .= ' <a  href="#" data-toggle="modal" data-target="#edit-post" class="edit-post" id="' . $ad['id'] . '">Edit Post</a>';
                         $results .= '</li>';
                         $results .= '<li>';
-                        $results .= '<a href="#" class="delete-post" id="' . $ad['id'] . '">Delete Post</a>';
+                        $results .= '<a class="delete-post" id="' . $ad['id'] . '">Delete Post</a>';
                         $results .= ' </li>';
                         $results .= '</ul>';
                         $results .= '</div>';
@@ -161,7 +161,7 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
                     if (count($comments) > 0) {
 
                         $results .= '<ul class="comments-list hidden" id="comment-list-' . $ad['id'] . '" post-id="' . $ad['id'] . '">';
-                        $results .= '<a href="#" class="see-more hidden" id="see-more-' . $ad['id'] . '">Show all comments</a>';
+                        $results .= '<a class="see-more hidden" id="see-more-' . $ad['id'] . '">Show all comments</a>';
 
                         foreach ($comments as $key => $comment) {
 
@@ -275,7 +275,7 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
                                 $results .= '<a class="reply add-reply" id="' . $comment['id'] . '">Reply</a>';
 
                                 $results .= '<ul class="children comment-reply-list" id="comment-reply-list-' . $comment['id'] . '" comment-id="' . $comment['id'] . '">';
-                                $results .= '<a href="#" class="see-more-replies hidden" id="see-more-replies-' . $comment['id'] . '">View all replies</a>';
+                                $results .= '<a class="see-more-replies hidden" id="see-more-replies-' . $comment['id'] . '">View all replies</a>';
 
                                 foreach ($replies as $reply) {
                                     $REPLYMEMBER = New Member($reply['member']);
@@ -404,7 +404,7 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
                         $results .= '<a href="edit-advertisement.php?id=' . $ad['id'] . '" class="edit-ad" id="' . $ad['id'] . '">Edit Advertisement</a>';
                         $results .= '</li>';
                         $results .= '<li>';
-                        $results .= '<a href="#" class="delete-ad" id="' . $ad['id'] . '">Delete Advertisement</a>';
+                        $results .= '<a class="delete-ad" id="' . $ad['id'] . '">Delete Advertisement</a>';
                         $results .= '</li>';
 
                         $results .= '</ul>';
@@ -439,7 +439,7 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
                     $results .= '<span>' . $count['count'] . '</span>';
                     $results .= '</a>';
 
-                    $results .= '<a href="#" class="post-add-icon inline-items share-ad-link" data-toggle="modal" data-target="#share-ad" id="' . $ad['id'] . '">';
+                    $results .= '<a class="post-add-icon inline-items share-ad-link" data-toggle="modal" data-target="#share-ad" id="' . $ad['id'] . '">';
                     $results .= '<svg class="olymp-share-icon">';
                     $results .= '<use xlink:href="svg-icons/sprites/icons.svg#olymp-share-icon"></use>';
                     $results .= '</svg>';
@@ -453,7 +453,7 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
                     if (count($comments) > 0) {
 
                         $results .= '<ul class="comments-list hidden" id="comment-list-' . $ad['id'] . '" post-id="' . $ad['id'] . '">';
-                        $results .= '<a href="#" class="see-more hidden" id="see-more-' . $ad['id'] . '">Show all comments</a>';
+                        $results .= '<a class="see-more hidden" id="see-more-' . $ad['id'] . '">Show all comments</a>';
 
                         foreach ($comments as $key => $comment) {
                             $COMMENTMEMBER = New Member($comment['member']);
@@ -620,7 +620,7 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
                                 $results .= '<a class="reply add-reply" id="' . $comment['id'] . '">Reply</a>';
 
                                 $results .= '<ul class="children comment-reply-list" id="comment-reply-list-' . $comment['id'] . '" comment-id="' . $comment['id'] . '">';
-                                $results .= '<a href="#" class="see-more-replies hidden" id="see-more-replies-' . $comment['id'] . '">View all replies</a>';
+                                $results .= '<a class="see-more-replies hidden" id="see-more-replies-' . $comment['id'] . '">View all replies</a>';
 
                                 foreach ($replies as $reply) {
                                     $REPLYMEMBER = New Member($reply['member']);

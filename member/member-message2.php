@@ -206,7 +206,7 @@ if ($status == 'withad') {
                                                             <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
                                                         </div>
                                                         <div class="notification-event">
-                                                            <a href="#" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
+                                                            <a class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName; ?></a>
                                                             <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 8:10pm</time></span>
                                                             <div class="chat-message-item"><?php echo $msg['message']; ?></div>
                                                         </div>

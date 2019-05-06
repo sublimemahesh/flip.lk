@@ -6,7 +6,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->
     <div class="ui-block">
         <div class="ui-block-title">
             <h6 class="title">About Group</h6>
-            <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
+            <a class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
         </div>
         <div class="ui-block-content">
 
@@ -28,11 +28,11 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->
                 </li>
                 <li>
                     <span class="title">Email:</span>
-                    <a href="#" class="text"><?php echo $GROUP->email; ?></a>
+                    <a class="text"><?php echo $GROUP->email; ?></a>
                 </li>
                 <li>
                     <span class="title">Phone Number:</span>
-                    <a href="#" class="text"><?php echo $GROUP->phoneNumber; ?></a>
+                    <a class="text"><?php echo $GROUP->phoneNumber; ?></a>
                 </li>
                 <li>
                     <span class="title">Address:</span>
@@ -41,7 +41,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->
                 </li>
                 <li>
                     <span class="title">Favourites:</span>
-                    <a href="#" class="text">5630 </a>
+                    <a class="text">5630 </a>
                 </li>
             </ul>
 
@@ -55,7 +55,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->
         <div class="ui-block">
             <div class="ui-block-title">
                 <h6 class="title">Admin Activity</h6>
-                <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
+                <a class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
             </div>
             <div class="ui-block-content">
 
@@ -81,7 +81,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->
     <div class="ui-block">
         <div class="ui-block-title">
             <h6 class="title">Group Members (<?php echo count(GroupMember::getAllMembersByGroup($GROUP->id)); ?>)</h6>
-            <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
+            <a class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
         </div>
         <div class="ui-block-content">
 
@@ -95,7 +95,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->
                     
                     ?>
                     <li>
-                        <a href="#" title="<?php echo $MEM3->firstName . ' ' . $MEM3->lastName; ?>">
+                        <a title="<?php echo $MEM3->firstName . ' ' . $MEM3->lastName; ?>">
                             <img src="upload/member/<?php echo $MEM3->profilePicture; ?>" class="friend-list-img" alt="author">
                         </a>
                     </li>
@@ -105,7 +105,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->
                 if (count(GroupMember::getAllMembersByGroup($GROUP->id)) > 13) {
                     ?>
                     <li class="all-users">
-                        <a href="#">+<?php echo count(GroupMember::getAllMembersByGroup($GROUP->id)) - 13; ?></a>
+                        <a>+<?php echo count(GroupMember::getAllMembersByGroup($GROUP->id)) - 13; ?></a>
                     </li>
                     <?php
                 }
