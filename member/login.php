@@ -195,13 +195,13 @@ if (isset($_SESSION["back_url"])) {
                             </ol>
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active">
-                                    <img class="d-block img-fluid" src="image/slider1.jpg" alt="First slide">
+                                    <img class="d-block img-fluid" src="img/login-slider/ad2.jpg" alt="First slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block img-fluid" src="image/slider2.jpg" alt="First slide">	
+                                    <img class="d-block img-fluid" src="img/login-slider/ad3.jpg" alt="First slide">	
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block img-fluid" src="image/slider3.jpg" alt="First slide">
+                                    <img class="d-block img-fluid" src="img/login-slider/ad4.jpg" alt="First slide">
                                 </div>
                             </div>
                         </div>
@@ -209,6 +209,9 @@ if (isset($_SESSION["back_url"])) {
                 </div>
             </div>
         </div>
+         <?php
+        include './footer.php';
+        ?>
         <!-- JS Scripts -->
         <script src="js/jquery-3.2.1.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
@@ -217,7 +220,7 @@ if (isset($_SESSION["back_url"])) {
         <script src="js/js/add-member.js" type="text/javascript"></script>
         <script src="js/js/login.js" type="text/javascript"></script>
         <script src="js/js/fb-login-scripts.js" type="text/javascript"></script>
-        <script src="../js/js/boost-ad.js" type="text/javascript"></script>
+        <script src="js/js/boost-ad.js" type="text/javascript"></script>
 
 
     </body>

@@ -24,9 +24,6 @@
                                 <a href="personal-information.php">Personal Information</a>
                             </li>
                             <li>
-                                <a>Account Settings</a>
-                            </li>
-                            <li>
                                 <a href="change-password.php">Change Password</a>
                             </li>
 
@@ -89,9 +86,6 @@
                                     <a href="personal-information.php">Personal Information</a>
                                 </li>
                                 <li>
-                                    <a>Account Settings</a>
-                                </li>
-                                <li>
                                     <a href="change-password.php">Change Password</a>
                                 </li>
 
@@ -103,14 +97,15 @@
 
                 <div class="ui-block-title">
                     <a class="h6 title">Notifications</a>
-                    <a class="items-round-little bg-primary"></a>
+                    <a class="items-round-little bg-blue"><?php echo $countnotifications; ?></a>
                 </div>
                 <div class="ui-block-title">
                     <a class="h6 title">Chat / Messages</a>
+                    <a class="items-round-little bg-blue"><?php echo $countmsg; ?></a>
                 </div>
                 <div class="ui-block-title">
                     <a class="h6 title">Friend Requests</a>
-                    <a class="items-round-little bg-blue"></a>
+                    <a class="items-round-little bg-blue"><?php echo $countu['count']; ?></a>
                 </div>
                 <div class="ui-block-title ui-block-title-small">
                     <h6 class="title">FAVOURITE PAGE</h6>

@@ -15,7 +15,9 @@ a:hover {
 }
 .header .page-title {
     /*padding: 5px 10px 19px 80px;*/
-    padding: 9px 10px 9px 80px;
+    /*padding: 9px 10px 9px 80px;*/
+    padding: 7px 10px 7px 80px;
+
 }
 .nav {
     display: none;
@@ -373,11 +375,18 @@ select.form-control.sub-category-select:not([size]):not([multiple]) {
 .notification-list .notification-event {
     padding-left: 45px;
     width: 80%;
+    margin-top: 10px;
 }
 .friend-requests .notification-icon {
     margin-top: -31px;
 }
-#name-list-append .author-thumb img, #member-name-list-append .author-thumb img {
+
+#name-list-append, #name-list-append-friends{
+    position: absolute;
+    z-index: 9999;
+    width:100%;
+}
+#name-list-append .author-thumb img, #member-name-list-append .author-thumb img, #name-list-append-friends .author-thumb img {
     height: 40px;
     width: 40px;
 }
@@ -863,16 +872,48 @@ input[type='submit'].share-post {
     margin-right: 30px;
 }
 .search-bar {
-    height: 55px;
+    height: 36px;
+
 }
 .search-bar.w-search {
-    min-height: 55px;
+    min-height: 10px;
+    margin-top: 11px;
+    height: 36px;
+    width: 350px;
+    margin-left: 20px;
+    border-radius: 2px;
+    background: #fff;
+
 }
 .search-bar .form-group.with-button input {
-    height: 78%;
+    /*height: 78%;*/
 }
 .form-group.with-button button {
     height: 78%;
+}
+.search-bar .form-group.with-button input {
+    height: 36px;
+}
+.dropdown-nav a img {
+    border-radius: 0;
+    margin-right: 20px;
+}
+.account-settings svg {
+    fill: #0f62b4;
+}
+.form-group.with-button button {
+    height: 36px;
+}
+.search-bar .form-group {
+    margin-bottom: 0;
+    height: 36px;
+}
+.search-bar .form-group.with-button button {
+    color: #003263;
+    fill: #003263;
+    background-color: #fff;
+    width: 36px;
+    border-radius: 2px;
 }
 .header-spacer {
     display: block;
@@ -2195,7 +2236,7 @@ a.see-more:hover {
     color: #888da8;
 }
 .control-icon .message-unread a.notification-friend {
-    color: #000;
+    color: #000 !important;
 }
 .bg-theme-blue {
     background-color: #003263;
@@ -2623,7 +2664,7 @@ a .ad-title{
     width: 17px;
     height: 17px;
     line-height: 17px;
-    top: -7px;
+    /*top: -7px;*/
     right: 6px;
 }
 .more-dropdown li a:hover {
@@ -2781,6 +2822,10 @@ a .ad-title{
 }
 .about-description {
     text-align: center;
+    padding: 15px;
+}
+.about-description p {
+    margin-bottom: 0;
 }
 /*--Advertisement section--*/
 .product-box .item-img .item-logo img{
@@ -3233,7 +3278,7 @@ a .ad-title{
     margin-top: -14px;
 }
 #site-header .control-icon .label-avatar.newest-notifications {
-    right: 18px;
+    /*right: 18px;*/
 }
 .control-icon a{
     color: #888da8;
@@ -3246,7 +3291,7 @@ a .ad-title{
     color: #003263;
 }
 .profile-dropdown li a span {
-    color: #cecccc;
+    color: #939191;
 }
 .profile-dropdown li a span:hover {
     color: #003263;
@@ -3335,4 +3380,20 @@ a .ad-title{
 }
 .more-ad .view-details {
     margin-top: -10px;
+}
+.dropdown-nav .label-avatar {
+    position: relative;
+    right: 0px;
+    float: right;
+    top: 0px
+}
+#site-header .control-icon .label-avatar.more-circle {
+    top: -6px;
+    right: 0px;
+}
+.join-group-btn {
+    color: #fff !important;
+}
+.w-personal-info li .title {
+    width: 20%;
 }

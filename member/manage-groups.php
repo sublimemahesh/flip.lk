@@ -4,9 +4,13 @@ include_once(dirname(__FILE__) . '/auth.php');
 
 
 $MEMBER = new Member($_SESSION['id']);
+$MEM = '';
 $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
+    $MEM = new Member($_GET['id']);
+} else {
+    $MEM = new Member($_SESSION['id']);
 }
 $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($MEMBER->id);
 ?>
@@ -44,9 +48,11 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
         <?php
         include './header.php';
         ?>
-        <div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-xs-12 col-12">
-            <div class="header-spacer header-spacer-small"></div>
-            
+        <div class="header-spacer"></div>
+        <div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
+            <?php
+            include './profile-header.php';
+            ?>
             <!-- Main Content Groups -->
             <!--        <div class="container">-->
             <div class="row">
@@ -370,6 +376,11 @@ $no_of_invitations = GroupAndMemberRequest::getCountOfGroupInvitationsByMember($
         <?php
         include './window-pop-up.php';
         ?>
+        <?php
+        include './footer.php';
+        ?>
+
+
         <!-- ... end Window-popup -->
 
         <!-- JS Scripts -->

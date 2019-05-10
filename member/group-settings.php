@@ -27,7 +27,7 @@ $members = GroupMember::getAllMembersByGroup($id);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Group || Flip.lk</title>
+        <title>Group Settings || Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -395,9 +395,6 @@ $members = GroupMember::getAllMembersByGroup($id);
                                                     <input type="file" name="group-cover-picture" id="group-cover-picture" class="group-cover-picture" sort="1" value="">
                                                 </span>
                                             </div>
-                                        </div>
-                                        <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                            <a class="btn btn-secondary btn-lg full-width">Restore all Attributes</a>
                                         </div>
                                         <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                             <input type="hidden" name="id" value="<?php echo $id; ?>" />

@@ -16,7 +16,7 @@ $no_of_request = FriendRequest::getCountOfFriendRequestsByMember($MEMBER->id);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>About || Flip.lk</title>
+        <title>Follower Requests || Flip.lk</title>
 
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
@@ -91,11 +91,6 @@ $no_of_request = FriendRequest::getCountOfFriendRequestsByMember($MEMBER->id);
                                             </a>
 
                                         </span>
-
-                                        <div class="more">
-                                            <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                            <svg class="olymp-little-delete"><use xlink:href="svg-icons/sprites/icons.svg#olymp-little-delete"></use></svg>
-                                        </div>
                                     </li>
 
                                     <li class="accepted hidden accepted-request-<?php echo $MEM->id; ?>" id="accepted-request-<?php echo $MEM->id; ?>">
@@ -108,11 +103,6 @@ $no_of_request = FriendRequest::getCountOfFriendRequestsByMember($MEMBER->id);
                                         <span class="notification-icon">
                                             <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
                                         </span>
-
-                                        <div class="more">
-                                            <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                            <svg class="olymp-little-delete"><use xlink:href="svg-icons/sprites/icons.svg#olymp-little-delete"></use></svg>
-                                        </div>
                                     </li>
                                     <?php
                                 }

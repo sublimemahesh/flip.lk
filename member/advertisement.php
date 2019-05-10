@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Profile || Flip.lk</title>
+        <title>My Advertisements || Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -119,6 +119,18 @@ if (isset($_GET['id'])) {
                                                     if ($today > $start_date && $today < $end_date) {
                                                         ?>
                                                         <a class="boost-btn btn btn-red">Boosted</a>
+                                                        <?php
+                                                    } elseif ($ad['is_suspend'] == 1) {
+                                                        ?>
+                                                        <a class="boost-btn btn btn-red">Suspended</a>
+                                                        <?php
+                                                    } elseif ($ad['status'] == 0) {
+                                                        ?>
+                                                        <a class="boost-btn btn btn-red">Unpublished</a>
+                                                        <?php
+                                                    } elseif ($ad['boosted'] == 'requested') {
+                                                        ?>
+                                                        <a class="boost-btn btn btn-red">Requested</a>
                                                         <?php
                                                     } else {
                                                         ?>

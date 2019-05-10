@@ -198,13 +198,13 @@ class GroupMember {
     
     public function getGroupAdmin($group) {
 
-        $query = "SELECT `id` FROM `group_members` WHERE `group_id` = $group AND `status` LIKE 'admin'";
+        $query = "SELECT `member` FROM `group_members` WHERE `group_id` = $group AND `status` LIKE 'admin'";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
 
         while ($row = mysql_fetch_array($result)) {
-            array_push($array_res, $row['id']);
+            array_push($array_res, $row['member']);
         }
 
         return $array_res;

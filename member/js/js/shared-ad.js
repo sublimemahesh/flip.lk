@@ -46,10 +46,26 @@ $(document).ready(function () {
                         });
 
                         var html = '';
+                        var img = '';
+
+                        if (member.profilePicture) {
+                            if (member.facebookID && substr(member.profilePicture, 0, 5) === "https") {
+
+                                img = '<img alt="profile picture" src="' + member.profilePicture + '" >';
+                            } else if (member.googleID && substr(member.profilePicture, 0, 5) === "https") {
+
+                                img = '<img alt="profile picture" src="' + member.profilePicture + '" >';
+                            } else {
+
+                                img = '<img alt="profile picture" src="../upload/member/' + member.profilePicture + '">';
+                            }
+                        } else {
+                            img = '<img alt="profile picture" src="../upload/member/member.png">';
+                        }
 
                         html += '<li class="comment-item">';
                         html += '<div class="post__author author vcard inline-items">';
-                        html += '<img src="../upload/member/' + member.profilePicture + '" alt="author">';
+                        html += img;
                         html += '<div class="author-date">';
                         html += '<a class="h6 post__author-name fn" href="#">' + member.firstName + ' ' + member.lastName + '</a>';
                         html += '<div class="post__date">';

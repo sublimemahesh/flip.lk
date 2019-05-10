@@ -8,7 +8,7 @@ $MEM = new Member($_SESSION['id']);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>My Account - Change Password</title>
+        <title>Change Password || Personal Informations || Flip.lk</title>
 
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
@@ -36,35 +36,18 @@ $MEM = new Member($_SESSION['id']);
     <body>
 
         <!-- Profile Settings Responsive -->
-        
+
 
         <!-- ... end Profile Settings Responsive -->
         <?php
         include './header.php';
         ?>
         <div class="header-spacer"></div>
- <div class="col col-xl-12 col-12">
-        <!-- Main Header Account -->
-        <div class="main-header">
-            <div class="content-bg-wrap bg-account"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-                        <div class="main-header-content">
-                            <h1>Your Account Dashboard</h1>
-                            <p>Welcome to your account dashboard! Here you’ll find everything you need to change your profile
-                                information, settings, read notifications and requests, view your latest messages, change your pasword and much
-                                more! Also you can create or manage your own favourite page, have fun!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <img class="img-bottom" src="img/account-bottom.png" alt="friends">
-        </div>
-        <!-- ... end Main Header Account -->
-
-        <!-- Your Account Personal Information -->
-        <!--<div class="container">-->
+        <div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
+            <?php
+            include './profile-header.php';
+            ?>
+            <!-- Your Account Personal Information -->
             <div class="row">
                 <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
                     <div class="ui-block">
@@ -129,13 +112,15 @@ $MEM = new Member($_SESSION['id']);
                 include './account-navigation.php';
                 ?>
             </div>
-        <!--</div>-->
         </div>
         <!-- ... end Your Account Personal Information -->
 
         <!-- Window-popup -->
         <?php
         include './window-pop-up.php';
+        ?>
+        <?php
+        include './footer.php';
         ?>
         <!-- ... end Window-popup -->
 

@@ -19,7 +19,7 @@ if (isset($_SESSION['id'])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> Groups || Flip.lk</title>
+        <title><?php echo $GROUP->name; ?> || Groups || Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,9 +81,15 @@ if (isset($_SESSION['id'])) {
                                     ?>
                                     <div class="ui-block group-settings-btn">
                                         <div class="row">
-                                            <div class="col col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4">
-                                                <a class="btn btn-blue btn-md-2 join-group-btn" id="leave-group" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group<div class="ripple-container"></div></a>
-                                            </div>
+                                            <?php
+                                            if ($MEMBER->id != $GROUP->member) {
+                                                ?>
+                                                <div class="col col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4">
+                                                    <a class="btn btn-blue btn-md-2 join-group-btn" id="leave-group" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Leave Group<div class="ripple-container"></div></a>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
                                             <div class="col col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4">
                                                 <a data-toggle="modal" data-target="#add-member" class="btn btn-blue btn-md-2 join-group-btn add-member" id="" group-id="<?php echo $id; ?>" member-id="<?php echo $MEMBER->id; ?>">Add Members<div class="ripple-container"></div></a>
                                             </div>
@@ -92,57 +98,6 @@ if (isset($_SESSION['id'])) {
                                             </div>
 
                                         </div>
-                                    </div>
-                                    <div class="ui-block">
-
-                                        <!-- News Feed Form  -->
-
-                                        <div class="news-feed-form">
-                                            <!-- Nav tabs -->
-                                            <ul class="nav nav-tabs" role="tablist">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active inline-items" data-toggle="tab" href="#home-1" role="tab" aria-expanded="true">
-
-                                                        <svg class="olymp-status-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-status-icon"></use></svg>
-
-                                                        <span>Status</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-
-                                            <!-- Tab panes -->
-                                            <div class="tab-content">
-                                                <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
-                                                    <form>
-                                                        <div class="author-thumb author-thumb1">
-                                                            <img src="upload/member/<?php echo $MEMBER->profilePicture; ?>" alt="author" class="avatar">
-                                                        </div>
-                                                        <div class="form-group with-icon label-floating is-empty">
-                                                            <label class="control-label">Share what you are thinking here...</label>
-                                                            <textarea class="form-control" placeholder=""></textarea>
-                                                        </div>
-                                                        <div class="add-options-message">
-                                                            <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-                                                                <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-                                                            </a>
-                                                            <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-                                                                <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-                                                            </a>
-
-                                                            <a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-                                                                <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-                                                            </a>
-
-                                                            <input type="submit" name="save-post" class="btn btn-primary btn-md-2 share-post" value="Share" />
-
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- ... end News Feed Form  -->
                                     </div>
                                     <?php
                                 } else {
@@ -211,7 +166,7 @@ if (isset($_SESSION['id'])) {
                                                         <img src="upload/member/<?php echo $MEM->profilePicture; ?>" alt="author">
 
                                                         <div class="author-date">
-                                                            <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $MEM->id; ?>"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> 
+                                                            <a class="h6 post__author-name fn" href="view-member.php?id=<?php echo $MEM->id; ?>"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> 
                                                             <div class="post__date">
                                                                 <time class="published">
                                                                     <?php echo $result; ?>
@@ -222,7 +177,7 @@ if (isset($_SESSION['id'])) {
 
 
                                                     </div>
-                                                    <h5><b><?php echo $ad['title']; ?></b></h5>
+                                                    <h5><b><?php echo $ad['title']; ?></b></h5><br/>
                                                     <span class="more">
                                                         <?php echo $ad['description']; ?>
                                                     </span>
@@ -290,7 +245,7 @@ if (isset($_SESSION['id'])) {
                                                                         <img src="upload/member/<?php echo $COMMENTMEMBER->profilePicture; ?>" alt="author">
 
                                                                         <div class="author-date">
-                                                                            <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
+                                                                            <a class="h6 post__author-name fn" href="view-member.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
                                                                             <div class="post__date">
                                                                                 <time class="published" datetime="2017-03-24T18:18">
                                                                                     <?php echo $commentedat; ?>
@@ -352,7 +307,7 @@ if (isset($_SESSION['id'])) {
                                                                         <img src="upload/member/<?php echo $COMMENTMEMBER->profilePicture; ?>" alt="author">
 
                                                                         <div class="author-date">
-                                                                            <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
+                                                                            <a class="h6 post__author-name fn" href="view-member.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
                                                                             <div class="post__date">
                                                                                 <time class="published" datetime="2017-03-24T18:18">
                                                                                     <?php echo $commentedat; ?>
@@ -407,7 +362,7 @@ if (isset($_SESSION['id'])) {
                                                                                     <img src="upload/member/<?php echo $REPLYMEMBER->profilePicture; ?>" alt="author">
 
                                                                                     <div class="author-date">
-                                                                                        <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $REPLYMEMBER->id; ?>"><?php echo $REPLYMEMBER->firstName . ' ' . $REPLYMEMBER->lastName; ?></a>
+                                                                                        <a class="h6 post__author-name fn" href="view-member.php?id=<?php echo $REPLYMEMBER->id; ?>"><?php echo $REPLYMEMBER->firstName . ' ' . $REPLYMEMBER->lastName; ?></a>
                                                                                         <div class="post__date">
                                                                                             <time class="published" datetime="2017-03-24T18:18">
                                                                                                 <?php echo $repliedat; ?>

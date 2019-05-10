@@ -20,13 +20,29 @@ $(document).ready(function () {
             },
             dataType: "JSON",
             success: function (result) {
-                
+
                 if (result) {
+                    var img = '';
+
+                    if (result.profile) {
+                        if (result.facebook_id && substr(result.profile, 0, 5) === "https") {
+
+                            img = '<img alt="profile picture" src="' + result.profile + '" >';
+                        } else if (result.google_id && substr(result.profile, 0, 5) === "https") {
+
+                            img = '<img alt="profile picture" src="' + result.profile + '" >';
+                        } else {
+
+                            img = '<img alt="profile picture" src="upload/member/' + result.profile + '">';
+                        }
+                    } else {
+                        img = '<img alt="profile picture" src="upload/member/member.png">';
+                    }
                     $('#comment-' + ad).val('');
                     var html = '';
                     html += '<li class="comment-item">';
                     html += '<div class="post__author author vcard inline-items">';
-                    html += '<img src="upload/member/' + result.profile + '" alt="author">';
+                    html += img;
                     html += '<div class="author-date">';
                     html += '<a class="h6 post__author-name fn" href="#">' + result.member + '</a>';
                     html += '<div class="post__date">';
@@ -78,7 +94,7 @@ $(document).ready(function () {
             $link.toggleClass('visible');
         });
     });
-    
+
     $('.edit-comment').click(function () {
         var comment = this.id;
         var p = $('#comment-p-' + comment).text();
@@ -108,7 +124,7 @@ $(document).ready(function () {
             },
             dataType: "JSON",
             success: function (result) {
-                
+
                 if (result) {
                     $('#comment-p-' + id).removeClass('hidden');
                     $('#comment-p-' + id).text(result.comment);
@@ -123,9 +139,9 @@ $(document).ready(function () {
 //        $('#comment-list-' + post).removeClass('hidden');
     });
     $('.delete-comment').click(function () {
-       var comment = this.id;
-       
-       swal({
+        var comment = this.id;
+
+        swal({
             title: "Are you sure?",
             text: "You will not be able to recover!",
             type: "warning",
@@ -157,9 +173,9 @@ $(document).ready(function () {
                 }
             });
         });
-       
+
     });
-    
+
     $('.my-ad-add-comment').click(function () {
         var ad_id = this.id;
         $('#my-ad-comment-form-' + ad_id).removeClass('hidden');
@@ -181,13 +197,29 @@ $(document).ready(function () {
             },
             dataType: "JSON",
             success: function (result) {
-                
+
                 if (result) {
+                    var img = '';
+
+                    if (result.profile) {
+                        if (result.facebook_id && substr(result.profile, 0, 5) === "https") {
+
+                            img = '<img alt="profile picture" src="' + result.profile + '" >';
+                        } else if (result.google_id && substr(result.profile, 0, 5) === "https") {
+
+                            img = '<img alt="profile picture" src="' + result.profile + '" >';
+                        } else {
+
+                            img = '<img alt="profile picture" src="upload/member/' + result.profile + '">';
+                        }
+                    } else {
+                        img = '<img alt="profile picture" src="upload/member/member.png">';
+                    }
                     $('#my-ad-comment-' + ad).val('');
                     var html = '';
                     html += '<li class="comment-item">';
                     html += '<div class="post__author author vcard inline-items">';
-                    html += '<img src="upload/member/' + result.profile + '" alt="author">';
+                    html += img;
                     html += '<div class="author-date">';
                     html += '<a class="h6 post__author-name fn" href="#">' + result.member + '</a>';
                     html += '<div class="post__date">';
@@ -230,13 +262,29 @@ $(document).ready(function () {
             },
             dataType: "JSON",
             success: function (result) {
-                
+
                 if (result) {
+                    var img = '';
+
+                    if (result.profile) {
+                        if (result.facebook_id && substr(result.profile, 0, 5) === "https") {
+
+                            img = '<img alt="profile picture" src="' + result.profile + '" >';
+                        } else if (result.google_id && substr(result.profile, 0, 5) === "https") {
+
+                            img = '<img alt="profile picture" src="' + result.profile + '" >';
+                        } else {
+
+                            img = '<img alt="profile picture" src="upload/member/' + result.profile + '">';
+                        }
+                    } else {
+                        img = '<img alt="profile picture" src="upload/member/member.png">';
+                    }
                     $('#group-comment-' + ad).val('');
                     var html = '';
                     html += '<li class="comment-item">';
                     html += '<div class="post__author author vcard inline-items">';
-                    html += '<img src="upload/member/' + result.profile + '" alt="author">';
+                    html += img;
                     html += '<div class="author-date">';
                     html += '<a class="h6 post__author-name fn" href="#">' + result.member + '</a>';
                     html += '<div class="post__date">';
@@ -269,5 +317,5 @@ $(document).ready(function () {
         $('#group-comment-list-' + ad_id).removeClass('hidden');
     });
 
-    
+
 });

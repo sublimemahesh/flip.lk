@@ -1,3 +1,10 @@
+<?php
+$url = explode("/", $_SERVER['REQUEST_URI']);
+
+//$result = explode(".", $url[2]); //localhost
+$result = explode(".", $url[1]); //online
+$group = $result[0];
+?>
 <section class="main-banner-wrap-layout1 bg-common overlay-dark-30 bg--gradient-top-30" data-bg-image="img/site-main-figure1.jpg" style="background-image: url(&quot;img/banner.jpg&quot;);">
     <div class="container">
         <div class="main-banner-box-layout1">
@@ -22,7 +29,7 @@
                                         <option value="">CATEGORY</option>
                                         <?php
                                         foreach (BusinessCategory::all() as $key => $category) {
-                                            if ($category1 == $category['id']) {
+                                            if ($category1 == $category['id'] && $group != 'groups') {
                                                 $selected = 'selected';
                                             } else {
                                                 $selected = '';
@@ -48,7 +55,11 @@
                                 <div class="icon-wrap iw-2">
                                     <i class="fa fa-search"></i>
                                 </div>
-                                <input id="search" type="text" name="keyword" placeholder="What are you looking for?" value="<?php if(isset($keyword)) { echo $keyword; }; ?>"/>
+                                <input id="search" type="text" name="keyword" placeholder="What are you looking for?" value="<?php
+                                if (isset($keyword) && $group != 'groups') {
+                                    echo $keyword;
+                                };
+                                ?>"/>
                             </div>
                             <div class="input-field fifth-wrap">
                                 <button class="btn-search" type="submit">SEARCH</button>

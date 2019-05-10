@@ -187,9 +187,10 @@ $LOCATION = New Page(11);
                                                             <button type="submit" id="btnSubmit" class="btn btn-primary  full-width">Send Your Message</button>
                                                              <!--<input type="submit" name="update" class="btn btn-primary btn-lg full-width" value="Save all Changes" />-->
                                                         </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-lg-12 contact-us-button">
                                                         <div id="dismessage" align="center" class="msg-success" ></div>
                                                     </div>
-
                                                 </div>
                                                 <!-- ... end Personal Information Form  -->
                                             </div>

@@ -16,7 +16,9 @@ class Member {
     public $profilePicture;
     public $coverPicture;
     public $district;
+    public $districtString;
     public $city;
+    public $cityString;
     public $address;
     public $dob;
     public $occupation;
@@ -38,8 +40,8 @@ class Member {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`created_at`,`first_name`,`last_name`,`email`,`phone_number`,`profile_picture`,`cover_picture`,`district`,`city`,`address`,`dob`,`occupation`,`gender`,`civil_status`,`about_me`,`category`,`sub_category`,`facebook_id`,`google_id`,`auth_token`,`last_login`,`reset_code`,`status`,`is_confirmed`,`is_suspend` FROM `member` WHERE `id`=" . $id;
-            
+            $query = "SELECT `id`,`created_at`,`first_name`,`last_name`,`email`,`phone_number`,`profile_picture`,`cover_picture`,`district`,`district_string`,`city`,`city_string`,`address`,`dob`,`occupation`,`gender`,`civil_status`,`about_me`,`category`,`sub_category`,`facebook_id`,`google_id`,`auth_token`,`last_login`,`reset_code`,`status`,`is_confirmed`,`is_suspend` FROM `member` WHERE `id`=" . $id;
+
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
@@ -53,7 +55,9 @@ class Member {
             $this->profilePicture = $result['profile_picture'];
             $this->coverPicture = $result['cover_picture'];
             $this->district = $result['district'];
+            $this->districtString = $result['district_string'];
             $this->city = $result['city'];
+            $this->cityString = $result['city_string'];
             $this->address = $result['address'];
             $this->dob = $result['dob'];
             $this->occupation = $result['occupation'];
@@ -126,22 +130,26 @@ class Member {
 
     public function login($email, $password) {
 
-        $query = "SELECT `id` FROM `member` WHERE `email`= '" . $email . "' AND `password`= '" . $password . "'";
+        $query = "SELECT `id`, `is_suspend` FROM `member` WHERE `email`= '" . $email . "' AND `password`= '" . $password . "'";
         $db = new Database();
         $result = mysql_fetch_array($db->readQuery($query));
 
         if (!$result) {
             return FALSE;
         } else {
-            $this->id = $result['id'];
-            $this->setAuthToken($result['id']);
-            $this->setLastLogin($this->id);
 
-            $member = $this->__construct($this->id);
+            if ($result['is_suspend'] == 0) {
 
-            $this->setUserSession($member);
+                $this->id = $result['id'];
+                $this->setAuthToken($result['id']);
+                $this->setLastLogin($this->id);
+                $member = $this->__construct($this->id);
+                $this->setUserSession($member);
 
-            return $member;
+                return $member;
+            } else {
+                return 'deactive member';
+            }
         }
     }
 
@@ -195,9 +203,8 @@ class Member {
         if (isset($_SESSION["auth_token"])) {
             $authToken = $_SESSION["auth_token"];
         }
-
         $query = "SELECT `id` FROM `member` WHERE `id`= '" . $id . "' AND `auth_token`= '" . $authToken . "'";
-    
+
         $db = new Database();
 
         $result = mysql_fetch_array($db->readQuery($query));
@@ -225,7 +232,9 @@ class Member {
         unset($_SESSION["profile_picture"]);
         unset($_SESSION["cover_picture"]);
         unset($_SESSION["district"]);
+        unset($_SESSION["district_string"]);
         unset($_SESSION["city"]);
+        unset($_SESSION["city_string"]);
         unset($_SESSION["address"]);
         unset($_SESSION["auth_token"]);
         unset($_SESSION["last_login"]);
@@ -241,7 +250,9 @@ class Member {
                 . "`last_name` ='" . $this->lastName . "', "
                 . "`phone_number` ='" . $this->phoneNumber . "', "
                 . "`district` ='" . $this->district . "', "
+                . "`district_string` ='" . $this->districtString . "', "
                 . "`city` ='" . $this->city . "', "
+                . "`city_string` ='" . $this->cityString . "', "
                 . "`address` ='" . $this->address . "', "
                 . "`dob` ='" . $this->dob . "', "
                 . "`occupation` ='" . $this->occupation . "', "
@@ -335,7 +346,6 @@ class Member {
         if (!isset($_SESSION)) {
             session_start();
         }
-
         $_SESSION["id"] = $member['id'];
         $_SESSION["created_at"] = $member['created_at'];
         $_SESSION["first_name"] = $member['first_name'];
@@ -345,7 +355,9 @@ class Member {
         $_SESSION["profile_picture"] = $member['profile_picture'];
         $_SESSION["cover_picture"] = $member['cover_picture'];
         $_SESSION["district"] = $member['district'];
+        $_SESSION["district_string"] = $member['district_string'];
         $_SESSION["city"] = $member['city'];
+        $_SESSION["city_string"] = $member['city_string'];
         $_SESSION["address"] = $member['address'];
         $_SESSION["auth_token"] = $member['auth_token'];
         $_SESSION["last_login"] = $member['last_login'];
@@ -355,7 +367,6 @@ class Member {
     private function setAuthToken($id) {
 
         $authToken = md5(uniqid(rand(), true));
-
         $query = "UPDATE `member` SET `auth_token` ='" . $authToken . "' WHERE `id`='" . $id . "'";
 
         $db = new Database();
@@ -487,7 +498,7 @@ class Member {
             return $result;
         }
     }
-    
+
     public function countMembers() {
 
         $query = "SELECT count(`id`) as count FROM `member` WHERE `is_suspend` = 0 AND `status` = 1";
@@ -714,7 +725,7 @@ class Member {
     }
 
     public function getAllMembersWithoutThis($member) {
-        $query = "SELECT * FROM `member` WHERE `id` <> '" . $member . "' AND `status` = 1";
+        $query = "SELECT * FROM `member` WHERE `id` <> '" . $member . "' AND `status` = 1 AND `is_suspend` = 0";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -727,7 +738,23 @@ class Member {
     }
 
     public function getMembersByKeyword($keyword) {
-        $query = "SELECT * FROM `member` WHERE (`first_name` LIKE '%" . $keyword . "%' OR `last_name` LIKE '%" . $keyword . "%') AND `status` = 1";
+        $query = "SELECT * FROM `member` WHERE (`first_name` LIKE '%" . $keyword . "%' OR `last_name` LIKE '%" . $keyword . "%') AND `status` = 1 AND `is_suspend` = 0 ORDER BY CASE
+        WHEN `first_name` LIKE '" . $keyword . "%' THEN 1
+        ELSE 2 END";
+
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+
+    public function getFriendsByKeyword($keyword, $member) {
+        $query = "SELECT * FROM `member` WHERE (`first_name` LIKE '%" . $keyword . "%' OR `last_name` LIKE '%" . $keyword . "%') AND `id` in (SELECT `friend` FROM `friends` WHERE `member` = $member) OR `id` in (SELECT `member` FROM `friends` WHERE `friend` = $member)  AND `status` = 1 AND `is_suspend` = 0 ORDER BY CASE
+        WHEN `first_name` LIKE '" . $keyword . "%' THEN 1
+        ELSE 2 END";
 
         $db = new Database();
         $result = $db->readQuery($query);
@@ -740,7 +767,7 @@ class Member {
 
     public function getMembersForInviteGroups($keyword, $member) {
 //        $query = "SELECT * FROM `member` WHERE (`first_name` LIKE '%" . $keyword . "%' OR `last_name` LIKE '%" . $keyword . "%') AND `status` = 1";
-        $query = "SELECT * FROM `member` WHERE (`id` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) OR `id` IN (SELECT `member` FROM `friends` WHERE `friend` = $member)) AND (`first_name` LIKE '%" . $keyword . "%' OR `last_name` LIKE '%" . $keyword . "%') AND `status` = 1 ";
+        $query = "SELECT * FROM `member` WHERE (`id` IN (SELECT `friend` FROM `friends` WHERE `member` = $member) OR `id` IN (SELECT `member` FROM `friends` WHERE `friend` = $member)) AND (`first_name` LIKE '%" . $keyword . "%' OR `last_name` LIKE '%" . $keyword . "%') AND `status` = 1  AND `is_suspend` = 0";
 //        $query = "SELECT * FROM `member` WHERE id IN (SELECT `id` FROM `member` WHERE (`first_name` LIKE '%" . $keyword . "%' OR `last_name` LIKE '%" . $keyword . "%') AND `id` IN (SELECT `id` FROM `friends` WHERE `member` = $member OR `friend` = $member))";
 
         $db = new Database();
@@ -802,7 +829,7 @@ class Member {
             return FALSE;
         }
     }
-    
+
     public function suspendMember() {
 
         $query = "UPDATE  `member` SET "
@@ -835,12 +862,12 @@ class Member {
     }
 
     public function deleteMember() {
-        
+
 
         unlink(Helper::getSitePath() . "upload/member/" . $this->profilePicture);
-        
+
         unlink(Helper::getSitePath() . "upload/member/cover-picture/" . $this->coverPicture);
-        
+
         unlink(Helper::getSitePath() . "upload/member/cover-picture/thumb/" . $this->coverPicture);
 
         $query = 'DELETE FROM `member` WHERE id="' . $this->id . '"';
@@ -848,7 +875,7 @@ class Member {
 
         return $db->readQuery($query);
     }
-    
+
     public function isFbIdIsEx($memberID) {
 
         $query = "SELECT * FROM `member` WHERE `facebook_id` = '" . $memberID . "'";
@@ -869,7 +896,7 @@ class Member {
 //
 //        $createdAt = date('Y-m-d H:i:s');
 
-        $query = "INSERT INTO `member` (`first_name`,`email`,`profile_picture`,`facebook_id`,`password`) VALUES  ('" . $name . "', '" . $email . "', '" . $picture . "', '" . $memberID . "', '" . $password . "')";
+        $query = "INSERT INTO `member` (`first_name`,`email`,`profile_picture`,`facebook_id`,`password`,`status`) VALUES  ('" . $name . "', '" . $email . "', '" . $picture . "', '" . $memberID . "', '" . $password . "', 1)";
 
         $db = new Database();
 
@@ -890,28 +917,44 @@ class Member {
     public function loginByFB($memberID, $password) {
 
         $query = "SELECT * FROM `member` WHERE `facebook_id`= '" . $memberID . "'";
-        
+
         $db = new Database();
 
         $result = mysql_fetch_array($db->readQuery($query));
-        
+
         if (!$result) {
-        
+
             return FALSE;
         } else {
-            $this->id = $result['id'];
-            $member = $this->__construct($this->id);
+            if ($result['is_suspend'] == 0) {
 
-            if (!isset($_SESSION)) {
-                session_start();
-                session_unset($_SESSION);
+                $this->id = $result['id'];
+                $this->setAuthToken($result['id']);
+                $this->setLastLogin($this->id);
+                $member = $this->__construct($this->id);
+                if (!isset($_SESSION)) {
+                    session_start();
+                    session_unset($_SESSION);
+                }
+                $this->setUserSession($member);
+
+                return $member;
+            } else {
+                return 'deactive member';
             }
-
-            $_SESSION["login"] = TRUE;
-
-            $_SESSION["id"] = $member["id"];
-
-            return TRUE;
+//            $this->id = $result['id'];
+//            $member = $this->__construct($this->id);
+//
+//            if (!isset($_SESSION)) {
+//                session_start();
+//                session_unset($_SESSION);
+//            }
+//
+//            $_SESSION["login"] = TRUE;
+//
+//            $_SESSION["id"] = $member["id"];
+//
+//            return TRUE;
         }
     }
 
@@ -935,7 +978,7 @@ class Member {
 //
 //        $createdAt = date('Y-m-d H:i:s');
 
-        $query = "INSERT INTO `member` (`first_name`,`email`,`profile_picture`,`google_id`,`password`) VALUES  ('" . $name . "', '" . $email . "', '" . $picture . "', '" . $memberID . "', '" . $password . "')";
+        $query = "INSERT INTO `member` (`first_name`,`email`,`profile_picture`,`google_id`,`password`, `status`) VALUES  ('" . $name . "', '" . $email . "', '" . $picture . "', '" . $memberID . "', '" . $password . "', 1)";
 
         $db = new Database();
 
@@ -956,7 +999,7 @@ class Member {
     public function loginByGoogle($memberID, $password) {
 
         $query = "SELECT * FROM `member` WHERE `google_id`= '" . $memberID . "' AND `password`= '" . $password . "'";
-        
+
         $db = new Database();
 
         $result = mysql_fetch_array($db->readQuery($query));
@@ -964,19 +1007,36 @@ class Member {
         if (!$result) {
             return FALSE;
         } else {
-            $this->id = $result['id'];
-            
-            $member = $this->__construct($this->id);
+            if ($result['is_suspend'] == 0) {
 
-            if (!isset($_SESSION)) {
-                session_start();
-                session_unset($_SESSION);
+                $this->id = $result['id'];
+                $this->setAuthToken($result['id']);
+                $this->setLastLogin($this->id);
+                $member = $this->__construct($this->id);
+                if (!isset($_SESSION)) {
+                    session_start();
+                    session_unset($_SESSION);
+                }
+                $this->setUserSession($member);
+
+                return $member;
+            } else {
+                return 'deactive member';
             }
 
-            $_SESSION["login"] = TRUE;
-            $_SESSION["id"] = $member["id"];
-
-            return TRUE;
+//            $this->id = $result['id'];
+//
+//            $member = $this->__construct($this->id);
+//
+//            if (!isset($_SESSION)) {
+//                session_start();
+//                session_unset($_SESSION);
+//            }
+//
+//            $_SESSION["login"] = TRUE;
+//            $_SESSION["id"] = $member["id"];
+//
+//            return TRUE;
         }
     }
 

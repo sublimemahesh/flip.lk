@@ -1,7 +1,7 @@
 $(document).ready(function () {
-
+    $(".progressbar-section").hide();
     $('#profile-picture').change(function () {
-
+        $(".progressbar-section").show();
         var fi = document.getElementById('profile-picture'); // GET THE FILE INPUT.
         if (fi.files.length > 0) {
             for (var i = 0; i <= fi.files.length - 1; i++) {
@@ -28,10 +28,29 @@ $(document).ready(function () {
             async: false,
             dataType: 'json',
             success: function (mess) {
-                $("#profile_pic").attr("src", "../upload/member/" + mess.filename);
-                $("#profile_pic1").attr("src", "../upload/member/" + mess.filename);
-                $("#profile_pic2").attr("src", "../upload/member/" + mess.filename);
-                $('#update-profile-photo').modal('hide');
+                var elem = document.getElementById("myBar");
+                var width = 1;
+                var id = setInterval(frame, 10);
+                function frame() {
+                    if (width >= 100) {
+                        clearInterval(id);
+                        $(".progress-label").text("Complete");
+                        setTimeout(function () {
+
+                            $(".progressbar-section").hide();
+                            $("#profile_pic").attr("src", "../upload/member/" + mess.filename);
+                            $("#profile_pic1").attr("src", "../upload/member/" + mess.filename);
+                            $("#profile_pic2").attr("src", "../upload/member/" + mess.filename);
+                            $('#update-profile-photo').modal('hide');
+                            elem.style.width = '1%';
+                            $(".progress-label").text("Loading...");
+                        }, 1000);
+                    } else {
+                        width++;
+                        elem.style.width = width + '%';
+                        $(".progress-label").text(width + "%");
+                    }
+                }
             },
             cache: false,
             contentType: false,
@@ -41,6 +60,7 @@ $(document).ready(function () {
 
     $('#upload-pro-pic').click(function (e) {
         e.preventDefault();
+
 
         var formData = new FormData($('#form-profile-picture')[0]);
 

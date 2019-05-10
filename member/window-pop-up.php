@@ -27,13 +27,19 @@
 <!--<img src="../upload/member/-172185548_191030955358_1546515218_n.jpg" class="pro-pic" alt=""/>-->
                     <form id="edit-profile-picture-form">
                         <h6>Upload Photo</h6>
-                        <span>Browse your computer.</span>
+                        <span class="btn btn-primary">Browse your computer.</span>
                         <input type="file" name="profile-picture" id="profile-picture" class="profile-picture" sort="1" value="">
                         <input type="hidden" name="update-profile" id="update-profile" value="TRUE">
                         <input type="hidden" name="member" id="member" value="<?php echo $MEMBER->id; ?>">
                         <input type="hidden" name="sort" id="sort" value="1">
                     </form>
                 </a>
+                <div class="progressbar-section">
+                    <div class="myProgress">
+                        <div class="progress-label">Loading...</div>
+                        <div id="myBar"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -67,16 +73,22 @@
                         <?php
                     }
                     ?>
-<!--<img src="../upload/member/-172185548_191030955358_1546515218_n.jpg" class="pro-pic" alt=""/>-->
                     <form id="edit-cover-picture-form">
                         <h6>Upload Photo</h6>
-                        <span>Browse your computer.</span>
+                        <span class="btn btn-primary">Browse your computer.</span>
                         <input type="file" name="cover-picture" id="cover-picture" class="cover-picture" sort="1" value="">
                         <input type="hidden" name="update-cover" id="update-cover" value="TRUE">
                         <input type="hidden" name="member" id="member" value="<?php echo $MEMBER->id; ?>">
                         <input type="hidden" name="sort" id="sort" value="1">
                     </form>
+
                 </a>
+                <div class="progressbar-section">
+                    <div class="myProgress">
+                        <div class="progress-label">Loading...</div>
+                        <div id="myBar1"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -295,7 +307,7 @@
                                     <option value="2">2 Week</option>
                                     <option value="3">3 Week</option>
                                     <option value="4">4 Week</option>
-                                    
+
                                 </select>
                             </div>
                         </div>

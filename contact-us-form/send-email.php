@@ -2,11 +2,11 @@
 
 //----------------------Company Information---------------------
 
-$comany_name = "Tours @ Sri Lanka";
+$comany_name = "Flip.lk";
 $website_name = "www.flip.lk";
 $comConNumber = "+90 0000 000";
-$comEmail = "info@flip.com";
-$from = 'info@flip.com';
+$comEmail = "muthu99.ck@gmail.com";
+$from = 'info@flip.lk';
 
 
 //----------------------CAPTCHACODE---------------------
@@ -32,14 +32,15 @@ $message = $_POST['message'];
 $captchacode = $_POST['captchacode'];
 
 
-$email_subject = 'Contact Us Message - Flip';
+$email_subject = 'Contact Us Message - Flip.lk';
 
 
 date_default_timezone_set('Asia/Colombo');
 
 $todayis = date("l, F j, Y, g:i a");
 
-$site_link = "http://" . $_SERVER['HTTP_HOST'];
+//$site_link = "http://" . $_SERVER['HTTP_HOST'];
+$site_link = "https://www.flip.lk";
 
 
 include("mail-template.php");
@@ -56,7 +57,6 @@ $headers2 .= "Reply-To: " . $comEmail . "\r\n";
 $headers2 .= "MIME-Version: 1.0\r\n";
 $headers2 .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 // Sending mail
-
 if (
         mail($comEmail, $email_subject, $company_message, $headers) &&
         mail($visitor_email, $email_subject, $visitor_message, $headers2)) {

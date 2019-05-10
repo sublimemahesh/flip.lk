@@ -14,7 +14,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($id);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>About || Groups || Flip.lk</title>
+        <title>Member Requests || Groups || Flip.lk</title>
 
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">

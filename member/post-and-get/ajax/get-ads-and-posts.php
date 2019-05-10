@@ -158,6 +158,7 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
                     $results .= '</article>';
 
                     $comments = PostComment::getCommentsByPostID($ad['id']);
+                    
                     if (count($comments) > 0) {
 
                         $results .= '<ul class="comments-list hidden" id="comment-list-' . $ad['id'] . '" post-id="' . $ad['id'] . '">';
@@ -168,6 +169,7 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
                             $COMMENTMEMBER = New Member($comment['member']);
                             $commentedat = getTime1($comment['commented_at']);
                             $replies = PostCommentReply::getRepliesByCommentID($comment['id']);
+                            
                             if (count($replies) < 0) {
                                 $results .= '<li class="comment-item comment-item1" id="li_' . $comment['id'] . '">';
                                 $results .= '<div class="post__author author vcard inline-items">';
@@ -278,6 +280,7 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
                                 $results .= '<a class="see-more-replies hidden" id="see-more-replies-' . $comment['id'] . '">View all replies</a>';
 
                                 foreach ($replies as $reply) {
+                                    
                                     $REPLYMEMBER = New Member($reply['member']);
                                     $repliedat = getTime1($reply['replied_at']);
 
@@ -293,6 +296,7 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
                                     $results .= '</time>';
                                     $results .= '</div>';
                                     $results .= '</div>';
+                                    
                                     if ($reply['member'] == $MEMBER->id) {
 
                                         $results .= '<div class="more">';
@@ -330,7 +334,6 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
                                     $results .= '<button id="shared-reply-edited-cancel" class="btn btn-md-2 btn-default shared-reply-edited-cancel" reply="' . $reply['id'] . '" member="' . $MEMBER->id . '" type="' . $ad['type'] . '">Cancel</button>';
                                     $results .= '</div>';
 
-
                                     $results .= '<a class="reply add-reply" id="' . $comment['id'] . '">Reply</a>';
                                     $results .= '</li>';
                                 }
@@ -349,7 +352,7 @@ $ads = Advertisement::getAdsAndPostsByMember($MEMBER->id, $offset, $limit);
                         }
                         $results .= '</ul>';
                     } else {
-
+                        
                         $results .= '<ul class="comments-list hidden" id="comment-list-' . $ad['id'] . '" post-id="' . $ad['id'] . '"></ul>';
                     }
                     $results .= '<div class="comment-form inline-items hidden" id="comment-form-' . $ad['id'] . '">';

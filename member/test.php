@@ -1,118 +1,57 @@
-<?php
-include_once(dirname(__FILE__) . '/../class/include.php');
-
-if (!isset($_SESSION)) {
-    session_start();
-}
-$MEMBER = new Member(1);
-?> 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-        
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-        <script src="js/jquery-3.2.1.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="Bootstrap/dist/css/bootstrap-reboot.css">
-        <link rel="stylesheet" type="text/css" href="Bootstrap/dist/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="Bootstrap/dist/css/bootstrap-grid.css">
-
-        <!-- Main Styles CSS -->
-        <link rel="stylesheet" type="text/css" href="css/main.min.css">
-        <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="css/images-grid.css" rel="stylesheet" type="text/css"/>
-        <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
-        <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
-        <style>
-            .comment-item1 {
-                display: none;
-            }
-            .comment-reply-item {
-                display: none;
-            }
-        </style>
-
-    </head>
-    <body>  
-        <div class="container-fluid mtb-margin-top">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="output"><?php include('post-and-get/ajax/get-ads-and-posts.php'); ?></div>
-                    <div class="loader"><img src="loader.gif" /></div>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-
-            $(window).scroll(function () {
-
-                if ($(window).scrollTop() == ($(document).height() - $(window).height())) {
-
-                    var total_pages = parseInt($("#total_pages").val());
-
-                    var page = parseInt($("#page").val()) + 1;
-                    if (page <= total_pages) {
-                        load_more_data(page, total_pages);
-                    }
-                }
-            });
-
-            function load_more_data(page, total_pages) {
-                $("#total_pages, #page").remove();
-                $.ajax({
-                    url: 'post-and-get/ajax/get-ads-and-posts.php',
-                    type: "POST",
-                    data: {page: page},
-                    beforeSend: function () {
-                        $(".loader").show();
-                    },
-                    complete: function () {
-
-                        setTimeout(function () {
-                            $('.loader').hide();
-                            if (page == total_pages) {
-                                $(".loader").html('... No more article! ...').show();
-                            }
-                        }, 3000);
-                    },
-                    success: function (data) {
-                        setTimeout(function () {
-                            $("#output").append(data);
-                        }, 3000);
-                    },
-                    error: function () {
-                        $(".loader").html("No data found!");
-                    }
-                });
-            }
-        </script>
-    </body>
-
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Progressbar - Custom Label</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  .ui-progressbar {
+    position: relative;
+  }
+  .progress-label {
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    var progressbar = $( "#progressbar" ),
+      progressLabel = $( ".progress-label" );
+ 
+    progressbar.progressbar({
+      value: false,
+      change: function() {
+        progressLabel.text( progressbar.progressbar( "value" ) + "%" );
+      },
+      complete: function() {
+        progressLabel.text( "Complete!" );
+      }
+    });
+ 
+    function progress() {
+      var val = progressbar.progressbar( "value" ) || 0;
+ 
+      progressbar.progressbar( "value", val + 2 );
+ 
+      if ( val < 99 ) {
+        setTimeout( progress, 80 );
+      }
+    }
+ 
+    setTimeout( progress, 2000 );
+  } );
+  </script>
+</head>
+<body>
+ 
+<div id="progressbar"><div class="progress-label">Loading...</div></div>
+ 
+ 
+</body>
 </html>
-
-
-
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-briefcase fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">0</div>
-                                        <div>New Jobs</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="manage-jobs.php">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    

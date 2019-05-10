@@ -27,30 +27,51 @@
         
         
         
+        
+        
+        
+        
         <group>
+            <file>file:/C:/xampp/htdocs/flip.lk/class/Member.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/window-pop-up.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/footer.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/test.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/profile-header.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/friends.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/group-settings.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/css/style.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/add-profile-picture.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/profile.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/manage-groups.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/members.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/edit-profile-picture.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/edit-cover-picture.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/class/GroupMember.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/group.php</file>
             <file>file:/C:/xampp/htdocs/flip.lk/member/group-details.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/followers.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/about-us.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/terms-and-conditions.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/view-member.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/css/style.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/view-group.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/view-advertisement.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/login.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/index.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/banner.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/google-login.js</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/groups.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/join-group.js</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/contact-us.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/js/js/custom.js</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/member/js/jquery-3.2.1.js</file>
         </group>
         <group>
-            <file>file:/C:/xampp/htdocs/flip.lk/css/search-box.css</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/calculate-time.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/banner.php</file>
-            <file>file:/C:/xampp/htdocs/flip.lk/css/style.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/add-cover-picture.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/window-pop-up.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/class/Member.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/post-and-get/ajax/member.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/js/js/find-friends.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/class/AdvertisementMessage.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/profile-header.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/friends.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/find-friends.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/css/style.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/add-profile-picture.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/js/js/join-group.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/login2.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/profile.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/account-navigation.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/css/responsive.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/member-message.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/manage-groups.php</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/js/js/edit-profile-picture.js</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/css/responsive.css</file>
+            <file>file:/C:/xampp/htdocs/flip.lk/member/change-password.php</file>
         </group>
     </open-files>
 </project-private>

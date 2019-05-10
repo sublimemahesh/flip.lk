@@ -4,7 +4,8 @@ $(document).ready(function () {
         $('#send-boost-email').attr('adid', adid);
     });
     $('#send-boost-email').click(function () {
-
+        $('#send-boost-email').attr('disabled', '');
+        
         if (!$('#boost_period').val() || $('#boost_period').val().length === 0) {
             swal({
                 title: "Error!",
@@ -46,7 +47,7 @@ $(document).ready(function () {
                             showConfirmButton: false
                         });
                     }
-                    
+
 
                 }
             });

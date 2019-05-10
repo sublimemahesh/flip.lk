@@ -38,7 +38,7 @@ if ($filter == 'published') {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Group || Flip.lk</title>
+        <title>Group Details || Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -87,18 +87,21 @@ if ($filter == 'published') {
                                         <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12  m-auto">
 
 
-                                            <ul class="table-careers">
-                                                <li class="head">
-                                                    <span>ID</span>
-                                                    <span>DATE POSTED</span>
-                                                    <span>TITLE</span>
-                                                    <span>MEMBER</span>
-                                                    <span></span>
-                                                </li>
-                                                <?php
-                                                $ads = Advertisement::getPublishedAdsByGroup($id);
-                                                $i = 1;
-                                                if (count($ads) > 0) {
+
+                                            <?php
+                                            $ads = Advertisement::getPublishedAdsByGroup($id);
+                                            $i = 1;
+                                            if (count($ads) > 0) {
+                                                ?>
+                                                <ul class="table-careers">
+                                                    <li class="head">
+                                                        <span>ID</span>
+                                                        <span>DATE POSTED</span>
+                                                        <span>TITLE</span>
+                                                        <span>MEMBER</span>
+                                                        <span></span>
+                                                    </li>
+                                                    <?php
                                                     foreach ($ads as $key => $ad) {
                                                         $GROUP = new Group($ad['group_id']);
                                                         $MEM = new Member($ad['member']);
@@ -113,9 +116,17 @@ if ($filter == 'published') {
                                                         <?php
                                                         $i++;
                                                     }
-                                                }
+                                                    ?>
+                                                </ul>
+                                                <?php
+                                            } else {
                                                 ?>
-                                            </ul>
+                                                <ul class="table-careers">
+                                                    <li>No any published ads</li>
+                                                </ul>
+                                                <?php
+                                            }
+                                            ?>
 
                                         </div>
                                     </div>
@@ -130,18 +141,21 @@ if ($filter == 'published') {
                                         <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12  m-auto">
 
 
-                                            <ul class="table-careers">
-                                                <li class="head">
-                                                    <span>ID</span>
-                                                    <span>DATE POSTED</span>
-                                                    <span>TITLE</span>
-                                                    <span>MEMBER</span>
-                                                    <span></span>
-                                                </li>
-                                                <?php
-                                                $ads = Advertisement::getUnpublishedAdsByGroup($id);
-                                                $i = 1;
-                                                if (count($ads) > 0) {
+
+                                            <?php
+                                            $ads = Advertisement::getUnpublishedAdsByGroup($id);
+                                            $i = 1;
+                                            if (count($ads) > 0) {
+                                                ?>
+                                                <ul class="table-careers">
+                                                    <li class="head">
+                                                        <span>ID</span>
+                                                        <span>DATE POSTED</span>
+                                                        <span>TITLE</span>
+                                                        <span>MEMBER</span>
+                                                        <span></span>
+                                                    </li>
+                                                    <?php
                                                     foreach ($ads as $key => $ad) {
                                                         $GROUP = new Group($ad['group_id']);
                                                         $MEM = new Member($ad['member']);
@@ -156,9 +170,17 @@ if ($filter == 'published') {
                                                         <?php
                                                         $i++;
                                                     }
-                                                }
+                                                    ?>
+                                                </ul>
+                                                <?php
+                                            } else {
                                                 ?>
-                                            </ul>
+                                                <ul class="table-careers">
+                                                    <li id="li_unp_<?php echo $ad['id']; ?>">No any unpublished ads</li>
+                                                </ul>
+                                                <?php
+                                            }
+                                            ?>
 
                                         </div>
                                     </div>

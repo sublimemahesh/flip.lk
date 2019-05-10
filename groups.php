@@ -295,7 +295,7 @@ $groups = Group::searchGroups($category1, $subcategory, $location, $keyword, $pa
                                             foreach (BusinessCategory::all() as $category) {
                                                 $count = Group::countGroupsByCategory($category['id']);
                                                 ?>
-                                                <li id="menu-item-<?php echo $category['id']; ?>"  class="menu-item category collapsible collapsible1"> <img src="upload/business-category/<?php echo $category['image_name']; ?>"><?php echo $category['name'] . ' (' . number_format($count) . ')'; ?>
+                                            <li id="menu-item-<?php echo $category['id']; ?>"  class="menu-item category collapsible collapsible1"> <a href="groups.php?category=<?php echo $category['id']; ?>"><img src="upload/business-category/<?php echo $category['image_name']; ?>"><?php echo $category['name'] . ' (' . number_format($count) . ')'; ?></a>
                                                     <i class="icon-<?php echo $category['id']; ?> fa fa-angle-down cat-dropdown" id1="<?php echo $category['id']; ?>" times="0"></i>
                                                     <ul class="sub-menu menu-item-<?php echo $category['id']; ?> hidden">
                                                         <?php

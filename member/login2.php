@@ -20,7 +20,6 @@ $back_url = '';
 if (isset($_SESSION["back_url"])) {
     $back_url = $_SESSION["back_url"];
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -120,6 +119,12 @@ if (isset($_SESSION["back_url"])) {
                                 <a class="button button-block" id="upload-pro-pic" name="upload-pro-pic"/>Upload</a>
 
                             </form>
+                            <div class="login2 progressbar-section">
+                                <div class="myProgress">
+                                    <div class="progress-label">Loading...</div>
+                                    <div id="myBar"></div>
+                                </div>
+                            </div>
                         </div>
                         <div id="cover-pic-upload">   
                             <h1>Upload Cover Picture</h1>
@@ -181,6 +186,12 @@ if (isset($_SESSION["back_url"])) {
                                 <a class="button button-block" id="upload-cover-pic" name="upload-pro-pic"/>Upload</a>
 
                             </form>
+                            <div class="login2 progressbar-section">
+                                <div class="myProgress">
+                                    <div class="progress-label">Loading...</div>
+                                    <div id="myBar2"></div>
+                                </div>
+                            </div>
                         </div>
                     </div><!-- tab-content -->
                 </div> <!-- /form -->

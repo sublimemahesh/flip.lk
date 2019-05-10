@@ -17,6 +17,8 @@ if ($_POST['option'] == 'ADDREPLY') {
     $array['date'] = $result->repliedAt;
     $array['member'] = $MEMBER->firstName . ' ' . $MEMBER->lastName;
     $array['profile'] = $MEMBER->profilePicture;
+    $array['google_id'] = $MEMBER->googleID;
+    $array['facebook_id'] = $MEMBER->facebookID;
         
     
     if ($result) {

@@ -23,7 +23,7 @@ $SUBCATEGORIES = BusinessSubCategory::all();
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Group || Flip.lk</title>
+        <title>Edit Group || Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">

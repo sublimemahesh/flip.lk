@@ -56,6 +56,7 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function (mess) {
+                alert(mess.member);
                 $('.request-to-join-' + mess.member).addClass('hidden');
                 $('#accepted-request-' + mess.member).removeClass('hidden');
 

@@ -155,7 +155,9 @@ class Notification {
     
     public function getAllNotificationsByUser($id) {
 
-        $query = "SELECT * FROM `notification` WHERE `user`= $id ORDER BY `created_at` DESC";
+        $query = "SELECT * FROM `notification` WHERE `user`= $id ORDER BY CASE
+        WHEN `is_viewed` = 0 THEN 1
+        ELSE 2 END, `created_at` DESC";
 
         $db = new Database();
         $result = $db->readQuery($query);

@@ -40,15 +40,9 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                     <li>
                                         <a href="members.php?id=<?php echo $GROUP->id; ?>">Members</a>
                                     </li>
-                                    <li>
-                                        <a>Photos</a>
-                                    </li>
-                                    <li>
-                                        <a>Videos</a>
-                                    </li>
-                                    <li>
-                                        <a>Events</a>
-                                    </li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
                                 </ul>
                             </div>
                         </div>

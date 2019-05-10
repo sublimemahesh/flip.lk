@@ -5,13 +5,13 @@ $(document).ready(function () {
     });
 
     $('#output').on('click', '.index-post-reply', function () {
-        
+
         var comment = $(this).attr('comment');
         var type = $(this).attr('type');
         var member = $(this).attr('member');
-        var reply =  $('#comment-reply-list-' + comment).find('#reply-' + comment).val();
+        var reply = $('#comment-reply-list-' + comment).find('#reply-' + comment).val();
         if (type == 'post') {
-            
+
             $.ajax({
                 url: "post-and-get/ajax/post-reply.php",
                 type: "POST",
@@ -23,15 +23,30 @@ $(document).ready(function () {
                 },
                 dataType: "JSON",
                 success: function (result) {
-                    
+
                     if (result) {
                         $('#reply-' + comment).val('');
                         var html = '';
+                        var img = '';
 
+                        if (result.profile) {
+                            if (result.facebook_id && substr(result.profile, 0, 5) === "https") {
+
+                                img = '<img alt="profile picture" src="' + result.profile + '" >';
+                            } else if (result.google_id && substr(result.profile, 0, 5) === "https") {
+
+                                img = '<img alt="profile picture" src="' + result.profile + '" >';
+                            } else {
+
+                                img = '<img alt="profile picture" src="../upload/member/' + result.profile + '">';
+                            }
+                        } else {
+                            img = '<img alt="profile picture" src="../upload/member/member.png">';
+                        }
 
                         html += '<li class="comment-item">';
                         html += '<div class="post__author author vcard inline-items">';
-                        html += '<img src="../upload/member/' + result.profile + '" alt="author">';
+                        html += img;
                         html += '<div class="author-date">';
                         html += '<a class="h6 post__author-name fn" href="profile.php?id=' + member + '">' + result.member + '</a>';
                         html += '<div class="post__date">';
@@ -49,7 +64,6 @@ $(document).ready(function () {
                         html += '<p>' + result.reply + '</p>';
                         html += '<a class="reply add-reply" id="' + comment + '">Reply</a>';
                         html += '</li>';
-                        alert(html);
                         $('#comment-reply-list-' + comment).append(html);
                     }
                 }
@@ -100,33 +114,33 @@ $(document).ready(function () {
         $('#reply-form-' + comment).addClass('hidden');
         $('#reply-list-' + comment).removeClass('hidden');
     });
-//    $(function () {
-//        $(".comment-reply-list").each(function (index) {
-//
-//            if ($(this).children(".comment-reply-item").length > 1) {
-//
-//                var comment = $(this).attr('comment-id');
-//                $("#see-more-replies-" + comment).removeClass('hidden');
-//            }
-//            $(this).children(".comment-reply-item").slice(-1).show();
-//        });
-//
-//        $(".see-more-replies").click(function (e) {
-//            e.preventDefault();
-//            var $link = $(this);
-//            var $div = $link.closest('.comment-reply-list');
-//
-//            if ($link.hasClass('visible')) {
-//                $link.text('Show all replies');
-//                $div.children(".comment-reply-item").slice(0, -1).slideUp()
-//            } else {
-//                $link.text('Show less replies');
-//                $div.children(".comment-reply-item").slideDown();
-//            }
-//
-//            $link.toggleClass('visible');
-//        });
-//    });
+    $(function () {
+        $(".comment-reply-list").each(function (index) {
+
+            if ($(this).children(".comment-reply-item").length > 1) {
+
+                var comment = $(this).attr('comment-id');
+                $("#see-more-replies-" + comment).removeClass('hidden');
+            }
+            $(this).children(".comment-reply-item").slice(-1).show();
+        });
+
+        $(".see-more-replies").click(function (e) {
+            e.preventDefault();
+            var $link = $(this);
+            var $div = $link.closest('.comment-reply-list');
+
+            if ($link.hasClass('visible')) {
+                $link.text('Show all replies');
+                $div.children(".comment-reply-item").slice(0, -1).slideUp()
+            } else {
+                $link.text('Show less replies');
+                $div.children(".comment-reply-item").slideDown();
+            }
+
+            $link.toggleClass('visible');
+        });
+    });
 
     $('.edit-reply').click(function () {
         var reply = this.id;

@@ -44,7 +44,6 @@ if ($_POST['option'] == 'CONFIRMREQUEST') {
     if ($result) {
         $NOTIFICATION = new Notification(NULL);
         $MEM = new Member($FRIEND->friend);
-        $AD = new Advertisement($COMMENT->advertisement);
 
         $NOTIFICATION->imageName = $MEM->profilePicture;
         $NOTIFICATION->title = 'Confirmed Request';
@@ -53,7 +52,7 @@ if ($_POST['option'] == 'CONFIRMREQUEST') {
         $NOTIFICATION->user = $FRIEND->member;
         $NOTIFICATION->create();
     }
-
+  
     header('Content-Type: application/json');
     echo json_encode($result);
     exit();

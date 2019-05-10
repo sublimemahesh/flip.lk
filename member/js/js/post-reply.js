@@ -21,10 +21,26 @@ $(document).ready(function () {
                 if (result) {
                     $('#reply-' + comment).val('');
                     var html = '';
+                    var img = '';
+
+                    if (result.profile) {
+                        if (result.facebook_id && substr(result.profile, 0, 5) === "https") {
+
+                            img = '<img alt="profile picture" src="' + result.profile + '" >';
+                        } else if (result.google_id && substr(result.profile, 0, 5) === "https") {
+
+                            img = '<img alt="profile picture" src="' + result.profile + '" >';
+                        } else {
+
+                            img = '<img alt="profile picture" src="../upload/member/' + result.profile + '">';
+                        }
+                    } else {
+                        img = '<img alt="profile picture" src="../upload/member/member.png">';
+                    }
 
                     html += '<li class="comment-item">';
                     html += '<div class="post__author author vcard inline-items">';
-                    html += '<img src="../upload/member/' + result.profile + '" alt="author">';
+                    html += img;
                     html += '<div class="author-date">';
                     html += '<a class="h6 post__author-name fn" href="profile.php?id=' + member + '">' + result.member + '</a>';
                     html += '<div class="post__date">';
@@ -106,7 +122,7 @@ $(document).ready(function () {
             },
             dataType: "JSON",
             success: function (result) {
-                
+
                 if (result) {
                     $('#reply-p-' + id).removeClass('hidden');
                     $('#reply-p-' + id).text(result.reply);
@@ -121,9 +137,9 @@ $(document).ready(function () {
         $('#reply-list-' + reply).removeClass('hidden');
     });
     $('.delete-reply').click(function () {
-       var reply = this.id;
-       
-       swal({
+        var reply = this.id;
+
+        swal({
             title: "Are you sure?",
             text: "You will not be able to recover!",
             type: "warning",
@@ -155,7 +171,7 @@ $(document).ready(function () {
                 }
             });
         });
-       
+
     });
 
 });

@@ -1,5 +1,7 @@
 $(document).ready(function () {
+    $(".progressbar-section").hide();
     $('#cover-picture').change(function () {
+        $(".progressbar-section").show();
         var fi = document.getElementById('cover-picture'); // GET THE FILE INPUT.
         if (fi.files.length > 0) {
             for (var i = 0; i <= fi.files.length - 1; i++) {
@@ -16,6 +18,7 @@ $(document).ready(function () {
                 }
             }
         }
+
         var formData = new FormData($('#edit-cover-picture-form')[0]);
         $.ajax({
             url: "post-and-get/ajax/cover-picture.php",
@@ -24,8 +27,28 @@ $(document).ready(function () {
             async: false,
             dataType: 'json',
             success: function (mess) {
-                $("#cover_pic").attr("src", "../upload/member/cover-picture/" + mess.filename);
-                $('#update-cover-photo').modal('hide');
+                var elem = document.getElementById("myBar1");
+                var width = 1;
+                var id = setInterval(frame, 10);
+                function frame() {
+                    if (width >= 100) {
+                        clearInterval(id);
+                        $(".progress-label").text("Complete");
+                        setTimeout(function () {
+
+                            $(".progressbar-section").hide();
+                            $("#cover_pic").attr("src", "../upload/member/cover-picture/" + mess.filename);
+                            $('#update-cover-photo').modal('hide');
+                            elem.style.width = '1%';
+                            $(".progress-label").text("Loading...");
+                        }, 1000);
+                    } else {
+                        width++;
+                        elem.style.width = width + '%';
+                        $(".progress-label").text(width + "%");
+                    }
+                }
+
             },
             cache: false,
             contentType: false,
