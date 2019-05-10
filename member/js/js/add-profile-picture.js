@@ -1,8 +1,8 @@
 $(document).ready(function () {
-
+    $(".progressbar-section").hide();
 //    $('.proimg').empty();
     $('#profile-picture').change(function () {
-
+        $(".progressbar-section").show();
         var formData = new FormData($('#form-profile-picture')[0]);
 
         $.ajax({
@@ -12,14 +12,32 @@ $(document).ready(function () {
             async: false,
             dataType: 'json',
             success: function (mess) {
-                var html = '';
-//                html = '<img class="pro-pic" src="../upload/member/' + mess + '" alt=""/>';
+                var elem = document.getElementById("myBar");
+                var width = 1;
+                var id = setInterval(frame, 10);
+                function frame() {
+                    if (width >= 100) {
+                        clearInterval(id);
+                        $(".progress-label").text("Complete");
+                        setTimeout(function () {
 
-                $('.profile-default-image').css('display', 'none');
-//                $('.proimg').empty();
-//                $('.proimg').append(html);
-                $('#pro').val(mess);
-                window.location.replace('login2.php');
+                            $(".progressbar-section").hide();
+                            var html = '';
+                            $('.profile-default-image').css('display', 'none');
+                            $('#pro').val(mess);
+                            window.location.replace('login2.php');
+                            elem.style.width = '1%';
+                            $(".progress-label").text("Loading...");
+                        }, 1000);
+                    } else {
+                        width++;
+                        elem.style.width = width + '%';
+                        $(".progress-label").text(width + "%");
+                    }
+                }
+
+
+
 
 
 
@@ -31,6 +49,7 @@ $(document).ready(function () {
     });
 
     $('#upload-pro-pic').click(function (e) {
+
         e.preventDefault();
 
         var formData = new FormData($('#form-profile-picture')[0]);

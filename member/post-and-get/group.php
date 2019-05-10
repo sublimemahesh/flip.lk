@@ -13,7 +13,9 @@ if (isset($_POST['create-group'])) {
     $GROUP->subCategory = $_POST['sub_category'];
     $GROUP->address = $_POST['address'];
     $GROUP->district = $_POST['district'];
+    $GROUP->districtString = $_POST['district_string'];
     $GROUP->city = $_POST['city'];
+    $GROUP->cityString = $_POST['city_string'];
     $GROUP->description = $_POST['description'];
     $GROUP->profilePicture = $_POST['group_profile'];
     $GROUP->coverPicture = $_POST['group_cover'];
@@ -35,7 +37,7 @@ if (isset($_POST['create-group'])) {
         $GROUPMEMBERS->status = 'admin';
         $res = $GROUPMEMBERS->create();
 
-        header('Location: ' . $url[0] . '?message=10');
+        header('Location: ../group.php?id=' .$result['id']);
         exit();
     } else {
         header('Location: ' . $url[0] . '?message=21');
@@ -54,7 +56,9 @@ if (isset($_POST['edit-group'])) {
     $GROUP->subCategory = $_POST['sub_category'];
     $GROUP->address = $_POST['address'];
     $GROUP->district = $_POST['district'];
+    $GROUP->districtString = $_POST['district_string'];
     $GROUP->city = $_POST['city'];
+    $GROUP->cityString = $_POST['city_string'];
     $GROUP->description = $_POST['description'];
     $GROUP->profilePicture = $_POST['group_profile'];
     $GROUP->coverPicture = $_POST['group_cover'];

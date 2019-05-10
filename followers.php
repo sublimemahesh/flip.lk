@@ -33,7 +33,7 @@ if ($count_friends['count'] == 0) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> Groups || Flip.lk</title>
+        <title> Followers || Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -83,35 +83,21 @@ if ($count_friends['count'] == 0) {
                         <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="ui-block responsive-flex">
                                 <div class="ui-block-title">
-                                    <div class="h6 title col-sm-2">
+                                    <div class="h6 title col-sm-3">
                                         <?php echo $MEM->firstName . ' ' . $MEM->lastName . ' (' . $count1 . ')'; ?> 
                                     </div>
-                                    <form class="w-search col-sm-4">
+                                    <form class="w-search col-sm-6">
                                         <div class="form-group with-button">
-                                            <input class="form-control" type="text" placeholder="Search Friends...">
-                                            <button class="search-btn">
-                                                <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
-                                            </button>
-                                        </div>
-                                    </form>
-                                    <!--                                <form class="w-search col-sm-4">
-                                                                        <div class="form-group with-button">
-                                                                            <input class="form-control js-user-search" id="find-member" type="text" placeholder="Find Friends...">
-                                                                            <button class="search-btn">
-                                                                                <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
-                                                                            </button>
-                                                                        </div>
-                                                                    </form>-->
-                                    <form class="w-search col-sm-4">
-                                        <div class="form-group with-button">
-                                            <input class="form-control find-friends" id="find-member" placeholder="Find Friends..." type="text" value="" autocomplete="off">
-                                            <div class="" id="name-list-append"></div>
+                                            <input class="form-control search-friends" id="search-member" placeholder="Search Friends..." type="text" value="" autocomplete="off">
+                                            <div class="" id="name-list-append-friends"></div>
                                             <input type="hidden" name="member" value="" id="member-id"  />
-                                            <button>
+                                            <input type="hidden" name="owner" value="<?php echo $MEM->id; ?>" id="owner"  />
+                                            <button class="search-friend-btn">
                                                 <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
                                             </button>
                                         </div>
                                     </form>
+                                    <div class="col-sm-1"></div>
                                     <div class="col-sm-2 friend-request">
                                         <?php
                                         if (isset($_SESSION['id'])) {
@@ -146,6 +132,8 @@ if ($count_friends['count'] == 0) {
                                 $confirmedDate = FriendRequest::getConfirmedDate($friend['friend'], $friend['member']);
                                 $countoffriends = Friend::countFriends($friend['friend']);
                             }
+                            $countAds = Advertisement::countAdsByMember($FRI->id);
+                            $countGroups = Group::countGroupsByMember($FRI->id);
                             ?>
                             <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12 col-12">
                                 <div class="ui-block">
@@ -195,7 +183,7 @@ if ($count_friends['count'] == 0) {
                                                         <?php
                                                     }
                                                     ?>
-                                                    <div class="country">San Francisco, CA</div>
+                                                    <div class="country"><?php echo $FRI->cityString; ?>, <?php echo $FRI->districtString; ?></div>
                                                 </div>
                                             </div>
 
@@ -208,20 +196,29 @@ if ($count_friends['count'] == 0) {
                                                                 <div class="title">Friends</div>
                                                             </a>
                                                             <a class="friend-count-item">
-                                                                <div class="h6">240</div>
-                                                                <div class="title">Photos</div>
+                                                                <div class="h6"><?php echo $countAds; ?></div>
+                                                                <div class="title">Ads</div>
                                                             </a>
                                                             <a class="friend-count-item">
-                                                                <div class="h6">16</div>
-                                                                <div class="title">Videos</div>
+                                                                <div class="h6"><?php echo $countGroups; ?></div>
+                                                                <div class="title">Groups</div>
                                                             </a>
                                                         </div>
-                                                        <div class="control-block-button" data-swiper-parallax="-100">
-                                                            <a class="btn btn-control bg-purple">
+                                                        <?php
+                                                        if (isset($MEMBER->id) && $MEMBER->id == $MEM->id) {
+                                                            ?>
+                                                        <a  href="member/member-message.php" class="btn btn-control bg-purple">
+                                                                <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
+                                                            </a>                                                      
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <a  href="member/member-message.php?member=<?php echo $MEM->id; ?>&back=chat" class="btn btn-control bg-purple">
                                                                 <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
                                                             </a>
-
-                                                        </div>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
 
                                                     <div class="swiper-slide">
@@ -285,5 +282,7 @@ if ($count_friends['count'] == 0) {
         <script src="js/js/shared-ad.js" type="text/javascript"></script>
         <script src="js/js/login-first.js" type="text/javascript"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
+        <script src="js/js/find-friends.js" type="text/javascript"></script>
+        <script src="js/js/search-friend.js" type="text/javascript"></script>
     </body>
 </html>

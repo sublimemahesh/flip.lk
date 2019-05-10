@@ -46,7 +46,7 @@ $visitor_message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E
                         </tr>
                         <tr>
                            <td align="center">
-                                <img src="' . $site_link . '/contact-us-form/img/sli6.gif" alt="" width="598" height="323" border="0"/>
+                                <img src="' . $site_link . '/contact-us-form/img/banner.jpg" alt="" width="598" height="323" border="0"/>
                             </td>
                         </tr>
                         <tr>
@@ -116,6 +116,11 @@ $visitor_message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E
                                                 <li>
                                                     <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
                                                          Email : ' . $visitor_email . '
+                                                    </font>
+                                                </li>
+                                                <li>
+                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                                         Contact Number : ' . $contact . '
                                                     </font>
                                                 </li>
                                                  <li>
@@ -195,13 +200,13 @@ $visitor_message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E
                         </tr>
                                     <tr>
                                         <td width="3%" align="center">&nbsp;</td>
-                                        <td width="28%" align="center"><font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:9px; " > © ' . date('Y') . ' Copyright ' . $comany_name . '</font> </td>
+                                        <td width="28%" align="center"><font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:9px; " > © ' . date('Y') . ' Copyright @ ' . $comany_name . '</font> </td>
                                         <td width="10%" align="center"></td>
                                         <td width="3%" align="center"></td> 
                                         <td width="30%" align="right">
                                         <font style="font-family: Verdana, Geneva, sans-serif; color:#1400FF; font-size:9px; " > 
                                         <a href="http://sublime.lk/">
-                                        web solution by: Sublime Holdings</a>
+                                        web solution by: Synotec Holdings (Pvt) Ltd.</a>
                                         </font>
                                         </td>
                                         <td width="5%">&nbsp;</td>
@@ -214,7 +219,6 @@ $visitor_message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//E
         </table>
     </body>
 </html>';
-
 $company_message = ' 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -297,6 +301,16 @@ $company_message = '
                                                 <li>
                                                     <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
                                                          Email : ' . $visitor_email . '
+                                                    </font>
+                                                </li>
+                                                <li>
+                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                                         Contact Number : ' . $contact . '
+                                                    </font>
+                                                </li>
+                                                <li>
+                                                    <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
+                                                         Subject : ' . $subject . '
                                                     </font>
                                                 </li>
                                                 

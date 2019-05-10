@@ -551,9 +551,10 @@ and open the template in the editor.
     }
     .header .page-title{
         display: inherit;
-        padding: 7px 143px 58px 6px;
-        margin-left: -54px;
-        margin-right: 58px;
+        padding: 7px 20px 58px 6px;
+        margin-left: 0px;
+        margin-right: 0px;
+        min-width: 100px;
     }
     .control-block .author-thumb{
         margin-right: -49px;
@@ -561,11 +562,9 @@ and open the template in the editor.
     .header{
         padding-left: 91px;
     }
-    .page-title img{
-        width: 150px;
-    }
-    .page-title img{
-        padding-top: 2px;
+    .page-title img {
+        width: 135px;
+        padding-top: 5px;
     }
     .avatar{
         margin-top: 8px;
@@ -604,7 +603,7 @@ and open the template in the editor.
         margin-bottom: -9px;
     }
     .control-block{
-        margin-left: -25px;
+        margin-left: 0px;
         font-size: 7px;
     }
     .nav {
@@ -667,6 +666,43 @@ and open the template in the editor.
     .ad-category {
         padding-bottom: 4px;
     }
+    .footer-about {
+        margin-top: 42px;
+    }
+    .footer-box .footer-contact-info li {
+        padding-left: 22px;
+    }
+    .footer-box .footer-social ul li a {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    .footer-box .footer-contact-info li svg {
+        font-size: 15px;
+    }
+    .search-bar.w-search {
+        min-height: 10px;
+        margin-top: 11px;
+        height: 36px;
+        width: 175px;
+        margin-left: 0px;
+    }
+    .is-empty {
+        margin-right: 0px;
+    }
+    .control-icon .more-dropdown {
+        right: -15px;   
+        top: calc(100% + 13px);
+    }
+    .notification-list .notification-event {
+        padding-left: 45px;
+        width: 100%;
+        margin-top: -34px;
+    }
+    #name-list-append .author-thumb img {
+        height: 30px;
+        width: 30px;
+    }
 }
 
 @media(min-width:992px) and (max-width:1200px) {
@@ -679,6 +715,13 @@ and open the template in the editor.
     }
 }
 
+
+@media(min-width:1200px) {
+    .hidden-lg {
+        display: none;
+    }
+}
+
 @media(width:360px) {
     .category-list .category-item-box {
         width: 129px;
@@ -687,9 +730,6 @@ and open the template in the editor.
     }  
     .nav-item:first-child{
         left: -30px;
-    }
-    .copyright{
-        margin-top: -22px;
     }
     .profile-menu{
         margin-left: 180px;
@@ -756,61 +796,97 @@ and open the template in the editor.
     }
 }
 
-@media(width:1280px) {
-    .category-list.container {
-        max-width: 960px;
-        margin: 20px 26px;
+
+@media (width: 768px){
+    .header{
+        padding-left: 6px;
+        padding-right: 1px;
+        height: 64px;
     }
-    .slider-item-footer h6 {
-        font-size: 12px;
-        margin-bottom: 0px;
+    .responsive-header-logo img{
+        max-width: 100%;
+        margin-left: -283px;
     }
-    .member-details .mem-name {
-        margin-top: 3px;
+    .mobile-app-tabs{
+        margin-left: 301px;
     }
-    #ad-slider .owl-nav {
-        margin-top: -575px;
+    .footer-box .footer-header h3{
+        font-size: 22px;
     }
-    .listing-dire .owl-dots{
-        margin-bottom: 70px; 
+    .footer-about p{
+        margin-top: -16px;
     }
-    .page-title img{
-        width: 140px;
-        padding-top: 4px;
+    .footer-box .widget_nav_menu li a{
+        font-size: 13px;
+    }
+    .footer-box .footer-contact-info li{
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    .has-items img{
+        /*padding-bottom: 10px;*/
     }
     .avatar{
+        width: 46px;
+        margin-bottom: 5px;
+    }
+    .footer-box .footer-contact-info li svg{
+        font-size: 15px;
+    }
+    .btn-primary1{
+        margin-left: 237px;
+    }
+    .responsive-header-logo{
+        margin-right: -68px;
+    }
+    .icon-profile a span{
         margin-top: 6px;
     }
-    .icon-status.online{
-        margin-top: 7px;
+    .ad-subcategory{
+        margin-left: 0px;
+        margin-top: -4px;
     }
-    /*    .control-block{
-            margin-right: 15px;
-        }*/
-}
-@media(min-width:1200px) and (max-width:1400px) {
-    .category-list.container {
-        max-width: 960px;
-        margin: 20px 26px;
-    }
-    .slider-item-footer h6 {
+    .ad-subcategory1{
+        margin-top: -3px;
+        margin-left: 0px;
         font-size: 12px;
-        margin-bottom: 0px;
     }
-    .member-details .mem-name {
-        margin-top: 3px;
+    .title1{
+        font-size: 36px;
     }
-    #ad-slider .owl-nav {
-        margin-top: -310px;
+    .top-header.top-header-favorit .author-thumb{
+        margin-top: -53px;
+        margin-left: -71px;
     }
-    /*    .author-thumb img{
-            margin-top: 50px;
-        }*/
+    .author-thumb{
+        padding-top: 0px;
+    }
+    .profile-menu{
+        margin-left: 161px;
+    }
+    .top-header-author .author-thumb{
+        margin-top: 79px;
+    }
+    .top-header.top-header-favorit .top-header-author{
+        bottom: -40px;
+    }
+    .top-header.top-header-favorit .author-content{
+        margin-top: -24px;
+    }
     .author-thumb1 img{
-        margin-top: -2px;
+        margin-top: -18px;
+        margin-left: -11px;
+    }
+    .s002 form .inner-form .input-field.fifth-wrap .btn-search{
+        margin-left: 0px;
+    }
+    .control-icon {
+        margin-right: 29px;
+        fill: #9a9fbf;
+        margin-top: 5px;
     }
 }
-
 @media (width:1024px){
     .header .page-title{
         display: inherit;
@@ -984,6 +1060,7 @@ and open the template in the editor.
     }
 
 }
+
 @media (width: 600px){
     .header{
         padding-right: 1px;
@@ -1121,15 +1198,60 @@ and open the template in the editor.
 
 
 }
-@media(min-width:1200px) {
-    .hidden-lg {
-        display: none;
+
+@media (width: 800px){
+    .avatar{
+        width: 28px;
+    }
+    .btn-primary1{
+        margin-left: 244px;
+    }
+
+    .office h3{
+        margin-bottom: -10px;
+    }
+    .top-header.top-header-favorit .top-header-author{
+        bottom: -40px;
+    }
+    .author-thumb1 img{
+        margin-top: -13px;
+    }
+    .footer-about {
+        margin-top: 23px;
+    }
+
+}
+
+@media(min-width:1200px) and (max-width:1400px) {
+    .category-list.container {
+        max-width: 960px;
+        margin: 20px 26px;
+    }
+    .slider-item-footer h6 {
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+    .member-details .mem-name {
+        margin-top: 3px;
+    }
+    #ad-slider .owl-nav {
+        margin-top: -310px;
+    }
+    /*    .author-thumb img{
+            margin-top: 50px;
+        }*/
+    .author-thumb1 img{
+        margin-top: -2px;
     }
 }
+
+
+
 @media (width: 1440px){
     .page-title img{
-        padding-top: 4px;
-        width: 140px;
+        padding-top: 0px;
+        height: 44px;
+        width: auto;
     }
     .avatar{
         margin-top: 7px;
@@ -1144,30 +1266,40 @@ and open the template in the editor.
         margin-top: -2px;
     }
 }
-/*.control-block{
-    margin-right: 92px;
-}*/
-@media (width: 800px){
+
+
+
+@media(width:1280px) {
+    .category-list.container {
+        max-width: 960px;
+        margin: 20px 26px;
+    }
+    .slider-item-footer h6 {
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+    .member-details .mem-name {
+        margin-top: 3px;
+    }
+    #ad-slider .owl-nav {
+        margin-top: -575px;
+    }
+    .listing-dire .owl-dots{
+        margin-bottom: 70px; 
+    }
+    .page-title img{
+        width: 140px;
+        padding-top: 4px;
+    }
     .avatar{
-        width: 28px;
+        margin-top: 6px;
     }
-    .btn-primary1{
-        margin-left: 244px;
+    .icon-status.online{
+        margin-top: 7px;
     }
-
-    .office h3{
-        margin-bottom: -10px;
-    }
-    .footer-about p{
-        margin-left: 16px;
-    }
-    .top-header.top-header-favorit .top-header-author{
-        bottom: -40px;
-    }
-    .author-thumb1 img{
-        margin-top: -13px;
-    }
-
+    /*    .control-block{
+            margin-right: 15px;
+        }*/
 }
 
 @media (max-width: 1080px){
@@ -1249,12 +1381,8 @@ and open the template in the editor.
 
     }
     .header .page-title {
-
         display: inherit;
         padding: 7px 20px 7px 17px;
-        margin-left: 0px;
-
-        margin-right: 0px;
     }
     #site-header .control-icon img:hover {
 
@@ -1309,98 +1437,5 @@ and open the template in the editor.
 @media (width: 834px){
     .author-thumb1 img{
         margin-top: -17px;
-    }
-}
-@media (width: 768px){
-    .s002 form .inner-form .input-field.fifth-wrap .btn-search{
-        margin-left: 114px;
-    }
-    .header{
-        padding-left: 6px;
-        padding-right: 1px;
-        height: 64px;
-    }
-    .responsive-header-logo img{
-        max-width: 100%;
-        margin-left: -283px;
-    }
-    .mobile-app-tabs{
-        margin-left: 301px;
-    }
-    .footer-box .footer-header h3{
-        font-size: 22px;
-    }
-    .footer-about p{
-        margin-top: -16px;
-    }
-    .footer-box .widget_nav_menu li a{
-        font-size: 16px;
-    }
-    .footer-box .footer-contact-info li{
-        font-size: 16px;
-        margin-bottom: 6px;
-    }
-
-    .has-items img{
-        padding-bottom: 10px;
-    }
-    .avatar{
-        width: 46px;
-        margin-bottom: 9px;
-    }
-    .footer-box .footer-contact-info li svg{
-        font-size: 17px;
-    }
-    .btn-primary1{
-        margin-left: 237px;
-    }
-    .responsive-header-logo{
-        margin-right: -68px;
-    }
-    .icon-profile a span{
-        margin-top: 6px;
-    }
-    .ad-subcategory{
-        margin-left: 0px;
-        margin-top: -4px;
-    }
-    .ad-subcategory1{
-        margin-top: -3px;
-        margin-left: 0px;
-        font-size: 12px;
-    }
-    .title1{
-        font-size: 36px;
-    }
-    .top-header.top-header-favorit .author-thumb{
-        margin-top: -53px;
-        margin-left: -71px;
-    }
-    .author-thumb{
-        padding-top: 0px;
-    }
-    .profile-menu{
-        margin-left: 161px;
-    }
-    .top-header-author .author-thumb{
-        margin-top: 79px;
-    }
-    .top-header.top-header-favorit .top-header-author{
-        bottom: -40px;
-    }
-    .top-header.top-header-favorit .author-content{
-        margin-top: -24px;
-    }
-    .author-thumb1 img{
-        margin-top: -18px;
-        margin-left: -11px;
-    }
-    .s002 form .inner-form .input-field.fifth-wrap .btn-search{
-        margin-left: 130px;
-    }
-    .control-icon {
-        margin-right: 22px;
-        fill: #9a9fbf;
-        margin-top: 5px;
     }
 }

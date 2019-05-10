@@ -8,7 +8,6 @@ $MEMBER = '';
 if (isset($_SESSION['id'])) {
     $MEMBER = new Member($_SESSION['id']);
 }
-
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +16,8 @@ if (isset($_SESSION['id'])) {
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="flip.lk, flip, Sri Lankan biggest marketplace, Sri Lanka biggest marketplace, Marketplace, marketplace in Sri Lanka, Sri Lankan market, Buy car, sell car, buy goods & services, sell goods & services, buy phone, sell phone">
+        <meta name="description" content="Buy and sell anything at one place. Find a great deal close to you or search anything through the Sri Lanka's biggest marketplace.">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <!-- Main Font -->
         <script src="js/webfontloader.min.js"></script>
@@ -69,19 +70,21 @@ if (isset($_SESSION['id'])) {
                                         <div class="row">
                                             <div class="how-it-work text-center">
                                                 <div class="how-it-work-icon"> 
-                                                    <img src="img/icon/header-icon/user-male-plus.png" alt=""/>
+                                                    <a href="member/login.php" target="_blank"><img src="img/icon/header-icon/user-male-plus.png" alt=""/></a>
                                                 </div>
                                                 <h4>Create Your Account</h4>
                                                 <p>To create your account, just enter your personal information or sign in with Facebook or Google.</p>
                                             </div>
                                             <div class="how-it-work text-center ">
-                                                <div class="how-it-work-icon"> <img src="img/icon/header-icon/post_ad.png" alt=""/> </div>
+                                                <div class="how-it-work-icon"> 
+                                                    <a href="member/create-advertisement.php" target="_blank"><img src="img/icon/header-icon/post_ad.png" alt=""/></a>
+                                                </div>
                                                 <h4>Post Free Ad</h4>
                                                 <p>Click Post Your Ad button and fill form to post your own advertisement.</p>
                                             </div>
                                             <div class="how-it-work text-center">
                                                 <div class="how-it-work-icon ">
-                                                    <img src="img/icon/header-icon/deal_done.png" alt=""/>
+                                                    <a href="all-advertisement.php" target="_blank"><img src="img/icon/header-icon/deal_done.png" alt=""/></a>
                                                 </div>
                                                 <h4>Deal Done</h4>
                                                 <p><b>Congratulations!</b>Your deal was done.</p>
@@ -96,22 +99,21 @@ if (isset($_SESSION['id'])) {
                                         <div class="row">
                                             <div class="how-it-works-xs col-xl-12">
                                                 <div class="how-it-works-xs-icon"> 
-
-                                                    <img src="img/icon/header-icon/user-male-plus.png" alt=""/>
+                                                    <a href="member/login.php" target="_blank"><img src="img/icon/header-icon/user-male-plus.png" alt=""/></a>
                                                 </div>
                                                 <h4>Create Your Account</h4>
                                                 <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
                                             </div>
                                             <div class="how-it-works-xs col-xl-12">
                                                 <div class="how-it-works-xs-icon"> 
-                                                    <img src="img/icon/header-icon/post_ad.png" alt=""/>
+                                                    <a href="member/create-advertisement.php" target="_blank"><img src="img/icon/header-icon/post_ad.png" alt=""/></a>
                                                 </div>
                                                 <h4>Post Free Ad</h4>
                                                 <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
                                             </div>
                                             <div class="how-it-works-xs col-xl-12">
                                                 <div class="how-it-works-xs-icon"> 
-                                                    <img src="img/icon/header-icon/deal_done.png" alt=""/>
+                                                    <a href="all-advertisement.php" target="_blank"><img src="img/icon/header-icon/deal_done.png" alt=""/></a>
                                                 </div>
                                                 <h4>Deal Done</h4>
                                                 <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
@@ -231,7 +233,7 @@ if (isset($_SESSION['id'])) {
                                                         <span class="">
                                                             <i class="lni-user fa fa-user"></i><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?>
                                                         </span>
-<br/>
+                                                        <br/>
                                                         <span>
                                                             <i class="lni-map-marker fa fa-envelope"></i> 
                                                             <?php
@@ -249,7 +251,7 @@ if (isset($_SESSION['id'])) {
 
                                                     <div class="desc">
                                                         <!--<p class="dsc">
-                                                        <?php // echo substr($ad['description'], 0, 100) . '...'; ?>
+                                                        <?php // echo substr($ad['description'], 0, 100) . '...';  ?>
                                                         </p>-->
                                                     </div>
                                                     <div class="listing-bottom">
@@ -310,7 +312,7 @@ if (isset($_SESSION['id'])) {
         <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script src="js/perfect-scrollbar.js"></script>
         <script src="js/js/boost-ad.js" type="text/javascript"></script>
-        
+        <script src="js/js/find-friends.js" type="text/javascript"></script>
         <script>
             var placeSearch, autocomplete;
 

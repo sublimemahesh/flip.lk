@@ -5,7 +5,6 @@ include_once(dirname(__FILE__) . '/auth.php');
 $MEMBER = new Member($_SESSION['id']);
 $groupimg = '';
 $groupcover = '';
-
 if (isset($_SESSION['group-image'])) {
     $groupimg = $_SESSION['group-image'];
 }
@@ -17,7 +16,7 @@ $CATEGORIES = BusinessCategory::all();
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Group || Flip.lk</title>
+        <title>Create Group || Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,90 +42,13 @@ $CATEGORIES = BusinessCategory::all();
         </script>
     </head>
     <body>
-        <!-- Profile Settings Responsive -->
-        <div class="profile-settings-responsive">
-
-            <a class="js-profile-settings-open profile-settings-open">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
-            </a>
-            <div class="mCustomScrollbar" data-mcs-theme="dark">
-                <div class="ui-block">
-                    <div class="your-profile">
-                        <div class="ui-block-title ui-block-title-small">
-                            <h6 class="title">Your PROFILE</h6>
-                        </div>
-
-                        <div id="accordion1" role="tablist" aria-multiselectable="true">
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingOne-1">
-                                    <h6 class="mb-0">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne-1" aria-expanded="true" aria-controls="collapseOne">
-                                            Profile Settings
-                                            <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
-                                        </a>
-                                    </h6>
-                                </div>
-
-                                <div id="collapseOne-1" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-                                    <ul class="your-profile-menu">
-                                        <li>
-                                            <a href="28-YourAccount-PersonalInformation.html">Personal Information</a>
-                                        </li>
-                                        <li>
-                                            <a href="29-YourAccount-AccountSettings.html">Account Settings</a>
-                                        </li>
-                                        <li>
-                                            <a href="30-YourAccount-ChangePassword.html">Change Password</a>
-                                        </li>
-                                        <li>
-                                            <a href="31-YourAccount-HobbiesAndInterests.html">Hobbies and Interests</a>
-                                        </li>
-                                        <li>
-                                            <a href="32-YourAccount-EducationAndEmployement.html">Education and Employement</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="ui-block-title">
-                            <a href="33-YourAccount-Notifications.html" class="h6 title">Notifications</a>
-                            <a class="items-round-little bg-primary">8</a>
-                        </div>
-                        <div class="ui-block-title">
-                            <a href="34-YourAccount-ChatMessages.html" class="h6 title">Chat / Messages</a>
-                        </div>
-                        <div class="ui-block-title">
-                            <a href="35-YourAccount-FriendsRequests.html" class="h6 title">Friend Requests</a>
-                            <a class="items-round-little bg-blue">4</a>
-                        </div>
-                        <div class="ui-block-title ui-block-title-small">
-                            <h6 class="title">FAVOURITE PAGE</h6>
-                        </div>
-                        <div class="ui-block-title">
-                            <a href="36-FavPage-SettingsAndCreatePopup.html" class="h6 title">Create Fav Page</a>
-                        </div>
-                        <div class="ui-block-title">
-                            <a href="36-FavPage-SettingsAndCreatePopup.html" class="h6 title">Fav Page Settings</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ... end Profile Settings Responsive -->
-
         <?php
         include './header.php';
         ?>
-<div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
-        <div class="header-spacer header-spacer-small"></div>
-
-
-
-        <!-- Your Account Personal Information -->
-        <!--<div class="container">-->
+        <div class="col col-xl-10 order-xl-1 col-lg-9 order-lg-1 col-md-9 col-sm-12 col-12">
+            <div class="header-spacer header-spacer-small"></div>
+            <!-- Your Account Personal Information -->
+            <!--<div class="container">-->
             <div class="row">
                 <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
                     <div class="ui-block">
@@ -158,14 +80,14 @@ $CATEGORIES = BusinessCategory::all();
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Email</label>
-                                            <input class="form-control" placeholder="" type="email" name="email" id="email" value="">
+                                            <input class="form-control" placeholder="" type="email" name="email" id="email" value="<?php echo $_SESSION['email']; ?>">
                                         </div>
                                     </div>
 
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Phone Number</label>
-                                            <input class="form-control" placeholder="" type="text" name="phone_number" id="phone-number" value="">
+                                            <input class="form-control" placeholder="" type="text" name="phone_number" id="phone-number" value="<?php echo $_SESSION['phone_number']; ?>">
                                         </div>
                                     </div>
 
@@ -196,23 +118,25 @@ $CATEGORIES = BusinessCategory::all();
                                     <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Address</label>
-                                            <input class="form-control" placeholder="" type="text"  name="address" id="address" value="">
+                                            <input class="form-control" placeholder="" type="text"  name="address" id="address" value="<?php echo $_SESSION['address']; ?>">
                                         </div>
                                     </div>
                                     <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">District</label>
                                             <!--<input class="form-control" placeholder="" type="text" name="district" id="district" value="">-->
-                                            <input type="text" id="autocomplete" class="form-control" placeholder="" onFocus="geolocate()" name="autocomplete" required="TRUE">
-                                            <input type="hidden" name="district" id="district"  value=""/>
+                                            <input type="text" id="autocomplete" class="form-control" placeholder="" onFocus="geolocate()" name="autocomplete" required="TRUE" value="<?php echo $_SESSION['district_string']; ?>">
+                                            <input type="hidden" name="district" id="district" value="<?php echo $_SESSION['district']; ?>"/>
+                                            <input type="hidden" name="district_string" id="district-string" value="<?php echo $_SESSION['district_string']; ?>"/>
                                         </div>
                                     </div>
                                     <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">City</label>
                                             <!--<input class="form-control" placeholder="" type="text" name="city" id="city" value="">-->
-                                            <input type="text" id="autocomplete2" class="form-control" placeholder="" onFocus="geolocate()" name="autocomplete" required="TRUE">
-                                            <input type="hidden" name="city" id="city"  value=""/>
+                                            <input type="text" id="autocomplete2" class="form-control" placeholder="" onFocus="geolocate()" name="autocomplete" required="TRUE" value="<?php echo $_SESSION['city_string']; ?>">
+                                            <input type="hidden" name="city" id="city" value="<?php echo $_SESSION['city']; ?>"/>
+                                            <input type="hidden" name="city_string" id="city-string" value="<?php echo $_SESSION['city_string']; ?>"/>
                                         </div>
                                     </div>
                                     <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
@@ -265,9 +189,6 @@ $CATEGORIES = BusinessCategory::all();
                                         </div>
                                     </div>
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <a class="btn btn-secondary btn-lg full-width">Restore all Attributes</a>
-                                    </div>
-                                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                         <input type="hidden" name="member" value="<?php echo $_SESSION['id']; ?>" />
                                         <input type="submit" name="create-group" id="btn-group" class="btn btn-primary btn-lg full-width" value="Save all Changes" />
                                     </div>
@@ -276,108 +197,15 @@ $CATEGORIES = BusinessCategory::all();
                             <!-- ... end Form Favorite Page Information -->
                         </div>
                     </div>
-
-                    <div class="ui-block">
-                        <div class="ui-block-title">
-                            <h6 class="title">Group Settings</h6>
-                        </div>
-                        <div class="ui-block-content">
-                            <!-- Form Favorite Page Settings -->
-                            <form>
-                                <div class="row">
-
-                                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div class="form-group label-floating is-select">
-                                            <label class="control-label">Who Can Friend You?</label>
-                                            <select class="selectpicker form-control">
-                                                <option value="EO">Everyone</option>
-                                                <option value="NO">No One</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div class="form-group label-floating is-select">
-                                            <label class="control-label">Who Can View Your Posts</label>
-                                            <select class="selectpicker form-control">
-                                                <option value="US">Friends Only</option>
-                                                <option value="EO">Everyone</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <div class="description-toggle">
-                                            <div class="description-toggle-content">
-                                                <div class="h6">Notifications Sound</div>
-                                                <p>A sound will be played each time you receive a new activity notification</p>
-                                            </div>
-
-                                            <div class="togglebutton">
-                                                <label>
-                                                    <input type="checkbox" checked="">
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="description-toggle">
-                                            <div class="description-toggle-content">
-                                                <div class="h6">Notifications Email</div>
-                                                <p>We’ll send you an email to your account each time you receive a new activity notification</p>
-                                            </div>
-
-                                            <div class="togglebutton">
-                                                <label>
-                                                    <input type="checkbox" checked="">
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="description-toggle">
-                                            <div class="description-toggle-content">
-                                                <div class="h6">Friend’s Birthdays</div>
-                                                <p>Choose wheather or not receive notifications about your friend’s birthdays on your newsfeed</p>
-                                            </div>
-
-                                            <div class="togglebutton">
-                                                <label>
-                                                    <input type="checkbox" checked="">
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="description-toggle">
-                                            <div class="description-toggle-content">
-                                                <div class="h6">Chat Message Sound</div>
-                                                <p>A sound will be played each time you receive a new message on an inactive chat window</p>
-                                            </div>
-
-                                            <div class="togglebutton">
-                                                <label>
-                                                    <input type="checkbox" checked="">
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <a class="btn btn-secondary btn-lg full-width">Restore all Attributes</a>
-                                    </div>
-                                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <a class="btn btn-primary btn-lg full-width">Save all Changes</a>
-                                    </div>
-                                </div>
-                            </form>
-
-                            <!-- ... end Form Favorite Page Settings -->
-                        </div>
-                    </div>
                 </div>
-
                 <?php
                 include './account-navigation.php';
                 ?>
             </div>
-        <!--</div>-->
-        <!-- ... end Your Account Personal Information -->
-        <!-- Window-popup -->
-
+            <!--</div>-->
+            <!-- ... end Your Account Personal Information -->
+            <!-- Window-popup -->
+        </div>
         <?php
         include './window-pop-up.php';
         ?>
@@ -385,7 +213,7 @@ $CATEGORIES = BusinessCategory::all();
         include './footer.php';
         ?>
         <!-- ... end Window-popup -->
-</div>
+
         <a class="back-to-top" href="#">
             <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
         </a>
@@ -432,8 +260,8 @@ $CATEGORIES = BusinessCategory::all();
         <script src="js/js/sub-categories.js" type="text/javascript"></script>
         <script src="js/js/group.js" type="text/javascript"></script>
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
-<script src="js/js/find-friends.js" type="text/javascript"></script>
-<script src="js/js/view-notification.js" type="text/javascript"></script>
+        <script src="js/js/find-friends.js" type="text/javascript"></script>
+        <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script>
                                                 var placeSearch, autocomplete, autocomplete2;
 
@@ -461,7 +289,9 @@ $CATEGORIES = BusinessCategory::all();
                                                     var place = autocomplete.getPlace();
                                                     var place2 = autocomplete2.getPlace();
                                                     $('#district').val(place.place_id);
+                                                    $('#district-string').val(place.name);
                                                     $('#city').val(place2.place_id);
+                                                    $('#city-string').val(place2.name);
 //                $('#longitude').val(place.geometry.location.lng());
 //                $('#latitude').val(place.geometry.location.lat());
                                                     for (var component in componentForm) {

@@ -12,7 +12,7 @@ if (isset($_SESSION['id'])) {
 }
 $GROUP = new Group($id);
 $count_members = GroupMember::countGroupMembers($id);
-$admin = GroupMember::getGroupAdmin($GROUP->id);
+$admins = GroupMember::getGroupAdmin($GROUP->id);
 if ($count_members['count'] == 0) {
     $count = '0';
 } elseif ($count_members['count'] < 10) {
@@ -24,7 +24,7 @@ if ($count_members['count'] == 0) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> Groups || Flip.lk</title>
+        <title>Members || Groups || Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -89,6 +89,8 @@ if ($count_members['count'] == 0) {
                                 <?php
                                 foreach (GroupMember::getAllAdminsByGroup($GROUP->id) as $key => $admin) {
                                     $MEM = new Member($admin['member']);
+                                    $countoffriends = Friend::countFriends($MEM->id);
+                                    $countAds = Advertisement::countAdsByMember($MEM->id);
                                     ?>
                                     <div class="col col-lg-4 col-md-6 col-sm-12 col-12">
                                         <div class="ui-block">
@@ -103,11 +105,13 @@ if ($count_members['count'] == 0) {
                                                 <div class="friend-item-content">
 
                                                     <div class="more">
-                                                        <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
+
                                                         <?php
-                                                        if (isset($_SESSION['id'])) {
-                                                            if (in_array($MEMBER->id, $admin)) {
+                                                        
+                                                        if (isset($_SESSION['id']) && in_array($MEMBER->id, $admins)) {
+                                                            if ($MEMBER->id != $MEM->id) {
                                                                 ?>
+                                                                <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
                                                                 <ul class="more-dropdown">
                                                                     <li>
                                                                         <a class="remove-member" id="" group="<?php echo $GROUP->id; ?>" member="<?php echo $MEM->id; ?>">Remove Member</a>
@@ -151,46 +155,35 @@ if ($count_members['count'] == 0) {
                                                     </div>
 
                                                     <div class="swiper-container">
-                                                        <div class="swiper-wrapper">
-                                                            <div class="swiper-slide">
-                                                                <div class="friend-count" data-swiper-parallax="-500">
-                                                                    <a class="friend-count-item">
-                                                                        <div class="h6">52</div>
-                                                                        <div class="title">Friends</div>
-                                                                    </a>
-                                                                    <a class="friend-count-item">
-                                                                        <div class="h6">240</div>
-                                                                        <div class="title">Photos</div>
-                                                                    </a>
-                                                                    <a class="friend-count-item">
-                                                                        <div class="h6">16</div>
-                                                                        <div class="title">Videos</div>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="control-block-button" data-swiper-parallax="-100">
-                                                                    <a class="btn btn-control bg-blue">
-                                                                        <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                                    </a>
-
-                                                                    <a class="btn btn-control bg-purple">
-                                                                        <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
-                                                                    </a>
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="swiper-slide">
-                                                                <p class="friend-about" data-swiper-parallax="-500">
-                                                                    <?php echo substr($MEM->aboutMe, 0, 50) . '...'; ?>
-                                                                </p>
-
-                                                                <div class="friend-since" data-swiper-parallax="-100">
-                                                                    <span>Friends Since:</span>
-                                                                    <div class="h6"><?php echo date_format(date_create(substr($MEM->createdAt, 0, 10)), "F Y"); ?></div>
-                                                                </div>
-                                                            </div>
+                                                        <div class="friend-count" data-swiper-parallax="-500">
+                                                            <a class="friend-count-item">
+                                                                <div class="h6"><?php echo $countoffriends['count']; ?></div>
+                                                                <div class="title">Friends</div>
+                                                            </a>
+                                                            <a class="friend-count-item">
+                                                                <div class="h6"><?php echo $countAds; ?></div>
+                                                                <div class="title">Ads</div>
+                                                            </a>
                                                         </div>
+                                                        <div class="control-block-button" data-swiper-parallax="-100">
+                                                            <?php
+                                                            if (isset($_SESSION['id']) && $MEMBER->id == $MEM->id) {
+                                                                ?>
+                                                                <a  href="member/member-message.php" class="btn btn-control bg-purple">
+                                                                    <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
+                                                                </a>                                                      
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <a  href="member/member-message.php?member=<?php echo $MEM->id; ?>&back=chat" class="btn btn-control bg-purple">
+                                                                    <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
+                                                                </a>
+                                                                <?php
+                                                            }
+                                                            ?>
 
+
+                                                        </div>
                                                         <!-- If we need pagination -->
                                                         <div class="swiper-pagination"></div>
                                                     </div>
@@ -210,6 +203,8 @@ if ($count_members['count'] == 0) {
                                 if (count($allmembers)) {
                                     foreach ($allmembers as $key => $member) {
                                         $MEM = new Member($member['member']);
+                                        $countoffriends = Friend::countFriends($MEM->id);
+                                        $countAds = Advertisement::countAdsByMember($MEM->id);
                                         ?>
                                         <div class="col col-lg-4 col-md-6 col-sm-12 col-12">
                                             <div class="ui-block">
@@ -234,11 +229,12 @@ if ($count_members['count'] == 0) {
                                                     <div class="friend-item-content">
 
                                                         <div class="more">
-                                                            <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
+
                                                             <?php
-                                                            if (isset($_SESSION['id'])) {
-                                                                if (in_array($MEMBER->id, $admin)) {
+                                                            if (isset($_SESSION['id']) &&  in_array($MEMBER->id, $admins)) {
+                                                                if ($MEMBER->id != $MEM->id) {
                                                                     ?>
+                                                                    <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
                                                                     <ul class="more-dropdown">
                                                                         <li>
                                                                             <a class="remove-member" id="" group="<?php echo $GROUP->id; ?>" member="<?php echo $MEM->id; ?>">Remove Member</a>
@@ -257,27 +253,9 @@ if ($count_members['count'] == 0) {
                                                                     <img src="upload/member/member.png" alt="friend" alt="member">
                                                                     <?php
                                                                 } else {
-                                                                    
-                                                                    if ($MEM->profilePicture) {
-                                                                        if ($MEM->facebookID && substr($MEM->profilePicture, 0, 5) === "https") {
-                                                                            ?>
-                                                                            <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
-                                                                            <?php
-                                                                        } elseif ($MEM->googleID && substr($MEM->profilePicture, 0, 5) === "https") {
-                                                                            ?>
-                                                                            <img alt="profile picture" src="<?php echo $MEM->profilePicture; ?>">
-                                                                            <?php
-                                                                        } else {
-                                                                            ?>
-                                                                            <img alt="profile picture" src="upload/member/<?php echo $MEM->profilePicture; ?>">
-                                                                            <?php
-                                                                        }
-                                                                    } else {
-                                                                        ?>
-                                                                        <img src="upload/member/member.png" alt="profile picture">
-                                                                        <?php
-                                                                    }
-                                                                    
+                                                                    ?>
+                                                                    <img src="upload/member/<?php echo $MEM->profilePicture; ?>" alt="friend">
+                                                                    <?php
                                                                 }
                                                                 ?>
                                                             </div>
@@ -298,46 +276,35 @@ if ($count_members['count'] == 0) {
                                                         </div>
 
                                                         <div class="swiper-container">
-                                                            <div class="swiper-wrapper">
-                                                                <div class="swiper-slide">
-                                                                    <div class="friend-count" data-swiper-parallax="-500">
-                                                                        <a class="friend-count-item">
-                                                                            <div class="h6">52</div>
-                                                                            <div class="title">Friends</div>
-                                                                        </a>
-                                                                        <a class="friend-count-item">
-                                                                            <div class="h6">240</div>
-                                                                            <div class="title">Photos</div>
-                                                                        </a>
-                                                                        <a class="friend-count-item">
-                                                                            <div class="h6">16</div>
-                                                                            <div class="title">Videos</div>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="control-block-button" data-swiper-parallax="-100">
-                                                                        <a class="btn btn-control bg-blue">
-                                                                            <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                                        </a>
-
-                                                                        <a class="btn btn-control bg-purple">
-                                                                            <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
-                                                                        </a>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="swiper-slide">
-                                                                    <p class="friend-about" data-swiper-parallax="-500">
-                                                                        <?php echo substr($MEM->aboutMe, 0, 50) . '...'; ?>
-                                                                    </p>
-
-                                                                    <div class="friend-since" data-swiper-parallax="-100">
-                                                                        <span>Friends Since:</span>
-                                                                        <div class="h6"><?php echo date_format(date_create(substr($MEM->createdAt, 0, 10)), "F Y"); ?></div>
-                                                                    </div>
-                                                                </div>
+                                                            <div class="friend-count" data-swiper-parallax="-500">
+                                                                <a class="friend-count-item">
+                                                                    <div class="h6"><?php echo $countoffriends['count']; ?></div>
+                                                                    <div class="title">Friends</div>
+                                                                </a>
+                                                                <a class="friend-count-item">
+                                                                    <div class="h6"><?php echo $countAds; ?></div>
+                                                                    <div class="title">Ads</div>
+                                                                </a>
                                                             </div>
+                                                            <div class="control-block-button" data-swiper-parallax="-100">
+                                                                <?php
+                                                                if (isset($_SESSION['id']) && $MEMBER->id == $MEM->id) {
+                                                                    ?>
+                                                                    <a  href="member/member-message.php" class="btn btn-control bg-purple">
+                                                                        <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
+                                                                    </a>                                                      
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                    <a  href="member/member-message.php?member=<?php echo $MEM->id; ?>&back=chat" class="btn btn-control bg-purple">
+                                                                        <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
+                                                                    </a>
+                                                                    <?php
+                                                                }
+                                                                ?>
 
+
+                                                            </div>
                                                             <!-- If we need pagination -->
                                                             <div class="swiper-pagination"></div>
                                                         </div>
@@ -351,32 +318,12 @@ if ($count_members['count'] == 0) {
                                     }
                                 } else {
                                     ?>
-                                    <!--                            <div class="col col-lg-4 col-md-6 col-sm-12 col-12">
-                                                                    <div class="ui-block">
-                                                                        <h5>This group has no any members.</h5>
-                                                                    </div>
-                                                                </div>-->
+
                                     <?php
                                 }
                                 ?>
 
                             </div>
-
-                            <!--                        <nav aria-label="Page navigation">
-                                                        <ul class="pagination justify-content-center">
-                                                            <li class="page-item disabled">
-                                                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                                            </li>
-                                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">12</a></li>
-                                                            <li class="page-item">
-                                                                <a class="page-link" href="#">Next</a>
-                                                            </li>
-                                                        </ul>
-                                                    </nav>-->
                         </div>
 
                         <?php

@@ -14,7 +14,7 @@ if ($_POST['option'] == 'ADDCOMMENT') {
     if ($result) {
         $NOTIFICATION = new Notification(NULL);
         $MEM = new Member($COMMENT->member);
-        $POST = new Post($COMMENT->advertisement);
+        $POST = new Post($COMMENT->post);
         
         $NOTIFICATION->imageName = $MEM->profilePicture;
         $NOTIFICATION->title = 'New Comment';
@@ -33,6 +33,8 @@ if ($_POST['option'] == 'ADDCOMMENT') {
     $array['date'] = $result->commented_at;
     $array['member'] = $MEMBER->firstName . ' ' . $MEMBER->lastName;
     $array['profile'] = $MEMBER->profilePicture;
+    $array['google_id'] = $MEMBER->googleID;
+    $array['facebook_id'] = $MEMBER->facebookID;
         
     
     if ($result) {

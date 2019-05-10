@@ -486,6 +486,7 @@ $(document).ready(function () {
 
 
 //$(document).ready(function () {
+//    alert(111);
 //    var topUserSearch = $('.js-user-search');
 //alert(topUserSearch);
 //    $.ajax({

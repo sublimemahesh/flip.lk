@@ -36,7 +36,7 @@ $(document).ready(function () {
                             },
                             success: function (result) {
                                 if (result.thumb == '') {
-                                    
+
                                     $('#remove-circle-' + post.id).empty();
                                     return true;
                                 } else {
@@ -57,10 +57,27 @@ $(document).ready(function () {
 
                         var html = '';
 
+                        var img = '';
+
+                        if (member.profilePicture) {
+                            if (member.facebook_id && substr(member.profilePicture, 0, 5) === "https") {
+
+                                img = '<img alt="profile picture" src="' + member.profilePicture + '" class="avatar" >';
+                            } else if (member.google_id && substr(member.profilePicture, 0, 5) === "https") {
+
+                                img = '<img alt="profile picture" src="' + member.profilePicture + '" class="avatar" >';
+                            } else {
+
+                                img = '<img alt="profile picture" src="../upload/member/' + member.profilePicture + '" class="avatar">';
+                            }
+                        } else {
+                            img = '<img alt="profile picture" src="../upload/member/member.png" class="avatar">';
+                        }
+
                         html += '<div class="news-feed-form">';
                         html += '<form action="post-and-get/post.php" method="post" id="edit-post-form">';
                         html += '<div class="author-thumb">';
-                        html += '<img src="../upload/member/' + member.profilePicture + '" alt="author" class="avatar">';
+                        html += img;
                         html += '</div>';
                         html += '<div class="form-group with-icon label-floating">';
                         html += '<label class="control-label">Share what you are thinking here...</label>';

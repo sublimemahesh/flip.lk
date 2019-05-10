@@ -6,6 +6,26 @@
         </a>
     </div>
     <div class="header-content-wrapper">
+        <?php
+        if (isset($_SESSION['id'])) {
+            ?>
+            <form class="search-bar w-search notification-list friend-requests">
+                <div class="form-group with-button">
+                    <input class="form-control js-user-search" id="find-member" placeholder="Search here people..." type="text" value="<?php
+                    if (isset($MEM)) {
+                        echo $MEM->firstName . ' ' . $MEM->lastName;
+                    }
+                    ?>" autocomplete="off">
+                    <div class="" id="name-list-append"></div>
+                    <input type="hidden" name="member" value="" id="member-id"  />
+                    <button>
+                        <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
+                    </button>
+                </div>
+            </form>
+            <?php
+        }
+        ?>
         <div class="control-block">
             <div class="control-icon more has-items">
                 <a href="./">
@@ -28,301 +48,89 @@
             <?php
             include './calculate-time.php';
             if (isset($_SESSION['id'])) {
+                $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
+                $countmsg = AdvertisementMessage::countUnreadMessages($MEMBER->id);
+                $countnotifications = Notification::countUnviewedNotifications($MEMBER->id);
+                $total = (int) $countu['count'] + (int) $countmsg + (int) $countnotifications;
                 ?>
-                <div class="control-icon more has-items icon-newsfeed">
-                    <a href="member/">
-                        <span><img src="img/icon/header-icon/newsfeed.png" alt="" /></span>
-                        <span class="nav-topic">Newsfeed</span>
-                    </a>
-                </div>
-                <div class="control-icon more has-items has-items1 icon-request">
-                    <a href="member/friend-requests.php">
-                        <span>
-                            <img class="follower-request" src="img/icon/header-icon/request.png" alt=""/>
+                <div class="control-icon author-page author vcard inline-items more">
+                    <div class="icon-profile">
+                        <span><img alt="more" src="img/icon/header-icon/more.png" class="" id=""></span>
+                        <?php
+                        if ($total > 0) {
+                            ?>
+                            <div class="label-avatar bg-blue more-circle"><?php echo $total; ?></div>
                             <?php
-                            if (isset($_SESSION['id'])) {
-                                $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
+                        }
+                        ?>
+                        <span class="nav-topic">More <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg></span>
 
-                                if ($countu['count'] > 0) {
-                                    ?>
-                                    <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
-                                    <?php
-                                }
-                            }
-                            ?>
-                        </span>
-                        <span class="nav-topic">Requests</span>
-                    </a>
-                    <div class="more-dropdown more-with-triangle triangle-top-center">
-                        <div class="ui-block-title ui-block-title-small">
-                            <h6 class="title">FOLLOW REQUESTS</h6>
-                            <a>Find Followers</a>
-                            <a>Settings</a>
-                        </div>
-                        <div class="mCustomScrollbar" data-mcs-theme="dark">
-                            <ul class="notification-list friend-requests friend-requests-notification">
-                                <?php
-                                if (isset($_SESSION['id'])) {
-                                    if (count(FriendRequest::getFriendRequestsByMember($MEMBER->id)) > 0) {
-                                        foreach (FriendRequest::getFriendRequestsByMember($MEMBER->id) as $key => $request) {
-                                            if ($key < 4) {
-                                                $MEMB = new Member($request['requested_by'])
-                                                ?>
-                                                <li id="request-to-join-<?php echo $MEMB->id; ?>" class="request-to-join-<?php echo $MEMB->id; ?>">
-                                                    <div class="author-thumb">
-                                                        <?php
-                                                        if ($MEMB->profilePicture) {
-                                                            if ($MEMB->facebookID && substr($MEMB->profilePicture, 0, 5) === "https") {
-                                                                ?>
-                                                                <img alt="profile picture" src="<?php echo $MEMB->profilePicture; ?>">
-                                                                <?php
-                                                            } elseif ($MEMB->googleID && substr($MEMB->profilePicture, 0, 5) === "https") {
-                                                                ?>
-                                                                <img alt="profile picture" src="<?php echo $MEMB->profilePicture; ?>">
-                                                                <?php
-                                                            } else {
-                                                                ?>
-                                                                <img alt="profile picture" src="upload/member/<?php echo $MEMB->profilePicture; ?>">
-                                                                <?php
-                                                            }
-                                                        } else {
-                                                            ?>
-                                                            <img alt="author" src="upload/member/member.png" class="avatar">
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </div>
-                                                    <div class="notification-event">
-                                                        <a class="h6 notification-friend"><?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?></a>
-                                                        <span class="chat-message-item">Mutual Friend: Sarah Hetfield</span>
-                                                    </div>
-                                                    <span class="notification-icon">
-                                                        <a class="accept-request confirm-request" row_id="<?php echo $request['id']; ?>">
-                                                            <span class="icon-add without-text">
-                                                                <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                            </span>
-                                                        </a>
-                                                        <a class="accept-request request-del delete-request" row_id="<?php echo $request['id']; ?>">
-                                                            <span class="icon-minus">
-                                                                <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                            </span>
-                                                        </a>
-                                                    </span>
-                                                </li>
-                                                <li class="accepted hidden accepted-request-<?php echo $MEMB->id; ?>" id="accepted-request-<?php echo $MEMB->id; ?>">
-                                                    <div class="author-thumb member-request-profile-pic">
-                                                        <?php
-                                                        if ($MEMB->profilePicture) {
-                                                            if ($MEMB->facebookID && substr($MEMB->profilePicture, 0, 5) === "https") {
-                                                                ?>
-                                                                <img alt="profile picture" src="<?php echo $MEMB->profilePicture; ?>">
-                                                                <?php
-                                                            } elseif ($MEMB->googleID && substr($MEMB->profilePicture, 0, 5) === "https") {
-                                                                ?>
-                                                                <img alt="profile picture" src="<?php echo $MEMB->profilePicture; ?>">
-                                                                <?php
-                                                            } else {
-                                                                ?>
-                                                                <img alt="profile picture" src="upload/member/<?php echo $MEMB->profilePicture; ?>">
-                                                                <?php
-                                                            }
-                                                        } else {
-                                                            ?>
-                                                            <img alt="author" src="upload/member/member.png" class="avatar">
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </div>
-                                                    <div class="notification-event">
-                                                        <a href="profile.php?id=<?php echo $MEMB->id; ?>" class="h6 notification-friend"><?php echo $MEMB->firstName . ' ' . $MEMB->lastName; ?></a> just became a friend of you.
-                                                    </div>
-                                                    <span class="notification-icon">
-                                                        <svg class="olymp-happy-face-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                    </span>
-                                                </li>
-                                                <?php
-                                            }
-                                        }
-                                    } else {
-                                        ?>
-                                        <li>There is no any follow requests.</li>
-                                        <?php
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
-                        <a href="member/friend-requests.php" class="view-all bg-theme-blue">See All</a>
-                    </div>
-                </div>
-                <div class="control-icon more has-items icon-message">
-                    <a href="member/member-message.php">
-                        <span>
-                            <img src="img/icon/header-icon/message.png" alt=""/>
-                            <?php
-                            if (isset($_SESSION['id'])) {
-                                $countmsg = AdvertisementMessage::countUnreadMessages($MEMBER->id);
-                                if ($countmsg > 0) {
-                                    ?>
-                                    <div class="label-avatar bg-blue newest-request"><?php echo $countmsg; ?></div>
-                                    <?php
-                                }
-                            }
-                            ?>
-                        </span>
-                        <span class="nav-topic">Messaging</span>
-                    </a>
-                    <div class="more-dropdown more-with-triangle triangle-top-center">
-                        <div class="ui-block-title ui-block-title-small">
-                            <h6 class="title">Chat / Messages</h6>
-                            <a>Mark all as read</a>
-                            <a>Settings</a>
-                        </div>
-                        <div class="mCustomScrollbar" data-mcs-theme="dark">
-                            <ul class="notification-list chat-message">
-                                <?php
-                                if (isset($_SESSION['id'])) {
-                                    $unreadmsgs = AdvertisementMessage::getUnreadMessages($MEMBER->id);
-                                    if (count($unreadmsgs) > 0) {
-                                        foreach ($unreadmsgs as $key => $msg) {
-                                            $MESSAGE = new AdvertisementMessage($msg['max']);
-                                            if ($key < 6) {
-                                                if ($MESSAGE->owner == $MEMBER->id) {
-                                                    $MEM1 = new Member($MESSAGE->member);
-                                                } else {
-                                                    $MEM1 = new Member($MESSAGE->owner);
+                        <div class="more-dropdown more-with-triangle profile-dropdown">
+                            <div class="mCustomScrollbar" data-mcs-theme="dark">
+                                <div class="ui-block-title ui-block-title-small">
+                                    <h6 class="title">More</h6>
+                                </div>
+
+                                <ul class="account-settings">
+                                    <li class="dropdown-nav">
+                                        <a href="member/">
+
+                                            <img src="img/icon/header-icon/new/newsfeed.png" alt=""  />
+
+                                            <span>Newsfeed</span>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-nav">
+                                        <a href="member/friend-requests.php">
+                                            <img class="follower-request" src="img/icon/header-icon/new/requests.png" alt=""/>
+
+                                            <span>Requests</span>
+                                            <?php
+                                            if (isset($_SESSION['id'])) {
+                                                if ($countu['count'] > 0) {
+                                                    ?>
+                                                    <div class="label-avatar bg-blue newest-request"><?php echo $countu['count']; ?></div>
+                                                    <?php
                                                 }
-                                                $res = getTime($MESSAGE->createdAt);
-                                                ?>
-                                                <li class="message-unread">
-                                                    <div class="author-thumb">
-                                                        <img src="../upload/member/<?php echo $MEM1->profilePicture; ?>" alt="author">
-                                                    </div>
-                                                    <div class="notification-event">
-                                                        <a href="member/member-message.php?id=<?php echo $MESSAGE->id; ?>" class="h6 notification-friend"><?php echo $MEM1->firstName . ' ' . $MEM1->lastName . ' ' . $MESSAGE->advertisement; ?></a>
-                                                        <span class="chat-message-item">
-                                                            <?php
-                                                            if (strlen($MESSAGE->message) > 50) {
-                                                                echo substr($MESSAGE->message, 0, 48) . '...';
-                                                            } else {
-                                                                echo $MESSAGE->message;
-                                                            }
-                                                            ?>
-                                                        </span>
-                                                        <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18"><?php echo $res; ?></time></span>
-                                                    </div>
-                                                    <span class="notification-icon">
-                                                        <svg class="olymp-chat---messages-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
-                                                    </span>
-                                                    <div class="more">
-                                                        <svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg>
-                                                    </div>
-                                                </li>
-                                                <?php
                                             }
-                                        }
-                                    } else {
-                                        ?>
-                                        <li>There is no any messages.</li>
-                                        <?php
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
-                        <a href="member/member-message.php" class="view-all bg-theme-blue">View All Messages</a>
-                    </div>
-                </div>
+                                            ?>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-nav">
+                                        <a href="member/member-message.php">
+                                            <img src="img/icon/header-icon/new/messaging.png" alt=""/>
 
-                <div class="control-icon more has-items">
-                    <a href="member/notifications.php">
-                        <span>
-                            <img src="img/icon/header-icon/notification.png" alt=""/>
-                            <?php
-                            if (isset($_SESSION['id'])) {
-                                $countnotifications = Notification::countUnviewedNotifications($MEMBER->id);
-                                if ($countnotifications > 0) {
-                                    ?>
-                                    <div class="label-avatar bg-blue newest-request newest-notifications"><?php echo $countnotifications; ?></div>
-                                    <?php
-                                }
-                            }
-                            ?>
-                        </span>
-                        <span class="nav-topic">Notifications</span>
-                    </a>
-                    <div class="more-dropdown more-with-triangle triangle-top-center">
-                        <div class="ui-block-title ui-block-title-small">
-                            <h6 class="title">Notifications</h6>
-                            <a>View All</a>
-                            <a>Settings</a>
-                        </div>
-
-                        <div class="mCustomScrollbar" data-mcs-theme="dark">
-                            <ul class="notification-list chat-message">
-
-                                <?php
-                                if (isset($_SESSION['id'])) {
-                                    $unviewednotif = Notification::getUnviewedNotifications($MEMBER->id);
-                                    if (count($unviewednotif) > 0) {
-                                        foreach ($unviewednotif as $key => $notification) {
-                                            $res1 = getTime($notification['created_at']);
-                                            if ($key < 6) {
-//                                            $res = getTime($MESSAGE->createdAt);
-                                                ?>
-                                                <li class="message-unread notif-list" notification="<?php echo $notification['id']; ?>" id="notif_<?php echo $notification['id']; ?>">
-                                                    <div class="author-thumb">
-                                                        <?php
-                                                        if ($notification['title'] == 'Approved Request') {
-                                                            if ($notification['image_name']) {
-                                                                ?>
-                                                                <img src="upload/group/<?php echo $notification['image_name']; ?>" alt="author">
-                                                                <?php
-                                                            } else {
-                                                                ?>
-                                                                <img src="upload/group/member.png" alt="author">
-                                                                <?php
-                                                            }
-                                                        } elseif ($notification['image_name']) {
-                                                            if (substr($notification['image_name'], 0, 5) == 'https') {
-                                                                ?>
-                                                                <img src="<?php echo $notification['image_name']; ?>" alt="author">
-                                                                <?php
-                                                            } else {
-                                                                ?>
-                                                                <img src="upload/member/<?php echo $notification['image_name']; ?>" alt="author">
-                                                                <?php
-                                                            }
-                                                        } else {
-                                                            ?>
-                                                            <img src="upload/member/member.png" alt="author">
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </div>
-                                                    <div class="notification-event">
-                                                        <a href="<?php echo 'member/' . $notification['url']; ?>" class="h6 notification-friend"><?php echo $notification['title']; ?></a>
-                                                        <span class="chat-message-item">
-                                                            <?php echo $notification['description']; ?>
-                                                        </span>
-                                                        <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18"><?php echo $res1; ?></time></span>
-                                                    </div>
-
-                                                </li>
-                                                <?php
+                                            <span>Messaging</span>
+                                            <?php
+                                            if (isset($_SESSION['id'])) {
+                                                if ($countmsg > 0) {
+                                                    ?>
+                                                    <div class="label-avatar bg-blue newest-request"><?php echo $countmsg; ?></div>
+                                                    <?php
+                                                }
                                             }
-                                        }
-                                    } else {
-                                        ?>
-                                        <li>There is no any notifications.</li>
-                                        <?php
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
+                                            ?>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-nav">
+                                        <a href="member/notifications.php">
+                                            <img src="img/icon/header-icon/new/notification.png" alt=""/>
 
-                        <a href="member/notifications.php" class="view-all bg-theme-blue">View All</a>
+                                            <span>Notifications</span>
+                                            <?php
+                                            if (isset($_SESSION['id'])) {
+                                                if ($countnotifications > 0) {
+                                                    ?>
+                                                    <div class="label-avatar bg-blue newest-request newest-notifications"><?php echo $countnotifications; ?></div>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <?php

@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     $('#find-member').keyup(function (e) {
+
         if (e.which != 38) {
             if (e.which != 40) {
                 if (e.which != 13) {
@@ -17,40 +18,48 @@ $(document).ready(function () {
 
                             var html = '';
                             $.each(result, function (key) {
+                                
                                 if (key < 8) {
+                                    var img = '';
+                                    var propic = this.profile_picture;
+
+                                    if (this.profile_picture) {
+                                        if (this.facebook_id && propic.substring(0, 5) === "https") {
+
+                                            img = '<img alt="profile picture" src="' + this.profile_picture + '" >';
+                                        } else if (this.google_id && propic.substring(0, 5) === "https") {
+
+                                            img = '<img alt="profile picture" src="' + this.profile_picture + '" >';
+                                        } else {
+
+                                            img = '<img alt="profile picture" src="../upload/member/' + this.profile_picture + '">';
+                                        }
+                                    } else {
+                                        img = '<img alt="profile picture" src="../upload/member/member.png">';
+                                    }
                                     if (key === 0) {
 //                                    html += '<li id="c' + this.id + '" class="name">' + this.name + '</li>';
 //                                        html += '<li id="c' + this.id + '" class="name selected">' + this.first_name + ' ' + this.last_name + '</li>';
-                                        html += '<div class="col-md-12 search-items member" id="c' + this.id + '" data-selectable="" data-value="' + this.first_name + ' ' + this.last_name + '">';
                                         html += '<a href="profile.php?id=' + this.id + '">';
-                                        html += '<div class="col-xs-2 author-thumb"><img src="../upload/member/' + this.profile_picture + '" alt="avatar">';
+                                        html += '<div class="col-md-12 search-items member" id="c' + this.id + '" data-selectable="" data-value="' + this.first_name + ' ' + this.last_name + '">';
+                                        html += '<div class="col-xs-2 author-thumb">' + img;
                                         html += '</div>';
-                                        html += '<div class="col-xs-9 notification-event">';
+                                        html += '<div class="col-xs-10 notification-event">';
                                         html += '<span class="h6 notification-friend">' + this.first_name + ' ' + this.last_name + '</span>';
 //                                        html += '<span class="chat-message-item">4 Friends in Common</span>';
                                         html += '</div>';
-                                        html += '<span class="col-xs-1 notification-icon">';
-                                        html += '<svg class="olymp-happy-face-icon">';
-                                        html += '<use xlink:href="icons/icons.svg#olymp-happy-face-icon"></use>';
-                                        html += '</svg>';
-                                        html += '</span>';
-                                        html += '</a>';
                                         html += '</div>';
+                                        html += '</a>';
                                     } else {
 //                                        html += '<li id="c' + this.id + '" class="name">' + this.name + '</li>';
-                                        html += '<div class="col-md-12 search-items member" id="c' + this.id + '" data-selectable="" data-value="' + this.first_name + ' ' + this.last_name + '">';
                                         html += '<a href="profile.php?id=' + this.id + '">';
-                                        html += '<div class="col-xs-2 author-thumb"><img src="../upload/member/' + this.profile_picture + '" alt="avatar">';
+                                        html += '<div class="col-md-12 search-items member" id="c' + this.id + '" data-selectable="" data-value="' + this.first_name + ' ' + this.last_name + '">';
+                                        html += '<div class="col-xs-2 author-thumb">' + img;
                                         html += '</div>';
-                                        html += '<div class="col-xs-9 notification-event">';
+                                        html += '<div class="col-xs-10 notification-event">';
                                         html += '<span class="h6 notification-friend">' + this.first_name + ' ' + this.last_name + '</span>';
 //                                        html += '<span class="chat-message-item">4 Friends in Common</span>';
                                         html += '</div>';
-                                        html += '<span class="col-xs-1 notification-icon">';
-                                        html += '<svg class="olymp-happy-face-icon">';
-                                        html += '<use xlink:href="icons/icons.svg#olymp-happy-face-icon"></use>';
-                                        html += '</svg>';
-                                        html += '</span>';
                                         html += '</div>';
                                         html += '</a>';
                                     }
@@ -63,6 +72,9 @@ $(document).ready(function () {
                 }
             }
         }
+    });
+    $('body').on('click', function (e) {
+        $('#name-list-append').empty();
     });
 
     $('#name-list-append').on('click', '.member', function () {
@@ -78,15 +90,15 @@ $(document).ready(function () {
             $('#member-id').val("");
         });
     });
-    $('#name-list-append').on('mouseover', '.member', function () {
-        var memberId = this.id;
-        var member = $(this).attr('data-value');
-        $('#member-id').val(memberId.replace("c", ""));
-        $('#find-member').val(member);
-        $('#find-member').change(function () {
-            $('#member-id').val("");
-        });
-    });
+//    $('#name-list-append').on('mouseover', '.member', function () {
+//        var memberId = this.id;
+//        var member = $(this).attr('data-value');
+//        $('#member-id').val(memberId.replace("c", ""));
+//        $('#find-member').val(member);
+//        $('#find-member').change(function () {
+//            $('#member-id').val("");
+//        });
+//    });
 
     $('#find-member').keyup(function (e) {
 
@@ -120,7 +132,7 @@ $(document).ready(function () {
             var membername = $('div .selected').attr('data-value');
             $('#find-member').val(membername);
             $('#name-list-append').empty();
-            window.location.replace('profile.php?id='+memberId);
+            window.location.replace('profile.php?id=' + memberId);
             $('#find-member').change(function (e) {
                 $('#find-member').attr('attempt', 0);
             });

@@ -36,6 +36,8 @@ $propic = $MEMBER->profilePicture;
         <link rel="stylesheet" type="text/css" href="Bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="Bootstrap/dist/css/bootstrap-grid.css">
         <!-- Main Styles CSS -->
+        <link rel="stylesheet" href="/resources/demos/style.css">  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
         <link rel="stylesheet" type="text/css" href="css/main.min.css">
         <link rel="stylesheet" type="text/css" href="css/fonts.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
@@ -50,8 +52,12 @@ $propic = $MEMBER->profilePicture;
                 display: none;
             }
         </style>
+
+
     </head>
     <body>
+
+        <!--<div id="progressbar"><div class="progress-label">Loading...</div></div>-->
         <?php
         include './header.php';
         ?>
@@ -855,6 +861,7 @@ $propic = $MEMBER->profilePicture;
 
 
         <!-- JS Scripts -->
+
         <script src="js/jquery-3.2.1.js"></script>
         <script src="js/jquery.appear.js"></script>
         <script src="js/jquery.mousewheel.js"></script>
@@ -870,6 +877,7 @@ $propic = $MEMBER->profilePicture;
         <script src="js/popper.min.js"></script>
         <script src="js/material.min.js"></script>
         <script src="js/bootstrap-select.js"></script>
+
         <script src="js/smooth-scroll.js"></script>
         <script src="js/selectize.js"></script>
         <script src="js/swiper.jquery.js"></script>
@@ -892,6 +900,8 @@ $propic = $MEMBER->profilePicture;
         <script src="js/base-init.js"></script>
         <script defer src="fonts/fontawesome-all.js"></script>
         <script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+        <script src="js/js/find-all.js" type="text/javascript"></script>
         <script src="js/js/find-friends.js" type="text/javascript"></script>
         <script src="js/js/friend-request.js" type="text/javascript"></script>
         <script src="plugins/sweetalert/sweetalert.min.js" type="text/javascript"></script>
@@ -908,5 +918,7 @@ $propic = $MEMBER->profilePicture;
         <script src="js/image-preloader.js" type="text/javascript"></script>
         <script src="js/js/read-more-and-less.js" type="text/javascript"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
+
+
     </body>
 </html>

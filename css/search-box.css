@@ -1843,7 +1843,7 @@ span.flatpickr-weekday {
         width: 100%;
     }
     .s002 form .inner-form .input-field.second-wrap {
-        width: 220px;
+        width: calc(50% - 7.5px);
         min-width: 220px;
         max-width: none;
     }
@@ -1857,21 +1857,21 @@ span.flatpickr-weekday {
         margin-bottom: 0;
     }
     .s002 form .inner-form .input-field.fifth-wrap {
-        width: calc(50% - 7.5px);
+        width: 100%;
         max-width: none;
         padding-left: 0;
         margin-bottom: 0;
     }
     .s002 form .inner-form .input-field .custom-select.icon-wrap {
-    width: 100%;
-    margin-bottom: 15px;
+        width: 100%;
+        margin-bottom: 15px;
     }
     .select-items {
-    position: absolute;
-    z-index: 9999;
+        position: absolute;
+        z-index: 9999;
     }
     .select-items div {
-    font-size: 15px;
+        font-size: 15px;
     }
     .s002 form .inner-form .input-field .icon-wrap svg {
         z-index: 0;
@@ -1889,7 +1889,7 @@ span.flatpickr-weekday {
     .s002 form .inner-form .input-field.second-wrap, .s002 form .inner-form .input-field.third-wrap, .s002 form .inner-form .input-field.fouth-wrap, .s002 form .inner-form .input-field.fifth-wrap {
         width: 100%;
         margin-bottom: 15px;
-        
+
     }
     .s002 form .inner-form .input-field.second-wrap {
         margin-top: 35px;

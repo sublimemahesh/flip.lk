@@ -98,21 +98,20 @@ $MEMBER = new Member($id);
                                                         }
                                                         ?>
                                                     </td>
-
-                                                    <td> 
+                                                    
+                                                    <td>
                                                         <a href="edit-member.php?id=<?php echo $member['id']; ?>" class="op-link btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i>
                                                         </a>
-
                                                         <?php
                                                         if ($member['is_suspend'] == 0) {
                                                             ?>
-                                                            <a class="suspend-member btn btn-sm btn-warning" data-id="<?php echo $member['id']; ?>">
+                                                            <a class="suspend-member btn btn-sm btn-warning" data-id="<?php echo $member['id']; ?>" title="Active">
                                                             <i class="glyphicon glyphicon-eye-open" data-type="cancel"></i>
                                                         </a>
                                                             <?php
                                                         } else {
                                                             ?>
-                                                            <a class="remove-suspend btn btn-sm btn-warning" data-id="<?php echo $member['id']; ?>">
+                                                            <a class="remove-suspend btn btn-sm btn-warning" data-id="<?php echo $member['id']; ?>"  title="Deactive">
                                                             <i class="glyphicon glyphicon-eye-close" data-type="cancel"></i>
                                                         </a>
                                                             <?php

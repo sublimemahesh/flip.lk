@@ -57,64 +57,140 @@ if (isset($_GET['id'])) {
 
                     <div class="col col-xl-12 order-xl-1 col-lg-12 order-lg-1 col-md-12 order-md-2 col-sm-12 col-12">
                         <div class="ui-block">
-                            <div class="ui-block-title">
-                                <h6 class="title">Personal Info</h6>
-                                <a class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
+                                <div class="ui-block-title">
+                                    <h6 class="title">Personal Info</h6>
+                                </div>
+                                <div class="ui-block-content">
+
+
+                                    <!-- W-Personal-Info -->
+
+                                    <ul class="widget w-personal-info">
+                                        <li>
+                                            <span class="title">About Me:</span>
+                                            <span class="text">
+                                                <?php
+                                                if ($MEM->aboutMe) {
+                                                    echo $MEM->aboutMe;
+                                                } else {
+                                                    echo '-';
+                                                }
+                                                ?>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Birthday:</span>
+                                            <span class="text">
+                                                <?php
+                                                if ($MEM->dob) {
+                                                    echo date_format(date_create($MEM->dob), "F dS, Y");
+                                                } else {
+                                                    echo '-';
+                                                }
+                                                ?>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Lives in:</span>
+                                            <span class="text">
+                                                <?php
+                                                if ($MEM->address) {
+                                                    echo $MEM->address;
+                                                } else {
+                                                    echo '-';
+                                                }
+                                                ?>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="title">City:</span>
+                                            <span class="text">
+                                                <?php
+                                                if ($MEM->cityString) {
+                                                    echo $MEM->cityString;
+                                                } else {
+                                                    echo '-';
+                                                }
+                                                ?>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="title">District:</span>
+                                            <span class="text">
+                                                <?php
+                                                if ($MEM->districtString) {
+                                                    echo $MEM->districtString;
+                                                } else {
+                                                    echo '-';
+                                                }
+                                                ?>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Occupation:</span>
+                                            <span class="text">
+                                                <?php
+                                                if ($MEM->occupation) {
+                                                    echo $MEM->occupation;
+                                                } else {
+                                                    echo '-';
+                                                }
+                                                ?>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Joined:</span>
+                                            <span class="text"><?php echo date_format(date_create(substr($MEM->createdAt, 0, 10)), "F dS, Y"); ?></span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Gender:</span>
+                                            <span class="text">
+                                                <?php
+                                                if ($MEM->gender) {
+                                                    echo ucfirst($MEM->gender);
+                                                } else {
+                                                    echo '-';
+                                                }
+                                                ?>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Status:</span>
+                                            <span class="text">
+                                                <?php
+                                                if ($MEM->civilStatus) {
+                                                    if ($MEM->civilStatus == 'not_married') {
+                                                        echo 'Not Married';
+                                                    } else {
+                                                        echo 'Married';
+                                                    };
+                                                } else {
+                                                    echo '-';
+                                                }
+                                                ?>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Email:</span>
+                                            <a class="text"><?php echo $MEM->email; ?></a>
+                                        </li>
+                                        <li>
+                                            <span class="title">Phone Number:</span>
+                                            <span class="text">
+                                                <?php
+                                                if ($MEM->phoneNumber) {
+                                                    echo $MEM->phoneNumber;
+                                                } else {
+                                                    echo '-';
+                                                }
+                                                ?>
+                                            </span>
+                                        </li>
+                                    </ul>
+
+                                    <!-- ... end W-Personal-Info -->
+                                </div>
                             </div>
-                            <div class="ui-block-content">
-
-
-                                <!-- W-Personal-Info -->
-
-                                <ul class="widget w-personal-info">
-                                    <li>
-                                        <span class="title">About Me:</span>
-                                        <span class="text"><?php echo $MEM->aboutMe; ?>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="title">Birthday:</span>
-                                        <span class="text"><?php echo date_format(date_create($MEM->dob), "F dS, Y"); ?></span>
-                                    </li>
-                                    <li>
-                                        <span class="title">Lives in:</span>
-                                        <span class="text"><?php echo $MEM->address; ?></span>
-                                    </li>
-                                    <li>
-                                        <span class="title">Occupation:</span>
-                                        <span class="text"><?php echo $MEM->occupation; ?></span>
-                                    </li>
-                                    <li>
-                                        <span class="title">Joined:</span>
-                                        <span class="text"><?php echo date_format(date_create(substr($MEM->createdAt, 0, 10)), "F dS, Y"); ?></span>
-                                    </li>
-                                    <li>
-                                        <span class="title">Gender:</span>
-                                        <span class="text"><?php echo ucfirst($MEM->gender); ?></span>
-                                    </li>
-                                    <li>
-                                        <span class="title">Status:</span>
-                                        <span class="text"><?php
-                                            if ($MEM->civilStatus == 'not_married') {
-                                                echo 'Not Married';
-                                            } else {
-                                                echo 'Married';
-                                            };
-                                            ?></span>
-                                    </li>
-                                    <li>
-                                        <span class="title">Email:</span>
-                                        <a class="text"><?php echo $MEM->email; ?></a>
-                                    </li>
-                                    <li>
-                                        <span class="title">Phone Number:</span>
-                                        <span class="text"><?php echo $MEM->phoneNumber; ?></span>
-                                    </li>
-                                </ul>
-
-                                <!-- ... end W-Personal-Info -->
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

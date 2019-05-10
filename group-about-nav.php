@@ -1,12 +1,12 @@
 <?php
 $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->id);
+$countAds = Advertisement::countAdsByGroup($GROUP->id);
 ?>
 
 <div class="col col-xl-4 order-xl-1 col-lg-4 order-lg-2 col-md-6 col-sm-12 col-12">
     <div class="ui-block">
         <div class="ui-block-title">
             <h6 class="title">About Group</h6>
-            <a class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
         </div>
         <div class="ui-block-content">
 
@@ -22,9 +22,7 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->
                 </li>
                 <li>
                     <span class="title">Based in:</span>
-                    <span class="text" id="city"></span><span class="text" id="district"></span>
-                    <input type="hidden" id="autocomplete" value="<?php echo $GROUP->city; ?>" />
-                    <input type="hidden" id="autocomplete2" value="<?php echo $GROUP->district; ?>" />
+                    <span class="text"><?php echo $GROUP->cityString . ', ' . $GROUP->districtString; ?></span>
                 </li>
                 <li>
                     <span class="title">Email:</span>
@@ -40,48 +38,19 @@ $no_of_request = GroupAndMemberRequest::getCountOfMemberRequestsByGroup($GROUP->
                     </span>
                 </li>
                 <li>
-                    <span class="title">Favourites:</span>
-                    <a class="text">5630 </a>
+                    <span class="title">No of Ads:</span>
+                    <a class="text"><?php echo $countAds; ?> </a>
                 </li>
             </ul>
 
             <!-- ... end W-Personal-Info -->
         </div>
     </div>
-    <?php
-    if(isset($_SESSION['id'])) {
-    if (GroupMember::checkMemberIsAnAdmin($MEMBER->id, $GROUP->id)) {
-        ?>
-        <div class="ui-block">
-            <div class="ui-block-title">
-                <h6 class="title">Admin Activity</h6>
-                <a class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
-            </div>
-            <div class="ui-block-content">
-
-                <!-- W-Personal-Info -->
-
-                <ul class="widget w-personal-info item-block">
-                    <li>
-                        <a href="member-requests.php?id=<?php echo $GROUP->id; ?>"<span class="title">Member Requests:</span><span class="request-label-avatar bg-blue"><?php echo $no_of_request['count']; ?></span></a>
-                    </li>
-                    <li>
-                        <a href="group-settings.php?id=<?php echo $GROUP->id; ?>"<span class="title">Group Settings</span></a>
-                    </li>
-                </ul>
-
-                <!-- ... end W-Personal-Info -->
-            </div>
-        </div>
-        <?php
-    }
-    }
-    ?>
 
     <div class="ui-block">
         <div class="ui-block-title">
             <h6 class="title">Group Members (<?php echo count(GroupMember::getAllMembersByGroup($GROUP->id)); ?>)</h6>
-            <a class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
+            
         </div>
         <div class="ui-block-content">
 

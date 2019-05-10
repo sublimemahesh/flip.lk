@@ -30,18 +30,16 @@
                                         <li>
                                             <a href="about-member.php?id=<?php echo $MEM->id; ?>">About</a>
                                         </li>
-                                        <li>
-                                            <a href="followers.php?id=<?php echo $MEM->id; ?>">Followers</a>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                                 <div class="col col-lg-5 ml-auto col-md-5 col-sm-12 col-12">
                                     <ul class="profile-menu">
                                         <li>
-                                            <a>Photos</a>
+                                            <a href="followers.php?id=<?php echo $MEM->id; ?>">Followers</a>
                                         </li>
                                         <li>
-                                            <a href="member-message.php">Messages</a>
+                                            <a href="member/member-message.php?back=chat&member=<?php echo $MEM->id; ?>">Messages</a>
                                         </li>
 
                                     </ul>
@@ -71,7 +69,7 @@
                                             <a href="advertisement.php">My Advertisement</a>
                                         </li>
                                         <li>
-                                            <a href="member-message.php">Messages</a>
+                                            <a href="member/member-message.php?back=chat">Messages</a>
                                         </li>
 
                                     </ul>
@@ -96,11 +94,9 @@
                                         <li>
                                             <a href="followers.php?id=<?php echo $MEM->id; ?>">Followers</a>
                                         </li>
+                                        
                                         <li>
-                                            <a>Photos</a>
-                                        </li>
-                                        <li>
-                                            <a href="member-message.php">Messages</a>
+                                            <a href="member/member-message.php?back=chat&member=<?php echo $MEM->id; ?>">Messages</a>
                                         </li>
 
                                     </ul>
@@ -125,7 +121,7 @@
                                             <a href="advertisement.php">My Advertisement</a>
                                         </li>
                                         <li>
-                                            <a href="member-message.php">Messages</a>
+                                            <a href="member/member-message.php?back=chat">Messages</a>
                                         </li>
 
                                     </ul>
@@ -163,7 +159,7 @@
 
                     </div>
                     <div class="top-header-author">
-                        <a href="profile.php" class="author-thumb main-profile-pic">
+                        <a href="view-member.php?id=<?php echo $MEM->id; ?>" class="author-thumb main-profile-pic">
                             <?php
                             if ($MEM->profilePicture) {
 
@@ -188,7 +184,7 @@
                             ?>
                         </a>
                         <div class="author-content">
-                            <a href="profile.php" class="h4 author-name"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>
+                            <a href="view-member.php?id=<?php echo $MEM->id; ?>" class="h4 author-name"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>
                             <!--<div class="country"><?php echo $MEM->city . ' ' . $MEM->district; ?></div>-->
                         </div>
                     </div>

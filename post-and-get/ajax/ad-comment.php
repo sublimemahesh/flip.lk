@@ -18,6 +18,8 @@ if ($_POST['option'] == 'ADDCOMMENT') {
     $array['date'] = $result->commented_at;
     $array['member'] = $MEMBER->firstName . ' ' . $MEMBER->lastName;
     $array['profile'] = $MEMBER->profilePicture;
+    $array['google_id'] = $MEMBER->googleID;
+    $array['facebook_id'] = $MEMBER->facebookID;
         
     
     if ($result) {

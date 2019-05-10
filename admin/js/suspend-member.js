@@ -9,7 +9,7 @@ $(document).ready(function () {
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, suspend member!",
+            confirmButtonText: "Yes, Deactive member!",
             closeOnConfirm: false
         }, function () {
 
@@ -22,8 +22,8 @@ $(document).ready(function () {
                     if (jsonStr.status) {
 
                         swal({
-                            title: "Suspended!",
-                            text: "Member has been suspended.",
+                            title: "Deactivated!",
+                            text: "Member has been deactivated.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false
@@ -46,7 +46,7 @@ $(document).ready(function () {
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, remove suspended!",
+            confirmButtonText: "Yes, Active member!",
             closeOnConfirm: false
         }, function () {
 
@@ -59,8 +59,8 @@ $(document).ready(function () {
                     if (jsonStr.status) {
 
                         swal({
-                            title: "Removed!",
-                            text: "Member's suspend has been removed.",
+                            title: "Activated!",
+                            text: "Member has been activated.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false

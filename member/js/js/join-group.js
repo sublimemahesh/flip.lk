@@ -45,7 +45,7 @@ $(document).ready(function () {
     });
 
     $('.approve-request').click(function () {
-        
+
         var row = $(this).attr('row_id');
 
         $.ajax({
@@ -59,7 +59,7 @@ $(document).ready(function () {
             success: function (mess) {
                 $('.request-to-join-' + mess.member).addClass('hidden');
                 $('#request-to-join-' + mess.member).addClass('hidden');
-                
+
                 $('#accepted-request-' + mess.member).removeClass('hidden');
                 $('.accepted-request-' + mess.member).removeClass('hidden');
 
@@ -174,11 +174,27 @@ $(document).ready(function () {
                             var html = '';
                             $.each(result, function (key) {
                                 if (key < 8) {
+                                    var img = '';
+
+                                    if (this.profile_picture) {
+                                        if (this.facebook_id && substr(this.profile_picture, 0, 5) === "https") {
+
+                                            img = '<img alt="profile picture" src="' + this.profile_picture + '" >';
+                                        } else if (this.google_id && substr(this.profile_picture, 0, 5) === "https") {
+
+                                            img = '<img alt="profile picture" src="' + this.profile_picture + '" >';
+                                        } else {
+
+                                            img = '<img alt="profile picture" src="../upload/member/' + this.profile_picture + '">';
+                                        }
+                                    } else {
+                                        img = '<img alt="profile picture" src="../upload/member/member.png">';
+                                    }
                                     if (key === 0) {
 //                                    html += '<li id="c' + this.id + '" class="name">' + this.name + '</li>';
 //                                        html += '<li id="c' + this.id + '" class="name selected">' + this.first_name + ' ' + this.last_name + '</li>';
                                         html += '<div class="col-md-12 search-items search-items1 member" id="c' + this.id + '" data-selectable="" data-value="' + this.first_name + ' ' + this.last_name + '">';
-                                        html += '<div class="col-xs-2 author-thumb"><img src="../upload/member/' + this.profile_picture + '" alt="avatar">';
+                                        html += '<div class="col-xs-2 author-thumb">' + img;
                                         html += '</div>';
                                         html += '<div class="col-xs-9 notification-event">';
                                         html += '<span class="h6 notification-friend">' + this.first_name + ' ' + this.last_name + '</span><br />';
@@ -193,7 +209,7 @@ $(document).ready(function () {
                                     } else {
 //                                        html += '<li id="c' + this.id + '" class="name">' + this.name + '</li>';
                                         html += '<div class="col-md-12 search-items  search-items1 member" id="c' + this.id + '" data-selectable="" data-value="' + this.first_name + ' ' + this.last_name + '">';
-                                        html += '<div class="col-xs-2 author-thumb"><img src="../upload/member/' + this.profile_picture + '" alt="avatar">';
+                                        html += '<div class="col-xs-2 author-thumb">' + img;
                                         html += '</div>';
                                         html += '<div class="col-xs-9 notification-event">';
                                         html += '<span class="h6 notification-friend">' + this.first_name + ' ' + this.last_name + '</span><br />';

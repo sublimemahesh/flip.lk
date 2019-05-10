@@ -7,7 +7,7 @@ $MEMBER = new Member($_SESSION['id']);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Flip.lk</title>
+        <title>Newsfeed || Flip.lk || Sri Lankan Biggest Business Group</title>
 
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">

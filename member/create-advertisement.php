@@ -8,10 +8,10 @@ if (!isset($_SESSION)) {
 }
 if (!Member::authenticate()) {
     if ($_GET['back'] == 'ad') {
-//        $_SESSION["back_url"] = 'http://flip.islandwide.website/flip.lk/member/create-advertisement.php';
-        $_SESSION["back_url"] = 'http://localhost/flip.lk/member/create-advertisement.php';
+        $_SESSION["back_url"] = 'https://www.flip.lk/member/create-advertisement.php';
+//        $_SESSION["back_url"] = 'http://localhost/flip.lk/member/create-advertisement.php';
     }
-    
+
     redirect('login.php?message=24');
 } else {
     $MEMBER = new Member($_SESSION['id']);
@@ -30,7 +30,7 @@ $CATEGORIES = BusinessCategory::all();
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Create Advertisement | Flip.lk</title>
+        <title>Create Advertisement || Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,108 +56,12 @@ $CATEGORIES = BusinessCategory::all();
         </script>
     </head>
     <body>
-
-        <!-- Profile Settings Responsive -->
-        <div class="profile-settings-responsive">
-
-            <a href="#" class="js-profile-settings-open profile-settings-open">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
-            </a>
-            <div class="mCustomScrollbar" data-mcs-theme="dark">
-                <div class="ui-block">
-                    <div class="your-profile">
-                        <div class="ui-block-title ui-block-title-small">
-                            <h6 class="title">YOUR PROFILE</h6>
-                        </div>
-
-                        <div id="accordion1" role="tablist" aria-multiselectable="true">
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingOne-1">
-                                    <h6 class="mb-0">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne-1" aria-expanded="true" aria-controls="collapseOne">
-                                            Profile Settings
-                                            <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
-                                        </a>
-                                    </h6>
-                                </div>
-
-                                <div id="collapseOne-1" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-                                    <ul class="your-profile-menu">
-                                        <li>
-                                            <a href="28-YourAccount-PersonalInformation.html">Personal Information</a>
-                                        </li>
-                                        <li>
-                                            <a href="29-YourAccount-AccountSettings.html">Account Settings</a>
-                                        </li>
-                                        <li>
-                                            <a href="30-YourAccount-ChangePassword.html">Change Password</a>
-                                        </li>
-                                        <li>
-                                            <a href="31-YourAccount-HobbiesAndInterests.html">Hobbies and Interests</a>
-                                        </li>
-                                        <li>
-                                            <a href="32-YourAccount-EducationAndEmployement.html">Education and Employement</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="ui-block-title">
-                            <a href="33-YourAccount-Notifications.html" class="h6 title">Notifications</a>
-                            <a href="#" class="items-round-little bg-primary">8</a>
-                        </div>
-                        <div class="ui-block-title">
-                            <a href="34-YourAccount-ChatMessages.html" class="h6 title">Chat / Messages</a>
-                        </div>
-                        <div class="ui-block-title">
-                            <a href="35-YourAccount-FriendsRequests.html" class="h6 title">Friend Requests</a>
-                            <a href="#" class="items-round-little bg-blue">4</a>
-                        </div>
-                        <div class="ui-block-title ui-block-title-small">
-                            <h6 class="title">FAVOURITE PAGE</h6>
-                        </div>
-                        <div class="ui-block-title">
-                            <a href="36-FavPage-SettingsAndCreatePopup.html" class="h6 title">Create Fav Page</a>
-                        </div>
-                        <div class="ui-block-title">
-                            <a href="36-FavPage-SettingsAndCreatePopup.html" class="h6 title">Fav Page Settings</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ... end Profile Settings Responsive -->
-
         <?php
         include './header.php';
         ?>
-
         <div class="header-spacer header-spacer-small"></div>
         <div class="col col-xl-12 col-12">
-            <!-- Main Header Account -->
-<!--            <div class="main-header">
-                <div class="content-bg-wrap bg-account"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-                            <div class="main-header-content">
-                                <h1>Your Account Dashboard</h1>
-                                <p>Welcome to your account dashboard! Here you’ll find everything you need to change your profile
-                                    information, settings, read notifications and requests, view your latest messages, change your pasword and much
-                                    more! Also you can create or manage your own favourite page, have fun!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <img class="img-bottom" src="img/account-bottom.png" alt="friends">
-            </div>-->
-
-            <!-- ... end Main Header Account -->
             <!-- Your Account Personal Information -->
-            <!--<div class="container">-->
             <div class="row">
                 <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
                     <div class="ui-block">
@@ -183,7 +87,7 @@ $CATEGORIES = BusinessCategory::all();
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Address</label>
-                                            <input class="form-control" placeholder="" type="text"  name="address" id="address" value="">
+                                            <input class="form-control" placeholder="" type="text"  name="address" id="address" value="<?php echo $_SESSION['address']; ?>">
                                         </div>
                                     </div>
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
@@ -197,13 +101,13 @@ $CATEGORIES = BusinessCategory::all();
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Phone Number</label>
-                                            <input class="form-control" placeholder="" type="text"  name="phonenumber" id="phonenumber" value="">
+                                            <input class="form-control" placeholder="" type="text"  name="phonenumber" id="phonenumber" value="<?php echo $_SESSION['phone_number']; ?>">
                                         </div>
                                     </div>
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Email</label>
-                                            <input class="form-control" placeholder="" type="text"  name="email" id="email" value="">
+                                            <input class="form-control" placeholder="" type="text"  name="email" id="email" value="<?php echo $_SESSION['email']; ?>">
                                         </div>
                                     </div>
 
@@ -299,39 +203,37 @@ $CATEGORIES = BusinessCategory::all();
                                     </div>
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                         <input type="hidden" name="member" id="member" value="<?php echo $_SESSION['id']; ?>" />
-                                        <input type="hidden" name="group"id="group" value="<?php if (empty($id)) {
-                                        echo '0';
-                                    } else {
-                                        echo $id;
-                                    } ?>" />
+                                        <input type="hidden" name="group"id="group" value="<?php
+                                        if (empty($id)) {
+                                            echo '0';
+                                        } else {
+                                            echo $id;
+                                        }
+                                        ?>" />
 
                                         <input type="hidden" name="create" id="" value="" />
                                         <input type="hidden" name="city_string" id="city_string"  value=""/>
                                         <a name="" id="create-ad" class="btn btn-primary btn-lg full-width" >Save all Changes</a>
                                         <div id="map" class="hidden"></div>
                                     </div>
-
                                 </div>
-
-
                             </form>
-
                             <!-- ... end Personal Information Form  -->
                         </div>
                     </div>
                 </div>
-<?php
-include './account-navigation.php';
-?>
+                <?php
+                include './account-navigation.php';
+                ?>
             </div>
             <!--</div>-->
         </div>
         <!-- ... end Your Account Personal Information -->
 
         <!-- Window-popup -->
-<?php
-include './window-pop-up.php';
-?>
+        <?php
+        include './window-pop-up.php';
+        ?>
         <?php
         include './footer.php';
         ?>
@@ -386,56 +288,56 @@ include './window-pop-up.php';
         <script src="js/js/view-notification.js" type="text/javascript"></script>
 
         <script>
-            var placeSearch, autocomplete;
+                                                var placeSearch, autocomplete;
 
-            function initAutocomplete() {
-                // Create the autocomplete object, restricting the search to geographical
-                // location types.
-                var options = {
-                    types: ['(cities)'],
-                    componentRestrictions: {country: "lk"}
-                };
-                var input = document.getElementById('autocomplete');
-                var input2 = document.getElementById('autocomplete2');
+                                                function initAutocomplete() {
+                                                    // Create the autocomplete object, restricting the search to geographical
+                                                    // location types.
+                                                    var options = {
+                                                        types: ['(cities)'],
+                                                        componentRestrictions: {country: "lk"}
+                                                    };
+                                                    var input = document.getElementById('autocomplete');
+                                                    var input2 = document.getElementById('autocomplete2');
 
-                autocomplete = new google.maps.places.Autocomplete(input, options);
+                                                    autocomplete = new google.maps.places.Autocomplete(input, options);
 
-                // When the user selects an address from the dropdown, populate the address
-                // fields in the form.
-                autocomplete.addListener('place_changed', fillInAddress);
-            }
+                                                    // When the user selects an address from the dropdown, populate the address
+                                                    // fields in the form.
+                                                    autocomplete.addListener('place_changed', fillInAddress);
+                                                }
 
-            function fillInAddress() {
-                // Get the place details from the autocomplete object.
-                var place = autocomplete.getPlace();
-                $('#city').val(place.place_id);
-                $('#city_string').val(place.name);
-                for (var component in componentForm) {
-                    document.getElementById(component).value = '';
-                    document.getElementById(component).disabled = false;
-                }
+                                                function fillInAddress() {
+                                                    // Get the place details from the autocomplete object.
+                                                    var place = autocomplete.getPlace();
+                                                    $('#city').val(place.place_id);
+                                                    $('#city_string').val(place.name);
+                                                    for (var component in componentForm) {
+                                                        document.getElementById(component).value = '';
+                                                        document.getElementById(component).disabled = false;
+                                                    }
 
-                // Get each component of the address from the place details
-                // and fill the corresponding field on the form.
-            }
+                                                    // Get each component of the address from the place details
+                                                    // and fill the corresponding field on the form.
+                                                }
 
-            // Bias the autocomplete object to the user's geographical location,
-            // as supplied by the browser's 'navigator.geolocation' object.
-            function geolocate() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        var geolocation = {
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude
-                        };
-                        var circle = new google.maps.Circle({
-                            center: geolocation,
-                            radius: position.coords.accuracy
-                        });
-                        autocomplete.setBounds(circle.getBounds());
-                    });
-                }
-            }
+                                                // Bias the autocomplete object to the user's geographical location,
+                                                // as supplied by the browser's 'navigator.geolocation' object.
+                                                function geolocate() {
+                                                    if (navigator.geolocation) {
+                                                        navigator.geolocation.getCurrentPosition(function (position) {
+                                                            var geolocation = {
+                                                                lat: position.coords.latitude,
+                                                                lng: position.coords.longitude
+                                                            };
+                                                            var circle = new google.maps.Circle({
+                                                                center: geolocation,
+                                                                radius: position.coords.accuracy
+                                                            });
+                                                            autocomplete.setBounds(circle.getBounds());
+                                                        });
+                                                    }
+                                                }
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2FmnO6PPzu9Udebcq9q_yUuQ_EGItjak&libraries=places&callback=initAutocomplete"
         async defer></script>

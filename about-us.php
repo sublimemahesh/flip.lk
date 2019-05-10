@@ -101,7 +101,7 @@ $VALUE = New Page(4);
                                         <div class="row">
                                             <div class="col-md-12 about-description">
                                                 <!--<i class="fa fa-eye about-box-icon"></i>-->
-                                                <img src="img/icon/about-us-icon/eye-512.png" alt=""/>
+                                                <img src="upload/page/<?php echo $VISION->image_name; ?>" alt=""/>
                                                 <h5>Vision</h5>
                                                 <p><?php echo $VISION->description; ?></p>
                                             </div>
@@ -114,7 +114,7 @@ $VALUE = New Page(4);
                                             <div class="col-md-12 about-description">
 
             <!--<i class="fa fa-rocket about-box-icon"></i>-->
-                                                <img src="img/icon/about-us-icon/mission-icon.png" alt=""/>
+                                                <img src="upload/page/<?php echo $MISSION->image_name; ?>" alt=""/>
                                                 <h5>Mission</h5>
                                                 <p><?php echo $MISSION->description; ?></p>
                                             </div>
@@ -125,7 +125,7 @@ $VALUE = New Page(4);
                                         <div class="row">
                                             <div class="col-md-12 about-description">
                                                 <!--<i class="fa fa-handshake about-box-icon"></i>-->
-                                                <img src="img/icon/about-us-icon/004-handshake.png" alt=""/>
+                                                <img src="upload/page/<?php echo $VALUE->image_name; ?>" alt=""/>
                                                 <h5>Value</h5>
                                                 <p><?php echo $VALUE->description; ?></p>
                                             </div>

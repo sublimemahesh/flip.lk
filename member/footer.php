@@ -5,7 +5,6 @@ if (isset($_SESSION['id'])) {
     $MEMBER = new Member($_SESSION['id']);
 }
 $ABOUT = new Page(1);
-$CONTACTUS = New Page(7);
 $PHONE_NUMBER1 = New Page(8);
 $PHONE_NUMBER2 = New Page(9);
 $EMAIL = New Page(10);
@@ -47,7 +46,7 @@ $LOCATION = New Page(11);
                                 <li><i class="fa fa-angle-double-right "></i><a href="../groups.php">Groups</a></li>
                                 <li><i class="fa fa-angle-double-right "></i><a href="./">Newsfeed</a></li>
                                 <li><i class="fa fa-angle-double-right "></i><a href="../terms-and-conditions.php">Terms & Conditions</a></li>
-                                <li><i class="fa fa-angle-double-right "></i><a href="./about-us.php">About Us</a></li>
+                                <li><i class="fa fa-angle-double-right "></i><a href="../about-us.php">About Us</a></li>
                                 <li><i class="fa fa-angle-double-right "></i><a href="../contact-us.php">Contact us</a></li>
                             </ul>
                         </div>
@@ -85,8 +84,6 @@ $LOCATION = New Page(11);
                                 <li><i class="far fa-envelope"></i><span class="contact-info-title">Email:</span><?php echo $EMAIL->description;  ?></li>
                             </ul>
                         </div>
-
-                        
                     </div>
                 </div>
             </div>

@@ -18,7 +18,9 @@ class Group {
     public $profilePicture;
     public $coverPicture;
     public $district;
+    public $districtString;
     public $city;
+    public $cityString;
     public $address;
     public $description;
     public $status;
@@ -26,7 +28,7 @@ class Group {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`created_at`,`name`,`member`,`category`,`sub_category`,`email`,`phone_number`,`profile_picture`,`cover_picture`,`district`,`city`,`address`,`description`,`status` FROM `groups` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`created_at`,`name`,`member`,`category`,`sub_category`,`email`,`phone_number`,`profile_picture`,`cover_picture`,`district`,`district_string`,`city`,`city_string`,`address`,`description`,`status` FROM `groups` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -43,7 +45,9 @@ class Group {
             $this->profilePicture = $result['profile_picture'];
             $this->coverPicture = $result['cover_picture'];
             $this->district = $result['district'];
+            $this->districtString = $result['district_string'];
             $this->city = $result['city'];
+            $this->cityString = $result['city_string'];
             $this->address = $result['address'];
             $this->description = $result['description'];
             $this->status = $result['status'];
@@ -67,7 +71,9 @@ class Group {
                 . "profile_picture, "
                 . "cover_picture, "
                 . "district, "
+                . "district_string, "
                 . "city, "
+                . "city_string, "
                 . "address, "
                 . "description, "
                 . "status"
@@ -82,7 +88,9 @@ class Group {
                 . "'" . $this->profilePicture . "', "
                 . "'" . $this->coverPicture . "', "
                 . "'" . $this->district . "', "
+                . "'" . $this->districtString . "', "
                 . "'" . $this->city . "', "
+                . "'" . $this->cityString . "', "
                 . "'" . $this->address . "', "
                 . "'" . $this->description . "', "
                 . "'" . $this->status . "'"
@@ -111,7 +119,9 @@ class Group {
                 . "`profile_picture` ='" . $this->profilePicture . "', "
                 . "`cover_picture` ='" . $this->coverPicture . "', "
                 . "`district` ='" . $this->district . "', "
+                . "`district_string` ='" . $this->districtString . "', "
                 . "`city` ='" . $this->city . "', "
+                . "`city_string` ='" . $this->cityString . "', "
                 . "`address` ='" . $this->address . "', "
                 . "`description` ='" . $this->description . "' "
                 . "WHERE `id` = '" . $this->id . "'";
@@ -290,6 +300,14 @@ class Group {
         return $result['count'];
     }
     
+        public function countGroupsByMember($member) {
+
+        $query = "SELECT count(`id`) AS `count` FROM `groups` WHERE `member` = $member AND `status` = 1 ORDER BY `created_at` DESC";
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result['count'];
+    }
+    
     public function searchGroups($category1, $subcategory, $location, $keyword, $pageLimit, $setLimit) {
 
         $w = array();
@@ -313,7 +331,9 @@ class Group {
             $where = 'WHERE `status` = 1';
         }
 
-        $query = "SELECT * FROM `groups` " . $where . " ORDER BY `created_at` DESC LIMIT " . $pageLimit . " , " . $setLimit . "";
+        $query = "SELECT * FROM `groups` " . $where . " ORDER BY CASE
+        WHEN `name` LIKE '" . $keyword . "%' THEN 1
+        ELSE 2 END, `created_at` DESC LIMIT " . $pageLimit . " , " . $setLimit . "";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();

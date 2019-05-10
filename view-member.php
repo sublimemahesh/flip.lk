@@ -20,7 +20,7 @@ if (isset($_SESSION['id'])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> Groups || Flip.lk</title>
+        <title> Member || Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -379,11 +379,11 @@ if (isset($_SESSION['id'])) {
                                                         <?php
                                                         if ($post['shared_ad'] != 0) {
                                                             ?>
-                                                            <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $MEM->id; ?>"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> shared a post
+                                                            <a class="h6 post__author-name fn" href="view-member.php?id=<?php echo $MEM->id; ?>"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> shared a post
                                                             <?php
                                                         } else {
                                                             ?>
-                                                            <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $MEM->id; ?>"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> 
+                                                            <a class="h6 post__author-name fn" href="view-member.php?id=<?php echo $MEM->id; ?>"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a> 
                                                             <?php
                                                         }
                                                         ?>
@@ -542,7 +542,7 @@ if (isset($_SESSION['id'])) {
                                                                     ?>
 
                                                                     <div class="author-date">
-                                                                        <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
+                                                                        <a class="h6 post__author-name fn" href="view-member.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
                                                                         <div class="post__date">
                                                                             <time class="published" datetime="2017-03-24T18:18">
                                                                                 <?php echo $commentedat; ?>
@@ -644,7 +644,7 @@ if (isset($_SESSION['id'])) {
                                                                     ?>
 
                                                                     <div class="author-date">
-                                                                        <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
+                                                                        <a class="h6 post__author-name fn" href="view-member.php?id=<?php echo $COMMENTMEMBER->id; ?>"><?php echo $COMMENTMEMBER->firstName . ' ' . $COMMENTMEMBER->lastName; ?></a>
                                                                         <div class="post__date">
                                                                             <time class="published" datetime="2017-03-24T18:18">
                                                                                 <?php echo $commentedat; ?>
@@ -719,7 +719,7 @@ if (isset($_SESSION['id'])) {
                                                                                 ?>
 
                                                                                 <div class="author-date">
-                                                                                    <a class="h6 post__author-name fn" href="profile.php?id=<?php echo $REPLYMEMBER->id; ?>"><?php echo $REPLYMEMBER->firstName . ' ' . $REPLYMEMBER->lastName; ?></a>
+                                                                                    <a class="h6 post__author-name fn" href="view-member.php?id=<?php echo $REPLYMEMBER->id; ?>"><?php echo $REPLYMEMBER->firstName . ' ' . $REPLYMEMBER->lastName; ?></a>
                                                                                     <div class="post__date">
                                                                                         <time class="published" datetime="2017-03-24T18:18">
                                                                                             <?php echo $repliedat; ?>

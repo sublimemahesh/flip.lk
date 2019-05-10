@@ -11,7 +11,8 @@ $(document).ready(function () {
             },
             dataType: "JSON",
             success: function (result) {
-                $('#notif_' + notification).remove();
+//                $('#notif_' + notification).remove();
+                return true;
             }
         });
     })

@@ -25,9 +25,26 @@ $(document).ready(function () {
                     $('#comment-list-' + post).removeClass('hidden');
                     $('#comment-' + post).val('');
                     var html = '';
+                    var img = '';
+
+                    if (result.profile) {
+                        if (result.facebook_id && substr(result.profile, 0, 5) === "https") {
+
+                            img = '<img alt="profile picture" src="' + result.profile + '" >';
+                        } else if (result.google_id && substr(result.profile, 0, 5) === "https") {
+
+                            img = '<img alt="profile picture" src="' + result.profile + '" >';
+                        } else {
+
+                            img = '<img alt="profile picture" src="../upload/member/' + result.profile + '">';
+                        }
+                    } else {
+                        img = '<img alt="profile picture" src="../upload/member/member.png">';
+                    }
+                    
                     html += '<li class="comment-item">';
                     html += '<div class="post__author author vcard inline-items">';
-                    html += '<img src="../upload/member/' + result.profile + '" alt="author">';
+                    html += img;
                     html += '<div class="author-date">';
                     html += '<a class="h6 post__author-name fn" href="#">' + result.member + '</a>';
                     html += '<div class="post__date">';

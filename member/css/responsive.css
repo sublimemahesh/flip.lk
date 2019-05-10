@@ -251,27 +251,26 @@ and open the template in the editor.
         right: 18px;
         top: 10px;
     }
-    /*    .row-content{
-            margin-right: 0px;
-        }
-        .row-content1{
-            margin-right: -13px;
-        }*/
-    /*    .panel{
-            margin-right: 17px;
-        }
-        .huge{
-            font-size: 33px;
-            padding-right: 12px;
-            padding-top: 50px;
-        }*/
     .panel{
         margin-right: 18px;
         width: 135px;
     }
-    
-}
+    .footer-top-wrap {
+        padding-left: 21px;
+        padding-right: 16px;
+    }
+    .copyright {
+        padding: 20px 10px 0;
+        margin-top: -40px;
+    }
+    .footer-bottom-wrap {
+        min-height: 60px;
+    }
+    .notification-list-xs {
+        margin-bottom: 20px;
+    }
 
+}
 
 @media(min-width:577px) and (max-width:990px) {
     .header {
@@ -369,9 +368,65 @@ and open the template in the editor.
     .ui-block.first-block{
         margin-left: 2px;
     }
+    .footer-top-wrap {
+        padding-left: 21px;
+        padding-right: 16px;
+    }
+    .footer-about {
+        margin-top: 25px;
+    }
+    .footer-box .footer-contact-info li {
+        padding-left: 22px;
+    }
+    .footer-box .footer-social ul li a {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    .footer-box .footer-contact-info li svg {
+        font-size: 15px;
+    }
+    .page-title img {
+        width: 135px;
+        padding-top: 5px;
+    }
+    .header .page-title {
+        min-width: 100px;
+
+    }
+    .search-bar.w-search {
+
+        min-height: 10px;
+        margin-top: 11px;
+        height: 36px;
+        width: 175px;
+        margin-left: 0px;
+    }
+    .is-empty {
+        margin-right: 0px;
+    }
+    .control-icon .more-dropdown {
+        right: -15px;   
+        top: calc(100% + 13px);
+    }
+    .notification-list .notification-event {
+        padding-left: 45px;
+        width: 100%;
+        margin-top: -34px;
+    }
+    #name-list-append .author-thumb img {
+        height: 30px;
+        width: 30px;
+    }
+    .control-block-button .btn-control:last-child {
+        /*margin-left: 464px;*/
+        margin-left: 0px;
+    }
+    .profile-section .control-block-button {
+        left: 94%;
+    }
+
 }
-
-
 
 @media(min-width:992px) and (max-width:1200px) {
     .hidden-md {
@@ -403,6 +458,7 @@ and open the template in the editor.
         background: #fff;  
     }
 }
+
 @media(min-width:1200px) {
     .hidden-lg {
         display: none;
@@ -439,6 +495,7 @@ and open the template in the editor.
             margin: 10px 12px;
         }*/
 }
+
 @media(width:360px) {
     .profile-menu li a, .profile-menu li > div{
         font-size: 12px;
@@ -491,6 +548,7 @@ and open the template in the editor.
 
 
 }
+
 @media(width:375px) {
     .mobile-app-tabs{
         background-color: initial;
@@ -619,7 +677,8 @@ and open the template in the editor.
         bottom: 200px;
     }
     .control-block-button .btn-control:last-child{
-        margin-left: 464px;
+        /*margin-left: 464px;*/
+        margin-left: 0px;
     }
     .top-header{
         height: 316px;
@@ -654,7 +713,7 @@ and open the template in the editor.
             margin-right: -9px;
         }*/
     .is-empty{
-        margin-right: -341px;
+        /*margin-right: -341px;*/
     }
     .friend-request .request-label-avatar{
         right: 18px;
@@ -671,14 +730,16 @@ and open the template in the editor.
         padding-right: 5px;
     }
     .profile-menu{
-        margin-left: 47px;
+        /*margin-left: 47px;*/
+        margin-left: 0px;
     }
     .panel-content{
         width: 289px;
     }
     .control-block{
-        margin-top: -56px;
+        /*margin-top: -56px;*/
     }
+
 
 }
 
@@ -1033,6 +1094,12 @@ and open the template in the editor.
     .panel-1{
         width: 164px;
     }
+    .page-title img {
+        padding-top: 0px;
+        /*width: 167px;*/
+        height: 44px;
+        width: auto;
+    }
 }
 @media (width: 1280px){
     .upload-group-span2{
@@ -1175,5 +1242,11 @@ and open the template in the editor.
     }
     .panel-content{
         width: 170px;
+    }
+}
+
+@media(min-width:1400px) {
+    .container {
+        max-width: 1253px;
     }
 }

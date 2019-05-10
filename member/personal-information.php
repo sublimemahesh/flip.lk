@@ -8,7 +8,7 @@ $MEM = new Member($_SESSION['id']);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>My Account - Personal Information</title>
+        <title>Personal Informations || Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,14 +47,28 @@ $MEM = new Member($_SESSION['id']);
             <!--<div class="container">-->
             <div class="row">
                 <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
+                    <div class="top-bott20 m-l-25 m-r-15">
+                        <?php
+                        if (isset($_GET['message'])) {
+
+                            $MESSAGE = New Message($_GET['message']);
+                            ?>
+                            <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
+                                <?php echo $MESSAGE->description; ?>
+                            </div>
+                            <?php
+                        }
+
+                        $vali = new Validator();
+
+                        $vali->show_message();
+                        ?>
+                    </div>
                     <div class="ui-block">
                         <div class="ui-block-title">
                             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                 <h6 class="title">Manage Account</h6>
                             </div>
-                            <!--                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12 manage-group-section">
-                                                            <a class="btn btn-blue btn-md-2" id="delete-group" member_id="<?php echo $MEMBER->id; ?>">Delete Profile</a>
-                                                        </div>-->
                         </div>
                         <div class="ui-block-content">
                             <div class="description-toggle col-md-6">
@@ -90,6 +104,7 @@ $MEM = new Member($_SESSION['id']);
                         </div>
 
                         <div class="ui-block-content">
+
                             <!-- Personal Information Form  -->
                             <form action="post-and-get/member.php" method="post">
                                 <div class="row">
@@ -129,7 +144,7 @@ $MEM = new Member($_SESSION['id']);
                                         </div>
                                     </div>
                                     <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="form-group label-floating is-select">
+                                        <div class="form-group label-floating">
                                             <label class="control-label">Your Address</label>
                                             <input class="form-control" placeholder="" name="address" type="text" value="<?php echo $MEMBER->address; ?>">
                                         </div>
@@ -140,6 +155,7 @@ $MEM = new Member($_SESSION['id']);
                                             <!--<input class="form-control" placeholder="" type="text" name="district" id="district" value="">-->
                                             <input type="text" id="autocomplete" class="form-control" placeholder="" onFocus="geolocate()" name="autocomplete" required="TRUE">
                                             <input type="hidden" name="district" id="district"  value="<?php echo $MEMBER->district; ?>"/>
+                                            <input type="hidden" name="district_string" id="district-string"  value="<?php echo $MEMBER->districtString; ?>"/>
                                         </div>
                                     </div>
                                     <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
@@ -148,6 +164,7 @@ $MEM = new Member($_SESSION['id']);
                                             <!--<input class="form-control" placeholder="" type="text" name="city" id="city" value="">-->
                                             <input type="text" id="autocomplete2" class="form-control" placeholder="" onFocus="geolocate()" name="autocomplete" required="TRUE">
                                             <input type="hidden" name="city" id="city"  value="<?php echo $MEMBER->city; ?>"/>
+                                            <input type="hidden" name="city_string" id="city-string"  value="<?php echo $MEMBER->cityString; ?>"/>
                                         </div>
                                     </div>
                                     <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
@@ -191,16 +208,6 @@ $MEM = new Member($_SESSION['id']);
                                                 ?>>Not Married</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <!--                                    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                            <div class="form-group with-icon label-floating">
-                                                                                <label class="control-label">Your Facebook Account</label>
-                                                                                <input class="form-control" type="text" value="www.facebook.com/james-spiegel95321">
-                                                                                <i class="fab fa-facebook-f c-facebook" aria-hidden="true"></i>
-                                                                            </div>
-                                                                        </div>-->
-                                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <button class="btn btn-secondary btn-lg full-width">Restore all Attributes</button>
                                     </div>
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                         <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>" />
@@ -302,7 +309,9 @@ $MEM = new Member($_SESSION['id']);
                                                     var place = autocomplete.getPlace();
                                                     var place2 = autocomplete2.getPlace();
                                                     $('#district').val(place.place_id);
+                                                    $('#district-string').val(place.name);
                                                     $('#city').val(place2.place_id);
+                                                    $('#city-string').val(place2.name);
 //                $('#longitude').val(place.geometry.location.lng());
 //                $('#latitude').val(place.geometry.location.lat());
                                                     for (var component in componentForm) {

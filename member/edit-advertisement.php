@@ -15,7 +15,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>My Account - Personal Information</title>
+        <title>Edit Advertisement || Flip.lk</title>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,25 +50,6 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
 
         <div class="header-spacer header-spacer-small"></div>
         <div class="col col-xl-12 col-12">
-            <!-- Main Header Account -->
-            <div class="main-header">
-                <div class="content-bg-wrap bg-account"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
-                            <div class="main-header-content">
-                                <h1>Your Account Dashboard</h1>
-                                <p>Welcome to your account dashboard! Here you’ll find everything you need to change your profile
-                                    information, settings, read notifications and requests, view your latest messages, change your pasword and much
-                                    more! Also you can create or manage your own favourite page, have fun!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <img class="img-bottom" src="img/account-bottom.png" alt="friends">
-            </div>
-
-            <!-- ... end Main Header Account -->
             <!-- Your Account Personal Information -->
             <!--<div class="container">-->
             <div class="row">
@@ -138,7 +119,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                                         </div>
                                     </div>
                                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div class="form-group label-floating">
+                                        <div class="form-group label-floating is-select">
                                             <label class="control-label">City</label>
                                             <!--<input class="form-control" placeholder="" type="text" name="city" id="city" value="">-->
                                             <input type="text" id="autocomplete" class="form-control" placeholder="" onFocus="geolocate()" name="autocomplete">
@@ -297,87 +278,62 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
         <script src="js/images-grid.js" type="text/javascript"></script>
         <script src="js/js/edit-ad-slider.js" type="text/javascript"></script>
         <script src="js/js/delete-ad.js" type="text/javascript"></script>
-        <script src="plugins/tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script>
         <script src="js/heartcode-canvasloader.js" type="text/javascript"></script>
         <script src="js/image-preloader.js" type="text/javascript"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script>
-                                                tinymce.init({
-                                                    selector: "#description",
-                                                    // ===========================================
-                                                    // INCLUDE THE PLUGIN
-                                                    // ===========================================
+                                                var placeSearch, autocomplete;
 
-                                                    plugins: [
-                                                        "advlist autolink lists link image charmap print preview anchor",
-                                                        "searchreplace visualblocks code fullscreen",
-                                                        "insertdatetime media table contextmenu paste"
-                                                    ],
-                                                    // ===========================================
-                                                    // PUT PLUGIN'S BUTTON on the toolbar
-                                                    // ===========================================
+                                                function initAutocomplete() {
+                                                    // Create the autocomplete object, restricting the search to geographical
+                                                    // location types.
+                                                    var options = {
+                                                        types: ['(cities)'],
+                                                        componentRestrictions: {country: "lk"}
+                                                    };
+                                                    var input = document.getElementById('autocomplete');
+                                                    var input2 = document.getElementById('autocomplete2');
 
-                                                    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                                                    // ===========================================
-                                                    // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                                                    // ===========================================
+                                                    autocomplete = new google.maps.places.Autocomplete(input, options);
 
-                                                    relative_urls: false
-                                                });
-        </script>
-        <script>
-            var placeSearch, autocomplete;
+                                                    // When the user selects an address from the dropdown, populate the address
+                                                    // fields in the form.
+                                                    autocomplete.addListener('place_changed', fillInAddress);
+                                                }
 
-            function initAutocomplete() {
-                // Create the autocomplete object, restricting the search to geographical
-                // location types.
-                var options = {
-                    types: ['(cities)'],
-                    componentRestrictions: {country: "lk"}
-                };
-                var input = document.getElementById('autocomplete');
-                var input2 = document.getElementById('autocomplete2');
+                                                function fillInAddress() {
+                                                    // Get the place details from the autocomplete object.
+                                                    var place = autocomplete.getPlace();
+                                                    $('#city').val(place.place_id);
+                                                    $('#city_string').val(place.name);
+                                                    //                $('#longitude').val(place.geometry.location.lng());
+                                                    //                $('#latitude').val(place.geometry.location.lat());
+                                                    for (var component in componentForm) {
+                                                        document.getElementById(component).value = '';
+                                                        document.getElementById(component).disabled = false;
+                                                    }
 
-                autocomplete = new google.maps.places.Autocomplete(input, options);
+                                                    // Get each component of the address from the place details
+                                                    // and fill the corresponding field on the form.
+                                                }
 
-                // When the user selects an address from the dropdown, populate the address
-                // fields in the form.
-                autocomplete.addListener('place_changed', fillInAddress);
-            }
-
-            function fillInAddress() {
-                // Get the place details from the autocomplete object.
-                var place = autocomplete.getPlace();
-                $('#city').val(place.place_id);
-                $('#city_string').val(place.name);
-                //                $('#longitude').val(place.geometry.location.lng());
-                //                $('#latitude').val(place.geometry.location.lat());
-                for (var component in componentForm) {
-                    document.getElementById(component).value = '';
-                    document.getElementById(component).disabled = false;
-                }
-
-                // Get each component of the address from the place details
-                // and fill the corresponding field on the form.
-            }
-
-            // Bias the autocomplete object to the user's geographical location,
-            // as supplied by the browser's 'navigator.geolocation' object.
-            function geolocate() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        var geolocation = {
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude
-                        };
-                        var circle = new google.maps.Circle({
-                            center: geolocation,
-                            radius: position.coords.accuracy
-                        });
-                        autocomplete.setBounds(circle.getBounds());
-                    });
-                }
-            }
+                                                // Bias the autocomplete object to the user's geographical location,
+                                                // as supplied by the browser's 'navigator.geolocation' object.
+                                                function geolocate() {
+                                                    if (navigator.geolocation) {
+                                                        navigator.geolocation.getCurrentPosition(function (position) {
+                                                            var geolocation = {
+                                                                lat: position.coords.latitude,
+                                                                lng: position.coords.longitude
+                                                            };
+                                                            var circle = new google.maps.Circle({
+                                                                center: geolocation,
+                                                                radius: position.coords.accuracy
+                                                            });
+                                                            autocomplete.setBounds(circle.getBounds());
+                                                        });
+                                                    }
+                                                }
         </script>
         <script>
             // Retrieve Details from Place_ID

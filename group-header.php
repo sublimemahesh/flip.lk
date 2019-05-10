@@ -45,7 +45,7 @@ $SUBCATEGORY = new BusinessSubCategory($GROUP->subCategory);
                             <div class="col col-xl-8 m-auto col-lg-8 col-md-12">
                                 <ul class="profile-menu">
                                     <li>
-                                        <a href="group.php?id=<?php echo $GROUP->id; ?>" class="active">Timeline</a>
+                                        <a href="view-group.php?id=<?php echo $GROUP->id; ?>" class="active">Timeline</a>
                                     </li>
                                     <li>
                                         <a href="members.php?id=<?php echo $GROUP->id; ?>">Members</a>

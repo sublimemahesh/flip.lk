@@ -19,9 +19,13 @@
                     <div class="profile-section">
                         <div class="row hidden-xs">
                             <?php
-                            if (isset($_GET['id'])) {
+                            $url = explode("/", $_SERVER['REQUEST_URI']);
+                            $result = explode(".", $url[3]); //localhost
+                            //$result = explode(".", $url[2]); //online
+                            
+                            if (isset($_GET['id']) && $result[0] != 'member-message') {
                                 ?>
-                                <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
+                                <div class="col col-lg-5 col-md-5 col-sm-6 col-12">
                                     <ul class="profile-menu">
 
                                         <li>
@@ -30,18 +34,26 @@
                                         <li>
                                             <a href="about.php?id=<?php echo $MEM->id; ?>">About</a>
                                         </li>
+
+                                    </ul>
+                                </div>
+                                <div class="col col-lg-5 ml-auto col-md-5 col-sm-6 col-12">
+                                    <ul class="profile-menu">
                                         <li>
                                             <a href="friends.php?id=<?php echo $MEM->id; ?>">Followers</a>
                                         </li>
-                                    </ul>
-                                </div>
-                                <div class="col col-lg-5 ml-auto col-md-5 col-sm-12 col-12">
-                                    <ul class="profile-menu">
                                         <li>
-                                            <a>Photos</a>
-                                        </li>
-                                        <li>
-                                            <a href="member-message.php?member=<?php echo $MEM->id; ?>">Messages</a>
+                                            <?php
+                                            if ($MEM->id == $_SESSION['id']) {
+                                                ?>
+                                                <a href="member-message.php">Messages</a>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <a href="member-message.php?member=<?php echo $MEM->id; ?>">Messages</a>
+                                                <?php
+                                            }
+                                            ?>
                                         </li>
 
                                     </ul>
@@ -68,7 +80,7 @@
                                 <div class="col col-lg-5 ml-auto col-md-5 col-sm-6 col-12">
                                     <ul class="profile-menu">
                                         <li>
-                                            <a href="advertisement.php">My Advertisement</a>
+                                            <a href="advertisement.php">My Advertisements</a>
                                         </li>
                                         <li>
                                             <a href="member-message.php">Messages</a>
@@ -97,9 +109,6 @@
                                             <a href="friends.php?id=<?php echo $MEM->id; ?>">Followers</a>
                                         </li>
                                         <li>
-                                            <a>Photos</a>
-                                        </li>
-                                        <li>
                                             <a href="member-message.php">Messages</a>
                                         </li>
 
@@ -122,7 +131,7 @@
                                             <a href="friends.php">Followers</a>
                                         </li>
                                         <li>
-                                            <a href="advertisement.php">My Advertisement</a>
+                                            <a href="advertisement.php">Advertisements</a>
                                         </li>
                                         <li>
                                             <a href="member-message.php">Messages</a>
@@ -187,7 +196,7 @@
                         </a>
                         <div class="author-content">
                             <a href="profile.php" class="h4 author-name"><?php echo $MEM->firstName . ' ' . $MEM->lastName; ?></a>
-                            <!--<div class="country"><?php echo $MEM->city . ' ' . $MEM->district; ?></div>-->
+                            <div class="country"><?php echo $MEM->cityString . ', ' . $MEM->districtString; ?></div>
                         </div>
                     </div>
                 </div>

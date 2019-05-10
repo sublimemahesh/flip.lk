@@ -14,9 +14,15 @@ if (isset($_POST['login'])) {
         header('Location: ../login.php?message=6');
         exit();
     }
-    if ($MEMBER->login($email, $password)) {
+    $result = $MEMBER->login($email, $password);
+
+    if ($result == "deactive member") {
+        header('Location: ../login.php?message=34');
+        exit();
+    } elseif ($result) {
 
         if (empty($back)) {
+
             header('Location: ../?message=5');
             exit();
         } else {
@@ -43,7 +49,9 @@ if (isset($_POST['update'])) {
     $MEMBER->occupation = $_POST['occupation'];
     $MEMBER->address = $_POST['address'];
     $MEMBER->district = $_POST['district'];
+    $MEMBER->districtString = $_POST['district_string'];
     $MEMBER->city = $_POST['city'];
+    $MEMBER->cityString = $_POST['city_string'];
     $MEMBER->aboutMe = $_POST['about_me'];
     $MEMBER->gender = $_POST['gender'];
     $MEMBER->civilStatus = $_POST['status'];
@@ -51,7 +59,19 @@ if (isset($_POST['update'])) {
     $result = $MEMBER->update();
 
     if ($result) {
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $_SESSION["first_name"] = $result['first_name'];
+        $_SESSION["last_name"] = $result['last_name'];
+        $_SESSION["phone_number"] = $result['phone_number'];
+        $_SESSION["district"] = $result['district'];
+        $_SESSION["district_string"] = $result['district_string'];
+        $_SESSION["city"] = $result['city'];
+        $_SESSION["city_string"] = $result['city_string'];
+        $_SESSION["address"] = $result['address'];
+
+        header('Location: ' . $_SERVER['HTTP_REFERER'] . '?message=9');
         exit();
     } else {
         header('Location: ' . $_SERVER['HTTP_REFERER'] . '?message=21');

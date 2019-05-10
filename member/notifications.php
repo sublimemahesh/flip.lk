@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>About || Groups || Flip.lk</title>
+        <title>Notifications || Flip.lk</title>
 
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
@@ -66,33 +66,46 @@ if (isset($_GET['id'])) {
                             <ul class="notification-list friend-requests">
                                 <?php
                                 foreach (Notification::getAllNotificationsByUser($MEMBER->id) as $notification) {
+                                     $result = getTime($notification['created_at']);
                                     ?>
 
-                                    <li class="notif-list <?php if($notification['is_viewed'] == 0) { echo 'unviewed-notification'; } ?>" notification="<?php echo $notification['id']; ?>" id="notif_<?php echo $notification['id']; ?>">
+                                    <li class="notif-list <?php
+                                    if ($notification['is_viewed'] == 0) {
+                                        echo 'unviewed-notification';
+                                    }
+                                    ?>" notification="<?php echo $notification['id']; ?>" id="notif_<?php echo $notification['id']; ?>">
                                         <div class="author-thumb member-request-profile-pic">
                                             <?php
-                                            if ($notification['image_name']) {
-                                                if (substr($notification['image_name'], 0, 5) == 'https') {
-                                                    ?>
-                                                    <img src="<?php echo $notification['image_name']; ?>" alt="author">
-                                                    <?php
+                                            if ($notification['image_name'] == 'admin') {
+                                                ?>
+                                                <img src="img/icon/admin.jpg" alt="author">
+                                                <?php
+                                            } else {
+                                                if ($notification['image_name']) {
+                                                    if (substr($notification['image_name'], 0, 5) == 'https') {
+                                                        ?>
+                                                        <img src="<?php echo $notification['image_name']; ?>" alt="author">
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <img src="../upload/member/<?php echo $notification['image_name']; ?>" alt="author">
+                                                        <?php
+                                                    }
                                                 } else {
                                                     ?>
-                                                    <img src="../upload/member/<?php echo $notification['image_name']; ?>" alt="author">
+                                                    <img src="../upload/member/member.png" alt="author">
                                                     <?php
                                                 }
-                                            } else {
-                                                ?>
-                                                <img src="../upload/member/member.png" alt="author">
-                                                <?php
                                             }
                                             ?>
                                         </div>
-                                        <div class="notification-event">
-                                            <a href="<?php echo $notification['url']; ?>" class="h6 notification-friend"><?php echo $notification['title']; ?></a>
-                                            <span class="chat-message-item"><?php echo $notification['description']; ?></span>
-                                        </div>
-
+                                        <a href="<?php echo $notification['url']; ?>">
+                                            <div class="notification-event">
+                                                <span class="h6 notification-friend"><?php echo $notification['title']; ?></span>
+                                                <span class="chat-message-item"><?php echo $notification['description']; ?></span>
+                                                <div class="post__date"><i class="fa fa-clock"></i><?php echo $result; ?></div>
+                                            </div>
+                                        </a>
                                     </li>
                                     <?php
                                 }

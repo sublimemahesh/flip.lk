@@ -113,6 +113,20 @@ class AdvertisementMessage {
     }
 
     public function getDistinctAdvertisements($member) {
+//        $query = "SELECT distinct(advertisement) FROM `advertisement_message` WHERE (`owner`= $member OR `member`= $member) AND `advertisement` != 0";
+        $query = "SELECT `advertisement`,`owner`,`member` FROM `advertisement_message` WHERE (`owner` = $member OR `member` = $member)  AND `advertisement` != 0 GROUP BY `advertisement`, `member`, `owner`";
+        
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+    public function getDistinctAll($member) {
         $query = "SELECT distinct(advertisement) FROM `advertisement_message` WHERE `owner`= $member OR `member`= $member";
 
         $db = new Database();
@@ -125,10 +139,33 @@ class AdvertisementMessage {
         }
         return $array_res;
     }
-    
-    public function getMaxIDOfDistinctAdvertisement($ad, $member) {
+    public function getDistinctMembers($member) {
+        $query = "SELECT distinct(member) FROM `advertisement_message` WHERE `owner`= $member AND `advertisement` = 0 UNION ALL SELECT distinct(owner) FROM `advertisement_message` WHERE `member`= $member AND `advertisement` = 0 AND `owner` NOT IN (SELECT distinct(member) FROM `advertisement_message` WHERE `owner`= $member AND `advertisement` = 0)";
+        
+        $db = new Database();
 
-        $query = "SELECT max(id) AS `max` FROM `advertisement_message` WHERE `advertisement`= $ad and (`owner`= $member OR `member`= $member)";
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+    
+    public function getMaxIDOfDistinctAdvertisement($ad, $member, $owner) {
+
+//        $query = "SELECT max(id) AS `max` FROM `advertisement_message` WHERE `advertisement`= $ad and (`owner`= $member OR `member`= $member)";
+        $query = "SELECT max(id) AS `max` FROM `advertisement_message` WHERE `advertisement`= $ad AND ((`owner`= $owner AND `member`= $member) OR (`owner`= $member AND `member`= $owner))";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result;
+    }
+    public function getMaxIDOfDistinctMember($member, $owner) {
+
+        $query = "SELECT max(id) AS `max` FROM `advertisement_message` WHERE `advertisement` = 0 AND ((`member`= $member and `owner`= $owner) OR (`member`= $owner and `owner`= $member))";
 
         $db = new Database();
 
@@ -153,7 +190,7 @@ class AdvertisementMessage {
     
     public function getMessagesByMembers($member, $owner) {
 
-        $query = "SELECT * FROM `advertisement_message` WHERE `member`= $member AND `owner` = $owner ORDER BY created_at ASC";
+        $query = "SELECT * FROM `advertisement_message` WHERE (`member`= $member AND `owner` = $owner) OR (`member`= $owner AND `owner` = $member) ORDER BY created_at ASC";
 
         $db = new Database();
 
@@ -199,6 +236,7 @@ class AdvertisementMessage {
         $query = "UPDATE  `advertisement_message` SET "
                 . "`is_viewed` = 1 "
                 . "WHERE `id` = '" . $id . "'";
+        
 
         $db = new Database();
 

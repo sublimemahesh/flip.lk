@@ -27,9 +27,25 @@ $(document).ready(function () {
                         $('#comment-list-' + post).removeClass('hidden');
                         $('#comment-' + post).val('');
                         var html = '';
+                        var img = '';
+
+                        if (result.profile) {
+                            if (result.facebook_id && substr(result.profile, 0, 5) === "https") {
+
+                                img = '<img alt="profile picture" src="' + result.profile + '" >';
+                            } else if (result.google_id && substr(result.profile, 0, 5) === "https") {
+
+                                img = '<img alt="profile picture" src="' + result.profile + '" >';
+                            } else {
+
+                                img = '<img alt="profile picture" src="../upload/member/' + result.profile + '">';
+                            }
+                        } else {
+                            img = '<img alt="profile picture" src="../upload/member/member.png">';
+                        }
                         html += '<li class="comment-item">';
                         html += '<div class="post__author author vcard inline-items">';
-                        html += '<img src="../upload/member/' + result.profile + '" alt="author">';
+                        html += img;
                         html += '<div class="author-date">';
                         html += '<a class="h6 post__author-name fn" href="#">' + result.member + '</a>';
                         html += '<div class="post__date">';
@@ -101,16 +117,16 @@ $(document).ready(function () {
         $(".comments-list").each(function (index) {
 
             if ($(this).children(".comment-item").length > 3) {
-                    var post = $(this).attr('post-id');
-                    $("#see-more-" + post).removeClass('hidden');
-                }
-                $(this).children(".comment-item").slice(-3).show();
-            });
+                var post = $(this).attr('post-id');
+                $("#see-more-" + post).removeClass('hidden');
+            }
+            $(this).children(".comment-item").slice(-3).show();
+        });
 
 //            $('.comments-list').on('click', '.see-more', function () {
 //                alert(111);
         $(".see-more").click(function (e) {
-                    e.preventDefault();
+            e.preventDefault();
             var $link = $(this);
             var $div = $link.closest('.comments-list');
 

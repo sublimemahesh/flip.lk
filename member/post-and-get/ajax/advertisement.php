@@ -3,6 +3,9 @@
 include_once(dirname(__FILE__) . '/../../../class/include.php');
 
 if ($_POST['option'] == 'SAVEAD') {
+    if (!isset($_SESSION)) {
+        session_start();
+    }
     $ADVERTISEMENT = new Advertisement(NULL);
     $ADVERTISEMENT->groupId = $_POST['group'];
     $ADVERTISEMENT->member = $_POST['member'];
@@ -21,13 +24,13 @@ if ($_POST['option'] == 'SAVEAD') {
     $ADVERTISEMENT->email = $_POST['email'];
     if ($ADVERTISEMENT->groupId == 0) {
         $ADVERTISEMENT->status = '1';
+    } elseif ($_POST['member'] == $_SESSION['id']) {
+        $ADVERTISEMENT->status = '1';
     } else {
         $ADVERTISEMENT->status = '0';
     }
 
-
     $result = $ADVERTISEMENT->create();
-
     if ($result) {
         if (isset($_POST["images"])) {
             foreach ($_POST["images"] as $key => $img) {
@@ -57,10 +60,11 @@ if ($_POST['option'] == 'SAVEAD') {
     echo json_encode($result);
     exit();
 }
-
 if ($_POST['option'] == 'EDITAD') {
 
     $ADVERTISEMENT = new Advertisement($_POST['id']);
+    $status = $ADVERTISEMENT->status;
+    
 //    $ADVERTISEMENT->title = mysql_real_escape_string($_POST['title']);
     $ADVERTISEMENT->title = $_POST['title'];
 //    $ADVERTISEMENT->description = mysql_real_escape_string($_POST['description']);
@@ -72,7 +76,7 @@ if ($_POST['option'] == 'EDITAD') {
     $ADVERTISEMENT->price = $_POST['price'];
     $ADVERTISEMENT->phoneNumber = $_POST['phonenumber'];
     $ADVERTISEMENT->email = $_POST['email'];
-    $ADVERTISEMENT->status = '1';
+    $ADVERTISEMENT->status = $status;
 
     $result = $ADVERTISEMENT->update();
     if ($result) {
@@ -165,13 +169,28 @@ if ($_POST['option'] === 'SENDBOOSTEMAIL') {
 
     $AD->boosted = 'requested';
     $AD->boostRequestedDate = $todayis;
-    $AD->boostPeriod = $_POST['period'];
-    
+    $AD->boostPeriod = $_POST['period'] * 7;
+
     $result = $AD->updateBoostRequest();
+
+    if ($result) {
+        $DATA = new DefaultData();
+        $price = $DATA->getAdBoostPrice();
+        $boostprice = $price[$_POST['period'] - 1][$_POST['period']];
+
+        $NOTIFICATION = new Notification(NULL);
+
+        $NOTIFICATION->imageName = 'admin';
+        $NOTIFICATION->title = 'New Invoice';
+        $NOTIFICATION->description = 'Flip.lk is add a Rs. ' . $boostprice . ' invoice for boosting your ad.';
+        $NOTIFICATION->url = '../view-advertisement.php?id=' . $_POST['adid'];
+        $NOTIFICATION->user = $AD->member;
+        $NOTIFICATION->create();
+    }
 
 
     $sendemail = Advertisement::sendBoostAdEmailToAdmin($_POST['adid'], $_POST['period'], $todayis);
-    $sendemail1 = Advertisement::sendBoostAdEmailToCustomer($_POST['adid'], $_POST['period'], $todayis);
+//    $sendemail1 = Advertisement::sendBoostAdEmailToCustomer($_POST['adid'], $_POST['period'], $todayis);
 
     header('Content-type: application/json');
     if ($sendemail) {

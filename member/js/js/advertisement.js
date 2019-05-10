@@ -38,7 +38,7 @@ $(document).ready(function () {
             });
             return false;
         } else {
-            
+
             var group = $('#group').val();
             var member = $('#member').val();
             var title = $('#title').val();
@@ -55,7 +55,7 @@ $(document).ready(function () {
             var email = $('#email').val();
 //            var images = $('[name="post-all-images[]"]').serialize();
             var images = $('.post-all-ad-images').serializeArray();
-            
+
             $.ajax({
                 type: 'POST',
                 url: 'post-and-get/ajax/advertisement.php',
@@ -125,10 +125,11 @@ $(document).ready(function () {
             });
             return false;
         } else {
-            
+
             var id = $('#id').val();
             var title = $('#title').val();
-            var description = tinyMCE.get('description').getContent();
+//            var description = tinyMCE.get('description').getContent();
+            var description = $('#description').val();
             var city = $('#city').val();
             var cityString = $('#city_string').val();
             var address = $('#address').val();
@@ -173,7 +174,7 @@ $(document).ready(function () {
 
         }
     });
-    
+
     $('#remove-circle').on('click', '#remove-ad-image', function () {
         var id = $('#id').val();
 
@@ -213,7 +214,7 @@ $(document).ready(function () {
             });
         });
     });
-    
+
     $('#publish-ad').click(function (e) {
         e.preventDefault();
         var status = $(this).attr('status');
