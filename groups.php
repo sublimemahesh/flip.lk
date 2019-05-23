@@ -141,46 +141,48 @@ $groups = Group::searchGroups($category1, $subcategory, $location, $keyword, $pa
                             </div>
                         </div>
 
-                        <div class="col col-xl-8 col-xl-offset-2 order-xl-2 col-lg-8 order-lg-1 col-md-12 col-sm-12 col-12">
+                        <div class="col col-xl-12 col-xl-offset-2 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
+                            
+                            
 
-                            <div class="group-search s002">
-                                <form action="groups.php" method="get">
-                                    <div class="inner-form">
-                                        <div class="input-field fouth-wrap">
-                                            <div class="icon-wrap">
+                                <div class="group-search s002">
+                                    <form action="groups.php" method="get">
+                                        <div class="inner-form">
+                                            <div class="input-field fouth-wrap">
+                                                <div class="icon-wrap">
 
-                                                <svg height="24" viewBox="0 -52 512 512" width="24" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="m0 0h113.292969v113.292969h-113.292969zm0 0"/>
-                                                <path d="m149.296875 0h362.703125v113.292969h-362.703125zm0 0"/>
-                                                <path d="m0 147.007812h113.292969v113.292969h-113.292969zm0 0"/>
-                                                <path d="m149.296875 147.007812h362.703125v113.292969h-362.703125zm0 0"/>
-                                                <path d="m0 294.011719h113.292969v113.296875h-113.292969zm0 0"/>
-                                                <path d="m149.296875 294.011719h362.703125v113.296875h-362.703125zm0 0"/>
-                                                </svg>
-                                            </div>
-                                            <select class="category-select-box" name="category">
-                                                <option value="">Category</option>
-                                                <?php
-                                                foreach (BusinessCategory::all() as $key => $category) {
-                                                    ?>
-                                                    <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+                                                    <svg height="24" viewBox="0 -52 512 512" width="24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="m0 0h113.292969v113.292969h-113.292969zm0 0"/>
+                                                    <path d="m149.296875 0h362.703125v113.292969h-362.703125zm0 0"/>
+                                                    <path d="m0 147.007812h113.292969v113.292969h-113.292969zm0 0"/>
+                                                    <path d="m149.296875 147.007812h362.703125v113.292969h-362.703125zm0 0"/>
+                                                    <path d="m0 294.011719h113.292969v113.296875h-113.292969zm0 0"/>
+                                                    <path d="m149.296875 294.011719h362.703125v113.296875h-362.703125zm0 0"/>
+                                                    </svg>
+                                                </div>
+                                                <select class="category-select-box" name="category">
+                                                    <option value="">Category</option>
                                                     <?php
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <div class="input-field first-wrap">
-                                            <div class="icon-wrap">
-                                                <i class="fa fa-search"></i>
+                                                    foreach (BusinessCategory::all() as $key => $category) {
+                                                        ?>
+                                                        <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </select>
                                             </div>
-                                            <input id="search" type="text" name="keyword" placeholder="What are you looking for?" />
+                                            <div class="input-field first-wrap">
+                                                <div class="icon-wrap">
+                                                    <i class="fa fa-search"></i>
+                                                </div>
+                                                <input id="search" type="text" name="keyword" placeholder="What are you looking for?" />
+                                            </div>
+                                            <div class="input-field fifth-wrap">
+                                                <button class="btn-search" type="submit">SEARCH</button>
+                                            </div>
                                         </div>
-                                        <div class="input-field fifth-wrap">
-                                            <button class="btn-search" type="submit">SEARCH</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                                    </form>
+                                </div>
 
                             <div id="newsfeed-items-grid">
 
@@ -193,7 +195,7 @@ $groups = Group::searchGroups($category1, $subcategory, $location, $keyword, $pa
                                             $members = GroupMember::getAllMembersByGroup($group['id']);
                                             $member_count = count($members);
                                             ?>
-                                            <div class="col col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12 col-12">
+                                            <div class="col col-xl-3 col-lg-3 col-md-3 col-sm-4 col-xs-12 col-12">
                                                 <div class="ui-block members-in-group" data-mh="friend-groups-item">
                                                     <!-- Friend Item -->
                                                     <div class="friend-item friend-groups">
@@ -284,44 +286,44 @@ $groups = Group::searchGroups($category1, $subcategory, $location, $keyword, $pa
 
                         <!-- ... end Main Content -->
                         <!-- Left Sidebar -->
-                        <div class="sidebar col col-xl-4 order-xl-1 col-lg-4 order-lg-1 col-md-12 col-sm-12 col-12 hidden-sm">
-
-                            <div id="secondary" class="secondary">
-                                <nav id="site-navigation" class="main-navigation" role="navigation">
-                                    <div class="menu-feature-container">
-                                        <p>Categories</p>
-                                        <ul id="menu-feature" class="nav-menu">
-                                            <?php
-                                            foreach (BusinessCategory::all() as $category) {
-                                                $count = Group::countGroupsByCategory($category['id']);
-                                                ?>
-                                            <li id="menu-item-<?php echo $category['id']; ?>"  class="menu-item category collapsible collapsible1"> <a href="groups.php?category=<?php echo $category['id']; ?>"><img src="upload/business-category/<?php echo $category['image_name']; ?>"><?php echo $category['name'] . ' (' . number_format($count) . ')'; ?></a>
-                                                    <i class="icon-<?php echo $category['id']; ?> fa fa-angle-down cat-dropdown" id1="<?php echo $category['id']; ?>" times="0"></i>
-                                                    <ul class="sub-menu menu-item-<?php echo $category['id']; ?> hidden">
-                                                        <?php
-                                                        foreach (BusinessSubCategory::getSubCategoriesByCategory($category['id']) as $subcategory) {
-                                                            $countsubcat = Group::countGroupsBySubCategory($subcategory['id']);
-                                                            ?>
-
-                                                            <li id="sub-category-" class="menu-item ">
-                                                                <a href="groups.php?category=<?php echo $category['id']; ?>&subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
-                                                            </li>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </ul>
-                                                </li>
-
-
-                                                <?php
-                                            }
-                                            ?>
-                                        </ul>
-                                    </div>
-                                </nav><!-- .main-navigation -->
-                            </div><!-- .secondary -->
-
-                        </div>
+                        <!--                        <div class="sidebar col col-xl-4 order-xl-1 col-lg-4 order-lg-1 col-md-12 col-sm-12 col-12 hidden-sm">
+                        
+                                                    <div id="secondary" class="secondary">
+                                                        <nav id="site-navigation" class="main-navigation" role="navigation">
+                                                            <div class="menu-feature-container">
+                                                                <p>Categories</p>
+                                                                <ul id="menu-feature" class="nav-menu">
+                        <?php
+                        foreach (BusinessCategory::all() as $category) {
+                            $count = Group::countGroupsByCategory($category['id']);
+                            ?>
+                                                                        <li id="menu-item-<?php echo $category['id']; ?>"  class="menu-item category collapsible collapsible1"> <a href="groups.php?category=<?php echo $category['id']; ?>"><img src="upload/business-category/<?php echo $category['image_name']; ?>"><?php echo $category['name'] . ' (' . number_format($count) . ')'; ?></a>
+                                                                                <i class="icon-<?php echo $category['id']; ?> fa fa-angle-down cat-dropdown" id1="<?php echo $category['id']; ?>" times="0"></i>
+                                                                                <ul class="sub-menu menu-item-<?php echo $category['id']; ?> hidden">
+                            <?php
+                            foreach (BusinessSubCategory::getSubCategoriesByCategory($category['id']) as $subcategory) {
+                                $countsubcat = Group::countGroupsBySubCategory($subcategory['id']);
+                                ?>
+                                
+                                                                                            <li id="sub-category-" class="menu-item ">
+                                                                                                <a href="groups.php?category=<?php echo $category['id']; ?>&subcategory=<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name'] . ' (' . number_format($countsubcat) . ')'; ?></a>
+                                                                                            </li>
+                                <?php
+                            }
+                            ?>
+                                                                                </ul>
+                                                                            </li>
+                            
+                            
+                            <?php
+                        }
+                        ?>
+                                                                </ul>
+                                                            </div>
+                                                        </nav> .main-navigation 
+                                                    </div> .secondary 
+                        
+                                                </div>-->
                         <!-- ... end Left Sidebar -->
                     </div>
                 </div>
@@ -345,56 +347,56 @@ $groups = Group::searchGroups($category1, $subcategory, $location, $keyword, $pa
         <script src="js/js/custom.js" type="text/javascript"></script>
         <script src="js/js/view-notification.js" type="text/javascript"></script>
         <script>
-                                                var placeSearch, autocomplete;
-                                                $('#city').val($('#autocomplete2').val());
-                                                function initAutocomplete() {
-                                                    // Create the autocomplete object, restricting the search to geographical
-                                                    // location types.
-                                                    var options = {
-                                                        types: ['(cities)'],
-                                                        componentRestrictions: {country: "lk"}
-                                                    };
-                                                    var input = document.getElementById('autocomplete');
+            var placeSearch, autocomplete;
+            $('#city').val($('#autocomplete2').val());
+            function initAutocomplete() {
+                // Create the autocomplete object, restricting the search to geographical
+                // location types.
+                var options = {
+                    types: ['(cities)'],
+                    componentRestrictions: {country: "lk"}
+                };
+                var input = document.getElementById('autocomplete');
 
-                                                    autocomplete = new google.maps.places.Autocomplete(input, options);
+                autocomplete = new google.maps.places.Autocomplete(input, options);
 
-                                                    // When the user selects an address from the dropdown, populate the address
-                                                    // fields in the form.
-                                                    autocomplete.addListener('place_changed', fillInAddress);
-                                                }
+                // When the user selects an address from the dropdown, populate the address
+                // fields in the form.
+                autocomplete.addListener('place_changed', fillInAddress);
+            }
 
-                                                function fillInAddress() {
-                                                    // Get the place details from the autocomplete object.
-                                                    var place = autocomplete.getPlace();
-                                                    $('#city').val(place.place_id);
-                                                    //                $('#longitude').val(place.geometry.location.lng());
-                                                    //                $('#latitude').val(place.geometry.location.lat());
-                                                    for (var component in componentForm) {
-                                                        document.getElementById(component).value = '';
-                                                        document.getElementById(component).disabled = false;
-                                                    }
+            function fillInAddress() {
+                // Get the place details from the autocomplete object.
+                var place = autocomplete.getPlace();
+                $('#city').val(place.place_id);
+                //                $('#longitude').val(place.geometry.location.lng());
+                //                $('#latitude').val(place.geometry.location.lat());
+                for (var component in componentForm) {
+                    document.getElementById(component).value = '';
+                    document.getElementById(component).disabled = false;
+                }
 
-                                                    // Get each component of the address from the place details
-                                                    // and fill the corresponding field on the form.
-                                                }
+                // Get each component of the address from the place details
+                // and fill the corresponding field on the form.
+            }
 
-                                                // Bias the autocomplete object to the user's geographical location,
-                                                // as supplied by the browser's 'navigator.geolocation' object.
-                                                function geolocate() {
-                                                    if (navigator.geolocation) {
-                                                        navigator.geolocation.getCurrentPosition(function (position) {
-                                                            var geolocation = {
-                                                                lat: position.coords.latitude,
-                                                                lng: position.coords.longitude
-                                                            };
-                                                            var circle = new google.maps.Circle({
-                                                                center: geolocation,
-                                                                radius: position.coords.accuracy
-                                                            });
-                                                            autocomplete.setBounds(circle.getBounds());
-                                                        });
-                                                    }
-                                                }
+            // Bias the autocomplete object to the user's geographical location,
+            // as supplied by the browser's 'navigator.geolocation' object.
+            function geolocate() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var geolocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        var circle = new google.maps.Circle({
+                            center: geolocation,
+                            radius: position.coords.accuracy
+                        });
+                        autocomplete.setBounds(circle.getBounds());
+                    });
+                }
+            }
         </script>
         <script>
             // Retrieve Details from Place_ID

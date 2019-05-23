@@ -69,7 +69,8 @@ $pageLimit = ($page * $setLimit) - $setLimit;
                                    
                                 <div class="ui-block">
                                     <?php
-                                    $advertisements = Advertisement::getBoostAdvertisements();
+//                                    $advertisements = Advertisement::getBoostAdvertisements();
+                                    $advertisements = Advertisement::getBoostActiveAds();
                                     if (count($advertisements) > 0) {
                                         foreach ($advertisements as $key => $ad) {
                                             $result = getTime($ad['created_at']);

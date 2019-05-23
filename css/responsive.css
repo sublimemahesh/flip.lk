@@ -352,9 +352,15 @@ and open the template in the editor.
         margin-top: 41px;
         margin-bottom: 41px;
     }
-    .nav-links a img{
-        width: 32px;
-        height: 32px;
+    /*    .nav-links a img{
+            width: 32px;
+            height: 32px;
+        }*/
+    .nav-links a img.avatar {
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        margin-right: 15px;
     }
     .top-header-author .author-thumb{
         margin-top: 64px;
@@ -457,6 +463,17 @@ and open the template in the editor.
     }
     .icon-wrap.hidden {
         display: none !important;
+    }
+    /*    .label-avatar-xs .label-avatar {
+    
+            position: absolute;
+            top:0px;
+            margin-top: 6px;
+            right: 0px;
+    
+        }*/
+    .search-bar.w-search.search-bar-xs {
+        margin: 5% 3%;
     }
 }
 
@@ -703,6 +720,7 @@ and open the template in the editor.
         height: 30px;
         width: 30px;
     }
+    
 }
 
 @media(min-width:992px) and (max-width:1200px) {

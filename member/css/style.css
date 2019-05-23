@@ -369,12 +369,12 @@ select.form-control.sub-category-select:not([size]):not([multiple]) {
 .friend-requests .notification-icon {
     margin-top: -31px;
 }
-#name-list-append, #name-list-append-friends{
+#name-list-append, #name-list-append-friends, #name-list-append-xs{
     position: absolute;
     z-index: 9999;
     width:100%;
 }
-#name-list-append .author-thumb img, #member-name-list-append .author-thumb img, #name-list-append-friends .author-thumb img {
+#name-list-append .author-thumb img, #name-list-append-xs .author-thumb img, #member-name-list-append .author-thumb img, #name-list-append-friends .author-thumb img {
     height: 40px;
     width: 40px;
 }
@@ -2136,4 +2136,8 @@ header .control-icon > svg {
 }
 .w-personal-info li .title {
     width: 20%;
+}
+.notification-list.chat-message {
+    height: 800px;
+    overflow-y: scroll;
 }
