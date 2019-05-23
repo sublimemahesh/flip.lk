@@ -519,15 +519,15 @@ class Member {
         $code = $MEMBER->resetCode;
         $site_link = "http://" . $_SERVER['HTTP_HOST'];
         $website_name = 'www.flip.lk';
-        $comany_name = 'flip.lk';
-        $comConNumber = '+94 77 777 777';
-        $comEmail = 'info@islandwide.website';
+        $comany_name = 'Flip.lk';
+        $comConNumber = '+94 788918561';
+        $comEmail = 'support@flip.lk';
         date_default_timezone_set('Asia/Colombo');
 
         $todayis = date("l, F j, Y, g:i a");
 
         $subject = 'Confirm Your Email';
-        $from = 'info@islandwide.website'; // give from email address
+        $from = 'support@flip.lk'; // give from email address
 
 
         $headers = "From: " . $from . "\r\n";

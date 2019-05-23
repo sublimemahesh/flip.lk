@@ -73,6 +73,7 @@ if (isset($_GET['member'])) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta http-equiv="Refresh" content="300">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" type="text/css" href="Bootstrap/dist/css/bootstrap-reboot.css">
         <link rel="stylesheet" type="text/css" href="Bootstrap/dist/css/bootstrap.css">
