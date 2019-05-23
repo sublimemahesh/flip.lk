@@ -18,7 +18,7 @@ if ($USER->checkEmail($email)) {
         $res = $USER->SelectForgetUser($email);
 
         $username = $USER->username;
-        $email = $USER->email;
+        $email = 'support@flip.lk';
         $resetcode = $USER->restCode;
 
         date_default_timezone_set('Asia/Colombo');
@@ -26,7 +26,7 @@ if ($USER->checkEmail($email)) {
         $todayis = date("l, F j, Y, g:i a");
 
         $subject = 'Dashboard - Password Reset';
-        $from = 'noreply@sublime.lk'; // give from email address
+        $from = 'support@flip.lk'; // give from email address
 
 
         $headers = "From: " . $from . "\r\n";

@@ -363,7 +363,7 @@ select.form-control.sub-category-select:not([size]):not([multiple]) {
 }
 .notification-list .notification-event {
     padding-left: 45px;
-    width: 80%;
+    width: 100%;
     margin-top: 10px;
 }
 .friend-requests .notification-icon {

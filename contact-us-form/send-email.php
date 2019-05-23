@@ -4,9 +4,9 @@
 
 $comany_name = "Flip.lk";
 $website_name = "www.flip.lk";
-$comConNumber = "+90 0000 000";
-$comEmail = "muthu99.ck@gmail.com";
-$from = 'info@flip.lk';
+$comConNumber = "+94 788918561";
+$comEmail = "support@flip.lk";
+$from = 'support@flip.lk';
 
 
 //----------------------CAPTCHACODE---------------------

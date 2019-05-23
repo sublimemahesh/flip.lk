@@ -176,11 +176,11 @@ if (isset($_POST['check-email'])) {
             $todayis = date("l, F j, Y, g:i a");
 
             $subject = 'Member - Password Reset';
-            $from = 'noreply@flip.lk'; // give from email address
+            $from = 'support@flip.lk'; // give from email address
 
 
             $headers = "From: " . $from . "\r\n";
-            $headers .= "Reply-To: " . $email . "\r\n";
+            $headers .= "Reply-To: " . $from . "\r\n";
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 

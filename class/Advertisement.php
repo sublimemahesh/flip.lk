@@ -815,6 +815,12 @@ class Advertisement {
     }
 
     public static function sendBoostAdEmailToAdmin($adid, $period, $date) {
+        $new_period = '';
+        if($period == 1) {
+            $new_period = $period . ' week';
+        } else {
+            $new_period = $period .' weeks';
+        }
 
         //----------------------Company Information---------------------
 
@@ -825,7 +831,7 @@ class Advertisement {
         $AD = new Advertisement($adid);
         $MEMBER = new Member($AD->member);
 
-        $from = 'info@flip.lk';
+        $from = 'support@flip.lk';
         $reply = $MEMBER->email;
 
         $subject = "New request to boost advertisement | Flip.lk | #" . $adid;
@@ -839,7 +845,7 @@ class Advertisement {
 
         $USER = new User(1);
 
-        $email = $USER->email;
+        $email = 'support@flip.lk';
 
         $html = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -950,7 +956,7 @@ class Advertisement {
                                                 
                                                 <li>
                                                     <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                                         Boost Period : ' . $period . '
+                                                         Boost Period : ' . $new_period .  '
                                                     </font>
                                                 </li>
                                                 <li>
@@ -996,6 +1002,12 @@ class Advertisement {
     }
 
     public static function sendBoostAdEmailToCustomer($adid, $period, $date) {
+        $new_period = '';
+        if($period == 1) {
+            $new_period = $period . ' week';
+        } else {
+            $new_period = $period .' weeks';
+        }
 
         //----------------------Company Information---------------------
 
@@ -1006,7 +1018,8 @@ class Advertisement {
         $AD = new Advertisement($adid);
         $MEMBER = new Member($AD->member);
 
-        $from = 'info@flip.lk';
+        $from = 'support@flip.lk';
+        $reply = 'support@flip.lk';
         $email = $MEMBER->email;
         $full_name = $MEMBER->firstName . ' ' . $MEMBER->lastName;
 
@@ -1016,7 +1029,7 @@ class Advertisement {
         $site_link = "https://www.flip.lk";
         // mandatory headers for email message, change if you need something different in your setting.
         $headers = "From: " . $from . "\r\n";
-        $headers .= "Reply-To: " . $from . "\r\n";
+        $headers .= "Reply-To: " . $reply . "\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
@@ -1142,7 +1155,7 @@ class Advertisement {
                                                 
                                                 <li>
                                                     <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:14px; " >
-                                                         Boost Period : ' . $period . ' week(s)
+                                                         Boost Period : ' . $new_period . '
                                                     </font>
                                                 </li>
                                                 <li>
@@ -1245,7 +1258,8 @@ class Advertisement {
         $AD = new Advertisement($adid);
         $MEMBER = new Member($AD->member);
 
-        $from = 'info@flip.lk';
+        $from = 'support@flip.lk';
+        $reply = 'support@flip.lk';
         $email = $MEMBER->email;
         $full_name = $MEMBER->firstName . ' ' . $MEMBER->lastName;
 
@@ -1255,7 +1269,7 @@ class Advertisement {
         $site_link = "https://www.flip.lk";
         // mandatory headers for email message, change if you need something different in your setting.
         $headers = "From: " . $from . "\r\n";
-        $headers .= "Reply-To: " . $from . "\r\n";
+        $headers .= "Reply-To: " . $reply . "\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
@@ -1277,7 +1291,7 @@ class Advertisement {
                                         <td width="40"></td>
                                         <td width="144">
                                             <a href= "' . $site_link . '" target="_blank"> '
-                . '<img src="' . $site_link . '/img/logo/logo.jpg" border="0" alt=""/>
+                . '<img src="' . $site_link . '/contact-us-form/img/logo.jpg" border="0" alt=""/>
                                             </a>
                                         </td>
                                         <td width="393">
@@ -1306,7 +1320,7 @@ class Advertisement {
                         </tr>
                         <tr>
                            <td align="center">
-                                <img src="' . $site_link . '/contact-us-form/img/sli6.gif" alt="" width="598" height="323" border="0"/>
+                                <img src="' . $site_link . '/contact-us-form/img/banner.jpg" alt="" width="598" height="323" border="0"/>
                             </td>
                         </tr>
                         <tr>
@@ -1373,7 +1387,7 @@ class Advertisement {
                                         <td width="2%" align="center">&nbsp;</td>
                                         <td width="29%" align="center">
                                             <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:8px; " >
-                                                <strong>Phone No : <br/> 011 2357487 </strong>
+                                                <strong>Phone No : <br/> +94 788918561 </strong>
                                             </font>
                                         </td>
                                         <td width="2%" align="center">
@@ -1393,7 +1407,7 @@ class Advertisement {
                                         </td>
                                         <td width="25%" align="center">
                                             <font style="font-family: Verdana, Geneva, sans-serif; color:#68696a; font-size:8px; " >
-						 <strong>E-mail :  <br/> info@flip.lk</strong>
+						 <strong>E-mail :  <br/> support@flip.lk</strong>
                                             </font>
                                         </td> 
                                     </tr>
