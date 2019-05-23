@@ -53,16 +53,14 @@ $PAGES = new Page(NULL);
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Page Name</th>                               
-                                                <th>Description</th>
+                                                <th>Page Name</th>
                                                 <th>Option</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Page Name</th>                                             
-                                                <th>Description</th>
+                                                <th>Page Name</th>
                                                 <th>Option</th>
                                             </tr>
                                         </tfoot>
@@ -74,9 +72,7 @@ $PAGES = new Page(NULL);
                                                 ?>
                                                 <tr id="row_<?php echo $page['id']; ?>">
                                                     <td><?php echo $page['id']; ?></td> 
-                                                    <td><?php echo $page['title']; ?></td> 
-                                                  
-                                                    <td><?php echo substr($page['description'],0,30); ?></td> 
+                                                    <td><?php echo $page['title']; ?></td>
                                                     <td> 
                                                         <a href="edit-pages.php?id=<?php echo $page['id']; ?>" class="op-link btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></a> 
 <!--                                                        <a class="delete-pages btn btn-sm btn-danger" data-id="<?php echo $page['id']; ?>">

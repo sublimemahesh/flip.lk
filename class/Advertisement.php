@@ -154,7 +154,7 @@ class Advertisement {
 
     public function getAllAdvertisements($pageLimit, $setLimit) {
 
-        $query = "SELECT * FROM `advertisement` WHERE `status` = 1 AND `is_suspend` = 0 ORDER BY `created_at` DESC LIMIT " . $pageLimit . " , " . $setLimit . "";
+        $query = "SELECT * FROM `advertisement` WHERE `status` = 1 AND `is_suspend` = 0 AND `boosted` != 'active' ORDER BY `created_at` DESC LIMIT " . $pageLimit . " , " . $setLimit . "";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -555,7 +555,7 @@ class Advertisement {
 //                $w[] = "MATCH(title) AGAINST('" . $keyword . "')";
             }
         }
-        $w[] = "`status` = 1";
+        $w[] = "`status` = 1 AND `is_suspend` = 0 AND `boosted` != 'active'";
         if (count($w)) {
             $where = 'WHERE ' . implode(' AND ', $w);
         }
@@ -600,7 +600,7 @@ class Advertisement {
                 $w[] = "`title` LIKE '%" . $keyword . "%'";
             }
         }
-        $w[] = "`status` = 1 AND '" . $today . "' BETWEEN `boosted` AND `boost_requested_date`";
+        $w[] = "`status` = 1 AND `is_suspend` = 0 AND `boosted` LIKE 'active'";
         if (count($w)) {
             $where = 'WHERE ' . implode(' AND ', $w);
         }
@@ -643,7 +643,7 @@ class Advertisement {
                 $w[] = "`title` LIKE '%" . $keyword . "%'";
             }
         }
-        $w[] = "`status` = 1";
+        $w[] = "`status` = 1 AND `is_suspend` = 0 AND `boosted` != 'active'";
         if (count($w)) {
             $where = 'WHERE ' . implode(' AND ', $w);
         }
@@ -733,7 +733,7 @@ class Advertisement {
 
         $page_url = "?";
 
-        $query = "SELECT count(*) AS totalCount FROM `advertisement` WHERE `status` = 1 ORDER BY `created_at` DESC";
+        $query = "SELECT count(*) AS totalCount FROM `advertisement` WHERE `status` = 1 AND `is_suspend` = 0 ORDER BY `created_at` DESC";
 
         $rec = mysql_fetch_array(mysql_query($query));
 

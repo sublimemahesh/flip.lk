@@ -264,28 +264,49 @@
     <input type="checkbox" id="nav-check">
     <div class="nav-links">
         <a href="./"><img src="img/icon/header-icon/home.png" alt=""/>Home</a>
-        <a href="all-advertisement.php"><img src="img/icon/header-icon/advertising.png" alt="" />Advertisements</a>
-        <a href="groups.php"><img src="img/icon/header-icon/group.png" alt=""  />Groups</a>
+        <a href="all-advertisement.php"><img src="img/icon/header-icon/advertising.png" alt="" />All Ads</a>
+        <a href="groups.php"><img src="img/icon/header-icon/group.png" alt=""  />All Groups</a>
         <a href="member/"><img src="img/icon/header-icon/newsfeed.png" alt="" />Newsfeed</a>
 
         <?php
         if (isset($_SESSION['id'])) {
+//            $countu = FriendRequest::getCountOfUnviewedRequests($MEMBER->id);
+//            $countmsg = AdvertisementMessage::countUnreadMessages($MEMBER->id);
+//            $countnotifications = Notification::countUnviewedNotifications($MEMBER->id);
             ?>
-            <a href="member/friend-requests.php"><img class="follower-request" src="img/icon/header-icon/request.png" alt=""/>Requests</a>
+            <a href="member/friend-requests.php"><img class="follower-request" src="img/icon/header-icon/request.png" alt=""/>Requests
+
+            </a>
             <a href="member/member-message.php"><img src="img/icon/header-icon/message.png" alt=""/>Messaging</a>
-            <a href="member/notifications.php"><img src="img/icon/header-icon/message.png" alt=""/>Notifications</a>
+            <a href="member/notifications.php"><img src="img/icon/header-icon/notification.png" alt=""/>Notifications</a>
 
             <a href="member/profile.php">
+
+
                 <?php
                 if ($MEMBER->profilePicture) {
                     ?>
-                    <img alt="author" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
-                    Profile
+                    <?php
+                    if ($MEMBER->facebookID && substr($MEMBER->profilePicture, 0, 5) === "https") {
+                        ?>
+                        <img alt="profile picture" src="<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
+                        Profile
+                        <?php
+                    } elseif ($MEMBER->googleID && substr($MEMBER->profilePicture, 0, 5) === "https") {
+                        ?>
+                        <img alt="profile picture" src="<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
+                        Profile
+                        <?php
+                    } else {
+                        ?>
+                        <img alt="profile picture" src="upload/member/<?php echo $MEMBER->profilePicture; ?>" class="avatar" id="profile_pic2">
+                        Profile
+                        <?php
+                    }
+                    ?>
                     <?php
                 } else {
-                    ?>
-                    <img alt="author" src="upload/member/member.png" class="avatar" id="profile_pic2">
-                    Profile
+                    ?><img alt="profile picture" src="upload/member/member.png" class="avatar" id="profile_pic2">
                     <?php
                 }
                 ?>
@@ -306,5 +327,25 @@
                 Post Your Ad
             </button>
         </a>
+        <?php
+        if (isset($_SESSION['id'])) {
+            ?>
+            <form class="search-bar w-search notification-list friend-requests search-bar-xs">
+                <div class="form-group with-button">
+                    <input class="form-control js-user-search" id="find-member-xs" placeholder="Search here people..." type="text" value="<?php
+                    if (isset($MEM)) {
+                        echo $MEM->firstName . ' ' . $MEM->lastName;
+                    }
+                    ?>" autocomplete="off">
+                    <div class="" id="name-list-append-xs"></div>
+                    <input type="hidden" name="member" value="" id="member-id"  />
+                    <button>
+                        <svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
+                    </button>
+                </div>
+            </form>
+            <?php
+        }
+        ?>
     </div>
 </div>
